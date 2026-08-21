@@ -17,23 +17,18 @@ export function Section({ className, children, flush, bleed, ...props }: Section
   );
 }
 
-export function Container({
-  className,
-  children,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+export function Container({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn("mx-auto w-full max-w-[1440px] px-6 md:px-10 lg:px-16", className)} {...props}>
+    <div
+      className={cn("mx-auto w-full max-w-[1440px] px-6 md:px-10 lg:px-16", className)}
+      {...props}
+    >
       {children}
     </div>
   );
 }
 
-export function Eyebrow({
-  className,
-  children,
-  ...props
-}: React.HTMLAttributes<HTMLSpanElement>) {
+export function Eyebrow({ className, children, ...props }: React.HTMLAttributes<HTMLSpanElement>) {
   return (
     <span className={cn("eyebrow block", className)} {...props}>
       {children}

@@ -1,19 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageIntro } from "@/components/site/page-intro";
-
-const TITLE = "Services — DLX Properties Dubai";
-const DESCRIPTION =
-  "Acquisition, disposal, leasing and portfolio advisory for private owners and family offices in Dubai.";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-    ],
-  }),
+  head: () =>
+    pageHead({ path: "/services", breadcrumbs: [{ name: "Services", path: "/services" }] }),
   component: ServicesPage,
 });
 

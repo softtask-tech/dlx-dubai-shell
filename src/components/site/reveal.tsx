@@ -1,5 +1,6 @@
-import { motion, type HTMLMotionProps } from "motion/react";
+import { motion, useReducedMotion, type HTMLMotionProps } from "motion/react";
 import type { ReactNode } from "react";
+import { REVEAL_DISTANCE, revealTransition } from "@/lib/motion";
 
 type RevealProps = HTMLMotionProps<"div"> & {
   children: ReactNode;
@@ -7,14 +8,21 @@ type RevealProps = HTMLMotionProps<"div"> & {
   y?: number;
 };
 
-/** Quiet reveal-on-scroll wrapper used across the site. */
-export function Reveal({ children, delay = 0, y = 24, ...props }: RevealProps) {
+/**
+ * Quiet reveal-on-scroll wrapper used across the site.
+ *
+ * Under `prefers-reduced-motion` the content starts and stays at its final
+ * state — visible immediately, no travel, no fade.
+ */
+export function Reveal({ children, delay = 0, y = REVEAL_DISTANCE, ...props }: RevealProps) {
+  const reduced = useReducedMotion();
+
   return (
     <motion.div
-      initial={{ opacity: 0, y }}
+      initial={reduced ? false : { opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
-      transition={{ duration: 1.1, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={revealTransition(reduced, delay)}
       {...props}
     >
       {children}

@@ -11,6 +11,9 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { site } from "@/config/site";
+import { organizationSchema, websiteSchema } from "@/lib/schema";
+import { pageHead } from "@/lib/seo";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
 import { CustomCursor } from "@/components/site/cursor";
@@ -76,31 +79,37 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "DLX Properties — Dubai real estate, handled with intention" },
-      {
-        name: "description",
-        content:
-          "A private Dubai brokerage advising on prime residential acquisitions, off-market sales and portfolio strategy.",
-      },
-      { name: "author", content: "DLX Properties" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "icon", type: "image/png", href: "/favicon.png" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap",
-      },
-    ],
-  }),
+  head: () => {
+    /*
+     * Root-level head. Every page overrides title, description, canonical, OG
+     * and Twitter tags via its own pageHead() call — these are the shell
+     * defaults plus the site-wide identity schema, emitted once.
+     */
+    const shell = pageHead({
+      path: "/",
+      schema: [organizationSchema(), websiteSchema()],
+    });
+
+    return {
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "author", content: site.name },
+        ...shell.meta,
+      ],
+      links: [
+        { rel: "stylesheet", href: appCss },
+        { rel: "icon", type: "image/png", href: "/favicon.png" },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap",
+        },
+      ],
+      scripts: shell.scripts,
+    };
+  },
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
@@ -109,7 +118,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang={site.language}>
       <head>
         <HeadContent />
       </head>
@@ -126,9 +135,12 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
       <CustomCursor />
       <Header />
-      <main className="min-h-screen">
+      <main id="main" className="min-h-screen">
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
       </main>
@@ -136,4 +148,3 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
-

@@ -30,6 +30,76 @@ BUILD THE SHELL ONLY
 
 Keep it clean, minimal, and beautifully styled — a strong foundation to expand. Don't build forms, listings, or complex features yet.
 
+## Architecture
+
+The shell above is in place. On top of it sits the foundation layer everything
+later plugs into.
+
+### One source of truth
+
+| File | Holds |
+| --- | --- |
+| `src/config/brand.ts` | Brand facts — name, RERA ORN, address, contacts, socials. Import-free so build scripts can read it. |
+| `src/config/pages.ts` | The page registry: path, nav label, title, description, tagline, sitemap priority. |
+| `src/config/site.ts` | Re-exports both, plus `SITE_URL` and `absoluteUrl()`. Components import only this. |
+
+**Adding a page is two steps**: create the route file, and register it in
+`SITE_PAGES`. Registration is what gives it navigation, meta tags, a social
+card, breadcrumbs and a sitemap entry — `pageHead()` throws if a route is
+missing from the registry, so a page cannot ship without them.
+
+### SEO / AEO
+
+Every route builds its head through `pageHead()` (`src/lib/seo.ts`), which emits
+a unique title, description, tagline, canonical URL, Open Graph and Twitter
+tags, and any JSON-LD the page owns. Schema builders live in `src/lib/schema.ts`
+(Organisation/RealEstateAgent, WebSite, Breadcrumb, FAQ, Article, Listing,
+Review). Pages are server-rendered, so crawlers and AI read all of it without
+executing JavaScript.
+
+- `/sitemap.xml` and `/robots.txt` are generated from the registry at request
+  time. `robots.txt` allows search *and* AI crawlers by name on the canonical
+  origin, and serves `Disallow: /` everywhere else — preview deployments cannot
+  be indexed by accident.
+- Social cards live in `public/og/`. Regenerate them with `npm run og` after
+  changing a page's tagline; the script renders them from the same registry, so
+  a card can never disagree with the page's own meta.
+- Schema only ever describes content that is visible on the page. No hidden
+  keywords, no invented ratings, prices or legal claims.
+
+### Motion and accessibility
+
+Durations and easings come from `src/lib/motion.ts`. Everything degrades under
+`prefers-reduced-motion`: reveals settle instantly, the hero parallax switches
+off, and the custom cursor stays disabled so the native pointer is never hidden
+(it is also off for touch and coarse pointers). The layout carries a skip link,
+visible focus rings, and Escape-to-close on the mobile menu.
+
+## Environment variables
+
+Copy `.env.example` to `.env`. Every variable is documented there.
+
+| Variable | Purpose |
+| --- | --- |
+| `VITE_SITE_URL` | Canonical origin for this deployment. Drives canonical URLs, `og:url`, JSON-LD IDs, the sitemap, and whether `robots.txt` allows indexing. |
+| `VITE_SUPABASE_URL` / `VITE_SUPABASE_PUBLISHABLE_KEY` / `VITE_SUPABASE_PROJECT_ID` | Browser-side Supabase client. |
+| `SUPABASE_URL` / `SUPABASE_PUBLISHABLE_KEY` / `SUPABASE_PROJECT_ID` | Server-side Supabase access. |
+
+## Commands
+
+```sh
+npm run dev        # dev server
+npm run build      # production build
+npm run lint       # eslint + prettier
+npm run typecheck  # tsc --noEmit
+npm run og         # regenerate the Open Graph cards in public/og/
+```
+
+`npm run og` drives a headless Chromium and fetches the brand fonts once, so it
+needs a Chrome/Chromium binary (set `CHROMIUM_PATH` if it is not auto-detected)
+and network access. The generated PNGs are committed, so serving them needs
+neither at runtime.
+
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable

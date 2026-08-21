@@ -1,19 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageIntro } from "@/components/site/page-intro";
-
-const TITLE = "About — DLX Properties Dubai";
-const DESCRIPTION =
-  "DLX Properties is a private Dubai brokerage built on restraint, discretion and long-term client relationships.";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-    ],
-  }),
+  head: () => pageHead({ path: "/about", breadcrumbs: [{ name: "About", path: "/about" }] }),
   component: AboutPage,
 });
 

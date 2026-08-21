@@ -112,13 +112,60 @@
     color: var(--color-foreground);
   }
 
-  /* Custom cursor: hide the native one on precise pointers */
-  @media (pointer: fine) {
-    body,
-    a,
-    button {
-      cursor: none;
+  /*
+   * Hide the native cursor only while our custom one is actually drawing.
+   * CustomCursor sets data-cursor-custom on <html>, and it never does so for
+   * coarse pointers or reduced-motion visitors — so a real cursor always exists.
+   */
+  html[data-cursor-custom] body,
+  html[data-cursor-custom] a,
+  html[data-cursor-custom] button {
+    cursor: none;
+  }
+
+  /* Keyboard focus stays visible everywhere, in the accent, never removed. */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  /*
+   * Reduced motion: no smooth scroll, no travel, no parallax. Content settles
+   * instantly rather than disappearing — nothing depends on an animation to
+   * become visible.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
     }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Skip link: visually hidden until focused, then anchored top-left. */
+@utility skip-link {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  &:focus {
+    left: 1rem;
+    top: 1rem;
+    padding: 0.75rem 1.25rem;
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    letter-spacing: var(--tracking-editorial);
+    text-transform: uppercase;
   }
 }
 

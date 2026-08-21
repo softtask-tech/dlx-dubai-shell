@@ -1,19 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageIntro } from "@/components/site/page-intro";
-
-const TITLE = "Market Intelligence — DLX Properties Dubai";
-const DESCRIPTION =
-  "Data, transaction analysis and considered commentary on the Dubai prime residential market.";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/market-intelligence")({
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      path: "/market-intelligence",
+      breadcrumbs: [{ name: "Market Intelligence", path: "/market-intelligence" }],
+    }),
   component: MarketIntelligencePage,
 });
 
