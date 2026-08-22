@@ -236,6 +236,27 @@ export type Testimonial = {
   updated_at: string;
 };
 
+export type BlogPost = {
+  id: string;
+  slug: string;
+  title: string;
+  title_ar: string | null;
+  excerpt: string | null;
+  body: string | null;
+  category: ContentCategory;
+  hero_image_url: string | null;
+  reading_minutes: number | null;
+  author_agent_id: string | null;
+  tags: string[];
+  seo_title: string | null;
+  seo_description: string | null;
+  og_image_url: string | null;
+  is_published: boolean;
+  published_at: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
 export type Lead = {
   id: string;
   full_name: string | null;

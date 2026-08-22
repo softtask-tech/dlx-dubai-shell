@@ -12,27 +12,32 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteRouteImport } from './routes/admin/route'
+import { Route as AdvisorKnowledgeDotjsonRouteImport } from './routes/advisor-knowledge[.]json'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as GuidesRouteImport } from './routes/guides'
 import { Route as MarketIntelligenceRouteImport } from './routes/market-intelligence'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TeamRouteImport } from './routes/team'
-import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminContentRouteImport } from './routes/admin/content'
 import { Route as AdminDataRouteImport } from './routes/admin/data'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as AreasIndexRouteImport } from './routes/areas/index'
 import { Route as AreasSlugRouteImport } from './routes/areas/$slug'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
+import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as DevelopersIndexRouteImport } from './routes/developers/index'
 import { Route as DevelopersSlugRouteImport } from './routes/developers/$slug'
+import { Route as GuidesIndexRouteImport } from './routes/guides/index'
+import { Route as GuidesSlugRouteImport } from './routes/guides/$slug'
 import { Route as ProjectsSlugRouteImport } from './routes/projects/$slug'
 import { Route as PropertiesIndexRouteImport } from './routes/properties/index'
 import { Route as PropertiesSlugRouteImport } from './routes/properties/$slug'
 import { Route as ReportsTokenRouteImport } from './routes/reports/$token'
 import { Route as ServicesIndexRouteImport } from './routes/services/index'
 import { Route as ServicesSlugRouteImport } from './routes/services/$slug'
+import { Route as ToolsIndexRouteImport } from './routes/tools/index'
+import { Route as ToolsSlugRouteImport } from './routes/tools/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -49,14 +54,14 @@ const AdminRouteRoute = AdminRouteRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdvisorKnowledgeDotjsonRoute = AdvisorKnowledgeDotjsonRouteImport.update({
+  id: '/advisor-knowledge.json',
+  path: '/advisor-knowledge.json',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GuidesRoute = GuidesRouteImport.update({
-  id: '/guides',
-  path: '/guides',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MarketIntelligenceRoute = MarketIntelligenceRouteImport.update({
@@ -77,11 +82,6 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const TeamRoute = TeamRouteImport.update({
   id: '/team',
   path: '/team',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ToolsRoute = ToolsRouteImport.update({
-  id: '/tools',
-  path: '/tools',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
@@ -114,6 +114,16 @@ const AreasSlugRoute = AreasSlugRouteImport.update({
   path: '/areas/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DevelopersIndexRoute = DevelopersIndexRouteImport.update({
   id: '/developers/',
   path: '/developers/',
@@ -122,6 +132,16 @@ const DevelopersIndexRoute = DevelopersIndexRouteImport.update({
 const DevelopersSlugRoute = DevelopersSlugRouteImport.update({
   id: '/developers/$slug',
   path: '/developers/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesIndexRoute = GuidesIndexRouteImport.update({
+  id: '/guides/',
+  path: '/guides/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesSlugRoute = GuidesSlugRouteImport.update({
+  id: '/guides/$slug',
+  path: '/guides/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
@@ -154,84 +174,109 @@ const ServicesSlugRoute = ServicesSlugRouteImport.update({
   path: '/services/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsIndexRoute = ToolsIndexRouteImport.update({
+  id: '/tools/',
+  path: '/tools/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsSlugRoute = ToolsSlugRouteImport.update({
+  id: '/tools/$slug',
+  path: '/tools/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
-  '/guides': typeof GuidesRoute
   '/market-intelligence': typeof MarketIntelligenceRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
-  '/tools': typeof ToolsRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
   '/areas/$slug': typeof AreasSlugRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/reports/$token': typeof ReportsTokenRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/tools/$slug': typeof ToolsSlugRoute
   '/admin/': typeof AdminIndexRoute
   '/areas/': typeof AreasIndexRoute
+  '/blog/': typeof BlogIndexRoute
   '/developers/': typeof DevelopersIndexRoute
+  '/guides/': typeof GuidesIndexRoute
   '/properties/': typeof PropertiesIndexRoute
   '/services/': typeof ServicesIndexRoute
+  '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
-  '/guides': typeof GuidesRoute
   '/market-intelligence': typeof MarketIntelligenceRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
-  '/tools': typeof ToolsRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
   '/areas/$slug': typeof AreasSlugRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/reports/$token': typeof ReportsTokenRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/tools/$slug': typeof ToolsSlugRoute
   '/admin': typeof AdminIndexRoute
   '/areas': typeof AreasIndexRoute
+  '/blog': typeof BlogIndexRoute
   '/developers': typeof DevelopersIndexRoute
+  '/guides': typeof GuidesIndexRoute
   '/properties': typeof PropertiesIndexRoute
   '/services': typeof ServicesIndexRoute
+  '/tools': typeof ToolsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
-  '/guides': typeof GuidesRoute
   '/market-intelligence': typeof MarketIntelligenceRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
-  '/tools': typeof ToolsRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
   '/areas/$slug': typeof AreasSlugRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/reports/$token': typeof ReportsTokenRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/tools/$slug': typeof ToolsSlugRoute
   '/admin/': typeof AdminIndexRoute
   '/areas/': typeof AreasIndexRoute
+  '/blog/': typeof BlogIndexRoute
   '/developers/': typeof DevelopersIndexRoute
+  '/guides/': typeof GuidesIndexRoute
   '/properties/': typeof PropertiesIndexRoute
   '/services/': typeof ServicesIndexRoute
+  '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -239,101 +284,121 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/about'
+    | '/advisor-knowledge.json'
     | '/contact'
-    | '/guides'
     | '/market-intelligence'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/team'
-    | '/tools'
     | '/admin/content'
     | '/admin/data'
     | '/admin/login'
     | '/areas/$slug'
+    | '/blog/$slug'
     | '/developers/$slug'
+    | '/guides/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
     | '/reports/$token'
     | '/services/$slug'
+    | '/tools/$slug'
     | '/admin/'
     | '/areas/'
+    | '/blog/'
     | '/developers/'
+    | '/guides/'
     | '/properties/'
     | '/services/'
+    | '/tools/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/advisor-knowledge.json'
     | '/contact'
-    | '/guides'
     | '/market-intelligence'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/team'
-    | '/tools'
     | '/admin/content'
     | '/admin/data'
     | '/admin/login'
     | '/areas/$slug'
+    | '/blog/$slug'
     | '/developers/$slug'
+    | '/guides/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
     | '/reports/$token'
     | '/services/$slug'
+    | '/tools/$slug'
     | '/admin'
     | '/areas'
+    | '/blog'
     | '/developers'
+    | '/guides'
     | '/properties'
     | '/services'
+    | '/tools'
   id:
     | '__root__'
     | '/'
     | '/admin'
     | '/about'
+    | '/advisor-knowledge.json'
     | '/contact'
-    | '/guides'
     | '/market-intelligence'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/team'
-    | '/tools'
     | '/admin/content'
     | '/admin/data'
     | '/admin/login'
     | '/areas/$slug'
+    | '/blog/$slug'
     | '/developers/$slug'
+    | '/guides/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
     | '/reports/$token'
     | '/services/$slug'
+    | '/tools/$slug'
     | '/admin/'
     | '/areas/'
+    | '/blog/'
     | '/developers/'
+    | '/guides/'
     | '/properties/'
     | '/services/'
+    | '/tools/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRouteRoute: typeof AdminRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  AdvisorKnowledgeDotjsonRoute: typeof AdvisorKnowledgeDotjsonRoute
   ContactRoute: typeof ContactRoute
-  GuidesRoute: typeof GuidesRoute
   MarketIntelligenceRoute: typeof MarketIntelligenceRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeamRoute: typeof TeamRoute
-  ToolsRoute: typeof ToolsRoute
   AreasSlugRoute: typeof AreasSlugRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   DevelopersSlugRoute: typeof DevelopersSlugRoute
+  GuidesSlugRoute: typeof GuidesSlugRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
   PropertiesSlugRoute: typeof PropertiesSlugRoute
   ReportsTokenRoute: typeof ReportsTokenRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
+  ToolsSlugRoute: typeof ToolsSlugRoute
   AreasIndexRoute: typeof AreasIndexRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   DevelopersIndexRoute: typeof DevelopersIndexRoute
+  GuidesIndexRoute: typeof GuidesIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
+  ToolsIndexRoute: typeof ToolsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -359,18 +424,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/advisor-knowledge.json': {
+      id: '/advisor-knowledge.json'
+      path: '/advisor-knowledge.json'
+      fullPath: '/advisor-knowledge.json'
+      preLoaderRoute: typeof AdvisorKnowledgeDotjsonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/guides': {
-      id: '/guides'
-      path: '/guides'
-      fullPath: '/guides'
-      preLoaderRoute: typeof GuidesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/market-intelligence': {
@@ -399,13 +464,6 @@ declare module '@tanstack/react-router' {
       path: '/team'
       fullPath: '/team'
       preLoaderRoute: typeof TeamRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tools': {
-      id: '/tools'
-      path: '/tools'
-      fullPath: '/tools'
-      preLoaderRoute: typeof ToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/': {
@@ -450,6 +508,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AreasSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/developers/': {
       id: '/developers/'
       path: '/developers'
@@ -462,6 +534,20 @@ declare module '@tanstack/react-router' {
       path: '/developers/$slug'
       fullPath: '/developers/$slug'
       preLoaderRoute: typeof DevelopersSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/': {
+      id: '/guides/'
+      path: '/guides'
+      fullPath: '/guides/'
+      preLoaderRoute: typeof GuidesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/$slug': {
+      id: '/guides/$slug'
+      path: '/guides/$slug'
+      fullPath: '/guides/$slug'
+      preLoaderRoute: typeof GuidesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/$slug': {
@@ -506,6 +592,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/': {
+      id: '/tools/'
+      path: '/tools'
+      fullPath: '/tools/'
+      preLoaderRoute: typeof ToolsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/$slug': {
+      id: '/tools/$slug'
+      path: '/tools/$slug'
+      fullPath: '/tools/$slug'
+      preLoaderRoute: typeof ToolsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -531,23 +631,28 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRouteRoute: AdminRouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  AdvisorKnowledgeDotjsonRoute: AdvisorKnowledgeDotjsonRoute,
   ContactRoute: ContactRoute,
-  GuidesRoute: GuidesRoute,
   MarketIntelligenceRoute: MarketIntelligenceRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeamRoute: TeamRoute,
-  ToolsRoute: ToolsRoute,
   AreasSlugRoute: AreasSlugRoute,
+  BlogSlugRoute: BlogSlugRoute,
   DevelopersSlugRoute: DevelopersSlugRoute,
+  GuidesSlugRoute: GuidesSlugRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
   PropertiesSlugRoute: PropertiesSlugRoute,
   ReportsTokenRoute: ReportsTokenRoute,
   ServicesSlugRoute: ServicesSlugRoute,
+  ToolsSlugRoute: ToolsSlugRoute,
   AreasIndexRoute: AreasIndexRoute,
+  BlogIndexRoute: BlogIndexRoute,
   DevelopersIndexRoute: DevelopersIndexRoute,
+  GuidesIndexRoute: GuidesIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
+  ToolsIndexRoute: ToolsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

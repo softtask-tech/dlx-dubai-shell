@@ -213,10 +213,77 @@ values ('<auth-user-uuid>', 'admin');
 
 The admin app has two surfaces: a **leads inbox** (filter by status,
 temperature or search; tag, assign, add notes, export CSV) and a **content
-editor** with CRUD for properties, developers, projects, team and testimonials.
+editor** with CRUD for properties, developers, projects, team, testimonials and
+the journal.
 Both read through `CONTENT_SCHEMA` in `src/data/content-schema.ts`, which is
 simultaneously the form definition and the server's write allow-list — a column
 the editor does not show is a column the server will not write.
+
+### Tools, the playbook and the journal
+
+Three kinds of content, held in three places on purpose.
+
+**Tools** (`src/data/tools.ts`, `/tools`) are eight calculators. Every fee,
+threshold and rate any of them quotes comes from `src/data/fee-schedule.ts`,
+where each entry carries a basis, a source and a `verifiedOn` date — nothing
+downstream hard-codes a figure, and where a cost genuinely varies the entry is
+marked editable so the visitor can set their own. Anything touching law, visas
+or tax renders the dated "verify with the relevant authority" line, and the
+Golden Visa tool deliberately returns an indication rather than a verdict.
+
+**The playbook** (`src/data/guides.ts`, `/guides`) is ten editorial guides held
+in code, because they are the brokerage's considered position: they change
+rarely and every change goes through a pull request before it can claim
+anything. The four that touch law, visas or tax carry `verifyWithAuthorities`,
+which renders the dated note. Each guide opens with a plain-language answer
+before any reasoning — that same paragraph is the Article JSON-LD description,
+so the summary a reader sees is the summary a crawler gets.
+
+**The journal** (`blog_posts`, `/blog`) is the opposite: written by the team as
+things happen, edited in the admin content editor. Bodies are a small,
+deliberate subset of Markdown (`## heading`, `- list`, `> quote`, `**bold**`,
+`[text](/path)`) rendered into React elements by
+`src/components/blog/post-body.tsx` — no `dangerouslySetInnerHTML` anywhere, so
+nothing an editor types can become markup. Six opening posts:
+
+```sh
+psql "$DATABASE_URL" -f supabase/seed/journal-seed.sql
+```
+
+They insert with `on conflict (slug) do nothing`, so re-running never overwrites
+something the team has since edited.
+
+### The advisor's knowledge source
+
+`src/data/knowledge.ts` assembles the guides, the tools, the services, the
+journal and the community market figures into one typed index, served at
+`/advisor-knowledge.json`. Phase 5 gives the chat and the voice agent one brain;
+this is what that brain reads, and serving it over HTTP means the voice layer —
+which runs outside this app — retrieves from the same index the chat does.
+
+Three things make it more than a content dump:
+
+- **The guardrails travel with the entries.** `requiresVerification` marks
+  material where the advisor must say the figures need confirming with the
+  authority; `routeToHuman` marks questions it must hand to a consultant. Both
+  are derived from the content itself, so the site and the advisor cannot drift
+  into disagreeing — a guide that renders the dated note sets the same flag here.
+- **The provenance travels too.** Market entries take their `source` from
+  `attributionFor()`, so an entry can only carry "Source: Dubai Land Department"
+  when the rows behind it genuinely are DLD records, and says plainly that they
+  are illustrative when they are not.
+- **Nothing in it is generated prose.** Every answer is copy a human wrote and a
+  reader can see. If the advisor quotes an entry, the visitor can follow its
+  `url` and find the same words.
+
+`ADVISOR_POLICY` ships in the same payload — scope, what to decline, the never
+rules, the citation and handoff obligations — rather than living in a prompt in
+one place and a second prompt somewhere else.
+
+`searchKnowledge()` is lexical, not semantic, and says so: term overlap weighted
+towards the title and the questions. With a few hundred entries of hand-written
+copy it is enough to put the right three in front of the model, and a Phase 5
+embedding index can replace it behind the same signature.
 
 ### When the database is not there
 
@@ -245,6 +312,21 @@ Edge Function secrets (`npx supabase secrets set …`, not `.env`):
 | `LEAD_FROM_EMAIL` | Verified Resend sender. |
 | `LEAD_ADMIN_EMAIL` | Where notifications land. Comma-separated for several. |
 | `SITE_DOMAIN`, `BRAND_PHONE` | Used in the email templates. |
+
+### Auditing the SEO rules
+
+The rules above are only worth having if something checks them. Against a
+running server:
+
+```sh
+npm run dev
+npm run audit:seo               # or: node scripts/audit-seo.mjs http://host:port
+```
+
+It crawls every URL in `/sitemap.xml` and fails if any page is missing a title,
+description, `og:image`, Twitter card or canonical, if any two pages share a
+title, description or social card, or if a page carries no parseable JSON-LD. It
+exits non-zero, so it can gate a deploy.
 
 ## Commands
 

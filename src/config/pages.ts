@@ -138,6 +138,17 @@ export const SITE_PAGES: readonly SitePage[] = [
     changeFrequency: "weekly",
   },
   {
+    path: "/blog",
+    inPrimaryNav: false,
+    label: "Journal",
+    title: "Journal",
+    description:
+      "Notes from the DLX desk — what is actually happening in the Dubai market, what it means for buyers and owners, and what we are seeing that the headlines miss.",
+    tagline: "Notes from the desk, as things happen.",
+    priority: 0.7,
+    changeFrequency: "weekly",
+  },
+  {
     path: "/about",
     label: "About",
     title: "About DLX",

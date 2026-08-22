@@ -1,6 +1,6 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 
-import { serviceBySlug, SERVICES } from "@/data/services";
+import { serviceBySlug, SERVICES, serviceOgPath } from "@/data/services";
 import { faqSchema } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
@@ -26,7 +26,7 @@ export const Route = createFileRoute("/services/$slug")({
       description: service.description,
       tagline: service.tagline,
       /* One card for the whole section — a per-service card would need art. */
-      image: "/og/services.png",
+      image: serviceOgPath(service.slug),
       breadcrumbs: [
         { name: "Services", path: "/services" },
         { name: service.name, path: `/services/${service.slug}` },

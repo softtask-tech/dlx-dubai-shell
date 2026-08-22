@@ -1,10 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { SITE_PAGES, absoluteUrl } from "@/config/site";
+import { listPostSlugs } from "@/data/blog";
 import { listDeveloperSlugs, listProjectSlugs } from "@/data/catalogue";
+import { GUIDES } from "@/data/guides";
 import { listAreasWithStats } from "@/data/market";
 import { listPropertySlugs } from "@/data/properties";
 import { SERVICES } from "@/data/services";
+import { TOOLS } from "@/data/tools";
 
 /** Escapes the five XML entities so a URL can never break the document. */
 function escapeXml(value: string): string {
@@ -34,14 +37,21 @@ export const Route = createFileRoute("/sitemap.xml")({
          * If Supabase is unreachable the sitemap still ships the static pages
          * rather than failing: a partial sitemap beats a 500.
          */
-        const [propertySlugs, developerSlugs, projectSlugs, areas] = await Promise.all([
+        const [propertySlugs, developerSlugs, projectSlugs, areas, postSlugs] = await Promise.all([
           listPropertySlugs().catch(() => [] as string[]),
           listDeveloperSlugs().catch(() => [] as string[]),
           listProjectSlugs().catch(() => [] as string[]),
           listAreasWithStats().catch(() => []),
+          listPostSlugs().catch(() => [] as string[]),
         ]);
 
-        type Entry = { path: string; changefreq: string; priority: number };
+        type Entry = {
+          path: string;
+          changefreq: string;
+          priority: number;
+          /** Overrides today's date where the content has a real review date. */
+          lastmod?: string;
+        };
 
         const entries: Entry[] = [
           ...SITE_PAGES.map((page) => ({
@@ -53,6 +63,25 @@ export const Route = createFileRoute("/sitemap.xml")({
             path: `/services/${service.slug}`,
             changefreq: "monthly",
             priority: 0.8,
+          })),
+          ...TOOLS.map((tool) => ({
+            path: `/tools/${tool.slug}`,
+            changefreq: "monthly",
+            priority: 0.7,
+          })),
+          /* Guides carry their own review date, which is the honest lastmod —
+           * claiming today's date on an article reviewed in March is exactly the
+           * kind of freshness signal Google discounts. */
+          ...GUIDES.map((guide) => ({
+            path: `/guides/${guide.slug}`,
+            changefreq: "monthly",
+            priority: 0.7,
+            lastmod: guide.reviewedOn,
+          })),
+          ...postSlugs.map((slug) => ({
+            path: `/blog/${slug}`,
+            changefreq: "monthly",
+            priority: 0.6,
           })),
           ...propertySlugs.map((slug) => ({
             path: `/properties/${slug}`,
@@ -82,7 +111,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           .map(
             (entry) => `  <url>
     <loc>${escapeXml(absoluteUrl(entry.path))}</loc>
-    <lastmod>${lastModified}</lastmod>
+    <lastmod>${entry.lastmod ?? lastModified}</lastmod>
     <changefreq>${entry.changefreq}</changefreq>
     <priority>${entry.priority.toFixed(1)}</priority>
   </url>`,
