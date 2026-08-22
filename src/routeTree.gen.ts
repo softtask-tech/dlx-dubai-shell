@@ -13,12 +13,10 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as GuidesRouteImport } from './routes/guides'
 import { Route as MarketIntelligenceRouteImport } from './routes/market-intelligence'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TeamRouteImport } from './routes/team'
-import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminContentRouteImport } from './routes/admin/content'
 import { Route as AdminDataRouteImport } from './routes/admin/data'
@@ -27,12 +25,16 @@ import { Route as AreasIndexRouteImport } from './routes/areas/index'
 import { Route as AreasSlugRouteImport } from './routes/areas/$slug'
 import { Route as DevelopersIndexRouteImport } from './routes/developers/index'
 import { Route as DevelopersSlugRouteImport } from './routes/developers/$slug'
+import { Route as GuidesIndexRouteImport } from './routes/guides/index'
+import { Route as GuidesSlugRouteImport } from './routes/guides/$slug'
 import { Route as ProjectsSlugRouteImport } from './routes/projects/$slug'
 import { Route as PropertiesIndexRouteImport } from './routes/properties/index'
 import { Route as PropertiesSlugRouteImport } from './routes/properties/$slug'
 import { Route as ReportsTokenRouteImport } from './routes/reports/$token'
 import { Route as ServicesIndexRouteImport } from './routes/services/index'
 import { Route as ServicesSlugRouteImport } from './routes/services/$slug'
+import { Route as ToolsIndexRouteImport } from './routes/tools/index'
+import { Route as ToolsSlugRouteImport } from './routes/tools/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -54,11 +56,6 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const GuidesRoute = GuidesRouteImport.update({
-  id: '/guides',
-  path: '/guides',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const MarketIntelligenceRoute = MarketIntelligenceRouteImport.update({
   id: '/market-intelligence',
   path: '/market-intelligence',
@@ -77,11 +74,6 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const TeamRoute = TeamRouteImport.update({
   id: '/team',
   path: '/team',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ToolsRoute = ToolsRouteImport.update({
-  id: '/tools',
-  path: '/tools',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
@@ -124,6 +116,16 @@ const DevelopersSlugRoute = DevelopersSlugRouteImport.update({
   path: '/developers/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidesIndexRoute = GuidesIndexRouteImport.update({
+  id: '/guides/',
+  path: '/guides/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesSlugRoute = GuidesSlugRouteImport.update({
+  id: '/guides/$slug',
+  path: '/guides/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
   id: '/projects/$slug',
   path: '/projects/$slug',
@@ -154,57 +156,71 @@ const ServicesSlugRoute = ServicesSlugRouteImport.update({
   path: '/services/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsIndexRoute = ToolsIndexRouteImport.update({
+  id: '/tools/',
+  path: '/tools/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsSlugRoute = ToolsSlugRouteImport.update({
+  id: '/tools/$slug',
+  path: '/tools/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/guides': typeof GuidesRoute
   '/market-intelligence': typeof MarketIntelligenceRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
-  '/tools': typeof ToolsRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
   '/areas/$slug': typeof AreasSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/reports/$token': typeof ReportsTokenRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/tools/$slug': typeof ToolsSlugRoute
   '/admin/': typeof AdminIndexRoute
   '/areas/': typeof AreasIndexRoute
   '/developers/': typeof DevelopersIndexRoute
+  '/guides/': typeof GuidesIndexRoute
   '/properties/': typeof PropertiesIndexRoute
   '/services/': typeof ServicesIndexRoute
+  '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/guides': typeof GuidesRoute
   '/market-intelligence': typeof MarketIntelligenceRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
-  '/tools': typeof ToolsRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
   '/areas/$slug': typeof AreasSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/reports/$token': typeof ReportsTokenRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/tools/$slug': typeof ToolsSlugRoute
   '/admin': typeof AdminIndexRoute
   '/areas': typeof AreasIndexRoute
   '/developers': typeof DevelopersIndexRoute
+  '/guides': typeof GuidesIndexRoute
   '/properties': typeof PropertiesIndexRoute
   '/services': typeof ServicesIndexRoute
+  '/tools': typeof ToolsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -212,26 +228,28 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/guides': typeof GuidesRoute
   '/market-intelligence': typeof MarketIntelligenceRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
-  '/tools': typeof ToolsRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
   '/areas/$slug': typeof AreasSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/reports/$token': typeof ReportsTokenRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/tools/$slug': typeof ToolsSlugRoute
   '/admin/': typeof AdminIndexRoute
   '/areas/': typeof AreasIndexRoute
   '/developers/': typeof DevelopersIndexRoute
+  '/guides/': typeof GuidesIndexRoute
   '/properties/': typeof PropertiesIndexRoute
   '/services/': typeof ServicesIndexRoute
+  '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -240,77 +258,83 @@ export interface FileRouteTypes {
     | '/admin'
     | '/about'
     | '/contact'
-    | '/guides'
     | '/market-intelligence'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/team'
-    | '/tools'
     | '/admin/content'
     | '/admin/data'
     | '/admin/login'
     | '/areas/$slug'
     | '/developers/$slug'
+    | '/guides/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
     | '/reports/$token'
     | '/services/$slug'
+    | '/tools/$slug'
     | '/admin/'
     | '/areas/'
     | '/developers/'
+    | '/guides/'
     | '/properties/'
     | '/services/'
+    | '/tools/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/contact'
-    | '/guides'
     | '/market-intelligence'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/team'
-    | '/tools'
     | '/admin/content'
     | '/admin/data'
     | '/admin/login'
     | '/areas/$slug'
     | '/developers/$slug'
+    | '/guides/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
     | '/reports/$token'
     | '/services/$slug'
+    | '/tools/$slug'
     | '/admin'
     | '/areas'
     | '/developers'
+    | '/guides'
     | '/properties'
     | '/services'
+    | '/tools'
   id:
     | '__root__'
     | '/'
     | '/admin'
     | '/about'
     | '/contact'
-    | '/guides'
     | '/market-intelligence'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/team'
-    | '/tools'
     | '/admin/content'
     | '/admin/data'
     | '/admin/login'
     | '/areas/$slug'
     | '/developers/$slug'
+    | '/guides/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
     | '/reports/$token'
     | '/services/$slug'
+    | '/tools/$slug'
     | '/admin/'
     | '/areas/'
     | '/developers/'
+    | '/guides/'
     | '/properties/'
     | '/services/'
+    | '/tools/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -318,22 +342,24 @@ export interface RootRouteChildren {
   AdminRouteRoute: typeof AdminRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
-  GuidesRoute: typeof GuidesRoute
   MarketIntelligenceRoute: typeof MarketIntelligenceRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeamRoute: typeof TeamRoute
-  ToolsRoute: typeof ToolsRoute
   AreasSlugRoute: typeof AreasSlugRoute
   DevelopersSlugRoute: typeof DevelopersSlugRoute
+  GuidesSlugRoute: typeof GuidesSlugRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
   PropertiesSlugRoute: typeof PropertiesSlugRoute
   ReportsTokenRoute: typeof ReportsTokenRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
+  ToolsSlugRoute: typeof ToolsSlugRoute
   AreasIndexRoute: typeof AreasIndexRoute
   DevelopersIndexRoute: typeof DevelopersIndexRoute
+  GuidesIndexRoute: typeof GuidesIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
+  ToolsIndexRoute: typeof ToolsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -366,13 +392,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/guides': {
-      id: '/guides'
-      path: '/guides'
-      fullPath: '/guides'
-      preLoaderRoute: typeof GuidesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/market-intelligence': {
       id: '/market-intelligence'
       path: '/market-intelligence'
@@ -399,13 +418,6 @@ declare module '@tanstack/react-router' {
       path: '/team'
       fullPath: '/team'
       preLoaderRoute: typeof TeamRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tools': {
-      id: '/tools'
-      path: '/tools'
-      fullPath: '/tools'
-      preLoaderRoute: typeof ToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/': {
@@ -464,6 +476,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DevelopersSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guides/': {
+      id: '/guides/'
+      path: '/guides'
+      fullPath: '/guides/'
+      preLoaderRoute: typeof GuidesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/$slug': {
+      id: '/guides/$slug'
+      path: '/guides/$slug'
+      fullPath: '/guides/$slug'
+      preLoaderRoute: typeof GuidesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects/$slug': {
       id: '/projects/$slug'
       path: '/projects/$slug'
@@ -506,6 +532,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/': {
+      id: '/tools/'
+      path: '/tools'
+      fullPath: '/tools/'
+      preLoaderRoute: typeof ToolsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/$slug': {
+      id: '/tools/$slug'
+      path: '/tools/$slug'
+      fullPath: '/tools/$slug'
+      preLoaderRoute: typeof ToolsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -532,22 +572,24 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRouteRoute: AdminRouteRouteWithChildren,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
-  GuidesRoute: GuidesRoute,
   MarketIntelligenceRoute: MarketIntelligenceRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeamRoute: TeamRoute,
-  ToolsRoute: ToolsRoute,
   AreasSlugRoute: AreasSlugRoute,
   DevelopersSlugRoute: DevelopersSlugRoute,
+  GuidesSlugRoute: GuidesSlugRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
   PropertiesSlugRoute: PropertiesSlugRoute,
   ReportsTokenRoute: ReportsTokenRoute,
   ServicesSlugRoute: ServicesSlugRoute,
+  ToolsSlugRoute: ToolsSlugRoute,
   AreasIndexRoute: AreasIndexRoute,
   DevelopersIndexRoute: DevelopersIndexRoute,
+  GuidesIndexRoute: GuidesIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
+  ToolsIndexRoute: ToolsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

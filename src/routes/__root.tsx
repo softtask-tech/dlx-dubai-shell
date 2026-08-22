@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { site } from "@/config/site";
 import { captureAttribution } from "@/components/forms/attribution";
+import { CurrencyProvider } from "@/components/tools/currency-context";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
@@ -137,16 +138,18 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <a href="#main" className="skip-link">
-        Skip to content
-      </a>
-      <CustomCursor />
-      <Header />
-      <main id="main" className="min-h-screen">
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
-      </main>
-      <Footer />
+      <CurrencyProvider>
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
+        <CustomCursor />
+        <Header />
+        <main id="main" className="min-h-screen">
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </main>
+        <Footer />
+      </CurrencyProvider>
     </QueryClientProvider>
   );
 }
