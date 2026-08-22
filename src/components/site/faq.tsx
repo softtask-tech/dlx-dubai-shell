@@ -30,8 +30,12 @@ export function Faq({ eyebrow = "Questions", title = "Asked and answered", entri
       <div className="lg:col-span-8 lg:col-start-5">
         <div>
           {entries.map((entry, i) => (
-            <Reveal key={entry.question} delay={stagger(i)}>
-              <details className="group border-t border-border last:border-b">
+            <Reveal
+              key={entry.question}
+              delay={stagger(i)}
+              className="border-t border-border last:border-b"
+            >
+              <details className="group">
                 <summary className="flex cursor-pointer list-none items-baseline justify-between gap-8 py-7 [&::-webkit-details-marker]:hidden">
                   <h3 className="lead transition-colors group-open:text-accent">
                     {entry.question}

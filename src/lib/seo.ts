@@ -16,7 +16,7 @@
  * Title, description and tagline come from the page registry in
  * `src/config/pages.ts`; a route only passes what is specific to it.
  */
-import { absoluteUrl, ogImagePathFor, pageFor, site } from "@/config/site";
+import { absoluteUrl, ogImagePathFor, SITE_PAGES, site } from "@/config/site";
 import { breadcrumbSchema, type BreadcrumbEntry } from "@/lib/schema";
 
 /** Open Graph images render at 1200×630 — the size every platform crops from. */
@@ -26,7 +26,11 @@ export const OG_IMAGE_HEIGHT = 630;
 type JsonLd = Record<string, unknown>;
 
 export type PageHeadInput = {
-  /** Route path, e.g. "/about". Must be registered in `SITE_PAGES`. */
+  /**
+   * The page's own path, e.g. "/about" or "/services/buy". Drives the canonical
+   * URL. When it matches a `SITE_PAGES` entry the copy is taken from there;
+   * otherwise — a listing, a service, anything generated — pass the copy in.
+   */
   path: string;
   /** Overrides the registered title. The brand suffix is appended unless `fullTitle`. */
   title?: string;
@@ -62,12 +66,24 @@ function serializeJsonLd(node: JsonLd): string {
 export function pageHead(input: PageHeadInput) {
   const { path, image, type = "website", noIndex = false, breadcrumbs, schema = [] } = input;
 
-  /* Copy comes from the registry unless the route deliberately overrides it. */
-  const registered = pageFor(path);
-  const title = input.title ?? registered.title;
-  const description = input.description ?? registered.description;
-  const tagline = input.tagline ?? registered.tagline;
-  const fullTitle = input.fullTitle ?? registered.fullTitle ?? false;
+  /*
+   * Registered pages get their copy from the registry; generated pages pass it
+   * in. Either way all three must exist — a page with no description or social
+   * line is exactly what the SEO rules exist to prevent, so this throws rather
+   * than quietly emitting a half-built head.
+   */
+  const registered = SITE_PAGES.find((page) => page.path === path);
+  const title = input.title ?? registered?.title;
+  const description = input.description ?? registered?.description;
+  const tagline = input.tagline ?? registered?.tagline;
+  const fullTitle = input.fullTitle ?? registered?.fullTitle ?? false;
+
+  if (!title || !description || !tagline) {
+    throw new Error(
+      `pageHead("${path}") has no title, description or tagline. Either register the page in ` +
+        "src/config/pages.ts or pass all three explicitly.",
+    );
+  }
 
   const resolvedTitle = fullTitle ? title : `${title} — ${site.name}`;
   const canonical = absoluteUrl(path);

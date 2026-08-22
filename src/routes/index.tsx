@@ -3,12 +3,19 @@ import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import heroImage from "@/assets/hero-dubai.jpg";
 import { site } from "@/config/site";
+import { listPartnerDevelopers } from "@/data/catalogue";
+import { listProperties } from "@/data/properties";
+import { listTestimonials } from "@/data/people";
 import { DURATION, EASE, stagger } from "@/lib/motion";
 import { faqSchema, type FaqEntry } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
 import { Section, Container, Eyebrow } from "@/components/ui/section";
+import { DeveloperStrip } from "@/components/site/developer-strip";
 import { Faq } from "@/components/site/faq";
+import { PropertyCard } from "@/components/site/property-card";
 import { Reveal } from "@/components/site/reveal";
+import { TestimonialsBlock } from "@/components/site/testimonials-block";
+import { TrustStrip } from "@/components/site/trust-strip";
 import { Button } from "@/components/ui/button";
 
 /**
@@ -34,11 +41,22 @@ const FAQ_ENTRIES: readonly FaqEntry[] = [
 ] as const;
 
 export const Route = createFileRoute("/")({
+  loader: async () => {
+    /* Everything on the home page below the fold is real data, so an empty
+     * database simply renders fewer sections rather than placeholder furniture. */
+    const [featured, testimonials, partners] = await Promise.all([
+      listProperties({ limit: 3 }),
+      listTestimonials(3),
+      listPartnerDevelopers(),
+    ]);
+    return { featured, testimonials, partners };
+  },
   head: () => pageHead({ path: "/", schema: [faqSchema(FAQ_ENTRIES)] }),
   component: Index,
 });
 
 function Index() {
+  const { featured, testimonials, partners } = Route.useLoaderData();
   const reduced = useReducedMotion();
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -176,6 +194,37 @@ function Index() {
           </Reveal>
         ))}
       </Section>
+
+      {/* Selected listings — real inventory, or nothing at all */}
+      {featured.length > 0 ? (
+        <Section className="pt-0">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <Reveal>
+              <Eyebrow>Selected</Eyebrow>
+              <h2 className="display-2 mt-6">From the portfolio</h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <Link to="/properties" search={{}} className="eyebrow link-underline text-accent">
+                View all properties
+              </Link>
+            </Reveal>
+          </div>
+          <div className="mt-12 grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((property, index) => (
+              <Reveal key={property.id} delay={stagger(index)}>
+                <PropertyCard property={property} />
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+      ) : null}
+
+      {/* Why a small brokerage can be trusted — first scroll, every audience */}
+      <TrustStrip className="pt-0" />
+
+      <DeveloperStrip developers={partners} />
+
+      <TestimonialsBlock testimonials={testimonials} />
 
       {/* Questions */}
       <Section className="pt-0">

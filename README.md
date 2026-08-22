@@ -109,6 +109,56 @@ npx supabase db push
 npx supabase gen types typescript --linked > src/integrations/supabase/types.ts
 ```
 
+### Lead pipeline
+
+Every form on the site is the same component — `QualifiedForm` — in three steps:
+what you want, then qualification, then how to reach you. Only a way to reply is
+required; every qualification answer is optional.
+
+A submission goes to the `submitLeadFn` server function, which:
+
+1. re-validates the payload server-side and drops anything that filled the
+   honeypot;
+2. scores the lead 0–100 and derives Hot/Warm/Cold (`src/data/lead-scoring.ts`) —
+   **on the server**, so a visitor cannot post themselves a score;
+3. writes a `leads` row with its source type, UTM/click-id attribution and the
+   scoring rationale; and
+4. invokes the `send-lead-emails` Edge Function, which sends the admin
+   notification and the client confirmation through Resend.
+
+Email failure never fails a submission. The enquiry is already saved, and the
+inbox surfaces any lead whose notification did not go out.
+
+### Admin
+
+`/admin` is protected twice over. The browser gate hides the UI without a
+session; the gate that matters is server-side — every admin server function
+re-verifies the access token against Supabase Auth and checks the `admin` role
+before it touches anything. The whole area is `noindex`.
+
+Grant someone admin access (there is no self-service sign-up):
+
+```sql
+-- after creating the user in Supabase Auth
+insert into user_roles (user_id, role)
+values ('<auth-user-uuid>', 'admin');
+```
+
+The admin app has two surfaces: a **leads inbox** (filter by status,
+temperature or search; tag, assign, add notes, export CSV) and a **content
+editor** with CRUD for properties, developers, projects, team and testimonials.
+Both read through `CONTENT_SCHEMA` in `src/data/content-schema.ts`, which is
+simultaneously the form definition and the server's write allow-list — a column
+the editor does not show is a column the server will not write.
+
+### When the database is not there
+
+Public list queries degrade rather than fail (`src/data/resilience.ts`): if
+Supabase is unreachable or the migrations have not been applied, the pages
+render their empty states — "the portfolio is being prepared" — and log the
+failure with a `[data:…]` prefix. The lead pipeline and the admin app
+deliberately do **not** degrade: a failure to save an enquiry has to be loud.
+
 ## Environment variables
 
 Copy `.env.example` to `.env`. Every variable is documented there.
@@ -118,6 +168,16 @@ Copy `.env.example` to `.env`. Every variable is documented there.
 | `VITE_SITE_URL` | Canonical origin for this deployment. Drives canonical URLs, `og:url`, JSON-LD IDs, the sitemap, and whether `robots.txt` allows indexing. |
 | `VITE_SUPABASE_URL` / `VITE_SUPABASE_PUBLISHABLE_KEY` / `VITE_SUPABASE_PROJECT_ID` | Browser-side Supabase client. |
 | `SUPABASE_URL` / `SUPABASE_PUBLISHABLE_KEY` / `SUPABASE_PROJECT_ID` | Server-side Supabase access. |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server only — writes leads and powers the admin app. Bypasses RLS, so never expose it to the browser. |
+
+Edge Function secrets (`npx supabase secrets set …`, not `.env`):
+
+| Secret | Purpose |
+| --- | --- |
+| `RESEND_API_KEY` | Sends both lead emails. Without it the function logs and skips; enquiries are still saved. |
+| `LEAD_FROM_EMAIL` | Verified Resend sender. |
+| `LEAD_ADMIN_EMAIL` | Where notifications land. Comma-separated for several. |
+| `SITE_DOMAIN`, `BRAND_PHONE` | Used in the email templates. |
 
 ## Commands
 

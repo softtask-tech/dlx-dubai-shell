@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { site } from "@/config/site";
 import { Container, Eyebrow } from "@/components/ui/section";
-import { NAV_LINKS } from "./header";
+import { ALL_NAV_LINKS } from "./header";
 
 export function Footer() {
   return (
@@ -18,7 +18,7 @@ export function Footer() {
             <Eyebrow>Navigate</Eyebrow>
             <nav aria-label="Footer">
               <ul className="mt-6 space-y-3">
-                {NAV_LINKS.map((item) => (
+                {ALL_NAV_LINKS.map((item) => (
                   <li key={item.to}>
                     <Link
                       to={item.to}
