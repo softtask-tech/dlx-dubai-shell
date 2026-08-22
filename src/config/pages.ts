@@ -79,6 +79,16 @@ export const SITE_PAGES: readonly SitePage[] = [
     changeFrequency: "weekly",
   },
   {
+    path: "/tools",
+    label: "Tools",
+    title: "Calculators & Tools",
+    description:
+      "Work out the numbers before you commit — mortgage, rental yield, purchase costs and Golden Visa eligibility, in plain figures.",
+    tagline: "Run the numbers before you commit.",
+    priority: 0.9,
+    changeFrequency: "monthly",
+  },
+  {
     path: "/guides",
     label: "Guides",
     title: "Guides",

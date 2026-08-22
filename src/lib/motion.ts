@@ -29,6 +29,11 @@ export const REVEAL_DISTANCE = 24;
 /** Delay between staggered siblings (an index multiplier). */
 export const STAGGER = 0.06;
 
+/** Delay, in seconds, for the nth item in a staggered group. */
+export function stagger(index: number): number {
+  return index * STAGGER;
+}
+
 /**
  * Transition for reveals, collapsing to an instant settle when the visitor
  * prefers reduced motion.

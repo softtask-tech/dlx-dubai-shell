@@ -15,12 +15,12 @@ export function PageIntro({ eyebrow, title, description }: PageIntroProps) {
         <div className="lg:col-span-7">
           <Reveal>
             <Eyebrow>{eyebrow}</Eyebrow>
-            <h1 className="mt-8 text-5xl leading-[1.05] md:text-7xl">{title}</h1>
+            <h1 className="display-1 mt-8">{title}</h1>
           </Reveal>
         </div>
         <div className="lg:col-span-4 lg:col-start-9">
           <Reveal delay={0.12}>
-            <p className="text-base leading-relaxed text-muted-foreground">{description}</p>
+            <p className="body-text text-muted-foreground">{description}</p>
             <div className="mt-10 h-px w-16 bg-accent" />
           </Reveal>
         </div>

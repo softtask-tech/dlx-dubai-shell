@@ -34,50 +34,102 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
+  /* Named palette entries, so the brand colours can be referenced directly
+   * (bg-ink, text-sand) as well as through their semantic roles. */
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-slate: var(--slate);
+  --color-sand: var(--sand);
+  --color-sand-soft: var(--sand-soft);
+
+  /* --- Typography -------------------------------------------------------
+   * Editorial serif for display, clean sans for everything else. */
   --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
   --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
 
-  --tracking-editorial: 0.24em;
+  /* Fluid type scale: each step carries its own line height, so headings
+   * stay proportionate from a 360px phone to a 1440px desktop without a
+   * breakpoint for every size. */
+  --text-display-1: clamp(2.75rem, 1.5rem + 5.4vw, 5.5rem);
+  --text-display-1--line-height: 1.02;
+  --text-display-2: clamp(2.25rem, 1.4rem + 3.6vw, 3.75rem);
+  --text-display-2--line-height: 1.08;
+  --text-display-3: clamp(1.75rem, 1.3rem + 1.9vw, 2.5rem);
+  --text-display-3--line-height: 1.15;
+  --text-lead: clamp(1.25rem, 1.05rem + 0.9vw, 1.625rem);
+  --text-lead--line-height: 1.4;
+  --text-body: 1rem;
+  --text-body--line-height: 1.7;
+  --text-caption: 0.875rem;
+  --text-caption--line-height: 1.6;
+  --text-eyebrow: 0.6875rem;
+  --text-eyebrow--line-height: 1.4;
 
-  --spacing-section: 7.5rem;
+  --tracking-editorial: 0.24em;
+  --tracking-monogram: 0.3em;
+  --tracking-display: -0.015em;
+
+  /* --- Spacing rhythm ---------------------------------------------------
+   * The vertical scale the page is composed on. `section` is the standard
+   * gap between editorial blocks; the rest step around it. */
   --spacing-gutter: 1.5rem;
+  --spacing-block: 2.5rem;
+  --spacing-section-sm: 4.5rem;
+  --spacing-section: 7.5rem;
+  --spacing-section-lg: 11rem;
+
+  /* Widths. `shell` is the page's outer frame (1440px); `measure` is the
+   * comfortable reading width for running text. */
+  --container-shell: 90rem;
+  --container-measure: 34rem;
+
+  /* --- Motion -----------------------------------------------------------
+   * Mirrored in src/lib/motion.ts, which owns the JS-side values. */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-quick: 400ms;
+  --duration-base: 600ms;
+  --duration-slow: 1100ms;
 }
 
 :root {
   --radius: 0px;
 
-  /* #FFFFFF */
-  --background: oklch(1 0 0);
-  /* #000000 */
-  --foreground: oklch(0 0 0);
+  /* --- The palette, exactly as the brand defines it ---------------------
+   * Monochrome base plus one warm accent. Nothing else is a brand colour.
+   * Every semantic role below resolves to one of these five. */
+  --ink: oklch(0 0 0); /* #000000 */
+  --paper: oklch(1 0 0); /* #FFFFFF */
+  --slate: oklch(0.635 0 0); /* #8A8A8A */
+  --sand: oklch(0.653 0.084 78.5); /* #B08D4C */
+  --sand-soft: oklch(0.936 0.017 82.5); /* #EDE6DB */
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0 0 0);
+  --background: var(--paper);
+  --foreground: var(--ink);
 
-  --primary: oklch(0 0 0);
-  --primary-foreground: oklch(1 0 0);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
 
-  /* soft sand #EDE6DB */
-  --secondary: oklch(0.936 0.017 82.5);
-  --secondary-foreground: oklch(0 0 0);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+
+  --secondary: var(--sand-soft);
+  --secondary-foreground: var(--ink);
 
   --muted: oklch(0.968 0.004 84);
-  /* slate grey #8A8A8A */
-  --muted-foreground: oklch(0.635 0 0);
+  --muted-foreground: var(--slate);
 
-  /* sand / gold #B08D4C */
-  --accent: oklch(0.653 0.084 78.5);
-  --accent-foreground: oklch(1 0 0);
-  --accent-soft: oklch(0.936 0.017 82.5);
+  --accent: var(--sand);
+  --accent-foreground: var(--paper);
+  --accent-soft: var(--sand-soft);
 
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);
 
   --border: oklch(0.9 0 0);
   --input: oklch(0.9 0 0);
-  --ring: oklch(0.653 0.084 78.5);
+  --ring: var(--sand);
 }
 
 @layer base {
@@ -163,16 +215,114 @@
     background-color: var(--color-foreground);
     color: var(--color-background);
     font-family: var(--font-sans);
-    font-size: 0.6875rem;
+    font-size: var(--text-eyebrow);
     letter-spacing: var(--tracking-editorial);
     text-transform: uppercase;
   }
 }
 
+/* --- Reveal-on-scroll -----------------------------------------------------
+ * Only ever applied by <Reveal> on the client, so the server-rendered HTML has
+ * no hidden content in it. `pending` is set before the first paint; `shown`
+ * lands when the block scrolls into view.
+ */
+[data-reveal] {
+  transition:
+    opacity var(--duration-slow) var(--ease-editorial),
+    transform var(--duration-slow) var(--ease-editorial);
+}
+
+[data-reveal="pending"] {
+  opacity: 0;
+  transform: translateY(1.5rem);
+}
+
+[data-reveal="shown"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Belt and braces: <Reveal> already skips hiding under reduced motion. */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* The hero animates in on mount rather than on scroll, so it needs its own
+ * safety net: with scripting disabled the animation never runs, and the page's
+ * H1 must not be a blank space. */
+@media (scripting: none) {
+  [data-hero-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* --- Typography presets ---------------------------------------------------
+ * The house voice, as five utilities. Components reach for these instead of
+ * assembling font/size/leading/tracking by hand, so every headline on the site
+ * is set the same way.
+ *
+ *   display-1  hero headline, one per page
+ *   display-2  section headline
+ *   display-3  sub-head and card titles
+ *   lead       serif standfirst under a headline
+ *   body       running text
+ *   caption    small print, metadata, freshness stamps
+ *   eyebrow    uppercase label above a headline
+ */
+@utility display-1 {
+  font-family: var(--font-display);
+  font-size: var(--text-display-1);
+  line-height: var(--text-display-1--line-height);
+  font-weight: 300;
+  letter-spacing: var(--tracking-display);
+}
+
+@utility display-2 {
+  font-family: var(--font-display);
+  font-size: var(--text-display-2);
+  line-height: var(--text-display-2--line-height);
+  font-weight: 300;
+  letter-spacing: var(--tracking-display);
+}
+
+@utility display-3 {
+  font-family: var(--font-display);
+  font-size: var(--text-display-3);
+  line-height: var(--text-display-3--line-height);
+  font-weight: 300;
+  letter-spacing: var(--tracking-display);
+}
+
+@utility lead {
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+  font-weight: 300;
+}
+
+@utility body-text {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+  font-weight: 300;
+}
+
+@utility caption {
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  font-weight: 300;
+  color: var(--color-muted-foreground);
+}
+
 /* Editorial eyebrow / label type */
 @utility eyebrow {
   font-family: var(--font-sans);
-  font-size: 0.6875rem;
+  font-size: var(--text-eyebrow);
   font-weight: 400;
   letter-spacing: var(--tracking-editorial);
   text-transform: uppercase;
@@ -198,7 +348,7 @@
     background-color: currentColor;
     transform: scaleX(0);
     transform-origin: right;
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform var(--duration-base) var(--ease-editorial);
   }
   &:hover::after {
     transform: scaleX(1);

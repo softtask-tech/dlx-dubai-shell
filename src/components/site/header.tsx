@@ -36,17 +36,17 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
+        "fixed inset-x-0 top-0 z-50 transition-all duration-slow ease-editorial",
         scrolled
           ? "border-b border-border/70 bg-background/85 backdrop-blur-md"
           : "border-b border-transparent",
       )}
     >
-      <div className="mx-auto flex h-20 w-full max-w-[1440px] items-center justify-between px-6 md:px-10 lg:px-16">
+      <div className="mx-auto flex h-20 w-full max-w-shell items-center justify-between px-6 md:px-10 lg:px-16">
         <Link
           to="/"
           aria-label="DLX Properties — home"
-          className="font-display text-2xl leading-none tracking-[0.3em] text-foreground"
+          className="font-display text-2xl leading-none tracking-monogram text-foreground"
           onClick={() => setOpen(false)}
         >
           DLX
@@ -82,7 +82,7 @@ export function Header() {
         {open && (
           <motion.div
             id="mobile-nav"
-            initial={reduced ? false : { height: 0, opacity: 0 }}
+            initial={reduced ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={reduced ? { opacity: 0 } : { height: 0, opacity: 0 }}
             transition={reduced ? { duration: 0 } : { duration: DURATION.base, ease: EASE }}
