@@ -31,6 +31,12 @@ export type SitePage = {
   tagline: string;
   /** Use `title` verbatim instead of appending the brand suffix. */
   fullTitle?: boolean;
+  /**
+   * Whether the page appears in the header. Defaults to true. Pages set to
+   * false are still crawlable, still in the sitemap, and still listed in the
+   * footer — they are simply not worth a slot in a nav that has to stay short.
+   */
+  inPrimaryNav?: boolean;
   /** Sitemap priority, 0–1. */
   priority: number;
   changeFrequency: ChangeFrequency;
@@ -86,6 +92,28 @@ export const SITE_PAGES: readonly SitePage[] = [
       "Work out the numbers before you commit — mortgage, rental yield, purchase costs and Golden Visa eligibility, in plain figures.",
     tagline: "Run the numbers before you commit.",
     priority: 0.9,
+    changeFrequency: "monthly",
+  },
+  {
+    path: "/developers",
+    inPrimaryNav: false,
+    label: "Developers",
+    title: "Developers & Projects",
+    description:
+      "The Dubai developers we represent and the projects worth knowing about — who builds what, where, and how they deliver.",
+    tagline: "Who builds what, and how they deliver.",
+    priority: 0.7,
+    changeFrequency: "weekly",
+  },
+  {
+    path: "/team",
+    inPrimaryNav: false,
+    label: "Team",
+    title: "The Team",
+    description:
+      "The consultants behind DLX Properties — RERA-registered, multilingual, and each accountable for their own clients from first call to handover.",
+    tagline: "The people who will actually represent you.",
+    priority: 0.6,
     changeFrequency: "monthly",
   },
   {

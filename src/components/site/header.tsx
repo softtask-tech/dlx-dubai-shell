@@ -5,8 +5,16 @@ import { SITE_PAGES } from "@/config/site";
 import { DURATION, EASE } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
-/** Navigation is derived from the page registry, so a new page cannot be orphaned. */
-export const NAV_LINKS = SITE_PAGES.map((page) => ({ label: page.label, to: page.path }));
+/**
+ * Navigation is derived from the page registry, so a new page cannot be
+ * orphaned. The header shows the primary set; the footer shows everything.
+ */
+export const NAV_LINKS = SITE_PAGES.filter((page) => page.inPrimaryNav !== false).map((page) => ({
+  label: page.label,
+  to: page.path,
+}));
+
+export const ALL_NAV_LINKS = SITE_PAGES.map((page) => ({ label: page.label, to: page.path }));
 
 export function Header() {
   const reduced = useReducedMotion();

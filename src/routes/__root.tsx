@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { site } from "@/config/site";
+import { captureAttribution } from "@/components/forms/attribution";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
@@ -127,6 +128,12 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  /* Record the campaign that brought this visit in, before the visitor
+   * navigates away from the landing URL and the tags are lost. */
+  useEffect(() => {
+    captureAttribution();
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
