@@ -269,8 +269,15 @@ export function buildPaymentPlan(input: PaymentPlanInput): PaymentPlanResult {
     .filter((milestone) => milestone.phase !== "post_handover")
     .reduce((sum, milestone) => sum + milestone.amount, 0);
 
-  const totalPercent =
-    input.downPaymentPct + input.duringConstructionPct + input.onHandoverPct + postHandoverPct;
+  /*
+   * Balance is measured against the milestones actually scheduled, not against
+   * the percentages typed in. Those two differ in a case that is easy to hit:
+   * a plan with a remainder but no post-handover instalments to put it in. The
+   * declared percentages still sum to 100 while the schedule shown accounts for
+   * less than the price — which is exactly the silent misread this warning
+   * exists to catch.
+   */
+  const totalPercent = milestones.reduce((sum, milestone) => sum + milestone.percentOfPrice, 0);
 
   return {
     milestones,

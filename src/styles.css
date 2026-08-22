@@ -403,3 +403,26 @@
     transform-origin: left;
   }
 }
+
+/**
+ * A link inside a paragraph of prose.
+ *
+ * `link-underline` reveals its rule on hover, which suits a standalone call to
+ * action but not a link buried in body copy: a reader cannot see it is a link,
+ * and on a touch screen there is no hover to reveal it. This one is underlined
+ * from the start and warms to the accent on hover — visible without shouting,
+ * and never colour alone.
+ */
+@utility prose-link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  transition:
+    color var(--duration-base) var(--ease-editorial),
+    text-decoration-color var(--duration-base) var(--ease-editorial);
+  &:hover {
+    color: var(--color-accent);
+    text-decoration-color: currentColor;
+  }
+}

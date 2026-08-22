@@ -123,7 +123,7 @@ function BlogIndex() {
             <p className="lead max-w-measure text-muted-foreground">
               Nothing published here yet. The playbook is where the substance lives in the meantime
               —{" "}
-              <Link to="/guides" className="link-underline">
+              <Link to="/guides" className="prose-link">
                 read the guides
               </Link>
               .

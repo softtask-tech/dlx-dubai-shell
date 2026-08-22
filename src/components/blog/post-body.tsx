@@ -160,7 +160,7 @@ function inline(text: string): ReactNode {
 function InlineLink({ href, label }: { href: string; label: string }) {
   if (href.startsWith("/")) {
     return (
-      <Link to={href} className="link-underline">
+      <Link to={href} className="prose-link">
         {label}
       </Link>
     );
@@ -168,7 +168,7 @@ function InlineLink({ href, label }: { href: string; label: string }) {
 
   if (/^https?:\/\//i.test(href)) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className="link-underline">
+      <a href={href} target="_blank" rel="noopener noreferrer" className="prose-link">
         {label}
       </a>
     );
