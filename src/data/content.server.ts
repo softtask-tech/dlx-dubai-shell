@@ -1,7 +1,7 @@
 /**
  * Content CRUD for the admin editor — server side only.
  *
- * One generic path rather than five near-identical modules: the tables differ
+ * One generic path rather than six near-identical modules: the tables differ
  * in their columns, not in how they are edited. What keeps that safe is the
  * field schema below — only the columns named there can be written, so a
  * crafted request cannot set `is_published` on a table that has no such
@@ -77,16 +77,17 @@ export async function saveContent(
     }
   }
 
-  /* Stamp the publish date the first time something goes live. */
-  if ("is_published" in row && row["is_published"] === true) {
+  /* Stamp the publish date the first time something goes live — but never over
+   * a date the editor set themselves, which the journal relies on. */
+  if (row["is_published"] === true && (row["published_at"] ?? null) === null) {
     row["published_at"] = new Date().toISOString();
   }
 
   /*
-   * The cast is the price of one generic editor for five tables: `row` was
+   * The cast is the price of one generic editor for six tables: `row` was
    * built column by column from CONTENT_SCHEMA, so at runtime it only ever
    * contains columns that exist on `table` — but TypeScript cannot narrow a
-   * union of five row shapes from a runtime string. The allow-list above is
+   * union of six row shapes from a runtime string. The allow-list above is
    * what actually keeps this safe; widen it and this becomes unsafe.
    */
   const writable = row as never;

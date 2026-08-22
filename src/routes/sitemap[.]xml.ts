@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { SITE_PAGES, absoluteUrl } from "@/config/site";
+import { listPostSlugs } from "@/data/blog";
 import { listDeveloperSlugs, listProjectSlugs } from "@/data/catalogue";
 import { GUIDES } from "@/data/guides";
 import { listAreasWithStats } from "@/data/market";
@@ -36,11 +37,12 @@ export const Route = createFileRoute("/sitemap.xml")({
          * If Supabase is unreachable the sitemap still ships the static pages
          * rather than failing: a partial sitemap beats a 500.
          */
-        const [propertySlugs, developerSlugs, projectSlugs, areas] = await Promise.all([
+        const [propertySlugs, developerSlugs, projectSlugs, areas, postSlugs] = await Promise.all([
           listPropertySlugs().catch(() => [] as string[]),
           listDeveloperSlugs().catch(() => [] as string[]),
           listProjectSlugs().catch(() => [] as string[]),
           listAreasWithStats().catch(() => []),
+          listPostSlugs().catch(() => [] as string[]),
         ]);
 
         type Entry = {
@@ -75,6 +77,11 @@ export const Route = createFileRoute("/sitemap.xml")({
             changefreq: "monthly",
             priority: 0.7,
             lastmod: guide.reviewedOn,
+          })),
+          ...postSlugs.map((slug) => ({
+            path: `/blog/${slug}`,
+            changefreq: "monthly",
+            priority: 0.6,
           })),
           ...propertySlugs.map((slug) => ({
             path: `/properties/${slug}`,

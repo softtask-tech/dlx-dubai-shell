@@ -7,6 +7,7 @@ import {
   CONTENT_SCHEMA,
   CONTENT_TABLES,
   type ContentTable,
+  type FieldKind,
   type FieldSpec,
 } from "@/data/content-schema";
 import type { JsonObject } from "@/data/types";
@@ -19,7 +20,7 @@ import { Tag } from "@/components/ui/tag";
 /**
  * Content management.
  *
- * One editor for five tables, driven by CONTENT_SCHEMA — the same definition
+ * One editor for six tables, driven by CONTENT_SCHEMA — the same definition
  * the server writes through. Adding a column to the editor is a one-line change
  * in that file, and there is no way to render a field the server would reject
  * or to submit one it would not have shown.
@@ -349,7 +350,7 @@ function FieldControl({
         </Select>
       ) : (
         <TextInput
-          type={field.kind === "number" ? "number" : field.kind === "url" ? "url" : "text"}
+          type={inputTypeFor(field.kind)}
           value={String(value ?? "")}
           onChange={(event) => onChange(event.target.value)}
           {...common}
@@ -357,4 +358,18 @@ function FieldControl({
       )}
     </Field>
   );
+}
+
+/** Maps a field kind to the input type that gives the editor the right keyboard. */
+function inputTypeFor(kind: FieldKind): string {
+  switch (kind) {
+    case "number":
+      return "number";
+    case "url":
+      return "url";
+    case "date":
+      return "date";
+    default:
+      return "text";
+  }
 }

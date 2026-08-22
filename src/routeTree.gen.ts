@@ -23,6 +23,8 @@ import { Route as AdminDataRouteImport } from './routes/admin/data'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as AreasIndexRouteImport } from './routes/areas/index'
 import { Route as AreasSlugRouteImport } from './routes/areas/$slug'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
+import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as DevelopersIndexRouteImport } from './routes/developers/index'
 import { Route as DevelopersSlugRouteImport } from './routes/developers/$slug'
 import { Route as GuidesIndexRouteImport } from './routes/guides/index'
@@ -106,6 +108,16 @@ const AreasSlugRoute = AreasSlugRouteImport.update({
   path: '/areas/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DevelopersIndexRoute = DevelopersIndexRouteImport.update({
   id: '/developers/',
   path: '/developers/',
@@ -180,6 +192,7 @@ export interface FileRoutesByFullPath {
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
   '/areas/$slug': typeof AreasSlugRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -189,6 +202,7 @@ export interface FileRoutesByFullPath {
   '/tools/$slug': typeof ToolsSlugRoute
   '/admin/': typeof AdminIndexRoute
   '/areas/': typeof AreasIndexRoute
+  '/blog/': typeof BlogIndexRoute
   '/developers/': typeof DevelopersIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/properties/': typeof PropertiesIndexRoute
@@ -207,6 +221,7 @@ export interface FileRoutesByTo {
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
   '/areas/$slug': typeof AreasSlugRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -216,6 +231,7 @@ export interface FileRoutesByTo {
   '/tools/$slug': typeof ToolsSlugRoute
   '/admin': typeof AdminIndexRoute
   '/areas': typeof AreasIndexRoute
+  '/blog': typeof BlogIndexRoute
   '/developers': typeof DevelopersIndexRoute
   '/guides': typeof GuidesIndexRoute
   '/properties': typeof PropertiesIndexRoute
@@ -236,6 +252,7 @@ export interface FileRoutesById {
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
   '/areas/$slug': typeof AreasSlugRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -245,6 +262,7 @@ export interface FileRoutesById {
   '/tools/$slug': typeof ToolsSlugRoute
   '/admin/': typeof AdminIndexRoute
   '/areas/': typeof AreasIndexRoute
+  '/blog/': typeof BlogIndexRoute
   '/developers/': typeof DevelopersIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/properties/': typeof PropertiesIndexRoute
@@ -266,6 +284,7 @@ export interface FileRouteTypes {
     | '/admin/data'
     | '/admin/login'
     | '/areas/$slug'
+    | '/blog/$slug'
     | '/developers/$slug'
     | '/guides/$slug'
     | '/projects/$slug'
@@ -275,6 +294,7 @@ export interface FileRouteTypes {
     | '/tools/$slug'
     | '/admin/'
     | '/areas/'
+    | '/blog/'
     | '/developers/'
     | '/guides/'
     | '/properties/'
@@ -293,6 +313,7 @@ export interface FileRouteTypes {
     | '/admin/data'
     | '/admin/login'
     | '/areas/$slug'
+    | '/blog/$slug'
     | '/developers/$slug'
     | '/guides/$slug'
     | '/projects/$slug'
@@ -302,6 +323,7 @@ export interface FileRouteTypes {
     | '/tools/$slug'
     | '/admin'
     | '/areas'
+    | '/blog'
     | '/developers'
     | '/guides'
     | '/properties'
@@ -321,6 +343,7 @@ export interface FileRouteTypes {
     | '/admin/data'
     | '/admin/login'
     | '/areas/$slug'
+    | '/blog/$slug'
     | '/developers/$slug'
     | '/guides/$slug'
     | '/projects/$slug'
@@ -330,6 +353,7 @@ export interface FileRouteTypes {
     | '/tools/$slug'
     | '/admin/'
     | '/areas/'
+    | '/blog/'
     | '/developers/'
     | '/guides/'
     | '/properties/'
@@ -347,6 +371,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeamRoute: typeof TeamRoute
   AreasSlugRoute: typeof AreasSlugRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   DevelopersSlugRoute: typeof DevelopersSlugRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
@@ -355,6 +380,7 @@ export interface RootRouteChildren {
   ServicesSlugRoute: typeof ServicesSlugRoute
   ToolsSlugRoute: typeof ToolsSlugRoute
   AreasIndexRoute: typeof AreasIndexRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   DevelopersIndexRoute: typeof DevelopersIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
@@ -460,6 +486,20 @@ declare module '@tanstack/react-router' {
       path: '/areas/$slug'
       fullPath: '/areas/$slug'
       preLoaderRoute: typeof AreasSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/developers/': {
@@ -577,6 +617,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeamRoute: TeamRoute,
   AreasSlugRoute: AreasSlugRoute,
+  BlogSlugRoute: BlogSlugRoute,
   DevelopersSlugRoute: DevelopersSlugRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
@@ -585,6 +626,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesSlugRoute: ServicesSlugRoute,
   ToolsSlugRoute: ToolsSlugRoute,
   AreasIndexRoute: AreasIndexRoute,
+  BlogIndexRoute: BlogIndexRoute,
   DevelopersIndexRoute: DevelopersIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,

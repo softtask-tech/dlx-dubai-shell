@@ -213,10 +213,45 @@ values ('<auth-user-uuid>', 'admin');
 
 The admin app has two surfaces: a **leads inbox** (filter by status,
 temperature or search; tag, assign, add notes, export CSV) and a **content
-editor** with CRUD for properties, developers, projects, team and testimonials.
+editor** with CRUD for properties, developers, projects, team, testimonials and
+the journal.
 Both read through `CONTENT_SCHEMA` in `src/data/content-schema.ts`, which is
 simultaneously the form definition and the server's write allow-list — a column
 the editor does not show is a column the server will not write.
+
+### Tools, the playbook and the journal
+
+Three kinds of content, held in three places on purpose.
+
+**Tools** (`src/data/tools.ts`, `/tools`) are eight calculators. Every fee,
+threshold and rate any of them quotes comes from `src/data/fee-schedule.ts`,
+where each entry carries a basis, a source and a `verifiedOn` date — nothing
+downstream hard-codes a figure, and where a cost genuinely varies the entry is
+marked editable so the visitor can set their own. Anything touching law, visas
+or tax renders the dated "verify with the relevant authority" line, and the
+Golden Visa tool deliberately returns an indication rather than a verdict.
+
+**The playbook** (`src/data/guides.ts`, `/guides`) is ten editorial guides held
+in code, because they are the brokerage's considered position: they change
+rarely and every change goes through a pull request before it can claim
+anything. The four that touch law, visas or tax carry `verifyWithAuthorities`,
+which renders the dated note. Each guide opens with a plain-language answer
+before any reasoning — that same paragraph is the Article JSON-LD description,
+so the summary a reader sees is the summary a crawler gets.
+
+**The journal** (`blog_posts`, `/blog`) is the opposite: written by the team as
+things happen, edited in the admin content editor. Bodies are a small,
+deliberate subset of Markdown (`## heading`, `- list`, `> quote`, `**bold**`,
+`[text](/path)`) rendered into React elements by
+`src/components/blog/post-body.tsx` — no `dangerouslySetInnerHTML` anywhere, so
+nothing an editor types can become markup. Six opening posts:
+
+```sh
+psql "$DATABASE_URL" -f supabase/seed/journal-seed.sql
+```
+
+They insert with `on conflict (slug) do nothing`, so re-running never overwrites
+something the team has since edited.
 
 ### When the database is not there
 

@@ -7,7 +7,8 @@
  * can be written.
  */
 
-export type ContentTable = "properties" | "developers" | "projects" | "agents" | "testimonials";
+export type ContentTable =
+  "properties" | "developers" | "projects" | "agents" | "testimonials" | "blog_posts";
 
 export type FieldKind =
   "text" | "textarea" | "number" | "boolean" | "select" | "list" | "url" | "date";
@@ -29,6 +30,7 @@ export const CONTENT_TABLES: readonly ContentTable[] = [
   "projects",
   "agents",
   "testimonials",
+  "blog_posts",
 ];
 
 const LISTING_TYPES = ["sale", "rent"] as const;
@@ -44,6 +46,16 @@ const PROPERTY_TYPES = [
 ] as const;
 const PROPERTY_STATUSES = ["available", "under_offer", "sold", "let", "off_market"] as const;
 const PROJECT_STATUSES = ["announced", "under_construction", "completed", "sold_out"] as const;
+const CONTENT_CATEGORIES = [
+  "buying",
+  "selling",
+  "investment",
+  "golden_visa",
+  "relocation",
+  "market",
+  "area_guide",
+  "legal_and_tax",
+] as const;
 
 export const CONTENT_SCHEMA: Record<ContentTable, { label: string; fields: FieldSpec[] }> = {
   properties: {
@@ -166,6 +178,51 @@ export const CONTENT_SCHEMA: Record<ContentTable, { label: string; fields: Field
       { name: "source", label: "Source", kind: "text" },
       { name: "source_url", label: "Source URL", kind: "url" },
       { name: "display_order", label: "Order", kind: "number" },
+      { name: "is_published", label: "Published", kind: "boolean", inList: true },
+    ],
+  },
+  blog_posts: {
+    label: "Journal",
+    fields: [
+      { name: "title", label: "Title", kind: "text", required: true, inList: true },
+      { name: "slug", label: "Slug", kind: "text", required: true, help: "Used in the URL." },
+      {
+        name: "category",
+        label: "Category",
+        kind: "select",
+        options: CONTENT_CATEGORIES,
+        required: true,
+        inList: true,
+      },
+      {
+        name: "excerpt",
+        label: "Excerpt",
+        kind: "textarea",
+        help: "One or two sentences. Doubles as the meta description and the social preview line, so write it for a stranger.",
+      },
+      {
+        name: "body",
+        label: "Body",
+        kind: "textarea",
+        help: "Markdown subset: ## heading, ### sub-heading, - list, > quote, **bold**, [text](/path).",
+      },
+      { name: "hero_image_url", label: "Hero image", kind: "url" },
+      {
+        name: "reading_minutes",
+        label: "Reading time",
+        kind: "number",
+        help: "Leave blank to estimate it from the body.",
+      },
+      { name: "tags", label: "Tags", kind: "list" },
+      {
+        name: "seo_title",
+        label: "SEO title",
+        kind: "text",
+        help: "Overrides the title in search and social. Leave blank to use the title.",
+      },
+      { name: "seo_description", label: "SEO description", kind: "textarea" },
+      { name: "og_image_url", label: "Social image", kind: "url", help: "1200×630." },
+      { name: "published_at", label: "Published on", kind: "date", inList: true },
       { name: "is_published", label: "Published", kind: "boolean", inList: true },
     ],
   },
