@@ -15,6 +15,7 @@ import { RentVsBuyCalculator } from "@/components/tools/calculators/rent-vs-buy-
 import { YieldCalculator } from "@/components/tools/calculators/yield-calculator";
 import { YieldComparison } from "@/components/tools/calculators/yield-comparison";
 import { CurrencyPicker } from "@/components/tools/money";
+import { ExplainLink } from "@/components/advisor/explain-link";
 import { Reveal } from "@/components/site/reveal";
 import { Section, Eyebrow } from "@/components/ui/section";
 
@@ -76,9 +77,10 @@ function ToolPage() {
         <Reveal>
           <div className="border-t-2 border-accent pt-10 lg:grid lg:grid-cols-12 lg:gap-12">
             <h2 className="eyebrow lg:col-span-3">The short answer</h2>
-            <p className="lead mt-6 max-w-measure text-foreground lg:col-span-8 lg:col-start-5 lg:mt-0">
-              {tool.answer}
-            </p>
+            <div className="mt-6 lg:col-span-8 lg:col-start-5 lg:mt-0">
+              <p className="lead max-w-measure text-foreground">{tool.answer}</p>
+              <ExplainLink className="mt-6" question={`In plain English: ${tool.question}`} />
+            </div>
           </div>
         </Reveal>
       </Section>

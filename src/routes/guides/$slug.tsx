@@ -18,6 +18,7 @@ import { stagger } from "@/lib/motion";
 import { QualifiedForm } from "@/components/forms/qualified-form";
 import { VerificationNote } from "@/components/guides/verification-note";
 import { Faq } from "@/components/site/faq";
+import { ExplainLink } from "@/components/advisor/explain-link";
 import { Reveal } from "@/components/site/reveal";
 import { Section, Eyebrow } from "@/components/ui/section";
 import { Tag } from "@/components/ui/tag";
@@ -137,9 +138,10 @@ function GuidePage() {
         <Reveal>
           <div className="border-t-2 border-accent pt-10 lg:grid lg:grid-cols-12 lg:gap-12">
             <p className="eyebrow lg:col-span-3">The short answer</p>
-            <p className="lead mt-6 max-w-measure text-foreground lg:col-span-8 lg:col-start-5 lg:mt-0">
-              {guide.answer}
-            </p>
+            <div className="mt-6 lg:col-span-8 lg:col-start-5 lg:mt-0">
+              <p className="lead max-w-measure text-foreground">{guide.answer}</p>
+              <ExplainLink className="mt-6" question={`In plain English: ${guide.title}`} />
+            </div>
           </div>
         </Reveal>
       </Section>

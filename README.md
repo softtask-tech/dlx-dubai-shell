@@ -285,6 +285,48 @@ towards the title and the questions. With a few hundred entries of hand-written
 copy it is enough to put the right three in front of the model, and a Phase 5
 embedding index can replace it behind the same signature.
 
+### The AI advisor
+
+One brain, two channels. `Noor` — named, and never pretending to be a person —
+answers in the chat and on the phone from the same retrieval, the same system
+prompt and the same guardrails. The channel changes the delivery and nothing
+else, because a second set of rules is a set that drifts.
+
+**Where the rules live.** `ADVISOR_POLICY` in `src/data/knowledge.ts` — scope,
+what to decline, the never-rules, the citation and handoff obligations. It ships
+to the model, to the voice stack, and in the public `/advisor-knowledge.json`
+payload. `src/data/advisor-prompt.server.ts` renders it; it does not decide it.
+
+**What it may say.** Only what retrieval hands it. `retrieveContext()` returns
+entries with their citations, their freshness dates and two flags —
+`requiresVerification` and `routeToHuman` — derived from the content itself, so
+a guide that renders the dated verification note on the page sets the same flag
+in the advisor. The context block is fenced and labelled as data, not
+instructions: listing titles and journal bodies are typed by people, and a
+question can be engineered to look like an order.
+
+**How a conversation becomes a lead.** The advisor qualifies in the flow of
+talking; `advisor-capture.server.ts` reads the facts back out, copying only what
+the visitor actually wrote. The lead then goes through the same `submitLead` as
+a contact form — same scoring, same row, same two emails — with `source_type`
+`ai_chat` or `voice_call`. A conversation is a different way of asking the
+questions, not a second pipeline.
+
+**The phone line.** The telephony layer owns the call; `/api/advisor/voice` owns
+the thinking, one turn at a time, unstreamed — a caller cannot listen to half a
+sentence, and the guardrails are usually in the second half. At the end of the
+call the provider posts to the `advisor-call-summary` Edge Function, which
+stores the transcript and hands the lead to `/api/advisor/call-lead`. It does
+not score the lead itself, deliberately: scoring lives in one file, and copying
+those rules into Deno would give us two sets that agree until someone tunes one.
+
+**Limits and failure.** A per-IP sliding window and a per-conversation turn cap
+(in the database, so it survives a restart); one retry on a 429 or a 5xx, then
+an honest fallback. Every failure path says the same thing in its own words —
+that it cannot answer right now and a consultant can — rather than degrading
+into a guess. Conversations are private: no `anon` grant, no `anon` policy, and
+the browser never reads the table at all.
+
 ### When the database is not there
 
 Public list queries degrade rather than fail (`src/data/resilience.ts`): if
@@ -303,6 +345,10 @@ Copy `.env.example` to `.env`. Every variable is documented there.
 | `VITE_SUPABASE_URL` / `VITE_SUPABASE_PUBLISHABLE_KEY` / `VITE_SUPABASE_PROJECT_ID` | Browser-side Supabase client. |
 | `SUPABASE_URL` / `SUPABASE_PUBLISHABLE_KEY` / `SUPABASE_PROJECT_ID` | Server-side Supabase access. |
 | `SUPABASE_SERVICE_ROLE_KEY` | Server only — writes leads and powers the admin app. Bypasses RLS, so never expose it to the browser. |
+| `LOVABLE_API_KEY` | Server only — the AI advisor's model. Without it the advisor does not render at all. |
+| `ADVISOR_API_URL` / `ADVISOR_MODEL` | Optional. Any OpenAI-compatible gateway and model id. |
+| `FISH_AUDIO_API_KEY` / `FISH_AUDIO_VOICE_ID` | Server only — the advisor's voice, on the phone line and the "Listen" control. Unset, both degrade to text. |
+| `VOICE_WEBHOOK_SECRET` | Shared secret for the voice endpoints and the call-summary webhook. Unset, they refuse every request. |
 
 Edge Function secrets (`npx supabase secrets set …`, not `.env`):
 
@@ -312,6 +358,8 @@ Edge Function secrets (`npx supabase secrets set …`, not `.env`):
 | `LEAD_FROM_EMAIL` | Verified Resend sender. |
 | `LEAD_ADMIN_EMAIL` | Where notifications land. Comma-separated for several. |
 | `SITE_DOMAIN`, `BRAND_PHONE` | Used in the email templates. |
+| `VOICE_WEBHOOK_SECRET` | Authenticates the telephony layer against `advisor-call-summary`. |
+| `SITE_URL` | Origin of the deployed site, so `advisor-call-summary` can hand the lead back for scoring. |
 
 ### Auditing the SEO rules
 

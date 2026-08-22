@@ -10,7 +10,10 @@
  * second lock, because the service-role client bypasses RLS by design and one
  * missing check would expose the whole pipeline.
  */
+import type { SupabaseClient } from "@supabase/supabase-js";
+
 import { adminDb } from "./database.server";
+import type { AdvisorConversationRow, AdvisorDatabase } from "./advisor-types";
 import type { Agent, Lead, LeadNote, LeadStatus, Testimonial } from "./types";
 
 export type AdminIdentity = { userId: string; email: string | null };
@@ -74,9 +77,35 @@ export async function listLeads(filters: LeadListFilters = {}): Promise<LeadWith
   return data ?? [];
 }
 
-export async function getLead(
-  id: string,
-): Promise<{ lead: LeadWithAgent; notes: LeadNote[] } | null> {
+/**
+ * The advisor conversations attached to a lead.
+ *
+ * A chat and a call are the same shape, so the desk reads them with one
+ * component. Ordered oldest first, because a transcript read backwards is not a
+ * transcript.
+ */
+export async function listLeadConversations(leadId: string): Promise<AdvisorConversationRow[]> {
+  const supabase = (await adminDb()) as unknown as SupabaseClient<AdvisorDatabase>;
+
+  const { data, error } = await supabase
+    .from("advisor_conversations")
+    .select("*")
+    .eq("lead_id", leadId)
+    .order("started_at", { ascending: true });
+
+  /* A missing conversation is not worth failing a lead view over. */
+  if (error) {
+    console.error("[admin] could not read conversations", error);
+    return [];
+  }
+  return (data ?? []) as AdvisorConversationRow[];
+}
+
+export async function getLead(id: string): Promise<{
+  lead: LeadWithAgent;
+  notes: LeadNote[];
+  conversations: AdvisorConversationRow[];
+} | null> {
   const supabase = await adminDb();
 
   const { data, error } = await supabase
@@ -96,7 +125,8 @@ export async function getLead(
     .returns<LeadNote[]>();
 
   if (notesError) throw new Error(notesError.message);
-  return { lead: data, notes: notes ?? [] };
+
+  return { lead: data, notes: notes ?? [], conversations: await listLeadConversations(id) };
 }
 
 export async function updateLead(
