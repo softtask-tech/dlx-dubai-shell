@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { TOOL_CATEGORIES, TOOLS } from "@/data/tools";
+import { faqSchema } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
 import { CurrencyPicker } from "@/components/tools/money";
@@ -10,7 +11,15 @@ import { Section, Eyebrow } from "@/components/ui/section";
 import { Tag } from "@/components/ui/tag";
 
 export const Route = createFileRoute("/tools/")({
-  head: () => pageHead({ path: "/tools", breadcrumbs: [{ name: "Tools", path: "/tools" }] }),
+  head: () =>
+    pageHead({
+      path: "/tools",
+      breadcrumbs: [{ name: "Tools", path: "/tools" }],
+      /* The hub answers eight questions before a visitor opens anything. The
+       * schema carries the same pairs the cards show, so what a crawler reads
+       * and what a reader sees are one and the same. */
+      schema: [faqSchema(TOOLS.map((tool) => ({ question: tool.question, answer: tool.answer })))],
+    }),
   component: ToolsIndex,
 });
 
@@ -46,21 +55,27 @@ function ToolsIndex() {
             <Reveal>
               <Eyebrow>{category}</Eyebrow>
             </Reveal>
-            <div className="mt-8 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8">
+              <div className="hairline" />
               {tools.map((tool, index) => (
-                <Reveal key={tool.slug} delay={stagger(index)} className="bg-background">
+                <Reveal key={tool.slug} delay={stagger(index)}>
                   <Link
                     to="/tools/$slug"
                     params={{ slug: tool.slug }}
-                    className="group flex h-full flex-col justify-between gap-10 p-8 transition-colors hover:bg-secondary"
+                    className="group grid gap-5 border-b border-border py-10 transition-colors hover:border-accent lg:grid-cols-12"
                   >
-                    <div>
+                    <div className="lg:col-span-4">
                       <h2 className="display-3 transition-colors group-hover:text-accent">
                         {tool.name}
                       </h2>
-                      <p className="body-text mt-4 text-muted-foreground">{tool.question}</p>
+                      <p className="caption mt-4 text-muted-foreground">{tool.question}</p>
                     </div>
-                    <div className="flex flex-wrap gap-2">
+
+                    <p className="body-text text-muted-foreground lg:col-span-5 lg:col-start-6">
+                      {tool.answer}
+                    </p>
+
+                    <div className="flex flex-wrap items-start gap-2 lg:col-span-2 lg:col-start-11 lg:justify-end">
                       {tool.usesMarketData ? <Tag variant="soft">Uses DLD data</Tag> : null}
                       {tool.needsVerificationNote ? (
                         <Tag variant="bare">Verify with authorities</Tag>

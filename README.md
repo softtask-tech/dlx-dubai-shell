@@ -281,6 +281,21 @@ Edge Function secrets (`npx supabase secrets set …`, not `.env`):
 | `LEAD_ADMIN_EMAIL` | Where notifications land. Comma-separated for several. |
 | `SITE_DOMAIN`, `BRAND_PHONE` | Used in the email templates. |
 
+### Auditing the SEO rules
+
+The rules above are only worth having if something checks them. Against a
+running server:
+
+```sh
+npm run dev
+npm run audit:seo               # or: node scripts/audit-seo.mjs http://host:port
+```
+
+It crawls every URL in `/sitemap.xml` and fails if any page is missing a title,
+description, `og:image`, Twitter card or canonical, if any two pages share a
+title, description or social card, or if a page carries no parseable JSON-LD. It
+exits non-zero, so it can gate a deploy.
+
 ## Commands
 
 ```sh

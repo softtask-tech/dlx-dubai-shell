@@ -17,7 +17,7 @@ export const Route = createFileRoute("/areas/")({
       description:
         "Every Dubai community we cover, with recorded prices, rental yields and transaction volumes — and a plain answer to whether it is worth buying there.",
       tagline: "Where the numbers say to look.",
-      image: "/og/market-intelligence.png",
+      image: "/og/areas.png",
       breadcrumbs: [
         { name: "Market Intelligence", path: "/market-intelligence" },
         { name: "Communities", path: "/areas" },

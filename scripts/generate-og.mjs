@@ -1,12 +1,16 @@
 /**
- * Generates the site's Open Graph cards — one per registered page.
+ * Generates the site's Open Graph cards — one per page, guide and tool.
  *
  *   node scripts/generate-og.mjs
  *
- * Cards are rendered from the same page registry the site uses
- * (`src/config/pages.ts`), so a card can never describe a page differently from
- * its own meta tags. Output is written to `public/og/<slug>.png` at 1200×630 and
- * committed, so serving them needs no runtime image service.
+ * Cards are rendered from the same registries the site uses (`src/config/pages.ts`,
+ * `src/data/guides.ts`, `src/data/tools.ts`), so a card can never describe a page
+ * differently from its own meta tags. Output is written to `public/og/…png` at
+ * 1200×630 and committed, so serving them needs no runtime image service.
+ *
+ * Journal posts are the exception: their copy lives in the database and is
+ * written after this script runs, so a post uses the image the editor set, then
+ * its hero, then the section card. That chain is in `src/routes/blog/$slug.tsx`.
  *
  * Requires: a Chromium binary (set CHROMIUM_PATH, or let the script find the
  * Playwright-managed one) and network access to Google Fonts, which is used
@@ -19,6 +23,9 @@ import { fileURLToPath } from "node:url";
 
 import { brand } from "../src/config/brand.ts";
 import { SITE_PAGES, ogImagePathFor } from "../src/config/pages.ts";
+import { GUIDES, GUIDE_CATEGORY_LABELS, guideOgPath } from "../src/data/guides.ts";
+import { SERVICES, serviceOgPath } from "../src/data/services.ts";
+import { TOOLS, toolOgPath } from "../src/data/tools.ts";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT_DIR = join(ROOT, "public", "og");
@@ -188,6 +195,40 @@ body {
 </html>`;
 }
 
+/**
+ * Every card to draw: the registered pages, then one per service, guide and
+ * tool.
+ *
+ * The label is the section the reader is in and the tagline is the page's own
+ * standfirst — the same line the page shows and the same line its `og:image:alt`
+ * carries, which is what keeps card and page honest with each other.
+ */
+function cards() {
+  return [
+    ...SITE_PAGES.map((page) => ({
+      path: ogImagePathFor(page.path),
+      /* "Home" is a navigation word, not a share-card word. */
+      label: page.path === "/" ? "Private Brokerage" : page.label,
+      tagline: page.tagline,
+    })),
+    ...SERVICES.map((service) => ({
+      path: serviceOgPath(service.slug),
+      label: "Service",
+      tagline: service.tagline,
+    })),
+    ...GUIDES.map((guide) => ({
+      path: guideOgPath(guide.slug),
+      label: GUIDE_CATEGORY_LABELS[guide.category],
+      tagline: guide.tagline,
+    })),
+    ...TOOLS.map((tool) => ({
+      path: toolOgPath(tool.slug),
+      label: "Calculator",
+      tagline: tool.tagline,
+    })),
+  ];
+}
+
 async function main() {
   const { bin, isShell } = findBrowser();
   console.log(`Browser: ${bin}`);
@@ -199,20 +240,16 @@ async function main() {
   const tmpDir = join(ROOT, "node_modules", ".cache", "og");
   mkdirSync(tmpDir, { recursive: true });
 
-  for (const page of SITE_PAGES) {
-    const outPath = join(ROOT, "public", ogImagePathFor(page.path).replace(/^\//, ""));
-    const htmlPath = join(
-      tmpDir,
-      `${outPath
-        .split("/")
-        .pop()
-        .replace(/\.png$/, "")}.html`,
+  for (const [index, card] of cards().entries()) {
+    const outPath = join(ROOT, "public", card.path.replace(/^\//, ""));
+    mkdirSync(dirname(outPath), { recursive: true });
+    const htmlPath = join(tmpDir, `card-${index}.html`);
+
+    writeFileSync(
+      htmlPath,
+      cardHtml({ label: card.label, tagline: card.tagline, fontCss }),
+      "utf8",
     );
-
-    /* "Home" is a navigation word, not a share-card word. */
-    const label = page.path === "/" ? "Private Brokerage" : page.label;
-
-    writeFileSync(htmlPath, cardHtml({ label, tagline: page.tagline, fontCss }), "utf8");
 
     execFileSync(
       bin,
@@ -229,11 +266,11 @@ async function main() {
       { stdio: "pipe" },
     );
 
-    console.log(`  ✓ ${ogImagePathFor(page.path)}`);
+    console.log(`  ✓ ${card.path}`);
   }
 
   rmSync(tmpDir, { recursive: true, force: true });
-  console.log(`\nWrote ${SITE_PAGES.length} cards to public/og/.`);
+  console.log(`\nWrote ${cards().length} cards to public/og/.`);
 }
 
 main().catch((error) => {

@@ -3,6 +3,7 @@ import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import {
   GUIDE_CATEGORY_LABELS,
   guideBySlug,
+  guideOgPath,
   relatedGuides,
   sectionAnchor,
   type Guide,
@@ -44,13 +45,14 @@ export const Route = createFileRoute("/guides/$slug")({
     if (!guide) return {};
 
     const path = `/guides/${guide.slug}`;
+    const image = guideOgPath(guide.slug);
 
     return pageHead({
       path,
       title: guide.title,
       description: guide.description,
       tagline: guide.tagline,
-      image: "/og/guides.png",
+      image,
       type: "article",
       breadcrumbs: [
         { name: "Guides", path: "/guides" },
@@ -62,7 +64,7 @@ export const Route = createFileRoute("/guides/$slug")({
           /* The answer block, verbatim — what an answer engine should quote. */
           description: guide.answer,
           path,
-          image: "/og/guides.png",
+          image,
           datePublished: guide.reviewedOn,
           dateModified: guide.reviewedOn,
         }),

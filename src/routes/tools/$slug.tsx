@@ -1,7 +1,7 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 
 import { listAreasWithStats } from "@/data/market";
-import { toolBySlug, TOOLS } from "@/data/tools";
+import { toolBySlug, toolOgPath, TOOLS } from "@/data/tools";
 import { faqSchema } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
@@ -36,7 +36,7 @@ export const Route = createFileRoute("/tools/$slug")({
       title: tool.title,
       description: tool.description,
       tagline: tool.tagline,
-      image: "/og/tools.png",
+      image: toolOgPath(tool.slug),
       breadcrumbs: [
         { name: "Tools", path: "/tools" },
         { name: tool.name, path: `/tools/${tool.slug}` },
@@ -68,6 +68,19 @@ function ToolPage() {
             </Reveal>
           </div>
         </div>
+      </Section>
+
+      {/* Layer one of the golden rule: the answer in plain language, before the
+          reader meets a single input. It is also what an answer engine quotes. */}
+      <Section className="pt-0 pb-14">
+        <Reveal>
+          <div className="border-t-2 border-accent pt-10 lg:grid lg:grid-cols-12 lg:gap-12">
+            <h2 className="eyebrow lg:col-span-3">The short answer</h2>
+            <p className="lead mt-6 max-w-measure text-foreground lg:col-span-8 lg:col-start-5 lg:mt-0">
+              {tool.answer}
+            </p>
+          </div>
+        </Reveal>
       </Section>
 
       <Section className="pt-0">
