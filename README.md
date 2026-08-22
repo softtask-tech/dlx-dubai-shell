@@ -253,6 +253,38 @@ psql "$DATABASE_URL" -f supabase/seed/journal-seed.sql
 They insert with `on conflict (slug) do nothing`, so re-running never overwrites
 something the team has since edited.
 
+### The advisor's knowledge source
+
+`src/data/knowledge.ts` assembles the guides, the tools, the services, the
+journal and the community market figures into one typed index, served at
+`/advisor-knowledge.json`. Phase 5 gives the chat and the voice agent one brain;
+this is what that brain reads, and serving it over HTTP means the voice layer —
+which runs outside this app — retrieves from the same index the chat does.
+
+Three things make it more than a content dump:
+
+- **The guardrails travel with the entries.** `requiresVerification` marks
+  material where the advisor must say the figures need confirming with the
+  authority; `routeToHuman` marks questions it must hand to a consultant. Both
+  are derived from the content itself, so the site and the advisor cannot drift
+  into disagreeing — a guide that renders the dated note sets the same flag here.
+- **The provenance travels too.** Market entries take their `source` from
+  `attributionFor()`, so an entry can only carry "Source: Dubai Land Department"
+  when the rows behind it genuinely are DLD records, and says plainly that they
+  are illustrative when they are not.
+- **Nothing in it is generated prose.** Every answer is copy a human wrote and a
+  reader can see. If the advisor quotes an entry, the visitor can follow its
+  `url` and find the same words.
+
+`ADVISOR_POLICY` ships in the same payload — scope, what to decline, the never
+rules, the citation and handoff obligations — rather than living in a prompt in
+one place and a second prompt somewhere else.
+
+`searchKnowledge()` is lexical, not semantic, and says so: term overlap weighted
+towards the title and the questions. With a few hundred entries of hand-written
+copy it is enough to put the right three in front of the model, and a Phase 5
+embedding index can replace it behind the same signature.
+
 ### When the database is not there
 
 Public list queries degrade rather than fail (`src/data/resilience.ts`): if

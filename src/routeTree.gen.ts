@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteRouteImport } from './routes/admin/route'
+import { Route as AdvisorKnowledgeDotjsonRouteImport } from './routes/advisor-knowledge[.]json'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as MarketIntelligenceRouteImport } from './routes/market-intelligence'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
@@ -51,6 +52,11 @@ const AboutRoute = AboutRouteImport.update({
 const AdminRouteRoute = AdminRouteRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdvisorKnowledgeDotjsonRoute = AdvisorKnowledgeDotjsonRouteImport.update({
+  id: '/advisor-knowledge.json',
+  path: '/advisor-knowledge.json',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -183,6 +189,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
   '/market-intelligence': typeof MarketIntelligenceRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -212,6 +219,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
   '/market-intelligence': typeof MarketIntelligenceRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -243,6 +251,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
   '/market-intelligence': typeof MarketIntelligenceRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -275,6 +284,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/about'
+    | '/advisor-knowledge.json'
     | '/contact'
     | '/market-intelligence'
     | '/robots.txt'
@@ -304,6 +314,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/advisor-knowledge.json'
     | '/contact'
     | '/market-intelligence'
     | '/robots.txt'
@@ -334,6 +345,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/about'
+    | '/advisor-knowledge.json'
     | '/contact'
     | '/market-intelligence'
     | '/robots.txt'
@@ -365,6 +377,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRouteRoute: typeof AdminRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  AdvisorKnowledgeDotjsonRoute: typeof AdvisorKnowledgeDotjsonRoute
   ContactRoute: typeof ContactRoute
   MarketIntelligenceRoute: typeof MarketIntelligenceRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
@@ -409,6 +422,13 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/advisor-knowledge.json': {
+      id: '/advisor-knowledge.json'
+      path: '/advisor-knowledge.json'
+      fullPath: '/advisor-knowledge.json'
+      preLoaderRoute: typeof AdvisorKnowledgeDotjsonRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -611,6 +631,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRouteRoute: AdminRouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  AdvisorKnowledgeDotjsonRoute: AdvisorKnowledgeDotjsonRoute,
   ContactRoute: ContactRoute,
   MarketIntelligenceRoute: MarketIntelligenceRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
