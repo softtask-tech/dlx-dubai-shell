@@ -4,24 +4,30 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] disabled:pointer-events-none disabled:opacity-40 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 outline-none focus-visible:ring-1 focus-visible:ring-ring",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-sans font-medium transition-all duration-base ease-editorial disabled:pointer-events-none disabled:opacity-40 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 outline-none focus-visible:ring-1 focus-visible:ring-ring",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-accent",
-        destructive: "bg-destructive text-destructive-foreground hover:opacity-90",
-        outline:
-          "border border-foreground/20 text-foreground hover:border-foreground hover:bg-foreground hover:text-primary-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-accent-soft",
-        ghost: "text-foreground hover:text-accent",
-        link: "text-foreground underline-offset-4 hover:underline",
-        /* --- DLX editorial variants --- */
-        editorial:
-          "border border-foreground/20 text-foreground font-sans text-[0.6875rem] uppercase tracking-[0.24em] hover:border-foreground hover:bg-foreground hover:text-primary-foreground",
-        accent:
-          "bg-accent text-accent-foreground font-sans text-[0.6875rem] uppercase tracking-[0.24em] hover:bg-foreground",
+        /* --- The two the site actually uses --------------------------------
+         * `primary` is the outlined editorial button: restraint reads as
+         * confidence, so even the main call to action is a hairline and
+         * letter-spaced caps until you hover it. `ghost` is its quiet twin. */
+        primary:
+          "eyebrow border border-foreground/20 text-foreground hover:border-foreground hover:bg-foreground hover:text-primary-foreground",
+        ghost: "eyebrow text-foreground hover:text-accent",
+        /** The one filled form. One per view, never two. */
+        accent: "eyebrow bg-accent text-accent-foreground hover:bg-foreground",
+        /** A rule under the label rather than a box around it. */
         quiet:
-          "border-b border-foreground/25 pb-2 font-sans text-[0.6875rem] uppercase tracking-[0.24em] text-foreground hover:border-accent hover:text-accent",
+          "eyebrow border-b border-foreground/25 pb-2 text-foreground hover:border-accent hover:text-accent",
+
+        /* --- Roles the shadcn primitives expect ---------------------------- */
+        default: "bg-primary text-primary-foreground text-caption hover:bg-accent",
+        destructive: "bg-destructive text-destructive-foreground text-caption hover:opacity-90",
+        outline:
+          "border border-foreground/20 text-foreground text-caption hover:border-foreground hover:bg-foreground hover:text-primary-foreground",
+        secondary: "bg-secondary text-secondary-foreground text-caption hover:bg-accent-soft",
+        link: "text-foreground text-caption underline-offset-4 hover:underline",
       },
       size: {
         default: "h-10 px-5 py-2",
@@ -32,7 +38,7 @@ const buttonVariants = cva(
         none: "p-0",
       },
     },
-    defaultVariants: { variant: "default", size: "default" },
+    defaultVariants: { variant: "primary", size: "md" },
   },
 );
 

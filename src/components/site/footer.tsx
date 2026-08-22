@@ -9,11 +9,9 @@ export function Footer() {
       <Container className="py-20 lg:py-28">
         <div className="grid gap-16 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <p className="font-display text-3xl tracking-[0.3em]">{site.shortName}</p>
-            <p className="mt-6 max-w-sm font-display text-2xl leading-snug text-foreground/80">
-              {site.tagline}
-            </p>
-            <p className="mt-8 text-sm text-muted-foreground">RERA ORN {site.reraOrn}</p>
+            <p className="font-display text-3xl tracking-monogram">{site.shortName}</p>
+            <p className="lead mt-6 max-w-measure text-foreground/80">{site.tagline}</p>
+            <p className="caption mt-8">RERA ORN {site.reraOrn}</p>
           </div>
 
           <div className="lg:col-span-3">

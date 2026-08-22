@@ -1,4 +1,5 @@
 import { Reveal } from "./reveal";
+import { stagger } from "@/lib/motion";
 import { Eyebrow } from "@/components/ui/section";
 import type { FaqEntry } from "@/lib/schema";
 
@@ -29,22 +30,20 @@ export function Faq({ eyebrow = "Questions", title = "Asked and answered", entri
       <div className="lg:col-span-8 lg:col-start-5">
         <div>
           {entries.map((entry, i) => (
-            <Reveal key={entry.question} delay={i * 0.06}>
+            <Reveal key={entry.question} delay={stagger(i)}>
               <details className="group border-t border-border last:border-b">
                 <summary className="flex cursor-pointer list-none items-baseline justify-between gap-8 py-7 [&::-webkit-details-marker]:hidden">
-                  <h3 className="font-display text-xl leading-snug transition-colors group-open:text-accent md:text-2xl">
+                  <h3 className="lead transition-colors group-open:text-accent">
                     {entry.question}
                   </h3>
                   <span
                     aria-hidden="true"
-                    className="eyebrow shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-open:rotate-45"
+                    className="eyebrow shrink-0 transition-transform duration-base ease-editorial group-open:rotate-45"
                   >
                     +
                   </span>
                 </summary>
-                <p className="max-w-2xl pb-8 text-base leading-relaxed text-muted-foreground">
-                  {entry.answer}
-                </p>
+                <p className="body-text max-w-measure pb-8 text-muted-foreground">{entry.answer}</p>
               </details>
             </Reveal>
           ))}

@@ -75,6 +75,40 @@ off, and the custom cursor stays disabled so the native pointer is never hidden
 (it is also off for touch and coarse pointers). The layout carries a skip link,
 visible focus rings, and Escape-to-close on the mobile menu.
 
+### Database
+
+The schema lives in `supabase/migrations/` — nine tables in three groups:
+
+| Group | Tables |
+| --- | --- |
+| Places and people | `areas`, `developers`, `agents` |
+| Inventory | `projects`, `properties` |
+| Content and demand | `guides`, `blog_posts`, `testimonials`, `leads` |
+
+`leads` is the single destination for every capture surface: it carries contact
+details, qualification answers (intent, timeline, budget, areas), a Hot/Warm/Cold
+temperature plus a 0–100 score, pipeline status, full UTM and click-id
+attribution, and the untouched `raw_payload` so nothing is lost when a form
+gains a field.
+
+Row-level security is on for every table:
+
+- Published content (`is_published` / `is_active`) is readable by `anon`, so the
+  server-rendered pages and crawlers can see it. Drafts are invisible.
+- `leads` is **write-only from the outside** — anyone may insert an enquiry,
+  nobody may read one back through the public API. Staff read them through the
+  service role; a signed-in consultant sees and progresses only the leads
+  assigned to them, via `agents.auth_user_id`.
+
+Apply the migrations with the Supabase CLI:
+
+```sh
+npx supabase link --project-ref <project-ref>
+npx supabase db push
+# then regenerate the typed client:
+npx supabase gen types typescript --linked > src/integrations/supabase/types.ts
+```
+
 ## Environment variables
 
 Copy `.env.example` to `.env`. Every variable is documented there.
