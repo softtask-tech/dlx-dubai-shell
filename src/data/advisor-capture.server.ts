@@ -92,8 +92,38 @@ export async function extractQualification(turns: AdvisorTurn[]): Promise<Extrac
   const end = json.lastIndexOf("}");
   if (start === -1 || end === -1) return null;
 
-  const parsed = extractionSchema.safeParse(safeJson(json.slice(start, end + 1)));
-  return parsed.success ? parsed.data : null;
+  return validateFields(safeJson(json.slice(start, end + 1)));
+}
+
+/**
+ * Validates the extraction one field at a time.
+ *
+ * Whole-object validation was the obvious choice and the wrong one: a model
+ * that returns a good name, intent and timeline alongside an email with a
+ * trailing full stop would have the lot thrown away, and the conversation would
+ * silently fail to become a lead. Per-field keeps everything that is valid and
+ * drops only what is not — which is still never repairing a value, only
+ * refusing one.
+ */
+function validateFields(input: unknown): Extraction | null {
+  if (!input || typeof input !== "object") return null;
+  const record = input as Record<string, unknown>;
+
+  const result: Extraction = {};
+  let kept = 0;
+
+  for (const [key, field] of Object.entries(extractionSchema.shape)) {
+    const value = record[key];
+    if (value === undefined || value === null) continue;
+
+    const parsed = field.safeParse(value);
+    if (parsed.success && parsed.data !== null && parsed.data !== undefined) {
+      (result as Record<string, unknown>)[key] = parsed.data;
+      kept += 1;
+    }
+  }
+
+  return kept > 0 ? result : null;
 }
 
 function safeJson(text: string): unknown {

@@ -373,8 +373,15 @@ npm run audit:seo               # or: node scripts/audit-seo.mjs http://host:por
 
 It crawls every URL in `/sitemap.xml` and fails if any page is missing a title,
 description, `og:image`, Twitter card or canonical, if any two pages share a
-title, description or social card, or if a page carries no parseable JSON-LD. It
-exits non-zero, so it can gate a deploy.
+title or description, or if a page carries no parseable JSON-LD. It exits
+non-zero, so it can gate a deploy.
+
+Sharing a social card is reported but does not fail the run. Detail pages built
+from the database — a community, a listing, a journal post — cannot have a card
+drawn for them at build time, so they fall back to their section's until someone
+gives the row a hero image. That is a missed opportunity; a shared *description*
+is a mistake, and only one of the two should block a deploy. The run lists every
+page that fell back, so the gap stays visible rather than becoming invisible.
 
 ## Commands
 
