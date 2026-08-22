@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { SITE_PAGES, absoluteUrl } from "@/config/site";
 import { listDeveloperSlugs, listProjectSlugs } from "@/data/catalogue";
+import { listAreasWithStats } from "@/data/market";
 import { listPropertySlugs } from "@/data/properties";
 import { SERVICES } from "@/data/services";
 
@@ -33,10 +34,11 @@ export const Route = createFileRoute("/sitemap.xml")({
          * If Supabase is unreachable the sitemap still ships the static pages
          * rather than failing: a partial sitemap beats a 500.
          */
-        const [propertySlugs, developerSlugs, projectSlugs] = await Promise.all([
+        const [propertySlugs, developerSlugs, projectSlugs, areas] = await Promise.all([
           listPropertySlugs().catch(() => [] as string[]),
           listDeveloperSlugs().catch(() => [] as string[]),
           listProjectSlugs().catch(() => [] as string[]),
+          listAreasWithStats().catch(() => []),
         ]);
 
         type Entry = { path: string; changefreq: string; priority: number };
@@ -66,6 +68,13 @@ export const Route = createFileRoute("/sitemap.xml")({
             path: `/projects/${slug}`,
             changefreq: "weekly",
             priority: 0.7,
+          })),
+          /* Community pages carry the market data, so they are worth crawling
+           * often — they change whenever the statistics are recomputed. */
+          ...areas.map((area) => ({
+            path: `/areas/${area.slug}`,
+            changefreq: "weekly",
+            priority: 0.8,
           })),
         ];
 

@@ -61,6 +61,11 @@ const BUDGETS: ReadonlyArray<{ label: string; min: number; max: number | null }>
 
 type Status = "editing" | "submitting" | "sent";
 
+/** Where the reader goes once a report request succeeds. */
+function reportPath(token: string): string {
+  return `/reports/${token}`;
+}
+
 export function QualifiedForm({
   sourceType,
   sourceDetail,
@@ -73,6 +78,7 @@ export function QualifiedForm({
   const [step, setStep] = useState(0);
   const [status, setStatus] = useState<Status>("editing");
   const [error, setError] = useState<string | null>(null);
+  const [reportUrl, setReportUrl] = useState<string | null>(null);
 
   const [intent, setIntent] = useState<LeadIntent | undefined>(defaultIntent);
   const [timeline, setTimeline] = useState<LeadTimeline | undefined>();
@@ -100,7 +106,7 @@ export function QualifiedForm({
     const budget = budgetIndex === "" ? undefined : BUDGETS[Number(budgetIndex)];
 
     try {
-      await submitLeadFn({
+      const result = await submitLeadFn({
         data: {
           fullName,
           email: email || undefined,
@@ -121,6 +127,7 @@ export function QualifiedForm({
           ...readAttribution(),
         },
       });
+      if (result.reportToken) setReportUrl(reportPath(result.reportToken));
       setStatus("sent");
     } catch (submitError) {
       console.error(submitError);
@@ -134,12 +141,20 @@ export function QualifiedForm({
   if (status === "sent") {
     return (
       <div className="border border-border p-10">
-        <Eyebrow>Received</Eyebrow>
-        <h3 className="display-3 mt-6">Thank you — that's with us.</h3>
+        <Eyebrow>{reportUrl ? "Your report is ready" : "Received"}</Eyebrow>
+        <h3 className="display-3 mt-6">
+          {reportUrl ? "Here it is." : "Thank you — that's with us."}
+        </h3>
         <p className="body-text mt-5 max-w-measure text-muted-foreground">
-          A consultant will read this personally and come back to you, usually the same day. A
-          confirmation is on its way to you now.
+          {reportUrl
+            ? "Open it now, or keep the link — it stays live for thirty days. A consultant will follow up personally in case you would rather talk it through."
+            : "A consultant will read this personally and come back to you, usually the same day. A confirmation is on its way to you now."}
         </p>
+        {reportUrl ? (
+          <a href={reportUrl} className="mt-8 inline-block">
+            <Button>Open the report</Button>
+          </a>
+        ) : null}
       </div>
     );
   }

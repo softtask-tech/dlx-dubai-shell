@@ -85,6 +85,17 @@ export const SITE_PAGES: readonly SitePage[] = [
     changeFrequency: "weekly",
   },
   {
+    path: "/areas",
+    label: "Communities",
+    inPrimaryNav: false,
+    title: "Dubai Communities",
+    description:
+      "Every Dubai community we cover, with recorded prices, rental yields and transaction volumes — and a plain answer on whether it is worth buying there.",
+    tagline: "Where the numbers say to look.",
+    priority: 0.8,
+    changeFrequency: "weekly",
+  },
+  {
     path: "/tools",
     label: "Tools",
     title: "Calculators & Tools",

@@ -220,3 +220,64 @@ export function reviewSchema(input: ReviewInput): JsonLd {
     },
   };
 }
+
+export type DatasetInput = {
+  name: string;
+  description: string;
+  path: string;
+  /** True only when the figures really are Dubai Land Department records. */
+  isOfficial: boolean;
+  dateModified: string;
+  /** ISO 8601 interval, e.g. "2025-08-01/2026-08-01". */
+  temporalCoverage?: string;
+  spatialCoverage?: string;
+};
+
+/**
+ * Dataset schema for the market pages.
+ *
+ * This is what makes the figures citable by AI answer engines, which is the
+ * point of publishing them: a question like "what does a square foot cost in
+ * Dubai Marina" should be answerable from our data, with attribution.
+ *
+ * The attribution is conditional on provenance. When the rows are DLD records
+ * the dataset credits the Dubai Land Department as source and DLX as the
+ * publisher of the derived statistics — a real distinction, and one that keeps
+ * us from implying an affiliation we do not have. When the rows are
+ * illustrative the schema says so, so a model that ingests the page cannot
+ * repeat a sample figure as an official one.
+ */
+export function datasetSchema(input: DatasetInput): JsonLd {
+  const schema: JsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: input.name,
+    description: input.isOfficial
+      ? input.description
+      : `${input.description} These figures are illustrative sample data, not Dubai Land Department records.`,
+    url: absoluteUrl(input.path),
+    inLanguage: site.language,
+    dateModified: input.dateModified,
+    /* We publish the derived statistics; DLD publishes the underlying records. */
+    creator: { "@id": SCHEMA_IDS.organization },
+    publisher: { "@id": SCHEMA_IDS.organization },
+    isAccessibleForFree: true,
+  };
+
+  if (input.temporalCoverage) schema["temporalCoverage"] = input.temporalCoverage;
+  if (input.spatialCoverage) {
+    schema["spatialCoverage"] = { "@type": "Place", name: input.spatialCoverage };
+  }
+
+  if (input.isOfficial) {
+    schema["isBasedOn"] = {
+      "@type": "Dataset",
+      name: "Dubai Land Department open data",
+      url: "https://www.dubaipulse.gov.ae/organisation/dld",
+      creator: { "@type": "GovernmentOrganization", name: "Dubai Land Department" },
+    };
+    schema["license"] = "https://www.dubaipulse.gov.ae/terms";
+  }
+
+  return schema;
+}

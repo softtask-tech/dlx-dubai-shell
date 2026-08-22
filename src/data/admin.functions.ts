@@ -174,4 +174,38 @@ export const deleteContentFn = createServerFn({ method: "POST" })
     return { ok: true };
   });
 
+/* --- Market data ---------------------------------------------------------- */
+
+/** Refresh status, row counts by provenance, and the recent ingestion runs. */
+export const marketDataStatusFn = createServerFn({ method: "POST" })
+  .inputValidator((data: unknown) => withToken.parse(data))
+  .handler(async ({ data }) => {
+    const { requireAdmin } = await import("./admin.server");
+    const { getMarketDataStatus } = await import("./market-admin.server");
+    await requireAdmin(data.accessToken);
+    return getMarketDataStatus();
+  });
+
+/** Starts an ingestion run by hand. */
+export const triggerSyncFn = createServerFn({ method: "POST" })
+  .inputValidator((data: unknown) =>
+    withToken.extend({ dataset: z.enum(["transactions", "rents"]) }).parse(data),
+  )
+  .handler(async ({ data }): Promise<{ ok: boolean; message: string }> => {
+    const { requireAdmin } = await import("./admin.server");
+    const { triggerSync } = await import("./market-admin.server");
+    await requireAdmin(data.accessToken);
+    return triggerSync(data.dataset);
+  });
+
+/** Recomputes the metrics from what is already stored. */
+export const recomputeStatsFn = createServerFn({ method: "POST" })
+  .inputValidator((data: unknown) => withToken.parse(data))
+  .handler(async ({ data }): Promise<{ refreshed: number }> => {
+    const { requireAdmin } = await import("./admin.server");
+    const { recomputeStats } = await import("./market-admin.server");
+    await requireAdmin(data.accessToken);
+    return { refreshed: await recomputeStats() };
+  });
+
 export type { Agent, ContentTable, LeadNote, Testimonial };

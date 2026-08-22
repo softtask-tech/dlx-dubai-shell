@@ -78,6 +78,12 @@ export type LeadSubmissionResult = {
   ok: true;
   leadId: string;
   temperature: Lead["temperature"];
+  /**
+   * Set when the enquiry was a report request: the token that unlocks it.
+   * Returning it immediately means the reader gets what they asked for in the
+   * same breath, rather than waiting on an email that may take minutes.
+   */
+  reportToken?: string;
 };
 
 /**
@@ -156,6 +162,22 @@ export async function submitLead(input: LeadSubmission): Promise<LeadSubmissionR
   await dispatchLeadEmails(data.id).catch((emailError: unknown) => {
     console.error("[leads] email dispatch failed", emailError);
   });
+
+  /* A report request earns its report there and then. */
+  if (input.sourceType === "market_report") {
+    try {
+      const { createReportGrant } = await import("./reports.server");
+      /* "area-report-palm-jumeirah" → "palm-jumeirah"; the market report has no area. */
+      const areaSlug = input.sourceDetail?.startsWith("area-report-")
+        ? input.sourceDetail.slice("area-report-".length)
+        : null;
+      const grant = await createReportGrant(data.id, areaSlug);
+      return { ok: true, leadId: data.id, temperature, reportToken: grant.token };
+    } catch (grantError) {
+      /* The enquiry is saved either way; a failed grant is not worth losing it. */
+      console.error("[leads] could not issue report grant", grantError);
+    }
+  }
 
   return { ok: true, leadId: data.id, temperature };
 }
