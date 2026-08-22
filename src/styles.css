@@ -260,6 +260,54 @@
   }
 }
 
+/* --- Print ----------------------------------------------------------------
+ * The gated reports are meant to be saved as PDFs, so "Download as PDF" is the
+ * browser's own print. This is what turns the page into a document: the site
+ * chrome and the button itself come off, colours flatten to ink on paper, and
+ * sections stop breaking across pages mid-figure.
+ */
+@media print {
+  header,
+  footer,
+  .report-actions,
+  [data-cursor-custom] {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  /* Reveal-on-scroll never runs in print; make sure nothing stays hidden. */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .report section {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    break-inside: avoid;
+  }
+
+  .report h1 {
+    break-after: avoid;
+  }
+
+  table {
+    break-inside: auto;
+  }
+
+  tr {
+    break-inside: avoid;
+  }
+
+  a[href]::after {
+    content: "";
+  }
+}
+
 /* --- Typography presets ---------------------------------------------------
  * The house voice, as five utilities. Components reach for these instead of
  * assembling font/size/leading/tracking by hand, so every headline on the site

@@ -21,12 +21,16 @@ import { Route as TeamRouteImport } from './routes/team'
 import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminContentRouteImport } from './routes/admin/content'
+import { Route as AdminDataRouteImport } from './routes/admin/data'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as AreasIndexRouteImport } from './routes/areas/index'
+import { Route as AreasSlugRouteImport } from './routes/areas/$slug'
 import { Route as DevelopersIndexRouteImport } from './routes/developers/index'
 import { Route as DevelopersSlugRouteImport } from './routes/developers/$slug'
 import { Route as ProjectsSlugRouteImport } from './routes/projects/$slug'
 import { Route as PropertiesIndexRouteImport } from './routes/properties/index'
 import { Route as PropertiesSlugRouteImport } from './routes/properties/$slug'
+import { Route as ReportsTokenRouteImport } from './routes/reports/$token'
 import { Route as ServicesIndexRouteImport } from './routes/services/index'
 import { Route as ServicesSlugRouteImport } from './routes/services/$slug'
 
@@ -90,10 +94,25 @@ const AdminContentRoute = AdminContentRouteImport.update({
   path: '/content',
   getParentRoute: () => AdminRouteRoute,
 } as any)
+const AdminDataRoute = AdminDataRouteImport.update({
+  id: '/data',
+  path: '/data',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
 const AdminLoginRoute = AdminLoginRouteImport.update({
   id: '/login',
   path: '/login',
   getParentRoute: () => AdminRouteRoute,
+} as any)
+const AreasIndexRoute = AreasIndexRouteImport.update({
+  id: '/areas/',
+  path: '/areas/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AreasSlugRoute = AreasSlugRouteImport.update({
+  id: '/areas/$slug',
+  path: '/areas/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const DevelopersIndexRoute = DevelopersIndexRouteImport.update({
   id: '/developers/',
@@ -120,6 +139,11 @@ const PropertiesSlugRoute = PropertiesSlugRouteImport.update({
   path: '/properties/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReportsTokenRoute = ReportsTokenRouteImport.update({
+  id: '/reports/$token',
+  path: '/reports/$token',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesIndexRoute = ServicesIndexRouteImport.update({
   id: '/services/',
   path: '/services/',
@@ -143,12 +167,16 @@ export interface FileRoutesByFullPath {
   '/team': typeof TeamRoute
   '/tools': typeof ToolsRoute
   '/admin/content': typeof AdminContentRoute
+  '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
+  '/areas/$slug': typeof AreasSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
+  '/reports/$token': typeof ReportsTokenRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/admin/': typeof AdminIndexRoute
+  '/areas/': typeof AreasIndexRoute
   '/developers/': typeof DevelopersIndexRoute
   '/properties/': typeof PropertiesIndexRoute
   '/services/': typeof ServicesIndexRoute
@@ -164,12 +192,16 @@ export interface FileRoutesByTo {
   '/team': typeof TeamRoute
   '/tools': typeof ToolsRoute
   '/admin/content': typeof AdminContentRoute
+  '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
+  '/areas/$slug': typeof AreasSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
+  '/reports/$token': typeof ReportsTokenRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/admin': typeof AdminIndexRoute
+  '/areas': typeof AreasIndexRoute
   '/developers': typeof DevelopersIndexRoute
   '/properties': typeof PropertiesIndexRoute
   '/services': typeof ServicesIndexRoute
@@ -187,12 +219,16 @@ export interface FileRoutesById {
   '/team': typeof TeamRoute
   '/tools': typeof ToolsRoute
   '/admin/content': typeof AdminContentRoute
+  '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
+  '/areas/$slug': typeof AreasSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
+  '/reports/$token': typeof ReportsTokenRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/admin/': typeof AdminIndexRoute
+  '/areas/': typeof AreasIndexRoute
   '/developers/': typeof DevelopersIndexRoute
   '/properties/': typeof PropertiesIndexRoute
   '/services/': typeof ServicesIndexRoute
@@ -211,12 +247,16 @@ export interface FileRouteTypes {
     | '/team'
     | '/tools'
     | '/admin/content'
+    | '/admin/data'
     | '/admin/login'
+    | '/areas/$slug'
     | '/developers/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
+    | '/reports/$token'
     | '/services/$slug'
     | '/admin/'
+    | '/areas/'
     | '/developers/'
     | '/properties/'
     | '/services/'
@@ -232,12 +272,16 @@ export interface FileRouteTypes {
     | '/team'
     | '/tools'
     | '/admin/content'
+    | '/admin/data'
     | '/admin/login'
+    | '/areas/$slug'
     | '/developers/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
+    | '/reports/$token'
     | '/services/$slug'
     | '/admin'
+    | '/areas'
     | '/developers'
     | '/properties'
     | '/services'
@@ -254,12 +298,16 @@ export interface FileRouteTypes {
     | '/team'
     | '/tools'
     | '/admin/content'
+    | '/admin/data'
     | '/admin/login'
+    | '/areas/$slug'
     | '/developers/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
+    | '/reports/$token'
     | '/services/$slug'
     | '/admin/'
+    | '/areas/'
     | '/developers/'
     | '/properties/'
     | '/services/'
@@ -276,10 +324,13 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeamRoute: typeof TeamRoute
   ToolsRoute: typeof ToolsRoute
+  AreasSlugRoute: typeof AreasSlugRoute
   DevelopersSlugRoute: typeof DevelopersSlugRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
   PropertiesSlugRoute: typeof PropertiesSlugRoute
+  ReportsTokenRoute: typeof ReportsTokenRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
+  AreasIndexRoute: typeof AreasIndexRoute
   DevelopersIndexRoute: typeof DevelopersIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
@@ -371,12 +422,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminContentRouteImport
       parentRoute: typeof AdminRouteRoute
     }
+    '/admin/data': {
+      id: '/admin/data'
+      path: '/data'
+      fullPath: '/admin/data'
+      preLoaderRoute: typeof AdminDataRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
     '/admin/login': {
       id: '/admin/login'
       path: '/login'
       fullPath: '/admin/login'
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof AdminRouteRoute
+    }
+    '/areas/': {
+      id: '/areas/'
+      path: '/areas'
+      fullPath: '/areas/'
+      preLoaderRoute: typeof AreasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/areas/$slug': {
+      id: '/areas/$slug'
+      path: '/areas/$slug'
+      fullPath: '/areas/$slug'
+      preLoaderRoute: typeof AreasSlugRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/developers/': {
       id: '/developers/'
@@ -413,6 +485,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PropertiesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reports/$token': {
+      id: '/reports/$token'
+      path: '/reports/$token'
+      fullPath: '/reports/$token'
+      preLoaderRoute: typeof ReportsTokenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/': {
       id: '/services/'
       path: '/services'
@@ -432,12 +511,14 @@ declare module '@tanstack/react-router' {
 
 interface AdminRouteRouteChildren {
   AdminContentRoute: typeof AdminContentRoute
+  AdminDataRoute: typeof AdminDataRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteRouteChildren: AdminRouteRouteChildren = {
   AdminContentRoute: AdminContentRoute,
+  AdminDataRoute: AdminDataRoute,
   AdminLoginRoute: AdminLoginRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
@@ -457,10 +538,13 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeamRoute: TeamRoute,
   ToolsRoute: ToolsRoute,
+  AreasSlugRoute: AreasSlugRoute,
   DevelopersSlugRoute: DevelopersSlugRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
   PropertiesSlugRoute: PropertiesSlugRoute,
+  ReportsTokenRoute: ReportsTokenRoute,
   ServicesSlugRoute: ServicesSlugRoute,
+  AreasIndexRoute: AreasIndexRoute,
   DevelopersIndexRoute: DevelopersIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,

@@ -109,6 +109,73 @@ npx supabase db push
 npx supabase gen types typescript --linked > src/integrations/supabase/types.ts
 ```
 
+### The DLD data engine
+
+The market figures come from Dubai Land Department open data, cleaned into our
+own tables. The site reads only those tables — never Dubai Pulse at request
+time — so the source being slow or down is an ingestion problem, not an outage.
+
+| Table | Holds |
+| --- | --- |
+| `dld_transactions` | One cleaned sale per row |
+| `dld_rent_contracts` | Registered tenancies, the other half of yield |
+| `area_stats` | Derived metrics, one row per community |
+| `area_price_history` | The monthly series behind the charts |
+| `dld_ingest_runs` | What each sync did, for the admin data view |
+
+**Provenance is the organising idea.** Every row records where it came from, and
+every page derives its source line from that column rather than a constant. A
+page can only say "Source: Dubai Land Department" when the rows behind it really
+are DLD records; while illustrative sample data is loaded, the same line says so
+in the accent colour, and the Dataset schema carries the disclaimer too. That
+makes publishing an invented figure under an official attribution structurally
+impossible rather than a matter of care.
+
+#### Getting real data in
+
+```sh
+# 1. Download the DLD Transactions and Rent Contracts exports from
+#    https://www.dubaipulse.gov.ae
+# 2. Import them (writes provenance = 'dld_open_data')
+SUPABASE_URL=… SUPABASE_SERVICE_ROLE_KEY=… \
+  node scripts/import-dld-snapshot.mjs transactions ./dld-transactions.csv
+SUPABASE_URL=… SUPABASE_SERVICE_ROLE_KEY=… \
+  node scripts/import-dld-snapshot.mjs rents ./dld-rents.csv
+```
+
+The importer cleans, validates and upserts, resolves DLD's community names to
+our `areas` rows, then recomputes the statistics. From that moment the metrics
+ignore sample rows entirely and the site cites DLD. Nothing else flips it.
+
+Until then, the sample dataset keeps the pages working:
+
+```sh
+node scripts/generate-market-sample.mjs > supabase/seed/market-sample.sql
+# then run that file against the database
+```
+
+#### Keeping it current
+
+`supabase/functions/sync-dld-data` does OAuth against Dubai Pulse (caching the
+token), fetches incrementally from the newest record we hold less a week of
+overlap, cleans and upserts, then recomputes. Runs are idempotent — every row
+upserts on its source id, so a re-run after a partial failure corrects rather
+than duplicates, which matters because a duplicated sale silently biases a
+median. `pg_cron` posts to it twice a day; the admin data view triggers it by
+hand and shows what each run did.
+
+The cleaning rules live in two places on purpose — `scripts/dld-clean.mjs` for
+the importer and `supabase/functions/sync-dld-data/clean.ts` for the pipeline —
+and are kept identical so a row accepted by one is accepted by the other.
+
+#### What the metrics mean
+
+`refresh_area_stats()` computes a rolling twelve months against the twelve
+before it. The median leads rather than the average, because a handful of trophy
+sales pull a mean far above what a normal buyer transacts at. Only registered
+*sales* with a usable size feed pricing — mortgages and gifts are transfers, not
+evidence of value. Yields are gross, and every page says so.
+
 ### Lead pipeline
 
 Every form on the site is the same component — `QualifiedForm` — in three steps:

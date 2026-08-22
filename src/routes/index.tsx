@@ -4,12 +4,14 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import heroImage from "@/assets/hero-dubai.jpg";
 import { site } from "@/config/site";
 import { listPartnerDevelopers } from "@/data/catalogue";
+import { getMarketPriceIndex, getMarketSummary, listAreasWithStats } from "@/data/market";
 import { listProperties } from "@/data/properties";
 import { listTestimonials } from "@/data/people";
 import { DURATION, EASE, stagger } from "@/lib/motion";
 import { faqSchema, type FaqEntry } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
 import { Section, Container, Eyebrow } from "@/components/ui/section";
+import { MarketBand } from "@/components/market/market-band";
 import { DeveloperStrip } from "@/components/site/developer-strip";
 import { Faq } from "@/components/site/faq";
 import { PropertyCard } from "@/components/site/property-card";
@@ -44,19 +46,25 @@ export const Route = createFileRoute("/")({
   loader: async () => {
     /* Everything on the home page below the fold is real data, so an empty
      * database simply renders fewer sections rather than placeholder furniture. */
-    const [featured, testimonials, partners] = await Promise.all([
-      listProperties({ limit: 3 }),
-      listTestimonials(3),
-      listPartnerDevelopers(),
-    ]);
-    return { featured, testimonials, partners };
+    const [featured, testimonials, partners, marketSummary, marketIndex, areas] = await Promise.all(
+      [
+        listProperties({ limit: 3 }),
+        listTestimonials(3),
+        listPartnerDevelopers(),
+        getMarketSummary(),
+        getMarketPriceIndex(),
+        listAreasWithStats(),
+      ],
+    );
+    return { featured, testimonials, partners, marketSummary, marketIndex, areas };
   },
   head: () => pageHead({ path: "/", schema: [faqSchema(FAQ_ENTRIES)] }),
   component: Index,
 });
 
 function Index() {
-  const { featured, testimonials, partners } = Route.useLoaderData();
+  const { featured, testimonials, partners, marketSummary, marketIndex, areas } =
+    Route.useLoaderData();
   const reduced = useReducedMotion();
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -194,6 +202,9 @@ function Index() {
           </Reveal>
         ))}
       </Section>
+
+      {/* The differentiator: official data, read plainly */}
+      <MarketBand summary={marketSummary} index={marketIndex} areas={areas} />
 
       {/* Selected listings — real inventory, or nothing at all */}
       {featured.length > 0 ? (
