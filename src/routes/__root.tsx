@@ -141,6 +141,13 @@ function RootComponent() {
   const { advisorAvailability } = Route.useLoaderData();
   const pathname = useRouterState({ select: (state) => state.location.pathname });
 
+  /*
+   * Campaign pages render their own masthead and footer. Every link out of a
+   * landing page is a way to lose someone who arrived ready to act, so the
+   * site's navigation is deliberately absent from them.
+   */
+  const isCampaignPage = pathname.startsWith("/lp/");
+
   /* Consent lives in the browser, so the first render cannot know it. Tracking
    * the answer in state is what lets the advisor rail wait its turn rather than
    * stacking on top of the consent bar. */
@@ -171,16 +178,16 @@ function RootComponent() {
           Skip to content
         </a>
         <CustomCursor />
-        <Header />
+        {isCampaignPage ? null : <Header />}
         <main id="main" className="min-h-screen">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
         </main>
-        <Footer />
+        {isCampaignPage ? null : <Footer />}
         {/* One bar at a time. The advisor waits until the visitor has answered
             the cookie question, so the foot of the page never carries two. */}
         <ConsentBar onDecided={() => setConsentDecided(true)} />
-        {advisorAvailability.chat && consentDecided ? <AdvisorDock /> : null}
+        {advisorAvailability.chat && consentDecided && !isCampaignPage ? <AdvisorDock /> : null}
       </CurrencyProvider>
     </QueryClientProvider>
   );

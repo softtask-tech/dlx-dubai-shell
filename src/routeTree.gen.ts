@@ -31,6 +31,7 @@ import { Route as DevelopersIndexRouteImport } from './routes/developers/index'
 import { Route as DevelopersSlugRouteImport } from './routes/developers/$slug'
 import { Route as GuidesIndexRouteImport } from './routes/guides/index'
 import { Route as GuidesSlugRouteImport } from './routes/guides/$slug'
+import { Route as LpSlugRouteImport } from './routes/lp/$slug'
 import { Route as ProjectsSlugRouteImport } from './routes/projects/$slug'
 import { Route as PropertiesIndexRouteImport } from './routes/properties/index'
 import { Route as PropertiesSlugRouteImport } from './routes/properties/$slug'
@@ -154,6 +155,11 @@ const GuidesSlugRoute = GuidesSlugRouteImport.update({
   path: '/guides/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LpSlugRoute = LpSlugRouteImport.update({
+  id: '/lp/$slug',
+  path: '/lp/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
   id: '/projects/$slug',
   path: '/projects/$slug',
@@ -233,6 +239,7 @@ export interface FileRoutesByFullPath {
   '/blog/$slug': typeof BlogSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
+  '/lp/$slug': typeof LpSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/reports/$token': typeof ReportsTokenRoute
@@ -268,6 +275,7 @@ export interface FileRoutesByTo {
   '/blog/$slug': typeof BlogSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
+  '/lp/$slug': typeof LpSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/reports/$token': typeof ReportsTokenRoute
@@ -305,6 +313,7 @@ export interface FileRoutesById {
   '/blog/$slug': typeof BlogSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
+  '/lp/$slug': typeof LpSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/reports/$token': typeof ReportsTokenRoute
@@ -343,6 +352,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/developers/$slug'
     | '/guides/$slug'
+    | '/lp/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
     | '/reports/$token'
@@ -378,6 +388,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/developers/$slug'
     | '/guides/$slug'
+    | '/lp/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
     | '/reports/$token'
@@ -414,6 +425,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/developers/$slug'
     | '/guides/$slug'
+    | '/lp/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
     | '/reports/$token'
@@ -448,6 +460,7 @@ export interface RootRouteChildren {
   BlogSlugRoute: typeof BlogSlugRoute
   DevelopersSlugRoute: typeof DevelopersSlugRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
+  LpSlugRoute: typeof LpSlugRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
   PropertiesSlugRoute: typeof PropertiesSlugRoute
   ReportsTokenRoute: typeof ReportsTokenRoute
@@ -622,6 +635,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuidesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lp/$slug': {
+      id: '/lp/$slug'
+      path: '/lp/$slug'
+      fullPath: '/lp/$slug'
+      preLoaderRoute: typeof LpSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects/$slug': {
       id: '/projects/$slug'
       path: '/projects/$slug'
@@ -742,6 +762,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogSlugRoute: BlogSlugRoute,
   DevelopersSlugRoute: DevelopersSlugRoute,
   GuidesSlugRoute: GuidesSlugRoute,
+  LpSlugRoute: LpSlugRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
   PropertiesSlugRoute: PropertiesSlugRoute,
   ReportsTokenRoute: ReportsTokenRoute,
