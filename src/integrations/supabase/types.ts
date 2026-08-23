@@ -14,6 +14,77 @@ export type Database = {
   }
   public: {
     Tables: {
+      advisor_conversations: {
+        Row: {
+          call_seconds: number | null
+          call_sid: string | null
+          caller_number: string | null
+          channel: Database["public"]["Enums"]["advisor_channel"]
+          created_at: string
+          ended_at: string | null
+          id: string
+          ip_hash: string | null
+          language: string
+          last_turn_at: string
+          lead_id: string | null
+          qualification: Json
+          session_token: string
+          started_at: string
+          summary: string | null
+          transcript: Json
+          turn_count: number
+          updated_at: string
+        }
+        Insert: {
+          call_seconds?: number | null
+          call_sid?: string | null
+          caller_number?: string | null
+          channel: Database["public"]["Enums"]["advisor_channel"]
+          created_at?: string
+          ended_at?: string | null
+          id?: string
+          ip_hash?: string | null
+          language?: string
+          last_turn_at?: string
+          lead_id?: string | null
+          qualification?: Json
+          session_token: string
+          started_at?: string
+          summary?: string | null
+          transcript?: Json
+          turn_count?: number
+          updated_at?: string
+        }
+        Update: {
+          call_seconds?: number | null
+          call_sid?: string | null
+          caller_number?: string | null
+          channel?: Database["public"]["Enums"]["advisor_channel"]
+          created_at?: string
+          ended_at?: string | null
+          id?: string
+          ip_hash?: string | null
+          language?: string
+          last_turn_at?: string
+          lead_id?: string | null
+          qualification?: Json
+          session_token?: string
+          started_at?: string
+          summary?: string | null
+          transcript?: Json
+          turn_count?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "advisor_conversations_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       agents: {
         Row: {
           auth_user_id: string | null
@@ -1246,6 +1317,7 @@ export type Database = {
       refresh_area_stats: { Args: never; Returns: number }
     }
     Enums: {
+      advisor_channel: "chat" | "voice"
       app_role: "admin" | "agent"
       content_category:
         | "buying"
@@ -1434,6 +1506,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      advisor_channel: ["chat", "voice"],
       app_role: ["admin", "agent"],
       content_category: [
         "buying",
