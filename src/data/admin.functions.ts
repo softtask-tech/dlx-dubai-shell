@@ -77,6 +77,7 @@ export const updateLeadFn = createServerFn({ method: "POST" })
         id: z.string().uuid(),
         status: z.enum(leadStatuses).optional(),
         assignedAgentId: z.string().uuid().nullable().optional(),
+        dealValueAed: z.number().nonnegative().nullable().optional(),
       })
       .parse(data),
   )
@@ -84,9 +85,14 @@ export const updateLeadFn = createServerFn({ method: "POST" })
     const { requireAdmin, updateLead } = await import("./admin.server");
     await requireAdmin(data.accessToken);
 
-    const patch: { status?: Lead["status"]; assignedAgentId?: string | null } = {};
+    const patch: {
+      status?: Lead["status"];
+      assignedAgentId?: string | null;
+      dealValueAed?: number | null;
+    } = {};
     if (data.status) patch.status = data.status;
     if (data.assignedAgentId !== undefined) patch.assignedAgentId = data.assignedAgentId;
+    if (data.dealValueAed !== undefined) patch.dealValueAed = data.dealValueAed;
 
     await updateLead(data.id, patch);
     return { ok: true };

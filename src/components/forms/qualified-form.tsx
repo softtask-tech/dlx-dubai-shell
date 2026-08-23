@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 
 import { readAttribution } from "./attribution";
+import { Turnstile } from "./turnstile";
 import { newEventId, track } from "@/lib/tracking";
 import { Choice, ChoiceGroup, Field, Select, TextArea, TextInput } from "./fields";
 import { submitLeadFn } from "@/data/leads.functions";
@@ -84,6 +85,7 @@ export function QualifiedForm({
    */
   const eventIdRef = useRef<string>(newEventId());
   const startedRef = useRef(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | undefined>();
   const [status, setStatus] = useState<Status>("editing");
   const [error, setError] = useState<string | null>(null);
   const [reportUrl, setReportUrl] = useState<string | null>(null);
@@ -146,6 +148,7 @@ export function QualifiedForm({
           propertyId,
           pagePath: typeof window === "undefined" ? undefined : window.location.pathname,
           company,
+          turnstileToken,
           eventId: eventIdRef.current,
           ...readAttribution(),
         },
@@ -339,6 +342,11 @@ export function QualifiedForm({
               onChange={(e) => setMessage(e.target.value)}
             />
           </Field>
+
+          {/* Invisible to almost everyone: the widget only challenges when
+              Cloudflare thinks it needs to, and renders nothing at all when no
+              site key is configured. */}
+          <Turnstile onToken={setTurnstileToken} />
 
           {/* Honeypot, hidden from people and from screen readers. */}
           <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">

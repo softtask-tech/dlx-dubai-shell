@@ -131,17 +131,49 @@ export async function getLead(id: string): Promise<{
 
 export async function updateLead(
   id: string,
-  patch: { status?: LeadStatus; assignedAgentId?: string | null },
+  patch: {
+    status?: LeadStatus;
+    assignedAgentId?: string | null;
+    /** What the deal was worth, so a won lead can be reported with a value. */
+    dealValueAed?: number | null;
+  },
 ): Promise<void> {
   const supabase = await adminDb();
 
-  const row: Partial<Pick<Lead, "status" | "assigned_agent_id">> = {};
-  if (patch.status) row.status = patch.status;
-  if (patch.assignedAgentId !== undefined) row.assigned_agent_id = patch.assignedAgentId;
+  const row: Record<string, unknown> = {};
+  if (patch.status) row["status"] = patch.status;
+  if (patch.assignedAgentId !== undefined) row["assigned_agent_id"] = patch.assignedAgentId;
+  if (patch.dealValueAed !== undefined) row["deal_value_aed"] = patch.dealValueAed;
+
+  /* Stamp the close the first time a lead is marked won, so time-to-close is
+   * measurable and the offline conversion carries the right date. */
+  if (patch.status === "won") row["deal_closed_at"] = new Date().toISOString();
+
   if (Object.keys(row).length === 0) return;
 
-  const { error } = await supabase.from("leads").update(row).eq("id", id);
+  const { error } = await supabase
+    .from("leads")
+    .update(row as never)
+    .eq("id", id);
   if (error) throw new Error(error.message);
+
+  /*
+   * A consultant moving a lead to qualified or won is the only trustworthy
+   * signal of quality this system has, and it is exactly what the ad platforms
+   * need in order to optimise for buyers rather than for form-fillers. Sent
+   * here, on the human judgement, rather than inferred from a rule.
+   *
+   * Never fatal: the status change is the point, and a platform being down
+   * must not stop a consultant recording what happened.
+   */
+  if (patch.status === "qualified" || patch.status === "won") {
+    try {
+      const { reportLeadOutcome } = await import("./conversions.server");
+      await reportLeadOutcome(id, patch.status === "won" ? "won" : "qualified");
+    } catch (error) {
+      console.error("[admin] could not report the lead outcome", error);
+    }
+  }
 }
 
 export async function addLeadNote(leadId: string, authorId: string, body: string): Promise<void> {

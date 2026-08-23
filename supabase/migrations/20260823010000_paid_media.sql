@@ -48,7 +48,11 @@ alter table public.leads
   add column if not exists first_utm_campaign text,
   add column if not exists first_landing_page_url text,
   add column if not exists first_seen_at timestamptz,
-  -- Meta's click id needs its browser id beside it to match reliably.
+  -- Meta's click id needs its browser id beside it to match reliably. `fbc`
+  -- is the click id in the cookie format their API wants, and it embeds the
+  -- click *time* — which is why it is stored rather than rebuilt later from
+  -- `fbclid`, when that timestamp would be wrong.
+  add column if not exists fbc text,
   add column if not exists fbp text,
   add column if not exists gbraid text,
   add column if not exists wbraid text,
@@ -120,6 +124,7 @@ revoke all on public.campaign_spend from anon;
 
 create index if not exists campaign_spend_date_idx on public.campaign_spend (spend_date desc);
 
+drop trigger if exists campaign_spend_set_updated_at on public.campaign_spend;
 create trigger campaign_spend_set_updated_at before update on public.campaign_spend
   for each row execute function public.set_updated_at();
 
@@ -127,9 +132,15 @@ create trigger campaign_spend_set_updated_at before update on public.campaign_sp
 -- conversion_events — what we sent to the ad platforms
 -- ---------------------------------------------------------------------------
 
-create type conversion_destination as enum ('meta_capi', 'google_ads', 'ga4');
+-- Guarded so the file can be re-applied against a database that already has
+-- part of it — which is what happens every time this is tested locally.
+do $$ begin
+  create type conversion_destination as enum ('meta_capi', 'google_ads', 'ga4');
+exception when duplicate_object then null; end $$;
 
-create type conversion_status as enum ('pending', 'sent', 'failed', 'skipped');
+do $$ begin
+  create type conversion_status as enum ('pending', 'sent', 'failed', 'skipped');
+exception when duplicate_object then null; end $$;
 
 create table if not exists public.conversion_events (
   id uuid primary key default gen_random_uuid(),
@@ -162,6 +173,7 @@ create index if not exists conversion_events_retry_idx
   on public.conversion_events (status, created_at)
   where status in ('pending', 'failed');
 
+drop trigger if exists conversion_events_set_updated_at on public.conversion_events;
 create trigger conversion_events_set_updated_at before update on public.conversion_events
   for each row execute function public.set_updated_at();
 
@@ -174,19 +186,23 @@ alter table public.conversion_events enable row level security;
 
 -- Spend and conversion logs are commercial internals. No anon policy at all;
 -- the dispatchers run with the service role, which bypasses RLS.
+drop policy if exists "Admins read spend" on public.campaign_spend;
 create policy "Admins read spend"
   on public.campaign_spend for select to authenticated
   using (public.has_role((select auth.uid()), 'admin'));
 
+drop policy if exists "Admins manage spend" on public.campaign_spend;
 create policy "Admins manage spend"
   on public.campaign_spend for all to authenticated
   using (public.has_role((select auth.uid()), 'admin'))
   with check (public.has_role((select auth.uid()), 'admin'));
 
+drop policy if exists "Admins read conversion events" on public.conversion_events;
 create policy "Admins read conversion events"
   on public.conversion_events for select to authenticated
   using (public.has_role((select auth.uid()), 'admin'));
 
+drop policy if exists "Admins manage conversion events" on public.conversion_events;
 create policy "Admins manage conversion events"
   on public.conversion_events for all to authenticated
   using (public.has_role((select auth.uid()), 'admin'))
