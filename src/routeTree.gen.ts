@@ -19,6 +19,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TeamRouteImport } from './routes/team'
+import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminContentRouteImport } from './routes/admin/content'
 import { Route as AdminDataRouteImport } from './routes/admin/data'
@@ -44,6 +45,8 @@ import { Route as ApiAdvisorCallLeadRouteImport } from './routes/api/advisor/cal
 import { Route as ApiAdvisorChatRouteImport } from './routes/api/advisor/chat'
 import { Route as ApiAdvisorSpeakRouteImport } from './routes/api/advisor/speak'
 import { Route as ApiAdvisorVoiceRouteImport } from './routes/api/advisor/voice'
+import { Route as ApiLeadsGoogleRouteImport } from './routes/api/leads/google'
+import { Route as ApiLeadsMetaRouteImport } from './routes/api/leads/meta'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -93,6 +96,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const TeamRoute = TeamRouteImport.update({
   id: '/team',
   path: '/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UnsubscribeRoute = UnsubscribeRouteImport.update({
+  id: '/unsubscribe',
+  path: '/unsubscribe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
@@ -220,6 +228,16 @@ const ApiAdvisorVoiceRoute = ApiAdvisorVoiceRouteImport.update({
   path: '/api/advisor/voice',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiLeadsGoogleRoute = ApiLeadsGoogleRouteImport.update({
+  id: '/api/leads/google',
+  path: '/api/leads/google',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiLeadsMetaRoute = ApiLeadsMetaRouteImport.update({
+  id: '/api/leads/meta',
+  path: '/api/leads/meta',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -232,6 +250,7 @@ export interface FileRoutesByFullPath {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
@@ -257,6 +276,8 @@ export interface FileRoutesByFullPath {
   '/api/advisor/chat': typeof ApiAdvisorChatRoute
   '/api/advisor/speak': typeof ApiAdvisorSpeakRoute
   '/api/advisor/voice': typeof ApiAdvisorVoiceRoute
+  '/api/leads/google': typeof ApiLeadsGoogleRoute
+  '/api/leads/meta': typeof ApiLeadsMetaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -268,6 +289,7 @@ export interface FileRoutesByTo {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
@@ -293,6 +315,8 @@ export interface FileRoutesByTo {
   '/api/advisor/chat': typeof ApiAdvisorChatRoute
   '/api/advisor/speak': typeof ApiAdvisorSpeakRoute
   '/api/advisor/voice': typeof ApiAdvisorVoiceRoute
+  '/api/leads/google': typeof ApiLeadsGoogleRoute
+  '/api/leads/meta': typeof ApiLeadsMetaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -306,6 +330,7 @@ export interface FileRoutesById {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
@@ -331,6 +356,8 @@ export interface FileRoutesById {
   '/api/advisor/chat': typeof ApiAdvisorChatRoute
   '/api/advisor/speak': typeof ApiAdvisorSpeakRoute
   '/api/advisor/voice': typeof ApiAdvisorVoiceRoute
+  '/api/leads/google': typeof ApiLeadsGoogleRoute
+  '/api/leads/meta': typeof ApiLeadsMetaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -345,6 +372,7 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/team'
+    | '/unsubscribe'
     | '/admin/content'
     | '/admin/data'
     | '/admin/login'
@@ -370,6 +398,8 @@ export interface FileRouteTypes {
     | '/api/advisor/chat'
     | '/api/advisor/speak'
     | '/api/advisor/voice'
+    | '/api/leads/google'
+    | '/api/leads/meta'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -381,6 +411,7 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/team'
+    | '/unsubscribe'
     | '/admin/content'
     | '/admin/data'
     | '/admin/login'
@@ -406,6 +437,8 @@ export interface FileRouteTypes {
     | '/api/advisor/chat'
     | '/api/advisor/speak'
     | '/api/advisor/voice'
+    | '/api/leads/google'
+    | '/api/leads/meta'
   id:
     | '__root__'
     | '/'
@@ -418,6 +451,7 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/team'
+    | '/unsubscribe'
     | '/admin/content'
     | '/admin/data'
     | '/admin/login'
@@ -443,6 +477,8 @@ export interface FileRouteTypes {
     | '/api/advisor/chat'
     | '/api/advisor/speak'
     | '/api/advisor/voice'
+    | '/api/leads/google'
+    | '/api/leads/meta'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -456,6 +492,7 @@ export interface RootRouteChildren {
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeamRoute: typeof TeamRoute
+  UnsubscribeRoute: typeof UnsubscribeRoute
   AreasSlugRoute: typeof AreasSlugRoute
   BlogSlugRoute: typeof BlogSlugRoute
   DevelopersSlugRoute: typeof DevelopersSlugRoute
@@ -477,6 +514,8 @@ export interface RootRouteChildren {
   ApiAdvisorChatRoute: typeof ApiAdvisorChatRoute
   ApiAdvisorSpeakRoute: typeof ApiAdvisorSpeakRoute
   ApiAdvisorVoiceRoute: typeof ApiAdvisorVoiceRoute
+  ApiLeadsGoogleRoute: typeof ApiLeadsGoogleRoute
+  ApiLeadsMetaRoute: typeof ApiLeadsMetaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -549,6 +588,13 @@ declare module '@tanstack/react-router' {
       path: '/team'
       fullPath: '/team'
       preLoaderRoute: typeof TeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/unsubscribe': {
+      id: '/unsubscribe'
+      path: '/unsubscribe'
+      fullPath: '/unsubscribe'
+      preLoaderRoute: typeof UnsubscribeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/': {
@@ -726,6 +772,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAdvisorVoiceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/leads/google': {
+      id: '/api/leads/google'
+      path: '/api/leads/google'
+      fullPath: '/api/leads/google'
+      preLoaderRoute: typeof ApiLeadsGoogleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/leads/meta': {
+      id: '/api/leads/meta'
+      path: '/api/leads/meta'
+      fullPath: '/api/leads/meta'
+      preLoaderRoute: typeof ApiLeadsMetaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -758,6 +818,7 @@ const rootRouteChildren: RootRouteChildren = {
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeamRoute: TeamRoute,
+  UnsubscribeRoute: UnsubscribeRoute,
   AreasSlugRoute: AreasSlugRoute,
   BlogSlugRoute: BlogSlugRoute,
   DevelopersSlugRoute: DevelopersSlugRoute,
@@ -779,6 +840,8 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAdvisorChatRoute: ApiAdvisorChatRoute,
   ApiAdvisorSpeakRoute: ApiAdvisorSpeakRoute,
   ApiAdvisorVoiceRoute: ApiAdvisorVoiceRoute,
+  ApiLeadsGoogleRoute: ApiLeadsGoogleRoute,
+  ApiLeadsMetaRoute: ApiLeadsMetaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
