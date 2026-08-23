@@ -15,13 +15,16 @@ import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as AdvisorKnowledgeDotjsonRouteImport } from './routes/advisor-knowledge[.]json'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as MarketIntelligenceRouteImport } from './routes/market-intelligence'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TeamRouteImport } from './routes/team'
+import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminContentRouteImport } from './routes/admin/content'
 import { Route as AdminDataRouteImport } from './routes/admin/data'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as AdminRoasRouteImport } from './routes/admin/roas'
 import { Route as AreasIndexRouteImport } from './routes/areas/index'
 import { Route as AreasSlugRouteImport } from './routes/areas/$slug'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
@@ -30,6 +33,7 @@ import { Route as DevelopersIndexRouteImport } from './routes/developers/index'
 import { Route as DevelopersSlugRouteImport } from './routes/developers/$slug'
 import { Route as GuidesIndexRouteImport } from './routes/guides/index'
 import { Route as GuidesSlugRouteImport } from './routes/guides/$slug'
+import { Route as LpSlugRouteImport } from './routes/lp/$slug'
 import { Route as ProjectsSlugRouteImport } from './routes/projects/$slug'
 import { Route as PropertiesIndexRouteImport } from './routes/properties/index'
 import { Route as PropertiesSlugRouteImport } from './routes/properties/$slug'
@@ -42,6 +46,8 @@ import { Route as ApiAdvisorCallLeadRouteImport } from './routes/api/advisor/cal
 import { Route as ApiAdvisorChatRouteImport } from './routes/api/advisor/chat'
 import { Route as ApiAdvisorSpeakRouteImport } from './routes/api/advisor/speak'
 import { Route as ApiAdvisorVoiceRouteImport } from './routes/api/advisor/voice'
+import { Route as ApiLeadsGoogleRouteImport } from './routes/api/leads/google'
+import { Route as ApiLeadsMetaRouteImport } from './routes/api/leads/meta'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -73,6 +79,11 @@ const MarketIntelligenceRoute = MarketIntelligenceRouteImport.update({
   path: '/market-intelligence',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
   id: '/robots.txt',
   path: '/robots.txt',
@@ -86,6 +97,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const TeamRoute = TeamRouteImport.update({
   id: '/team',
   path: '/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UnsubscribeRoute = UnsubscribeRouteImport.update({
+  id: '/unsubscribe',
+  path: '/unsubscribe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
@@ -106,6 +122,11 @@ const AdminDataRoute = AdminDataRouteImport.update({
 const AdminLoginRoute = AdminLoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminRoasRoute = AdminRoasRouteImport.update({
+  id: '/roas',
+  path: '/roas',
   getParentRoute: () => AdminRouteRoute,
 } as any)
 const AreasIndexRoute = AreasIndexRouteImport.update({
@@ -146,6 +167,11 @@ const GuidesIndexRoute = GuidesIndexRouteImport.update({
 const GuidesSlugRoute = GuidesSlugRouteImport.update({
   id: '/guides/$slug',
   path: '/guides/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpSlugRoute = LpSlugRouteImport.update({
+  id: '/lp/$slug',
+  path: '/lp/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
@@ -208,6 +234,16 @@ const ApiAdvisorVoiceRoute = ApiAdvisorVoiceRouteImport.update({
   path: '/api/advisor/voice',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiLeadsGoogleRoute = ApiLeadsGoogleRouteImport.update({
+  id: '/api/leads/google',
+  path: '/api/leads/google',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiLeadsMetaRoute = ApiLeadsMetaRouteImport.update({
+  id: '/api/leads/meta',
+  path: '/api/leads/meta',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -216,16 +252,20 @@ export interface FileRoutesByFullPath {
   '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
   '/market-intelligence': typeof MarketIntelligenceRoute
+  '/privacy': typeof PrivacyRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/roas': typeof AdminRoasRoute
   '/areas/$slug': typeof AreasSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
+  '/lp/$slug': typeof LpSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/reports/$token': typeof ReportsTokenRoute
@@ -243,6 +283,8 @@ export interface FileRoutesByFullPath {
   '/api/advisor/chat': typeof ApiAdvisorChatRoute
   '/api/advisor/speak': typeof ApiAdvisorSpeakRoute
   '/api/advisor/voice': typeof ApiAdvisorVoiceRoute
+  '/api/leads/google': typeof ApiLeadsGoogleRoute
+  '/api/leads/meta': typeof ApiLeadsMetaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -250,16 +292,20 @@ export interface FileRoutesByTo {
   '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
   '/market-intelligence': typeof MarketIntelligenceRoute
+  '/privacy': typeof PrivacyRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/roas': typeof AdminRoasRoute
   '/areas/$slug': typeof AreasSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
+  '/lp/$slug': typeof LpSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/reports/$token': typeof ReportsTokenRoute
@@ -277,6 +323,8 @@ export interface FileRoutesByTo {
   '/api/advisor/chat': typeof ApiAdvisorChatRoute
   '/api/advisor/speak': typeof ApiAdvisorSpeakRoute
   '/api/advisor/voice': typeof ApiAdvisorVoiceRoute
+  '/api/leads/google': typeof ApiLeadsGoogleRoute
+  '/api/leads/meta': typeof ApiLeadsMetaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -286,16 +334,20 @@ export interface FileRoutesById {
   '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
   '/market-intelligence': typeof MarketIntelligenceRoute
+  '/privacy': typeof PrivacyRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/roas': typeof AdminRoasRoute
   '/areas/$slug': typeof AreasSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
+  '/lp/$slug': typeof LpSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/reports/$token': typeof ReportsTokenRoute
@@ -313,6 +365,8 @@ export interface FileRoutesById {
   '/api/advisor/chat': typeof ApiAdvisorChatRoute
   '/api/advisor/speak': typeof ApiAdvisorSpeakRoute
   '/api/advisor/voice': typeof ApiAdvisorVoiceRoute
+  '/api/leads/google': typeof ApiLeadsGoogleRoute
+  '/api/leads/meta': typeof ApiLeadsMetaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -323,16 +377,20 @@ export interface FileRouteTypes {
     | '/advisor-knowledge.json'
     | '/contact'
     | '/market-intelligence'
+    | '/privacy'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/team'
+    | '/unsubscribe'
     | '/admin/content'
     | '/admin/data'
     | '/admin/login'
+    | '/admin/roas'
     | '/areas/$slug'
     | '/blog/$slug'
     | '/developers/$slug'
     | '/guides/$slug'
+    | '/lp/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
     | '/reports/$token'
@@ -350,6 +408,8 @@ export interface FileRouteTypes {
     | '/api/advisor/chat'
     | '/api/advisor/speak'
     | '/api/advisor/voice'
+    | '/api/leads/google'
+    | '/api/leads/meta'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -357,16 +417,20 @@ export interface FileRouteTypes {
     | '/advisor-knowledge.json'
     | '/contact'
     | '/market-intelligence'
+    | '/privacy'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/team'
+    | '/unsubscribe'
     | '/admin/content'
     | '/admin/data'
     | '/admin/login'
+    | '/admin/roas'
     | '/areas/$slug'
     | '/blog/$slug'
     | '/developers/$slug'
     | '/guides/$slug'
+    | '/lp/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
     | '/reports/$token'
@@ -384,6 +448,8 @@ export interface FileRouteTypes {
     | '/api/advisor/chat'
     | '/api/advisor/speak'
     | '/api/advisor/voice'
+    | '/api/leads/google'
+    | '/api/leads/meta'
   id:
     | '__root__'
     | '/'
@@ -392,16 +458,20 @@ export interface FileRouteTypes {
     | '/advisor-knowledge.json'
     | '/contact'
     | '/market-intelligence'
+    | '/privacy'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/team'
+    | '/unsubscribe'
     | '/admin/content'
     | '/admin/data'
     | '/admin/login'
+    | '/admin/roas'
     | '/areas/$slug'
     | '/blog/$slug'
     | '/developers/$slug'
     | '/guides/$slug'
+    | '/lp/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
     | '/reports/$token'
@@ -419,6 +489,8 @@ export interface FileRouteTypes {
     | '/api/advisor/chat'
     | '/api/advisor/speak'
     | '/api/advisor/voice'
+    | '/api/leads/google'
+    | '/api/leads/meta'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -428,13 +500,16 @@ export interface RootRouteChildren {
   AdvisorKnowledgeDotjsonRoute: typeof AdvisorKnowledgeDotjsonRoute
   ContactRoute: typeof ContactRoute
   MarketIntelligenceRoute: typeof MarketIntelligenceRoute
+  PrivacyRoute: typeof PrivacyRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeamRoute: typeof TeamRoute
+  UnsubscribeRoute: typeof UnsubscribeRoute
   AreasSlugRoute: typeof AreasSlugRoute
   BlogSlugRoute: typeof BlogSlugRoute
   DevelopersSlugRoute: typeof DevelopersSlugRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
+  LpSlugRoute: typeof LpSlugRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
   PropertiesSlugRoute: typeof PropertiesSlugRoute
   ReportsTokenRoute: typeof ReportsTokenRoute
@@ -451,6 +526,8 @@ export interface RootRouteChildren {
   ApiAdvisorChatRoute: typeof ApiAdvisorChatRoute
   ApiAdvisorSpeakRoute: typeof ApiAdvisorSpeakRoute
   ApiAdvisorVoiceRoute: typeof ApiAdvisorVoiceRoute
+  ApiLeadsGoogleRoute: typeof ApiLeadsGoogleRoute
+  ApiLeadsMetaRoute: typeof ApiLeadsMetaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -497,6 +574,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketIntelligenceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/robots.txt': {
       id: '/robots.txt'
       path: '/robots.txt'
@@ -516,6 +600,13 @@ declare module '@tanstack/react-router' {
       path: '/team'
       fullPath: '/team'
       preLoaderRoute: typeof TeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/unsubscribe': {
+      id: '/unsubscribe'
+      path: '/unsubscribe'
+      fullPath: '/unsubscribe'
+      preLoaderRoute: typeof UnsubscribeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/': {
@@ -544,6 +635,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/admin/login'
       preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/roas': {
+      id: '/admin/roas'
+      path: '/roas'
+      fullPath: '/admin/roas'
+      preLoaderRoute: typeof AdminRoasRouteImport
       parentRoute: typeof AdminRouteRoute
     }
     '/areas/': {
@@ -600,6 +698,13 @@ declare module '@tanstack/react-router' {
       path: '/guides/$slug'
       fullPath: '/guides/$slug'
       preLoaderRoute: typeof GuidesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/$slug': {
+      id: '/lp/$slug'
+      path: '/lp/$slug'
+      fullPath: '/lp/$slug'
+      preLoaderRoute: typeof LpSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/$slug': {
@@ -686,6 +791,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAdvisorVoiceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/leads/google': {
+      id: '/api/leads/google'
+      path: '/api/leads/google'
+      fullPath: '/api/leads/google'
+      preLoaderRoute: typeof ApiLeadsGoogleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/leads/meta': {
+      id: '/api/leads/meta'
+      path: '/api/leads/meta'
+      fullPath: '/api/leads/meta'
+      preLoaderRoute: typeof ApiLeadsMetaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -693,6 +812,7 @@ interface AdminRouteRouteChildren {
   AdminContentRoute: typeof AdminContentRoute
   AdminDataRoute: typeof AdminDataRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  AdminRoasRoute: typeof AdminRoasRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
@@ -700,6 +820,7 @@ const AdminRouteRouteChildren: AdminRouteRouteChildren = {
   AdminContentRoute: AdminContentRoute,
   AdminDataRoute: AdminDataRoute,
   AdminLoginRoute: AdminLoginRoute,
+  AdminRoasRoute: AdminRoasRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
 
@@ -714,13 +835,16 @@ const rootRouteChildren: RootRouteChildren = {
   AdvisorKnowledgeDotjsonRoute: AdvisorKnowledgeDotjsonRoute,
   ContactRoute: ContactRoute,
   MarketIntelligenceRoute: MarketIntelligenceRoute,
+  PrivacyRoute: PrivacyRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeamRoute: TeamRoute,
+  UnsubscribeRoute: UnsubscribeRoute,
   AreasSlugRoute: AreasSlugRoute,
   BlogSlugRoute: BlogSlugRoute,
   DevelopersSlugRoute: DevelopersSlugRoute,
   GuidesSlugRoute: GuidesSlugRoute,
+  LpSlugRoute: LpSlugRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
   PropertiesSlugRoute: PropertiesSlugRoute,
   ReportsTokenRoute: ReportsTokenRoute,
@@ -737,6 +861,8 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAdvisorChatRoute: ApiAdvisorChatRoute,
   ApiAdvisorSpeakRoute: ApiAdvisorSpeakRoute,
   ApiAdvisorVoiceRoute: ApiAdvisorVoiceRoute,
+  ApiLeadsGoogleRoute: ApiLeadsGoogleRoute,
+  ApiLeadsMetaRoute: ApiLeadsMetaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

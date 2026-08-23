@@ -89,7 +89,14 @@ Deno.serve(async (request: Request) => {
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "",
     );
 
-    const { data, error } = await supabase.from("leads").select("*").eq("id", leadId).single();
+    /* The assigned consultant comes with the lead, because a notification that
+     * says who owns it reaches a person rather than a queue — and by the time
+     * this runs, routing has already chosen one. */
+    const { data, error } = await supabase
+      .from("leads")
+      .select("*, assigned_agent:agents (id, full_name, email)")
+      .eq("id", leadId)
+      .single();
     if (error || !data) {
       return Response.json(
         { error: `Lead not found: ${error?.message ?? leadId}` },
@@ -117,6 +124,8 @@ Deno.serve(async (request: Request) => {
       utmCampaign: data.utm_campaign,
       pagePath: data.page_path,
       createdAt: data.created_at,
+      assignedAgentName: data.assigned_agent?.full_name ?? null,
+      routingReason: data.routing_reason ?? null,
     };
 
     const apiKey = Deno.env.get("RESEND_API_KEY");
@@ -125,6 +134,14 @@ Deno.serve(async (request: Request) => {
       .split(",")
       .map((address) => address.trim())
       .filter(Boolean);
+
+    /* The consultant who was assigned gets it directly. Deduplicated, because
+     * on a small team they are often also on the admin list, and two copies of
+     * the same notification teaches people to skim them. */
+    const assignedEmail = data.assigned_agent?.email?.trim();
+    if (assignedEmail && !adminRecipients.includes(assignedEmail)) {
+      adminRecipients.push(assignedEmail);
+    }
 
     /* No key configured yet: log what would have gone out and report it plainly,
      * rather than failing a submission that was otherwise fine. */

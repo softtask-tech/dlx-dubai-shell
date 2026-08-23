@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { readAttribution } from "./attribution";
+import { Turnstile } from "./turnstile";
+import { newEventId, track } from "@/lib/tracking";
 import { Choice, ChoiceGroup, Field, Select, TextArea, TextInput } from "./fields";
 import { submitLeadFn } from "@/data/leads.functions";
 import type { LeadIntent, LeadSourceType, LeadTimeline } from "@/data/types";
@@ -76,6 +78,14 @@ export function QualifiedForm({
   submitLabel = "Send enquiry",
 }: QualifiedFormProps) {
   const [step, setStep] = useState(0);
+  /*
+   * Generated once per form, not per submit: the browser fires the pixel with
+   * this id and the server sends the Conversions API copy with the same one,
+   * which is what makes the platform count one conversion instead of two.
+   */
+  const eventIdRef = useRef<string>(newEventId());
+  const startedRef = useRef(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | undefined>();
   const [status, setStatus] = useState<Status>("editing");
   const [error, setError] = useState<string | null>(null);
   const [reportUrl, setReportUrl] = useState<string | null>(null);
@@ -92,6 +102,20 @@ export function QualifiedForm({
   const [company, setCompany] = useState("");
 
   const canSubmit = email.trim().length > 0 || phone.trim().length > 0;
+
+  /** Fires once, the moment someone actually engages rather than on render. */
+  function noteStarted() {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    track("start_form", { contentName: sourceDetail ?? sourceType });
+  }
+
+  /** Advancing a step is the intent signal worth optimising towards. */
+  function goToStep(next: number) {
+    noteStarted();
+    if (next > step) track("complete_form_step", { step: next, contentName: sourceType });
+    setStep(next);
+  }
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -124,9 +148,21 @@ export function QualifiedForm({
           propertyId,
           pagePath: typeof window === "undefined" ? undefined : window.location.pathname,
           company,
+          turnstileToken,
+          eventId: eventIdRef.current,
           ...readAttribution(),
         },
       });
+
+      /* Only after the server confirmed it. A pixel that fires on click counts
+       * conversions that never reached the database. */
+      track(sourceType === "market_report" ? "request_report" : "submit_lead", {
+        eventId: eventIdRef.current,
+        contentName: sourceDetail ?? sourceType,
+        currency: "AED",
+        ...(budget?.min !== undefined ? { value: budget.min } : {}),
+      });
+
       if (result.reportToken) setReportUrl(reportPath(result.reportToken));
       setStatus("sent");
     } catch (submitError) {
@@ -184,12 +220,12 @@ export function QualifiedForm({
             ))}
           </ChoiceGroup>
           <div className="flex items-center gap-6">
-            <Button type="button" onClick={() => setStep(1)}>
+            <Button type="button" onClick={() => goToStep(1)}>
               Continue
             </Button>
             <button
               type="button"
-              onClick={() => setStep(2)}
+              onClick={() => goToStep(2)}
               className="eyebrow link-underline text-muted-foreground"
             >
               Skip to contact details
@@ -236,12 +272,12 @@ export function QualifiedForm({
           </Field>
 
           <div className="flex items-center gap-6">
-            <Button type="button" onClick={() => setStep(2)}>
+            <Button type="button" onClick={() => goToStep(2)}>
               Continue
             </Button>
             <button
               type="button"
-              onClick={() => setStep(0)}
+              onClick={() => goToStep(0)}
               className="eyebrow link-underline text-muted-foreground"
             >
               Back
@@ -307,6 +343,11 @@ export function QualifiedForm({
             />
           </Field>
 
+          {/* Invisible to almost everyone: the widget only challenges when
+              Cloudflare thinks it needs to, and renders nothing at all when no
+              site key is configured. */}
+          <Turnstile onToken={setTurnstileToken} />
+
           {/* Honeypot, hidden from people and from screen readers. */}
           <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
             <label htmlFor="company">Company</label>
@@ -332,7 +373,7 @@ export function QualifiedForm({
             </Button>
             <button
               type="button"
-              onClick={() => setStep(1)}
+              onClick={() => goToStep(1)}
               className="eyebrow link-underline text-muted-foreground"
             >
               Back

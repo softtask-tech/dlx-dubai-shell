@@ -9,6 +9,8 @@ import { pageHead } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
 import { QualifiedForm } from "@/components/forms/qualified-form";
 import { Gallery } from "@/components/site/gallery";
+import { useTrackedView } from "@/lib/use-tracked-view";
+import { ContactLink } from "@/components/site/contact-link";
 import { Reveal } from "@/components/site/reveal";
 import { PropertyCard } from "@/components/site/property-card";
 import { Button } from "@/components/ui/button";
@@ -63,6 +65,15 @@ export const Route = createFileRoute("/properties/$slug")({
 
 function PropertyDetail() {
   const { property, related } = Route.useLoaderData();
+
+  /* A listing view is the strongest interest signal a portfolio site has, and
+   * it is what builds the retargeting audience worth spending on. */
+  useTrackedView("view_listing", {
+    contentIds: [property.slug],
+    contentName: property.title,
+    currency: property.currency,
+    ...(property.price !== null ? { value: property.price } : {}),
+  });
   const images = [property.hero_image_url, ...property.image_urls].filter((url): url is string =>
     Boolean(url),
   );
@@ -346,20 +357,22 @@ function AgentPanel({ property }: { property: PropertyWithRelations }) {
         <Button asChild>
           <a href="#enquire">Request a viewing</a>
         </Button>
-        <a
+        <ContactLink
+          kind="whatsapp"
           href={`https://wa.me/${whatsappNumber}?text=${whatsappText}`}
-          target="_blank"
-          rel="noopener noreferrer"
+          detail={`listing-${property.slug}`}
           className="eyebrow link-underline text-foreground"
         >
           Message on WhatsApp
-        </a>
-        <a
+        </ContactLink>
+        <ContactLink
+          kind="call"
           href={`tel:${agent?.phone ?? site.contact.phoneE164}`}
+          detail={`listing-${property.slug}`}
           className="eyebrow link-underline text-foreground"
         >
           {agent?.phone ?? site.contact.phone}
-        </a>
+        </ContactLink>
       </div>
 
       <p className="caption mt-8">

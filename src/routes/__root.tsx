@@ -4,10 +4,11 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -21,7 +22,9 @@ import { Eyebrow } from "@/components/ui/section";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
 import { AdvisorDock } from "@/components/advisor/advisor-dock";
+import { ConsentBar } from "@/components/site/consent-bar";
 import { advisorAvailabilityFn } from "@/data/advisor.functions";
+import { hasDecided, initTracking, trackPageView } from "@/lib/tracking";
 import { CustomCursor } from "@/components/site/cursor";
 
 function NotFoundComponent() {
@@ -136,12 +139,37 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const { advisorAvailability } = Route.useLoaderData();
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+
+  /*
+   * Campaign pages render their own masthead and footer. Every link out of a
+   * landing page is a way to lose someone who arrived ready to act, so the
+   * site's navigation is deliberately absent from them.
+   */
+  const isCampaignPage = pathname.startsWith("/lp/");
+
+  /* Consent lives in the browser, so the first render cannot know it. Tracking
+   * the answer in state is what lets the advisor rail wait its turn rather than
+   * stacking on top of the consent bar. */
+  const [consentDecided, setConsentDecided] = useState(true);
 
   /* Record the campaign that brought this visit in, before the visitor
-   * navigates away from the landing URL and the tags are lost. */
+   * navigates away from the landing URL and the tags are lost. This runs
+   * whatever they decide about cookies: attribution is stored in their own
+   * session and only ever leaves the browser attached to an enquiry they chose
+   * to send. */
   useEffect(() => {
     captureAttribution();
+    initTracking();
+    setConsentDecided(hasDecided());
   }, []);
+
+  /* A single-page app navigates without a document load, so page views after
+   * the first have to be reported by hand or the funnel starts at the landing
+   * page and never moves. */
+  useEffect(() => {
+    trackPageView(pathname);
+  }, [pathname]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -150,13 +178,16 @@ function RootComponent() {
           Skip to content
         </a>
         <CustomCursor />
-        <Header />
+        {isCampaignPage ? null : <Header />}
         <main id="main" className="min-h-screen">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
         </main>
-        <Footer />
-        {advisorAvailability.chat ? <AdvisorDock /> : null}
+        {isCampaignPage ? null : <Footer />}
+        {/* One bar at a time. The advisor waits until the visitor has answered
+            the cookie question, so the foot of the page never carries two. */}
+        <ConsentBar onDecided={() => setConsentDecided(true)} />
+        {advisorAvailability.chat && consentDecided && !isCampaignPage ? <AdvisorDock /> : null}
       </CurrencyProvider>
     </QueryClientProvider>
   );

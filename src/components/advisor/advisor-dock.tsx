@@ -6,6 +6,7 @@ import { advisor } from "@/config/advisor";
 import { brand } from "@/config/brand";
 import { isRtl } from "@/config/advisor";
 import { guessLanguage } from "@/data/advisor";
+import { track } from "@/lib/tracking";
 import { cn } from "@/lib/utils";
 import { useAdvisor, type PanelTurn } from "./use-advisor";
 import { Button } from "@/components/ui/button";
@@ -44,6 +45,7 @@ export function AdvisorDock() {
       setOpening(question);
       setDismissed(false);
       setOpen(true);
+      track("advisor_open", { contentName: "deep-link" });
     };
 
     openFromHash();
@@ -80,7 +82,10 @@ function AdvisorRail({ onOpen, onDismiss }: { onOpen: () => void; onDismiss: () 
       <div className="pointer-events-auto flex w-full max-w-shell items-center justify-between gap-4 border border-border bg-background px-5 py-4 md:px-7">
         <button
           type="button"
-          onClick={onOpen}
+          onClick={() => {
+            track("advisor_open", { contentName: "rail" });
+            onOpen();
+          }}
           className="group flex flex-1 items-start gap-4 text-left"
           aria-label={`Ask ${advisor.name}, the ${advisor.role}`}
         >

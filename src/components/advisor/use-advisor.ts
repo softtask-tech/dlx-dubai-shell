@@ -7,6 +7,7 @@ import {
   type AdvisorCitation,
   type AdvisorTurn,
 } from "@/data/advisor";
+import { newEventId, track } from "@/lib/tracking";
 
 /** A turn plus the state the panel needs while it is still arriving. */
 export type PanelTurn = AdvisorTurn & { streaming?: boolean; failed?: boolean };
@@ -54,6 +55,11 @@ export function useAdvisor(pagePath: string) {
       setNotice(null);
       setRetryAfter(null);
       setSending(true);
+
+      /* A question asked is a real intent signal — often a better one than a
+       * half-filled form, since nobody types a paragraph about their budget by
+       * accident. */
+      track("advisor_message", { contentName: pagePath });
 
       const askedAt = new Date().toISOString();
       setTurns((current) => [
@@ -104,7 +110,12 @@ export function useAdvisor(pagePath: string) {
                 patchLast((turn) => ({ ...turn, streaming: false, failed: true }));
                 break;
               case "done":
-                if (event.leadCaptured) setLeadCaptured(true);
+                if (event.leadCaptured) {
+                  setLeadCaptured(true);
+                  /* The server wrote the lead; the browser reports the
+                   * conversion with an id the server-side copy will share. */
+                  track("advisor_lead", { eventId: newEventId(), contentName: pagePath });
+                }
                 patchLast((turn) => ({
                   ...turn,
                   streaming: false,

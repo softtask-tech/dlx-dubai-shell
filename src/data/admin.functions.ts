@@ -77,6 +77,7 @@ export const updateLeadFn = createServerFn({ method: "POST" })
         id: z.string().uuid(),
         status: z.enum(leadStatuses).optional(),
         assignedAgentId: z.string().uuid().nullable().optional(),
+        dealValueAed: z.number().nonnegative().nullable().optional(),
       })
       .parse(data),
   )
@@ -84,9 +85,14 @@ export const updateLeadFn = createServerFn({ method: "POST" })
     const { requireAdmin, updateLead } = await import("./admin.server");
     await requireAdmin(data.accessToken);
 
-    const patch: { status?: Lead["status"]; assignedAgentId?: string | null } = {};
+    const patch: {
+      status?: Lead["status"];
+      assignedAgentId?: string | null;
+      dealValueAed?: number | null;
+    } = {};
     if (data.status) patch.status = data.status;
     if (data.assignedAgentId !== undefined) patch.assignedAgentId = data.assignedAgentId;
+    if (data.dealValueAed !== undefined) patch.dealValueAed = data.dealValueAed;
 
     await updateLead(data.id, patch);
     return { ok: true };
@@ -218,3 +224,32 @@ export const recomputeStatsFn = createServerFn({ method: "POST" })
   });
 
 export type { Agent, ContentTable, LeadNote, Testimonial };
+
+/* ------------------------------------------------------------------ ROAS -- */
+
+export const campaignPerformanceFn = createServerFn({ method: "POST" })
+  .inputValidator((data: unknown) =>
+    withToken
+      .extend({
+        from: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+        to: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+      })
+      .parse(data),
+  )
+  .handler(async ({ data }) => {
+    const { requireAdmin } = await import("./admin.server");
+    await requireAdmin(data.accessToken);
+    const { campaignPerformance } = await import("./roas.server");
+    return campaignPerformance({ from: data.from, to: data.to });
+  });
+
+export const importSpendFn = createServerFn({ method: "POST" })
+  .inputValidator((data: unknown) =>
+    withToken.extend({ csv: z.string().min(1).max(2_000_000) }).parse(data),
+  )
+  .handler(async ({ data }): Promise<{ imported: number; errors: string[] }> => {
+    const { requireAdmin } = await import("./admin.server");
+    await requireAdmin(data.accessToken);
+    const { importSpendCsv } = await import("./roas.server");
+    return importSpendCsv(data.csv);
+  });

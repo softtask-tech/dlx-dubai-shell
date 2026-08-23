@@ -327,6 +327,56 @@ that it cannot answer right now and a consultant can — rather than degrading
 into a guess. Conversations are private: no `anon` grant, no `anon` policy, and
 the browser never reads the table at all.
 
+### Paid media
+
+**Nothing loads before consent.** The Meta and Google scripts are not in the
+document until someone accepts: a visitor who declines never contacts those
+servers, rather than being tracked by an already-loaded pixel a banner claims to
+have disabled. Events fired before the answer are queued and replayed on
+acceptance, discarded on refusal.
+
+**One vocabulary.** `EVENTS` in `src/config/tracking.ts` maps every action worth
+measuring to what Meta, GA4 and Google Ads each call it — as a union type, so a
+capture point cannot fire an event nobody defined. Instrumented: listings,
+areas, calculators, listing search, every form step, the advisor, and the phone
+and WhatsApp taps, which on a brokerage site are often *the* conversion.
+
+**Every conversion is counted once.** The browser pixel and the server's
+Conversions API copy share an event id. Without it Meta counts both, the
+campaign looks twice as good as it is, and someone raises a budget on the
+strength of it.
+
+**Outcomes go back, not just enquiries.** When a consultant marks a lead
+qualified or won, that judgement is sent as an offline conversion with the click
+id and the real deal value. It is the half that changes what the platforms buy:
+a `Lead` event teaches them to find people who fill in forms, and without a
+`deal_won` an ad account optimises very efficiently towards worthless traffic
+while the reporting looks excellent.
+
+**Four layers of spam protection** — honeypot, Turnstile, real-shape email and
+phone validation, and a six-hour duplicate window. Nothing is deleted: a
+rejected submission is scored, its reasons recorded, and parked as unqualified,
+because a filter with no appeal quietly loses real business. Junk gets neither
+the emails nor a conversion.
+
+**Routing happens inside the submission.** Speed to reply is the number that
+decides whether paid traffic converts, so hot and warm are assigned immediately
+by a fair queue and the moment is stamped on the row. Cold is held for nurture —
+handing a consultant a queue that will not convert teaches them to ignore it.
+
+```sh
+npm run dev            # the advertising tags stay absent until VITE_META_PIXEL_ID etc. are set
+```
+
+The ROAS dashboard at `/admin/roas` refuses to guess: a campaign with leads and
+no imported spend reports nothing rather than zero, because zero divides into an
+infinite return. Spend arrives as a pasted CSV — campaign names must match the
+`utm_campaign` the ads set, or spend and leads land in different rows and
+neither figure means anything.
+
+Campaign landing pages live under `/lp/`, carry no navigation, and are noindexed
+and absent from the sitemap.
+
 ### When the database is not there
 
 Public list queries degrade rather than fail (`src/data/resilience.ts`): if

@@ -36,6 +36,9 @@ export type LeadEmailData = {
   utmCampaign: string | null;
   pagePath: string | null;
   createdAt: string;
+  /** Who routing handed this to, so the notification names an owner. */
+  assignedAgentName?: string | null;
+  routingReason?: string | null;
 };
 
 export type BrandInfo = {
@@ -116,6 +119,9 @@ export function adminNotificationEmail(lead: LeadEmailData, brand: BrandInfo) {
       "Campaign",
       [lead.utmSource, lead.utmMedium, lead.utmCampaign].filter(Boolean).join(" / ") || "Direct",
     ],
+    /* Named last because it is the line that turns a notification into an
+     * instruction: whoever reads this knows straight away whether it is theirs. */
+    ["Assigned to", lead.assignedAgentName ?? "Unassigned — needs picking up"],
   ];
 
   const rowsHtml = rows

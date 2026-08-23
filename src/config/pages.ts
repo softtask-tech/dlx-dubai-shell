@@ -159,6 +159,17 @@ export const SITE_PAGES: readonly SitePage[] = [
     changeFrequency: "yearly",
   },
   {
+    path: "/privacy",
+    inPrimaryNav: false,
+    label: "Data",
+    title: "How we handle your information",
+    description:
+      "What DLX Properties collects, when advertising cookies load and when they do not, who else sees an enquiry, and how to ask us to change or delete what we hold.",
+    tagline: "What we collect, and what we do not.",
+    priority: 0.3,
+    changeFrequency: "yearly",
+  },
+  {
     path: "/contact",
     label: "Contact",
     title: "Contact",

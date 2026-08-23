@@ -11,7 +11,10 @@
  */
 import { z } from "zod";
 
+import type { SupabaseClient } from "@supabase/supabase-js";
+
 import { adminDb } from "./database.server";
+import type { PaidMediaDatabase } from "./paid-media-types";
 import { scoreLead } from "./lead-scoring";
 import type { JsonObject, Lead, LeadSourceType } from "./types";
 
@@ -60,9 +63,34 @@ export const leadSubmissionSchema = z
     pagePath: trimmed,
     fbclid: trimmed,
     gclid: trimmed,
+    /* Meta matches far better on the click *and* browser ids together than on
+     * hashed contact details alone, and Google's newer click ids replace gclid
+     * entirely on iOS. Captured because they are worthless if collected late. */
+    fbc: trimmed,
+    fbp: trimmed,
+    gbraid: trimmed,
+    wbraid: trimmed,
+    msclkid: trimmed,
+    ttclid: trimmed,
+    firstUtmSource: trimmed,
+    firstUtmMedium: trimmed,
+    firstUtmCampaign: trimmed,
+    firstLandingPageUrl: trimmed,
+    firstSeenAt: trimmed,
 
     /* Anything a specific form asked that has no column of its own. */
     qualificationAnswers: z.record(z.string(), z.unknown()).optional(),
+
+    /*
+     * The browser's deduplication id for this conversion. Passed through so the
+     * server's Conversions API call carries the same one — without it the same
+     * lead is counted by Meta twice, and a campaign looks twice as good as it
+     * is, which is worse than not measuring at all.
+     */
+    eventId: z.string().max(64).optional(),
+
+    /* The Turnstile token, when the widget is configured. */
+    turnstileToken: z.string().max(4000).optional(),
 
     /* Honeypot: a real person never fills this in. */
     company: z.string().optional(),
@@ -102,6 +130,37 @@ export async function submitLead(input: LeadSubmission): Promise<LeadSubmissionR
 
   const supabaseAdmin = await adminDb();
 
+  /*
+   * Assess before scoring. A submission that fails hard is still recorded —
+   * flagged, not deleted — because a spam filter with no appeal quietly loses
+   * real business, and someone has to be able to find the one it got wrong.
+   */
+  const { assessSubmission, dedupeKeyFor, isDuplicate } = await import("./spam.server");
+
+  const verdict = await assessSubmission({
+    fullName: input.fullName,
+    email: input.email,
+    phone: input.phone,
+    message: input.message,
+    turnstileToken: input.turnstileToken,
+    sourceType: input.sourceType,
+  });
+
+  const dedupeKey = await dedupeKeyFor({
+    email: input.email,
+    phone: input.phone,
+    sourceType: input.sourceType,
+  });
+
+  /*
+   * A repeat within the window is answered as though it worked and written
+   * nowhere. Someone who pressed submit twice should see success, not an error
+   * telling them off — and the consultant should see one lead, not two.
+   */
+  if (dedupeKey && (await isDuplicate(dedupeKey))) {
+    return { ok: true, leadId: "00000000-0000-0000-0000-000000000000", temperature: "cold" };
+  }
+
   const { score, temperature, reasons } = scoreLead({
     intent: input.intent ?? null,
     timeline: input.timeline ?? null,
@@ -111,6 +170,7 @@ export async function submitLead(input: LeadSubmission): Promise<LeadSubmissionR
     hasEmail: Boolean(input.email),
     isFinancing: input.isFinancing ?? null,
     message: input.message ?? null,
+    sourceType: input.sourceType,
   });
 
   const row = {
@@ -130,7 +190,7 @@ export async function submitLead(input: LeadSubmission): Promise<LeadSubmissionR
     message: input.message ?? null,
     temperature,
     score,
-    status: "new" as const,
+    status: verdict.reject ? ("unqualified" as const) : ("new" as const),
     source_type: input.sourceType as LeadSourceType,
     source_detail: input.sourceDetail ?? null,
     property_id: input.propertyId ?? null,
@@ -145,6 +205,22 @@ export async function submitLead(input: LeadSubmission): Promise<LeadSubmissionR
     page_path: input.pagePath ?? null,
     fbclid: input.fbclid ?? null,
     gclid: input.gclid ?? null,
+    fbc: input.fbc ?? null,
+    fbp: input.fbp ?? null,
+    gbraid: input.gbraid ?? null,
+    wbraid: input.wbraid ?? null,
+    msclkid: input.msclkid ?? null,
+    ttclid: input.ttclid ?? null,
+    first_utm_source: input.firstUtmSource ?? null,
+    first_utm_medium: input.firstUtmMedium ?? null,
+    first_utm_campaign: input.firstUtmCampaign ?? null,
+    first_landing_page_url: input.firstLandingPageUrl ?? null,
+    first_seen_at: input.firstSeenAt ?? null,
+    dedupe_key: dedupeKey,
+    spam_score: verdict.score,
+    spam_reasons: verdict.reasons,
+    /* A rejected submission is parked as unqualified rather than queued for a
+     * consultant: visible in the inbox, filtered out of the working list. */
     marketing_consent: input.marketingConsent ?? false,
     consent_at: input.marketingConsent ? new Date().toISOString() : null,
     qualification_answers: {
@@ -155,12 +231,48 @@ export async function submitLead(input: LeadSubmission): Promise<LeadSubmissionR
     raw_payload: input as unknown as JsonObject,
   };
 
-  const { data, error } = await supabaseAdmin.from("leads").insert(row).select("id").single();
+  /* Typed against the hand-declared Phase 6 shape, because the generated types
+   * do not yet carry the attribution and outcome columns. */
+  const { data, error } = await (supabaseAdmin as unknown as SupabaseClient<PaidMediaDatabase>)
+    .from("leads")
+    .insert(row)
+    .select("id")
+    .single();
 
   if (error) throw new Error(`Could not save the enquiry: ${error.message}`);
 
+  /*
+   * Junk gets neither the emails nor the conversion. Reporting it to an ad
+   * platform is the expensive mistake: the platform learns to find more of it,
+   * and the account optimises itself towards the traffic we least want.
+   */
+  if (verdict.reject) {
+    console.warn(
+      `[leads] ${data.id} flagged as spam (${verdict.score}): ${verdict.reasons.join("; ")}`,
+    );
+    return { ok: true, leadId: data.id, temperature };
+  }
+
+  /*
+   * Route before the emails, so the notification names the consultant who owns
+   * it rather than going to a general inbox for someone to hand out later.
+   * Speed to reply is the number that decides whether paid traffic converts.
+   */
+  const { routeLead } = await import("./routing.server");
+  await routeLead({ leadId: data.id, temperature, score });
+
   await dispatchLeadEmails(data.id).catch((emailError: unknown) => {
     console.error("[leads] email dispatch failed", emailError);
+  });
+
+  /*
+   * Tell the ad platforms, with the event id the browser pixel used. Failure
+   * here costs measurement, never the enquiry — a lead that saved but could not
+   * be reported is a bookkeeping problem; a lead lost because a pixel was down
+   * is a client who never hears back.
+   */
+  await dispatchLeadConversion(data.id, input, score).catch((conversionError: unknown) => {
+    console.error("[leads] conversion dispatch failed", conversionError);
   });
 
   /* A report request earns its report there and then. */
@@ -194,4 +306,48 @@ export async function dispatchLeadEmails(leadId: string): Promise<void> {
   });
 
   if (error) throw error;
+}
+
+/**
+ * Reports a new lead as a conversion.
+ *
+ * The value sent is the *budget*, not a deal value — nothing has been earned
+ * yet. Sending a plausible-looking revenue figure at enquiry time is how a
+ * platform learns to optimise for people who claim large budgets, which is a
+ * different population from people who buy.
+ */
+async function dispatchLeadConversion(
+  leadId: string,
+  input: LeadSubmission,
+  score: number,
+): Promise<void> {
+  const { dispatchConversion } = await import("./conversions.server");
+
+  await dispatchConversion({
+    leadId,
+    event: input.sourceType === "market_report" ? "request_report" : "submit_lead",
+    /* No browser id means this came from somewhere without one — a webhook, a
+     * phone call. A fresh id is still needed so the platform can deduplicate a
+     * retry of this same dispatch. */
+    eventId: input.eventId ?? crypto.randomUUID(),
+    ...(input.budgetMin !== undefined ? { valueAed: input.budgetMin } : {}),
+    user: {
+      email: input.email ?? null,
+      phone: input.phone ?? null,
+      firstName: input.fullName?.split(" ")[0] ?? null,
+      lastName: input.fullName?.split(" ").slice(1).join(" ") || null,
+      countryCode: input.countryCode ?? null,
+      fbc: input.fbc ?? null,
+      fbp: input.fbp ?? null,
+      gclid: input.gclid ?? null,
+      gbraid: input.gbraid ?? null,
+      wbraid: input.wbraid ?? null,
+    },
+    sourceUrl: input.landingPageUrl ?? null,
+  });
+
+  /* The score is not sent here — it is what decides whether this lead later
+   * earns a `qualified_lead` conversion, which is the signal actually worth
+   * optimising towards. See `reportLeadOutcome`. */
+  void score;
 }

@@ -13,6 +13,16 @@ import type { LeadIntent, LeadTemperature, LeadTimeline } from "./types";
 
 export type ScoreInput = {
   intent?: LeadIntent | null;
+  /**
+   * Where the enquiry came from.
+   *
+   * Not a judgement about the channel — a paid click is not worth more than an
+   * organic one, and scoring it that way would flatter whichever budget is
+   * currently largest. It is a judgement about *effort*: someone who ran a
+   * yield calculation or asked for a market report before getting in touch has
+   * demonstrably done work, and that is a real signal about the person.
+   */
+  sourceType?: string | null;
   timeline?: LeadTimeline | null;
   budgetMax?: number | null;
   /** AED. Used together with budgetMax when a range was given. */
@@ -117,6 +127,27 @@ export function scoreLead(input: ScoreInput): ScoreResult {
   if (input.isFinancing === false) {
     score += 4;
     reasons.push("Not requiring finance");
+  }
+
+  /*
+   * Effort spent before making contact. A visitor who worked out their own
+   * buying costs, or wanted the numbers behind a community, arrives further
+   * along than one who filled in a contact form — and further along than the
+   * same person would have been from any channel.
+   */
+  const EFFORT: Record<string, { points: number; label: string }> = {
+    calculator: { points: 8, label: "Ran a calculator first" },
+    market_report: { points: 8, label: "Asked for a market report" },
+    valuation_form: { points: 8, label: "Asked for a valuation" },
+    listing_enquiry: { points: 6, label: "Enquired about a specific property" },
+    ai_chat: { points: 5, label: "Talked to the advisor first" },
+    voice_call: { points: 12, label: "Picked up the phone" },
+  };
+
+  const effort = input.sourceType ? EFFORT[input.sourceType] : undefined;
+  if (effort) {
+    score += effort.points;
+    reasons.push(effort.label);
   }
 
   score = Math.max(0, Math.min(100, Math.round(score)));
