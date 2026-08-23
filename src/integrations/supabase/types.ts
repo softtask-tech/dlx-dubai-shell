@@ -148,6 +148,24 @@ export type Database = {
         }
         Relationships: []
       }
+      app_settings: {
+        Row: {
+          key: string
+          updated_at: string
+          value: string
+        }
+        Insert: {
+          key: string
+          updated_at?: string
+          value: string
+        }
+        Update: {
+          key?: string
+          updated_at?: string
+          value?: string
+        }
+        Relationships: []
+      }
       area_price_history: {
         Row: {
           area_id: string
@@ -1500,6 +1518,10 @@ export type Database = {
       }
       link_transactions_to_areas: { Args: never; Returns: number }
       refresh_area_stats: { Args: never; Returns: number }
+      trigger_dld_sync: {
+        Args: { dataset?: string; trigger_source?: string }
+        Returns: number
+      }
     }
     Enums: {
       advisor_channel: "chat" | "voice"
