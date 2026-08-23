@@ -77,6 +77,121 @@ export type Database = {
         }
         Relationships: []
       }
+      area_price_history: {
+        Row: {
+          area_id: string
+          created_at: string
+          id: string
+          median_price: number | null
+          median_price_per_sqft: number | null
+          period_month: string
+          provenance: Database["public"]["Enums"]["data_provenance"]
+          transaction_count: number
+        }
+        Insert: {
+          area_id: string
+          created_at?: string
+          id?: string
+          median_price?: number | null
+          median_price_per_sqft?: number | null
+          period_month: string
+          provenance: Database["public"]["Enums"]["data_provenance"]
+          transaction_count?: number
+        }
+        Update: {
+          area_id?: string
+          created_at?: string
+          id?: string
+          median_price?: number | null
+          median_price_per_sqft?: number | null
+          period_month?: string
+          provenance?: Database["public"]["Enums"]["data_provenance"]
+          transaction_count?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "area_price_history_area_id_fkey"
+            columns: ["area_id"]
+            isOneToOne: false
+            referencedRelation: "areas"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      area_stats: {
+        Row: {
+          area_id: string
+          average_price: number | null
+          average_price_per_sqft: number | null
+          created_at: string
+          gross_yield_pct: number | null
+          id: string
+          last_updated: string
+          median_annual_rent: number | null
+          median_price: number | null
+          median_price_per_sqft: number | null
+          off_plan_share_pct: number | null
+          prior_median_price_per_sqft: number | null
+          prior_transaction_count: number | null
+          provenance: Database["public"]["Enums"]["data_provenance"]
+          transaction_count: number
+          window_end: string
+          window_start: string
+          yoy_price_change_pct: number | null
+          yoy_volume_change_pct: number | null
+        }
+        Insert: {
+          area_id: string
+          average_price?: number | null
+          average_price_per_sqft?: number | null
+          created_at?: string
+          gross_yield_pct?: number | null
+          id?: string
+          last_updated?: string
+          median_annual_rent?: number | null
+          median_price?: number | null
+          median_price_per_sqft?: number | null
+          off_plan_share_pct?: number | null
+          prior_median_price_per_sqft?: number | null
+          prior_transaction_count?: number | null
+          provenance: Database["public"]["Enums"]["data_provenance"]
+          transaction_count?: number
+          window_end: string
+          window_start: string
+          yoy_price_change_pct?: number | null
+          yoy_volume_change_pct?: number | null
+        }
+        Update: {
+          area_id?: string
+          average_price?: number | null
+          average_price_per_sqft?: number | null
+          created_at?: string
+          gross_yield_pct?: number | null
+          id?: string
+          last_updated?: string
+          median_annual_rent?: number | null
+          median_price?: number | null
+          median_price_per_sqft?: number | null
+          off_plan_share_pct?: number | null
+          prior_median_price_per_sqft?: number | null
+          prior_transaction_count?: number | null
+          provenance?: Database["public"]["Enums"]["data_provenance"]
+          transaction_count?: number
+          window_end?: string
+          window_start?: string
+          yoy_price_change_pct?: number | null
+          yoy_volume_change_pct?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "area_stats_area_id_fkey"
+            columns: ["area_id"]
+            isOneToOne: true
+            referencedRelation: "areas"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       areas: {
         Row: {
           created_at: string
@@ -260,6 +375,187 @@ export type Database = {
           website_url?: string | null
         }
         Relationships: []
+      }
+      dld_ingest_runs: {
+        Row: {
+          areas_refreshed: number
+          created_at: string
+          dataset: string | null
+          error_message: string | null
+          finished_at: string | null
+          id: string
+          rows_fetched: number
+          rows_rejected: number
+          rows_upserted: number
+          started_at: string
+          status: string
+          trigger_source: string
+        }
+        Insert: {
+          areas_refreshed?: number
+          created_at?: string
+          dataset?: string | null
+          error_message?: string | null
+          finished_at?: string | null
+          id?: string
+          rows_fetched?: number
+          rows_rejected?: number
+          rows_upserted?: number
+          started_at?: string
+          status?: string
+          trigger_source?: string
+        }
+        Update: {
+          areas_refreshed?: number
+          created_at?: string
+          dataset?: string | null
+          error_message?: string | null
+          finished_at?: string | null
+          id?: string
+          rows_fetched?: number
+          rows_rejected?: number
+          rows_upserted?: number
+          started_at?: string
+          status?: string
+          trigger_source?: string
+        }
+        Relationships: []
+      }
+      dld_rent_contracts: {
+        Row: {
+          annual_rent: number
+          area_id: string | null
+          area_name_raw: string
+          area_sqm: number | null
+          bedrooms: number | null
+          contract_start_date: string
+          created_at: string
+          id: string
+          ingested_at: string
+          property_type: string | null
+          provenance: Database["public"]["Enums"]["data_provenance"]
+          source_contract_id: string
+        }
+        Insert: {
+          annual_rent: number
+          area_id?: string | null
+          area_name_raw: string
+          area_sqm?: number | null
+          bedrooms?: number | null
+          contract_start_date: string
+          created_at?: string
+          id?: string
+          ingested_at?: string
+          property_type?: string | null
+          provenance: Database["public"]["Enums"]["data_provenance"]
+          source_contract_id: string
+        }
+        Update: {
+          annual_rent?: number
+          area_id?: string | null
+          area_name_raw?: string
+          area_sqm?: number | null
+          bedrooms?: number | null
+          contract_start_date?: string
+          created_at?: string
+          id?: string
+          ingested_at?: string
+          property_type?: string | null
+          provenance?: Database["public"]["Enums"]["data_provenance"]
+          source_contract_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dld_rent_contracts_area_id_fkey"
+            columns: ["area_id"]
+            isOneToOne: false
+            referencedRelation: "areas"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      dld_transactions: {
+        Row: {
+          amount: number
+          area_id: string | null
+          area_name_raw: string
+          area_sqft: number | null
+          area_sqm: number | null
+          bedrooms: number | null
+          building_name: string | null
+          created_at: string
+          id: string
+          ingested_at: string
+          is_freehold: boolean | null
+          latitude: number | null
+          longitude: number | null
+          price_per_sqft: number | null
+          property_subtype: string | null
+          property_type: string | null
+          provenance: Database["public"]["Enums"]["data_provenance"]
+          registration_type: string | null
+          rooms_raw: string | null
+          source_transaction_id: string
+          transaction_date: string
+          transaction_group: string | null
+        }
+        Insert: {
+          amount: number
+          area_id?: string | null
+          area_name_raw: string
+          area_sqft?: number | null
+          area_sqm?: number | null
+          bedrooms?: number | null
+          building_name?: string | null
+          created_at?: string
+          id?: string
+          ingested_at?: string
+          is_freehold?: boolean | null
+          latitude?: number | null
+          longitude?: number | null
+          price_per_sqft?: number | null
+          property_subtype?: string | null
+          property_type?: string | null
+          provenance: Database["public"]["Enums"]["data_provenance"]
+          registration_type?: string | null
+          rooms_raw?: string | null
+          source_transaction_id: string
+          transaction_date: string
+          transaction_group?: string | null
+        }
+        Update: {
+          amount?: number
+          area_id?: string | null
+          area_name_raw?: string
+          area_sqft?: number | null
+          area_sqm?: number | null
+          bedrooms?: number | null
+          building_name?: string | null
+          created_at?: string
+          id?: string
+          ingested_at?: string
+          is_freehold?: boolean | null
+          latitude?: number | null
+          longitude?: number | null
+          price_per_sqft?: number | null
+          property_subtype?: string | null
+          property_type?: string | null
+          provenance?: Database["public"]["Enums"]["data_provenance"]
+          registration_type?: string | null
+          rooms_raw?: string | null
+          source_transaction_id?: string
+          transaction_date?: string
+          transaction_group?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dld_transactions_area_id_fkey"
+            columns: ["area_id"]
+            isOneToOne: false
+            referencedRelation: "areas"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       guides: {
         Row: {
@@ -796,6 +1092,54 @@ export type Database = {
           },
         ]
       }
+      report_grants: {
+        Row: {
+          area_id: string | null
+          created_at: string
+          expires_at: string
+          first_viewed_at: string | null
+          id: string
+          lead_id: string | null
+          token: string
+          view_count: number
+        }
+        Insert: {
+          area_id?: string | null
+          created_at?: string
+          expires_at: string
+          first_viewed_at?: string | null
+          id?: string
+          lead_id?: string | null
+          token: string
+          view_count?: number
+        }
+        Update: {
+          area_id?: string | null
+          created_at?: string
+          expires_at?: string
+          first_viewed_at?: string | null
+          id?: string
+          lead_id?: string | null
+          token?: string
+          view_count?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "report_grants_area_id_fkey"
+            columns: ["area_id"]
+            isOneToOne: false
+            referencedRelation: "areas"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "report_grants_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       testimonials: {
         Row: {
           agent_id: string | null
@@ -910,6 +1254,7 @@ export type Database = {
         | "market"
         | "area_guide"
         | "legal_and_tax"
+      data_provenance: "dld_open_data" | "sample"
       furnishing: "unfurnished" | "semi_furnished" | "furnished"
       lead_intent: "buy" | "sell" | "rent" | "invest" | "relocate" | "advice"
       lead_source_type:
@@ -1098,6 +1443,7 @@ export const Constants = {
         "area_guide",
         "legal_and_tax",
       ],
+      data_provenance: ["dld_open_data", "sample"],
       furnishing: ["unfurnished", "semi_furnished", "furnished"],
       lead_intent: ["buy", "sell", "rent", "invest", "relocate", "advice"],
       lead_source_type: [
