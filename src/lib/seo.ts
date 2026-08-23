@@ -16,6 +16,13 @@
  * Title, description and tagline come from the page registry in
  * `src/config/pages.ts`; a route only passes what is specific to it.
  */
+import {
+  DEFAULT_LOCALE,
+  localeFor,
+  localePath,
+  localesForPath,
+  type LocaleCode,
+} from "@/config/locales";
 import { absoluteUrl, ogImagePathFor, SITE_PAGES, site } from "@/config/site";
 import { breadcrumbSchema, type BreadcrumbEntry } from "@/lib/schema";
 
@@ -50,6 +57,11 @@ export type PageHeadInput = {
   breadcrumbs?: readonly BreadcrumbEntry[];
   /** Any additional JSON-LD this page owns (FAQ, Article, Listing…). */
   schema?: readonly JsonLd[];
+  /**
+   * Which language this page is being rendered in. Drives the canonical URL,
+   * `og:locale` and the breadcrumb trail. Defaults to English.
+   */
+  locale?: LocaleCode;
 };
 
 /**
@@ -64,7 +76,15 @@ function serializeJsonLd(node: JsonLd): string {
 
 /** Builds the full head for a page: meta, canonical link and JSON-LD. */
 export function pageHead(input: PageHeadInput) {
-  const { path, image, type = "website", noIndex = false, breadcrumbs, schema = [] } = input;
+  const {
+    path,
+    image,
+    type = "website",
+    noIndex = false,
+    breadcrumbs,
+    schema = [],
+    locale: code = DEFAULT_LOCALE,
+  } = input;
 
   /*
    * Registered pages get their copy from the registry; generated pages pass it
@@ -86,14 +106,52 @@ export function pageHead(input: PageHeadInput) {
   }
 
   const resolvedTitle = fullTitle ? title : `${title} — ${site.name}`;
-  const canonical = absoluteUrl(path);
+  /* The canonical is this page in this language. A translated page pointing its
+   * canonical at the English original tells Google the translation is a
+   * duplicate to be dropped — the single most common way a multilingual site
+   * ends up with only its English pages indexed. */
+  const canonical = absoluteUrl(localePath(path, code));
   const imageUrl = absoluteUrl(image ?? ogImagePathFor(path));
   const imageAlt = tagline;
 
   const schemaNodes: JsonLd[] = [
-    ...(breadcrumbs?.length ? [breadcrumbSchema(breadcrumbs)] : []),
+    ...(breadcrumbs?.length ? [breadcrumbSchema(breadcrumbs, code)] : []),
     ...schema,
   ];
+
+  /*
+   * hreflang, and the promise it makes.
+   *
+   * `localesForPath` returns English alone for the pages that only exist in
+   * English, so the site never advertises a translation it does not have. When
+   * alternates do exist every version lists every version including itself —
+   * the reciprocity Google requires — plus `x-default` pointing at English,
+   * which is what a reader whose language we do not publish should get.
+   */
+  const alternates = localesForPath(path);
+  const alternateLinks =
+    alternates.length > 1
+      ? [
+          ...alternates.map((alternate) => ({
+            rel: "alternate",
+            hrefLang: alternate.htmlLang,
+            href: absoluteUrl(localePath(path, alternate.code)),
+          })),
+          { rel: "alternate", hrefLang: "x-default", href: absoluteUrl(path) },
+        ]
+      : [];
+
+  /*
+   * `og:locale`, but not `og:locale:alternate`.
+   *
+   * Open Graph expects one `og:locale:alternate` tag per translation, and the
+   * router's head merge keys meta by `property` — so emitting four leaves one,
+   * arbitrarily. An Arabic page declaring its sole alternate to be Chinese is
+   * worse than declaring none, and the tag only feeds Facebook's own language
+   * picker anyway. hreflang, which the crawlers actually act on, is emitted in
+   * full above as separate <link> elements, where no such collision exists.
+   */
+  const ogLocale = localeFor(code)?.ogLocale ?? site.locale;
 
   return {
     meta: [
@@ -110,7 +168,7 @@ export function pageHead(input: PageHeadInput) {
 
       { property: "og:type", content: type },
       { property: "og:site_name", content: site.name },
-      { property: "og:locale", content: site.locale },
+      { property: "og:locale", content: ogLocale },
       { property: "og:url", content: canonical },
       { property: "og:title", content: resolvedTitle },
       { property: "og:description", content: description },
@@ -125,7 +183,7 @@ export function pageHead(input: PageHeadInput) {
       { name: "twitter:image", content: imageUrl },
       { name: "twitter:image:alt", content: imageAlt },
     ],
-    links: [{ rel: "canonical", href: canonical }],
+    links: [{ rel: "canonical", href: canonical }, ...alternateLinks],
     /* `head.scripts` renders inside <head> — the body-level list is a different option. */
     scripts: schemaNodes.map((node) => ({
       type: "application/ld+json",

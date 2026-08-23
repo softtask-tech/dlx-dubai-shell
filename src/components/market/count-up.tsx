@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 
+import { useLocale } from "@/i18n";
 import { DURATION } from "@/lib/motion";
 
 /**
@@ -26,6 +27,7 @@ export function CountUp({
   fallback?: string;
 }) {
   const reduced = useReducedMotion();
+  const { locale } = useLocale();
   const ref = useRef<HTMLSpanElement>(null);
   const [display, setDisplay] = useState<number | null>(value);
 
@@ -75,16 +77,33 @@ export function CountUp({
     return <span ref={ref}>{fallback}</span>;
   }
 
-  const formatted = (display ?? value).toLocaleString("en-AE", {
-    minimumFractionDigits: decimals,
-    maximumFractionDigits: decimals,
-  });
+  /* Grouped the way this reader's language groups digits — the same rule the
+   * price formatter follows, so a Hindi reader is not shown lakhs in one place
+   * and thousands in another on the same page. */
+  const format = (amount: number) =>
+    amount.toLocaleString(locale.intlLocale, {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals,
+    });
 
+  const final = `${prefix}${format(value)}${suffix}`;
+
+  /*
+   * The animation is for the eye only.
+   *
+   * A span whose text changes sixty times a second is, to a screen reader, a
+   * number being read aloud sixty times. `aria-hidden` on the moving text and
+   * the final value in a visually hidden sibling means the listener hears the
+   * figure once, correctly, and never hears it count.
+   */
   return (
     <span ref={ref}>
-      {prefix}
-      {formatted}
-      {suffix}
+      <span aria-hidden="true">
+        {prefix}
+        {format(display ?? value)}
+        {suffix}
+      </span>
+      <span className="sr-only">{final}</span>
     </span>
   );
 }

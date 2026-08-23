@@ -43,7 +43,7 @@ export function PostBody({ body }: { body: string }) {
             );
           case "quote":
             return (
-              <blockquote key={key} className="my-10 border-l-2 border-accent pl-8">
+              <blockquote key={key} className="my-10 border-s-2 border-accent ps-8">
                 <p className="lead max-w-measure text-foreground">{inline(block.text)}</p>
               </blockquote>
             );

@@ -21,7 +21,7 @@ export function Field({ label, name, hint, error, required, children }: FieldPro
     <div className="flex flex-col gap-2">
       <label htmlFor={name} className="eyebrow">
         {label}
-        {required ? <span className="ml-1 text-accent">*</span> : null}
+        {required ? <span className="ms-1 text-accent">*</span> : null}
       </label>
       {children}
       {hint && !error ? <p className="caption">{hint}</p> : null}

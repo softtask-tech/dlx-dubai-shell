@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
 import { stagger } from "@/lib/motion";
+import { useT } from "@/i18n";
 import { Reveal } from "./reveal";
 import type { Developer } from "@/data/types";
 import { Section, Eyebrow } from "@/components/ui/section";
@@ -13,12 +14,13 @@ import { Section, Eyebrow } from "@/components/ui/section";
  * Renders nothing until there are partners to name.
  */
 export function DeveloperStrip({ developers }: { developers: readonly Developer[] }) {
+  const t = useT();
   if (developers.length === 0) return null;
 
   return (
     <Section>
       <Reveal>
-        <Eyebrow>Developer partnerships</Eyebrow>
+        <Eyebrow>{t.blocks.developersEyebrow}</Eyebrow>
       </Reveal>
       <div className="mt-10 flex flex-wrap items-baseline gap-x-12 gap-y-6">
         {developers.map((developer, index) => (

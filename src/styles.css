@@ -89,6 +89,9 @@
   --duration-quick: 400ms;
   --duration-base: 600ms;
   --duration-slow: 1100ms;
+  /* The hero's own tempo. Mirrors DURATION.cinematic in src/lib/motion.ts,
+   * which the parallax still reads. */
+  --duration-cinematic: 1300ms;
 }
 
 :root {
@@ -102,6 +105,31 @@
   --slate: oklch(0.635 0 0); /* #8A8A8A */
   --sand: oklch(0.653 0.084 78.5); /* #B08D4C */
   --sand-soft: oklch(0.936 0.017 82.5); /* #EDE6DB */
+
+  /*
+   * The readable pair.
+   *
+   * Written as hex rather than oklch, deliberately: these two exist to hit a
+   * measured contrast ratio, and a colour space conversion that lands a couple
+   * of percent off would quietly drop them back under it.
+   *
+   * The brand palette above is unchanged and still what the site looks like.
+   * But two of its colours do not carry small text to WCAG AA on white, and the
+   * audit measured it rather than assuming:
+   *
+   *   Slate #8A8A8A on white   3.45:1  — needs 4.5:1 for text under 24px
+   *   Sand  #B08D4C on white   3.11:1  — needs 4.5:1 for text under 24px
+   *
+   * Both are fine for what they were chosen for: rules, borders, and display
+   * type at 44px and up, where the bar is 3:1. They are not fine for a 14px
+   * caption or a link, which is most of the text on the site that is not black.
+   *
+   * So the *roles* below resolve to darkened members of the same two hues, both
+   * measured to pass on white and on the soft-sand sections. They read as the
+   * same grey and the same gold; they are simply legible.
+   */
+  --slate-readable: #666666; /* 5.74:1 on white · 4.63:1 on sand-soft */
+  --sand-readable: #7e622f; /* 5.71:1 on white · 4.61:1 on sand-soft */
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -118,9 +146,11 @@
   --secondary-foreground: var(--ink);
 
   --muted: oklch(0.968 0.004 84);
-  --muted-foreground: var(--slate);
+  --muted-foreground: var(--slate-readable);
 
-  --accent: var(--sand);
+  /* The interactive and small-text gold. `--sand` itself stays available for
+   * display type and non-text marks — see the hero's accent line. */
+  --accent: var(--sand-readable);
   --accent-foreground: var(--paper);
   --accent-soft: var(--sand-soft);
 
@@ -129,6 +159,9 @@
 
   --border: oklch(0.9 0 0);
   --input: oklch(0.9 0 0);
+  /* The focus ring is a non-text indicator: 3:1 against what it sits on, which
+   * the brand gold clears at 3.11:1. Keeping the brighter one makes the ring
+   * easier to spot, which is the entire point of it. */
   --ring: var(--sand);
 }
 
@@ -250,15 +283,9 @@
   }
 }
 
-/* The hero animates in on mount rather than on scroll, so it needs its own
- * safety net: with scripting disabled the animation never runs, and the page's
- * H1 must not be a blank space. */
-@media (scripting: none) {
-  [data-hero-reveal] {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
+/* The hero's own animation is defined further down, in CSS, so it no longer
+ * needs a scripting fallback — a CSS animation runs with JavaScript disabled
+ * and starts at the first paint either way. See the note on [data-hero-reveal]. */
 
 /* --- Print ----------------------------------------------------------------
  * The gated reports are meant to be saved as PDFs, so "Download as PDF" is the
@@ -424,5 +451,206 @@
   &:hover {
     color: var(--color-accent);
     text-decoration-color: currentColor;
+  }
+}
+
+/* --- Right-to-left, and the scripts the site is set in ---------------------
+ *
+ * Two problems, solved together.
+ *
+ * FIRST, DIRECTION. Tailwind's logical utilities (ms/me/ps/pe/start/end) handle
+ * most of it, and the components use them. What is left is the handful of
+ * places where a rule is drawn or a transform originates on one physical side.
+ * Those are corrected here rather than duplicated at every call site.
+ *
+ * SECOND, THE FACES. Cormorant Garamond and Jost are Latin faces. Cormorant
+ * carries Cyrillic, so Russian keeps the editorial serif; Jost does not, so
+ * Russian body copy would silently fall back to whatever the browser had.
+ * Arabic and Devanagari have no coverage in either. Rendering a headline in a
+ * fallback face is exactly the detail that separates a translated site from a
+ * localised one, so each script gets a face chosen for it — loaded only on the
+ * pages that need it, so the English site pays nothing.
+ *
+ * Chinese deliberately gets no webfont. A full Simplified Chinese face is
+ * several megabytes; the system stack below is what every native Chinese site
+ * uses, renders instantly, and is what the reader already expects to see.
+ */
+
+[dir="rtl"] {
+  /* Amiri is a Naskh face in the same register as Cormorant — high contrast,
+   * unhurried, built for continuous reading rather than signage. */
+  --font-display: "Amiri", "Noto Naskh Arabic", ui-serif, serif;
+  --font-sans: "Noto Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+
+  /* Arabic sits lower and denser in its box than Latin at the same size, so the
+   * tight Latin tracking is removed — negative letter-spacing on Arabic breaks
+   * the joins between letters, which is the fastest way to make a headline look
+   * like it was set by someone who does not read the script. */
+  --tracking-display: 0em;
+  --tracking-editorial: 0.08em;
+}
+
+:root:lang(hi) {
+  --font-display: "Noto Serif Devanagari", ui-serif, Georgia, serif;
+  --font-sans: "Noto Sans Devanagari", ui-sans-serif, system-ui, sans-serif;
+  /* Devanagari hangs from its headline stroke; tight negative tracking closes
+   * the shirorekha and makes a whole word look like one glyph. */
+  --tracking-display: 0em;
+}
+
+:root:lang(ru) {
+  /* Cormorant covers Cyrillic; Jost does not, so only the sans is swapped. */
+  --font-sans: "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root:lang(zh-Hans) {
+  --font-display:
+    "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", ui-serif, serif;
+  --font-sans:
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", ui-sans-serif,
+    system-ui, sans-serif;
+  --tracking-display: 0em;
+  --tracking-editorial: 0.12em;
+}
+
+/* Eyebrows are uppercased for Latin. Arabic and Chinese have no case, and
+ * Devanagari's uppercase is a no-op some fonts handle badly. */
+[dir="rtl"] .eyebrow,
+:root:lang(zh-Hans) .eyebrow,
+:root:lang(hi) .eyebrow {
+  text-transform: none;
+}
+
+/* The skip link anchors to the reading edge, not the physical left. */
+.skip-link {
+  left: auto;
+  inset-inline-start: -9999px;
+}
+
+.skip-link:focus {
+  left: auto;
+  inset-inline-start: 1rem;
+}
+
+/*
+ * The underline sweep starts at the reading edge and retreats to it.
+ *
+ * `link-underline` is defined with physical origins because that is what reads
+ * correctly in English; mirrored here rather than made conditional at every one
+ * of its several dozen call sites.
+ */
+[dir="rtl"] .link-underline::after {
+  left: auto;
+  inset-inline-start: 0;
+  transform-origin: left;
+}
+
+[dir="rtl"] .link-underline:hover::after {
+  transform-origin: right;
+}
+
+/*
+ * Everything else on a localised page moves vertically, which is
+ * direction-neutral. Noted here so the next person does not go looking: the one
+ * piece of horizontal motion is the hover nudge on the index rows, and the
+ * components flip that themselves because Tailwind cannot express a
+ * direction-aware translate.
+ */
+
+/* --- The hero reveal, in CSS rather than JavaScript ------------------------
+ *
+ * This was a real defect, found by screenshotting the server-rendered page: the
+ * hero H1 shipped as `style="opacity:0"` and only became visible once React had
+ * hydrated and Framer Motion had run its mount animation. On a fast connection
+ * that is a flicker. On a phone on hotel wifi it is a blank hero for as long as
+ * the bundle takes — and since the H1 is the Largest Contentful Paint candidate
+ * on the most important page of the site, LCP was effectively measuring how
+ * long the JavaScript took, not how long the page took.
+ *
+ * Moving the same animation to CSS fixes it at the root. A CSS animation starts
+ * at the first paint, before a single byte of JavaScript has been parsed, so
+ * the headline begins appearing immediately and LCP lands where it should. The
+ * parallax stays in JavaScript, where it belongs: it is an enhancement, and a
+ * page with no JavaScript should simply not have it.
+ *
+ * `--hero-delay` staggers the lines. `backwards` fill means the element is
+ * hidden before its delay elapses without needing an inline opacity:0 in the
+ * HTML — which is the whole point.
+ */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(2.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+[data-hero-reveal] {
+  animation: hero-rise var(--duration-cinematic, 1600ms) var(--ease-editorial)
+    var(--hero-delay, 0ms) both;
+}
+
+/* The eyebrow and the button row travel no distance — only the headline does,
+ * so the eye follows one movement rather than three. */
+[data-hero-reveal="fade"] {
+  animation-name: hero-fade;
+}
+
+/*
+ * Reduced motion, and the no-JavaScript case, land in the same place: the hero
+ * is simply there. Never hidden, never waiting.
+ */
+@media (prefers-reduced-motion: reduce) {
+  [data-hero-reveal] {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* --- The page turn --------------------------------------------------------
+ *
+ * A short lift and settle on the content when the reader navigates — the beat
+ * of a page being turned rather than a screen being replaced.
+ *
+ * `data-page-turn` is only set from the second page onwards. The first render
+ * carries no animation at all, because an entrance animation on a landing page
+ * is an LCP delay wearing a nice coat, and that mistake is already documented
+ * further up this file.
+ *
+ * Deliberately shorter than the hero's beat and shorter than a reveal: this
+ * runs on every navigation, and anything a reader sees a hundred times has to
+ * be almost subliminal or it becomes a tax.
+ */
+@keyframes page-turn {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-page-turn] {
+  animation: page-turn var(--duration-quick) var(--ease-editorial) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-page-turn] {
+    animation: none !important;
   }
 }

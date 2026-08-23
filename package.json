@@ -12,7 +12,10 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "audit:perf": "node scripts/audit-performance.mjs",
+    "audit:a11y": "node scripts/audit-a11y.mjs",
+    "preflight": "node scripts/preflight.mjs"
   },
   "overrides": {
     "rolldown": "1.2.1"

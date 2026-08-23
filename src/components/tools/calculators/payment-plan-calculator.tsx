@@ -145,7 +145,7 @@ export function PaymentPlanCalculator() {
                   <span className="caption md:col-span-2">
                     {milestone.percentOfPrice.toFixed(1)}%
                   </span>
-                  <span className="md:col-span-2 md:text-right">
+                  <span className="md:col-span-2 md:text-end">
                     <Money aed={milestone.amount} size="body" />
                   </span>
                 </li>

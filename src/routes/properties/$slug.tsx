@@ -4,6 +4,7 @@ import { getProperty, listRelatedProperties } from "@/data/properties";
 import type { PropertyWithRelations } from "@/data/types";
 import { site } from "@/config/site";
 import { formatArea, formatBedrooms, formatRent, humanise } from "@/lib/format";
+import { Price } from "@/components/tools/money";
 import { listingSchema } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
@@ -115,7 +116,11 @@ function PropertyDetail() {
           <div className="lg:col-span-7">
             <Reveal>
               <p className="display-3">
-                {formatRent(property.price, property.currency, property.rent_frequency)}
+                <Price
+                  amount={property.price}
+                  currency={property.currency}
+                  frequency={property.rent_frequency}
+                />
               </p>
               {property.summary ? (
                 <p className="lead mt-8 text-muted-foreground">{property.summary}</p>
@@ -197,6 +202,7 @@ function PropertyDetail() {
                       src={property.floor_plan_url}
                       alt={`Floor plan for ${property.title}`}
                       loading="lazy"
+                      decoding="async"
                       className="w-full bg-background"
                     />
                     <figcaption className="caption mt-4">Floor plan</figcaption>
@@ -337,6 +343,7 @@ function AgentPanel({ property }: { property: PropertyWithRelations }) {
                 width={72}
                 height={72}
                 loading="lazy"
+                decoding="async"
                 className="h-18 w-18 object-cover"
               />
             ) : null}

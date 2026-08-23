@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useRef } from "react";
+import { useRef, type CSSProperties } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import heroImage from "@/assets/hero-dubai.jpg";
 import { site } from "@/config/site";
@@ -8,7 +8,7 @@ import { getMarketPriceIndex, getMarketSummary, listAreasWithStats } from "@/dat
 import { listProperties } from "@/data/properties";
 import { listTestimonials } from "@/data/people";
 import { DURATION, EASE, stagger } from "@/lib/motion";
-import { faqSchema, type FaqEntry } from "@/lib/schema";
+import { faqSchema, reviewSchemaFor, type FaqEntry } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
 import { Section, Container, Eyebrow } from "@/components/ui/section";
 import { MarketBand } from "@/components/market/market-band";
@@ -58,7 +58,13 @@ export const Route = createFileRoute("/")({
     );
     return { featured, testimonials, partners, marketSummary, marketIndex, areas };
   },
-  head: () => pageHead({ path: "/", schema: [faqSchema(FAQ_ENTRIES)] }),
+  /* Review schema is built from the rows the loader actually returned, so a
+   * page with no verified reviews emits no Review nodes at all. */
+  head: ({ loaderData }) =>
+    pageHead({
+      path: "/",
+      schema: [faqSchema(FAQ_ENTRIES), ...reviewSchemaFor(loaderData?.testimonials ?? [])],
+    }),
   component: Index,
 });
 
@@ -95,52 +101,37 @@ function Index() {
           className="relative flex h-full items-end pb-24 lg:pb-32"
         >
           <Container>
-            <motion.div
-              data-hero-reveal
-              initial={reduced ? { opacity: 1 } : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={reduced ? { duration: 0 } : { duration: DURATION.cinematic, ease: EASE }}
-            >
+            <div data-hero-reveal="fade">
               <Eyebrow className="text-foreground/60">Dubai · Private Brokerage</Eyebrow>
-            </motion.div>
+            </div>
 
             <h1 className="display-1 mt-8 max-w-5xl">
               {["Dubai real estate,", "handled with"].map((line, i) => (
-                <motion.span
+                <span
                   key={line}
                   className="block overflow-hidden"
+                  /* The first line carries no delay. Everything after it is
+                   * staggered, but the LCP candidate has to be painting in the
+                   * first frame — an animation-delay on it is an LCP delay,
+                   * because Chrome does not count an element at opacity 0. */
                   data-hero-reveal
-                  initial={reduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={
-                    reduced
-                      ? { duration: 0 }
-                      : { duration: DURATION.cinematic, delay: 0.15 + i * 0.12, ease: EASE }
-                  }
+                  style={{ "--hero-delay": `${i * 140}ms` } as CSSProperties}
                 >
                   {line}
-                </motion.span>
+                </span>
               ))}
-              <motion.span
-                className="block italic text-accent"
+              <span
+                className="block italic text-sand"
                 data-hero-reveal
-                initial={reduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={
-                  reduced
-                    ? { duration: 0 }
-                    : { duration: DURATION.cinematic, delay: 0.39, ease: EASE }
-                }
+                style={{ "--hero-delay": "280ms" } as CSSProperties}
               >
                 intention.
-              </motion.span>
+              </span>
             </h1>
 
-            <motion.div
-              data-hero-reveal
-              initial={reduced ? { opacity: 1 } : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={reduced ? { duration: 0 } : { duration: DURATION.cinematic, delay: 0.7 }}
+            <div
+              data-hero-reveal="fade"
+              style={{ "--hero-delay": "560ms" } as CSSProperties}
               className="mt-12 flex flex-wrap items-center gap-8"
             >
               <Link to="/properties">
@@ -149,7 +140,7 @@ function Index() {
               <Link to="/contact" className="eyebrow link-underline text-foreground">
                 Private consultation
               </Link>
-            </motion.div>
+            </div>
           </Container>
         </motion.div>
       </div>

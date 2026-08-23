@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { localePath, localesForPath } from "@/config/locales";
 import { SITE_PAGES, absoluteUrl } from "@/config/site";
 import { listPostSlugs } from "@/data/blog";
 import { listDeveloperSlugs, listProjectSlugs } from "@/data/catalogue";
@@ -107,19 +108,48 @@ export const Route = createFileRoute("/sitemap.xml")({
           })),
         ];
 
+        /*
+         * Each entry becomes one <url> per language it exists in, and every one
+         * of those carries the full set of xhtml:link alternates — including a
+         * self-reference, which the protocol requires and which is the most
+         * commonly omitted half of it.
+         *
+         * `localesForPath` is the same function the <head> uses, so the sitemap
+         * and the page can never disagree about which translations exist. A
+         * page published only in English produces exactly one <url> with no
+         * alternates at all.
+         */
         const urls = entries
-          .map(
-            (entry) => `  <url>
-    <loc>${escapeXml(absoluteUrl(entry.path))}</loc>
+          .flatMap((entry) => {
+            const locales = localesForPath(entry.path);
+            const links =
+              locales.length > 1
+                ? locales
+                    .map(
+                      (locale) =>
+                        `    <xhtml:link rel="alternate" hreflang="${locale.htmlLang}" href="${escapeXml(
+                          absoluteUrl(localePath(entry.path, locale.code)),
+                        )}"/>`,
+                    )
+                    .join("\n") +
+                  `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(
+                    absoluteUrl(entry.path),
+                  )}"/>`
+                : "";
+
+            return locales.map(
+              (locale) => `  <url>
+    <loc>${escapeXml(absoluteUrl(localePath(entry.path, locale.code)))}</loc>
     <lastmod>${entry.lastmod ?? lastModified}</lastmod>
     <changefreq>${entry.changefreq}</changefreq>
-    <priority>${entry.priority.toFixed(1)}</priority>
+    <priority>${entry.priority.toFixed(1)}</priority>${links ? `\n${links}` : ""}
   </url>`,
-          )
+            );
+          })
           .join("\n");
 
         const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls}
 </urlset>
 `;

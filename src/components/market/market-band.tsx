@@ -69,7 +69,7 @@ export function MarketBand({
 
       {/* Layer one: the headline figures */}
       <div className="mt-16 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
-        <Reveal className="bg-secondary p-8 pl-0 sm:pl-8 lg:pl-0" delay={stagger(0)}>
+        <Reveal className="bg-secondary p-8 ps-0 sm:ps-8 lg:ps-0" delay={stagger(0)}>
           <Stat
             label="Median price"
             value={summary.medianPricePerSqft}

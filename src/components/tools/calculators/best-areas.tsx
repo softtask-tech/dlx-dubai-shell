@@ -144,7 +144,7 @@ export function BestAreas({ areas }: { areas: readonly AreaWithStats[] }) {
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <span className="body-text md:col-span-5">{entry.area.name}</span>
-                  <span className="caption md:col-span-6 md:text-right">{describe(entry)}</span>
+                  <span className="caption md:col-span-6 md:text-end">{describe(entry)}</span>
                 </li>
               ))}
             </ol>

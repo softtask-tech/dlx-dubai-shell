@@ -1,7 +1,8 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 
 import { getDeveloper, listProjects } from "@/data/catalogue";
-import { formatHandover, formatPrice } from "@/lib/format";
+import { formatHandover } from "@/lib/format";
+import { Price } from "@/components/tools/money";
 import { pageHead } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
 import { QualifiedForm } from "@/components/forms/qualified-form";
@@ -114,6 +115,7 @@ function DeveloperPage() {
                         src={project.hero_image_url}
                         alt={project.name}
                         loading="lazy"
+                        decoding="async"
                         className="h-full w-full object-cover transition-transform duration-slow ease-editorial group-hover:scale-[1.03]"
                       />
                     ) : null}
@@ -129,9 +131,11 @@ function DeveloperPage() {
                     {formatHandover(project.handover_quarter, project.handover_year)}
                   </p>
                   <p className="eyebrow mt-3 text-foreground">
-                    {project.starting_price
-                      ? `From ${formatPrice(project.starting_price, project.currency)}`
-                      : "Price on application"}
+                    {project.starting_price ? (
+                      <Price amount={project.starting_price} currency={project.currency} />
+                    ) : (
+                      "Price on application"
+                    )}
                   </p>
                 </Link>
               </Reveal>
