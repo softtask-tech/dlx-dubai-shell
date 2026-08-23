@@ -33,7 +33,7 @@ export type CampaignSpendRow = {
   campaign_name: string | null;
   adset_id: string | null;
   adset_name: string | null;
-  ad_id: string | null;
+  ad_id: string;
   ad_name: string | null;
   spend_date: string;
   spend_aed: number;

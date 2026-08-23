@@ -99,7 +99,12 @@ create table if not exists public.campaign_spend (
   campaign_name text,
   adset_id text,
   adset_name text,
-  ad_id text,
+  -- Empty string rather than null for "the whole campaign". Null would be the
+  -- natural choice, but the uniqueness rule below has to be a plain index for
+  -- PostgREST's upsert to target it — and a null in a unique index does not
+  -- collide with another null, so re-importing a campaign-level row would
+  -- insert a second one every time instead of correcting the first.
+  ad_id text not null default '',
   ad_name text,
   spend_date date not null,
   spend_aed numeric(14, 2) not null check (spend_aed >= 0),
@@ -112,11 +117,12 @@ create table if not exists public.campaign_spend (
   updated_at timestamptz not null default now()
 );
 
--- Re-importing a day corrects it rather than doubling it. An index rather than
--- a table constraint because the key has to treat a missing ad id as a value:
--- campaign-level and ad-level rows for the same day are different facts.
+-- Re-importing a day corrects it rather than doubling it. Deliberately a plain
+-- index over the raw columns: an expression index (wrapping ad_id in coalesce)
+-- reads better but cannot be named as an upsert target, and the import would
+-- fail every time after the first.
 create unique index if not exists campaign_spend_identity_idx
-  on public.campaign_spend (platform, campaign_id, coalesce(ad_id, ''), spend_date);
+  on public.campaign_spend (platform, campaign_id, ad_id, spend_date);
 
 grant select, insert, update, delete on public.campaign_spend to authenticated;
 grant all on public.campaign_spend to service_role;

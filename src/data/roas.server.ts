@@ -251,7 +251,10 @@ export async function importSpendCsv(csv: string): Promise<{ imported: number; e
       platform: (cells[platformAt] ?? "unknown").toLowerCase(),
       campaign_id: campaign,
       campaign_name: campaign,
-      ...(adAt >= 0 && cells[adAt] ? { ad_id: cells[adAt], ad_name: cells[adAt] } : {}),
+      /* Empty string, never null: it is part of the uniqueness key, and a null
+       * there would insert a new row on every re-import. */
+      ad_id: adAt >= 0 ? (cells[adAt] ?? "") : "",
+      ...(adAt >= 0 && cells[adAt] ? { ad_name: cells[adAt] } : {}),
       spend_date: date,
       spend_aed: spend,
       ...(impressionsAt >= 0 && cells[impressionsAt]
