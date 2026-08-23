@@ -14,6 +14,77 @@ export type Database = {
   }
   public: {
     Tables: {
+      advisor_conversations: {
+        Row: {
+          call_seconds: number | null
+          call_sid: string | null
+          caller_number: string | null
+          channel: Database["public"]["Enums"]["advisor_channel"]
+          created_at: string
+          ended_at: string | null
+          id: string
+          ip_hash: string | null
+          language: string
+          last_turn_at: string
+          lead_id: string | null
+          qualification: Json
+          session_token: string
+          started_at: string
+          summary: string | null
+          transcript: Json
+          turn_count: number
+          updated_at: string
+        }
+        Insert: {
+          call_seconds?: number | null
+          call_sid?: string | null
+          caller_number?: string | null
+          channel: Database["public"]["Enums"]["advisor_channel"]
+          created_at?: string
+          ended_at?: string | null
+          id?: string
+          ip_hash?: string | null
+          language?: string
+          last_turn_at?: string
+          lead_id?: string | null
+          qualification?: Json
+          session_token: string
+          started_at?: string
+          summary?: string | null
+          transcript?: Json
+          turn_count?: number
+          updated_at?: string
+        }
+        Update: {
+          call_seconds?: number | null
+          call_sid?: string | null
+          caller_number?: string | null
+          channel?: Database["public"]["Enums"]["advisor_channel"]
+          created_at?: string
+          ended_at?: string | null
+          id?: string
+          ip_hash?: string | null
+          language?: string
+          last_turn_at?: string
+          lead_id?: string | null
+          qualification?: Json
+          session_token?: string
+          started_at?: string
+          summary?: string | null
+          transcript?: Json
+          turn_count?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "advisor_conversations_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       agents: {
         Row: {
           auth_user_id: string | null
@@ -76,6 +147,139 @@ export type Database = {
           whatsapp?: string | null
         }
         Relationships: []
+      }
+      app_settings: {
+        Row: {
+          key: string
+          updated_at: string
+          value: string
+        }
+        Insert: {
+          key: string
+          updated_at?: string
+          value: string
+        }
+        Update: {
+          key?: string
+          updated_at?: string
+          value?: string
+        }
+        Relationships: []
+      }
+      area_price_history: {
+        Row: {
+          area_id: string
+          created_at: string
+          id: string
+          median_price: number | null
+          median_price_per_sqft: number | null
+          period_month: string
+          provenance: Database["public"]["Enums"]["data_provenance"]
+          transaction_count: number
+        }
+        Insert: {
+          area_id: string
+          created_at?: string
+          id?: string
+          median_price?: number | null
+          median_price_per_sqft?: number | null
+          period_month: string
+          provenance: Database["public"]["Enums"]["data_provenance"]
+          transaction_count?: number
+        }
+        Update: {
+          area_id?: string
+          created_at?: string
+          id?: string
+          median_price?: number | null
+          median_price_per_sqft?: number | null
+          period_month?: string
+          provenance?: Database["public"]["Enums"]["data_provenance"]
+          transaction_count?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "area_price_history_area_id_fkey"
+            columns: ["area_id"]
+            isOneToOne: false
+            referencedRelation: "areas"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      area_stats: {
+        Row: {
+          area_id: string
+          average_price: number | null
+          average_price_per_sqft: number | null
+          created_at: string
+          gross_yield_pct: number | null
+          id: string
+          last_updated: string
+          median_annual_rent: number | null
+          median_price: number | null
+          median_price_per_sqft: number | null
+          off_plan_share_pct: number | null
+          prior_median_price_per_sqft: number | null
+          prior_transaction_count: number | null
+          provenance: Database["public"]["Enums"]["data_provenance"]
+          transaction_count: number
+          window_end: string
+          window_start: string
+          yoy_price_change_pct: number | null
+          yoy_volume_change_pct: number | null
+        }
+        Insert: {
+          area_id: string
+          average_price?: number | null
+          average_price_per_sqft?: number | null
+          created_at?: string
+          gross_yield_pct?: number | null
+          id?: string
+          last_updated?: string
+          median_annual_rent?: number | null
+          median_price?: number | null
+          median_price_per_sqft?: number | null
+          off_plan_share_pct?: number | null
+          prior_median_price_per_sqft?: number | null
+          prior_transaction_count?: number | null
+          provenance: Database["public"]["Enums"]["data_provenance"]
+          transaction_count?: number
+          window_end: string
+          window_start: string
+          yoy_price_change_pct?: number | null
+          yoy_volume_change_pct?: number | null
+        }
+        Update: {
+          area_id?: string
+          average_price?: number | null
+          average_price_per_sqft?: number | null
+          created_at?: string
+          gross_yield_pct?: number | null
+          id?: string
+          last_updated?: string
+          median_annual_rent?: number | null
+          median_price?: number | null
+          median_price_per_sqft?: number | null
+          off_plan_share_pct?: number | null
+          prior_median_price_per_sqft?: number | null
+          prior_transaction_count?: number | null
+          provenance?: Database["public"]["Enums"]["data_provenance"]
+          transaction_count?: number
+          window_end?: string
+          window_start?: string
+          yoy_price_change_pct?: number | null
+          yoy_volume_change_pct?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "area_stats_area_id_fkey"
+            columns: ["area_id"]
+            isOneToOne: true
+            referencedRelation: "areas"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       areas: {
         Row: {
@@ -210,6 +414,119 @@ export type Database = {
           },
         ]
       }
+      campaign_spend: {
+        Row: {
+          ad_id: string
+          ad_name: string | null
+          adset_id: string | null
+          adset_name: string | null
+          campaign_id: string
+          campaign_name: string | null
+          clicks: number | null
+          created_at: string
+          id: string
+          imported_at: string
+          impressions: number | null
+          platform: string
+          platform_conversions: number | null
+          spend_aed: number
+          spend_date: string
+          updated_at: string
+        }
+        Insert: {
+          ad_id?: string
+          ad_name?: string | null
+          adset_id?: string | null
+          adset_name?: string | null
+          campaign_id: string
+          campaign_name?: string | null
+          clicks?: number | null
+          created_at?: string
+          id?: string
+          imported_at?: string
+          impressions?: number | null
+          platform: string
+          platform_conversions?: number | null
+          spend_aed: number
+          spend_date: string
+          updated_at?: string
+        }
+        Update: {
+          ad_id?: string
+          ad_name?: string | null
+          adset_id?: string | null
+          adset_name?: string | null
+          campaign_id?: string
+          campaign_name?: string | null
+          clicks?: number | null
+          created_at?: string
+          id?: string
+          imported_at?: string
+          impressions?: number | null
+          platform?: string
+          platform_conversions?: number | null
+          spend_aed?: number
+          spend_date?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      conversion_events: {
+        Row: {
+          attempts: number
+          created_at: string
+          destination: Database["public"]["Enums"]["conversion_destination"]
+          error: string | null
+          event_id: string
+          event_name: string
+          id: string
+          lead_id: string | null
+          response: Json | null
+          sent_at: string | null
+          status: Database["public"]["Enums"]["conversion_status"]
+          updated_at: string
+          value_aed: number | null
+        }
+        Insert: {
+          attempts?: number
+          created_at?: string
+          destination: Database["public"]["Enums"]["conversion_destination"]
+          error?: string | null
+          event_id: string
+          event_name: string
+          id?: string
+          lead_id?: string | null
+          response?: Json | null
+          sent_at?: string | null
+          status?: Database["public"]["Enums"]["conversion_status"]
+          updated_at?: string
+          value_aed?: number | null
+        }
+        Update: {
+          attempts?: number
+          created_at?: string
+          destination?: Database["public"]["Enums"]["conversion_destination"]
+          error?: string | null
+          event_id?: string
+          event_name?: string
+          id?: string
+          lead_id?: string | null
+          response?: Json | null
+          sent_at?: string | null
+          status?: Database["public"]["Enums"]["conversion_status"]
+          updated_at?: string
+          value_aed?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "conversion_events_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       developers: {
         Row: {
           created_at: string
@@ -260,6 +577,187 @@ export type Database = {
           website_url?: string | null
         }
         Relationships: []
+      }
+      dld_ingest_runs: {
+        Row: {
+          areas_refreshed: number
+          created_at: string
+          dataset: string | null
+          error_message: string | null
+          finished_at: string | null
+          id: string
+          rows_fetched: number
+          rows_rejected: number
+          rows_upserted: number
+          started_at: string
+          status: string
+          trigger_source: string
+        }
+        Insert: {
+          areas_refreshed?: number
+          created_at?: string
+          dataset?: string | null
+          error_message?: string | null
+          finished_at?: string | null
+          id?: string
+          rows_fetched?: number
+          rows_rejected?: number
+          rows_upserted?: number
+          started_at?: string
+          status?: string
+          trigger_source?: string
+        }
+        Update: {
+          areas_refreshed?: number
+          created_at?: string
+          dataset?: string | null
+          error_message?: string | null
+          finished_at?: string | null
+          id?: string
+          rows_fetched?: number
+          rows_rejected?: number
+          rows_upserted?: number
+          started_at?: string
+          status?: string
+          trigger_source?: string
+        }
+        Relationships: []
+      }
+      dld_rent_contracts: {
+        Row: {
+          annual_rent: number
+          area_id: string | null
+          area_name_raw: string
+          area_sqm: number | null
+          bedrooms: number | null
+          contract_start_date: string
+          created_at: string
+          id: string
+          ingested_at: string
+          property_type: string | null
+          provenance: Database["public"]["Enums"]["data_provenance"]
+          source_contract_id: string
+        }
+        Insert: {
+          annual_rent: number
+          area_id?: string | null
+          area_name_raw: string
+          area_sqm?: number | null
+          bedrooms?: number | null
+          contract_start_date: string
+          created_at?: string
+          id?: string
+          ingested_at?: string
+          property_type?: string | null
+          provenance: Database["public"]["Enums"]["data_provenance"]
+          source_contract_id: string
+        }
+        Update: {
+          annual_rent?: number
+          area_id?: string | null
+          area_name_raw?: string
+          area_sqm?: number | null
+          bedrooms?: number | null
+          contract_start_date?: string
+          created_at?: string
+          id?: string
+          ingested_at?: string
+          property_type?: string | null
+          provenance?: Database["public"]["Enums"]["data_provenance"]
+          source_contract_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dld_rent_contracts_area_id_fkey"
+            columns: ["area_id"]
+            isOneToOne: false
+            referencedRelation: "areas"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      dld_transactions: {
+        Row: {
+          amount: number
+          area_id: string | null
+          area_name_raw: string
+          area_sqft: number | null
+          area_sqm: number | null
+          bedrooms: number | null
+          building_name: string | null
+          created_at: string
+          id: string
+          ingested_at: string
+          is_freehold: boolean | null
+          latitude: number | null
+          longitude: number | null
+          price_per_sqft: number | null
+          property_subtype: string | null
+          property_type: string | null
+          provenance: Database["public"]["Enums"]["data_provenance"]
+          registration_type: string | null
+          rooms_raw: string | null
+          source_transaction_id: string
+          transaction_date: string
+          transaction_group: string | null
+        }
+        Insert: {
+          amount: number
+          area_id?: string | null
+          area_name_raw: string
+          area_sqft?: number | null
+          area_sqm?: number | null
+          bedrooms?: number | null
+          building_name?: string | null
+          created_at?: string
+          id?: string
+          ingested_at?: string
+          is_freehold?: boolean | null
+          latitude?: number | null
+          longitude?: number | null
+          price_per_sqft?: number | null
+          property_subtype?: string | null
+          property_type?: string | null
+          provenance: Database["public"]["Enums"]["data_provenance"]
+          registration_type?: string | null
+          rooms_raw?: string | null
+          source_transaction_id: string
+          transaction_date: string
+          transaction_group?: string | null
+        }
+        Update: {
+          amount?: number
+          area_id?: string | null
+          area_name_raw?: string
+          area_sqft?: number | null
+          area_sqm?: number | null
+          bedrooms?: number | null
+          building_name?: string | null
+          created_at?: string
+          id?: string
+          ingested_at?: string
+          is_freehold?: boolean | null
+          latitude?: number | null
+          longitude?: number | null
+          price_per_sqft?: number | null
+          property_subtype?: string | null
+          property_type?: string | null
+          provenance?: Database["public"]["Enums"]["data_provenance"]
+          registration_type?: string | null
+          rooms_raw?: string | null
+          source_transaction_id?: string
+          transaction_date?: string
+          transaction_group?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dld_transactions_area_id_fkey"
+            columns: ["area_id"]
+            isOneToOne: false
+            referencedRelation: "areas"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       guides: {
         Row: {
@@ -377,9 +875,22 @@ export type Database = {
           consent_at: string | null
           country_code: string | null
           created_at: string
+          deal_closed_at: string | null
+          deal_value_aed: number | null
+          dedupe_key: string | null
           email: string | null
+          external_form_id: string | null
+          external_lead_id: string | null
+          fbc: string | null
           fbclid: string | null
+          fbp: string | null
+          first_landing_page_url: string | null
+          first_seen_at: string | null
+          first_utm_campaign: string | null
+          first_utm_medium: string | null
+          first_utm_source: string | null
           full_name: string | null
+          gbraid: string | null
           gclid: string | null
           guide_id: string | null
           id: string
@@ -390,6 +901,10 @@ export type Database = {
           landing_page_url: string | null
           marketing_consent: boolean
           message: string | null
+          msclkid: string | null
+          nurture_last_sent_at: string | null
+          nurture_stage: number
+          nurture_started_at: string | null
           page_path: string | null
           phone: string | null
           preferred_contact: string | null
@@ -399,12 +914,18 @@ export type Database = {
           qualification_answers: Json
           raw_payload: Json
           referrer_url: string | null
+          routed_at: string | null
+          routing_reason: string | null
           score: number
           source_detail: string | null
           source_type: Database["public"]["Enums"]["lead_source_type"]
+          spam_reasons: Json
+          spam_score: number | null
           status: Database["public"]["Enums"]["lead_status"]
           temperature: Database["public"]["Enums"]["lead_temperature"]
           timeline: Database["public"]["Enums"]["lead_timeline"] | null
+          ttclid: string | null
+          unsubscribed_at: string | null
           updated_at: string
           user_agent: string | null
           utm_campaign: string | null
@@ -412,6 +933,7 @@ export type Database = {
           utm_medium: string | null
           utm_source: string | null
           utm_term: string | null
+          wbraid: string | null
         }
         Insert: {
           admin_notified_at?: string | null
@@ -425,9 +947,22 @@ export type Database = {
           consent_at?: string | null
           country_code?: string | null
           created_at?: string
+          deal_closed_at?: string | null
+          deal_value_aed?: number | null
+          dedupe_key?: string | null
           email?: string | null
+          external_form_id?: string | null
+          external_lead_id?: string | null
+          fbc?: string | null
           fbclid?: string | null
+          fbp?: string | null
+          first_landing_page_url?: string | null
+          first_seen_at?: string | null
+          first_utm_campaign?: string | null
+          first_utm_medium?: string | null
+          first_utm_source?: string | null
           full_name?: string | null
+          gbraid?: string | null
           gclid?: string | null
           guide_id?: string | null
           id?: string
@@ -438,6 +973,10 @@ export type Database = {
           landing_page_url?: string | null
           marketing_consent?: boolean
           message?: string | null
+          msclkid?: string | null
+          nurture_last_sent_at?: string | null
+          nurture_stage?: number
+          nurture_started_at?: string | null
           page_path?: string | null
           phone?: string | null
           preferred_contact?: string | null
@@ -447,12 +986,18 @@ export type Database = {
           qualification_answers?: Json
           raw_payload?: Json
           referrer_url?: string | null
+          routed_at?: string | null
+          routing_reason?: string | null
           score?: number
           source_detail?: string | null
           source_type: Database["public"]["Enums"]["lead_source_type"]
+          spam_reasons?: Json
+          spam_score?: number | null
           status?: Database["public"]["Enums"]["lead_status"]
           temperature?: Database["public"]["Enums"]["lead_temperature"]
           timeline?: Database["public"]["Enums"]["lead_timeline"] | null
+          ttclid?: string | null
+          unsubscribed_at?: string | null
           updated_at?: string
           user_agent?: string | null
           utm_campaign?: string | null
@@ -460,6 +1005,7 @@ export type Database = {
           utm_medium?: string | null
           utm_source?: string | null
           utm_term?: string | null
+          wbraid?: string | null
         }
         Update: {
           admin_notified_at?: string | null
@@ -473,9 +1019,22 @@ export type Database = {
           consent_at?: string | null
           country_code?: string | null
           created_at?: string
+          deal_closed_at?: string | null
+          deal_value_aed?: number | null
+          dedupe_key?: string | null
           email?: string | null
+          external_form_id?: string | null
+          external_lead_id?: string | null
+          fbc?: string | null
           fbclid?: string | null
+          fbp?: string | null
+          first_landing_page_url?: string | null
+          first_seen_at?: string | null
+          first_utm_campaign?: string | null
+          first_utm_medium?: string | null
+          first_utm_source?: string | null
           full_name?: string | null
+          gbraid?: string | null
           gclid?: string | null
           guide_id?: string | null
           id?: string
@@ -486,6 +1045,10 @@ export type Database = {
           landing_page_url?: string | null
           marketing_consent?: boolean
           message?: string | null
+          msclkid?: string | null
+          nurture_last_sent_at?: string | null
+          nurture_stage?: number
+          nurture_started_at?: string | null
           page_path?: string | null
           phone?: string | null
           preferred_contact?: string | null
@@ -495,12 +1058,18 @@ export type Database = {
           qualification_answers?: Json
           raw_payload?: Json
           referrer_url?: string | null
+          routed_at?: string | null
+          routing_reason?: string | null
           score?: number
           source_detail?: string | null
           source_type?: Database["public"]["Enums"]["lead_source_type"]
+          spam_reasons?: Json
+          spam_score?: number | null
           status?: Database["public"]["Enums"]["lead_status"]
           temperature?: Database["public"]["Enums"]["lead_temperature"]
           timeline?: Database["public"]["Enums"]["lead_timeline"] | null
+          ttclid?: string | null
+          unsubscribed_at?: string | null
           updated_at?: string
           user_agent?: string | null
           utm_campaign?: string | null
@@ -508,6 +1077,7 @@ export type Database = {
           utm_medium?: string | null
           utm_source?: string | null
           utm_term?: string | null
+          wbraid?: string | null
         }
         Relationships: [
           {
@@ -796,6 +1366,54 @@ export type Database = {
           },
         ]
       }
+      report_grants: {
+        Row: {
+          area_id: string | null
+          created_at: string
+          expires_at: string
+          first_viewed_at: string | null
+          id: string
+          lead_id: string | null
+          token: string
+          view_count: number
+        }
+        Insert: {
+          area_id?: string | null
+          created_at?: string
+          expires_at: string
+          first_viewed_at?: string | null
+          id?: string
+          lead_id?: string | null
+          token: string
+          view_count?: number
+        }
+        Update: {
+          area_id?: string | null
+          created_at?: string
+          expires_at?: string
+          first_viewed_at?: string | null
+          id?: string
+          lead_id?: string | null
+          token?: string
+          view_count?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "report_grants_area_id_fkey"
+            columns: ["area_id"]
+            isOneToOne: false
+            referencedRelation: "areas"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "report_grants_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       testimonials: {
         Row: {
           agent_id: string | null
@@ -898,8 +1516,16 @@ export type Database = {
         }
         Returns: boolean
       }
+      link_transactions_to_areas: { Args: never; Returns: number }
+      refresh_area_stats: { Args: never; Returns: number }
+      trigger_dld_sync: {
+        Args: { dataset?: string; trigger_source?: string }
+        Returns: number
+      }
+      trigger_lead_nurture: { Args: never; Returns: number }
     }
     Enums: {
+      advisor_channel: "chat" | "voice"
       app_role: "admin" | "agent"
       content_category:
         | "buying"
@@ -910,6 +1536,9 @@ export type Database = {
         | "market"
         | "area_guide"
         | "legal_and_tax"
+      conversion_destination: "meta_capi" | "google_ads" | "ga4"
+      conversion_status: "pending" | "sent" | "failed" | "skipped"
+      data_provenance: "dld_open_data" | "sample"
       furnishing: "unfurnished" | "semi_furnished" | "furnished"
       lead_intent: "buy" | "sell" | "rent" | "invest" | "relocate" | "advice"
       lead_source_type:
@@ -1087,6 +1716,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      advisor_channel: ["chat", "voice"],
       app_role: ["admin", "agent"],
       content_category: [
         "buying",
@@ -1098,6 +1728,9 @@ export const Constants = {
         "area_guide",
         "legal_and_tax",
       ],
+      conversion_destination: ["meta_capi", "google_ads", "ga4"],
+      conversion_status: ["pending", "sent", "failed", "skipped"],
+      data_provenance: ["dld_open_data", "sample"],
       furnishing: ["unfurnished", "semi_furnished", "furnished"],
       lead_intent: ["buy", "sell", "rent", "invest", "relocate", "advice"],
       lead_source_type: [
