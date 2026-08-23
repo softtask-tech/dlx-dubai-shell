@@ -396,6 +396,119 @@ export type Database = {
           },
         ]
       }
+      campaign_spend: {
+        Row: {
+          ad_id: string
+          ad_name: string | null
+          adset_id: string | null
+          adset_name: string | null
+          campaign_id: string
+          campaign_name: string | null
+          clicks: number | null
+          created_at: string
+          id: string
+          imported_at: string
+          impressions: number | null
+          platform: string
+          platform_conversions: number | null
+          spend_aed: number
+          spend_date: string
+          updated_at: string
+        }
+        Insert: {
+          ad_id?: string
+          ad_name?: string | null
+          adset_id?: string | null
+          adset_name?: string | null
+          campaign_id: string
+          campaign_name?: string | null
+          clicks?: number | null
+          created_at?: string
+          id?: string
+          imported_at?: string
+          impressions?: number | null
+          platform: string
+          platform_conversions?: number | null
+          spend_aed: number
+          spend_date: string
+          updated_at?: string
+        }
+        Update: {
+          ad_id?: string
+          ad_name?: string | null
+          adset_id?: string | null
+          adset_name?: string | null
+          campaign_id?: string
+          campaign_name?: string | null
+          clicks?: number | null
+          created_at?: string
+          id?: string
+          imported_at?: string
+          impressions?: number | null
+          platform?: string
+          platform_conversions?: number | null
+          spend_aed?: number
+          spend_date?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      conversion_events: {
+        Row: {
+          attempts: number
+          created_at: string
+          destination: Database["public"]["Enums"]["conversion_destination"]
+          error: string | null
+          event_id: string
+          event_name: string
+          id: string
+          lead_id: string | null
+          response: Json | null
+          sent_at: string | null
+          status: Database["public"]["Enums"]["conversion_status"]
+          updated_at: string
+          value_aed: number | null
+        }
+        Insert: {
+          attempts?: number
+          created_at?: string
+          destination: Database["public"]["Enums"]["conversion_destination"]
+          error?: string | null
+          event_id: string
+          event_name: string
+          id?: string
+          lead_id?: string | null
+          response?: Json | null
+          sent_at?: string | null
+          status?: Database["public"]["Enums"]["conversion_status"]
+          updated_at?: string
+          value_aed?: number | null
+        }
+        Update: {
+          attempts?: number
+          created_at?: string
+          destination?: Database["public"]["Enums"]["conversion_destination"]
+          error?: string | null
+          event_id?: string
+          event_name?: string
+          id?: string
+          lead_id?: string | null
+          response?: Json | null
+          sent_at?: string | null
+          status?: Database["public"]["Enums"]["conversion_status"]
+          updated_at?: string
+          value_aed?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "conversion_events_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       developers: {
         Row: {
           created_at: string
@@ -744,9 +857,22 @@ export type Database = {
           consent_at: string | null
           country_code: string | null
           created_at: string
+          deal_closed_at: string | null
+          deal_value_aed: number | null
+          dedupe_key: string | null
           email: string | null
+          external_form_id: string | null
+          external_lead_id: string | null
+          fbc: string | null
           fbclid: string | null
+          fbp: string | null
+          first_landing_page_url: string | null
+          first_seen_at: string | null
+          first_utm_campaign: string | null
+          first_utm_medium: string | null
+          first_utm_source: string | null
           full_name: string | null
+          gbraid: string | null
           gclid: string | null
           guide_id: string | null
           id: string
@@ -757,6 +883,10 @@ export type Database = {
           landing_page_url: string | null
           marketing_consent: boolean
           message: string | null
+          msclkid: string | null
+          nurture_last_sent_at: string | null
+          nurture_stage: number
+          nurture_started_at: string | null
           page_path: string | null
           phone: string | null
           preferred_contact: string | null
@@ -766,12 +896,18 @@ export type Database = {
           qualification_answers: Json
           raw_payload: Json
           referrer_url: string | null
+          routed_at: string | null
+          routing_reason: string | null
           score: number
           source_detail: string | null
           source_type: Database["public"]["Enums"]["lead_source_type"]
+          spam_reasons: Json
+          spam_score: number | null
           status: Database["public"]["Enums"]["lead_status"]
           temperature: Database["public"]["Enums"]["lead_temperature"]
           timeline: Database["public"]["Enums"]["lead_timeline"] | null
+          ttclid: string | null
+          unsubscribed_at: string | null
           updated_at: string
           user_agent: string | null
           utm_campaign: string | null
@@ -779,6 +915,7 @@ export type Database = {
           utm_medium: string | null
           utm_source: string | null
           utm_term: string | null
+          wbraid: string | null
         }
         Insert: {
           admin_notified_at?: string | null
@@ -792,9 +929,22 @@ export type Database = {
           consent_at?: string | null
           country_code?: string | null
           created_at?: string
+          deal_closed_at?: string | null
+          deal_value_aed?: number | null
+          dedupe_key?: string | null
           email?: string | null
+          external_form_id?: string | null
+          external_lead_id?: string | null
+          fbc?: string | null
           fbclid?: string | null
+          fbp?: string | null
+          first_landing_page_url?: string | null
+          first_seen_at?: string | null
+          first_utm_campaign?: string | null
+          first_utm_medium?: string | null
+          first_utm_source?: string | null
           full_name?: string | null
+          gbraid?: string | null
           gclid?: string | null
           guide_id?: string | null
           id?: string
@@ -805,6 +955,10 @@ export type Database = {
           landing_page_url?: string | null
           marketing_consent?: boolean
           message?: string | null
+          msclkid?: string | null
+          nurture_last_sent_at?: string | null
+          nurture_stage?: number
+          nurture_started_at?: string | null
           page_path?: string | null
           phone?: string | null
           preferred_contact?: string | null
@@ -814,12 +968,18 @@ export type Database = {
           qualification_answers?: Json
           raw_payload?: Json
           referrer_url?: string | null
+          routed_at?: string | null
+          routing_reason?: string | null
           score?: number
           source_detail?: string | null
           source_type: Database["public"]["Enums"]["lead_source_type"]
+          spam_reasons?: Json
+          spam_score?: number | null
           status?: Database["public"]["Enums"]["lead_status"]
           temperature?: Database["public"]["Enums"]["lead_temperature"]
           timeline?: Database["public"]["Enums"]["lead_timeline"] | null
+          ttclid?: string | null
+          unsubscribed_at?: string | null
           updated_at?: string
           user_agent?: string | null
           utm_campaign?: string | null
@@ -827,6 +987,7 @@ export type Database = {
           utm_medium?: string | null
           utm_source?: string | null
           utm_term?: string | null
+          wbraid?: string | null
         }
         Update: {
           admin_notified_at?: string | null
@@ -840,9 +1001,22 @@ export type Database = {
           consent_at?: string | null
           country_code?: string | null
           created_at?: string
+          deal_closed_at?: string | null
+          deal_value_aed?: number | null
+          dedupe_key?: string | null
           email?: string | null
+          external_form_id?: string | null
+          external_lead_id?: string | null
+          fbc?: string | null
           fbclid?: string | null
+          fbp?: string | null
+          first_landing_page_url?: string | null
+          first_seen_at?: string | null
+          first_utm_campaign?: string | null
+          first_utm_medium?: string | null
+          first_utm_source?: string | null
           full_name?: string | null
+          gbraid?: string | null
           gclid?: string | null
           guide_id?: string | null
           id?: string
@@ -853,6 +1027,10 @@ export type Database = {
           landing_page_url?: string | null
           marketing_consent?: boolean
           message?: string | null
+          msclkid?: string | null
+          nurture_last_sent_at?: string | null
+          nurture_stage?: number
+          nurture_started_at?: string | null
           page_path?: string | null
           phone?: string | null
           preferred_contact?: string | null
@@ -862,12 +1040,18 @@ export type Database = {
           qualification_answers?: Json
           raw_payload?: Json
           referrer_url?: string | null
+          routed_at?: string | null
+          routing_reason?: string | null
           score?: number
           source_detail?: string | null
           source_type?: Database["public"]["Enums"]["lead_source_type"]
+          spam_reasons?: Json
+          spam_score?: number | null
           status?: Database["public"]["Enums"]["lead_status"]
           temperature?: Database["public"]["Enums"]["lead_temperature"]
           timeline?: Database["public"]["Enums"]["lead_timeline"] | null
+          ttclid?: string | null
+          unsubscribed_at?: string | null
           updated_at?: string
           user_agent?: string | null
           utm_campaign?: string | null
@@ -875,6 +1059,7 @@ export type Database = {
           utm_medium?: string | null
           utm_source?: string | null
           utm_term?: string | null
+          wbraid?: string | null
         }
         Relationships: [
           {
@@ -1328,6 +1513,8 @@ export type Database = {
         | "market"
         | "area_guide"
         | "legal_and_tax"
+      conversion_destination: "meta_capi" | "google_ads" | "ga4"
+      conversion_status: "pending" | "sent" | "failed" | "skipped"
       data_provenance: "dld_open_data" | "sample"
       furnishing: "unfurnished" | "semi_furnished" | "furnished"
       lead_intent: "buy" | "sell" | "rent" | "invest" | "relocate" | "advice"
@@ -1518,6 +1705,8 @@ export const Constants = {
         "area_guide",
         "legal_and_tax",
       ],
+      conversion_destination: ["meta_capi", "google_ads", "ga4"],
+      conversion_status: ["pending", "sent", "failed", "skipped"],
       data_provenance: ["dld_open_data", "sample"],
       furnishing: ["unfurnished", "semi_furnished", "furnished"],
       lead_intent: ["buy", "sell", "rent", "invest", "relocate", "advice"],
