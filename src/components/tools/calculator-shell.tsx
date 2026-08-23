@@ -76,7 +76,7 @@ export function SubResult({
         <p className="body-text">{label}</p>
         {note ? <p className="caption mt-1 max-w-measure">{note}</p> : null}
       </div>
-      <div className="shrink-0 text-right">{value}</div>
+      <div className="shrink-0 text-end">{value}</div>
     </div>
   );
 }
@@ -246,7 +246,7 @@ export function ToggleField({
         />
         <span className="eyebrow">{label}</span>
       </label>
-      {hint ? <p className="caption ml-8">{hint}</p> : null}
+      {hint ? <p className="caption ms-8">{hint}</p> : null}
     </div>
   );
 }

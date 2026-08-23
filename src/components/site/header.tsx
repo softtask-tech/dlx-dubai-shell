@@ -1,8 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { isLocalisedPath } from "@/config/locales";
 import { SITE_PAGES } from "@/config/site";
+import { EnglishOnly } from "@/i18n/english-only";
+import { LanguageSwitcher } from "@/i18n/language-switcher";
+import { navLabel } from "@/i18n/nav-labels";
+import { useLocale } from "@/i18n";
 import { DURATION, EASE } from "@/lib/motion";
+import { CurrencyPicker } from "@/components/tools/money";
 import { cn } from "@/lib/utils";
 
 /**
@@ -18,6 +23,7 @@ export const ALL_NAV_LINKS = SITE_PAGES.map((page) => ({ label: page.label, to: 
 
 export function Header() {
   const reduced = useReducedMotion();
+  const { t, code, isTranslated, pathIn } = useLocale();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -51,39 +57,50 @@ export function Header() {
       )}
     >
       <div className="mx-auto flex h-20 w-full max-w-shell items-center justify-between px-6 md:px-10 lg:px-16">
-        <Link
-          to="/"
-          aria-label="DLX Properties — home"
+        {/* Plain anchors rather than <Link>, throughout the localised chrome:
+            the document's lang and dir come from the URL, and only a real
+            navigation makes the browser re-apply them. */}
+        <a
+          href={pathIn(code, "/")}
+          aria-label={t.nav.homeAria}
           className="font-display text-2xl leading-none tracking-monogram text-foreground"
           onClick={() => setOpen(false)}
         >
           DLX
-        </Link>
+        </a>
 
-        <nav aria-label="Primary" className="hidden items-center gap-9 lg:flex">
+        <nav aria-label={t.nav.primaryLabel} className="hidden items-center gap-9 lg:flex">
           {NAV_LINKS.slice(1).map((item) => (
-            <Link
+            <a
               key={item.to}
-              to={item.to}
+              href={pathIn(code, item.to)}
               className="eyebrow link-underline text-foreground/70 transition-colors hover:text-foreground"
-              activeProps={{ className: "text-foreground" }}
             >
-              {item.label}
-            </Link>
+              {navLabel(item.to, t, item.label)}
+              {isTranslated && !isLocalisedPath(item.to) ? <EnglishOnly /> : null}
+            </a>
           ))}
         </nav>
 
-        <button
-          ref={toggleRef}
-          type="button"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          onClick={() => setOpen((v) => !v)}
-          className="eyebrow text-foreground lg:hidden"
-        >
-          {open ? "Close" : "Menu"}
-        </button>
+        <div className="flex items-center gap-6">
+          {/* Currency before language: a reader who has already chosen their
+              language is done with that control, but the price they are looking
+              at is on the page in front of them. */}
+          <CurrencyPicker variant="bare" className="hidden lg:flex" />
+          <LanguageSwitcher className="hidden lg:block" />
+
+          <button
+            ref={toggleRef}
+            type="button"
+            aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            onClick={() => setOpen((v) => !v)}
+            className="eyebrow text-foreground lg:hidden"
+          >
+            {open ? t.nav.closeMenu : t.nav.openMenu}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -96,18 +113,23 @@ export function Header() {
             transition={reduced ? { duration: 0 } : { duration: DURATION.base, ease: EASE }}
             className="overflow-hidden border-t border-border bg-background lg:hidden"
           >
-            <nav aria-label="Primary" className="flex flex-col gap-6 px-6 py-10">
+            <nav aria-label={t.nav.primaryLabel} className="flex flex-col gap-6 px-6 py-10">
               {NAV_LINKS.map((item) => (
-                <Link
+                <a
                   key={item.to}
-                  to={item.to}
+                  href={pathIn(code, item.to)}
                   onClick={() => setOpen(false)}
                   className="font-display text-3xl text-foreground"
                 >
-                  {item.label}
-                </Link>
+                  {navLabel(item.to, t, item.label)}
+                  {isTranslated && !isLocalisedPath(item.to) ? <EnglishOnly /> : null}
+                </a>
               ))}
             </nav>
+            <div className="flex flex-col gap-6 border-t border-border px-6 py-8">
+              <CurrencyPicker variant="bare" />
+              <LanguageSwitcher />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

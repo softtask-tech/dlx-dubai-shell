@@ -160,8 +160,9 @@ function FilterBar({ search, areas }: { search: PropertySearch; areas: Area[] })
             </FilterLink>
           </FilterGroup>
 
-          <FilterGroup label="Type">
+          <FilterGroup label="Type" htmlFor="filter-type">
             <FilterSelect
+              id="filter-type"
               value={search.type ?? ""}
               options={[
                 { value: "", label: "Any type" },
@@ -171,8 +172,9 @@ function FilterBar({ search, areas }: { search: PropertySearch; areas: Area[] })
             />
           </FilterGroup>
 
-          <FilterGroup label="Community">
+          <FilterGroup label="Community" htmlFor="filter-community">
             <FilterSelect
+              id="filter-community"
               value={search.area ?? ""}
               options={[
                 { value: "", label: "All communities" },
@@ -182,8 +184,9 @@ function FilterBar({ search, areas }: { search: PropertySearch; areas: Area[] })
             />
           </FilterGroup>
 
-          <FilterGroup label="Beds">
+          <FilterGroup label="Beds" htmlFor="filter-beds">
             <FilterSelect
+              id="filter-beds"
               value={search.beds === undefined ? "" : String(search.beds)}
               options={[
                 { value: "", label: "Any" },
@@ -197,8 +200,9 @@ function FilterBar({ search, areas }: { search: PropertySearch; areas: Area[] })
             />
           </FilterGroup>
 
-          <FilterGroup label="Price">
+          <FilterGroup label="Price" htmlFor="filter-price">
             <FilterSelect
+              id="filter-price"
               value={priceBandValue(search)}
               options={PRICE_BANDS.map((band, index) => ({
                 value: String(index),
@@ -228,8 +232,9 @@ function FilterBar({ search, areas }: { search: PropertySearch; areas: Area[] })
           </FilterGroup>
 
           <div className="ml-auto flex items-center gap-6">
-            <FilterGroup label="Sort">
+            <FilterGroup label="Sort" htmlFor="filter-sort">
               <FilterSelect
+                id="filter-sort"
                 value={search.sort ?? "newest"}
                 options={[
                   { value: "newest", label: "Newest" },
@@ -251,10 +256,35 @@ function FilterBar({ search, areas }: { search: PropertySearch; areas: Area[] })
   );
 }
 
-function FilterGroup({ label, children }: { label: string; children: React.ReactNode }) {
+/**
+ * A labelled row of filter controls.
+ *
+ * The label is a real `<label>` bound to the control by id, not a `<span>` that
+ * merely sits beside it. The audit caught this: five selects on this page had a
+ * visible label a sighted reader could see and no accessible name at all, so a
+ * screen reader announced each of them as "combo box" and nothing else.
+ *
+ * `htmlFor` is optional because the group also wraps link-based filters, which
+ * carry their own names.
+ */
+function FilterGroup({
+  label,
+  htmlFor,
+  children,
+}: {
+  label: string;
+  htmlFor?: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="flex items-center gap-4">
-      <span className="eyebrow">{label}</span>
+      {htmlFor ? (
+        <label htmlFor={htmlFor} className="eyebrow">
+          {label}
+        </label>
+      ) : (
+        <span className="eyebrow">{label}</span>
+      )}
       <div className="flex items-center gap-4">{children}</div>
     </div>
   );
@@ -292,10 +322,12 @@ function FilterLink({
  * JavaScript is unavailable.
  */
 function FilterSelect({
+  id,
   value,
   options,
   toSearch,
 }: {
+  id: string;
   value: string;
   options: ReadonlyArray<{ value: string; label: string }>;
   toSearch: (value: string) => PropertySearch;
@@ -304,6 +336,7 @@ function FilterSelect({
 
   return (
     <select
+      id={id}
       value={value}
       onChange={(event) => {
         void navigate({ search: toSearch(event.target.value) });

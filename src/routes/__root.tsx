@@ -8,14 +8,17 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { DEFAULT_LOCALE, localeFor, splitLocale } from "@/config/locales";
+import { LocaleProvider, useT } from "@/i18n";
 import { site } from "@/config/site";
 import { captureAttribution } from "@/components/forms/attribution";
 import { CurrencyProvider } from "@/components/tools/currency-context";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
+import { fontLinks } from "@/lib/fonts";
 import { pageHead } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/section";
@@ -106,12 +109,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       links: [
         { rel: "stylesheet", href: appCss },
         { rel: "icon", type: "image/png", href: "/favicon.png" },
-        { rel: "preconnect", href: "https://fonts.googleapis.com" },
-        { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap",
-        },
+        /* The Latin pair, on every page in every language — see src/lib/fonts.ts
+         * for why a translated page still needs it. The script fonts are added
+         * by the $lang layout, so English loads nothing extra. */
+        ...fontLinks(DEFAULT_LOCALE),
       ],
       scripts: shell.scripts,
     };
@@ -123,8 +124,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  /*
+   * `lang` and `dir` come from the URL, on the server, in the first byte of
+   * HTML.
+   *
+   * Setting them from an effect after hydration would mean Arabic laid out
+   * left-to-right for the length of a paint — the flash of wrong direction that
+   * makes an RTL site feel like an afterthought. It would also lie to a
+   * screen reader and to a translation service, both of which read the
+   * attribute and neither of which waits for React.
+   */
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const { code } = splitLocale(pathname);
+  const locale = localeFor(code) ?? localeFor(DEFAULT_LOCALE)!;
+
   return (
-    <html lang={site.language}>
+    <html lang={locale.htmlLang} dir={locale.dir}>
       <head>
         <HeadContent />
       </head>
@@ -147,6 +162,10 @@ function RootComponent() {
    * site's navigation is deliberately absent from them.
    */
   const isCampaignPage = pathname.startsWith("/lp/");
+
+  /* The URL is the single source of truth for language — see the note in
+   * src/i18n/index.tsx on why nothing is remembered here. */
+  const { code: locale } = splitLocale(pathname);
 
   /* Consent lives in the browser, so the first render cannot know it. Tracking
    * the answer in state is what lets the advisor rail wait its turn rather than
@@ -171,24 +190,63 @@ function RootComponent() {
     trackPageView(pathname);
   }, [pathname]);
 
+  /*
+   * The page turn.
+   *
+   * CLAUDE.md asks for transitions "like turning a page in a monograph", and
+   * the important word is *turning*: the new page settles in, it does not blink.
+   *
+   * The one rule this must not break is the one the hero taught us. The first
+   * render is never animated — `navigated` is false until the reader has
+   * actually gone somewhere, so the landing page paints at full opacity in the
+   * first frame and LCP is untouched. Only the second page onwards turns.
+   */
+  const [navigated, setNavigated] = useState(false);
+  const firstPath = useRef(pathname);
+  useEffect(() => {
+    if (pathname !== firstPath.current) setNavigated(true);
+  }, [pathname]);
+
   return (
     <QueryClientProvider client={queryClient}>
-      <CurrencyProvider>
-        <a href="#main" className="skip-link">
-          Skip to content
-        </a>
-        <CustomCursor />
-        {isCampaignPage ? null : <Header />}
-        <main id="main" className="min-h-screen">
-          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <Outlet />
-        </main>
-        {isCampaignPage ? null : <Footer />}
-        {/* One bar at a time. The advisor waits until the visitor has answered
-            the cookie question, so the foot of the page never carries two. */}
-        <ConsentBar onDecided={() => setConsentDecided(true)} />
-        {advisorAvailability.chat && consentDecided && !isCampaignPage ? <AdvisorDock /> : null}
-      </CurrencyProvider>
+      <LocaleProvider code={locale}>
+        <CurrencyProvider>
+          <SkipLink />
+          <CustomCursor />
+          {isCampaignPage ? null : <Header />}
+          <main
+            id="main"
+            /* Keyed on the path so the animation restarts on each navigation. */
+            key={navigated ? pathname : "initial"}
+            data-page-turn={navigated ? "true" : undefined}
+            className="min-h-screen"
+          >
+            {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+            <Outlet />
+          </main>
+          {isCampaignPage ? null : <Footer />}
+          {/* One bar at a time. The advisor waits until the visitor has answered
+              the cookie question, so the foot of the page never carries two. */}
+          <ConsentBar onDecided={() => setConsentDecided(true)} />
+          {advisorAvailability.chat && consentDecided && !isCampaignPage ? <AdvisorDock /> : null}
+        </CurrencyProvider>
+      </LocaleProvider>
     </QueryClientProvider>
+  );
+}
+
+/**
+ * The skip link, in the reader's language.
+ *
+ * Its own component because it needs the dictionary, and the dictionary needs
+ * the provider it sits inside — a hook called in RootComponent would run above
+ * LocaleProvider and always read English.
+ */
+function SkipLink() {
+  const t = useT();
+  return (
+    <a href="#main" className="skip-link">
+      {t.nav.skipToContent}
+    </a>
   );
 }

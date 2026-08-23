@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 
 import { readAttribution } from "./attribution";
 import { Turnstile } from "./turnstile";
+import { fill, useT } from "@/i18n";
 import { newEventId, track } from "@/lib/tracking";
 import { Choice, ChoiceGroup, Field, Select, TextArea, TextInput } from "./fields";
 import { submitLeadFn } from "@/data/leads.functions";
@@ -34,22 +35,27 @@ type QualifiedFormProps = {
   description?: string;
   /** Label on the final button. */
   submitLabel?: string;
+  /**
+   * The heading level the form's title should occupy.
+   *
+   * Defaults to h3, which is right where the form sits under a section heading.
+   * The localised contact page places it directly under the page's h1, and a
+   * jump from h1 to h3 is a gap a screen-reader user navigating by heading
+   * hears as a missing section.
+   */
+  headingLevel?: "h2" | "h3";
 };
 
-const INTENTS: ReadonlyArray<{ value: LeadIntent; label: string }> = [
-  { value: "buy", label: "Buy a home" },
-  { value: "invest", label: "Invest" },
-  { value: "sell", label: "Sell a property" },
-  { value: "rent", label: "Rent" },
-  { value: "relocate", label: "Relocate to Dubai" },
-  { value: "advice", label: "Just exploring" },
-];
+/* Order only. The labels live in the dictionaries, so the same form speaks
+ * whichever language the page is in — and the value posted to the server is the
+ * enum either way, which is what keeps scoring and routing language-agnostic. */
+const INTENTS: readonly LeadIntent[] = ["buy", "invest", "sell", "rent", "relocate", "advice"];
 
-const TIMELINES: ReadonlyArray<{ value: LeadTimeline; label: string }> = [
-  { value: "immediately", label: "Ready now" },
-  { value: "within_3_months", label: "Next 3 months" },
-  { value: "within_12_months", label: "This year" },
-  { value: "researching", label: "Researching" },
+const TIMELINES: readonly LeadTimeline[] = [
+  "immediately",
+  "within_3_months",
+  "within_12_months",
+  "researching",
 ];
 
 /** Budget bands in AED. `null` max means "and above". */
@@ -73,10 +79,12 @@ export function QualifiedForm({
   sourceDetail,
   defaultIntent,
   propertyId,
-  title = "Start a conversation",
-  description = "Tell us what you're looking for. A consultant replies personally — usually the same day.",
-  submitLabel = "Send enquiry",
+  title,
+  description,
+  submitLabel,
+  headingLevel: Heading = "h3",
 }: QualifiedFormProps) {
+  const t = useT();
   const [step, setStep] = useState(0);
   /*
    * Generated once per form, not per submit: the browser fires the pixel with
@@ -120,7 +128,7 @@ export function QualifiedForm({
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     if (!canSubmit) {
-      setError("Give us an email address or a phone number so we can reply.");
+      setError(t.form.needContact);
       return;
     }
 
@@ -168,23 +176,19 @@ export function QualifiedForm({
     } catch (submitError) {
       console.error(submitError);
       setStatus("editing");
-      setError(
-        "Something went wrong sending that. Try again, or email us directly and we'll pick it up.",
-      );
+      setError(t.form.failed);
     }
   }
 
   if (status === "sent") {
     return (
       <div className="border border-border p-10">
-        <Eyebrow>{reportUrl ? "Your report is ready" : "Received"}</Eyebrow>
-        <h3 className="display-3 mt-6">
-          {reportUrl ? "Here it is." : "Thank you — that's with us."}
-        </h3>
+        <Eyebrow>{reportUrl ? "Your report is ready" : t.form.sentEyebrow}</Eyebrow>
+        <Heading className="display-3 mt-6">{reportUrl ? "Here it is." : t.form.sentTitle}</Heading>
         <p className="body-text mt-5 max-w-measure text-muted-foreground">
           {reportUrl
             ? "Open it now, or keep the link — it stays live for thirty days. A consultant will follow up personally in case you would rather talk it through."
-            : "A consultant will read this personally and come back to you, usually the same day. A confirmation is on its way to you now."}
+            : t.form.sentBody}
         </p>
         {reportUrl ? (
           <a href={reportUrl} className="mt-8 inline-block">
@@ -198,37 +202,39 @@ export function QualifiedForm({
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-10">
       <div>
-        <Eyebrow>{`Step ${step + 1} of 3`}</Eyebrow>
-        <h3 className="display-3 mt-5">{title}</h3>
-        <p className="body-text mt-4 max-w-measure text-muted-foreground">{description}</p>
+        <Eyebrow>{fill(t.form.stepOf, { current: step + 1, total: 3 })}</Eyebrow>
+        <Heading className="display-3 mt-5">{title ?? t.form.title}</Heading>
+        <p className="body-text mt-4 max-w-measure text-muted-foreground">
+          {description ?? t.form.description}
+        </p>
       </div>
 
       {/* Step 1 — what they want. The easiest question first. */}
       {step === 0 ? (
         <div className="flex flex-col gap-8">
-          <ChoiceGroup legend="What brings you to DLX?">
-            {INTENTS.map((option) => (
+          <ChoiceGroup legend={t.form.intentLegend}>
+            {INTENTS.map((value) => (
               <Choice
-                key={option.value}
+                key={value}
                 name="intent"
-                value={option.value}
-                checked={intent === option.value}
-                onSelect={(value) => setIntent(value as LeadIntent)}
+                value={value}
+                checked={intent === value}
+                onSelect={(next) => setIntent(next as LeadIntent)}
               >
-                {option.label}
+                {t.form.intents[value]}
               </Choice>
             ))}
           </ChoiceGroup>
           <div className="flex items-center gap-6">
             <Button type="button" onClick={() => goToStep(1)}>
-              Continue
+              {t.form.continue}
             </Button>
             <button
               type="button"
               onClick={() => goToStep(2)}
               className="eyebrow link-underline text-muted-foreground"
             >
-              Skip to contact details
+              {t.form.skipToDetails}
             </button>
           </div>
         </div>
@@ -237,32 +243,28 @@ export function QualifiedForm({
       {/* Step 2 — qualification. Every answer here is optional. */}
       {step === 1 ? (
         <div className="flex flex-col gap-8">
-          <ChoiceGroup legend="When are you looking to move?">
-            {TIMELINES.map((option) => (
+          <ChoiceGroup legend={t.form.timelineLegend}>
+            {TIMELINES.map((value) => (
               <Choice
-                key={option.value}
+                key={value}
                 name="timeline"
-                value={option.value}
-                checked={timeline === option.value}
-                onSelect={(value) => setTimeline(value as LeadTimeline)}
+                value={value}
+                checked={timeline === value}
+                onSelect={(next) => setTimeline(next as LeadTimeline)}
               >
-                {option.label}
+                {t.form.timelines[value]}
               </Choice>
             ))}
           </ChoiceGroup>
 
-          <Field
-            label="Budget"
-            name="budget"
-            hint="A rough band is plenty — it helps us send you the right things."
-          >
+          <Field label={t.form.budgetLabel} name="budget" hint={t.form.budgetHint}>
             <Select
               id="budget"
               name="budget"
               value={budgetIndex}
               onChange={(e) => setBudgetIndex(e.target.value)}
             >
-              <option value="">Rather not say</option>
+              <option value="">{t.form.budgetSkip}</option>
               {BUDGETS.map((band, index) => (
                 <option key={band.label} value={index}>
                   {band.label}
@@ -273,14 +275,14 @@ export function QualifiedForm({
 
           <div className="flex items-center gap-6">
             <Button type="button" onClick={() => goToStep(2)}>
-              Continue
+              {t.form.continue}
             </Button>
             <button
               type="button"
               onClick={() => goToStep(0)}
               className="eyebrow link-underline text-muted-foreground"
             >
-              Back
+              {t.form.back}
             </button>
           </div>
         </div>
@@ -290,7 +292,7 @@ export function QualifiedForm({
       {step === 2 ? (
         <div className="flex flex-col gap-8">
           <div className="grid gap-8 sm:grid-cols-2">
-            <Field label="Name" name="fullName">
+            <Field label={t.form.nameLabel} name="fullName">
               <TextInput
                 id="fullName"
                 name="fullName"
@@ -299,7 +301,7 @@ export function QualifiedForm({
                 onChange={(e) => setFullName(e.target.value)}
               />
             </Field>
-            <Field label="Email" name="email">
+            <Field label={t.form.emailLabel} name="email">
               <TextInput
                 id="email"
                 name="email"
@@ -309,7 +311,7 @@ export function QualifiedForm({
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Field>
-            <Field label="Phone" name="phone" hint="Include your country code.">
+            <Field label={t.form.phoneLabel} name="phone" hint={t.form.phoneHint}>
               <TextInput
                 id="phone"
                 name="phone"
@@ -319,22 +321,22 @@ export function QualifiedForm({
                 onChange={(e) => setPhone(e.target.value)}
               />
             </Field>
-            <Field label="Best way to reach you" name="preferredContact">
+            <Field label={t.form.contactPreferenceLabel} name="preferredContact">
               <Select
                 id="preferredContact"
                 name="preferredContact"
                 value={preferredContact}
                 onChange={(e) => setPreferredContact(e.target.value)}
               >
-                <option value="">No preference</option>
-                <option value="email">Email</option>
-                <option value="phone">Phone</option>
-                <option value="whatsapp">WhatsApp</option>
+                <option value="">{t.form.contactPreferences.none}</option>
+                <option value="email">{t.form.contactPreferences.email}</option>
+                <option value="phone">{t.form.contactPreferences.phone}</option>
+                <option value="whatsapp">{t.form.contactPreferences.whatsapp}</option>
               </Select>
             </Field>
           </div>
 
-          <Field label="Anything else we should know?" name="message">
+          <Field label={t.form.messageLabel} name="message">
             <TextArea
               id="message"
               name="message"
@@ -369,20 +371,18 @@ export function QualifiedForm({
 
           <div className="flex flex-wrap items-center gap-6">
             <Button type="submit" disabled={status === "submitting" || !canSubmit}>
-              {status === "submitting" ? "Sending…" : submitLabel}
+              {status === "submitting" ? t.form.submitting : (submitLabel ?? t.form.submit)}
             </Button>
             <button
               type="button"
               onClick={() => goToStep(1)}
               className="eyebrow link-underline text-muted-foreground"
             >
-              Back
+              {t.form.back}
             </button>
           </div>
 
-          <p className="caption max-w-measure">
-            We use your details to reply to this enquiry and nothing else. No lists, no sharing.
-          </p>
+          <p className="caption max-w-measure">{t.form.privacyNote}</p>
         </div>
       ) : null}
     </form>

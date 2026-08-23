@@ -1,7 +1,8 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 
 import { getProject } from "@/data/catalogue";
-import { formatHandover, formatPrice, humanise } from "@/lib/format";
+import { formatHandover, humanise } from "@/lib/format";
+import { Price } from "@/components/tools/money";
 import { pageHead } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
 import { QualifiedForm } from "@/components/forms/qualified-form";
@@ -85,9 +86,11 @@ function ProjectPage() {
           <div className="lg:col-span-7">
             <Reveal>
               <p className="display-3">
-                {project.starting_price
-                  ? `From ${formatPrice(project.starting_price, project.currency)}`
-                  : "Price on application"}
+                {project.starting_price ? (
+                  <Price amount={project.starting_price} currency={project.currency} />
+                ) : (
+                  "Price on application"
+                )}
               </p>
               {project.summary ? (
                 <p className="lead mt-8 text-muted-foreground">{project.summary}</p>

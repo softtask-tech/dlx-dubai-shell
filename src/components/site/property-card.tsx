@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
-import { formatArea, formatBedrooms, formatRent } from "@/lib/format";
+import { formatArea, formatBedrooms } from "@/lib/format";
+import { Price } from "@/components/tools/money";
 import type { PropertyWithRelations } from "@/data/types";
 import { Card, CardMedia } from "@/components/ui/card";
 import { Tag } from "@/components/ui/tag";
@@ -12,8 +13,6 @@ import { Tag } from "@/components/ui/tag";
  * bag of uploaded photography still lines up in a grid.
  */
 export function PropertyCard({ property }: { property: PropertyWithRelations }) {
-  const price = formatRent(property.price, property.currency, property.rent_frequency);
-
   return (
     <Card interactive className="border-0">
       <Link
@@ -27,6 +26,7 @@ export function PropertyCard({ property }: { property: PropertyWithRelations }) 
               src={property.hero_image_url}
               alt={property.title}
               loading="lazy"
+              decoding="async"
               width={800}
               height={600}
             />
@@ -52,7 +52,13 @@ export function PropertyCard({ property }: { property: PropertyWithRelations }) 
               .join(" · ")}
           </p>
 
-          <p className="eyebrow text-foreground">{price}</p>
+          <p className="eyebrow text-foreground">
+            <Price
+              amount={property.price}
+              currency={property.currency}
+              frequency={property.rent_frequency}
+            />
+          </p>
         </div>
       </Link>
     </Card>

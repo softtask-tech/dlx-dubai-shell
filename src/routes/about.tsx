@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { site } from "@/config/site";
 import { listPartnerDevelopers } from "@/data/catalogue";
 import { listAgents, listTestimonials } from "@/data/people";
-import { faqSchema, type FaqEntry } from "@/lib/schema";
+import { faqSchema, reviewSchemaFor, type FaqEntry } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
 import { DeveloperStrip } from "@/components/site/developer-strip";
@@ -57,11 +57,11 @@ export const Route = createFileRoute("/about")({
     ]);
     return { agents, testimonials, partners };
   },
-  head: () =>
+  head: ({ loaderData }) =>
     pageHead({
       path: "/about",
       breadcrumbs: [{ name: "About", path: "/about" }],
-      schema: [faqSchema(FAQS)],
+      schema: [faqSchema(FAQS), ...reviewSchemaFor(loaderData?.testimonials ?? [])],
     }),
   component: AboutPage,
 });

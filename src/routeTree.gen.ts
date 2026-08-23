@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LangRouteRouteImport } from './routes/$lang/route'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as AdvisorKnowledgeDotjsonRouteImport } from './routes/advisor-knowledge[.]json'
@@ -20,6 +21,11 @@ import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
+import { Route as LangIndexRouteImport } from './routes/$lang/index'
+import { Route as LangAboutRouteImport } from './routes/$lang/about'
+import { Route as LangContactRouteImport } from './routes/$lang/contact'
+import { Route as LangServicesRouteImport } from './routes/$lang/services'
+import { Route as LangToolsRouteImport } from './routes/$lang/tools'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminContentRouteImport } from './routes/admin/content'
 import { Route as AdminDataRouteImport } from './routes/admin/data'
@@ -52,6 +58,11 @@ import { Route as ApiLeadsMetaRouteImport } from './routes/api/leads/meta'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LangRouteRoute = LangRouteRouteImport.update({
+  id: '/$lang',
+  path: '/$lang',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -103,6 +114,31 @@ const UnsubscribeRoute = UnsubscribeRouteImport.update({
   id: '/unsubscribe',
   path: '/unsubscribe',
   getParentRoute: () => rootRouteImport,
+} as any)
+const LangIndexRoute = LangIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LangRouteRoute,
+} as any)
+const LangAboutRoute = LangAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => LangRouteRoute,
+} as any)
+const LangContactRoute = LangContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => LangRouteRoute,
+} as any)
+const LangServicesRoute = LangServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => LangRouteRoute,
+} as any)
+const LangToolsRoute = LangToolsRouteImport.update({
+  id: '/tools',
+  path: '/tools',
+  getParentRoute: () => LangRouteRoute,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
@@ -247,6 +283,7 @@ const ApiLeadsMetaRoute = ApiLeadsMetaRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$lang': typeof LangRouteRouteWithChildren
   '/admin': typeof AdminRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
@@ -257,6 +294,10 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
   '/unsubscribe': typeof UnsubscribeRoute
+  '/$lang/about': typeof LangAboutRoute
+  '/$lang/contact': typeof LangContactRoute
+  '/$lang/services': typeof LangServicesRoute
+  '/$lang/tools': typeof LangToolsRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
@@ -271,6 +312,7 @@ export interface FileRoutesByFullPath {
   '/reports/$token': typeof ReportsTokenRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/tools/$slug': typeof ToolsSlugRoute
+  '/$lang/': typeof LangIndexRoute
   '/admin/': typeof AdminIndexRoute
   '/areas/': typeof AreasIndexRoute
   '/blog/': typeof BlogIndexRoute
@@ -297,6 +339,10 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
   '/unsubscribe': typeof UnsubscribeRoute
+  '/$lang/about': typeof LangAboutRoute
+  '/$lang/contact': typeof LangContactRoute
+  '/$lang/services': typeof LangServicesRoute
+  '/$lang/tools': typeof LangToolsRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
@@ -311,6 +357,7 @@ export interface FileRoutesByTo {
   '/reports/$token': typeof ReportsTokenRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/tools/$slug': typeof ToolsSlugRoute
+  '/$lang': typeof LangIndexRoute
   '/admin': typeof AdminIndexRoute
   '/areas': typeof AreasIndexRoute
   '/blog': typeof BlogIndexRoute
@@ -329,6 +376,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$lang': typeof LangRouteRouteWithChildren
   '/admin': typeof AdminRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
@@ -339,6 +387,10 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
   '/unsubscribe': typeof UnsubscribeRoute
+  '/$lang/about': typeof LangAboutRoute
+  '/$lang/contact': typeof LangContactRoute
+  '/$lang/services': typeof LangServicesRoute
+  '/$lang/tools': typeof LangToolsRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
@@ -353,6 +405,7 @@ export interface FileRoutesById {
   '/reports/$token': typeof ReportsTokenRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/tools/$slug': typeof ToolsSlugRoute
+  '/$lang/': typeof LangIndexRoute
   '/admin/': typeof AdminIndexRoute
   '/areas/': typeof AreasIndexRoute
   '/blog/': typeof BlogIndexRoute
@@ -372,6 +425,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/$lang'
     | '/admin'
     | '/about'
     | '/advisor-knowledge.json'
@@ -382,6 +436,10 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/team'
     | '/unsubscribe'
+    | '/$lang/about'
+    | '/$lang/contact'
+    | '/$lang/services'
+    | '/$lang/tools'
     | '/admin/content'
     | '/admin/data'
     | '/admin/login'
@@ -396,6 +454,7 @@ export interface FileRouteTypes {
     | '/reports/$token'
     | '/services/$slug'
     | '/tools/$slug'
+    | '/$lang/'
     | '/admin/'
     | '/areas/'
     | '/blog/'
@@ -422,6 +481,10 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/team'
     | '/unsubscribe'
+    | '/$lang/about'
+    | '/$lang/contact'
+    | '/$lang/services'
+    | '/$lang/tools'
     | '/admin/content'
     | '/admin/data'
     | '/admin/login'
@@ -436,6 +499,7 @@ export interface FileRouteTypes {
     | '/reports/$token'
     | '/services/$slug'
     | '/tools/$slug'
+    | '/$lang'
     | '/admin'
     | '/areas'
     | '/blog'
@@ -453,6 +517,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/$lang'
     | '/admin'
     | '/about'
     | '/advisor-knowledge.json'
@@ -463,6 +528,10 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/team'
     | '/unsubscribe'
+    | '/$lang/about'
+    | '/$lang/contact'
+    | '/$lang/services'
+    | '/$lang/tools'
     | '/admin/content'
     | '/admin/data'
     | '/admin/login'
@@ -477,6 +546,7 @@ export interface FileRouteTypes {
     | '/reports/$token'
     | '/services/$slug'
     | '/tools/$slug'
+    | '/$lang/'
     | '/admin/'
     | '/areas/'
     | '/blog/'
@@ -495,6 +565,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LangRouteRoute: typeof LangRouteRouteWithChildren
   AdminRouteRoute: typeof AdminRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
   AdvisorKnowledgeDotjsonRoute: typeof AdvisorKnowledgeDotjsonRoute
@@ -537,6 +608,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang': {
+      id: '/$lang'
+      path: '/$lang'
+      fullPath: '/$lang'
+      preLoaderRoute: typeof LangRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -608,6 +686,41 @@ declare module '@tanstack/react-router' {
       fullPath: '/unsubscribe'
       preLoaderRoute: typeof UnsubscribeRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/$lang/': {
+      id: '/$lang/'
+      path: '/'
+      fullPath: '/$lang/'
+      preLoaderRoute: typeof LangIndexRouteImport
+      parentRoute: typeof LangRouteRoute
+    }
+    '/$lang/about': {
+      id: '/$lang/about'
+      path: '/about'
+      fullPath: '/$lang/about'
+      preLoaderRoute: typeof LangAboutRouteImport
+      parentRoute: typeof LangRouteRoute
+    }
+    '/$lang/contact': {
+      id: '/$lang/contact'
+      path: '/contact'
+      fullPath: '/$lang/contact'
+      preLoaderRoute: typeof LangContactRouteImport
+      parentRoute: typeof LangRouteRoute
+    }
+    '/$lang/services': {
+      id: '/$lang/services'
+      path: '/services'
+      fullPath: '/$lang/services'
+      preLoaderRoute: typeof LangServicesRouteImport
+      parentRoute: typeof LangRouteRoute
+    }
+    '/$lang/tools': {
+      id: '/$lang/tools'
+      path: '/tools'
+      fullPath: '/$lang/tools'
+      preLoaderRoute: typeof LangToolsRouteImport
+      parentRoute: typeof LangRouteRoute
     }
     '/admin/': {
       id: '/admin/'
@@ -808,6 +921,26 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface LangRouteRouteChildren {
+  LangAboutRoute: typeof LangAboutRoute
+  LangContactRoute: typeof LangContactRoute
+  LangServicesRoute: typeof LangServicesRoute
+  LangToolsRoute: typeof LangToolsRoute
+  LangIndexRoute: typeof LangIndexRoute
+}
+
+const LangRouteRouteChildren: LangRouteRouteChildren = {
+  LangAboutRoute: LangAboutRoute,
+  LangContactRoute: LangContactRoute,
+  LangServicesRoute: LangServicesRoute,
+  LangToolsRoute: LangToolsRoute,
+  LangIndexRoute: LangIndexRoute,
+}
+
+const LangRouteRouteWithChildren = LangRouteRoute._addFileChildren(
+  LangRouteRouteChildren,
+)
+
 interface AdminRouteRouteChildren {
   AdminContentRoute: typeof AdminContentRoute
   AdminDataRoute: typeof AdminDataRoute
@@ -830,6 +963,7 @@ const AdminRouteRouteWithChildren = AdminRouteRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LangRouteRoute: LangRouteRouteWithChildren,
   AdminRouteRoute: AdminRouteRouteWithChildren,
   AboutRoute: AboutRoute,
   AdvisorKnowledgeDotjsonRoute: AdvisorKnowledgeDotjsonRoute,

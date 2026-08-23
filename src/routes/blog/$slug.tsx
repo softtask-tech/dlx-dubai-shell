@@ -118,6 +118,7 @@ function PostPage() {
                         src={post.author.photo_url}
                         alt=""
                         loading="lazy"
+                        decoding="async"
                         className="h-12 w-12 shrink-0 object-cover"
                       />
                     ) : null}

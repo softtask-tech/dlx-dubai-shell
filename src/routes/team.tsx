@@ -61,6 +61,7 @@ function TeamPage() {
                         src={agent.photo_url}
                         alt={agent.full_name}
                         loading="lazy"
+                        decoding="async"
                         className="h-full w-full object-cover"
                       />
                     ) : null}

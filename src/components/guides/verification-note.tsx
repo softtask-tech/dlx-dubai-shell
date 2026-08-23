@@ -22,7 +22,7 @@ export function VerificationNote({
   subject?: string;
 }) {
   return (
-    <p className={cn("caption border-l-2 border-accent pl-6 text-muted-foreground", className)}>
+    <p className={cn("caption border-s-2 border-accent ps-6 text-muted-foreground", className)}>
       <span className="text-accent">Accurate as of {formatMonth(reviewedOn)}.</span> {subject}{" "}
       change, and how they apply depends on your circumstances. Treat this as orientation, not
       advice — verify anything you intend to act on with the relevant UAE authority or a licensed

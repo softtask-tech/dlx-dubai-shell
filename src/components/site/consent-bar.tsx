@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
 
 import { anyTagConfigured } from "@/config/tracking";
+import { useLocale } from "@/i18n";
 import { hasDecided, setConsent } from "@/lib/tracking";
 import { Button } from "@/components/ui/button";
 
@@ -22,6 +22,7 @@ import { Button } from "@/components/ui/button";
  * to, so asking would be a lie.
  */
 export function ConsentBar({ onDecided }: { onDecided: () => void }) {
+  const { t, code, pathIn } = useLocale();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -41,25 +42,23 @@ export function ConsentBar({ onDecided }: { onDecided: () => void }) {
   return (
     <div
       role="region"
-      aria-label="Cookie choices"
+      aria-label={t.consent.readPolicy}
       className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background"
     >
       <div className="mx-auto flex w-full max-w-shell flex-col gap-5 px-6 py-6 md:flex-row md:items-center md:justify-between md:px-10 lg:px-16">
         <p className="body-text max-w-measure text-muted-foreground">
-          We use cookies to measure how the site is used and how our advertising performs. Decline
-          and none are set beyond what the site needs to work.{" "}
-          <Link to="/privacy" className="prose-link">
-            How we handle data
-          </Link>
-          .
+          {t.consent.body}{" "}
+          <a href={pathIn(code, "/privacy")} className="prose-link">
+            {t.consent.readPolicy}
+          </a>
         </p>
 
         <div className="flex shrink-0 items-center gap-3">
           <Button variant="quiet" size="none" onClick={() => decide(false)}>
-            Decline
+            {t.consent.decline}
           </Button>
           <Button variant="primary" size="sm" onClick={() => decide(true)}>
-            Accept
+            {t.consent.accept}
           </Button>
         </div>
       </div>

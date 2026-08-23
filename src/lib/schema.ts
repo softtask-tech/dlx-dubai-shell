@@ -8,6 +8,8 @@
  * Rule: schema describes content that is *visible on the page*. Never emit a
  * claim (a rating, a price, an availability) that a visitor cannot also read.
  */
+import { DEFAULT_LOCALE, localePath, type LocaleCode } from "@/config/locales";
+import { dictionaryFor } from "@/i18n";
 import { SITE_URL, absoluteUrl, site } from "@/config/site";
 
 type JsonLd = Record<string, unknown>;
@@ -78,9 +80,21 @@ export function websiteSchema(): JsonLd {
 
 export type BreadcrumbEntry = { name: string; path: string };
 
-/** Breadcrumbs always start at Home, so callers pass only the trail beneath it. */
-export function breadcrumbSchema(trail: readonly BreadcrumbEntry[]): JsonLd {
-  const entries: BreadcrumbEntry[] = [{ name: "Home", path: "/" }, ...trail];
+/**
+ * Breadcrumbs always start at Home, so callers pass only the trail beneath it.
+ *
+ * On a translated page both the label and the URLs belong to that language: a
+ * crumb reading "Home" above an Arabic page, pointing at the English homepage,
+ * tells a search engine the two pages are one trail when they are two.
+ */
+export function breadcrumbSchema(
+  trail: readonly BreadcrumbEntry[],
+  locale: LocaleCode = DEFAULT_LOCALE,
+): JsonLd {
+  const entries: BreadcrumbEntry[] = [
+    { name: dictionaryFor(locale).nav.home, path: localePath("/", locale) },
+    ...trail.map((entry) => ({ name: entry.name, path: localePath(entry.path, locale) })),
+  ];
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -203,7 +217,15 @@ export type ReviewInput = {
   datePublished: string;
 };
 
-/** Client testimonials. Only ever built from reviews we actually hold. */
+/**
+ * Client testimonials. Only ever built from reviews we actually hold.
+ *
+ * Callers must pass reviews that are also rendered on the page and that a
+ * reader can verify at their source — `reviewSchemaFor` below enforces both by
+ * taking the same rows the block renders. Emitting Review schema for in-house
+ * copy is a fabricated record, and it is the specific abuse that gets a site's
+ * rich results removed rather than merely ignored.
+ */
 export function reviewSchema(input: ReviewInput): JsonLd {
   return {
     "@context": "https://schema.org",
@@ -219,6 +241,41 @@ export function reviewSchema(input: ReviewInput): JsonLd {
       worstRating: 1,
     },
   };
+}
+
+/**
+ * Review schema for a set of testimonials, or nothing.
+ *
+ * Takes the rows the page is rendering, so the schema and the visible content
+ * cannot disagree. Rows with no rating are skipped: a Review node needs a
+ * `reviewRating`, and inventing a five out of five for a quote that never
+ * carried a score would be exactly the kind of claim this codebase does not
+ * make.
+ *
+ * `aggregateRating` is deliberately never emitted. It would need every review
+ * of the business, not the handful this page shows, and a star average
+ * computed from a curated selection is a number that flatters itself.
+ */
+export function reviewSchemaFor(
+  testimonials: ReadonlyArray<{
+    author_name: string;
+    quote: string;
+    rating: number | null;
+    source_url: string | null;
+    published_at: string | null;
+    created_at: string;
+  }>,
+): JsonLd[] {
+  return testimonials
+    .filter((entry) => typeof entry.rating === "number" && Boolean(entry.source_url))
+    .map((entry) =>
+      reviewSchema({
+        author: entry.author_name,
+        body: entry.quote,
+        rating: entry.rating as number,
+        datePublished: (entry.published_at ?? entry.created_at).slice(0, 10),
+      }),
+    );
 }
 
 export type DatasetInput = {

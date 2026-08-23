@@ -1,0 +1,30 @@
+# Cache policy.
+#
+# Read by Cloudflare Pages and Netlify. The nginx and Caddy equivalents are in
+# docs/DEPLOY.md — whichever server ends up in front of this build, these three
+# rules are the ones that matter.
+#
+# Hashed build assets are immutable by construction: change the file and the
+# filename changes with it. A year is the maximum the spec allows and there is
+# no scenario in which a stale one is served.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# The social cards and the hero photograph are stable but not content-hashed, so
+# they get a week with revalidation rather than a year — long enough that a
+# returning visitor never re-downloads them, short enough that replacing one
+# does not need a cache purge.
+/og/*
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/favicon.png
+  Cache-Control: public, max-age=604800, must-revalidate
+
+# Everything else is server-rendered HTML carrying live listing and market data.
+# It must never be cached by a shared proxy: a page cached for one visitor's
+# currency, language or consent state and served to another is the failure mode
+# that makes a personalised site look broken.
+/*
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin

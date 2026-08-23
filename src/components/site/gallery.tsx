@@ -29,6 +29,7 @@ export function Gallery({ images, title }: { images: readonly string[]; title: s
             src={current}
             alt={`${title} — image ${selected + 1} of ${images.length}`}
             loading="lazy"
+            decoding="async"
             className="h-full w-full object-cover"
           />
         </div>
@@ -53,7 +54,13 @@ export function Gallery({ images, title }: { images: readonly string[]; title: s
                   index === selected ? "border-accent" : "border-transparent hover:border-border",
                 )}
               >
-                <img src={image} alt="" loading="lazy" className="h-full w-full object-cover" />
+                <img
+                  src={image}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
               </button>
             ))}
           </div>

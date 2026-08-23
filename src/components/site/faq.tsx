@@ -1,4 +1,5 @@
 import { Reveal } from "./reveal";
+import { useT } from "@/i18n";
 import { stagger } from "@/lib/motion";
 import { Eyebrow } from "@/components/ui/section";
 import type { FaqEntry } from "@/lib/schema";
@@ -17,13 +18,17 @@ type FaqProps = {
  * keyboard-operable for free. Any page that renders this should pass the same
  * entries to `faqSchema()` — schema and visible copy must always match.
  */
-export function Faq({ eyebrow = "Questions", title = "Asked and answered", entries }: FaqProps) {
+export function Faq({ eyebrow, title, entries }: FaqProps) {
+  const t = useT();
+  const heading = title ?? t.blocks.faqTitle;
+  const label = eyebrow ?? t.blocks.faqEyebrow;
+
   return (
     <div className="grid gap-14 lg:grid-cols-12">
       <div className="lg:col-span-3">
         <Reveal>
-          <Eyebrow>{eyebrow}</Eyebrow>
-          <h2 className="mt-6 font-display text-3xl leading-tight md:text-4xl">{title}</h2>
+          <Eyebrow>{label}</Eyebrow>
+          <h2 className="mt-6 font-display text-3xl leading-tight md:text-4xl">{heading}</h2>
         </Reveal>
       </div>
 

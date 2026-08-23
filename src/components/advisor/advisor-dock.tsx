@@ -86,7 +86,7 @@ function AdvisorRail({ onOpen, onDismiss }: { onOpen: () => void; onDismiss: () 
             track("advisor_open", { contentName: "rail" });
             onOpen();
           }}
-          className="group flex flex-1 items-start gap-4 text-left"
+          className="group flex flex-1 items-start gap-4 text-start"
           aria-label={`Ask ${advisor.name}, the ${advisor.role}`}
         >
           <span className="pt-1.5">
@@ -95,7 +95,7 @@ function AdvisorRail({ onOpen, onDismiss }: { onOpen: () => void; onDismiss: () 
           <span className="min-w-0">
             <span className="block font-display text-lg leading-none">
               {advisor.name}
-              <span className="caption ml-3 text-muted-foreground">{advisor.role}</span>
+              <span className="caption ms-3 text-muted-foreground">{advisor.role}</span>
             </span>
             <span className="caption mt-1.5 block truncate text-muted-foreground transition-colors group-hover:text-accent">
               Ask about buying, returns, the Golden Visa or relocating
@@ -198,7 +198,7 @@ function AdvisorPanel({
       role="dialog"
       aria-modal="false"
       aria-label={`${advisor.name}, ${advisor.role}`}
-      className="fixed inset-x-0 bottom-0 z-50 flex justify-center px-0 md:inset-x-auto md:right-8 md:bottom-6 md:px-0"
+      className="fixed inset-x-0 bottom-0 z-50 flex justify-center px-0 md:inset-x-auto md:end-8 md:bottom-6 md:px-0"
     >
       <div className="flex h-[85svh] w-full flex-col border border-border bg-background shadow-[0_-1px_60px_rgba(0,0,0,0.08)] md:h-[78svh] md:max-h-[46rem] md:w-[27rem]">
         <header className="flex items-start justify-between gap-4 border-b border-border px-6 py-5">
@@ -229,7 +229,7 @@ function AdvisorPanel({
           </div>
 
           {notice ? (
-            <p className="caption mt-7 border-l-2 border-accent pl-5 text-muted-foreground">
+            <p className="caption mt-7 border-s-2 border-accent ps-5 text-muted-foreground">
               {notice}
             </p>
           ) : null}
@@ -295,7 +295,7 @@ function Opening({ onPick }: { onPick: (prompt: string) => void }) {
             <button
               type="button"
               onClick={() => onPick(prompt)}
-              className="w-full py-3 text-left text-sm text-muted-foreground transition-colors hover:text-accent"
+              className="w-full py-3 text-start text-sm text-muted-foreground transition-colors hover:text-accent"
             >
               {prompt}
             </button>
@@ -325,7 +325,7 @@ function Turn({ turn }: { turn: PanelTurn }) {
     return (
       <p
         dir={rtl ? "rtl" : "ltr"}
-        className="ml-auto max-w-[85%] bg-secondary px-5 py-3.5 text-sm leading-relaxed text-foreground"
+        className="ms-auto max-w-[85%] bg-secondary px-5 py-3.5 text-sm leading-relaxed text-foreground"
       >
         {turn.content}
       </p>
@@ -338,7 +338,7 @@ function Turn({ turn }: { turn: PanelTurn }) {
         {turn.content}
         {turn.streaming ? (
           <span
-            className="ml-0.5 inline-block h-4 w-px translate-y-0.5 animate-pulse bg-accent"
+            className="ms-0.5 inline-block h-4 w-px translate-y-0.5 animate-pulse bg-accent"
             aria-hidden="true"
           />
         ) : null}

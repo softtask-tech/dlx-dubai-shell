@@ -1,5 +1,6 @@
 import type { DldTransaction } from "@/data/market-types";
-import { formatArea, formatBedrooms, formatPrice, humanise } from "@/lib/format";
+import { formatArea, formatBedrooms, humanise } from "@/lib/format";
+import { Price } from "@/components/tools/money";
 import { Eyebrow } from "@/components/ui/section";
 import { Tag } from "@/components/ui/tag";
 
@@ -40,10 +41,10 @@ export function TransactionTicker({ transactions }: { transactions: readonly Dld
                 .filter((part) => part !== "—")
                 .join(" · ")}
             </span>
-            <span className="eyebrow text-foreground md:col-span-2 md:text-right">
-              {formatPrice(transaction.amount)}
+            <span className="eyebrow text-foreground md:col-span-2 md:text-end">
+              <Price amount={transaction.amount} />
             </span>
-            <span className="md:col-span-1 md:text-right">
+            <span className="md:col-span-1 md:text-end">
               {transaction.registration_type?.toLowerCase().includes("off") ? (
                 <Tag variant="bare">Off-plan</Tag>
               ) : null}

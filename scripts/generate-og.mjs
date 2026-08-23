@@ -26,6 +26,11 @@ import { SITE_PAGES, ogImagePathFor } from "../src/config/pages.ts";
 import { GUIDES, GUIDE_CATEGORY_LABELS, guideOgPath } from "../src/data/guides.ts";
 import { SERVICES, serviceOgPath } from "../src/data/services.ts";
 import { TOOLS, toolOgPath } from "../src/data/tools.ts";
+import { LOCALISED_PATHS, PREFIXED_LOCALES, ogImagePathForLocale } from "../src/config/locales.ts";
+import { ar } from "../src/i18n/ar.ts";
+import { hi } from "../src/i18n/hi.ts";
+import { ru } from "../src/i18n/ru.ts";
+import { zh } from "../src/i18n/zh.ts";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT_DIR = join(ROOT, "public", "og");
@@ -41,6 +46,41 @@ const SOFT_SAND = "#EDE6DB";
 
 const FONT_CSS_URL =
   "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400&display=swap";
+
+/**
+ * The extra face each non-Latin card needs, and the stack it is set in.
+ *
+ * The live site lets Chinese fall back to the reader's system face, which is
+ * right in a browser and impossible here: this container has no CJK font, so a
+ * Chinese card would render as a row of empty boxes. A card is generated once
+ * and served as a PNG, so the weight of embedding a real face costs a visitor
+ * nothing — the reasoning that applies to the stylesheet does not apply here.
+ */
+const LOCALE_FONTS = {
+  ar: {
+    css: "https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap",
+    display: '"Amiri", serif',
+    body: '"Amiri", serif',
+  },
+  hi: {
+    css: "https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@300;400&family=Noto+Sans+Devanagari:wght@300;400&display=swap",
+    display: '"Noto Serif Devanagari", serif',
+    body: '"Noto Sans Devanagari", sans-serif',
+  },
+  ru: {
+    /* Cormorant carries Cyrillic; only the sans needs replacing. */
+    css: "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400&display=swap",
+    display: '"Cormorant Garamond", serif',
+    body: '"Noto Sans", sans-serif',
+  },
+  zh: {
+    css: "https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400&family=Noto+Sans+SC:wght@300;400&display=swap",
+    display: '"Noto Serif SC", serif',
+    body: '"Noto Sans SC", sans-serif',
+  },
+};
+
+const DICTIONARIES = { ar, hi, ru, zh };
 
 /**
  * Finds a browser to drive, preferring `headless_shell`.
@@ -92,8 +132,8 @@ function findBrowser() {
  * Downloads the brand faces and inlines them as data URIs. Chromium renders the
  * template from a local file with no network, so the fonts must travel with it.
  */
-async function inlineFontCss() {
-  const cssResponse = await fetch(FONT_CSS_URL, {
+async function inlineFontCss(url = FONT_CSS_URL) {
+  const cssResponse = await fetch(url, {
     /* Google serves woff2 only to browser-like clients. */
     headers: { "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120" },
   });
@@ -124,7 +164,7 @@ const escapeHtml = (value) =>
  * the tagline set large in the editorial serif, and the licence line. Same
  * restraint as the site — type, whitespace, one accent.
  */
-function cardHtml({ label, tagline, fontCss }) {
+function cardHtml({ label, tagline, fontCss, dir = "ltr", lang = "en", display, body }) {
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -156,28 +196,42 @@ body {
   opacity: 0.55;
 }
 .row { position: relative; display: flex; align-items: baseline; justify-content: space-between; }
+/* The monogram is a Latin mark in every language — it is the logo. */
 .monogram { font-family: "Cormorant Garamond", serif; font-size: 40px; letter-spacing: 0.3em; }
 .eyebrow {
+  font-family: ${body ?? '"Jost", sans-serif'};
   font-size: 15px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
+  /* Uppercasing and wide tracking are Latin devices. Arabic and Chinese have no
+   * case, and tracking Arabic apart breaks the joins between its letters. */
+  letter-spacing: ${lang === "ar" ? "0.06em" : lang === "zh-Hans" ? "0.12em" : "0.24em"};
+  text-transform: ${lang === "en" || lang === "ru" ? "uppercase" : "none"};
   color: ${SLATE};
 }
 .tagline {
   position: relative;
-  font-family: "Cormorant Garamond", serif;
+  font-family: ${display ?? '"Cormorant Garamond", serif'};
   font-weight: 300;
-  font-size: 82px;
-  line-height: 1.06;
-  letter-spacing: -0.015em;
-  max-width: 15ch;
+  /* Arabic and Devanagari carry more ink at the same nominal size, and Chinese
+   * says the same thing in a third of the characters — so each script gets the
+   * size that fills the card rather than one number that suits Latin. */
+  font-size: ${lang === "zh-Hans" ? 88 : lang === "ar" ? 74 : lang === "hi" ? 66 : 82}px;
+  line-height: ${lang === "hi" ? 1.35 : lang === "ar" ? 1.5 : 1.06};
+  letter-spacing: ${lang === "en" || lang === "ru" ? "-0.015em" : "0"};
+  max-width: ${lang === "zh-Hans" ? 13 : 15}ch;
 }
 .tagline em { font-style: italic; color: ${SAND}; }
 .rule { position: relative; width: 96px; height: 2px; background: ${SAND}; margin-bottom: 34px; }
-.licence { position: relative; font-size: 15px; letter-spacing: 0.18em; text-transform: uppercase; color: ${SLATE}; }
+.licence {
+  position: relative;
+  font-family: ${body ?? '"Jost", sans-serif'};
+  font-size: 15px;
+  letter-spacing: ${lang === "ar" ? "0.06em" : "0.18em"};
+  text-transform: ${lang === "en" || lang === "ru" ? "uppercase" : "none"};
+  color: ${SLATE};
+}
 </style>
 </head>
-<body>
+<body dir="${dir}" lang="${lang}">
   <div class="field"></div>
   <div class="row">
     <span class="monogram">${escapeHtml(brand.shortName)}</span>
@@ -188,8 +242,8 @@ body {
     <h1 class="tagline">${escapeHtml(tagline)}</h1>
   </div>
   <div class="row">
-    <span class="licence">${escapeHtml(`${brand.address.locality} · RERA ORN ${brand.reraOrn}`)}</span>
-    <span class="eyebrow">${escapeHtml(brand.domain)}</span>
+    <span class="licence" dir="ltr">${escapeHtml(`${brand.address.locality} · RERA ORN ${brand.reraOrn}`)}</span>
+    <span class="eyebrow" dir="ltr">${escapeHtml(brand.domain)}</span>
   </div>
 </body>
 </html>`;
@@ -226,6 +280,41 @@ function cards() {
       label: "Calculator",
       tagline: tool.tagline,
     })),
+    /*
+     * One card per translated page, per language.
+     *
+     * The card sets the page's tagline at 82px. A shared Arabic page whose card
+     * reads "Dubai real estate, handled with intention." is a WhatsApp preview
+     * that says, before anyone opens it, that the Arabic is a veneer — and
+     * WhatsApp is how a Gulf buyer shares a property with their family.
+     *
+     * The label and tagline both come from that language's dictionary, so the
+     * card, the <title> and the og:image:alt all carry the same sentence.
+     */
+    ...LOCALISED_PATHS.flatMap((path) =>
+      PREFIXED_LOCALES.map((locale) => {
+        const dictionary = DICTIONARIES[locale.code];
+        const meta = dictionary.meta[path];
+        const fonts = LOCALE_FONTS[locale.code];
+        return {
+          path: ogImagePathForLocale(path, locale.code, ogImagePathFor(path)),
+          label: path === "/" ? dictionary.home.eyebrow : dictionary.nav[navKeyFor(path)],
+          tagline: meta.tagline,
+          locale: locale.code,
+          dir: locale.dir,
+          lang: locale.htmlLang,
+          display: fonts.display,
+          body: fonts.body,
+        };
+      }),
+    ),
+  ];
+}
+
+/** Which nav label names this page, for the card's eyebrow. */
+function navKeyFor(path) {
+  return { "/about": "about", "/services": "services", "/tools": "tools", "/contact": "contact" }[
+    path
   ];
 }
 
@@ -233,8 +322,19 @@ async function main() {
   const { bin, isShell } = findBrowser();
   console.log(`Browser: ${bin}`);
 
-  const fontCss = await inlineFontCss();
+  const latinCss = await inlineFontCss();
   console.log("Embedded brand fonts.");
+
+  /*
+   * The script faces, fetched once each and reused across that language's five
+   * cards. Every card also carries the Latin pair: the monogram, the domain and
+   * the licence line are Latin in all five languages.
+   */
+  const scriptCss = {};
+  for (const [code, config] of Object.entries(LOCALE_FONTS)) {
+    scriptCss[code] = `${latinCss}\n${await inlineFontCss(config.css)}`;
+    console.log(`Embedded ${code} fonts.`);
+  }
 
   mkdirSync(OUT_DIR, { recursive: true });
   const tmpDir = join(ROOT, "node_modules", ".cache", "og");
@@ -247,7 +347,15 @@ async function main() {
 
     writeFileSync(
       htmlPath,
-      cardHtml({ label: card.label, tagline: card.tagline, fontCss }),
+      cardHtml({
+        label: card.label,
+        tagline: card.tagline,
+        fontCss: card.locale ? scriptCss[card.locale] : latinCss,
+        ...(card.dir ? { dir: card.dir } : {}),
+        ...(card.lang ? { lang: card.lang } : {}),
+        ...(card.display ? { display: card.display } : {}),
+        ...(card.body ? { body: card.body } : {}),
+      }),
       "utf8",
     );
 
