@@ -1522,6 +1522,7 @@ export type Database = {
         Args: { dataset?: string; trigger_source?: string }
         Returns: number
       }
+      trigger_lead_nurture: { Args: never; Returns: number }
     }
     Enums: {
       advisor_channel: "chat" | "voice"
