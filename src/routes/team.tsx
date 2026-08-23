@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { listAgents } from "@/data/people";
 import { pageHead } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
+import { trackContactHref } from "@/components/site/contact-link";
 import { Reveal } from "@/components/site/reveal";
 import { TrustStrip } from "@/components/site/trust-strip";
 import { Section, Eyebrow } from "@/components/ui/section";
@@ -99,6 +100,7 @@ function TeamPage() {
                     {agent.phone ? (
                       <a
                         href={`tel:${agent.phone}`}
+                        onClick={() => trackContactHref(`tel:${agent.phone}`, `team-${agent.slug}`)}
                         className="eyebrow link-underline text-foreground"
                       >
                         Call
@@ -107,6 +109,7 @@ function TeamPage() {
                     {agent.whatsapp ? (
                       <a
                         href={`https://wa.me/${agent.whatsapp.replace(/[^\d]/g, "")}`}
+                        onClick={() => trackContactHref("wa.me", `team-${agent.slug}`)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="eyebrow link-underline text-foreground"

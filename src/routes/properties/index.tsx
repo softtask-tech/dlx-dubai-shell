@@ -6,6 +6,7 @@ import { listProperties, type PropertyFilters } from "@/data/properties";
 import type { Area } from "@/data/types";
 import { pageHead } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
+import { useTrackedView } from "@/lib/use-tracked-view";
 import { Reveal } from "@/components/site/reveal";
 import { PropertyCard } from "@/components/site/property-card";
 import { TrustStrip } from "@/components/site/trust-strip";
@@ -76,6 +77,18 @@ const PRICE_BANDS = [
 function PropertiesIndex() {
   const { properties, areas } = Route.useLoaderData();
   const search = Route.useSearch();
+
+  /* Only a filtered view counts as a search. Landing on the unfiltered index
+   * is browsing, and reporting it as a search would drown the real signal. */
+  const filtered = Object.keys(search).length > 0;
+  useTrackedView(
+    "search_listings",
+    {
+      contentName: new URLSearchParams(search as Record<string, string>).toString(),
+      value: properties.length,
+    },
+    filtered,
+  );
 
   return (
     <>

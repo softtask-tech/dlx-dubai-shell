@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { site } from "@/config/site";
+import { trackContactHref } from "./contact-link";
 import { Container, Eyebrow } from "@/components/ui/section";
 import { ALL_NAV_LINKS } from "./header";
 
@@ -43,6 +44,7 @@ export function Footer() {
               <p>
                 <a
                   href={`tel:${site.contact.phoneE164}`}
+                  onClick={() => trackContactHref(`tel:${site.contact.phoneE164}`, "footer")}
                   className="transition-colors hover:text-accent"
                 >
                   {site.contact.phone}

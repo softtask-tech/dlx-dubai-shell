@@ -15,6 +15,7 @@ import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as AdvisorKnowledgeDotjsonRouteImport } from './routes/advisor-knowledge[.]json'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as MarketIntelligenceRouteImport } from './routes/market-intelligence'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TeamRouteImport } from './routes/team'
@@ -71,6 +72,11 @@ const ContactRoute = ContactRouteImport.update({
 const MarketIntelligenceRoute = MarketIntelligenceRouteImport.update({
   id: '/market-intelligence',
   path: '/market-intelligence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
@@ -216,6 +222,7 @@ export interface FileRoutesByFullPath {
   '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
   '/market-intelligence': typeof MarketIntelligenceRoute
+  '/privacy': typeof PrivacyRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
@@ -250,6 +257,7 @@ export interface FileRoutesByTo {
   '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
   '/market-intelligence': typeof MarketIntelligenceRoute
+  '/privacy': typeof PrivacyRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
@@ -286,6 +294,7 @@ export interface FileRoutesById {
   '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
   '/market-intelligence': typeof MarketIntelligenceRoute
+  '/privacy': typeof PrivacyRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
@@ -323,6 +332,7 @@ export interface FileRouteTypes {
     | '/advisor-knowledge.json'
     | '/contact'
     | '/market-intelligence'
+    | '/privacy'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/team'
@@ -357,6 +367,7 @@ export interface FileRouteTypes {
     | '/advisor-knowledge.json'
     | '/contact'
     | '/market-intelligence'
+    | '/privacy'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/team'
@@ -392,6 +403,7 @@ export interface FileRouteTypes {
     | '/advisor-knowledge.json'
     | '/contact'
     | '/market-intelligence'
+    | '/privacy'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/team'
@@ -428,6 +440,7 @@ export interface RootRouteChildren {
   AdvisorKnowledgeDotjsonRoute: typeof AdvisorKnowledgeDotjsonRoute
   ContactRoute: typeof ContactRoute
   MarketIntelligenceRoute: typeof MarketIntelligenceRoute
+  PrivacyRoute: typeof PrivacyRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeamRoute: typeof TeamRoute
@@ -495,6 +508,13 @@ declare module '@tanstack/react-router' {
       path: '/market-intelligence'
       fullPath: '/market-intelligence'
       preLoaderRoute: typeof MarketIntelligenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/robots.txt': {
@@ -714,6 +734,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdvisorKnowledgeDotjsonRoute: AdvisorKnowledgeDotjsonRoute,
   ContactRoute: ContactRoute,
   MarketIntelligenceRoute: MarketIntelligenceRoute,
+  PrivacyRoute: PrivacyRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeamRoute: TeamRoute,

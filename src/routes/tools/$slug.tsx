@@ -15,6 +15,7 @@ import { RentVsBuyCalculator } from "@/components/tools/calculators/rent-vs-buy-
 import { YieldCalculator } from "@/components/tools/calculators/yield-calculator";
 import { YieldComparison } from "@/components/tools/calculators/yield-comparison";
 import { CurrencyPicker } from "@/components/tools/money";
+import { useTrackedView } from "@/lib/use-tracked-view";
 import { ExplainLink } from "@/components/advisor/explain-link";
 import { Reveal } from "@/components/site/reveal";
 import { Section, Eyebrow } from "@/components/ui/section";
@@ -50,6 +51,10 @@ export const Route = createFileRoute("/tools/$slug")({
 
 function ToolPage() {
   const { tool, areas } = Route.useLoaderData();
+
+  /* Someone running a yield or cost calculation is further down the funnel
+   * than someone reading a guide, and worth building an audience from. */
+  useTrackedView("use_calculator", { contentIds: [tool.slug], contentName: tool.name });
   const others = TOOLS.filter((entry) => entry.slug !== tool.slug).slice(0, 4);
 
   return (

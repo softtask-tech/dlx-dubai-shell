@@ -5,6 +5,7 @@ import { listAgents, listTestimonials } from "@/data/people";
 import { faqSchema, type FaqEntry } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
 import { QualifiedForm } from "@/components/forms/qualified-form";
+import { trackContactHref } from "@/components/site/contact-link";
 import { Reveal } from "@/components/site/reveal";
 import { TestimonialsBlock } from "@/components/site/testimonials-block";
 import { TrustStrip } from "@/components/site/trust-strip";
@@ -239,6 +240,7 @@ function ContactRoute({
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      onClick={() => trackContactHref(href, "contact-page")}
       className="bg-background p-8 transition-colors duration-base ease-editorial hover:bg-secondary"
     >
       {body}

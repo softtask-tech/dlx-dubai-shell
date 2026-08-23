@@ -64,6 +64,14 @@ export const leadSubmissionSchema = z
     /* Anything a specific form asked that has no column of its own. */
     qualificationAnswers: z.record(z.string(), z.unknown()).optional(),
 
+    /*
+     * The browser's deduplication id for this conversion. Passed through so the
+     * server's Conversions API call carries the same one — without it the same
+     * lead is counted by Meta twice, and a campaign looks twice as good as it
+     * is, which is worse than not measuring at all.
+     */
+    eventId: z.string().max(64).optional(),
+
     /* Honeypot: a real person never fills this in. */
     company: z.string().optional(),
   })

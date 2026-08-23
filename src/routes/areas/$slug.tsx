@@ -13,6 +13,7 @@ import { Stat } from "@/components/market/stat";
 import { TrendChart } from "@/components/market/trend-chart";
 import { VerdictCard } from "@/components/market/verdict-card";
 import { PropertyCard } from "@/components/site/property-card";
+import { useTrackedView } from "@/lib/use-tracked-view";
 import { Reveal } from "@/components/site/reveal";
 import { Section, Container, Eyebrow } from "@/components/ui/section";
 
@@ -75,6 +76,8 @@ export const Route = createFileRoute("/areas/$slug")({
 
 function AreaPage() {
   const { area, history, listings } = Route.useLoaderData();
+
+  useTrackedView("view_area", { contentIds: [area.slug], contentName: area.name });
   const stats = area.stats;
   const attribution = attributionFor(stats?.provenance ?? null, stats?.last_updated ?? null);
 
