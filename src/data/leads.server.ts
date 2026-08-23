@@ -170,6 +170,7 @@ export async function submitLead(input: LeadSubmission): Promise<LeadSubmissionR
     hasEmail: Boolean(input.email),
     isFinancing: input.isFinancing ?? null,
     message: input.message ?? null,
+    sourceType: input.sourceType,
   });
 
   const row = {
@@ -251,6 +252,14 @@ export async function submitLead(input: LeadSubmission): Promise<LeadSubmissionR
     );
     return { ok: true, leadId: data.id, temperature };
   }
+
+  /*
+   * Route before the emails, so the notification names the consultant who owns
+   * it rather than going to a general inbox for someone to hand out later.
+   * Speed to reply is the number that decides whether paid traffic converts.
+   */
+  const { routeLead } = await import("./routing.server");
+  await routeLead({ leadId: data.id, temperature, score });
 
   await dispatchLeadEmails(data.id).catch((emailError: unknown) => {
     console.error("[leads] email dispatch failed", emailError);
