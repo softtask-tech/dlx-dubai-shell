@@ -64,7 +64,7 @@ VITE_SUPABASE_URL
 VITE_SUPABASE_PUBLISHABLE_KEY
 SUPABASE_SERVICE_ROLE_KEY
 RESEND_API_KEY
-LEAD_NOTIFICATION_EMAIL
+LEAD_ADMIN_EMAIL
 ```
 
 `VITE_SITE_URL` deserves particular care: it is the origin every canonical tag,
@@ -151,7 +151,7 @@ supabase functions deploy lead-nurture
 ```
 
 Then set the function secrets (`supabase secrets set NAME=value`): `RESEND_API_KEY`,
-`LEAD_NOTIFICATION_EMAIL`, `VOICE_WEBHOOK_SECRET`, `NURTURE_SECRET`, `SITE_URL`.
+`LEAD_ADMIN_EMAIL`, `VOICE_WEBHOOK_SECRET`, `NURTURE_SECRET`, `SITE_URL`.
 
 `20260823010100_schedule_nurture.sql` schedules the nurture run through pg_cron.
 Enable the extension in the Supabase dashboard first; the migration fails

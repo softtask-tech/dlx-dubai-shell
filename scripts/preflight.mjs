@@ -71,10 +71,26 @@ const VARIABLES = [
     cost: "A lead arrives in the database and nobody is told. No admin alert, no client confirmation.",
   },
   {
-    name: "LEAD_NOTIFICATION_EMAIL",
+    /*
+     * The name the Edge Function actually reads.
+     *
+     * This check named LEAD_NOTIFICATION_EMAIL until it was cross-referenced
+     * against supabase/functions/send-lead-emails/index.ts, which reads
+     * LEAD_ADMIN_EMAIL. Anyone following the preflight would have set a
+     * variable nothing reads, the check would have gone green, and every admin
+     * notification would have quietly gone to the fallback address instead —
+     * precisely the silent failure this script exists to catch.
+     */
+    name: "LEAD_ADMIN_EMAIL",
     level: "required",
-    what: "Where admin notifications go.",
-    cost: "The alert has no recipient.",
+    what: "Where admin notifications land (comma-separated for several).",
+    cost: "Notifications fall back to hello@ rather than reaching the desk that works the leads.",
+  },
+  {
+    name: "LEAD_FROM_EMAIL",
+    level: "recommended",
+    what: 'The verified Resend sender, e.g. "DLX Properties <hello@dlxproperties.ae>".',
+    cost: "Both emails send from a default address that may not be verified with Resend, so they land in spam or bounce.",
   },
 
   // --- The advisor --------------------------------------------------------
@@ -165,6 +181,18 @@ const VARIABLES = [
     level: "recommended",
     what: "Where production errors are posted.",
     cost: "Server errors reach the process log and nowhere else. On a self-hosted deploy that means nobody finds out — see src/data/monitoring.server.ts.",
+  },
+  {
+    name: "GOOGLE_ADS_CONVERSION_URL",
+    level: "optional",
+    what: "The relay that forwards offline conversions to Google Ads.",
+    cost: "A qualified or won lead is never reported back, so Google Ads keeps optimising for form fills rather than deals.",
+  },
+  {
+    name: "DUBAI_PULSE_CLIENT_SECRET",
+    level: "recommended",
+    what: "The other half of the Dubai Pulse credential.",
+    cost: "The DLD sync cannot authenticate, so the market pages stay on sample data.",
   },
   {
     name: "FX_RATES_URL",
