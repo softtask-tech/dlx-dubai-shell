@@ -48,7 +48,7 @@ export const Route = createFileRoute("/areas/$slug")({
           160,
         ),
       tagline: `${area.name} — ${priceLine}.`,
-      image: area.hero_image_url ?? "/og/market-intelligence.png",
+      image: area.hero_image_url ?? "/og/areas.png",
       breadcrumbs: [
         { name: "Communities", path: "/areas" },
         { name: area.name, path: `/areas/${area.slug}` },

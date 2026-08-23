@@ -38,6 +38,10 @@ import { Route as ServicesIndexRouteImport } from './routes/services/index'
 import { Route as ServicesSlugRouteImport } from './routes/services/$slug'
 import { Route as ToolsIndexRouteImport } from './routes/tools/index'
 import { Route as ToolsSlugRouteImport } from './routes/tools/$slug'
+import { Route as ApiAdvisorCallLeadRouteImport } from './routes/api/advisor/call-lead'
+import { Route as ApiAdvisorChatRouteImport } from './routes/api/advisor/chat'
+import { Route as ApiAdvisorSpeakRouteImport } from './routes/api/advisor/speak'
+import { Route as ApiAdvisorVoiceRouteImport } from './routes/api/advisor/voice'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -184,6 +188,26 @@ const ToolsSlugRoute = ToolsSlugRouteImport.update({
   path: '/tools/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdvisorCallLeadRoute = ApiAdvisorCallLeadRouteImport.update({
+  id: '/api/advisor/call-lead',
+  path: '/api/advisor/call-lead',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdvisorChatRoute = ApiAdvisorChatRouteImport.update({
+  id: '/api/advisor/chat',
+  path: '/api/advisor/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdvisorSpeakRoute = ApiAdvisorSpeakRouteImport.update({
+  id: '/api/advisor/speak',
+  path: '/api/advisor/speak',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdvisorVoiceRoute = ApiAdvisorVoiceRouteImport.update({
+  id: '/api/advisor/voice',
+  path: '/api/advisor/voice',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -215,6 +239,10 @@ export interface FileRoutesByFullPath {
   '/properties/': typeof PropertiesIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/tools/': typeof ToolsIndexRoute
+  '/api/advisor/call-lead': typeof ApiAdvisorCallLeadRoute
+  '/api/advisor/chat': typeof ApiAdvisorChatRoute
+  '/api/advisor/speak': typeof ApiAdvisorSpeakRoute
+  '/api/advisor/voice': typeof ApiAdvisorVoiceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -245,6 +273,10 @@ export interface FileRoutesByTo {
   '/properties': typeof PropertiesIndexRoute
   '/services': typeof ServicesIndexRoute
   '/tools': typeof ToolsIndexRoute
+  '/api/advisor/call-lead': typeof ApiAdvisorCallLeadRoute
+  '/api/advisor/chat': typeof ApiAdvisorChatRoute
+  '/api/advisor/speak': typeof ApiAdvisorSpeakRoute
+  '/api/advisor/voice': typeof ApiAdvisorVoiceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -277,6 +309,10 @@ export interface FileRoutesById {
   '/properties/': typeof PropertiesIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/tools/': typeof ToolsIndexRoute
+  '/api/advisor/call-lead': typeof ApiAdvisorCallLeadRoute
+  '/api/advisor/chat': typeof ApiAdvisorChatRoute
+  '/api/advisor/speak': typeof ApiAdvisorSpeakRoute
+  '/api/advisor/voice': typeof ApiAdvisorVoiceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -310,6 +346,10 @@ export interface FileRouteTypes {
     | '/properties/'
     | '/services/'
     | '/tools/'
+    | '/api/advisor/call-lead'
+    | '/api/advisor/chat'
+    | '/api/advisor/speak'
+    | '/api/advisor/voice'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -340,6 +380,10 @@ export interface FileRouteTypes {
     | '/properties'
     | '/services'
     | '/tools'
+    | '/api/advisor/call-lead'
+    | '/api/advisor/chat'
+    | '/api/advisor/speak'
+    | '/api/advisor/voice'
   id:
     | '__root__'
     | '/'
@@ -371,6 +415,10 @@ export interface FileRouteTypes {
     | '/properties/'
     | '/services/'
     | '/tools/'
+    | '/api/advisor/call-lead'
+    | '/api/advisor/chat'
+    | '/api/advisor/speak'
+    | '/api/advisor/voice'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -399,6 +447,10 @@ export interface RootRouteChildren {
   PropertiesIndexRoute: typeof PropertiesIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
   ToolsIndexRoute: typeof ToolsIndexRoute
+  ApiAdvisorCallLeadRoute: typeof ApiAdvisorCallLeadRoute
+  ApiAdvisorChatRoute: typeof ApiAdvisorChatRoute
+  ApiAdvisorSpeakRoute: typeof ApiAdvisorSpeakRoute
+  ApiAdvisorVoiceRoute: typeof ApiAdvisorVoiceRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -606,6 +658,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/advisor/call-lead': {
+      id: '/api/advisor/call-lead'
+      path: '/api/advisor/call-lead'
+      fullPath: '/api/advisor/call-lead'
+      preLoaderRoute: typeof ApiAdvisorCallLeadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/advisor/chat': {
+      id: '/api/advisor/chat'
+      path: '/api/advisor/chat'
+      fullPath: '/api/advisor/chat'
+      preLoaderRoute: typeof ApiAdvisorChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/advisor/speak': {
+      id: '/api/advisor/speak'
+      path: '/api/advisor/speak'
+      fullPath: '/api/advisor/speak'
+      preLoaderRoute: typeof ApiAdvisorSpeakRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/advisor/voice': {
+      id: '/api/advisor/voice'
+      path: '/api/advisor/voice'
+      fullPath: '/api/advisor/voice'
+      preLoaderRoute: typeof ApiAdvisorVoiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -653,6 +733,10 @@ const rootRouteChildren: RootRouteChildren = {
   PropertiesIndexRoute: PropertiesIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
   ToolsIndexRoute: ToolsIndexRoute,
+  ApiAdvisorCallLeadRoute: ApiAdvisorCallLeadRoute,
+  ApiAdvisorChatRoute: ApiAdvisorChatRoute,
+  ApiAdvisorSpeakRoute: ApiAdvisorSpeakRoute,
+  ApiAdvisorVoiceRoute: ApiAdvisorVoiceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

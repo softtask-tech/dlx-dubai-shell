@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { addLeadNoteFn, getLeadFn, updateLeadFn, type LeadWithAgent } from "@/data/admin.functions";
+import type { AdvisorConversationRow } from "@/data/advisor-types";
 import type { Agent, LeadNote } from "@/data/types";
 import { formatPrice, humanise } from "@/lib/format";
+import { ConversationLog } from "./conversation-log";
 import { Select, TextArea } from "@/components/forms/fields";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/section";
@@ -28,6 +30,7 @@ export function LeadDetail({
 }) {
   const [lead, setLead] = useState<LeadWithAgent | null>(null);
   const [notes, setNotes] = useState<LeadNote[]>([]);
+  const [conversations, setConversations] = useState<AdvisorConversationRow[]>([]);
   const [note, setNote] = useState("");
   const [busy, setBusy] = useState(false);
 
@@ -36,6 +39,7 @@ export function LeadDetail({
     if (result) {
       setLead(result.lead);
       setNotes(result.notes);
+      setConversations(result.conversations);
     }
   }, [accessToken, leadId]);
 
@@ -131,6 +135,8 @@ export function LeadDetail({
                 <p className="body-text mt-4 bg-secondary p-6">{lead.message}</p>
               </div>
             ) : null}
+
+            <ConversationLog conversations={conversations} />
 
             <Section title="Qualification">
               <Row label="Intent" value={humanise(lead.intent)} />

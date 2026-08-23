@@ -28,6 +28,7 @@
  * follow `url` and find the same words.
  */
 import { attributionFor, listAreasWithStats } from "./market";
+import { listProperties } from "./properties";
 import {
   BLOG_CATEGORY_LABELS,
   listPosts,
@@ -39,9 +40,9 @@ import { SERVICES } from "./services";
 import { TOOLS } from "./tools";
 import { FEE_SCHEDULE_VERIFIED_ON } from "./fee-schedule";
 import type { AreaStats, AreaWithStats } from "./market-types";
-import type { BlogPost } from "./types";
+import type { BlogPost, PropertyWithRelations } from "./types";
 
-export type KnowledgeKind = "guide" | "tool" | "service" | "post" | "market";
+export type KnowledgeKind = "guide" | "tool" | "service" | "post" | "market" | "listing";
 
 export type KnowledgeEntry = {
   /** Stable and readable: "guide:golden-visa-guide". */
@@ -195,11 +196,14 @@ export function staticKnowledge(): KnowledgeEntry[] {
  * ability to answer.
  */
 export async function buildKnowledgeIndex(): Promise<KnowledgeIndex> {
-  const [areas, posts] = await Promise.all([
+  const [areas, posts, listings] = await Promise.all([
     /* Typed fallbacks: an untyped `[]` widens the result to a union and the
      * narrowing filter below stops narrowing. */
     listAreasWithStats().catch(() => [] as AreaWithStats[]),
     listPosts().catch(() => [] as BlogPostWithAuthor[]),
+    /* Published listings only — the same rows the portfolio shows. The advisor
+     * must never describe a property the public cannot open and check. */
+    listProperties({ limit: 120 }).catch(() => [] as PropertyWithRelations[]),
   ]);
 
   const market = areas
@@ -207,8 +211,9 @@ export async function buildKnowledgeIndex(): Promise<KnowledgeIndex> {
     .map(marketEntry);
 
   const journal = posts.map(postEntry);
+  const portfolio = listings.map(listingEntry);
 
-  const entries = [...staticKnowledge(), ...market, ...journal];
+  const entries = [...staticKnowledge(), ...market, ...journal, ...portfolio];
 
   const counts: Record<KnowledgeKind, number> = {
     guide: 0,
@@ -216,6 +221,7 @@ export async function buildKnowledgeIndex(): Promise<KnowledgeIndex> {
     service: 0,
     post: 0,
     market: 0,
+    listing: 0,
   };
   for (const entry of entries) counts[entry.kind] += 1;
 
@@ -269,6 +275,87 @@ export function marketEntry(area: AreaWithStats & { stats: AreaStats }): Knowled
     requiresVerification: false,
     routeToHuman: false,
     tags: ["market", area.name],
+  };
+}
+
+/**
+ * One listing.
+ *
+ * The hardest entry to get right, because availability and price are exactly
+ * what CLAUDE.md forbids the advisor to invent — and a listing is nothing but
+ * availability and price. So the entry states them as a matter of record with
+ * the status attached: "available", "under offer", and a null price rendered as
+ * price on application rather than as zero. `routeToHuman` is always true. An
+ * advisor should describe what is listed and then put a consultant on it,
+ * because whether a specific property is still there this afternoon is not
+ * something an index refreshed on a timer can promise.
+ */
+export function listingEntry(property: PropertyWithRelations): KnowledgeEntry {
+  const facts: string[] = [];
+  const area = property.area?.name ?? null;
+
+  facts.push(
+    property.price === null
+      ? "Price on application."
+      : `${property.listing_type === "rent" ? "Rent" : "Price"}: ${property.currency} ${Math.round(
+          property.price,
+        ).toLocaleString("en-AE")}${
+          property.listing_type === "rent" && property.rent_frequency
+            ? ` per ${property.rent_frequency.replace(/ly$/, "")}`
+            : ""
+        }.`,
+  );
+  facts.push(`Status as listed: ${property.status.replace(/_/g, " ")}.`);
+  if (area) facts.push(`Community: ${area}.`);
+  if (property.bedrooms !== null) facts.push(`Bedrooms: ${property.bedrooms}.`);
+  if (property.built_up_sqft !== null) {
+    facts.push(
+      `Built-up area: ${Math.round(property.built_up_sqft).toLocaleString("en-AE")} sq ft.`,
+    );
+  }
+  if (property.service_charge_per_sqft !== null) {
+    facts.push(`Service charge: AED ${property.service_charge_per_sqft} per sq ft per year.`);
+  }
+  if (property.completion_status) {
+    facts.push(
+      property.completion_status === "off_plan"
+        ? `Off-plan${property.handover_year ? `, handover ${property.handover_year}` : ""}.`
+        : "Ready.",
+    );
+  }
+  if (property.developer?.name) facts.push(`Developer: ${property.developer.name}.`);
+  if (property.summary) facts.push(property.summary);
+
+  return {
+    id: `listing:${property.slug}`,
+    kind: "listing",
+    title: property.title,
+    questions: [
+      `Do you have anything in ${area ?? "Dubai"}?`,
+      `What is available${property.bedrooms !== null ? ` with ${property.bedrooms} bedrooms` : ""}${
+        area ? ` in ${area}` : ""
+      }?`,
+    ],
+    answer:
+      property.summary ??
+      `${property.title}${area ? ` in ${area}` : ""} — listed ${
+        property.listing_type === "rent" ? "to rent" : "for sale"
+      }.`,
+    body: facts,
+    url: `/properties/${property.slug}`,
+    /* Dubai law requires the permit on any advertisement, and an advisor
+     * describing a listing is advertising it. */
+    ...(property.dld_permit_number ? { source: `DLD permit ${property.dld_permit_number}` } : {}),
+    updatedAt: property.updated_at,
+    requiresVerification: false,
+    /* Availability moves faster than this index does. Always hand over. */
+    routeToHuman: true,
+    tags: [
+      "listing",
+      property.listing_type === "rent" ? "to rent" : "for sale",
+      ...(area ? [area] : []),
+      property.property_type,
+    ],
   };
 }
 

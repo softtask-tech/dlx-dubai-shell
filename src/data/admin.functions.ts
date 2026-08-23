@@ -9,6 +9,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
+import type { AdvisorConversationRow } from "./advisor-types";
 import { CONTENT_TABLES, type ContentTable } from "./content-schema";
 import type { Agent, JsonObject, Lead, LeadNote, Testimonial } from "./types";
 
@@ -54,11 +55,19 @@ export const listLeadsFn = createServerFn({ method: "POST" })
 /** One lead, with its notes. */
 export const getLeadFn = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => withToken.extend({ id: z.string().uuid() }).parse(data))
-  .handler(async ({ data }): Promise<{ lead: LeadWithAgent; notes: LeadNote[] } | null> => {
-    const { requireAdmin, getLead } = await import("./admin.server");
-    await requireAdmin(data.accessToken);
-    return getLead(data.id);
-  });
+  .handler(
+    async ({
+      data,
+    }): Promise<{
+      lead: LeadWithAgent;
+      notes: LeadNote[];
+      conversations: AdvisorConversationRow[];
+    } | null> => {
+      const { requireAdmin, getLead } = await import("./admin.server");
+      await requireAdmin(data.accessToken);
+      return getLead(data.id);
+    },
+  );
 
 /** Tag a lead, or hand it to a consultant. */
 export const updateLeadFn = createServerFn({ method: "POST" })

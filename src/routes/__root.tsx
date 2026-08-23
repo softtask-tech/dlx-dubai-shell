@@ -20,6 +20,8 @@ import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/section";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
+import { AdvisorDock } from "@/components/advisor/advisor-dock";
+import { advisorAvailabilityFn } from "@/data/advisor.functions";
 import { CustomCursor } from "@/components/site/cursor";
 
 function NotFoundComponent() {
@@ -76,6 +78,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  /* Server-rendered once per page load rather than fetched by the dock, so the
+   * advisor is either there from the first paint or not there at all — no rail
+   * appearing a second late, and no request on every navigation. */
+  loader: async () => ({ advisorAvailability: await advisorAvailabilityFn() }),
   head: () => {
     /*
      * Root-level head. Every page overrides title, description, canonical, OG
@@ -129,6 +135,7 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const { advisorAvailability } = Route.useLoaderData();
 
   /* Record the campaign that brought this visit in, before the visitor
    * navigates away from the landing URL and the tags are lost. */
@@ -149,6 +156,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <Footer />
+        {advisorAvailability.chat ? <AdvisorDock /> : null}
       </CurrencyProvider>
     </QueryClientProvider>
   );
