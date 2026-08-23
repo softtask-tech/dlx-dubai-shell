@@ -53,6 +53,7 @@ const NAV = [
   { to: "/admin", label: "Leads", exact: true },
   { to: "/admin/content", label: "Content", exact: false },
   { to: "/admin/data", label: "Market data", exact: false },
+  { to: "/admin/roas", label: "Ad spend", exact: false },
 ] as const;
 
 function AdminShell() {

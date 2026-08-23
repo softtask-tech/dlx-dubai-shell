@@ -29,7 +29,8 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-sync-secret",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type, x-sync-secret",
 };
 
 /** The sequence. Wide gaps on purpose — this is a six-month decision. */
@@ -78,7 +79,9 @@ async function sign(value: string, secret: string): Promise<string> {
     ["sign"],
   );
   const signature = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(value));
-  return Array.from(new Uint8Array(signature), (byte) => byte.toString(16).padStart(2, "0")).join("");
+  return Array.from(new Uint8Array(signature), (byte) => byte.toString(16).padStart(2, "0")).join(
+    "",
+  );
 }
 
 const escapeHtml = (value: string) =>
@@ -153,7 +156,8 @@ Deno.serve(async (request) => {
     /* Due when enough time has passed since the last message, or since the
      * enquiry for the first one. */
     const since = new Date(lead.nurture_last_sent_at ?? lead.created_at).getTime();
-    const dueAfter = stage === 0 ? STEPS[0].afterDays : step.afterDays - (STEPS[stage - 1]?.afterDays ?? 0);
+    const dueAfter =
+      stage === 0 ? STEPS[0].afterDays : step.afterDays - (STEPS[stage - 1]?.afterDays ?? 0);
     if (now - since < dueAfter * 24 * 60 * 60 * 1000) {
       skipped += 1;
       continue;

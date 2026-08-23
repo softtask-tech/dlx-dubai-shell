@@ -224,3 +224,32 @@ export const recomputeStatsFn = createServerFn({ method: "POST" })
   });
 
 export type { Agent, ContentTable, LeadNote, Testimonial };
+
+/* ------------------------------------------------------------------ ROAS -- */
+
+export const campaignPerformanceFn = createServerFn({ method: "POST" })
+  .inputValidator((data: unknown) =>
+    withToken
+      .extend({
+        from: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+        to: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+      })
+      .parse(data),
+  )
+  .handler(async ({ data }) => {
+    const { requireAdmin } = await import("./admin.server");
+    await requireAdmin(data.accessToken);
+    const { campaignPerformance } = await import("./roas.server");
+    return campaignPerformance({ from: data.from, to: data.to });
+  });
+
+export const importSpendFn = createServerFn({ method: "POST" })
+  .inputValidator((data: unknown) =>
+    withToken.extend({ csv: z.string().min(1).max(2_000_000) }).parse(data),
+  )
+  .handler(async ({ data }): Promise<{ imported: number; errors: string[] }> => {
+    const { requireAdmin } = await import("./admin.server");
+    await requireAdmin(data.accessToken);
+    const { importSpendCsv } = await import("./roas.server");
+    return importSpendCsv(data.csv);
+  });
