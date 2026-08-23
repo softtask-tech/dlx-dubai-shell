@@ -1242,6 +1242,8 @@ export type Database = {
         }
         Returns: boolean
       }
+      link_transactions_to_areas: { Args: never; Returns: number }
+      refresh_area_stats: { Args: never; Returns: number }
     }
     Enums: {
       app_role: "admin" | "agent"
