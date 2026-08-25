@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
  *
  * The path is server-rendered complete. The drawing effect is a dash offset
  * animated on the client, so the chart is a finished picture for anyone who
- * never runs the animation — including under reduced motion, where it appears
+ * never runs the animation, including under reduced motion, where it appears
  * fully drawn immediately.
  */
 export function TrendChart({

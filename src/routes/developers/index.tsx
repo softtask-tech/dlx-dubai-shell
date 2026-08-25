@@ -38,8 +38,8 @@ function DevelopersIndex() {
           <div className="lg:col-span-4 lg:col-start-9">
             <Reveal delay={0.12}>
               <p className="body-text text-muted-foreground">
-                Who builds what in Dubai, where, and — the part that matters when you are buying
-                off-plan — how reliably they deliver.
+                Who builds what in Dubai, where, and, the part that matters when you are buying
+                off-plan, how reliably they deliver.
               </p>
               <div className="mt-10 h-px w-16 bg-accent" />
             </Reveal>
@@ -104,7 +104,7 @@ function DevelopersIndex() {
                     {project.name}
                   </h3>
                   <p className="caption mt-2">
-                    {project.developer?.name ?? "—"} ·{" "}
+                    {project.developer?.name ?? "-"} ·{" "}
                     {formatHandover(project.handover_quarter, project.handover_year)}
                   </p>
                   <p className="eyebrow mt-3 text-foreground">
@@ -128,7 +128,7 @@ function DevelopersIndex() {
             <h2 className="display-3 mt-6">Developer profiles are on their way.</h2>
             <p className="body-text mx-auto mt-6 max-w-measure text-muted-foreground">
               In the meantime, if you are weighing up a specific project or developer, ask us
-              directly — we will tell you what we actually think.
+              directly. We will tell you what we actually think.
             </p>
             <Link to="/contact" className="eyebrow link-underline mt-10 inline-block text-accent">
               Ask about a project

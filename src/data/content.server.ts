@@ -1,9 +1,9 @@
 /**
- * Content CRUD for the admin editor — server side only.
+ * Content CRUD for the admin editor, server side only.
  *
  * One generic path rather than six near-identical modules: the tables differ
  * in their columns, not in how they are edited. What keeps that safe is the
- * field schema below — only the columns named there can be written, so a
+ * field schema below, only the columns named there can be written, so a
  * crafted request cannot set `is_published` on a table that has no such
  * concept, or write to a column the editor never shows.
  */
@@ -14,7 +14,7 @@ import type { JsonObject } from "./types";
 export { CONTENT_SCHEMA };
 export type { ContentTable, FieldSpec };
 
-/** Every row, drafts included — the editor needs to see what the public cannot. */
+/** Every row, drafts included, the editor needs to see what the public cannot. */
 export async function listContent(table: ContentTable): Promise<JsonObject[]> {
   const supabase = await adminDb();
   const { data, error } = await supabase
@@ -77,7 +77,7 @@ export async function saveContent(
     }
   }
 
-  /* Stamp the publish date the first time something goes live — but never over
+  /* Stamp the publish date the first time something goes live, but never over
    * a date the editor set themselves, which the journal relies on. */
   if (row["is_published"] === true && (row["published_at"] ?? null) === null) {
     row["published_at"] = new Date().toISOString();
@@ -86,7 +86,7 @@ export async function saveContent(
   /*
    * The cast is the price of one generic editor for six tables: `row` was
    * built column by column from CONTENT_SCHEMA, so at runtime it only ever
-   * contains columns that exist on `table` — but TypeScript cannot narrow a
+   * contains columns that exist on `table`, but TypeScript cannot narrow a
    * union of six row shapes from a runtime string. The allow-list above is
    * what actually keeps this safe; widen it and this becomes unsafe.
    */

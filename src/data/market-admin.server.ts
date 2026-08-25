@@ -101,7 +101,7 @@ export async function triggerSync(
   };
 }
 
-/** Recomputes the metrics without re-fetching — useful after a manual import. */
+/** Recomputes the metrics without re-fetching, useful after a manual import. */
 export async function recomputeStats(): Promise<number> {
   const supabase = await marketAdminDb();
   await supabase.rpc("link_transactions_to_areas");

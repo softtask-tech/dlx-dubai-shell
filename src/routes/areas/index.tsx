@@ -15,7 +15,7 @@ export const Route = createFileRoute("/areas/")({
       path: "/areas",
       title: "Dubai Communities",
       description:
-        "Every Dubai community we cover, with recorded prices, rental yields and transaction volumes — and a plain answer to whether it is worth buying there.",
+        "Every Dubai community we cover, with recorded prices, rental yields and transaction volumes, and a plain answer to whether it is worth buying there.",
       tagline: "Where the numbers say to look.",
       image: "/og/areas.png",
       breadcrumbs: [
@@ -87,19 +87,19 @@ function AreasIndex() {
                     AED{" "}
                     {area.stats?.median_price_per_sqft
                       ? Math.round(area.stats.median_price_per_sqft).toLocaleString("en-AE")
-                      : "—"}{" "}
+                      : "-"}{" "}
                     /sq ft
                   </span>
                   <span className="caption md:col-span-2">
                     {area.stats?.yoy_price_change_pct !== null &&
                     area.stats?.yoy_price_change_pct !== undefined
                       ? `${area.stats.yoy_price_change_pct >= 0 ? "+" : ""}${area.stats.yoy_price_change_pct.toFixed(1)}% YoY`
-                      : "—"}
+                      : "-"}
                   </span>
                   <span className="caption md:col-span-2">
                     {area.stats?.gross_yield_pct
                       ? `${area.stats.gross_yield_pct.toFixed(1)}% yield`
-                      : "—"}
+                      : "-"}
                   </span>
                   <span className="eyebrow transition-colors group-hover:text-accent md:col-span-1 md:text-right">
                     View

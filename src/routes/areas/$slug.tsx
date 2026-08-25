@@ -48,7 +48,7 @@ export const Route = createFileRoute("/areas/$slug")({
           0,
           160,
         ),
-      tagline: `${area.name} — ${priceLine}.`,
+      tagline: `${area.name}, ${priceLine}.`,
       image: area.hero_image_url ?? "/og/areas.png",
       breadcrumbs: [
         { name: "Communities", path: "/areas" },
@@ -85,7 +85,7 @@ function AreaPage() {
     <>
       {/*
        * Opening plate. With photography it is a full-bleed image; without, a
-       * typographic header rather than a tall empty rectangle — an area we
+       * typographic header rather than a tall empty rectangle, an area we
        * have no picture of should look deliberate, not broken.
        */}
       {area.hero_image_url ? (
@@ -144,7 +144,7 @@ function AreaPage() {
                 decimals={2}
                 prefix="AED "
                 suffix="M"
-                meaning="The middle of the market here — half of sales were above this, half below."
+                meaning="The middle of the market here, half of sales were above this, half below."
               />
             </Reveal>
             <Reveal delay={stagger(2)}>
@@ -169,7 +169,7 @@ function AreaPage() {
                 fallback="Not shown"
                 meaning={
                   stats.gross_yield_pct
-                    ? "A year's registered rent against the typical sale price. Gross — service charges come out of this."
+                    ? "A year's registered rent against the typical sale price. Gross, service charges come out of this."
                     : "We hold no registered tenancy contracts for this community, so we are not going to estimate one."
                 }
               />
@@ -177,7 +177,7 @@ function AreaPage() {
           </div>
         ) : (
           <p className="body-text mt-10 max-w-measure text-muted-foreground">
-            We hold no recorded transactions for {area.name} yet. Ask us directly — we will tell you
+            We hold no recorded transactions for {area.name} yet. Ask us directly. We will tell you
             what we are seeing on the ground rather than guess.
           </p>
         )}
@@ -200,7 +200,7 @@ function AreaPage() {
                 />
                 <p className="caption mt-6 max-w-measure">
                   {stats?.transaction_count
-                    ? `Drawn from ${stats.transaction_count.toLocaleString("en-AE")} recorded sales in the last twelve months. Months with few sales move more sharply — that is thin trading, not a crash or a boom.`
+                    ? `Drawn from ${stats.transaction_count.toLocaleString("en-AE")} recorded sales in the last twelve months. Months with few sales move more sharply. That is thin trading, not a crash or a boom.`
                     : null}
                 </p>
               </Reveal>
@@ -215,7 +215,7 @@ function AreaPage() {
         </div>
       </Section>
 
-      {/* Living here — the context a number cannot carry */}
+      {/* Living here, the context a number cannot carry */}
       {area.description || area.summary ? (
         <Section>
           <div className="grid gap-14 lg:grid-cols-12">

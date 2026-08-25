@@ -8,7 +8,7 @@ import { DURATION } from "@/lib/motion";
  * A number that counts up when it scrolls into view.
  *
  * Server-renders its final value, so the figure is in the HTML for crawlers and
- * for anyone whose JavaScript never arrives — the animation is decoration laid
+ * for anyone whose JavaScript never arrives, the animation is decoration laid
  * over a number that is already correct. Under reduced motion it simply is the
  * final value and never moves.
  */
@@ -18,7 +18,7 @@ export function CountUp({
   prefix = "",
   suffix = "",
   /** Rendered instead of the number when there is nothing to show. */
-  fallback = "—",
+  fallback = "-",
 }: {
   value: number | null;
   decimals?: number;
@@ -77,7 +77,7 @@ export function CountUp({
     return <span ref={ref}>{fallback}</span>;
   }
 
-  /* Grouped the way this reader's language groups digits — the same rule the
+  /* Grouped the way this reader's language groups digits, the same rule the
    * price formatter follows, so a Hindi reader is not shown lakhs in one place
    * and thousands in another on the same page. */
   const format = (amount: number) =>

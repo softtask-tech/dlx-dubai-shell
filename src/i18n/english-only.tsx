@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 /**
  * The marker on a link that leaves a translated page for an English one.
  *
- * Most of the site — the guides, the journal, the listings, the area profiles —
+ * Most of the site, the guides, the journal, the listings, the area profiles,
  * is published in English only, and several of those pages carry visa
  * thresholds, fee schedules and tax statements. Publishing an unchecked
  * translation of a legal figure is the invented specific CLAUDE.md forbids, so
@@ -39,7 +39,7 @@ export function EnglishOnly({ className }: { className?: string }) {
 /**
  * The full explanation, for the head of a page rather than beside a link.
  *
- * Says why the page is English, and offers the advisor — which does answer in
+ * Says why the page is English, and offers the advisor, which does answer in
  * all five languages, from the same sources. That is a real alternative rather
  * than an apology, and it is the reason the guides can honestly stay untranslated.
  */

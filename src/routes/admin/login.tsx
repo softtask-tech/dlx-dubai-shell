@@ -11,7 +11,7 @@ import { Eyebrow } from "@/components/ui/section";
  * Admin sign-in.
  *
  * Email and password against Supabase Auth. There is no sign-up: accounts are
- * created by an administrator, and the admin role is granted in the database —
+ * created by an administrator, and the admin role is granted in the database,
  * so nobody can register their way into the pipeline.
  */
 export const Route = createFileRoute("/admin/login")({

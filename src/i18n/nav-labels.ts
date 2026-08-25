@@ -8,7 +8,7 @@
  * string would be a different, worse file.
  *
  * So the mapping is here instead, keyed by path. A page whose path is not
- * listed keeps its English label — which is correct, since it is an English
+ * listed keeps its English label, which is correct, since it is an English
  * page.
  */
 import type { Dictionary } from "./en";

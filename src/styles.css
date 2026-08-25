@@ -1,17 +1,21 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@import "./styles.fonts.css";
 
 /*
- * DLX Properties — ultra-luxury editorial design system.
- * Monochrome base + a single warm sand/gold accent. Light theme only.
+ * DLX Properties: ultra-luxury editorial design system.
+ *
+ * A cool-white canvas with deep green-black cinematic anchors. Green is the
+ * signature and the single accent; gold is a whisper, used for hairlines, small
+ * marks and text on dark, never as a fill and never on the light canvas.
  */
 
 @theme inline {
   --radius-sm: 0px;
   --radius-md: 0px;
   --radius-lg: 0px;
-  --radius-xl: 2px;
+  --radius-xl: 0px;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -35,29 +39,37 @@
   --color-ring: var(--ring);
 
   /* Named palette entries, so the brand colours can be referenced directly
-   * (bg-ink, text-sand) as well as through their semantic roles. */
+   * (bg-ink, text-gold) as well as through their semantic roles. */
   --color-ink: var(--ink);
+  --color-ink-panel: var(--ink-panel);
   --color-paper: var(--paper);
+  --color-paper-cool: var(--paper-cool);
+  --color-green: var(--green);
+  --color-green-deep: var(--green-deep);
+  --color-gold: var(--gold);
   --color-slate: var(--slate);
-  --color-sand: var(--sand);
-  --color-sand-soft: var(--sand-soft);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-muted: var(--on-dark-muted);
 
   /* --- Typography -------------------------------------------------------
-   * Editorial serif for display, clean sans for everything else. */
-  --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
-  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+   * Playfair Display for the editorial voice: a high-contrast transitional
+   * serif with the same vertical stress and fine hairlines as the DX monogram,
+   * which is what the display face has to answer to. Geist carries everything
+   * else. Both are self-hosted; see scripts/fetch-fonts.mjs. */
+  --font-display: "Playfair Display", ui-serif, Georgia, serif;
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
 
   /* Fluid type scale: each step carries its own line height, so headings
    * stay proportionate from a 360px phone to a 1440px desktop without a
    * breakpoint for every size. */
-  --text-display-1: clamp(2.75rem, 1.5rem + 5.4vw, 5.5rem);
-  --text-display-1--line-height: 1.02;
-  --text-display-2: clamp(2.25rem, 1.4rem + 3.6vw, 3.75rem);
-  --text-display-2--line-height: 1.08;
-  --text-display-3: clamp(1.75rem, 1.3rem + 1.9vw, 2.5rem);
-  --text-display-3--line-height: 1.15;
-  --text-lead: clamp(1.25rem, 1.05rem + 0.9vw, 1.625rem);
-  --text-lead--line-height: 1.4;
+  --text-display-1: clamp(2.6rem, 1.4rem + 5.1vw, 5.25rem);
+  --text-display-1--line-height: 1.04;
+  --text-display-2: clamp(2.1rem, 1.35rem + 3.2vw, 3.5rem);
+  --text-display-2--line-height: 1.1;
+  --text-display-3: clamp(1.6rem, 1.25rem + 1.6vw, 2.25rem);
+  --text-display-3--line-height: 1.18;
+  --text-lead: clamp(1.15rem, 1rem + 0.7vw, 1.5rem);
+  --text-lead--line-height: 1.45;
   --text-body: 1rem;
   --text-body--line-height: 1.7;
   --text-caption: 0.875rem;
@@ -65,18 +77,19 @@
   --text-eyebrow: 0.6875rem;
   --text-eyebrow--line-height: 1.4;
 
-  --tracking-editorial: 0.24em;
-  --tracking-monogram: 0.3em;
-  --tracking-display: -0.015em;
+  --tracking-editorial: 0.22em;
+  --tracking-monogram: 0.28em;
+  --tracking-display: -0.02em;
 
   /* --- Spacing rhythm ---------------------------------------------------
    * The vertical scale the page is composed on. `section` is the standard
-   * gap between editorial blocks; the rest step around it. */
+   * gap between editorial blocks; the rest step around it. Density 3, so
+   * these are deliberately larger than a standard app scale. */
   --spacing-gutter: 1.5rem;
   --spacing-block: 2.5rem;
-  --spacing-section-sm: 4.5rem;
-  --spacing-section: 7.5rem;
-  --spacing-section-lg: 11rem;
+  --spacing-section-sm: 5rem;
+  --spacing-section: 8.5rem;
+  --spacing-section-lg: 12rem;
 
   /* Widths. `shell` is the page's outer frame (1440px); `measure` is the
    * comfortable reading width for running text. */
@@ -97,72 +110,123 @@
 :root {
   --radius: 0px;
 
-  /* --- The palette, exactly as the brand defines it ---------------------
-   * Monochrome base plus one warm accent. Nothing else is a brand colour.
-   * Every semantic role below resolves to one of these five. */
-  --ink: oklch(0 0 0); /* #000000 */
-  --paper: oklch(1 0 0); /* #FFFFFF */
-  --slate: oklch(0.635 0 0); /* #8A8A8A */
-  --sand: oklch(0.653 0.084 78.5); /* #B08D4C */
-  --sand-soft: oklch(0.936 0.017 82.5); /* #EDE6DB */
+  /* --- The palette ------------------------------------------------------
+   *
+   * A cool-white canvas, deep green-black anchors, one green accent, and gold
+   * as a hairline whisper. Nothing else is a brand colour.
+   *
+   * Written as hex rather than oklch on purpose: several of these exist to hit
+   * a measured contrast ratio, and a colour-space conversion landing a couple
+   * of percent off would quietly drop them under it.
+   */
+  --ink: #0c1411; /* deep green-black, the cinematic anchor */
+  --ink-panel: #132019; /* a lifted panel inside a dark section */
+  --paper: #ffffff;
+  --paper-cool: #f6f8f7; /* faint green-grey off-white, never warm cream */
+  --green-deep: #1f3d34;
+  --green: #2e5a4b; /* the signature, and the single accent */
+  --gold: #c2a45c; /* hairlines, small marks, and text on dark. Never a fill. */
+  --slate: #8a8a8a; /* brand grey: rules and display type, not small text */
+  --on-dark: #ecefec;
+  --on-dark-muted: #9fb2a8;
 
   /*
-   * The readable pair.
+   * The readable greys.
    *
-   * Written as hex rather than oklch, deliberately: these two exist to hit a
-   * measured contrast ratio, and a colour space conversion that lands a couple
-   * of percent off would quietly drop them back under it.
+   * `--slate` is the brand grey and it is 3.45:1 on white, which carries a
+   * hairline or a 44px number but not a 14px caption. Small text uses the
+   * darkened member of the same hue below, measured at 5.33:1 on white and
+   * 5.00:1 on the cool paper. It reads as the same grey; it is simply legible.
    *
-   * The brand palette above is unchanged and still what the site looks like.
-   * But two of its colours do not carry small text to WCAG AA on white, and the
-   * audit measured it rather than assuming:
-   *
-   *   Slate #8A8A8A on white   3.45:1  — needs 4.5:1 for text under 24px
-   *   Sand  #B08D4C on white   3.11:1  — needs 4.5:1 for text under 24px
-   *
-   * Both are fine for what they were chosen for: rules, borders, and display
-   * type at 44px and up, where the bar is 3:1. They are not fine for a 14px
-   * caption or a link, which is most of the text on the site that is not black.
-   *
-   * So the *roles* below resolve to darkened members of the same two hues, both
-   * measured to pass on white and on the soft-sand sections. They read as the
-   * same grey and the same gold; they are simply legible.
+   * Gold gets the same treatment in reverse: it is 2.40:1 on white, so it is
+   * never used for text on the light canvas at all. On the dark anchors it is
+   * 7.79:1 and carries small text comfortably.
    */
-  --slate-readable: #666666; /* 5.74:1 on white · 4.63:1 on sand-soft */
-  --sand-readable: #7e622f; /* 5.71:1 on white · 4.61:1 on sand-soft */
+  --slate-readable: #6b6b6b; /* 5.33:1 on paper, 5.00:1 on paper-cool */
+  --text: #141414; /* cool near-black, not warm espresso. 18.4:1 on paper */
 
   --background: var(--paper);
-  --foreground: var(--ink);
+  --foreground: var(--text);
 
   --card: var(--paper);
-  --card-foreground: var(--ink);
+  --card-foreground: var(--text);
   --popover: var(--paper);
-  --popover-foreground: var(--ink);
+  --popover-foreground: var(--text);
 
+  /* Primary sits on the ink, not on pure black: a filled button is a small
+   * dark anchor and it belongs to the same family as the big ones. */
   --primary: var(--ink);
-  --primary-foreground: var(--paper);
+  --primary-foreground: var(--on-dark);
 
-  --secondary: var(--sand-soft);
-  --secondary-foreground: var(--ink);
+  /* The quiet second surface. Cool, never beige. */
+  --secondary: var(--paper-cool);
+  --secondary-foreground: var(--text);
 
-  --muted: oklch(0.968 0.004 84);
+  --muted: #f2f4f3;
   --muted-foreground: var(--slate-readable);
 
-  /* The interactive and small-text gold. `--sand` itself stays available for
-   * display type and non-text marks — see the hero's accent line. */
-  --accent: var(--sand-readable);
-  --accent-foreground: var(--paper);
-  --accent-soft: var(--sand-soft);
+  /* One accent, everywhere: green. 7.84:1 on paper, so it carries link text
+   * and small labels without a second, darker variant. */
+  --accent: var(--green);
+  --accent-foreground: var(--on-dark);
+  --accent-soft: var(--paper-cool);
 
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(1 0 0);
+  --destructive: #9b2c2c;
+  --destructive-foreground: #ffffff;
 
-  --border: oklch(0.9 0 0);
-  --input: oklch(0.9 0 0);
-  /* The focus ring is a non-text indicator: 3:1 against what it sits on, which
-   * the brand gold clears at 3.11:1. Keeping the brighter one makes the ring
-   * easier to spot, which is the entire point of it. */
-  --ring: var(--sand);
+  --border: #e2e7e4; /* cool green-grey hairline */
+  --input: #d6ddd9;
+  /* The focus ring is a non-text indicator and needs 3:1 against what it sits
+   * on. Green clears that on every surface in the system; gold does not clear
+   * it on the light canvas, which is why the ring is never gold. */
+  --ring: var(--green);
+}
+
+/*
+ * The dark anchors.
+ *
+ * The page is light. A handful of sections are deliberately cut from deep
+ * green-black: the hero, the market read, the advisor, the footer. That is a
+ * composed light-and-dark story the brief asks for by name, not a theme
+ * fluctuating section to section, and it is expressed by re-pointing the same
+ * semantic tokens rather than by every component learning two sets of classes.
+ *
+ * Put `data-surface="dark"` on the section and everything inside it, including
+ * shared components that know nothing about it, lands in the right colours.
+ */
+[data-surface="dark"] {
+  --background: var(--ink);
+  --foreground: var(--on-dark);
+
+  --card: var(--ink-panel);
+  --card-foreground: var(--on-dark);
+  --popover: var(--ink-panel);
+  --popover-foreground: var(--on-dark);
+
+  --primary: var(--on-dark);
+  --primary-foreground: var(--ink);
+
+  --secondary: var(--ink-panel);
+  --secondary-foreground: var(--on-dark);
+
+  --muted: var(--ink-panel);
+  --muted-foreground: var(--on-dark-muted);
+
+  /* Gold is the accent on dark and only on dark: 7.79:1 on the ink, and the
+   * one place in the system where it is allowed to carry text. */
+  --accent: var(--gold);
+  --accent-foreground: var(--ink);
+  --accent-soft: var(--ink-panel);
+
+  --destructive: #e88b8b;
+  --destructive-foreground: var(--ink);
+
+  --border: #26332c;
+  --input: #2f3d36;
+  --ring: var(--gold);
+
+  background-color: var(--ink);
+  color: var(--on-dark);
 }
 
 @layer base {
@@ -170,9 +234,15 @@
     border-color: var(--color-border);
   }
 
+  /*
+   * No `scroll-behavior: smooth` here. Lenis owns the scroll and its own
+   * easing; leaving the CSS property on makes anchor jumps fight the library.
+   * The reduced-motion block below restores `auto` explicitly for the case
+   * where Lenis stands down and the browser is back in charge.
+   */
   html {
-    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   body {
@@ -183,29 +253,24 @@
     letter-spacing: 0.01em;
   }
 
+  /*
+   * Playfair Display starts at 400, so a 300 here would silently synthesise or
+   * clamp. Setting it honestly at 400 is what the face is drawn for, and the
+   * airiness comes from size and leading rather than from a weight that does
+   * not exist.
+   */
   h1,
   h2,
   h3,
   h4 {
     font-family: var(--font-display);
-    font-weight: 300;
-    letter-spacing: -0.015em;
+    font-weight: 400;
+    letter-spacing: var(--tracking-display);
   }
 
   ::selection {
-    background: var(--color-accent-soft);
-    color: var(--color-foreground);
-  }
-
-  /*
-   * Hide the native cursor only while our custom one is actually drawing.
-   * CustomCursor sets data-cursor-custom on <html>, and it never does so for
-   * coarse pointers or reduced-motion visitors — so a real cursor always exists.
-   */
-  html[data-cursor-custom] body,
-  html[data-cursor-custom] a,
-  html[data-cursor-custom] button {
-    cursor: none;
+    background: var(--color-accent);
+    color: var(--color-accent-foreground);
   }
 
   /* Keyboard focus stays visible everywhere, in the accent, never removed. */
@@ -216,7 +281,7 @@
 
   /*
    * Reduced motion: no smooth scroll, no travel, no parallax. Content settles
-   * instantly rather than disappearing — nothing depends on an animation to
+   * instantly rather than disappearing, nothing depends on an animation to
    * become visible.
    */
   @media (prefers-reduced-motion: reduce) {
@@ -283,8 +348,101 @@
   }
 }
 
+/* --- Line reveal ----------------------------------------------------------
+ * <RevealText> splits a headline into lines on the client and hands each one a
+ * `--reveal-delay`. Each line sits inside a clipping box so it rises out from
+ * behind an edge rather than fading in mid-air, which is what makes the
+ * movement read as typesetting rather than as a fade.
+ */
+.reveal-text .line {
+  display: block;
+  overflow: hidden;
+  /* Descenders on an italic display word sit below the baseline and a tight
+   * clip would shear them off. This is the reserve that stops it, and it is
+   * pulled back out again so the line spacing is unchanged. */
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+.reveal-text .line-inner {
+  display: block;
+  will-change: transform;
+}
+
+[data-reveal-line] > .line-inner {
+  transition:
+    opacity var(--duration-slow) var(--ease-editorial),
+    transform var(--duration-slow) var(--ease-editorial);
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+[data-reveal-line="pending"] > .line-inner {
+  opacity: 0;
+  transform: translateY(105%);
+}
+
+[data-reveal-line="shown"] > .line-inner {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- Mask reveal ----------------------------------------------------------
+ * A photograph uncovering itself: the frame's clip lifts while the image
+ * settles back from a slight overscale, so the picture appears to be revealed
+ * rather than to zoom. Applied by <MaskReveal>, on the client only.
+ */
+[data-mask-reveal] > * {
+  transition:
+    clip-path var(--duration-cinematic) var(--ease-editorial),
+    transform var(--duration-cinematic) var(--ease-editorial);
+  transition-delay: inherit;
+}
+
+[data-mask-reveal="pending"] > * {
+  clip-path: inset(0 0 100% 0);
+  transform: scale(1.08);
+}
+
+[data-mask-reveal="shown"] > * {
+  clip-path: inset(0 0 0 0);
+  transform: none;
+}
+
+/* --- Pinned sequence ------------------------------------------------------
+ * Stages cross-fade while the section holds the viewport. The outgoing stage
+ * lifts a little as it goes, so the sequence reads as advancing rather than as
+ * a slideshow swapping images.
+ */
+[data-pinned-stage] {
+  transition:
+    opacity var(--duration-base) var(--ease-editorial),
+    transform var(--duration-base) var(--ease-editorial);
+}
+
+[data-pinned-stage="idle"] {
+  opacity: 0;
+  transform: translateY(-1.25rem);
+  pointer-events: none;
+}
+
+[data-pinned-stage="active"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal-line] > .line-inner,
+  [data-mask-reveal] > *,
+  [data-pinned-stage] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+}
+
 /* The hero's own animation is defined further down, in CSS, so it no longer
- * needs a scripting fallback — a CSS animation runs with JavaScript disabled
+ * needs a scripting fallback, a CSS animation runs with JavaScript disabled
  * and starts at the first paint either way. See the note on [data-hero-reveal]. */
 
 /* --- Print ----------------------------------------------------------------
@@ -296,8 +454,7 @@
 @media print {
   header,
   footer,
-  .report-actions,
-  [data-cursor-custom] {
+  .report-actions {
     display: none !important;
   }
 
@@ -352,7 +509,7 @@
   font-family: var(--font-display);
   font-size: var(--text-display-1);
   line-height: var(--text-display-1--line-height);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--tracking-display);
 }
 
@@ -360,7 +517,7 @@
   font-family: var(--font-display);
   font-size: var(--text-display-2);
   line-height: var(--text-display-2--line-height);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--tracking-display);
 }
 
@@ -368,7 +525,7 @@
   font-family: var(--font-display);
   font-size: var(--text-display-3);
   line-height: var(--text-display-3--line-height);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--tracking-display);
 }
 
@@ -376,7 +533,7 @@
   font-family: var(--font-display);
   font-size: var(--text-lead);
   line-height: var(--text-lead--line-height);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 @utility body-text {
@@ -437,7 +594,7 @@
  * `link-underline` reveals its rule on hover, which suits a standalone call to
  * action but not a link buried in body copy: a reader cannot see it is a link,
  * and on a touch screen there is no hover to reveal it. This one is underlined
- * from the start and warms to the accent on hover — visible without shouting,
+ * from the start and warms to the accent on hover, visible without shouting,
  * and never colour alone.
  */
 @utility prose-link {
@@ -463,12 +620,11 @@
  * places where a rule is drawn or a transform originates on one physical side.
  * Those are corrected here rather than duplicated at every call site.
  *
- * SECOND, THE FACES. Cormorant Garamond and Jost are Latin faces. Cormorant
- * carries Cyrillic, so Russian keeps the editorial serif; Jost does not, so
- * Russian body copy would silently fall back to whatever the browser had.
- * Arabic and Devanagari have no coverage in either. Rendering a headline in a
- * fallback face is exactly the detail that separates a translated site from a
- * localised one, so each script gets a face chosen for it — loaded only on the
+ * SECOND, THE FACES. Playfair Display and Geist both carry Cyrillic, so Russian
+ * needs no swap at all: it gets the house pair, in the house voice. Arabic and
+ * Devanagari have no coverage in either. Rendering a headline in a fallback
+ * face is exactly the detail that separates a translated site from a localised
+ * one, so each of those scripts gets a face chosen for it, loaded only on the
  * pages that need it, so the English site pays nothing.
  *
  * Chinese deliberately gets no webfont. A full Simplified Chinese face is
@@ -477,13 +633,13 @@
  */
 
 [dir="rtl"] {
-  /* Amiri is a Naskh face in the same register as Cormorant — high contrast,
+  /* Amiri is a Naskh face in the same register as Playfair: high contrast,
    * unhurried, built for continuous reading rather than signage. */
   --font-display: "Amiri", "Noto Naskh Arabic", ui-serif, serif;
   --font-sans: "Noto Sans Arabic", ui-sans-serif, system-ui, sans-serif;
 
   /* Arabic sits lower and denser in its box than Latin at the same size, so the
-   * tight Latin tracking is removed — negative letter-spacing on Arabic breaks
+   * tight Latin tracking is removed, negative letter-spacing on Arabic breaks
    * the joins between letters, which is the fastest way to make a headline look
    * like it was set by someone who does not read the script. */
   --tracking-display: 0em;
@@ -498,10 +654,9 @@
   --tracking-display: 0em;
 }
 
-:root:lang(ru) {
-  /* Cormorant covers Cyrillic; Jost does not, so only the sans is swapped. */
-  --font-sans: "Noto Sans", ui-sans-serif, system-ui, sans-serif;
-}
+/* Russian gets no rule: the Cyrillic subsets of Playfair Display and Geist are
+ * both self-hosted, so a Russian page is set in the same two faces as an
+ * English one and simply downloads a different slice of them. */
 
 :root:lang(zh-Hans) {
   --font-display:
@@ -563,7 +718,7 @@
  * hero H1 shipped as `style="opacity:0"` and only became visible once React had
  * hydrated and Framer Motion had run its mount animation. On a fast connection
  * that is a flicker. On a phone on hotel wifi it is a blank hero for as long as
- * the bundle takes — and since the H1 is the Largest Contentful Paint candidate
+ * the bundle takes, and since the H1 is the Largest Contentful Paint candidate
  * on the most important page of the site, LCP was effectively measuring how
  * long the JavaScript took, not how long the page took.
  *
@@ -575,7 +730,7 @@
  *
  * `--hero-delay` staggers the lines. `backwards` fill means the element is
  * hidden before its delay elapses without needing an inline opacity:0 in the
- * HTML — which is the whole point.
+ * HTML, which is the whole point.
  */
 @keyframes hero-rise {
   from {
@@ -602,7 +757,7 @@
     var(--hero-delay, 0ms) both;
 }
 
-/* The eyebrow and the button row travel no distance — only the headline does,
+/* The eyebrow and the button row travel no distance, only the headline does,
  * so the eye follows one movement rather than three. */
 [data-hero-reveal="fade"] {
   animation-name: hero-fade;
@@ -622,7 +777,7 @@
 
 /* --- The page turn --------------------------------------------------------
  *
- * A short lift and settle on the content when the reader navigates — the beat
+ * A short lift and settle on the content when the reader navigates, the beat
  * of a page being turned rather than a screen being replaced.
  *
  * `data-page-turn` is only set from the second page onwards. The first render

@@ -5,7 +5,7 @@
  * time someone fills in a form three pages later, so they are stashed on first
  * sight and read back at submission.
  *
- * TWO TOUCHES, TWO SCOPES. Last touch lives in `sessionStorage` — it belongs to
+ * TWO TOUCHES, TWO SCOPES. Last touch lives in `sessionStorage`, it belongs to
  * this visit, and the campaign someone clicked this morning should not be
  * credited with the enquiry they send next week. First touch lives in
  * `localStorage`, because the campaign that *introduced* someone is a different
@@ -15,7 +15,7 @@
  * CLICK IDS MATTER MORE THAN THEY LOOK. Meta matches far better on `fbc` and
  * `fbp` together than on hashed contact details alone, and on iOS Google
  * replaces `gclid` with `gbraid`/`wbraid` entirely. Collected here because they
- * are worthless if collected late — they exist only on the landing URL.
+ * are worthless if collected late, they exist only on the landing URL.
  *
  * None of this leaves the browser on its own. It travels attached to an enquiry
  * the visitor chose to send, which is also why it is captured regardless of

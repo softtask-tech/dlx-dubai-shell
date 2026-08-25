@@ -3,12 +3,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { buildKnowledgeIndex } from "@/data/knowledge";
 
 /**
- * /advisor-knowledge.json — the advisor's knowledge source, as data.
+ * /advisor-knowledge.json, the advisor's knowledge source, as data.
  *
  * Phase 5 gives the chat and the voice agent one brain; this is what that brain
  * reads. Serving it over HTTP rather than importing it means the voice layer,
  * which runs outside this app, retrieves from exactly the same index the chat
- * does — including the guardrails, which travel with the entries rather than
+ * does, including the guardrails, which travel with the entries rather than
  * being restated in two prompts that will eventually disagree.
  *
  * Everything here is already public: it is the copy on the site, plus the market

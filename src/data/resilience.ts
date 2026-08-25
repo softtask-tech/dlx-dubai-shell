@@ -3,8 +3,8 @@
  *
  * The public pages are marketing surfaces. If Supabase is unreachable, the
  * tables have not been migrated yet, or a query is simply wrong, the right
- * outcome is a page that renders its empty state — "the portfolio is being
- * prepared" — not a 500 and an error boundary in front of a prospective client.
+ * outcome is a page that renders its empty state, "the portfolio is being
+ * prepared", not a 500 and an error boundary in front of a prospective client.
  *
  * Two deliberate limits on that:
  *   * only *public list* reads are wrapped. A single-item lookup returning null

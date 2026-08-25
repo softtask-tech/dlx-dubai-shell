@@ -9,7 +9,7 @@ import { Section, Eyebrow } from "@/components/ui/section";
  * Every audience DLX designs for needs a reason to trust a small brokerage
  * within the first scroll, and they need different ones: the licence number for
  * the GCC reader, the data source for the analyst, the languages for the family
- * relocating. Four short facts, stated plainly, no badges or seals — a claim
+ * relocating. Four short facts, stated plainly, no badges or seals, a claim
  * that can be checked is worth more than a graphic that cannot.
  *
  * The facts now come from the dictionary, which means the Arabic reader is told

@@ -10,12 +10,12 @@ import { cn } from "@/lib/utils";
  * Four decisions worth stating.
  *
  * It keeps the reader where they are. Switching to Arabic from the services
- * page lands on the Arabic services page, not the Arabic homepage — being sent
+ * page lands on the Arabic services page, not the Arabic homepage, being sent
  * back to the top is the single most common way a language switcher wastes
  * someone's time.
  *
  * It writes each language in that language. A reader who wants Arabic is
- * looking for العربية, not for the English word "Arabic" — a list of English
+ * looking for العربية, not for the English word "Arabic", a list of English
  * names is a switcher built for the people who made it.
  *
  * It has two forms. The header gets a select, because five languages and a
@@ -25,7 +25,7 @@ import { cn } from "@/lib/utils";
  * far is looking rather than glancing.
  *
  * It navigates for real. The document's `lang` and `dir` are set from the URL,
- * and only a real navigation makes the browser re-apply them — a soft client
+ * and only a real navigation makes the browser re-apply them, a soft client
  * transition into Arabic would leave the page left-to-right until the next
  * reload.
  */

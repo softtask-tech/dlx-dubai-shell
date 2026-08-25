@@ -15,7 +15,7 @@ const FAQS: readonly FaqEntry[] = [
   {
     question: "How quickly will someone come back to me?",
     answer:
-      "Usually the same day, and always within one working day. A consultant reads your enquiry personally — nothing here goes into an automated sequence.",
+      "Usually the same day, and always within one working day. A consultant reads your enquiry personally, nothing here goes into an automated sequence.",
   },
   {
     question: "Can I speak to someone before sharing my details?",
@@ -133,7 +133,7 @@ function ContactPage() {
               <Eyebrow>Send an enquiry</Eyebrow>
               <h2 className="display-2 mt-6">Tell us what you need.</h2>
               <p className="body-text mt-8 max-w-measure text-muted-foreground">
-                Three short steps. Only a way to reach you is required — everything else helps us
+                Three short steps. Only a way to reach you is required, everything else helps us
                 come back to you with something useful rather than a brochure.
               </p>
             </Reveal>

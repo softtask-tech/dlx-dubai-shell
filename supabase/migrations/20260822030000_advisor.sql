@@ -2,7 +2,7 @@
 --
 -- The chat and the voice agent share one brain, so they share one table. A
 -- conversation is the unit: it opens when someone starts talking, accumulates
--- turns, and — if the person tells us who they are — attaches to a lead.
+-- turns, and, if the person tells us who they are - attaches to a lead.
 --
 -- Two ideas shape this.
 --
@@ -20,7 +20,7 @@
 create type advisor_channel as enum ('chat', 'voice');
 
 -- ---------------------------------------------------------------------------
--- advisor_conversations — one chat session or one phone call
+-- advisor_conversations, one chat session or one phone call
 -- ---------------------------------------------------------------------------
 
 create table public.advisor_conversations (

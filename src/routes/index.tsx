@@ -22,7 +22,7 @@ import { Button } from "@/components/ui/button";
 
 /**
  * Questions a first-time visitor actually asks, answered from what this site
- * states elsewhere. The same entries feed the visible block and the FAQ schema —
+ * states elsewhere. The same entries feed the visible block and the FAQ schema,
  * never publish an answer in one and not the other.
  */
 const FAQ_ENTRIES: readonly FaqEntry[] = [
@@ -33,12 +33,12 @@ const FAQ_ENTRIES: readonly FaqEntry[] = [
   {
     question: "What does DLX actually do for a client?",
     answer:
-      "Three things: acquisition, disposal and portfolio strategy. We represent a small number of clients at a time — sourcing and negotiating on a purchase, running a discreet sale, or advising owners on what to hold, sell or restructure.",
+      "Three things: acquisition, disposal and portfolio strategy. We represent a small number of clients at a time, sourcing and negotiating on a purchase, running a discreet sale, or advising owners on what to hold, sell or restructure.",
   },
   {
     question: "Do I need to be in Dubai to buy?",
     answer:
-      "No. Much of our client base buys from abroad, and we are set up to represent buyers remotely — viewings, due diligence and negotiation handled on your behalf. Where a step legally requires you in person or through a power of attorney, we will tell you before you commit to anything.",
+      "No. Much of our client base buys from abroad, and we are set up to represent buyers remotely, viewings, due diligence and negotiation handled on your behalf. Where a step legally requires you in person or through a power of attorney, we will tell you before you commit to anything.",
   },
 ] as const;
 
@@ -112,7 +112,7 @@ function Index() {
                   className="block overflow-hidden"
                   /* The first line carries no delay. Everything after it is
                    * staggered, but the LCP candidate has to be painting in the
-                   * first frame — an animation-delay on it is an LCP delay,
+                   * first frame, an animation-delay on it is an LCP delay,
                    * because Chrome does not count an element at opacity 0. */
                   data-hero-reveal
                   style={{ "--hero-delay": `${i * 140}ms` } as CSSProperties}
@@ -121,7 +121,7 @@ function Index() {
                 </span>
               ))}
               <span
-                className="block italic text-sand"
+                className="block italic text-accent"
                 data-hero-reveal
                 style={{ "--hero-delay": "280ms" } as CSSProperties}
               >
@@ -156,7 +156,7 @@ function Index() {
           <div className="lg:col-span-8 lg:col-start-5">
             <Reveal delay={0.1}>
               <p className="display-3">
-                We represent a small number of clients across Dubai's prime districts — advising
+                We represent a small number of clients across Dubai's prime districts, advising
                 quietly, negotiating precisely, and holding a long view of value.
               </p>
             </Reveal>
@@ -197,7 +197,7 @@ function Index() {
       {/* The differentiator: official data, read plainly */}
       <MarketBand summary={marketSummary} index={marketIndex} areas={areas} />
 
-      {/* Selected listings — real inventory, or nothing at all */}
+      {/* Selected listings, real inventory, or nothing at all */}
       {featured.length > 0 ? (
         <Section className="pt-0">
           <div className="flex flex-wrap items-end justify-between gap-6">
@@ -221,7 +221,7 @@ function Index() {
         </Section>
       ) : null}
 
-      {/* Why a small brokerage can be trusted — first scroll, every audience */}
+      {/* Why a small brokerage can be trusted, first scroll, every audience */}
       <TrustStrip className="pt-0" />
 
       <DeveloperStrip developers={partners} />

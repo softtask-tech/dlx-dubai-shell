@@ -10,7 +10,7 @@ type CardProps = React.HTMLAttributes<HTMLDivElement> & {
 /**
  * Editorial card shell.
  *
- * A hairline and whitespace, never a shadow or a rounded corner — depth in this
+ * A hairline and whitespace, never a shadow or a rounded corner, depth in this
  * design comes from type and space, not elevation. Compose with the parts
  * below; `interactive` adds the hover state for a card that is itself a link.
  */
@@ -36,7 +36,7 @@ type CardMediaProps = React.HTMLAttributes<HTMLDivElement> & {
 
 /**
  * Image frame. Clips its child and, inside an interactive card, drifts the
- * image in slightly on hover — the one moment of movement a card gets.
+ * image in slightly on hover, the one moment of movement a card gets.
  */
 const CardMedia = React.forwardRef<HTMLDivElement, CardMediaProps>(
   ({ className, ratio = "3 / 2", style, ...props }, ref) => (

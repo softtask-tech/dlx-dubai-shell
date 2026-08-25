@@ -15,7 +15,7 @@ import { Tag } from "@/components/ui/tag";
  * What the advertising returned.
  *
  * Built to be trusted, which means built to admit what it does not know. A
- * campaign with leads and no imported spend shows "—", not a zero; a campaign
+ * campaign with leads and no imported spend shows "-", not a zero; a campaign
  * with spend and no closed deal shows "return unknown", not "0×". Every row
  * carries the gaps that stopped it computing, because a marketing dashboard
  * that quietly fills holes with zeroes is how budgets get doubled on the
@@ -41,7 +41,7 @@ function defaultRange(): { from: string; to: string } {
 }
 
 const money = (value: number | null): string =>
-  value === null ? "—" : `AED ${Math.round(value).toLocaleString("en-AE")}`;
+  value === null ? "-" : `AED ${Math.round(value).toLocaleString("en-AE")}`;
 
 function RoasAdmin() {
   const { accessToken } = useAdminSession();
@@ -112,7 +112,7 @@ function RoasAdmin() {
           {summary.spendMissing ? (
             <p className="body-text mt-8 border-l-2 border-accent pl-6 text-muted-foreground">
               No spend has been imported for this period, so cost per lead and return cannot be
-              computed. Lead counts and quality below are still accurate — paste an export from your
+              computed. Lead counts and quality below are still accurate, paste an export from your
               ad manager to complete the picture.
             </p>
           ) : null}
@@ -124,7 +124,7 @@ function RoasAdmin() {
             <Metric label="Closed" value={String(summary.totalWon)} />
             <Metric
               label="Revenue"
-              value={summary.totalRevenueAed > 0 ? money(summary.totalRevenueAed) : "—"}
+              value={summary.totalRevenueAed > 0 ? money(summary.totalRevenueAed) : "-"}
             />
           </div>
 
@@ -134,7 +134,7 @@ function RoasAdmin() {
             <Tag variant="bare">{summary.mix.cold} cold</Tag>
             {summary.unattributedLeads > 0 ? (
               <span className="caption text-muted-foreground">
-                {summary.unattributedLeads} with no campaign — direct, organic, or attribution lost
+                {summary.unattributedLeads} with no campaign, direct, organic, or attribution lost
               </span>
             ) : null}
           </div>
@@ -181,7 +181,7 @@ function RoasAdmin() {
                     <td className="py-4 pr-6 text-sm">{money(row.costPerQualifiedAed)}</td>
                     <td className="py-4 pr-6 text-sm">{row.won}</td>
                     <td className="py-4 text-sm">
-                      {row.roas === null ? "—" : `${row.roas.toFixed(1)}×`}
+                      {row.roas === null ? "-" : `${row.roas.toFixed(1)}×`}
                     </td>
                   </tr>
                 ))}

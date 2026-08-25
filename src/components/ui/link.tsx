@@ -13,7 +13,7 @@ const linkVariants = cva(
         default: "link-underline text-foreground hover:text-accent",
         /** Uppercase label, for navigation and calls to action. */
         eyebrow: "eyebrow link-underline text-foreground hover:text-accent",
-        /** Muted until hovered — lists, footers, secondary trails. */
+        /** Muted until hovered, lists, footers, secondary trails. */
         quiet: "text-foreground/70 hover:text-accent",
         /** Sits inside a sentence and stays underlined. */
         inline:
@@ -30,7 +30,7 @@ export type TextLinkProps = LinkComponentProps<"a"> & LinkVariants;
 
 /**
  * Internal link. Wraps the router's `Link`, so prefetching, active state and
- * `aria-current` all come for free — routes are type-checked at the call site.
+ * `aria-current` all come for free, routes are type-checked at the call site.
  */
 export function TextLink({ className, variant, ...props }: TextLinkProps) {
   return <RouterLink className={cn(linkVariants({ variant }), className)} {...props} />;

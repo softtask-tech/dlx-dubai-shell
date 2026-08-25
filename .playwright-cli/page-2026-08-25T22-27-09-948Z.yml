@@ -1,0 +1,321 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DLX Properties, home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - text: DLX
+      - navigation "Primary" [ref=e6]:
+        - link "Properties" [ref=e7] [cursor=pointer]:
+          - /url: /properties
+        - link "Services" [ref=e8] [cursor=pointer]:
+          - /url: /services
+        - link "Market Intelligence" [ref=e9] [cursor=pointer]:
+          - /url: /market-intelligence
+        - link "Calculators" [ref=e10] [cursor=pointer]:
+          - /url: /tools
+        - link "Guides" [ref=e11] [cursor=pointer]:
+          - /url: /guides
+        - link "About" [ref=e12] [cursor=pointer]:
+          - /url: /about
+        - link "Contact" [ref=e13] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=e14]:
+        - combobox "Show prices in" [ref=e16] [cursor=pointer]:
+          - option "AED" [selected]
+          - option "USD"
+          - option "EUR"
+          - option "GBP"
+          - option "INR"
+          - option "PKR"
+          - option "SAR"
+          - option "RUB"
+          - option "CNY"
+        - combobox "Choose a language" [ref=e17] [cursor=pointer]:
+          - option "English" [selected]
+          - option "العربية"
+          - option "हिन्दी"
+          - option "Русский"
+          - option "中文"
+  - main [ref=e18]:
+    - generic [ref=e19]:
+      - img "A minimal Dubai penthouse terrace overlooking the skyline at dawn" [ref=e20]
+      - generic [ref=e23]:
+        - generic [ref=e24]: Dubai · Private Brokerage
+        - heading "Dubai real estate, handled with intention." [level=1] [ref=e26]:
+          - generic [ref=e27]: Dubai real estate,
+          - generic [ref=e28]: handled with
+          - generic [ref=e29]: intention.
+        - generic [ref=e30]:
+          - link [ref=e31] [cursor=pointer]:
+            - /url: /properties
+            - button "View Portfolio" [ref=e32]
+          - link "Private consultation" [ref=e33] [cursor=pointer]:
+            - /url: /contact
+    - generic [ref=e36]:
+      - generic [ref=e37]: The practice
+      - generic [ref=e40]:
+        - paragraph [ref=e42]: We represent a small number of clients across Dubai's prime districts, advising quietly, negotiating precisely, and holding a long view of value.
+        - paragraph [ref=e44]: Acquisition, disposal and portfolio strategy for private owners, family offices and first-time buyers into the emirate.
+    - generic [ref=e46]:
+      - link "01 Private Sales View" [ref=e49] [cursor=pointer]:
+        - /url: /properties
+        - generic [ref=e50]: "01"
+        - generic [ref=e51]: Private Sales
+        - generic [ref=e52]: View
+      - link "02 Advisory & Services View" [ref=e54] [cursor=pointer]:
+        - /url: /services
+        - generic [ref=e55]: "02"
+        - generic [ref=e56]: Advisory & Services
+        - generic [ref=e57]: View
+      - link "03 Market Intelligence View" [ref=e59] [cursor=pointer]:
+        - /url: /market-intelligence
+        - generic [ref=e60]: "03"
+        - generic [ref=e61]: Market Intelligence
+        - generic [ref=e62]: View
+      - link "04 Guides View" [ref=e64] [cursor=pointer]:
+        - /url: /guides
+        - generic [ref=e65]: "04"
+        - generic [ref=e66]: Guides
+        - generic [ref=e67]: View
+    - generic [ref=e69]:
+      - generic [ref=e70]:
+        - generic [ref=e72]:
+          - generic [ref=e73]: Dubai market intelligence
+          - heading "Prime Dubai has risen 11.3% in a year." [level=2] [ref=e74]:
+            - text: Prime Dubai has risen
+            - generic [ref=e75]:
+              - generic [ref=e76]: 11.3%
+              - generic [ref=e77]: 11.3%
+            - text: in a year.
+        - generic [ref=e79]:
+          - paragraph [ref=e80]: That is the median across 6 communities we track, weighted by how much actually changed hands. It is the number a valuation should start from, not an asking price, and not an agency's opinion.
+          - paragraph [ref=e81]: "Updated August 2026 · Source: Dubai Land Department"
+      - generic [ref=e82]:
+        - generic [ref=e84]:
+          - generic [ref=e85]: Median price
+          - paragraph [ref=e86]:
+            - generic [ref=e87]:
+              - generic [ref=e88]: AED 1,714 /sq ft
+              - generic [ref=e89]: AED 1,714 /sq ft
+          - paragraph [ref=e90]: What a square foot has actually transacted at across the communities we cover.
+        - generic [ref=e92]:
+          - generic [ref=e93]: Year on year
+          - paragraph [ref=e94]:
+            - generic [ref=e95]:
+              - generic [ref=e96]: 11.3%
+              - generic [ref=e97]: 11.3%
+          - paragraph [ref=e98]: Prices are higher than a year ago. If you are buying, waiting has had a cost.
+        - generic [ref=e100]:
+          - generic [ref=e101]: Sales recorded
+          - paragraph [ref=e102]:
+            - generic [ref=e103]:
+              - text: 24,442
+              - generic [ref=e104]: 24,442
+          - paragraph [ref=e105]: Registered sales behind these figures over the last twelve months. More sales, more confidence in the number.
+        - generic [ref=e107]:
+          - generic [ref=e108]: Best gross yield
+          - paragraph [ref=e109]:
+            - generic [ref=e110]:
+              - generic [ref=e111]: 7.9%
+              - generic [ref=e112]: 7.9%
+          - paragraph [ref=e113]: Jumeirah Village Circle currently returns the most rent against price. Gross, before service charges.
+      - button "Explore the numbers" [ref=e115]
+    - generic [ref=e117]:
+      - generic [ref=e118]:
+        - generic [ref=e119]:
+          - generic [ref=e120]: Selected
+          - heading "From the portfolio" [level=2] [ref=e121]
+        - link "View all properties" [ref=e123] [cursor=pointer]:
+          - /url: /properties
+      - generic [ref=e124]:
+        - link "Signature Villa, Frond K Palm Jumeirah Signature Villa, Frond K 5 beds · 7,800 sq ft AED 34,500,000" [ref=e127] [cursor=pointer]:
+          - /url: /properties/signature-villa-frond-k
+          - img "Signature Villa, Frond K" [ref=e129]
+          - generic [ref=e130]:
+            - generic [ref=e131]: Palm Jumeirah
+            - heading "Signature Villa, Frond K" [level=3] [ref=e133]
+            - paragraph [ref=e134]: 5 beds · 7,800 sq ft
+            - paragraph [ref=e135]:
+              - generic [ref=e136]: AED 34,500,000
+        - link "Two-bedroom, Burj Vista Downtown Dubai Two-bedroom, Burj Vista 2 beds · 1,420 sq ft AED 4,950,000" [ref=e140] [cursor=pointer]:
+          - /url: /properties/burj-vista-two-bedroom
+          - img "Two-bedroom, Burj Vista" [ref=e142]
+          - generic [ref=e143]:
+            - generic [ref=e144]: Downtown Dubai
+            - heading "Two-bedroom, Burj Vista" [level=3] [ref=e146]
+            - paragraph [ref=e147]: 2 beds · 1,420 sq ft
+            - paragraph [ref=e148]:
+              - generic [ref=e149]: AED 4,950,000
+        - link "Penthouse, Marina Gate Dubai Marina Penthouse, Marina Gate 4 beds · 4,150 sq ft AED 12,800,000" [ref=e153] [cursor=pointer]:
+          - /url: /properties/marina-gate-penthouse
+          - img "Penthouse, Marina Gate" [ref=e155]
+          - generic [ref=e156]:
+            - generic [ref=e157]: Dubai Marina
+            - heading "Penthouse, Marina Gate" [level=3] [ref=e159]
+            - paragraph [ref=e160]: 4 beds · 4,150 sq ft
+            - paragraph [ref=e161]:
+              - generic [ref=e162]: AED 12,800,000
+    - generic [ref=e165]:
+      - heading "Why a small brokerage can be trusted" [level=2] [ref=e166]
+      - generic [ref=e168]:
+        - generic [ref=e170]:
+          - generic [ref=e171]: Licensed
+          - paragraph [ref=e172]: RERA ORN 40905
+          - paragraph [ref=e173]: Registered with Dubai's Real Estate Regulatory Agency.
+        - generic [ref=e175]:
+          - generic [ref=e176]: Based
+          - paragraph [ref=e177]: Business Bay, Dubai
+          - paragraph [ref=e178]: A real office, in the district we transact in.
+        - generic [ref=e180]:
+          - generic [ref=e181]: Evidence
+          - paragraph [ref=e182]: Dubai Land Department data
+          - paragraph [ref=e183]: We price from recorded transactions, and we cite them.
+        - generic [ref=e185]:
+          - generic [ref=e186]: Languages
+          - paragraph [ref=e187]: Five languages
+          - paragraph [ref=e188]: Represented in the language you would rather negotiate in.
+    - generic [ref=e190]:
+      - generic [ref=e191]: Developer partnerships
+      - generic [ref=e193]:
+        - link "DAMAC Properties" [ref=e195] [cursor=pointer]:
+          - /url: /developers/damac
+        - link "Emaar Properties" [ref=e197] [cursor=pointer]:
+          - /url: /developers/emaar
+        - link "Meraas" [ref=e199] [cursor=pointer]:
+          - /url: /developers/meraas
+        - link "Nakheel" [ref=e201] [cursor=pointer]:
+          - /url: /developers/nakheel
+        - link "Select Group" [ref=e203] [cursor=pointer]:
+          - /url: /developers/select-group
+        - link "Sobha Realty" [ref=e205] [cursor=pointer]:
+          - /url: /developers/sobha-realty
+    - generic [ref=e208]:
+      - generic [ref=e210]:
+        - generic [ref=e211]: In their words
+        - heading "What clients say" [level=2] [ref=e212]
+      - generic [ref=e213]:
+        - figure [ref=e215]:
+          - blockquote [ref=e216]: “They talked me out of the first building I wanted. The service charges were wrong and they showed me the numbers.”
+          - generic [ref=e217]:
+            - text: Marcus Van Der Berg · Rotterdam ·
+            - link "Google" [ref=e218] [cursor=pointer]:
+              - /url: https://maps.google.com/
+        - figure [ref=e220]:
+          - blockquote [ref=e221]: “Bought two units without flying in once. Every figure they quoted held up at transfer.”
+          - generic [ref=e222]:
+            - text: Priya Ramanathan · Singapore ·
+            - link "Google" [ref=e223] [cursor=pointer]:
+              - /url: https://maps.google.com/
+    - generic [ref=e226]:
+      - generic [ref=e228]:
+        - generic [ref=e229]: Questions
+        - heading "Asked and answered" [level=2] [ref=e230]
+      - generic [ref=e232]:
+        - group [ref=e234]:
+          - generic [ref=e235] [cursor=pointer]:
+            - heading "Is DLX Properties a licensed Dubai brokerage?" [level=3] [ref=e236]
+            - generic [ref=e237]: +
+        - group [ref=e239]:
+          - generic [ref=e240] [cursor=pointer]:
+            - heading "What does DLX actually do for a client?" [level=3] [ref=e241]
+            - generic [ref=e242]: +
+        - group [ref=e244]:
+          - generic [ref=e245] [cursor=pointer]:
+            - heading "Do I need to be in Dubai to buy?" [level=3] [ref=e246]
+            - generic [ref=e247]: +
+    - generic [ref=e250]:
+      - heading "Begin a quiet conversation." [level=2] [ref=e253]
+      - generic [ref=e255]:
+        - paragraph [ref=e256]: Whether you are acquiring, exiting or simply observing the market, our team is available for a discreet, no-obligation discussion.
+        - link [ref=e257] [cursor=pointer]:
+          - /url: /contact
+          - button "Contact DLX" [ref=e258]
+  - contentinfo [ref=e259]:
+    - generic [ref=e260]:
+      - generic [ref=e261]:
+        - generic [ref=e262]:
+          - paragraph [ref=e263]: DLX
+          - paragraph [ref=e264]: Dubai real estate, handled with intention.
+          - paragraph [ref=e265]: RERA ORN 40905
+        - generic [ref=e266]:
+          - generic [ref=e267]: Explore
+          - navigation "Explore" [ref=e268]:
+            - list [ref=e269]:
+              - listitem [ref=e270]:
+                - link "Home" [ref=e271] [cursor=pointer]:
+                  - /url: /
+              - listitem [ref=e272]:
+                - link "Properties" [ref=e273] [cursor=pointer]:
+                  - /url: /properties
+              - listitem [ref=e274]:
+                - link "Services" [ref=e275] [cursor=pointer]:
+                  - /url: /services
+              - listitem [ref=e276]:
+                - link "Market Intelligence" [ref=e277] [cursor=pointer]:
+                  - /url: /market-intelligence
+              - listitem [ref=e278]:
+                - link "Areas" [ref=e279] [cursor=pointer]:
+                  - /url: /areas
+              - listitem [ref=e280]:
+                - link "Calculators" [ref=e281] [cursor=pointer]:
+                  - /url: /tools
+              - listitem [ref=e282]:
+                - link "Developers" [ref=e283] [cursor=pointer]:
+                  - /url: /developers
+              - listitem [ref=e284]:
+                - link "Team" [ref=e285] [cursor=pointer]:
+                  - /url: /team
+              - listitem [ref=e286]:
+                - link "Guides" [ref=e287] [cursor=pointer]:
+                  - /url: /guides
+              - listitem [ref=e288]:
+                - link "Journal" [ref=e289] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e290]:
+                - link "About" [ref=e291] [cursor=pointer]:
+                  - /url: /about
+              - listitem [ref=e292]:
+                - link "Privacy" [ref=e293] [cursor=pointer]:
+                  - /url: /privacy
+              - listitem [ref=e294]:
+                - link "Contact" [ref=e295] [cursor=pointer]:
+                  - /url: /contact
+        - generic [ref=e296]:
+          - generic [ref=e297]: Contact
+          - generic [ref=e298]:
+            - paragraph [ref=e299]: Business Bay, DubaiUnited Arab Emirates
+            - paragraph [ref=e300]:
+              - link "+971 (0) 000 0000" [ref=e301] [cursor=pointer]:
+                - /url: tel:+9710000000
+            - paragraph [ref=e302]:
+              - link "hello@dlxproperties.ae" [ref=e303] [cursor=pointer]:
+                - /url: mailto:hello@dlxproperties.ae
+        - generic [ref=e304]:
+          - generic [ref=e305]: Social
+          - list [ref=e306]:
+            - listitem [ref=e307]:
+              - link "Instagram" [ref=e308] [cursor=pointer]:
+                - /url: https://www.instagram.com/dlxproperties
+            - listitem [ref=e309]:
+              - link "LinkedIn" [ref=e310] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/dlxproperties
+            - listitem [ref=e311]:
+              - link "YouTube" [ref=e312] [cursor=pointer]:
+                - /url: https://www.youtube.com/@dlxproperties
+          - generic [ref=e313]: Language
+          - navigation "Choose a language" [ref=e314]:
+            - link "English" [ref=e315] [cursor=pointer]:
+              - /url: /
+            - link "العربية" [ref=e316] [cursor=pointer]:
+              - /url: /ar
+            - link "हिन्दी" [ref=e317] [cursor=pointer]:
+              - /url: /hi
+            - link "Русский" [ref=e318] [cursor=pointer]:
+              - /url: /ru
+            - link "中文" [ref=e319] [cursor=pointer]:
+              - /url: /zh
+      - generic [ref=e320]:
+        - paragraph [ref=e321]: © 2026 DLX Properties · All rights reserved.
+        - paragraph [ref=e322]: Business Bay, Dubai

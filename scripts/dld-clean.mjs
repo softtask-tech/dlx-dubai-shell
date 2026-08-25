@@ -63,7 +63,7 @@ function toDate(value) {
  *
  * These are not opinions about the market; they are wide enough to admit
  * anything that could be a real Dubai transaction and narrow enough to catch
- * the data errors that would otherwise poison a median — a studio recorded at
+ * the data errors that would otherwise poison a median, a studio recorded at
  * 3 square metres, or a price per square foot in the hundreds of thousands
  * because the size field was zero.
  */
@@ -157,7 +157,7 @@ function parseFreehold(value) {
  * Rent contracts.
  *
  * DLD records the contract amount for whatever period the tenancy runs, so it
- * is normalised to a year here — otherwise a six-month contract would halve the
+ * is normalised to a year here, otherwise a six-month contract would halve the
  * community's apparent rent and inflate nothing but confusion.
  */
 export function cleanRentRow(record) {

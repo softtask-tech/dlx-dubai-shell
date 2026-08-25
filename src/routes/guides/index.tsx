@@ -20,7 +20,7 @@ import { Tag } from "@/components/ui/tag";
  * Answer-shaped by construction: each card leads with the question the guide
  * answers and the first sentence of the answer, so the page is useful to a
  * reader skimming it and legible to an answer engine reading it. The FAQ schema
- * carries the same pairs — visible copy and structured data never diverge.
+ * carries the same pairs, visible copy and structured data never diverge.
  */
 export const Route = createFileRoute("/guides/")({
   head: () =>
@@ -49,7 +49,7 @@ function GuidesIndex() {
             <Reveal delay={0.12}>
               <p className="body-text text-muted-foreground">
                 {GUIDES.length} guides on buying, owning and moving to Dubai. Each one opens with a
-                straight answer, then explains what it depends on — and says plainly where you need
+                straight answer, then explains what it depends on, and says plainly where you need
                 an authority rather than a website.
               </p>
               <div className="mt-10 h-px w-16 bg-accent" />
@@ -109,7 +109,7 @@ function GuidesIndex() {
           <div className="lg:col-span-6 lg:col-start-7">
             <Reveal delay={0.1}>
               <p className="body-text text-muted-foreground">
-                Every guide points at the calculator that turns it into a figure — buying costs,
+                Every guide points at the calculator that turns it into a figure, buying costs,
                 rental yield, rent versus buy, the Golden Visa property routes. All of them show
                 their assumptions.
               </p>

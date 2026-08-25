@@ -17,8 +17,8 @@ import { Section, Eyebrow } from "@/components/ui/section";
 /**
  * The four localised pages beyond the homepage.
  *
- * They share a shape on purpose — a tall opening spread, an argument, the
- * credentials line, a close — because the whole point of translating only five
+ * They share a shape on purpose, a tall opening spread, an argument, the
+ * credentials line, a close, because the whole point of translating only five
  * pages is that those five have to feel like one publication rather than five
  * leaflets. Every primitive here is the same one the English pages use, so the
  * typography, rhythm and motion are identical and only the words differ.
@@ -294,7 +294,7 @@ export function LocalisedContact() {
           <div className="lg:col-span-7">
             <Reveal>
               {/* The one form on the site, in the reader's language. Everything
-                  it submits — scoring, routing, the dual emails — is the same
+                  it submits (scoring, routing, the dual emails) is the same
                   pipeline the English form uses. */}
               <QualifiedForm
                 sourceType="contact_form"

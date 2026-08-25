@@ -10,7 +10,7 @@
  * The locale is derived from the path rather than stored, because the path is
  * the only version a search engine, a shared link or the back button can all
  * agree on. A remembered preference that overrode the URL would mean two
- * readers opening the same link saw different languages — which is exactly the
+ * readers opening the same link saw different languages, which is exactly the
  * bug that makes localised sites feel broken.
  */
 import { createContext, useContext, useMemo, type ReactNode } from "react";
@@ -79,7 +79,7 @@ export function LocaleProvider({ code, children }: { code: LocaleCode; children:
  * The current locale.
  *
  * Falls back to English rather than throwing. A component rendered outside the
- * provider — a portal, a test, an error boundary above the tree — should show
+ * provider (a portal, a test, an error boundary above the tree) should show
  * English copy, not take the page down.
  */
 export function useLocale(): LocaleContextValue {
@@ -111,8 +111,8 @@ export function useT(): Dictionary {
 /**
  * Fills `{name}` placeholders.
  *
- * Deliberately the only interpolation this system does. Anything richer —
- * plurals, gender, ordinals — differs so much between Arabic, Russian and
+ * Deliberately the only interpolation this system does. Anything richer,
+ * plurals, gender, ordinals, differs so much between Arabic, Russian and
  * Chinese that faking it produces sentences no native speaker would write; the
  * dictionaries phrase around it instead.
  */
@@ -128,7 +128,7 @@ export function fill(template: string, values: Record<string, string | number>):
  * Only ever used to *offer* a translation, never to perform a redirect.
  * Auto-redirecting on `Accept-Language` sends a Russian speaker in London to
  * the Russian page they did not ask for, breaks the shared link they arrived
- * on, and — because a crawler announces no language at all — hides the
+ * on, and, because a crawler announces no language at all, hides the
  * translated pages from the search engines they were built for.
  */
 export function preferredLocale(acceptLanguage: readonly string[]): LocaleCode | null {

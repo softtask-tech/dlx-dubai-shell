@@ -43,7 +43,7 @@ export const Route = createFileRoute("/blog/$slug")({
     const description =
       post.seo_description ??
       post.excerpt ??
-      `${post.title} — a note from the DLX Properties desk on the Dubai market.`;
+      `${post.title}, a note from the DLX Properties desk on the Dubai market.`;
 
     return pageHead({
       path,
@@ -78,7 +78,7 @@ function PostPage() {
 
   /* The journal is the news and the playbook is the reference, so a post should
    * always offer the reference. Prefer the guide the author actually linked to
-   * in the body — that is a human judgement about relevance, and it beats the
+   * in the body. That is a human judgement about relevance, and it beats the
    * category match, which is only a fallback for a post that linked to none. */
   const guide =
     GUIDES.find((entry) => (post.body ?? "").includes(`/guides/${entry.slug}`)) ??

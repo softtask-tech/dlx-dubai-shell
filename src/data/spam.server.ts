@@ -1,7 +1,7 @@
 /**
  * Keeping rubbish out of the inbox.
  *
- * Paid traffic attracts a specific kind of junk — competitors' click farms,
+ * Paid traffic attracts a specific kind of junk, competitors' click farms,
  * form-fill bots harvesting brokerages, and people who type "asdf" to see the
  * gated report. Each costs twice: once in a consultant's afternoon, and again
  * in an ad platform learning to find more of them from the conversion we just
@@ -34,7 +34,7 @@ export type SpamVerdict = {
  * Domains that exist to be thrown away.
  *
  * A short list on purpose. The long lists are maintained badly, go stale, and
- * eventually block a real client's perfectly ordinary provider — which is a
+ * eventually block a real client's perfectly ordinary provider, which is a
  * worse outcome than accepting a few throwaway addresses.
  */
 const DISPOSABLE_DOMAINS = new Set([
@@ -95,7 +95,7 @@ export function emailLooksReal(email: string | undefined): boolean {
  * Verifies a Cloudflare Turnstile token.
  *
  * Returns `null` when Turnstile is not configured, which is treated as "no
- * opinion" rather than as a pass or a fail — a deployment without a key should
+ * opinion" rather than as a pass or a fail, a deployment without a key should
  * behave exactly as it did before this existed.
  */
 export async function verifyTurnstile(
@@ -226,7 +226,7 @@ export async function assessSubmission(input: SpamCheckInput): Promise<SpamVerdi
       reasons.push("Message looks like placeholder text");
     }
     /* Link-stuffed messages are the classic form-spam payload. Two or more,
-     * because one link from a genuine client — a portal listing they saw — is
+     * because one link from a genuine client (a portal listing they saw) is
      * completely ordinary. */
     const links = message.match(/https?:\/\//g)?.length ?? 0;
     if (links >= 2) {

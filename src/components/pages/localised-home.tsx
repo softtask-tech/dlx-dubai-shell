@@ -22,7 +22,7 @@ import { Button } from "@/components/ui/button";
  * Structurally identical to the English page and built from the same
  * primitives, so a reader switching languages recognises the page rather than
  * arriving somewhere that merely belongs to the same company. What differs is
- * the copy — and the market band is deliberately absent.
+ * the copy, and the market band is deliberately absent.
  *
  * That omission is the considered part. The market band renders DLD figures
  * with their own English labels, provenance notes and freshness stamps, and
@@ -91,7 +91,7 @@ export function LocalisedHome({
                   className="block overflow-hidden"
                   /* The first line carries no delay. Everything after it is
                    * staggered, but the LCP candidate has to be painting in the
-                   * first frame — an animation-delay on it is an LCP delay,
+                   * first frame, an animation-delay on it is an LCP delay,
                    * because Chrome does not count an element at opacity 0. */
                   data-hero-reveal
                   style={{ "--hero-delay": `${i * 140}ms` } as CSSProperties}
@@ -102,9 +102,9 @@ export function LocalisedHome({
               <span
                 /* Italic is a Latin convention. Arabic has no italic form, and
                  * synthesised obliquing of an Arabic face is a well-known way to
-                 * make a headline look broken — so the accent carries colour
+                 * make a headline look broken, so the accent carries colour
                  * alone there. */
-                className={dir === "rtl" ? "block text-sand" : "block italic text-sand"}
+                className={dir === "rtl" ? "block text-accent" : "block italic text-accent"}
                 data-hero-reveal
                 style={{ "--hero-delay": "280ms" } as CSSProperties}
               >

@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
  * the corner of every form on a site built to look like a monograph. Most
  * visitors never see anything at all.
  *
- * Renders nothing when unconfigured, and — importantly — a form must still
+ * Renders nothing when unconfigured, and, importantly, a form must still
  * submit when it renders nothing. The server treats an absent token as "no
  * opinion" rather than as a failure, so a missing key degrades to the
  * protection the site had before rather than blocking every enquiry.

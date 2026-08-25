@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
  *
  * It reads its wording from the attribution derived from stored provenance, so
  * it says "Source: Dubai Land Department" only when the rows behind the number
- * really are DLD records — and says plainly that figures are illustrative when
+ * really are DLD records, and says plainly that figures are illustrative when
  * they are not. That is the difference between citing a source and claiming one.
  *
  * DLX is not affiliated with the Dubai Land Department, and the official

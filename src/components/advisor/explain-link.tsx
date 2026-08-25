@@ -8,7 +8,7 @@ import { advisor } from "@/config/advisor";
  * usual answer is a tooltip. A tooltip is the wrong shape here: it is one
  * sentence, written once, that cannot answer the follow-up. This hands the term
  * to the advisor instead, which can explain it, give a worked example, and then
- * answer "yes but what about mine?" — which is the question the reader actually
+ * answer "yes but what about mine?", which is the question the reader actually
  * has.
  *
  * It is a plain anchor to `#ask=…`, so it works before hydration and a reader

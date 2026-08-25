@@ -1,4 +1,4 @@
-/** Areas, developers and projects — the catalogue behind listings. */
+/** Areas, developers and projects, the catalogue behind listings. */
 import { db } from "./database";
 import { withFallback } from "./resilience";
 import type { Area, Developer, Project } from "./types";

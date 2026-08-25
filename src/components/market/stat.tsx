@@ -17,7 +17,7 @@ export function Stat({
   decimals = 0,
   prefix = "",
   suffix = "",
-  fallback = "—",
+  fallback = "-",
 }: {
   label: string;
   value: number | null;

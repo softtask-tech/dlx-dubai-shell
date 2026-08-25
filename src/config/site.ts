@@ -1,9 +1,9 @@
 /**
- * DLX Properties — the one import for "everything about DLX".
+ * DLX Properties, the one import for "everything about DLX".
  *
  * Brand facts live in `brand.ts` and the page registry in `pages.ts`; both are
  * import-free so build scripts can read them. This file adds the parts that
- * depend on the deployment — the canonical origin — and re-exports the rest, so
+ * depend on the deployment (the canonical origin) and re-exports the rest, so
  * a component only ever needs `@/config/site`.
  */
 

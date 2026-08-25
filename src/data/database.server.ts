@@ -2,7 +2,7 @@
  * The service-role client, typed against the DLX schema.
  *
  * Server-only. The underlying client bypasses row-level security, so this must
- * never be reachable from a route file or anything that ships to the browser —
+ * never be reachable from a route file or anything that ships to the browser,
  * hence the dynamic import and the `.server.ts` suffix.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";

@@ -56,7 +56,7 @@ export function useAdvisor(pagePath: string) {
       setRetryAfter(null);
       setSending(true);
 
-      /* A question asked is a real intent signal — often a better one than a
+      /* A question asked is a real intent signal, often a better one than a
        * half-filled form, since nobody types a paragraph about their budget by
        * accident. */
       track("advisor_message", { contentName: pagePath });

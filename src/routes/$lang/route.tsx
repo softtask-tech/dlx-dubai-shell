@@ -9,7 +9,7 @@ import { scriptFontLinks } from "@/lib/fonts";
  * WHY A DYNAMIC SEGMENT RATHER THAN FOUR STATIC ONES. TanStack Router resolves
  * static segments before dynamic ones, so `/about` still reaches the English
  * route and only `/ar/about` falls through to this branch. That ordering is
- * what lets English keep the bare path — which matters, because moving the
+ * what lets English keep the bare path, which matters, because moving the
  * English site to `/en/` after launch would break every link and every ranking
  * the site has.
  *
@@ -20,7 +20,7 @@ import { scriptFontLinks } from "@/lib/fonts";
  */
 export const Route = createFileRoute("/$lang")({
   beforeLoad: ({ params }) => {
-    /* `/en/about` is a duplicate of `/about`, so it is not a page either — the
+    /* `/en/about` is a duplicate of `/about`, so it is not a page either, the
      * canonical English URL carries no prefix and there is only ever one of it. */
     if (!isLocaleCode(params.lang) || params.lang === DEFAULT_LOCALE) throw notFound();
   },

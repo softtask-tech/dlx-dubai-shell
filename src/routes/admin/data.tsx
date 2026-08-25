@@ -129,13 +129,13 @@ function MarketDataAdmin() {
                 ? "Dubai Land Department records"
                 : status.areasWithStats > 0
                   ? "Illustrative sample data"
-                  : "Nothing — no statistics computed"}
+                  : "Nothing, no statistics computed"}
             </p>
             <p className="caption mt-4 max-w-measure">
               {status.isOfficial
                 ? "Every market figure on the public site cites DLD, because the statistics are computed from DLD records."
                 : status.areasWithStats > 0
-                  ? "The public pages state plainly that these figures are illustrative and do not cite DLD. Import a DLD snapshot to switch that over — it happens automatically once real records are present."
+                  ? "The public pages state plainly that these figures are illustrative and do not cite DLD. Import a DLD snapshot to switch that over. It happens automatically once real records are present."
                   : "Market bands and area pages are showing their empty states."}
             </p>
           </div>
@@ -215,7 +215,7 @@ function MarketDataAdmin() {
                         <td className="caption py-4 pr-6 whitespace-nowrap">
                           {new Date(run.started_at).toLocaleString("en-GB")}
                         </td>
-                        <td className="caption py-4 pr-6">{run.dataset ?? "—"}</td>
+                        <td className="caption py-4 pr-6">{run.dataset ?? "-"}</td>
                         <td className="caption py-4 pr-6">{humanise(run.trigger_source)}</td>
                         <td className="caption py-4 pr-6">{run.rows_fetched}</td>
                         <td className="caption py-4 pr-6">{run.rows_upserted}</td>
@@ -248,7 +248,7 @@ function Figure({ label, value, detail }: { label: string; value: string; detail
     <div>
       <Eyebrow>{label}</Eyebrow>
       <p className="display-3 mt-3">{value}</p>
-      <p className="caption mt-2">{detail || "—"}</p>
+      <p className="caption mt-2">{detail || "-"}</p>
     </div>
   );
 }

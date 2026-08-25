@@ -14,7 +14,7 @@ import { Section, Eyebrow } from "@/components/ui/section";
  * and more to the point a brand that makes leaving difficult has told you
  * exactly what it thinks of you.
  *
- * The link is signed, so the URL cannot be walked to unsubscribe someone else —
+ * The link is signed, so the URL cannot be walked to unsubscribe someone else,
  * and the page says the same thing whether the signature checked out or not,
  * because a different message for a valid lead id would turn this into an
  * oracle for guessing which ids exist.
@@ -63,7 +63,7 @@ export const Route = createFileRoute("/unsubscribe")({
   loaderDeps: ({ search }) => search,
   loader: async ({ deps }) => {
     if (deps.lead && deps.sig) {
-      /* Acted on during the load, so the click itself unsubscribes — no button
+      /* Acted on during the load, so the click itself unsubscribes, no button
        * to press, which is what one-click has to mean. */
       await unsubscribeFn({ data: { lead: deps.lead, sig: deps.sig } }).catch(() => undefined);
     }
@@ -74,7 +74,7 @@ export const Route = createFileRoute("/unsubscribe")({
       path: "/unsubscribe",
       title: "Unsubscribed",
       description: "You will not receive further marketing emails from DLX Properties.",
-      tagline: "Done — no further emails.",
+      tagline: "Done, no further emails.",
       noIndex: true,
     }),
   component: UnsubscribePage,
@@ -88,7 +88,7 @@ function UnsubscribePage() {
         <h1 className="display-1 mt-8">No further emails.</h1>
         <p className="body-text mt-8 text-muted-foreground">
           That took effect immediately. If you have an enquiry with us, a consultant can still reply
-          to it — this stops the marketing, not a conversation you started.
+          to it, this stops the marketing, not a conversation you started.
         </p>
         <p className="body-text mt-6 text-muted-foreground">
           If this was a mistake, or you would like something deleted rather than just stopped, email{" "}

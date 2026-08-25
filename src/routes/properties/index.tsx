@@ -14,7 +14,7 @@ import { Section, Eyebrow } from "@/components/ui/section";
 
 /**
  * Filters live in the URL rather than in component state, so a filtered view is
- * shareable, survives a refresh, and is rendered on the server — which is also
+ * shareable, survives a refresh, and is rendered on the server, which is also
  * what lets a crawler see a real page of listings instead of an empty shell.
  */
 const searchSchema = z.object({
@@ -69,8 +69,8 @@ const PROPERTY_TYPES = [
 const PRICE_BANDS = [
   { label: "Any price", min: undefined, max: undefined },
   { label: "Under AED 2M", min: undefined, max: 2_000_000 },
-  { label: "AED 2M – 5M", min: 2_000_000, max: 5_000_000 },
-  { label: "AED 5M – 10M", min: 5_000_000, max: 10_000_000 },
+  { label: "AED 2M - 5M", min: 2_000_000, max: 5_000_000 },
+  { label: "AED 5M - 10M", min: 5_000_000, max: 10_000_000 },
   { label: "AED 10M+", min: 10_000_000, max: undefined },
 ] as const;
 
@@ -104,7 +104,7 @@ function PropertiesIndex() {
             <Reveal delay={0.12}>
               <p className="body-text text-muted-foreground">
                 A curated selection across Dubai's prime districts. Some of what we represent is
-                never advertised — if you don't see it here, ask.
+                never advertised, if you don't see it here, ask.
               </p>
               <div className="mt-10 h-px w-16 bg-accent" />
             </Reveal>
@@ -370,7 +370,7 @@ function EmptyState({ hasFilters }: { hasFilters: boolean }) {
       </h2>
       <p className="body-text mx-auto mt-6 max-w-measure text-muted-foreground">
         {hasFilters
-          ? "Try widening the filters — or tell us what you are looking for and we will go and find it, including properties that are never advertised."
+          ? "Try widening the filters, or tell us what you are looking for and we will go and find it, including properties that are never advertised."
           : "Listings will appear here shortly. In the meantime, tell us what you are looking for and we will come back to you directly."}
       </p>
       <div className="mt-10 flex justify-center gap-6">

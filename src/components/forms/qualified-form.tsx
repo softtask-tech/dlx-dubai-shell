@@ -16,7 +16,7 @@ import { Eyebrow } from "@/components/ui/section";
  * Three steps rather than one long column, because the golden rule is
  * progressive disclosure: ask what someone came to say, then qualify, then take
  * their details. Nobody is asked for a budget before they have said what they
- * want, and the form never blocks — every qualification answer is optional, and
+ * want, and the form never blocks, every qualification answer is optional, and
  * only a way to reply is required.
  */
 
@@ -47,7 +47,7 @@ type QualifiedFormProps = {
 };
 
 /* Order only. The labels live in the dictionaries, so the same form speaks
- * whichever language the page is in — and the value posted to the server is the
+ * whichever language the page is in, and the value posted to the server is the
  * enum either way, which is what keeps scoring and routing language-agnostic. */
 const INTENTS: readonly LeadIntent[] = ["buy", "invest", "sell", "rent", "relocate", "advice"];
 
@@ -61,9 +61,9 @@ const TIMELINES: readonly LeadTimeline[] = [
 /** Budget bands in AED. `null` max means "and above". */
 const BUDGETS: ReadonlyArray<{ label: string; min: number; max: number | null }> = [
   { label: "Under AED 1M", min: 0, max: 1_000_000 },
-  { label: "AED 1M – 3M", min: 1_000_000, max: 3_000_000 },
-  { label: "AED 3M – 7M", min: 3_000_000, max: 7_000_000 },
-  { label: "AED 7M – 15M", min: 7_000_000, max: 15_000_000 },
+  { label: "AED 1M - 3M", min: 1_000_000, max: 3_000_000 },
+  { label: "AED 3M - 7M", min: 3_000_000, max: 7_000_000 },
+  { label: "AED 7M - 15M", min: 7_000_000, max: 15_000_000 },
   { label: "AED 15M+", min: 15_000_000, max: null },
 ];
 
@@ -187,7 +187,7 @@ export function QualifiedForm({
         <Heading className="display-3 mt-6">{reportUrl ? "Here it is." : t.form.sentTitle}</Heading>
         <p className="body-text mt-5 max-w-measure text-muted-foreground">
           {reportUrl
-            ? "Open it now, or keep the link — it stays live for thirty days. A consultant will follow up personally in case you would rather talk it through."
+            ? "Open it now, or keep the link. It stays live for thirty days. A consultant will follow up personally in case you would rather talk it through."
             : t.form.sentBody}
         </p>
         {reportUrl ? (
@@ -209,7 +209,7 @@ export function QualifiedForm({
         </p>
       </div>
 
-      {/* Step 1 — what they want. The easiest question first. */}
+      {/* Step 1, what they want. The easiest question first. */}
       {step === 0 ? (
         <div className="flex flex-col gap-8">
           <ChoiceGroup legend={t.form.intentLegend}>
@@ -240,7 +240,7 @@ export function QualifiedForm({
         </div>
       ) : null}
 
-      {/* Step 2 — qualification. Every answer here is optional. */}
+      {/* Step 2, qualification. Every answer here is optional. */}
       {step === 1 ? (
         <div className="flex flex-col gap-8">
           <ChoiceGroup legend={t.form.timelineLegend}>
@@ -288,7 +288,7 @@ export function QualifiedForm({
         </div>
       ) : null}
 
-      {/* Step 3 — how to reach them. The only required step. */}
+      {/* Step 3, how to reach them. The only required step. */}
       {step === 2 ? (
         <div className="flex flex-col gap-8">
           <div className="grid gap-8 sm:grid-cols-2">

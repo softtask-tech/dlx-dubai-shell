@@ -16,11 +16,11 @@ import { extractQualification, qualificationBag } from "@/data/advisor-capture.s
 import { synthesize, voiceConfigured } from "@/data/voice.server";
 
 /**
- * POST /api/advisor/voice — one turn of a phone call.
+ * POST /api/advisor/voice, one turn of a phone call.
  *
  * The telephony layer owns the call: it answers, transcribes what the caller
  * says, and plays back what we return. This endpoint owns the thinking, and it
- * is deliberately the *same* thinking as the chat — `prepareTurn` and the same
+ * is deliberately the *same* thinking as the chat, `prepareTurn` and the same
  * system prompt, with `channel: "voice"` changing only the delivery. There is
  * no second set of rules for the phone, because a second set of rules is a set
  * that drifts.
@@ -144,7 +144,7 @@ export const Route = createFileRoute("/api/advisor/voice")({
         }
 
         /*
-         * The lead is written when the call *ends*, by the summary webhook —
+         * The lead is written when the call *ends*, by the summary webhook,
          * not here. A caller half way through giving a number should not
          * produce a lead with half a number in it, and the webhook has the
          * whole transcript to work from.

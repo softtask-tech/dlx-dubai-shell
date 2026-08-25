@@ -109,7 +109,7 @@ async function runListPropertySlugs(): Promise<string[]> {
   return (data ?? []).map((row) => row.slug);
 }
 
-/** More listings to show beneath one — same community first, then anything. */
+/** More listings to show beneath one, same community first, then anything. */
 export async function listRelatedProperties(
   property: PropertyWithRelations,
   limit = 3,
@@ -135,7 +135,7 @@ async function runListRelated(
   if (error) throw error;
   if (data && data.length > 0) return data;
 
-  /* Nothing else in that community — fall back to the newest listings. */
+  /* Nothing else in that community, fall back to the newest listings. */
   const { data: fallback, error: fallbackError } = await db
     .from("properties")
     .select(LISTING_SELECT)

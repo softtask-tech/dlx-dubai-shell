@@ -1,11 +1,11 @@
 /**
- * Gated market reports — server side only.
+ * Gated market reports, server side only.
  *
  * The gate is a token, not a guessable URL: submitting the qualified form
  * creates a `report_grants` row and returns its token, and the report route
  * refuses to render without one that is valid and unexpired.
  *
- * Grants are deliberately generous — thirty days, unlimited views. The point of
+ * Grants are deliberately generous, thirty days, unlimited views. The point of
  * the gate is to know who asked, not to make the reader fight for something
  * they already gave us their details for. A report that cannot be reopened next
  * week is a report that gets screenshotted instead of revisited.
@@ -64,7 +64,7 @@ export type GrantCheck =
 /**
  * Validates a token and records the view.
  *
- * The view count is what tells the desk whether a report was actually read — a
+ * The view count is what tells the desk whether a report was actually read, a
  * lead who opened it three times is a different conversation from one who never
  * opened it at all.
  */

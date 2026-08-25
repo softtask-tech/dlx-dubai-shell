@@ -48,7 +48,7 @@ export function PropertyCard({ property }: { property: PropertyWithRelations }) 
 
           <p className="caption mt-auto">
             {[formatBedrooms(property.bedrooms), formatArea(property.built_up_sqft)]
-              .filter((part) => part !== "—")
+              .filter((part) => part !== "-")
               .join(" · ")}
           </p>
 

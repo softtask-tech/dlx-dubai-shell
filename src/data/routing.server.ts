@@ -2,15 +2,15 @@
  * Getting a lead to a person.
  *
  * The single largest determinant of whether paid traffic converts is how long
- * someone waits for a reply — not the ad, not the landing page, not the form.
+ * someone waits for a reply, not the ad, not the landing page, not the form.
  * A lead answered in five minutes and the same lead answered in an hour are
  * different businesses. So routing happens inside the submission, not in a
  * nightly sweep, and the moment it happened is stamped on the row so the gap
  * can be measured rather than assumed.
  *
  * WHO GETS IT. Round-robin among consultants who are published and take leads,
- * weighted by nothing at all. Sophisticated allocation — by specialism, by
- * community, by past conversion — needs data this brokerage does not have yet,
+ * weighted by nothing at all. Sophisticated allocation, by specialism, by
+ * community, by past conversion, needs data this brokerage does not have yet,
  * and a clever rule built on guesses distributes leads worse than a fair queue.
  *
  * WHO DOES NOT. Cold leads are not assigned. Handing a consultant a queue of
@@ -93,7 +93,7 @@ export async function routeLead(input: {
   const supabase = (await adminDb()) as unknown as SupabaseClient<PaidMediaDatabase>;
 
   if (input.temperature === "cold") {
-    const reason = `Held for nurture — scored ${input.score}`;
+    const reason = `Held for nurture, scored ${input.score}`;
     await supabase
       .from("leads")
       .update({ routing_reason: reason, nurture_started_at: new Date().toISOString() } as never)
@@ -116,7 +116,7 @@ export async function routeLead(input: {
       return { assignedAgentId: null, reason, routed: false };
     }
 
-    const reason = `${input.temperature === "hot" ? "Hot" : "Warm"} (${input.score}) — assigned to ${agent.name}`;
+    const reason = `${input.temperature === "hot" ? "Hot" : "Warm"} (${input.score}), assigned to ${agent.name}`;
 
     const { error } = await supabase
       .from("leads")
@@ -134,7 +134,7 @@ export async function routeLead(input: {
     console.error("[routing] could not route the lead", error);
     return {
       assignedAgentId: null,
-      reason: "Routing failed — waiting in the inbox",
+      reason: "Routing failed, waiting in the inbox",
       routed: false,
     };
   }

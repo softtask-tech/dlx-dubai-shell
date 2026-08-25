@@ -24,6 +24,8 @@
  */
 import { readFile } from "node:fs/promises";
 
+import { findBannedGlyphs } from "./check-copy.mjs";
+
 const args = process.argv.slice(2);
 const urlIndex = args.indexOf("--url");
 const SMOKE_URL = urlIndex !== -1 ? args[urlIndex + 1] : null;
@@ -32,7 +34,7 @@ const SMOKE_URL = urlIndex !== -1 ? args[urlIndex + 1] : null;
  * Every variable the codebase reads, what it is for, and what breaks without it.
  *
  * Kept in one list rather than scattered through the modules that read them,
- * because the question this answers — "is this deployment complete?" — cannot be
+ * because the question this answers, "is this deployment complete?" - cannot be
  * answered by any single module.
  */
 const VARIABLES = [
@@ -53,7 +55,7 @@ const VARIABLES = [
     name: "VITE_SUPABASE_PUBLISHABLE_KEY",
     level: "required",
     what: "The browser's Supabase key.",
-    cost: "As above — the client cannot read anything.",
+    cost: "As above, the client cannot read anything.",
     aliases: ["VITE_SUPABASE_ANON_KEY"],
   },
   {
@@ -78,7 +80,7 @@ const VARIABLES = [
      * against supabase/functions/send-lead-emails/index.ts, which reads
      * LEAD_ADMIN_EMAIL. Anyone following the preflight would have set a
      * variable nothing reads, the check would have gone green, and every admin
-     * notification would have quietly gone to the fallback address instead —
+     * notification would have quietly gone to the fallback address instead,
      * precisely the silent failure this script exists to catch.
      */
     name: "LEAD_ADMIN_EMAIL",
@@ -180,7 +182,7 @@ const VARIABLES = [
     name: "ERROR_WEBHOOK_URL",
     level: "recommended",
     what: "Where production errors are posted.",
-    cost: "Server errors reach the process log and nowhere else. On a self-hosted deploy that means nobody finds out — see src/data/monitoring.server.ts.",
+    cost: "Server errors reach the process log and nowhere else. On a self-hosted deploy that means nobody finds out, see src/data/monitoring.server.ts.",
   },
   {
     name: "GOOGLE_ADS_CONVERSION_URL",
@@ -198,7 +200,7 @@ const VARIABLES = [
     name: "FX_RATES_URL",
     level: "recommended",
     what: "Live exchange rates.",
-    cost: "Prices show in dirhams and US dollars only — the dollar peg is the one rate we hold without a feed.",
+    cost: "Prices show in dirhams and US dollars only, the dollar peg is the one rate we hold without a feed.",
   },
 ];
 
@@ -206,7 +208,7 @@ const VARIABLES = [
 const MANUAL_STEPS = [
   "Apply every migration in supabase/migrations to the production project.",
   "Deploy the Edge Functions: send-lead-emails, sync-dld-data, advisor-call-summary, lead-nurture.",
-  "Import a real Dubai Pulse export — this is what turns every 'illustrative sample data' line into a DLD citation.",
+  "Import a real Dubai Pulse export. This is what turns every 'illustrative sample data' line into a DLD citation.",
   "Import verified reviews with a source and a source_url. The review block renders nothing until then, by design.",
   "Replace the placeholder brand facts in src/config/brand.ts: the phone number is +971 (0) 000 0000.",
   "Build the six retargeting audiences listed in /admin/roas.",
@@ -227,7 +229,7 @@ function isSet(variable) {
 /**
  * A handful of requests that prove the deployment is actually serving.
  *
- * Not a test suite — the assertion suites cover behaviour. This answers the
+ * Not a test suite, the assertion suites cover behaviour. This answers the
  * narrower question you ask at 2am after a deploy: is it up, is it the right
  * build, and do the three routes that earn money respond.
  */
@@ -243,7 +245,7 @@ async function smokeTest(origin) {
      * robots.txt deliberately serves a blanket Disallow on any origin that is
      * not the canonical one, so a staging deploy cannot be indexed. Asserting
      * the Sitemap line only against the real host is therefore the correct
-     * check, not a weaker one — on staging its *absence* is the pass.
+     * check, not a weaker one, on staging its *absence* is the pass.
      */
     {
       path: "/robots.txt",
@@ -282,7 +284,7 @@ async function smokeTest(origin) {
 }
 
 async function main() {
-  console.log("DLX Properties — launch preflight\n");
+  console.log("DLX Properties, launch preflight\n");
 
   /* A .env file is loaded by Vite at build time, not by Node here. Read it so
    * the check reflects what the build will actually see. */
@@ -295,7 +297,7 @@ async function main() {
       }
     }
   } catch {
-    console.log("  (no .env file — reading the process environment only)\n");
+    console.log("  (no .env file, reading the process environment only)\n");
   }
 
   for (const variable of VARIABLES) {
@@ -306,9 +308,9 @@ async function main() {
   console.log(`  ${configured} of ${VARIABLES.length} variables configured\n`);
 
   for (const [level, heading] of [
-    ["required", "REQUIRED — the site is broken without these"],
-    ["recommended", "RECOMMENDED — these features silently do nothing"],
-    ["optional", "OPTIONAL — listed so that leaving them out is a decision"],
+    ["required", "REQUIRED, the site is broken without these"],
+    ["recommended", "RECOMMENDED, these features silently do nothing"],
+    ["optional", "OPTIONAL, listed so that leaving them out is a decision"],
   ]) {
     const entries = missing[level];
     if (entries.length === 0) continue;
@@ -320,15 +322,29 @@ async function main() {
     console.log("");
   }
 
-  console.log("MANUAL STEPS — nothing here can be checked from an environment variable\n");
+  console.log("MANUAL STEPS, nothing here can be checked from an environment variable\n");
   for (const step of MANUAL_STEPS) console.log(`  □ ${step}`);
+
+  /* The one copy rule worth gating a deploy on. See scripts/check-copy.mjs for
+   * why a stray em-dash is treated as a defect rather than a preference. */
+  const dashes = await findBannedGlyphs();
+  console.log("\nTYPOGRAPHY\n");
+  if (dashes.length === 0) {
+    console.log("  ✓ no em-dashes or en-dashes in source");
+  } else {
+    console.log(`  ✗ ${dashes.length} banned dash(es), run npm run check:copy for the list`);
+  }
 
   let smokeFailures = 0;
   if (SMOKE_URL) smokeFailures = await smokeTest(SMOKE_URL);
 
   console.log("");
   if (missing.required.length > 0) {
-    console.log(`✗ ${missing.required.length} required variable(s) missing — do not deploy.`);
+    console.log(`✗ ${missing.required.length} required variable(s) missing, do not deploy.`);
+    process.exit(1);
+  }
+  if (dashes.length > 0) {
+    console.log(`✗ ${dashes.length} banned dash(es) in source, run npm run check:copy.`);
     process.exit(1);
   }
   if (smokeFailures > 0) {
@@ -338,7 +354,7 @@ async function main() {
   console.log("✓ Every required variable is set.");
   if (missing.recommended.length > 0) {
     console.log(
-      `  ${missing.recommended.length} recommended one(s) are not — see above for what that costs.`,
+      `  ${missing.recommended.length} recommended one(s) are not, see above for what that costs.`,
     );
   }
 }

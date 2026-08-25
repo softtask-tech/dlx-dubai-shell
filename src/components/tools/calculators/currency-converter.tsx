@@ -17,7 +17,7 @@ import { Eyebrow } from "@/components/ui/section";
  *
  * Converts in both directions, and shows a table of the currencies DLX's
  * audiences actually price in. Where a rate is unavailable the row says so
- * rather than being quietly dropped — a missing number that looks like an
+ * rather than being quietly dropped, a missing number that looks like an
  * absence is less confusing than one that looks like a zero.
  */
 export function CurrencyConverter() {
@@ -76,7 +76,7 @@ export function CurrencyConverter() {
             >
               {CURRENCIES.filter((currency) => currency.code !== "AED").map((currency) => (
                 <option key={currency.code} value={currency.code}>
-                  {currency.code} — {currency.name}
+                  {currency.code}, {currency.name}
                 </option>
               ))}
             </Select>
@@ -98,7 +98,7 @@ export function CurrencyConverter() {
               converted.available
                 ? other === "USD"
                   ? "The dirham is pegged to the US dollar, so this figure does not move. Dollar buyers face no currency risk on a Dubai purchase."
-                  : "At the current rate. Rates move, and on a purchase of this size a small move is a real amount of money — fix your rate with your bank before you commit."
+                  : "At the current rate. Rates move, and on a purchase of this size a small move is a real amount of money. Fix your rate with your bank before you commit."
                 : converted.reason
             }
           />
@@ -137,7 +137,7 @@ export function CurrencyConverter() {
           entries={[
             {
               label: "AED / USD",
-              value: `${AED_PER_USD} — fixed`,
+              value: `${AED_PER_USD}, fixed`,
               source: "UAE Central Bank peg since 1997",
             },
             { label: "Other rates", value: rates.source },
@@ -145,7 +145,7 @@ export function CurrencyConverter() {
         >
           <p className="caption max-w-measure">
             Indicative rates for planning. Your bank's rate on the day, including its spread, is
-            what you will actually pay — and on a property purchase the difference is worth
+            what you will actually pay, and on a property purchase the difference is worth
             negotiating.
           </p>
         </Assumptions>

@@ -12,9 +12,9 @@
  * **Every entry carries its own guardrails.** `requiresVerification` marks the
  * material where the advisor must say the figures need confirming with the
  * authority, and `routeToHuman` marks the questions it must hand to a named
- * consultant rather than answer. Those flags come from the content itself — a
+ * consultant rather than answer. Those flags come from the content itself, a
  * guide that already renders the dated verification note sets the same flag
- * here — so the site and the advisor cannot drift into disagreeing.
+ * here, so the site and the advisor cannot drift into disagreeing.
  *
  * **Every entry carries its provenance.** Market entries take their attribution
  * from `attributionFor()`, which derives it from the `data_provenance` column.
@@ -51,7 +51,7 @@ export type KnowledgeEntry = {
   title: string;
   /** The questions this entry answers, in a visitor's words. */
   questions: string[];
-  /** The short, quotable answer — one paragraph, plain language. */
+  /** The short, quotable answer, one paragraph, plain language. */
   answer: string;
   /** Supporting prose, in reading order. */
   body: string[];
@@ -119,7 +119,7 @@ export const ADVISOR_POLICY = {
 /**
  * The entries that need no database: guides, tools and services.
  *
- * Kept synchronous on purpose — it is the part of the index that is always
+ * Kept synchronous on purpose. It is the part of the index that is always
  * available, so the advisor still has the playbook and the fee schedule behind
  * it when Supabase is unreachable.
  */
@@ -201,7 +201,7 @@ export async function buildKnowledgeIndex(): Promise<KnowledgeIndex> {
      * narrowing filter below stops narrowing. */
     listAreasWithStats().catch(() => [] as AreaWithStats[]),
     listPosts().catch(() => [] as BlogPostWithAuthor[]),
-    /* Published listings only — the same rows the portfolio shows. The advisor
+    /* Published listings only, the same rows the portfolio shows. The advisor
      * must never describe a property the public cannot open and check. */
     listProperties({ limit: 120 }).catch(() => [] as PropertyWithRelations[]),
   ]);
@@ -232,7 +232,7 @@ export async function buildKnowledgeIndex(): Promise<KnowledgeIndex> {
  * One community's recorded figures.
  *
  * The attribution comes from `attributionFor()`, which reads the provenance
- * column — so the entry can only say "Source: Dubai Land Department" when the
+ * column, so the entry can only say "Source: Dubai Land Department" when the
  * rows behind it genuinely are DLD records, and says plainly that they are
  * illustrative when they are not. The advisor repeats whatever it finds here.
  */
@@ -282,7 +282,7 @@ export function marketEntry(area: AreaWithStats & { stats: AreaStats }): Knowled
  * One listing.
  *
  * The hardest entry to get right, because availability and price are exactly
- * what CLAUDE.md forbids the advisor to invent — and a listing is nothing but
+ * what CLAUDE.md forbids the advisor to invent, and a listing is nothing but
  * availability and price. So the entry states them as a matter of record with
  * the status attached: "available", "under offer", and a null price rendered as
  * price on application rather than as zero. `routeToHuman` is always true. An
@@ -338,7 +338,7 @@ export function listingEntry(property: PropertyWithRelations): KnowledgeEntry {
     ],
     answer:
       property.summary ??
-      `${property.title}${area ? ` in ${area}` : ""} — listed ${
+      `${property.title}${area ? ` in ${area}` : ""}, listed ${
         property.listing_type === "rent" ? "to rent" : "for sale"
       }.`,
     body: facts,
@@ -398,7 +398,7 @@ function plainText(body: string): string[] {
  *
  * Deliberately simple: term overlap, weighted towards the questions and the
  * title, because those are the visitor's own words. It is not semantic search
- * and does not pretend to be — with a few hundred entries of hand-written copy
+ * and does not pretend to be, with a few hundred entries of hand-written copy
  * it is enough to put the right three in front of the model, and a Phase 5
  * embedding index can replace it behind this same signature.
  */

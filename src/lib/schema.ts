@@ -55,7 +55,7 @@ export function organizationSchema(): JsonLd {
     areaServed: site.areasServed.map((name) => ({ "@type": "Place", name })),
     knowsLanguage: ["en", "ar"],
     sameAs: site.socials.map((s) => s.href),
-    /* RERA Office Registration Number — the licence a Dubai brokerage trades under. */
+    /* RERA Office Registration Number, the licence a Dubai brokerage trades under. */
     identifier: {
       "@type": "PropertyValue",
       name: "RERA ORN",
@@ -64,7 +64,7 @@ export function organizationSchema(): JsonLd {
   };
 }
 
-/** The site as a whole — ties every page back to one publisher. */
+/** The site as a whole, ties every page back to one publisher. */
 export function websiteSchema(): JsonLd {
   return {
     "@context": "https://schema.org",
@@ -110,7 +110,7 @@ export function breadcrumbSchema(
 export type FaqEntry = { question: string; answer: string };
 
 /**
- * FAQ schema. Only call this for questions that are also rendered on the page —
+ * FAQ schema. Only call this for questions that are also rendered on the page,
  * schema without visible content is the kind of trick Google penalises.
  */
 export function faqSchema(entries: readonly FaqEntry[]): JsonLd {
@@ -212,7 +212,7 @@ export function listingSchema(input: ListingInput): JsonLd {
 export type ReviewInput = {
   author: string;
   body: string;
-  /** 1–5. */
+  /** 1-5. */
   rating: number;
   datePublished: string;
 };
@@ -221,7 +221,7 @@ export type ReviewInput = {
  * Client testimonials. Only ever built from reviews we actually hold.
  *
  * Callers must pass reviews that are also rendered on the page and that a
- * reader can verify at their source — `reviewSchemaFor` below enforces both by
+ * reader can verify at their source, `reviewSchemaFor` below enforces both by
  * taking the same rows the block renders. Emitting Review schema for in-house
  * copy is a fabricated record, and it is the specific abuse that gets a site's
  * rich results removed rather than merely ignored.
@@ -299,7 +299,7 @@ export type DatasetInput = {
  *
  * The attribution is conditional on provenance. When the rows are DLD records
  * the dataset credits the Dubai Land Department as source and DLX as the
- * publisher of the derived statistics — a real distinction, and one that keeps
+ * publisher of the derived statistics, a real distinction, and one that keeps
  * us from implying an affiliation we do not have. When the rows are
  * illustrative the schema says so, so a model that ingests the page cannot
  * repeat a sample figure as an official one.

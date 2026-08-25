@@ -18,7 +18,7 @@ import {
 } from "@/data/advisor.server";
 
 /**
- * POST /api/advisor/chat — the advisor, streaming.
+ * POST /api/advisor/chat, the advisor, streaming.
  *
  * Newline-delimited JSON rather than raw SSE, because more than prose is
  * travelling: the citations and the verification flag have to arrive attached
@@ -26,7 +26,7 @@ import {
  * the right answer instead of inferring it.
  *
  * Nothing here trusts the client. The session token identifies a conversation
- * but grants nothing — the row is only ever read with the service role — and the
+ * but grants nothing: the row is only ever read with the service role, and the
  * transcript the model sees is the one in the database, not the one the browser
  * sent. A visitor who rewrites their own history in dev tools changes what they
  * see and nothing else.
@@ -116,7 +116,7 @@ export const Route = createFileRoute("/api/advisor/chat")({
               type: "error",
               message: "session turn limit",
               fallback:
-                "We've covered a lot here. Rather than keep going in a chat window, let me put a consultant on it — leave a name and an email or phone number and they'll come back to you properly.",
+                "We've covered a lot here. Rather than keep going in a chat window, let me put a consultant on it, leave a name and an email or phone number and they'll come back to you properly.",
             },
           ]);
         }

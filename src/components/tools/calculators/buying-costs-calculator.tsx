@@ -17,7 +17,7 @@ import { formatFeeValue, latestVerifiedOn, PURCHASE_FEES } from "@/data/fee-sche
  *
  * Every fee is editable except the Dubai Land Department transfer fee, which is
  * the one genuinely fixed figure. Making the rest editable is not a convenience
- * — it is the honest position: commission is negotiated, trustee fees are
+ *. It is the honest position: commission is negotiated, trustee fees are
  * tiered, and developer NOC fees differ by developer. Presenting our defaults
  * as facts would be the mistake.
  */
@@ -78,7 +78,7 @@ export function BuyingCostsCalculator() {
                     />
                     {!fee.editable ? (
                       <p className="caption mt-2 text-accent">
-                        Set by the {fee.source} — not negotiable.
+                        Set by the {fee.source}, not negotiable.
                       </p>
                     ) : null}
                   </div>
@@ -96,7 +96,7 @@ export function BuyingCostsCalculator() {
             meaning={
               result.feesAsPercent === null
                 ? "Enter a price to see the total."
-                : `The price plus ${result.feesAsPercent.toFixed(1)}% in fees. This is the number to budget against — not the asking price.`
+                : `The price plus ${result.feesAsPercent.toFixed(1)}% in fees. This is the number to budget against, not the asking price.`
             }
           />
 

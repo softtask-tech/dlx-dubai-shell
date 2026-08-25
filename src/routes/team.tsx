@@ -32,7 +32,7 @@ function TeamPage() {
             <Reveal delay={0.12}>
               <p className="body-text text-muted-foreground">
                 A small team on purpose. You get a named consultant who stays with you from the
-                first call to the last signature — not a rota, and not a call centre.
+                first call to the last signature, not a rota, and not a call centre.
               </p>
               <div className="mt-10 h-px w-16 bg-accent" />
             </Reveal>

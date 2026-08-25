@@ -2,7 +2,7 @@
  * The shape of the content editor, shared by the browser and the server.
  *
  * The server module `content.server.ts` imports this as its write allow-list,
- * and the admin UI imports it to render the forms — one definition, so a field
+ * and the admin UI imports it to render the forms, one definition, so a field
  * the editor shows is exactly a field the server will accept, and nothing else
  * can be written.
  */
@@ -137,7 +137,7 @@ export const CONTENT_SCHEMA: Record<ContentTable, { label: string; fields: Field
       { name: "currency", label: "Currency", kind: "text" },
       { name: "bedrooms_min", label: "Bedrooms from", kind: "number" },
       { name: "bedrooms_max", label: "Bedrooms to", kind: "number" },
-      { name: "handover_quarter", label: "Handover quarter", kind: "number", help: "1–4." },
+      { name: "handover_quarter", label: "Handover quarter", kind: "number", help: "1-4." },
       { name: "handover_year", label: "Handover year", kind: "number", inList: true },
       { name: "payment_plan", label: "Payment plan", kind: "textarea" },
       { name: "amenities", label: "Amenities", kind: "list", help: "One per line." },
@@ -174,7 +174,7 @@ export const CONTENT_SCHEMA: Record<ContentTable, { label: string; fields: Field
       { name: "author_name", label: "Client", kind: "text", required: true, inList: true },
       { name: "author_location", label: "Location", kind: "text", inList: true },
       { name: "quote", label: "Quote", kind: "textarea", required: true },
-      { name: "rating", label: "Rating", kind: "number", help: "1–5." },
+      { name: "rating", label: "Rating", kind: "number", help: "1-5." },
       { name: "source", label: "Source", kind: "text" },
       { name: "source_url", label: "Source URL", kind: "url" },
       { name: "display_order", label: "Order", kind: "number" },

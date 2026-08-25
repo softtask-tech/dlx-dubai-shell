@@ -7,7 +7,7 @@ import { Section, Eyebrow } from "@/components/ui/section";
 /**
  * Client words, set as pull quotes.
  *
- * Renders nothing when there are no published testimonials — an empty
+ * Renders nothing when there are no published testimonials, an empty
  * "What our clients say" heading does more damage than no section at all.
  */
 export function TestimonialsBlock({

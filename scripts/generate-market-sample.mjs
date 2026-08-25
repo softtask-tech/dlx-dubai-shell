@@ -7,7 +7,7 @@
  *
  * The site's market pages are only worth anything if the numbers behind them
  * are real Dubai Land Department records. Until those are loaded, the pages
- * would be empty — so this produces a plausible dataset to develop and demo
+ * would be empty, so this produces a plausible dataset to develop and demo
  * against, written with `provenance = 'sample'`.
  *
  * That column is not decoration. Every page derives its source line from it,
@@ -21,7 +21,7 @@
  * `provenance = 'dld_open_data'`, and from that moment the metrics ignore these
  * rows entirely and the pages cite DLD.
  *
- * The generator is deterministic — same output every run — so the committed SQL
+ * The generator is deterministic, same output every run - so the committed SQL
  * is reviewable and diffs are meaningful.
  */
 
@@ -38,7 +38,7 @@ function makeRandom(seed) {
 
 const random = makeRandom(20260822);
 
-/** Box–Muller, so sizes and prices cluster like real ones rather than sitting flat. */
+/** Box-Muller, so sizes and prices cluster like real ones rather than sitting flat. */
 function normal(mean, deviation) {
   const u = Math.max(random(), Number.EPSILON);
   const v = random();
@@ -148,7 +148,7 @@ function bedroomsFor(type, sqm) {
 }
 
 const lines = [];
-lines.push(`-- GENERATED FILE — do not edit by hand.`);
+lines.push(`-- GENERATED FILE, do not edit by hand.`);
 lines.push(
   `-- Regenerate: node scripts/generate-market-sample.mjs > supabase/seed/market-sample.sql`,
 );

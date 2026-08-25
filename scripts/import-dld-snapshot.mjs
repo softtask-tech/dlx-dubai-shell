@@ -5,7 +5,7 @@
  *   node scripts/import-dld-snapshot.mjs rents ./dld-rents.csv
  *
  * This is the one-time snapshot path: download a dataset export from Dubai
- * Pulse (https://www.dubaipulse.gov.ae — "DLD Transactions" and "DLD Rent
+ * Pulse (https://www.dubaipulse.gov.ae, "DLD Transactions" and "DLD Rent
  * Contracts"), point this at the file, and the site is running on real data.
  * The scheduled Edge Function keeps it current afterwards.
  *

@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
  * the picker. The dirham is what the sale and purchase agreement is written in
  * and what the Land Department registers; a page that showed a rupee figure
  * first would be quoting a number that appears on no document the buyer will
- * ever sign. The conversion is a courtesy — and it disappears rather than
+ * ever sign. The conversion is a courtesy, and it disappears rather than
  * guessing when there is no rate we can stand behind.
  */
 export function Money({
@@ -58,7 +58,7 @@ export function Money({
  * The currency picker.
  *
  * "field" is the labelled version the calculators use. "bare" is the compact
- * one in the site header — a select with no visible label, because a header
+ * one in the site header, a select with no visible label, because a header
  * that explains its own controls is a header that has stopped being furniture.
  * Both carry an accessible name either way.
  */
@@ -87,7 +87,7 @@ export function CurrencyPicker({
     >
       {CURRENCIES.map((entry) => (
         <option key={entry.code} value={entry.code}>
-          {variant === "bare" ? entry.code : `${entry.code} — ${entry.name}`}
+          {variant === "bare" ? entry.code : `${entry.code}, ${entry.name}`}
         </option>
       ))}
     </select>
@@ -126,7 +126,7 @@ export function CurrencyPicker({
  * all reach for this rather than `formatPrice` directly. That is the whole of
  * "currency empathy": the moment that decides whether someone enquires is
  * seeing a number they can size against their own money, and until now that
- * only happened inside the calculators — a page most visitors never open.
+ * only happened inside the calculators, a page most visitors never open.
  *
  * The conversion is parenthetical and set in the muted tone, so the dirham
  * figure still reads as the price and the rest reads as a note. It disappears
@@ -156,7 +156,7 @@ export function Price({
 
   /*
    * Only AED is converted. A listing quoted in another currency is rare and
-   * would need a cross rate we do not hold — and inventing one on a
+   * would need a cross rate we do not hold, and inventing one on a
    * seven-figure price is precisely what the currency module exists to prevent.
    */
   const secondary = quoted === "AED" ? money.converted(amount) : null;

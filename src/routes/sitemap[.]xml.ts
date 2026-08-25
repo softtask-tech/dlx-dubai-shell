@@ -21,7 +21,7 @@ function escapeXml(value: string): string {
 }
 
 /**
- * /sitemap.xml — generated from the page registry in `src/config/site.ts`, so a
+ * /sitemap.xml, generated from the page registry in `src/config/site.ts`, so a
  * page becomes crawlable the moment it is registered rather than whenever
  * someone remembers to update a static file.
  */
@@ -34,7 +34,7 @@ export const Route = createFileRoute("/sitemap.xml")({
         /*
          * Registered pages plus everything generated. The database queries run
          * with the publishable key, so unpublished listings never reach the
-         * sitemap — the same rule that hides them from the site hides them here.
+         * sitemap, the same rule that hides them from the site hides them here.
          * If Supabase is unreachable the sitemap still ships the static pages
          * rather than failing: a partial sitemap beats a 500.
          */
@@ -70,7 +70,7 @@ export const Route = createFileRoute("/sitemap.xml")({
             changefreq: "monthly",
             priority: 0.7,
           })),
-          /* Guides carry their own review date, which is the honest lastmod —
+          /* Guides carry their own review date, which is the honest lastmod,
            * claiming today's date on an article reviewed in March is exactly the
            * kind of freshness signal Google discounts. */
           ...GUIDES.map((guide) => ({
@@ -100,7 +100,7 @@ export const Route = createFileRoute("/sitemap.xml")({
             priority: 0.7,
           })),
           /* Community pages carry the market data, so they are worth crawling
-           * often — they change whenever the statistics are recomputed. */
+           * often, they change whenever the statistics are recomputed. */
           ...areas.map((area) => ({
             path: `/areas/${area.slug}`,
             changefreq: "weekly",
@@ -110,7 +110,7 @@ export const Route = createFileRoute("/sitemap.xml")({
 
         /*
          * Each entry becomes one <url> per language it exists in, and every one
-         * of those carries the full set of xhtml:link alternates — including a
+         * of those carries the full set of xhtml:link alternates, including a
          * self-reference, which the protocol requires and which is the most
          * commonly omitted half of it.
          *

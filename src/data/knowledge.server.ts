@@ -1,5 +1,5 @@
 /**
- * Retrieval — server side only.
+ * Retrieval, server side only.
  *
  * The advisor answers from this and nothing else. `buildKnowledgeIndex()` reads
  * the database, so calling it on every conversational turn would put four
@@ -77,7 +77,7 @@ export type RetrievedContext = {
   requiresVerification: boolean;
   /** True when anything retrieved should end with a consultant, not an answer. */
   routeToHuman: boolean;
-  /** True when nothing matched — the advisor must say so rather than improvise. */
+  /** True when nothing matched, the advisor must say so rather than improvise. */
   isEmpty: boolean;
 };
 

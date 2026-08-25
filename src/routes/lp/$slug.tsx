@@ -89,7 +89,7 @@ function LandingPage() {
                     className="body-text flex gap-5 border-b border-border py-4 text-muted-foreground"
                   >
                     <span aria-hidden="true" className="text-accent">
-                      —
+                      ,
                     </span>
                     <span>{bullet}</span>
                   </li>
@@ -160,7 +160,7 @@ function LandingPage() {
         </div>
       </Section>
 
-      {/* One call to action, repeated — not a second, different one. */}
+      {/* One call to action, repeated, not a second, different one. */}
       <Section className="border-t border-border">
         <Reveal>
           <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">

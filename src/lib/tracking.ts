@@ -6,7 +6,7 @@
  *
  * NOTHING LOADS BEFORE CONSENT. The Meta and Google scripts are not in the
  * document until someone has said yes, so a visitor who declines is not merely
- * untracked — they never contacted those servers at all. A consent banner that
+ * untracked. They never contacted those servers at all. A consent banner that
  * hides an already-loaded pixel is theatre, and several of this site's
  * audiences are covered by regimes that treat it as such.
  *
@@ -84,7 +84,7 @@ export function hasDecided(): boolean {
  * Records a decision and acts on it immediately.
  *
  * Accepting loads the scripts and flushes anything queued. Declining does not
- * unload what is already there — it cannot — but it stops everything after,
+ * unload what is already there, it cannot, but it stops everything after,
  * and since nothing loads before acceptance there is normally nothing to undo.
  */
 export function setConsent(next: { analytics: boolean; marketing: boolean }): void {
@@ -196,7 +196,7 @@ function loadGoogle(): void {
  *
  * Shared between the browser pixel and the server's Conversions API call for
  * the same conversion. Without it Meta counts both and the campaign looks twice
- * as good as it is — which is worse than not measuring at all, because someone
+ * as good as it is, which is worse than not measuring at all, because someone
  * will spend money on the strength of it.
  */
 export function newEventId(): string {

@@ -11,7 +11,7 @@ import { leadSubmissionSchema, type LeadSubmissionResult } from "./leads.server"
 
 /**
  * Accepts an enquiry from any form on the site, scores it, stores it and
- * triggers the two emails. Validation runs again server-side — the client's
+ * triggers the two emails. Validation runs again server-side, the client's
  * validation is a courtesy, not a guarantee.
  */
 export const submitLeadFn = createServerFn({ method: "POST" })

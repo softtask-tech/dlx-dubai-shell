@@ -6,7 +6,7 @@
  * Every number here is a real-world figure set by an authority, and every one
  * of them changes. Baked into a calculator's arithmetic they become invisible
  * claims that nobody can check and nobody remembers to update. Held here they
- * are explicit, dated, attributed, and — where a figure genuinely varies — the
+ * are explicit, dated, attributed, and, where a figure genuinely varies, the
  * calculator lets the visitor set their own instead of pretending ours is
  * authoritative.
  *
@@ -67,7 +67,7 @@ export const PURCHASE_FEES: readonly FeeEntry[] = [
     label: "DLD transfer fee",
     value: 4,
     basis: "percent_of_price",
-    note: "The Dubai Land Department's fee for registering the transfer into your name. Conventionally split between buyer and seller, but in practice the buyer usually pays it — assume you are paying it unless your contract says otherwise.",
+    note: "The Dubai Land Department's fee for registering the transfer into your name. Conventionally split between buyer and seller, but in practice the buyer usually pays it, assume you are paying it unless your contract says otherwise.",
     source: "Dubai Land Department",
     verifiedOn: "2026-08-22",
     editable: false,
@@ -78,7 +78,7 @@ export const PURCHASE_FEES: readonly FeeEntry[] = [
     value: 2,
     basis: "percent_of_price",
     note: "The brokerage fee, conventionally 2% plus VAT. It is negotiable, and what you are paying should be agreed in writing before you commit to anything.",
-    source: "Market convention — negotiated between the parties",
+    source: "Market convention, negotiated between the parties",
     verifiedOn: "2026-08-22",
     editable: true,
   },
@@ -88,7 +88,7 @@ export const PURCHASE_FEES: readonly FeeEntry[] = [
     value: 4200,
     basis: "flat_aed",
     note: "Paid to the registration trustee office that processes the transfer. Typically tiered by price band, so treat this as an estimate and confirm the exact figure with your trustee office.",
-    source: "Registration trustee offices — tiered by price",
+    source: "Registration trustee offices, tiered by price",
     verifiedOn: "2026-08-22",
     editable: true,
   },
@@ -97,7 +97,7 @@ export const PURCHASE_FEES: readonly FeeEntry[] = [
     label: "Developer NOC fee",
     value: 3000,
     basis: "flat_aed",
-    note: "The developer's charge for the No Objection Certificate confirming service charges are settled. It varies substantially between developers — ask yours for the exact figure early, because it is a common late surprise.",
+    note: "The developer's charge for the No Objection Certificate confirming service charges are settled. It varies substantially between developers, ask yours for the exact figure early, because it is a common late surprise.",
     source: "Set individually by each developer",
     verifiedOn: "2026-08-22",
     editable: true,
@@ -129,7 +129,7 @@ export const PURCHASE_FEES: readonly FeeEntry[] = [
  * Golden Visa thresholds.
  *
  * The criteria are set by the UAE authorities and they do change. These are
- * defaults for a rough indication only — the eligibility checker states plainly
+ * defaults for a rough indication only, the eligibility checker states plainly
  * that it is not a determination and routes every user to a licensed adviser
  * for written confirmation. DLX does not process visa applications.
  */
@@ -146,7 +146,7 @@ export const GOLDEN_VISA = {
    * exactly how much weight it can carry.
    */
   disclaimer:
-    "Thresholds and criteria are set by the UAE authorities and change. This is an indication, not an eligibility determination — DLX does not process visa applications. Confirm your position in writing with a licensed immigration adviser before committing to a purchase.",
+    "Thresholds and criteria are set by the UAE authorities and change. This is an indication, not an eligibility determination. DLX does not process visa applications. Confirm your position in writing with a licensed immigration adviser before committing to a purchase.",
 } as const;
 
 /**
@@ -162,7 +162,7 @@ export const RENTAL_FEES: readonly FeeEntry[] = [
     value: 5,
     basis: "percent_of_rent",
     note: "Conventionally 5% of the annual rent. Negotiable, and agreed in writing before you sign.",
-    source: "Market convention — negotiated between the parties",
+    source: "Market convention, negotiated between the parties",
     verifiedOn: "2026-08-22",
     editable: true,
   },
@@ -191,7 +191,7 @@ export const RENTAL_FEES: readonly FeeEntry[] = [
 /**
  * Ongoing ownership costs used by the rent-vs-buy and ROI tools.
  *
- * Service charges are the big one and they are building-specific — a tower with
+ * Service charges are the big one and they are building-specific, a tower with
  * a chilled-water plant and a concierge costs multiples of a walk-up. The
  * default is a placeholder the visitor is expected to replace with the actual
  * figure for the building they are looking at, and the tools say so.
@@ -200,8 +200,8 @@ export const HOLDING_COSTS = {
   serviceChargePerSqftAed: {
     value: 16,
     label: "Service charge",
-    note: "Per square foot per year. Varies enormously by building — from single digits for a simple block to well over 30 for a serviced tower. Get the actual figure for your building before you rely on any yield calculation.",
-    source: "Building-specific — published per project by the Dubai Land Department",
+    note: "Per square foot per year. Varies enormously by building, from single digits for a simple block to well over 30 for a serviced tower. Get the actual figure for your building before you rely on any yield calculation.",
+    source: "Building-specific, published per project by the Dubai Land Department",
     verifiedOn: "2026-08-22",
     editable: true,
   },

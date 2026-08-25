@@ -19,7 +19,7 @@ const PRINCIPLES = [
   },
   {
     title: "Evidence over sentiment",
-    body: "We price from what has actually transacted in Dubai Land Department records, and we show you the comparables we reasoned from — including when they do not support the number you hoped for.",
+    body: "We price from what has actually transacted in Dubai Land Department records, and we show you the comparables we reasoned from, including when they do not support the number you hoped for.",
   },
   {
     title: "A named consultant, throughout",
@@ -39,7 +39,7 @@ const FAQS: readonly FaqEntry[] = [
   {
     question: "How big is the team?",
     answer:
-      "Deliberately small. We take on a limited number of clients at a time because the alternative is the thing we set out not to be — volume brokerage where nobody is quite accountable for your transaction.",
+      "Deliberately small. We take on a limited number of clients at a time because the alternative is the thing we set out not to be, volume brokerage where nobody is quite accountable for your transaction.",
   },
   {
     question: "What does DLX charge?",
@@ -96,7 +96,7 @@ function AboutPage() {
           <div className="lg:col-span-8 lg:col-start-3">
             <Reveal>
               <p className="lead">
-                Dubai has no shortage of estate agents. What it has less of is representation — a
+                Dubai has no shortage of estate agents. What it has less of is representation, a
                 firm whose interest in a transaction is the same as yours, and which will tell you
                 to walk away when walking away is right.
               </p>

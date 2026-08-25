@@ -1,5 +1,5 @@
 /**
- * send-lead-emails — the dual email on every new lead.
+ * send-lead-emails, the dual email on every new lead.
  *
  * Invoked with `{ leadId }` by the server function that writes the lead. It
  * reads the row with the service role (leads are unreadable to everyone else),
@@ -7,13 +7,13 @@
  * confirmation to the client.
  *
  * The two sends are independent. If the client confirmation bounces, the
- * brokerage still hears about the lead, and vice versa — the function reports
+ * brokerage still hears about the lead, and vice versa, the function reports
  * per-email status rather than failing as a unit.
  *
  * Environment:
- *   RESEND_API_KEY  — https://resend.com/api-keys
- *   LEAD_FROM_EMAIL — verified sender, e.g. "DLX Properties <hello@dlxproperties.ae>"
- *   LEAD_ADMIN_EMAIL— where notifications land (comma-separated for several)
+ *   RESEND_API_KEY, https://resend.com/api-keys
+ *   LEAD_FROM_EMAIL, verified sender, e.g. "DLX Properties <hello@dlxproperties.ae>"
+ *   LEAD_ADMIN_EMAIL, where notifications land (comma-separated for several)
  * Supabase provides SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY automatically.
  */
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
@@ -90,7 +90,7 @@ Deno.serve(async (request: Request) => {
     );
 
     /* The assigned consultant comes with the lead, because a notification that
-     * says who owns it reaches a person rather than a queue — and by the time
+     * says who owns it reaches a person rather than a queue, and by the time
      * this runs, routing has already chosen one. */
     const { data, error } = await supabase
       .from("leads")
@@ -146,7 +146,7 @@ Deno.serve(async (request: Request) => {
     /* No key configured yet: log what would have gone out and report it plainly,
      * rather than failing a submission that was otherwise fine. */
     if (!apiKey) {
-      console.warn("[send-lead-emails] RESEND_API_KEY is not set — no email sent", { leadId });
+      console.warn("[send-lead-emails] RESEND_API_KEY is not set, no email sent", { leadId });
       return Response.json(
         { admin: { ok: false, skipped: true }, client: { ok: false, skipped: true } },
         { headers: corsHeaders },

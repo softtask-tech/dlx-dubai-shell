@@ -2,7 +2,7 @@
  * Campaign landing pages.
  *
  * A landing page is not a smaller version of a site page. It exists to keep one
- * promise — the one the ad made — and to do exactly one thing about it. Every
+ * promise (the one the ad made) and to do exactly one thing about it. Every
  * link out is a way to lose someone who arrived ready to act, so these carry no
  * navigation, no related content and no second call to action.
  *
@@ -34,7 +34,7 @@ export type LandingPage = {
   ctaLabel: string;
   /** Three numbers or facts that make the offer credible. */
   proof: LandingProof[];
-  /** What they get, plainly. Four at most — this is not a features list. */
+  /** What they get, plainly. Four at most. This is not a features list. */
   bullets: string[];
   /** Objections the ad's audience actually has, answered without hedging. */
   faqs: Array<{ question: string; answer: string }>;
@@ -54,11 +54,11 @@ export const LANDING_PAGES: readonly LandingPage[] = [
       "A plan is a schedule, not a discount. We lay out what falls due and when, before you commit to it.",
     title: "Dubai off-plan payment plans, explained",
     description:
-      "See what an off-plan payment plan actually costs you and when — instalment by instalment, with the handover figure that decides affordability. A DLX consultant walks it through.",
+      "See what an off-plan payment plan actually costs you and when, instalment by instalment, with the handover figure that decides affordability. A DLX consultant walks it through.",
     offer: "A written breakdown of any plan you are considering",
     ctaLabel: "Get the breakdown",
     proof: [
-      { figure: "4%", label: "DLD transfer fee — fixed, and in every figure we quote" },
+      { figure: "4%", label: "DLD transfer fee, fixed, and in every figure we quote" },
       { figure: "0", label: "Developer commissions that change what we recommend" },
       { figure: "RERA 40905", label: "Registered brokerage, Business Bay" },
     ],
@@ -82,7 +82,7 @@ export const LANDING_PAGES: readonly LandingPage[] = [
       {
         question: "Can you do this for a project you do not represent?",
         answer:
-          "Yes, and we will tell you plainly if we think the plan is worse than the alternatives — including when the alternative is not buying.",
+          "Yes, and we will tell you plainly if we think the plan is worse than the alternatives, including when the alternative is not buying.",
       },
     ],
     formTitle: "Send us the plan",
@@ -105,7 +105,7 @@ export const LANDING_PAGES: readonly LandingPage[] = [
     proof: [
       { figure: "DLD", label: "Every figure computed from Land Department records" },
       { figure: "Monthly", label: "Recomputed as new registrations publish" },
-      { figure: "Gross", label: "Yields stated before costs — always said, never buried" },
+      { figure: "Gross", label: "Yields stated before costs, always said, never buried" },
     ],
     bullets: [
       "Median price per square foot, and how it has moved over twelve months.",
@@ -132,7 +132,7 @@ export const LANDING_PAGES: readonly LandingPage[] = [
     ],
     formTitle: "Ask about the Marina",
     formDescription:
-      "Tell us what you are considering — a specific tower, a budget, or just a question — and a consultant will reply with the figures.",
+      "Tell us what you are considering: a specific tower, a budget, or just a question. A consultant will reply with the figures.",
     intent: "buy",
     readMore: { label: "Every community, in numbers", to: "/areas" },
   },
@@ -141,14 +141,14 @@ export const LANDING_PAGES: readonly LandingPage[] = [
     audience: "Owners searching valuations and selling",
     headline: "What your Dubai property is actually worth",
     standfirst:
-      "A valuation from recorded transactions in your building — not an optimistic number to win your instruction.",
+      "A valuation from recorded transactions in your building, not an optimistic number to win your instruction.",
     title: "Sell your Dubai property: an honest valuation",
     description:
       "A valuation built from Dubai Land Department registrations in your own building, with the fees, the timeline and the realistic price a buyer will pay.",
     offer: "A written valuation with the comparable registrations behind it",
     ctaLabel: "Value my property",
     proof: [
-      { figure: "2%", label: "Agency commission — stated, and negotiable" },
+      { figure: "2%", label: "Agency commission, stated, and negotiable" },
       { figure: "Comparables", label: "Every valuation shows the registrations it rests on" },
       { figure: "No lock-in", label: "We earn the instruction on the work, not the contract" },
     ],
@@ -216,7 +216,7 @@ export const LANDING_PAGES: readonly LandingPage[] = [
       {
         question: "Can I sponsor my family?",
         answer:
-          "The property routes generally allow a holder to sponsor a spouse and children. The specifics — ages, dependency, documentation — are set by the authority, and should be established before you buy on the strength of them.",
+          "The property routes generally allow a holder to sponsor a spouse and children. The specifics (ages, dependency, documentation) are set by the authority, and should be established before you buy on the strength of them.",
       },
     ],
     formTitle: "Start the conversation",

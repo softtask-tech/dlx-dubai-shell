@@ -5,7 +5,7 @@
  * `src/integrations/supabase/types.ts` is generated from the *live* project and
  * the migrations have not been pushed there yet. Once they are, regenerate that
  * file (`npx supabase gen types typescript --linked`) and these can be replaced
- * by the generated `Tables<"properties">` helpers — the field names deliberately
+ * by the generated `Tables<"properties">` helpers, the field names deliberately
  * match one-for-one so the swap is mechanical.
  *
  * Keep this file in step with the migrations. If a column is added there and
@@ -16,7 +16,7 @@
  * A value that survives the trip from the server to the browser.
  *
  * Used for the free-form JSON columns. `unknown` would be more permissive but
- * the server-function boundary rejects it — and rightly: anything crossing that
+ * the server-function boundary rejects it, and rightly: anything crossing that
  * boundary has to be serializable.
  */
 export type JsonValue =
@@ -177,7 +177,7 @@ export type Property = {
   developer_id: string | null;
   project_id: string | null;
   agent_id: string | null;
-  /** Null means price on application — never render it as zero. */
+  /** Null means price on application, never render it as zero. */
   price: number | null;
   currency: string;
   rent_frequency: "yearly" | "monthly" | "weekly" | "daily" | null;

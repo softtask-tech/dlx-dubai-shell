@@ -8,7 +8,7 @@
  * figure that is wrong.
  *
  * So this module is deliberately unwilling to guess. A campaign with leads and
- * no imported spend reports `spend: null`, not zero — because zero divides into
+ * no imported spend reports `spend: null`, not zero, because zero divides into
  * an infinite return, and an infinite return is the kind of number that gets a
  * budget doubled. Every row says which of its three inputs it is missing.
  */
@@ -28,7 +28,7 @@ export type CampaignPerformance = {
   qualified: number;
   won: number;
   revenueAed: number;
-  /** Null where spend is unknown — never zero, never inferred. */
+  /** Null where spend is unknown, never zero, never inferred. */
   costPerLeadAed: number | null;
   costPerQualifiedAed: number | null;
   /** Revenue ÷ spend. Null where either side is unknown. */
@@ -48,7 +48,7 @@ export type RoasSummary = {
   totalRevenueAed: number;
   /** True when no spend has been imported at all. */
   spendMissing: boolean;
-  /** Leads with no campaign attached — direct, organic, or attribution lost. */
+  /** Leads with no campaign attached, direct, organic, or attribution lost. */
   unattributedLeads: number;
   campaigns: CampaignPerformance[];
   mix: Record<LeadTemperature, number>;
@@ -58,9 +58,9 @@ async function paidDb(): Promise<SupabaseClient<PaidMediaDatabase>> {
   return (await adminDb()) as unknown as SupabaseClient<PaidMediaDatabase>;
 }
 
-/** "facebook / summer-offplan" — the key both sides of the join agree on. */
+/** "facebook / summer-offplan", the key both sides of the join agree on. */
 function keyOf(source: string | null, campaign: string | null): string {
-  return `${(source ?? "direct").toLowerCase()}|${(campaign ?? "—").toLowerCase()}`;
+  return `${(source ?? "direct").toLowerCase()}|${(campaign ?? "-").toLowerCase()}`;
 }
 
 export async function campaignPerformance(input: {
@@ -90,7 +90,7 @@ export async function campaignPerformance(input: {
   for (const row of (spendRows ?? []) as CampaignSpendRow[]) {
     /* Spend is imported against the platform's campaign id or name; leads carry
      * whatever the UTM said. Both are matched on the lowercased name, which is
-     * the only thing the two sides reliably share — and why the import screen
+     * the only thing the two sides reliably share, and why the import screen
      * says to name campaigns the same way in both places. */
     const key = keyOf(row.platform, row.campaign_name ?? row.campaign_id);
     spendByCampaign.set(key, (spendByCampaign.get(key) ?? 0) + Number(row.spend_aed));
@@ -111,7 +111,7 @@ export async function campaignPerformance(input: {
     const dealValue = typeof raw["deal_value_aed"] === "number" ? raw["deal_value_aed"] : 0;
 
     /* Spam never counts as a lead. Including it would flatter the cost per
-     * lead of whichever campaign attracts the most junk — precisely backwards. */
+     * lead of whichever campaign attracts the most junk, precisely backwards. */
     if (status === "unqualified") continue;
 
     if (!source && !campaign) unattributed += 1;
@@ -119,7 +119,7 @@ export async function campaignPerformance(input: {
     const key = keyOf(source, campaign);
     const bucket = buckets.get(key) ?? {
       source: source ?? "direct",
-      campaign: campaign ?? "—",
+      campaign: campaign ?? "-",
       spendAed: spendByCampaign.get(key) ?? null,
       leads: 0,
       qualified: 0,
@@ -137,7 +137,7 @@ export async function campaignPerformance(input: {
     mix[temperature] += 1;
 
     /* "Qualified" means a consultant said so. Everything past qualified in the
-     * pipeline counts too — a won deal was obviously qualified first. */
+     * pipeline counts too, a won deal was obviously qualified first. */
     if (["qualified", "viewing_booked", "negotiating", "won"].includes(status)) {
       bucket.qualified += 1;
       totalQualified += 1;
@@ -168,7 +168,7 @@ export async function campaignPerformance(input: {
       gaps.push("Deal marked won with no value recorded");
     }
     if (bucket.won === 0 && bucket.spendAed !== null) {
-      gaps.push("No closed deal yet — return unknown, not zero");
+      gaps.push("No closed deal yet, return unknown, not zero");
     }
 
     bucket.gaps = gaps;

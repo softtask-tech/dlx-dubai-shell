@@ -28,7 +28,7 @@ import { AdvisorDock } from "@/components/advisor/advisor-dock";
 import { ConsentBar } from "@/components/site/consent-bar";
 import { advisorAvailabilityFn } from "@/data/advisor.functions";
 import { hasDecided, initTracking, trackPageView } from "@/lib/tracking";
-import { CustomCursor } from "@/components/site/cursor";
+import { LenisProvider } from "@/components/motion/lenis-provider";
 
 function NotFoundComponent() {
   return (
@@ -85,13 +85,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   /* Server-rendered once per page load rather than fetched by the dock, so the
-   * advisor is either there from the first paint or not there at all — no rail
+   * advisor is either there from the first paint or not there at all, no rail
    * appearing a second late, and no request on every navigation. */
   loader: async () => ({ advisorAvailability: await advisorAvailabilityFn() }),
   head: () => {
     /*
      * Root-level head. Every page overrides title, description, canonical, OG
-     * and Twitter tags via its own pageHead() call — these are the shell
+     * and Twitter tags via its own pageHead() call. These are the shell
      * defaults plus the site-wide identity schema, emitted once.
      */
     const shell = pageHead({
@@ -109,7 +109,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       links: [
         { rel: "stylesheet", href: appCss },
         { rel: "icon", type: "image/png", href: "/favicon.png" },
-        /* The Latin pair, on every page in every language — see src/lib/fonts.ts
+        /* The Latin pair, on every page in every language, see src/lib/fonts.ts
          * for why a translated page still needs it. The script fonts are added
          * by the $lang layout, so English loads nothing extra. */
         ...fontLinks(DEFAULT_LOCALE),
@@ -129,7 +129,7 @@ function RootShell({ children }: { children: ReactNode }) {
    * HTML.
    *
    * Setting them from an effect after hydration would mean Arabic laid out
-   * left-to-right for the length of a paint — the flash of wrong direction that
+   * left-to-right for the length of a paint, the flash of wrong direction that
    * makes an RTL site feel like an afterthought. It would also lie to a
    * screen reader and to a translation service, both of which read the
    * attribute and neither of which waits for React.
@@ -163,7 +163,7 @@ function RootComponent() {
    */
   const isCampaignPage = pathname.startsWith("/lp/");
 
-  /* The URL is the single source of truth for language — see the note in
+  /* The URL is the single source of truth for language, see the note in
    * src/i18n/index.tsx on why nothing is remembered here. */
   const { code: locale } = splitLocale(pathname);
 
@@ -197,7 +197,7 @@ function RootComponent() {
    * the important word is *turning*: the new page settles in, it does not blink.
    *
    * The one rule this must not break is the one the hero taught us. The first
-   * render is never animated — `navigated` is false until the reader has
+   * render is never animated, `navigated` is false until the reader has
    * actually gone somewhere, so the landing page paints at full opacity in the
    * first frame and LCP is untouched. Only the second page onwards turns.
    */
@@ -211,24 +211,25 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <LocaleProvider code={locale}>
         <CurrencyProvider>
-          <SkipLink />
-          <CustomCursor />
-          {isCampaignPage ? null : <Header />}
-          <main
-            id="main"
-            /* Keyed on the path so the animation restarts on each navigation. */
-            key={navigated ? pathname : "initial"}
-            data-page-turn={navigated ? "true" : undefined}
-            className="min-h-screen"
-          >
-            {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-            <Outlet />
-          </main>
-          {isCampaignPage ? null : <Footer />}
-          {/* One bar at a time. The advisor waits until the visitor has answered
-              the cookie question, so the foot of the page never carries two. */}
-          <ConsentBar onDecided={() => setConsentDecided(true)} />
-          {advisorAvailability.chat && consentDecided && !isCampaignPage ? <AdvisorDock /> : null}
+          <LenisProvider>
+            <SkipLink />
+            {isCampaignPage ? null : <Header />}
+            <main
+              id="main"
+              /* Keyed on the path so the animation restarts on each navigation. */
+              key={navigated ? pathname : "initial"}
+              data-page-turn={navigated ? "true" : undefined}
+              className="min-h-screen"
+            >
+              {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+              <Outlet />
+            </main>
+            {isCampaignPage ? null : <Footer />}
+            {/* One bar at a time. The advisor waits until the visitor has answered
+                the cookie question, so the foot of the page never carries two. */}
+            <ConsentBar onDecided={() => setConsentDecided(true)} />
+            {advisorAvailability.chat && consentDecided && !isCampaignPage ? <AdvisorDock /> : null}
+          </LenisProvider>
         </CurrencyProvider>
       </LocaleProvider>
     </QueryClientProvider>
@@ -239,7 +240,7 @@ function RootComponent() {
  * The skip link, in the reader's language.
  *
  * Its own component because it needs the dictionary, and the dictionary needs
- * the provider it sits inside — a hook called in RootComponent would run above
+ * the provider it sits inside, a hook called in RootComponent would run above
  * LocaleProvider and always read English.
  */
 function SkipLink() {

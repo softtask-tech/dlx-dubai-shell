@@ -8,7 +8,7 @@ type SectionProps = React.HTMLAttributes<HTMLElement> & {
   bleed?: boolean;
 };
 
-/** Section container — owns the site's horizontal gutters and vertical rhythm. */
+/** Section container, owns the site's horizontal gutters and vertical rhythm. */
 export function Section({ className, children, flush, bleed, ...props }: SectionProps) {
   return (
     <section className={cn(!flush && "py-section", className)} {...props}>

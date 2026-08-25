@@ -3,14 +3,14 @@
  *
  * Two callers, one client: the telephony layer, which turns the advisor's reply
  * into what the caller hears, and the chat panel, which offers to read an answer
- * aloud. Both get the same voice, which is the point — the advisor should sound
+ * aloud. Both get the same voice, which is the point, the advisor should sound
  * like one thing whether you rang it or typed to it.
  *
  * Configuration rather than hard-coding, because the voice is a brand decision
  * the client will want to change without a deploy:
- *   FISH_AUDIO_API_KEY  — https://fish.audio account
- *   FISH_AUDIO_VOICE_ID — the reference model; falls back to the API default
- *   FISH_AUDIO_API_URL  — override for a region or a self-hosted endpoint
+ *   FISH_AUDIO_API_KEY, https://fish.audio account
+ *   FISH_AUDIO_VOICE_ID, the reference model; falls back to the API default
+ *   FISH_AUDIO_API_URL, override for a region or a self-hosted endpoint
  *
  * Unconfigured, `synthesize` returns null rather than throwing. A missing voice
  * should cost the audio, not the answer: the panel simply shows text, and the

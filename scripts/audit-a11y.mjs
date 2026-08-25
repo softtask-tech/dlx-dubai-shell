@@ -2,7 +2,7 @@
 /**
  * An accessibility audit over the server-rendered HTML.
  *
- * Not a replacement for axe or for a person with a screen reader — it cannot
+ * Not a replacement for axe or for a person with a screen reader, it cannot
  * see contrast, focus order or whether a control makes sense when read aloud.
  * What it does catch is the class of defect that is both invisible in a
  * screenshot and fatal to someone using the site without a mouse or without
@@ -48,7 +48,7 @@ function attr(tag, name) {
  * The document declares its language and direction.
  *
  * A missing `lang` makes a screen reader pronounce Arabic with an English voice
- * — not merely wrong but unintelligible. A missing `dir` on an RTL page leaves
+ *, not merely wrong but unintelligible. A missing `dir` on an RTL page leaves
  * punctuation and numbers in the wrong places.
  */
 function checkDocumentLanguage(page, html) {
@@ -81,7 +81,7 @@ function checkHeadings(page, html) {
 
   const h1s = headings.filter((heading) => heading.level === 1);
   if (h1s.length === 0) fail(page, "no <h1>");
-  if (h1s.length > 1) fail(page, `${h1s.length} <h1> elements — a page has one title`);
+  if (h1s.length > 1) fail(page, `${h1s.length} <h1> elements, a page has one title`);
 
   for (const heading of headings) {
     if (heading.text.length === 0) fail(page, `an empty <h${heading.level}>`);
@@ -100,7 +100,7 @@ function checkHeadings(page, html) {
 }
 
 /**
- * Every image has an alt attribute — including the decorative ones, which need
+ * Every image has an alt attribute, including the decorative ones, which need
  * `alt=""` so a screen reader skips them rather than reading a filename.
  */
 function checkImages(page, html) {
@@ -115,7 +115,7 @@ function checkImages(page, html) {
  * Every interactive control has an accessible name.
  *
  * A button whose only content is an icon, or a select with no label, is a
- * control a screen reader announces as "button" — which tells the listener
+ * control a screen reader announces as "button", which tells the listener
  * nothing at all.
  */
 function checkControls(page, html) {
@@ -182,7 +182,7 @@ function checkLinks(page, html) {
   for (const match of html.matchAll(/<a\b([^>]*)>([\s\S]{0,200}?)<\/a>/gi)) {
     const attrs = match[1] ?? "";
     if (!/\bhref\s*=/.test(attrs) && !/\brole\s*=/.test(attrs)) {
-      note(page, `<a> with no href — not keyboard reachable: ${attrs.slice(0, 60)}`);
+      note(page, `<a> with no href, not keyboard reachable: ${attrs.slice(0, 60)}`);
     }
   }
 }
@@ -190,15 +190,15 @@ function checkLinks(page, html) {
 /**
  * Text in a different language from the page declares itself.
  *
- * On the translated pages the site marks English fragments — service names,
- * tool names, the "EN" badge — with `lang="en"`, so a screen reader switches
+ * On the translated pages the site marks English fragments, service names,
+ * tool names, the "EN" badge, with `lang="en"`, so a screen reader switches
  * voice rather than reading English through an Arabic phoneme set.
  */
 function checkInlineLanguage(page, html) {
   if (!page.startsWith("/ar") && !page.startsWith("/zh") && !page.startsWith("/hi")) return;
   const inline = (html.match(/\blang="en"/g) ?? []).length;
   if (inline === 0) {
-    note(page, 'no inline lang="en" — check that English fragments are marked');
+    note(page, 'no inline lang="en", check that English fragments are marked');
   }
 }
 
@@ -223,7 +223,7 @@ function contrast(a, b) {
  *
  * Read out of styles.css rather than hard-coded here, so the check follows the
  * tokens instead of drifting from them. This is the check that caught the real
- * one: the brand's slate and gold both sat around 3.1–3.5:1 on white, which is
+ * one: the brand's slate and gold both sat around 3.1-3.5:1 on white, which is
  * fine for a 44px headline and a failure for every caption and link on the
  * site.
  */
@@ -243,7 +243,7 @@ async function checkContrast() {
 
   if (!slate || !sand) {
     notes.push(
-      "styles: could not read --slate-readable / --sand-readable as hex — contrast unchecked",
+      "styles: could not read --slate-readable / --sand-readable as hex, contrast unchecked",
     );
     return;
   }
@@ -262,7 +262,7 @@ async function checkContrast() {
       const ratio = contrast(colour, background);
       if (ratio < 4.5) {
         problems.push(
-          `styles: ${role} is ${colour} at ${ratio.toFixed(2)}:1 on ${name} — WCAG AA needs 4.5:1 for text under 24px`,
+          `styles: ${role} is ${colour} at ${ratio.toFixed(2)}:1 on ${name}, WCAG AA needs 4.5:1 for text under 24px`,
         );
       } else {
         console.log(`  ${role.padEnd(38)} ${ratio.toFixed(2)}:1 on ${name}`);

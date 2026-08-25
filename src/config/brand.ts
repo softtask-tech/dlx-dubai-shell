@@ -1,5 +1,5 @@
 /**
- * Brand facts — the things that are true about the company regardless of where
+ * Brand facts, the things that are true about the company regardless of where
  * the site is deployed.
  *
  * Kept free of imports and `import.meta` so plain Node can load it: the OG card
@@ -18,7 +18,7 @@ export const brand = {
   tagline: "Dubai real estate, handled with intention.",
   description:
     "A private Dubai brokerage advising on prime residential acquisitions, off-market sales and long-term portfolio strategy.",
-  /** RERA Office Registration Number — shown on every page in the footer. */
+  /** RERA Office Registration Number, shown on every page in the footer. */
   reraOrn: "40905",
   locale: "en_AE",
   language: "en",
@@ -30,7 +30,7 @@ export const brand = {
     country: "AE",
     countryName: "United Arab Emirates",
   },
-  /** Business Bay, Dubai — used for LocalBusiness geo coordinates. */
+  /** Business Bay, Dubai, used for LocalBusiness geo coordinates. */
   geo: { latitude: 25.1857, longitude: 55.2766 },
   contact: {
     email: "hello@dlxproperties.ae",
@@ -43,7 +43,7 @@ export const brand = {
     { label: "LinkedIn", href: "https://www.linkedin.com/company/dlxproperties" },
     { label: "YouTube", href: "https://www.youtube.com/@dlxproperties" },
   ],
-  /** Areas the brokerage actively represents — used for schema `areaServed`. */
+  /** Areas the brokerage actively represents, used for schema `areaServed`. */
   areasServed: [
     "Downtown Dubai",
     "Dubai Marina",

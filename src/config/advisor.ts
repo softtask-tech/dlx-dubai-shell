@@ -8,7 +8,7 @@
  * than an anonymous corner bubble, and a name does a real job: it gives the
  * voice agent something to answer to and gives the chat a personality restrained
  * enough to sit inside this brand. But a human name on a machine is a lie
- * waiting to be believed — someone tells "Noor" about their divorce settlement
+ * waiting to be believed, someone tells "Noor" about their divorce settlement
  * because they think a person is reading. So the name never appears without the
  * role beside it, in the header, in the greeting and in the first thing the
  * voice agent says. Named, and never pretending.
@@ -24,7 +24,7 @@ export const advisor = {
   greeting:
     "I can help with Dubai property, investment returns, the Golden Visa routes and relocating here. What are you trying to work out?",
 
-  /** Spoken first line. Shorter — nobody wants a paragraph on a phone call. */
+  /** Spoken first line. Shorter, nobody wants a paragraph on a phone call. */
   voiceGreeting:
     "Hello, this is Noor, the AI advisor for DLX Properties. I can help with Dubai property, investment, the Golden Visa or relocating. What can I help you with?",
 
@@ -43,7 +43,7 @@ export const advisor = {
    */
   limits: [
     "Quotes figures only from our Dubai Land Department data and our published fee schedule.",
-    "Will not guess at visa, tax or legal specifics — those go to a licensed adviser.",
+    "Will not guess at visa, tax or legal specifics. Those go to a licensed adviser.",
     "Hands you to a named consultant the moment a question turns on your circumstances.",
   ],
 

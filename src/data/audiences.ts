@@ -1,7 +1,7 @@
 /**
  * The retargeting audiences, defined once.
  *
- * Audiences are built inside Ads Manager, not here — but the *rules* that
+ * Audiences are built inside Ads Manager, not here, but the *rules* that
  * define them depend on events this codebase fires, and the two drift apart the
  * moment they live in different heads. Someone renames an event, the audience
  * silently stops filling, and nobody notices until a campaign has spent a month
@@ -15,7 +15,7 @@ import type { TrackedEvent } from "@/config/tracking";
 
 export type AudienceDefinition = {
   name: string;
-  /** Why this audience is worth money — what to say to it, not just who it is. */
+  /** Why this audience is worth money, what to say to it, not just who it is. */
   purpose: string;
   /** Events that put someone in. */
   includes: TrackedEvent[];
@@ -31,7 +31,7 @@ export const AUDIENCES: readonly AudienceDefinition[] = [
   {
     name: "Site visitors",
     purpose:
-      "The broadest useful pool, for reach campaigns and as a seed for lookalikes. Too broad to sell to directly — most of these people read one guide and left.",
+      "The broadest useful pool, for reach campaigns and as a seed for lookalikes. Too broad to sell to directly. Most of these people read one guide and left.",
     includes: ["view_listing", "view_area", "use_calculator", "search_listings"],
     excludes: ["submit_lead", "advisor_lead"],
     days: 180,
@@ -48,7 +48,7 @@ export const AUDIENCES: readonly AudienceDefinition[] = [
   {
     name: "Form abandoners",
     purpose:
-      "Started the enquiry and stopped. They were ready; something got in the way. Worth a short, direct reminder rather than a brand message — and a short window, because the moment passes.",
+      "Started the enquiry and stopped. They were ready; something got in the way. Worth a short, direct reminder rather than a brand message, and a short window, because the moment passes.",
     includes: ["start_form", "complete_form_step"],
     excludes: ["submit_lead", "request_report"],
     days: 14,
@@ -65,14 +65,14 @@ export const AUDIENCES: readonly AudienceDefinition[] = [
   {
     name: "Golden Visa researchers",
     purpose:
-      "Read the visa material. A relocation decision, not a purchase decision — the message is about the route and the adviser, not the property.",
+      "Read the visa material. A relocation decision, not a purchase decision. The message is about the route and the adviser, not the property.",
     includes: ["view_area", "use_calculator"],
     excludes: ["submit_lead"],
     days: 90,
     landingPage: "/lp/golden-visa-property",
   },
   {
-    name: "Converted — exclude",
+    name: "Converted, exclude",
     purpose:
       "Everyone who already enquired. Its only job is to be excluded from every prospecting campaign: paying to advertise to someone a consultant is already speaking to wastes the budget and irritates the client.",
     includes: ["submit_lead", "advisor_lead", "request_report", "call_click"],

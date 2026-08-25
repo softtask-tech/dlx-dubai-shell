@@ -3,7 +3,7 @@ import { SITE_URL, absoluteUrl } from "@/config/site";
 
 /**
  * Crawlers we name explicitly. Search engines index us; the AI answer engines
- * are how a growing share of buyers ask "who should I use in Dubai" — CLAUDE.md
+ * are how a growing share of buyers ask "who should I use in Dubai", CLAUDE.md
  * treats being readable by them as non-negotiable, so they are allowed by name
  * rather than left to the wildcard.
  */
@@ -50,7 +50,7 @@ function isProductionOrigin(requestUrl: string): boolean {
 }
 
 /**
- * /robots.txt — served dynamically so preview and staging deployments cannot be
+ * /robots.txt, served dynamically so preview and staging deployments cannot be
  * indexed by accident, and so the sitemap always points at the canonical origin.
  */
 export const Route = createFileRoute("/robots.txt")({
@@ -63,7 +63,7 @@ export const Route = createFileRoute("/robots.txt")({
               "User-agent: *\nAllow: /",
               `Sitemap: ${absoluteUrl("/sitemap.xml")}`,
             ].join("\n\n")
-          : "# Non-production origin — not for indexing.\nUser-agent: *\nDisallow: /";
+          : "# Non-production origin, not for indexing.\nUser-agent: *\nDisallow: /";
 
         return new Response(`${body}\n`, {
           headers: {

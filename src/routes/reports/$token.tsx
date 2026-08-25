@@ -38,8 +38,8 @@ const openReportFn = createServerFn({ method: "POST" })
 export const Route = createFileRoute("/reports/$token")({
   loader: async ({ params }) => {
     /*
-     * A token that cannot be redeemed — expired, unknown, or the grant store
-     * being unreachable — is a "this link is not valid" page, never a 500. The
+     * A token that cannot be redeemed, expired, unknown, or the grant store
+     * being unreachable, is a "this link is not valid" page, never a 500. The
      * reader gave us their details for this; the worst outcome is an error
      * screen that makes them think it was a trick.
      */
@@ -186,14 +186,14 @@ function AreaReport({
             value={
               stats?.median_price_per_sqft
                 ? `AED ${Math.round(stats.median_price_per_sqft).toLocaleString("en-AE")}`
-                : "—"
+                : "-"
             }
             unit="per sq ft"
           />
           <ReportFigure
             label="Typical sale"
             value={
-              stats?.median_price ? `AED ${(stats.median_price / 1_000_000).toFixed(2)}M` : "—"
+              stats?.median_price ? `AED ${(stats.median_price / 1_000_000).toFixed(2)}M` : "-"
             }
             unit="median"
           />
@@ -202,7 +202,7 @@ function AreaReport({
             value={
               stats?.yoy_price_change_pct !== null && stats?.yoy_price_change_pct !== undefined
                 ? `${stats.yoy_price_change_pct >= 0 ? "+" : ""}${stats.yoy_price_change_pct.toFixed(1)}%`
-                : "—"
+                : "-"
             }
             unit="price per sq ft"
           />
@@ -241,7 +241,7 @@ function AreaReport({
             <Eyebrow>What we would do</Eyebrow>
             <p className="body-text mt-6 text-muted-foreground">
               The figures tell you what the market has done. What they cannot tell you is which
-              building, which floor, or which seller is motivated — and in {area.name} that is
+              building, which floor, or which seller is motivated, and in {area.name} that is
               usually the difference between a good purchase and an average one.
             </p>
             <p className="body-text mt-5 text-muted-foreground">
@@ -299,23 +299,23 @@ function MarketReport({
                 <td className="caption py-4 pr-6">
                   {area.stats?.median_price_per_sqft
                     ? `AED ${Math.round(area.stats.median_price_per_sqft).toLocaleString("en-AE")}`
-                    : "—"}
+                    : "-"}
                 </td>
                 <td className="caption py-4 pr-6">
                   {area.stats?.median_price
                     ? `AED ${(area.stats.median_price / 1_000_000).toFixed(2)}M`
-                    : "—"}
+                    : "-"}
                 </td>
                 <td className="caption py-4 pr-6">
                   {area.stats?.yoy_price_change_pct !== null &&
                   area.stats?.yoy_price_change_pct !== undefined
                     ? `${area.stats.yoy_price_change_pct >= 0 ? "+" : ""}${area.stats.yoy_price_change_pct.toFixed(1)}%`
-                    : "—"}
+                    : "-"}
                 </td>
                 <td className="caption py-4 pr-6">
-                  {area.stats?.gross_yield_pct ? `${area.stats.gross_yield_pct.toFixed(1)}%` : "—"}
+                  {area.stats?.gross_yield_pct ? `${area.stats.gross_yield_pct.toFixed(1)}%` : "-"}
                 </td>
-                <td className="caption py-4 pr-6">{area.stats?.transaction_count ?? "—"}</td>
+                <td className="caption py-4 pr-6">{area.stats?.transaction_count ?? "-"}</td>
               </tr>
             ))}
           </tbody>
@@ -324,7 +324,7 @@ function MarketReport({
         <p className="body-text mt-10 max-w-measure text-muted-foreground">
           Yields are gross: a year's registered rent against the typical sale price, before service
           charges. In Dubai those charges vary enough by building that a headline yield can be
-          misleading on its own — we will model the net figure for a specific property on request.
+          misleading on its own. We will model the net figure for a specific property on request.
         </p>
       </Section>
 

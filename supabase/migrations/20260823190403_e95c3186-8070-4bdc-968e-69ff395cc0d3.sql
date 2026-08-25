@@ -8,7 +8,7 @@
 -- Same shape as the DLD sync schedule, and for the same reason: the endpoint
 -- and the shared secret live in app_settings, so rotating either is an update
 -- to one row rather than a migration. The original file read them from
--- `current_setting('app.settings.*')`, which cannot be set on this platform —
+-- `current_setting('app.settings.*')`, which cannot be set on this platform,
 -- the schedule would have been created as a permanent no-op.
 
 create or replace function public.trigger_lead_nurture()

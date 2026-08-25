@@ -30,7 +30,7 @@ export type AdvisorTurn = {
 /**
  * The streaming wire format: newline-delimited JSON.
  *
- * Chosen over raw SSE because the answer is not the only thing travelling — the
+ * Chosen over raw SSE because the answer is not the only thing travelling, the
  * citations and the verification flag arrive with it, and they have to be
  * attached to the right turn rather than guessed at from the prose.
  */

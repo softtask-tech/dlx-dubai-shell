@@ -9,12 +9,12 @@ import { submitLead } from "@/data/leads.server";
  * GET is Meta's subscription handshake: they call once with a verify token and
  * expect the challenge echoed back verbatim.
  *
- * POST carries only a leadgen id — never the answers — so the endpoint fetches
+ * POST carries only a leadgen id, never the answers, so the endpoint fetches
  * them from the Graph API with a page token. That is Meta's design and it is a
  * good one: a stolen webhook payload is worth nothing without the token.
  *
  * Always answers 200. A webhook that returns an error gets retried, then
- * eventually gets the subscription disabled — so a lead this endpoint could not
+ * eventually gets the subscription disabled, so a lead this endpoint could not
  * process is logged loudly and acknowledged, rather than taking the whole
  * integration down with it.
  */

@@ -20,7 +20,7 @@ import { Eyebrow } from "@/components/ui/section";
  * as support software bolted onto a brand, it hides who is talking, and it
  * competes with the page for attention it has not earned. A hairline rail
  * carrying a name and a role sits in the same register as the rest of the site
- * — it says someone is here, and waits.
+ *, it says someone is here, and waits.
  *
  * The rail never covers content: it is `sticky`-feeling but fixed and short,
  * and the footer carries bottom padding to match.
@@ -33,8 +33,8 @@ export function AdvisorDock() {
 
   /*
    * `#ask` opens the advisor, and `#ask=…` opens it on a question. It means a
-   * page can hand a specific question over — "ask about this community" from an
-   * area page — instead of dropping the reader into an empty panel and hoping
+   * page can hand a specific question over, "ask about this community" from an
+   * area page, instead of dropping the reader into an empty panel and hoping
    * they remember what they wanted.
    */
   useEffect(() => {
@@ -122,7 +122,7 @@ function AdvisorRail({ onOpen, onDismiss }: { onOpen: () => void; onDismiss: () 
 }
 
 /**
- * A slow pulse — the only animated thing on the page.
+ * A slow pulse, the only animated thing on the page.
  *
  * "Presence" in the brief, and presence is the whole job: it should read as
  * someone waiting rather than something notifying. Under reduced motion it is a
@@ -176,7 +176,7 @@ function AdvisorPanel({
   }, [onClose]);
 
   /* Follow the answer as it streams, unless the visitor has scrolled up to
-   * re-read something — then leave them where they are. */
+   * re-read something, then leave them where they are. */
   useEffect(() => {
     const element = scrollRef.current;
     if (!element) return;
@@ -308,7 +308,7 @@ function Opening({ onPick }: { onPick: (prompt: string) => void }) {
         {advisor.limits.map((limit) => (
           <li key={limit} className="caption flex gap-3 text-muted-foreground">
             <span aria-hidden="true" className="text-accent">
-              —
+              ,
             </span>
             <span>{limit}</span>
           </li>
@@ -373,7 +373,7 @@ function Turn({ turn }: { turn: PanelTurn }) {
 /**
  * Reads one answer aloud, in the same voice the phone line uses.
  *
- * Renders nothing at all when speech is not configured — the endpoint answers
+ * Renders nothing at all when speech is not configured, the endpoint answers
  * 204 and the control removes itself, rather than offering a button that fails.
  */
 function ListenButton({ text }: { text: string }) {

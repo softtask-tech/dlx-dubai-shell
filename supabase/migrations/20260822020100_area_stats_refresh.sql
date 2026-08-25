@@ -7,8 +7,8 @@
 -- Two decisions worth stating, because they change what the numbers mean:
 --
 --   * The headline window is the last 12 months, compared with the 12 months
---     before it. A quarter is too noisy at community level — a single tower
---     completing can swing it — and anything longer stops being current.
+--     before it. A quarter is too noisy at community level, a single tower
+--     completing can swing it, and anything longer stops being current.
 --
 --   * The median leads, not the average. Dubai's prime communities contain a
 --     handful of trophy sales that pull a mean far above what a normal buyer
@@ -122,7 +122,7 @@ begin
     end,
     round(r.median_rent::numeric, 2),
     -- Gross yield: a year's median rent over the median sale price. Gross, not
-    -- net — service charges are not in DLD's data, and the pages say so rather
+    -- net, service charges are not in DLD's data, and the pages say so rather
     -- than quietly presenting a gross figure as a return.
     case
       when r.median_rent is not null and c.median_price is not null and c.median_price > 0

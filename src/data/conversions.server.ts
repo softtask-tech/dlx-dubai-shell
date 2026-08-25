@@ -3,7 +3,7 @@
  *
  * The browser pixel is the unreliable half of measurement: ad blockers, ITP,
  * a tab closed before the event flushes. The server has the lead in hand and
- * can say so directly — which is the point of the Conversions API — but it
+ * can say so directly, which is the point of the Conversions API, but it
  * brings two problems of its own, and both are handled here rather than left
  * to whoever reads the dashboard.
  *
@@ -12,7 +12,7 @@
  * pair into one. A conversion counted twice is worse than one counted never:
  * someone will raise a budget on the strength of it.
  *
- * SILENT FAILURE. Server-side tracking fails invisibly — nothing breaks, the
+ * SILENT FAILURE. Server-side tracking fails invisibly, nothing breaks, the
  * site looks fine, and a month later the numbers are simply missing. Every
  * attempt is written to `conversion_events` with its status and whatever the
  * platform said, so "when did this stop working" has an answer.
@@ -81,7 +81,7 @@ function normalisePhone(phone: string | null | undefined): string | undefined {
 /**
  * Records the intent to send, then sends.
  *
- * Written first, dispatched second, updated third — so a crash mid-flight
+ * Written first, dispatched second, updated third, so a crash mid-flight
  * leaves a `pending` row that can be retried rather than a conversion nobody
  * knows was lost.
  */
@@ -110,7 +110,7 @@ export async function dispatchConversion(input: ConversionInput): Promise<void> 
       .single();
 
     if (error) {
-      /* A unique violation means this exact conversion was already recorded —
+      /* A unique violation means this exact conversion was already recorded,
        * a retry, or a webhook delivered twice. Nothing to do, and certainly
        * nothing to send. */
       if (!error.message.includes("duplicate key")) {
@@ -167,7 +167,7 @@ async function sendToMeta(input: ConversionInput): Promise<DispatchResult> {
   if (phone) userData["ph"] = [phone];
   if (firstName) userData["fn"] = [firstName];
   if (lastName) userData["ln"] = [lastName];
-  /* Click and browser ids are not hashed — they are already opaque, and Meta
+  /* Click and browser ids are not hashed. They are already opaque, and Meta
    * matches on them directly. They are also what makes matching actually work
    * when someone gave only a first name. */
   if (input.user.fbc) userData["fbc"] = input.user.fbc;
@@ -217,7 +217,7 @@ async function sendToMeta(input: ConversionInput): Promise<DispatchResult> {
  * Posted to a configurable endpoint rather than built against the Google Ads
  * API directly. That API needs OAuth, a developer token and a customer id, and
  * wiring it here would put a second credential dance in a codebase that has no
- * other use for one. A thin relay — a Cloud Function, a Zap, an Apps Script —
+ * other use for one. A thin relay, a Cloud Function, a Zap, an Apps Script,
  * is the shape most brokerages actually deploy, and swapping it for the real
  * API later is a change behind this one function.
  */
@@ -265,7 +265,7 @@ async function sendToGoogleAds(input: ConversionInput): Promise<DispatchResult> 
  *
  * This is the half of measurement that actually changes what the platforms buy.
  * A `Lead` event teaches them to find people who fill in forms; a
- * `qualified_lead` and a `deal_won` — with the click id and the real value —
+ * `qualified_lead` and a `deal_won`, with the click id and the real value,
  * teaches them to find people who buy. Without it, an ad account optimises
  * itself very efficiently towards worthless traffic, and the reporting looks
  * excellent the whole way down.

@@ -31,7 +31,7 @@ export async function getAgent(slug: string): Promise<Agent | null> {
  * together: the row is published, it names where the review came from, and it
  * carries a link to it. A quote with a first name and a city attached is what
  * every brokerage in Dubai already has on its homepage, and it persuades nobody
- * — because anyone can type one. A quote that says "Google review" and opens
+ *, because anyone can type one. A quote that says "Google review" and opens
  * the review is evidence.
  *
  * This also keeps the site the right side of a real line. Review schema tells a
@@ -41,7 +41,7 @@ export async function getAgent(slug: string): Promise<Agent | null> {
  * predicate means the two cannot drift.
  *
  * The consequence is that the block renders nothing until the review engine has
- * actually run and reviews have been imported — which is the correct behaviour
+ * actually run and reviews have been imported, which is the correct behaviour
  * before launch, not a bug. `npm run preflight` reports it.
  */
 export async function listTestimonials(limit?: number): Promise<Testimonial[]> {
@@ -76,14 +76,14 @@ async function runListTestimonials(limit?: number): Promise<Testimonial[]> {
   const { data, error } = await query.returns<Testimonial[]>();
   if (error) throw error;
 
-  /* The database filters what it can express; this filters what it cannot —
+  /* The database filters what it can express; this filters what it cannot,
    * an empty string is not null, and a source_url that is not a link is not a
    * link. */
   return (data ?? []).filter(isVerifiedReview);
 }
 
 /**
- * Every published testimonial, verified or not — for the admin only.
+ * Every published testimonial, verified or not, for the admin only.
  *
  * The desk needs to see the ones that are being withheld and why, or the
  * absence of a review block on the live site looks like a bug rather than a
