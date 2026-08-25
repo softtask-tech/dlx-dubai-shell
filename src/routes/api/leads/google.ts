@@ -14,7 +14,7 @@ import { submitLead } from "@/data/leads.server";
  * open.
  *
  * Google also sends a test payload with `is_test: true` when the form is set
- * up. It is acknowledged and not written — a fake lead in the inbox on day one
+ * up. It is acknowledged and not written, a fake lead in the inbox on day one
  * is a bad first impression of the integration.
  */
 const requestSchema = z.object({
@@ -74,7 +74,7 @@ export const Route = createFileRoute("/api/leads/google")({
             ...submission,
             sourceType: "referral",
             /* The click id is what lets a closed deal be reported back to the
-             * campaign that produced it — the whole reason to bother. */
+             * campaign that produced it, the whole reason to bother. */
             ...(input.gcl_id ? { gclid: input.gcl_id } : {}),
             qualificationAnswers: {
               ...(submission.qualificationAnswers ?? {}),

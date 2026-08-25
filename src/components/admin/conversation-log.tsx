@@ -10,7 +10,7 @@ import { Eyebrow } from "@/components/ui/section";
  *
  * The summary is the thing a consultant reads before calling back, so it leads.
  * The transcript sits behind a disclosure because it is long and only sometimes
- * wanted — but it is always there, because a summary is an interpretation and
+ * wanted, but it is always there, because a summary is an interpretation and
  * the desk should be able to check it against the words.
  *
  * A chat and a phone call render identically. They are stored identically, and
@@ -69,7 +69,7 @@ function Conversation({ conversation }: { conversation: AdvisorConversationRow }
         {conversation.summary ? (
           <p className="body-text text-foreground">{conversation.summary}</p>
         ) : (
-          <p className="caption text-muted-foreground">No summary — read the transcript below.</p>
+          <p className="caption text-muted-foreground">No summary. Read the transcript below.</p>
         )}
 
         {conversation.caller_number ? (

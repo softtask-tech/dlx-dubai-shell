@@ -5,7 +5,7 @@ import { Link } from "@tanstack/react-router";
  * Renders a post body written in a small, deliberate subset of Markdown.
  *
  * A full Markdown library would let an editor paste raw HTML into a column that
- * ends up in the page — an injection waiting to happen on a site where the
+ * ends up in the page, an injection waiting to happen on a site where the
  * admin account is the one thing between the CMS and the public. So the body is
  * parsed here into React elements, and anything not on this list renders as
  * plain text:
@@ -56,7 +56,7 @@ export function PostBody({ body }: { body: string }) {
                     className="body-text flex gap-5 border-b border-border py-4 text-muted-foreground"
                   >
                     <span aria-hidden="true" className="text-accent">
-                      —
+                      ,
                     </span>
                     <span>{inline(item)}</span>
                   </li>

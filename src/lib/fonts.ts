@@ -1,50 +1,67 @@
 /**
  * Which webfonts a page loads, decided by the language it is in.
  *
- * The English site loads two families and nothing else — the same two it loaded
- * before any of this existed. A reader on the Arabic pages loads the Arabic
- * pair instead; a reader on the Chinese pages loads no extra font at all.
- * Nobody pays for a script they cannot read, which on a Core Web Vitals budget
- * is the difference between a fast site and a fast English site.
+ * Every face is served from our own origin. There is no `<link>` to Google
+ * Fonts and no preconnect to a font CDN: a third-party stylesheet on the
+ * critical path is a render-blocking request to a host we do not control, and
+ * it is the request that decides when the headline paints. The files live in
+ * `public/fonts` and are fetched by `scripts/fetch-fonts.mjs`.
  *
- * The Latin pair is requested on every page regardless of language. Numbers,
- * the DLX monogram, the phone number and every English proper noun on a
- * translated page are set in it, and falling back for those is the detail that
- * gives a localised page away.
+ * The Latin pair (Playfair Display and Geist) is compiled into the site
+ * stylesheet, so it costs no extra request on any page. What this module adds
+ * is two things:
+ *
+ *   1. A preload for the two woff2 files an English page is certain to use, so
+ *      they start downloading alongside the stylesheet rather than after the
+ *      browser has parsed it and discovered the @font-face.
+ *   2. The extra stylesheet a non-Latin script needs, on the pages written in
+ *      that script and nowhere else. Nobody pays for a script they cannot read,
+ *      which on a Core Web Vitals budget is the difference between a fast site
+ *      and a fast English site.
  */
 import type { LinkHTMLAttributes } from "react";
 
 import type { LocaleCode } from "@/config/locales";
 
-const GOOGLE_FONTS = "https://fonts.googleapis.com/css2";
-
-/** Cormorant Garamond + Jost. Latin, and Cormorant's Cyrillic for Russian. */
-const LATIN =
-  `${GOOGLE_FONTS}?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400` +
-  `&family=Jost:wght@300;400;500&display=swap`;
+/**
+ * The two files every page starts painting with: the Latin subset of the
+ * display serif and of the body grotesk.
+ *
+ * Deliberately only two. A preload is a promise that the file is needed
+ * immediately, and preloading a face the page may never set text in (the
+ * Cyrillic subset, the italic) spends bandwidth the headline wanted.
+ */
+const PRELOAD = [
+  "/fonts/playfair-display-latin-400-700-normal.woff2",
+  "/fonts/geist-latin-300-600-normal.woff2",
+] as const;
 
 /**
- * The extra family (or families) each language needs on top of the Latin pair.
+ * The extra stylesheet each language needs on top of the Latin pair.
  *
- * `display=swap` throughout: a headline that is invisible until a font arrives
- * is a headline that fails Largest Contentful Paint, and the fallback stacks in
- * styles.css are chosen so the swap is not violent.
+ * `zh` is deliberately absent: a Simplified Chinese webfont is several
+ * megabytes and the system stack in styles.css is what the reader's own
+ * platform already renders Chinese in. `ru` is absent too, but for the opposite
+ * reason: Playfair Display and Geist both ship Cyrillic, so a Russian page is
+ * set in the house pair and downloads a different subset of the same files.
  */
 const PER_LOCALE: Partial<Record<LocaleCode, string>> = {
-  ar: `${GOOGLE_FONTS}?family=Amiri:wght@400;700&family=Noto+Sans+Arabic:wght@300;400;500&display=swap`,
-  hi: `${GOOGLE_FONTS}?family=Noto+Serif+Devanagari:wght@300;400;500&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap`,
-  ru: `${GOOGLE_FONTS}?family=Noto+Sans:wght@300;400;500&display=swap`,
-  /* zh deliberately absent — see the note in styles.css. A Simplified Chinese
-   * webfont is several megabytes and the system stack is what the reader's own
-   * platform already renders Chinese in. */
+  ar: "/fonts/arabic.css",
+  hi: "/fonts/devanagari.css",
 };
 
-/** The Latin pair plus the preconnects. Emitted once, by the root route. */
+/** The preloads plus any script stylesheet. Emitted once, by the root route. */
 export function fontLinks(code: LocaleCode): LinkHTMLAttributes<HTMLLinkElement>[] {
   return [
-    { rel: "preconnect", href: "https://fonts.googleapis.com" },
-    { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-    { rel: "stylesheet", href: LATIN },
+    ...PRELOAD.map((href) => ({
+      rel: "preload",
+      as: "font",
+      type: "font/woff2",
+      href,
+      /* Fonts are fetched in CORS mode even from the same origin, so a preload
+       * without this is a second, separate download rather than a hit. */
+      crossOrigin: "anonymous" as const,
+    })),
     ...scriptFontLinks(code),
   ];
 }

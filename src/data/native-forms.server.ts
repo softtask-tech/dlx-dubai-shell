@@ -7,7 +7,7 @@
  * and a lead that wanted a call on Monday goes cold in a spreadsheet.
  *
  * These endpoints put them into the same inbox as everything else within
- * seconds of submission — same scoring, same routing, same two emails — so the
+ * seconds of submission (same scoring, same routing, same two emails) so the
  * channel changes where a lead came from and nothing else about how it is
  * handled.
  *
@@ -15,7 +15,7 @@
  * campaign happened to ask, keyed by the label someone typed into an ad
  * manager. So the mapping is done on normalised label *patterns* rather than
  * exact strings, and anything unrecognised is kept verbatim in the
- * qualification answers rather than dropped — a consultant reading "Which
+ * qualification answers rather than dropped, a consultant reading "Which
  * community?  → Palm Jumeirah" is better served than one reading nothing.
  */
 import type { LeadIntent, LeadTimeline } from "./types";
@@ -71,7 +71,7 @@ export function parseBudget(value: string): number | null {
   const unit = match[2];
   if (unit === "m" || unit === "million") return amount * 1_000_000;
   if (unit === "k" || unit === "thousand") return amount * 1000;
-  /* A bare number under a thousand on a Dubai property form means millions —
+  /* A bare number under a thousand on a Dubai property form means millions,
    * nobody is enquiring with a budget of four dirhams. */
   return amount < 1000 ? amount * 1_000_000 : amount;
 }
@@ -188,7 +188,7 @@ export function mapNativeFields(input: {
  * Verifies Meta's webhook signature.
  *
  * `X-Hub-Signature-256` is an HMAC of the raw body with the app secret. It has
- * to be checked against the *raw* bytes — re-serialising the parsed JSON
+ * to be checked against the *raw* bytes, re-serialising the parsed JSON
  * changes key order and whitespace, and the signature no longer matches, which
  * is the classic reason this check gets disabled by a frustrated developer and
  * the endpoint ends up open to anyone.

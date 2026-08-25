@@ -27,7 +27,7 @@ const WANTED: CurrencyCode[] = ["USD", "EUR", "GBP", "INR", "PKR", "SAR", "RUB",
 /**
  * Fetches rates from a configurable endpoint.
  *
- * `FX_RATES_URL` should return `{ rates: { USD: 0.27, … } }` based on AED —
+ * `FX_RATES_URL` should return `{ rates: { USD: 0.27, … } }` based on AED,
  * the shape most free providers use. Configurable because the free providers
  * come and go, and because a paid one should be a config change rather than a
  * code change.
@@ -67,7 +67,7 @@ async function fetchRates(): Promise<RateTable> {
   };
 }
 
-/** Rates for the browser. Never throws — falls back to the peg. */
+/** Rates for the browser. Never throws, falls back to the peg. */
 export const getRatesFn = createServerFn({ method: "GET" }).handler(
   async (): Promise<RateTable> => {
     if (cache && cache.expiresAt > Date.now()) return cache.table;

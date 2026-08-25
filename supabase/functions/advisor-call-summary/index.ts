@@ -1,5 +1,5 @@
 /**
- * advisor-call-summary — the end of a phone call.
+ * advisor-call-summary, the end of a phone call.
  *
  * The telephony layer posts here when a call finishes: the transcript, its own
  * summary if it made one, how long the call ran, and whatever contact details
@@ -8,7 +8,7 @@
  *
  * WHY IT DOES NOT SCORE THE LEAD ITSELF. Lead scoring lives in
  * `src/data/lead-scoring.ts` and is the same for a form, a calculator, the chat
- * and a phone call — that is the whole point of it. Copying those rules into
+ * and a phone call. That is the whole point of it. Copying those rules into
  * Deno would give us two sets that agree today and disagree the first time
  * someone tunes one. So this function does what only it can do (receive the
  * webhook, hold the transcript) and hands the lead to `/api/advisor/call-lead`,
@@ -16,11 +16,11 @@
  *
  * The two steps fail independently. If the site is unreachable the transcript
  * is still stored and the response says the lead was not written, so a retry
- * from the provider — or a person in the admin — can finish the job.
+ * from the provider, or a person in the admin - can finish the job.
  *
  * Environment:
- *   VOICE_WEBHOOK_SECRET — shared with the telephony layer and with the site
- *   SITE_URL             — origin of the deployed site, for the lead hand-off
+ *   VOICE_WEBHOOK_SECRET, shared with the telephony layer and with the site
+ *   SITE_URL, origin of the deployed site, for the lead hand-off
  * Supabase provides SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY automatically.
  */
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
@@ -102,8 +102,8 @@ Deno.serve(async (request) => {
   );
 
   /* The turn endpoint has usually created this row already, one turn at a
-   * time. When the call never reached the advisor — straight to voicemail, a
-   * provider-side transcript — this is the first we hear of it. */
+   * time. When the call never reached the advisor, straight to voicemail, a
+   * provider-side transcript. This is the first we hear of it. */
   const { data: existing } = await supabase
     .from("advisor_conversations")
     .select("id, transcript, lead_id")

@@ -106,7 +106,7 @@ function ToolPage() {
               <h2 className="display-2 mt-6">Put a real property behind it.</h2>
               <p className="body-text mt-8 max-w-measure text-muted-foreground">
                 A calculator works with the numbers you give it. We work with the building, the
-                seller and the service charge schedule — which is where the answer usually changes.
+                seller and the service charge schedule, which is where the answer usually changes.
               </p>
             </Reveal>
           </div>

@@ -3,7 +3,7 @@
  *
  * One entry per tool, driving the hub, the routes, per-page SEO, the sitemap
  * and the advisor's knowledge index. Adding a calculator means adding an entry
- * and a component — everything else follows.
+ * and a component, everything else follows.
  */
 import type { LeadIntent } from "./types";
 
@@ -15,7 +15,7 @@ export type Tool = {
   name: string;
   /** Page `<h1>`. */
   title: string;
-  /** One editorial line — the standfirst and the OG card. */
+  /** One editorial line, the standfirst and the OG card. */
   tagline: string;
   /** Meta description, plain language. */
   description: string;
@@ -50,7 +50,7 @@ export const TOOLS: readonly Tool[] = [
       "An indication of where a Dubai property purchase places you against the commonly cited Golden Visa property routes, including who you could sponsor. Not a determination.",
     question: "Would my purchase support a Golden Visa application?",
     answer:
-      "It depends on the value of what you own and on criteria the UAE authorities set and revise, so no calculator can answer it — including this one. What this tool does is show where a purchase price sits relative to the property routes people commonly cite, and who a holder can generally sponsor, so you know which questions to put to a licensed immigration adviser before you structure a purchase around the answer.",
+      "It depends on the value of what you own and on criteria the UAE authorities set and revise, so no calculator can answer it, including this one. What this tool does is show where a purchase price sits relative to the property routes people commonly cite, and who a holder can generally sponsor, so you know which questions to put to a licensed immigration adviser before you structure a purchase around the answer.",
     category: "Residency",
     intent: "relocate",
     usesMarketData: false,
@@ -59,12 +59,12 @@ export const TOOLS: readonly Tool[] = [
       {
         question: "Is this an eligibility decision?",
         answer:
-          "No, and it cannot be. Criteria are set by the UAE authorities and change, and an application turns on your circumstances as well as the property. This shows where a purchase sits against commonly cited thresholds so you know what to ask. DLX does not process visa applications — we will introduce you to licensed advisers who do.",
+          "No, and it cannot be. Criteria are set by the UAE authorities and change, and an application turns on your circumstances as well as the property. This shows where a purchase sits against commonly cited thresholds so you know what to ask. DLX does not process visa applications. We will introduce you to licensed advisers who do.",
       },
       {
         question: "Can I sponsor my family?",
         answer:
-          "The property routes generally allow a holder to sponsor a spouse and children, and support staff in some cases. The specifics — ages, dependency, documentation — are set by the authority and are exactly the sort of thing to have confirmed in writing before you buy.",
+          "The property routes generally allow a holder to sponsor a spouse and children, and support staff in some cases. The specifics (ages, dependency, documentation) are set by the authority and are exactly the sort of thing to have confirmed in writing before you buy.",
       },
     ],
   },
@@ -74,7 +74,7 @@ export const TOOLS: readonly Tool[] = [
     title: "ROI and rental yield calculator",
     tagline: "What it actually returns, after the costs nobody quotes.",
     description:
-      "Work out gross and net rental yield on a Dubai property, with service charges and voids taken off — the difference between the headline number and what reaches you.",
+      "Work out gross and net rental yield on a Dubai property, with service charges and voids taken off, the difference between the headline number and what reaches you.",
     question: "What will this property actually return?",
     answer:
       "Gross yield is the annual rent divided by the price; the number that matters is what is left after the service charge, the management fee and the weeks the property sits empty. That is usually one to two percentage points below the figure a listing quotes. This tool shows both, and lets you set every cost yourself rather than accepting an optimistic default.",
@@ -86,7 +86,7 @@ export const TOOLS: readonly Tool[] = [
       {
         question: "Why is your net yield lower than the figure I was quoted?",
         answer:
-          "Because most quoted yields are gross — rent divided by price, with nothing taken off. Service charges alone can take one to two percentage points off a Dubai yield, and that is before a void month or a repair. Net is the number you actually live on.",
+          "Because most quoted yields are gross, rent divided by price, with nothing taken off. Service charges alone can take one to two percentage points off a Dubai yield, and that is before a void month or a repair. Net is the number you actually live on.",
       },
       {
         question: "What service charge should I use?",
@@ -101,7 +101,7 @@ export const TOOLS: readonly Tool[] = [
     title: "Dubai buying cost calculator",
     tagline: "The whole number, not the sticker price.",
     description:
-      "Every cost on top of a Dubai purchase price — Dubai Land Department transfer fee, agency commission, trustee, developer NOC and title deed — totalled so there are no late surprises.",
+      "Every cost on top of a Dubai purchase price: Dubai Land Department transfer fee, agency commission, trustee, developer NOC and title deed, totalled so there are no late surprises.",
     question: "What will this purchase cost me in total?",
     answer:
       "Budget for roughly six to seven per cent above the purchase price on a cash purchase of a ready property. The Dubai Land Department transfer fee is four per cent and fixed; agency commission is conventionally two per cent and negotiable; and the trustee office, developer No Objection Certificate and title deed charges are smaller fixed amounts. Every figure here comes from the dated fee schedule, and the ones that vary you can change.",
@@ -113,12 +113,12 @@ export const TOOLS: readonly Tool[] = [
       {
         question: "What is the DLD fee?",
         answer:
-          "The Dubai Land Department's 4% transfer fee for registering the property into your name. It is conventionally split between buyer and seller, but in practice the buyer usually pays it — assume you are unless your contract says otherwise.",
+          "The Dubai Land Department's 4% transfer fee for registering the property into your name. It is conventionally split between buyer and seller, but in practice the buyer usually pays it, assume you are unless your contract says otherwise.",
       },
       {
         question: "Are these figures fixed?",
         answer:
-          "The DLD transfer fee is. Most of the rest are not: agency commission is negotiated, trustee fees are tiered by price, and developer NOC fees vary by developer. That is why every one of them is editable here — put your own figures in and the total follows.",
+          "The DLD transfer fee is. Most of the rest are not: agency commission is negotiated, trustee fees are tiered by price, and developer NOC fees vary by developer. That is why every one of them is editable here, put your own figures in and the total follows.",
       },
     ],
   },
@@ -131,7 +131,7 @@ export const TOOLS: readonly Tool[] = [
       "Compare renting against buying the same Dubai property over time, including transaction costs and service charges, to find the point where buying comes out ahead.",
     question: "Should I rent or buy?",
     answer:
-      "Buying wins once the years you stay outweigh the one-off cost of getting in and out — the transfer fee, the commission and the eventual exit. For most Dubai purchases that crossover sits a few years out, sooner where rent is high relative to price and later where it is not. Set your own rent, price and holding costs and the tool shows you the year the lines cross.",
+      "Buying wins once the years you stay outweigh the one-off cost of getting in and out, the transfer fee, the commission and the eventual exit. For most Dubai purchases that crossover sits a few years out, sooner where rent is high relative to price and later where it is not. Set your own rent, price and holding costs and the tool shows you the year the lines cross.",
     category: "Comparison",
     intent: "buy",
     usesMarketData: false,
@@ -140,12 +140,12 @@ export const TOOLS: readonly Tool[] = [
       {
         question: "What makes buying win?",
         answer:
-          "Time, mostly. Buying carries a large cost at the front — the transfer fee and commission are several per cent before you own anything — so a short stay almost always favours renting. The calculator finds the year those upfront costs are outweighed.",
+          "Time, mostly. Buying carries a large cost at the front: the transfer fee and commission are several per cent before you own anything, so a short stay almost always favours renting. The calculator finds the year those upfront costs are outweighed.",
       },
       {
         question: "Does this account for price growth?",
         answer:
-          "Yes, as an assumption you set. It is an assumption, not a forecast — nobody knows what prices will do, and a calculator that pretends otherwise is selling something.",
+          "Yes, as an assumption you set. It is an assumption, not a forecast, nobody knows what prices will do, and a calculator that pretends otherwise is selling something.",
       },
     ],
   },
@@ -180,7 +180,7 @@ export const TOOLS: readonly Tool[] = [
       "Rank Dubai communities for yield, capital growth, family living or short-term rental potential, using recorded transaction data rather than sponsored placement.",
     question: "Where should I be looking?",
     answer:
-      "There is no single best area — there is the best area for a budget, a return expectation and a way of living, and those three rarely point to the same place. Tell the tool which of them matters most and it ranks communities on recorded evidence. Nothing here is sponsored, and no developer pays to appear.",
+      "There is no single best area. There is the best area for a budget, a return expectation and a way of living, and those three rarely point to the same place. Tell the tool which of them matters most and it ranks communities on recorded evidence. Nothing here is sponsored, and no developer pays to appear.",
     category: "Comparison",
     intent: "invest",
     usesMarketData: true,

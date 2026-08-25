@@ -11,7 +11,7 @@ import { Container, Eyebrow } from "@/components/ui/section";
  * The admin shell.
  *
  * Two gates, and both matter. This one is the browser-side gate: no session, no
- * UI. The one that actually protects the data is server-side — every admin
+ * UI. The one that actually protects the data is server-side, every admin
  * server function re-verifies the token and the role before it reads anything,
  * because a determined visitor can always render whatever React they like.
  *

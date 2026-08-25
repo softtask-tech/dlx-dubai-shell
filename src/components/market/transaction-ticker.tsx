@@ -8,7 +8,7 @@ import { Tag } from "@/components/ui/tag";
  * The latest recorded sales.
  *
  * A list, not a scrolling marquee. Moving text is hard to read, impossible to
- * scan, and a genuine accessibility problem — and the evidence is the point
+ * scan, and a genuine accessibility problem, and the evidence is the point
  * here, so it should sit still long enough to be read.
  */
 export function TransactionTicker({ transactions }: { transactions: readonly DldTransaction[] }) {
@@ -38,7 +38,7 @@ export function TransactionTicker({ transactions }: { transactions: readonly Dld
                 formatBedrooms(transaction.bedrooms),
                 formatArea(transaction.area_sqft),
               ]
-                .filter((part) => part !== "—")
+                .filter((part) => part !== "-")
                 .join(" · ")}
             </span>
             <span className="eyebrow text-foreground md:col-span-2 md:text-end">

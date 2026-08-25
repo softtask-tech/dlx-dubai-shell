@@ -1,5 +1,5 @@
 /**
- * Generates the site's Open Graph cards — one per page, guide and tool.
+ * Generates the site's Open Graph cards, one per page, guide and tool.
  *
  *   node scripts/generate-og.mjs
  *
@@ -54,7 +54,7 @@ const FONT_CSS_URL =
  * right in a browser and impossible here: this container has no CJK font, so a
  * Chinese card would render as a row of empty boxes. A card is generated once
  * and served as a PNG, so the weight of embedding a real face costs a visitor
- * nothing — the reasoning that applies to the stylesheet does not apply here.
+ * nothing, the reasoning that applies to the stylesheet does not apply here.
  */
 const LOCALE_FONTS = {
   ar: {
@@ -119,7 +119,7 @@ function findBrowser() {
   if (shellCandidates.length) return { bin: shellCandidates[0], isShell: true };
   if (chromeCandidates.length) {
     console.warn(
-      "No headless_shell found — falling back to full Chrome, whose viewport is shorter than\n" +
+      "No headless_shell found, falling back to full Chrome, whose viewport is shorter than\n" +
         "the window, so cards may be cropped. Install Playwright's chromium-headless-shell for exact output.",
     );
     return { bin: chromeCandidates[0], isShell: false };
@@ -162,7 +162,7 @@ const escapeHtml = (value) =>
 /**
  * The card: a wide sand rule, the DLX monogram, the page label as an eyebrow,
  * the tagline set large in the editorial serif, and the licence line. Same
- * restraint as the site — type, whitespace, one accent.
+ * restraint as the site, type, whitespace, one accent.
  */
 function cardHtml({ label, tagline, fontCss, dir = "ltr", lang = "en", display, body }) {
   return `<!doctype html>
@@ -196,7 +196,7 @@ body {
   opacity: 0.55;
 }
 .row { position: relative; display: flex; align-items: baseline; justify-content: space-between; }
-/* The monogram is a Latin mark in every language — it is the logo. */
+/* The monogram is a Latin mark in every language. It is the logo. */
 .monogram { font-family: "Cormorant Garamond", serif; font-size: 40px; letter-spacing: 0.3em; }
 .eyebrow {
   font-family: ${body ?? '"Jost", sans-serif'};
@@ -212,7 +212,7 @@ body {
   font-family: ${display ?? '"Cormorant Garamond", serif'};
   font-weight: 300;
   /* Arabic and Devanagari carry more ink at the same nominal size, and Chinese
-   * says the same thing in a third of the characters — so each script gets the
+   * says the same thing in a third of the characters, so each script gets the
    * size that fills the card rather than one number that suits Latin. */
   font-size: ${lang === "zh-Hans" ? 88 : lang === "ar" ? 74 : lang === "hi" ? 66 : 82}px;
   line-height: ${lang === "hi" ? 1.35 : lang === "ar" ? 1.5 : 1.06};
@@ -254,7 +254,7 @@ body {
  * tool.
  *
  * The label is the section the reader is in and the tagline is the page's own
- * standfirst — the same line the page shows and the same line its `og:image:alt`
+ * standfirst, the same line the page shows and the same line its `og:image:alt`
  * carries, which is what keeps card and page honest with each other.
  */
 function cards() {
@@ -285,7 +285,7 @@ function cards() {
      *
      * The card sets the page's tagline at 82px. A shared Arabic page whose card
      * reads "Dubai real estate, handled with intention." is a WhatsApp preview
-     * that says, before anyone opens it, that the Arabic is a veneer — and
+     * that says, before anyone opens it, that the Arabic is a veneer, and
      * WhatsApp is how a Gulf buyer shares a property with their family.
      *
      * The label and tagline both come from that language's dictionary, so the

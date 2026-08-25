@@ -11,12 +11,12 @@ type FaqProps = {
 };
 
 /**
- * Editorial FAQ block — answer-shaped content in plain buyer language.
+ * Editorial FAQ block, answer-shaped content in plain buyer language.
  *
  * Built on native `<details>`, so the answers exist in the server-rendered HTML
  * for crawlers and AI even before JavaScript runs, and the disclosure is
  * keyboard-operable for free. Any page that renders this should pass the same
- * entries to `faqSchema()` — schema and visible copy must always match.
+ * entries to `faqSchema()`, schema and visible copy must always match.
  */
 export function Faq({ eyebrow, title, entries }: FaqProps) {
   const t = useT();

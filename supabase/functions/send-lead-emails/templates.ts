@@ -3,7 +3,7 @@
  *
  * Same restraint as the site: one serif headline, generous space, the sand
  * accent used once. Written as inline-styled tables because that is the only
- * thing every mail client agrees on — no stylesheet, no flexbox, no grid.
+ * thing every mail client agrees on, no stylesheet, no flexbox, no grid.
  */
 
 const INK = "#000000";
@@ -59,7 +59,7 @@ function escapeHtml(value: string): string {
 }
 
 function humanise(value: string | null): string {
-  if (!value) return "—";
+  if (!value) return "-";
   return value.replace(/_/g, " ").replace(/^\w/, (c) => c.toUpperCase());
 }
 
@@ -67,7 +67,7 @@ function formatBudget(lead: LeadEmailData): string {
   const format = (amount: number) =>
     `${lead.budgetCurrency} ${new Intl.NumberFormat("en-AE").format(amount)}`;
   if (lead.budgetMin && lead.budgetMax)
-    return `${format(lead.budgetMin)} – ${format(lead.budgetMax)}`;
+    return `${format(lead.budgetMin)} - ${format(lead.budgetMax)}`;
   if (lead.budgetMax) return `Up to ${format(lead.budgetMax)}`;
   if (lead.budgetMin) return `${format(lead.budgetMin)}+`;
   return "Not stated";
@@ -107,21 +107,21 @@ ${escapeHtml(brand.name)} · RERA ORN ${escapeHtml(brand.reraOrn)} · Business B
 /** What the consultant on duty sees: the facts, ranked, nothing decorative. */
 export function adminNotificationEmail(lead: LeadEmailData, brand: BrandInfo) {
   const rows: Array<[string, string]> = [
-    ["Name", lead.fullName ?? "—"],
-    ["Email", lead.email ?? "—"],
-    ["Phone", lead.phone ?? "—"],
+    ["Name", lead.fullName ?? "-"],
+    ["Email", lead.email ?? "-"],
+    ["Phone", lead.phone ?? "-"],
     ["Looking to", humanise(lead.intent)],
     ["Timeline", humanise(lead.timeline)],
     ["Budget", formatBudget(lead)],
     ["Source", `${humanise(lead.sourceType)}${lead.sourceDetail ? ` · ${lead.sourceDetail}` : ""}`],
-    ["Page", lead.pagePath ?? "—"],
+    ["Page", lead.pagePath ?? "-"],
     [
       "Campaign",
       [lead.utmSource, lead.utmMedium, lead.utmCampaign].filter(Boolean).join(" / ") || "Direct",
     ],
     /* Named last because it is the line that turns a notification into an
      * instruction: whoever reads this knows straight away whether it is theirs. */
-    ["Assigned to", lead.assignedAgentName ?? "Unassigned — needs picking up"],
+    ["Assigned to", lead.assignedAgentName ?? "Unassigned, needs picking up"],
   ];
 
   const rowsHtml = rows
@@ -169,7 +169,7 @@ export function clientConfirmationEmail(lead: LeadEmailData, brand: BrandInfo) {
 <tr><td style="padding:32px 40px 0 40px;">
 <h1 style="margin:0;font-family:${SERIF};font-size:34px;font-weight:normal;line-height:1.15;color:${INK};">Thank you${firstName ? `, ${escapeHtml(firstName)}` : ""}.</h1>
 <p style="margin:24px 0 0 0;font-family:${SANS};font-size:16px;line-height:1.75;color:${INK};">
-We have your enquiry. A consultant will read it personally and come back to you — usually the same day, and always within one working day.
+We have your enquiry. A consultant will read it personally and come back to you, usually the same day, and always within one working day.
 </p>
 <p style="margin:20px 0 0 0;font-family:${SANS};font-size:16px;line-height:1.75;color:${SLATE};">
 In the meantime, there is nothing you need to do. If anything changes or you would rather speak sooner, reply to this email or call us directly.
@@ -192,7 +192,7 @@ ${
 ${footer(brand)}`;
 
   return {
-    subject: `We have your enquiry — ${brand.name}`,
+    subject: `We have your enquiry, ${brand.name}`,
     html: shell(inner, "A consultant will come back to you, usually the same day."),
   };
 }

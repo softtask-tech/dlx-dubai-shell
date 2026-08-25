@@ -19,11 +19,11 @@ import { useLocale } from "@/i18n";
  * Held once at the root rather than per calculator, so choosing rupees on the
  * yield tool means the listing you open next is priced in rupees too. Phase 4
  * scoped this to the calculators; it now covers every figure on the site,
- * because the moment that mattered was never the calculator — it was the
+ * because the moment that mattered was never the calculator. It was the
  * listing page, where someone decides whether a number is within reach.
  *
  * PRECEDENCE, HIGHEST FIRST: what the visitor chose, then what their country
- * suggests, then dirhams. A stored choice always wins — a visitor who picked
+ * suggests, then dirhams. A stored choice always wins, a visitor who picked
  * dollars in Dubai last week gets dollars this week, because they said so and
  * the edge did not.
  */
@@ -91,7 +91,7 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
   }, []);
 
   /* Rates are only worth fetching once someone is actually looking at a
-   * conversion — which, with detection, is most visitors, but never the ones
+   * conversion, which, with detection, is most visitors, but never the ones
    * reading in dirhams. */
   useEffect(() => {
     if (currency === "AED") return;

@@ -6,7 +6,7 @@
 -- the two never contend for the same function slot.
 --
 -- The job posts to the Edge Function rather than doing the work in SQL, because
--- the OAuth exchange and the cleaning both belong in one place — the same code
+-- the OAuth exchange and the cleaning both belong in one place, the same code
 -- the manual trigger and the one-time importer use.
 
 create extension if not exists pg_cron;

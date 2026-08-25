@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
  * content, it does not trap focus, and either answer dismisses it for good.
  *
  * It is also honest about the trade. "Accept" and "Decline" are the same
- * weight — no greyed-out refusal next to a bright accept — because a choice
+ * weight (no greyed-out refusal next to a bright accept) because a choice
  * designed to be hard to refuse is not consent, and the audiences this brand
  * courts include people whose law says exactly that.
  *

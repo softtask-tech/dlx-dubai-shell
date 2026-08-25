@@ -72,7 +72,7 @@ export function RentVsBuyCalculator() {
             value={serviceCharge}
             onChange={setServiceCharge}
             step={1_000}
-            hint="Paid by the owner, not the tenant — which is part of why buying costs more than the mortgage."
+            hint="Paid by the owner, not the tenant, which is part of why buying costs more than the mortgage."
           />
           <NumberField
             label="Assumed price growth"
@@ -123,7 +123,7 @@ export function RentVsBuyCalculator() {
           <div className="mt-8">
             <SubResult
               label="Upfront cost of buying"
-              note="Transfer fee, commission and the rest — paid before you own anything."
+              note="Transfer fee, commission and the rest, paid before you own anything."
               value={<Money aed={upfront} size="body" />}
             />
             {final ? (
@@ -166,7 +166,7 @@ export function RentVsBuyCalculator() {
         >
           <p className="caption max-w-measure">
             A cash comparison. It leaves out mortgage interest and any return a renter might make on
-            the money not spent on fees — both depend on assumptions nobody can stand behind, and
+            the money not spent on fees, both depend on assumptions nobody can stand behind, and
             including them would make this look more authoritative without making it more true.
           </p>
         </Assumptions>

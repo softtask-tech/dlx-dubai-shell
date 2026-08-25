@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils";
 /**
  * A phone or WhatsApp link that reports itself.
  *
- * On a brokerage site a tap on the phone number is often the conversion — the
- * enquiry never becomes a form, it becomes a call — and a funnel that only
+ * On a brokerage site a tap on the phone number is often the conversion, the
+ * enquiry never becomes a form, it becomes a call, and a funnel that only
  * counts form submissions will conclude that paid traffic does not convert
  * while the phone rings all afternoon.
  *
@@ -26,7 +26,7 @@ export function ContactLink({
   href: string;
   children: ReactNode;
   className?: string;
-  /** Where on the site this was — a listing, a consultant, the footer. */
+  /** Where on the site this was, a listing, a consultant, the footer. */
   detail?: string;
 }) {
   return (
@@ -51,7 +51,7 @@ export function ContactLink({
  * Some contact links live inside layout components with their own anchor, and
  * rewriting those to use `ContactLink` would mean changing a component's shape
  * to satisfy analytics. This lets them keep their markup and add one `onClick`.
- * A href that is neither a call nor a WhatsApp message reports nothing — an
+ * A href that is neither a call nor a WhatsApp message reports nothing, an
  * email link is not a conversion we bid on.
  */
 export function trackContactHref(href: string | undefined, detail?: string): void {

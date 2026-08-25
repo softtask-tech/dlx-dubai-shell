@@ -27,7 +27,7 @@ import { Tag } from "@/components/ui/tag";
  * A playbook guide, as an editorial article.
  *
  * The shape follows the golden rule. A reader who wants the answer gets it in
- * the first screen — one paragraph, plain language, no chart, no jargon. A
+ * the first screen, one paragraph, plain language, no chart, no jargon. A
  * reader who wants the reasoning scrolls into the sections. A reader who is
  * serious finds the calculator, the service and the consultant at the end.
  *
@@ -62,7 +62,7 @@ export const Route = createFileRoute("/guides/$slug")({
       schema: [
         articleSchema({
           headline: guide.title,
-          /* The answer block, verbatim — what an answer engine should quote. */
+          /* The answer block, verbatim, what an answer engine should quote. */
           description: guide.answer,
           path,
           image,
@@ -148,7 +148,7 @@ function GuidePage() {
 
       <Section className="pt-0">
         <div className="grid gap-14 lg:grid-cols-12">
-          {/* Contents rail — sticky on desktop, a plain list on mobile. */}
+          {/* Contents rail, sticky on desktop, a plain list on mobile. */}
           <nav aria-label="On this page" className="lg:col-span-3">
             <div className="lg:sticky lg:top-32">
               <Reveal>
@@ -206,7 +206,7 @@ function GuidePage() {
                           className="body-text flex gap-5 border-b border-border py-4 text-muted-foreground"
                         >
                           <span aria-hidden="true" className="text-accent">
-                            —
+                            ,
                           </span>
                           <span>{point}</span>
                         </li>
@@ -291,7 +291,7 @@ function GuidePage() {
               <h2 className="display-2 mt-6">Ask the specific version of this question.</h2>
               <p className="body-text mt-8 max-w-measure text-muted-foreground">
                 A guide describes how something works in general. Your answer depends on the
-                property, the building and your circumstances — which is a conversation, not an
+                property, the building and your circumstances, which is a conversation, not an
                 article.
               </p>
             </Reveal>
@@ -303,7 +303,7 @@ function GuidePage() {
                 sourceDetail={`guide-${guide.slug}`}
                 defaultIntent={CATEGORY_INTENT[guide.category]}
                 title="Talk it through"
-                description="Tell us what you are trying to work out. A consultant replies personally — usually the same day."
+                description="Tell us what you are trying to work out. A consultant replies personally, usually the same day."
               />
             </Reveal>
           </div>

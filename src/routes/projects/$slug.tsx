@@ -27,7 +27,7 @@ export const Route = createFileRoute("/projects/$slug")({
       title: project.name,
       description:
         project.summary ??
-        `${project.name} in ${where} by ${project.developer?.name ?? "its developer"} — availability, payment plan and handover, from DLX Properties.`,
+        `${project.name} in ${where} by ${project.developer?.name ?? "its developer"}, availability, payment plan and handover, from DLX Properties.`,
       tagline: `${where} · ${formatHandover(project.handover_quarter, project.handover_year)}`,
       image: project.hero_image_url ?? "/og/developers.png",
       breadcrumbs: [
@@ -108,8 +108,8 @@ function ProjectPage() {
                   label="Bedrooms"
                   value={
                     project.bedrooms_min && project.bedrooms_max
-                      ? `${project.bedrooms_min}–${project.bedrooms_max}`
-                      : "—"
+                      ? `${project.bedrooms_min}-${project.bedrooms_max}`
+                      : "-"
                   }
                 />
                 <Fact
@@ -117,11 +117,11 @@ function ProjectPage() {
                   value={
                     project.unit_types.length > 0
                       ? project.unit_types.map(humanise).join(", ")
-                      : "—"
+                      : "-"
                   }
                 />
-                <Fact label="Community" value={project.area?.name ?? "—"} />
-                <Fact label="Developer" value={project.developer?.name ?? "—"} />
+                <Fact label="Community" value={project.area?.name ?? "-"} />
+                <Fact label="Developer" value={project.developer?.name ?? "-"} />
               </dl>
             </Reveal>
 

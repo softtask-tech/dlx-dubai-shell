@@ -5,7 +5,7 @@ import { Eyebrow } from "@/components/ui/section";
  * "Should I buy here?"
  *
  * The question every visitor is actually asking, answered from the numbers
- * rather than dodged. It is a reading of the evidence, not advice — the card
+ * rather than dodged. It is a reading of the evidence, not advice, the card
  * says so, shows the three signals it weighed, and sends anyone serious to a
  * consultant.
  *
@@ -25,7 +25,7 @@ export function VerdictCard({ areaName, stats }: { areaName: string; stats: Area
         <Eyebrow>Should I buy here?</Eyebrow>
         <p className="display-3 mt-5">Not enough evidence yet.</p>
         <p className="body-text mt-5 text-muted-foreground">
-          We hold {stats?.transaction_count ?? 0} recorded sales for {areaName} over the last year —
+          We hold {stats?.transaction_count ?? 0} recorded sales for {areaName} over the last year,
           too few to draw a conclusion from without misleading you. Ask us directly and we will tell
           you what we are seeing on the ground.
         </p>
@@ -40,8 +40,8 @@ export function VerdictCard({ areaName, stats }: { areaName: string; stats: Area
     signals.push({
       label: "Price direction",
       reading: rising
-        ? `Up ${stats.yoy_price_change_pct.toFixed(1)}% on last year — buyers here have been paying more, not less.`
-        : `Down ${Math.abs(stats.yoy_price_change_pct).toFixed(1)}% on last year — there is room to negotiate that there was not.`,
+        ? `Up ${stats.yoy_price_change_pct.toFixed(1)}% on last year. Buyers here have been paying more, not less.`
+        : `Down ${Math.abs(stats.yoy_price_change_pct).toFixed(1)}% on last year. There is room to negotiate that there was not.`,
       positive: rising,
     });
   }
@@ -61,7 +61,7 @@ export function VerdictCard({ areaName, stats }: { areaName: string; stats: Area
     const strong = stats.gross_yield_pct >= 6;
     signals.push({
       label: "Rental return",
-      reading: `${stats.gross_yield_pct.toFixed(1)}% gross${strong ? " — strong for prime Dubai" : ""}, before service charges. ${
+      reading: `${stats.gross_yield_pct.toFixed(1)}% gross${strong ? ", strong for prime Dubai" : ""}, before service charges. ${
         strong
           ? "It should cover a mortgage more comfortably than most."
           : "Buy here for the asset and the location rather than the income."
@@ -106,7 +106,7 @@ export function VerdictCard({ areaName, stats }: { areaName: string; stats: Area
 
       <p className="caption mt-8">
         A reading of the recorded evidence for {areaName}, not personal advice. What is right for
-        you depends on your horizon, your financing and your tax position — which is a conversation,
+        you depends on your horizon, your financing and your tax position, which is a conversation,
         not a card.
       </p>
     </div>

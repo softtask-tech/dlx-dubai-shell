@@ -5,7 +5,7 @@ import { checkIpRate, hashIp } from "@/data/advisor.server";
 import { synthesize, voiceConfigured } from "@/data/voice.server";
 
 /**
- * POST /api/advisor/speak — reads an answer aloud.
+ * POST /api/advisor/speak, reads an answer aloud.
  *
  * The same voice the phone line uses, offered on the page. It is an
  * accessibility affordance first: an advisor that can only be read excludes
@@ -14,7 +14,7 @@ import { synthesize, voiceConfigured } from "@/data/voice.server";
  *
  * Synthesis costs money per character, so this is rate limited on the same
  * counter as the chat and capped hard on length. A 204 means "no voice
- * configured" — the panel hides the control rather than showing one that fails.
+ * configured", the panel hides the control rather than showing one that fails.
  */
 const requestSchema = z.object({ text: z.string().trim().min(1).max(1200) });
 

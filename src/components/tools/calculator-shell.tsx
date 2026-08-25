@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 /**
  * The frame every calculator sits in.
  *
- * Inputs on the left, the answer on the right, and — the part that matters —
+ * Inputs on the left, the answer on the right, and, the part that matters,
  * the assumptions underneath rather than hidden. A calculator that shows a
  * confident number and conceals what produced it is worse than no calculator,
  * because the reader has no way to know whether it applies to them.

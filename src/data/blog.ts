@@ -1,11 +1,11 @@
 /**
- * The journal — blog posts, read from `blog_posts`.
+ * The journal, blog posts, read from `blog_posts`.
  *
  * The playbook in `guides.ts` is held in code because it is the brokerage's
  * settled position and changes rarely. The journal is the opposite: it is
  * written by the team as things happen, so it lives in the database and is
  * edited through the admin content editor. Only published rows are ever
- * returned to the public site — the RLS policy enforces that too, but a query
+ * returned to the public site, the RLS policy enforces that too, but a query
  * that says what it means is easier to reason about than one that relies on it.
  */
 import { db } from "./database";
@@ -35,7 +35,7 @@ export const BLOG_CATEGORY_LABELS: Record<ContentCategory, string> = {
 export type ListPostsOptions = {
   category?: ContentCategory;
   limit?: number;
-  /** Excluded from the result — used for "read next" rails. */
+  /** Excluded from the result, used for "read next" rails. */
   excludeSlug?: string;
 };
 
@@ -97,7 +97,7 @@ async function runListPostSlugs(): Promise<string[]> {
  * Posts worth reading next: same category first, topped up from the rest.
  *
  * Two queries rather than one clever one, because the fallback behaviour is
- * then obvious — if either fails the rail simply shows fewer posts.
+ * then obvious, if either fails the rail simply shows fewer posts.
  */
 export async function relatedPosts(post: BlogPost, limit = 3): Promise<BlogPostWithAuthor[]> {
   const sameCategory = await listPosts({
@@ -130,7 +130,7 @@ export function activeBlogCategories(posts: readonly BlogPost[]): ContentCategor
 /**
  * Roughly how long a post takes to read, when the editor did not say.
  *
- * 200 words a minute, rounded up, floor of one — the convention every
+ * 200 words a minute, rounded up, floor of one, the convention every
  * publication uses. Shown as an estimate, never as a promise.
  */
 export function readingMinutesFor(post: BlogPost): number {

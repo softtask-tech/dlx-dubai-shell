@@ -4,7 +4,7 @@
  * The existing reporter (`src/lib/lovable-error-reporting.ts`) talks to the
  * Lovable preview harness, which does not exist on SOFT TASK's server. Without
  * something else, a deployed site swallows every server error into a 500 page
- * and a log line nobody is watching — and the failures that matter most here are
+ * and a log line nobody is watching, and the failures that matter most here are
  * exactly the quiet ones: a Resend key that expired, a Supabase policy that
  * started refusing writes, a conversion dispatch returning 400 for a week.
  *
@@ -17,7 +17,7 @@
  * Set `ERROR_WEBHOOK_URL` to anything that accepts a JSON POST.
  *
  * WHAT NEVER LEAVES. The payload carries no lead data, no message body and no
- * contact details — only where the error happened and what it said. An error
+ * contact details, only where the error happened and what it said. An error
  * reporter that helpfully includes the request body is how enquiry contents end
  * up in a third-party log, and this codebase spent a phase making sure that
  * does not happen.

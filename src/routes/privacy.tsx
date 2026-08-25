@@ -28,7 +28,7 @@ const SECTIONS: ReadonlyArray<{ heading: string; body: string[]; points?: string
     heading: "What we collect, and when",
     body: [
       "Nothing identifies you until you tell us who you are. Reading the site, running a calculator or asking the advisor a question does not require a name, and we do not ask for one to let you do any of it.",
-      "When you send an enquiry — through a form, the advisor, or by calling — we keep what you gave us and what you told us about what you are looking for, so a consultant can reply to the right person about the right thing.",
+      "When you send an enquiry (through a form, the advisor, or by calling) we keep what you gave us and what you told us about what you are looking for, so a consultant can reply to the right person about the right thing.",
     ],
     points: [
       "Contact details you type: name, email address, phone number.",
@@ -41,7 +41,7 @@ const SECTIONS: ReadonlyArray<{ heading: string; body: string[]; points?: string
     heading: "Cookies and advertising tags",
     body: [
       "We advertise, and advertising platforms want to know which of their clicks became enquiries. That measurement uses cookies, and it does not happen unless you accept it.",
-      "Until you accept, the Meta and Google scripts are not loaded at all — not loaded and disabled, but absent from the page. If you decline, they stay absent.",
+      "Until you accept, the Meta and Google scripts are not loaded at all, not loaded and disabled, but absent from the page. If you decline, they stay absent.",
       "If you accept, we also send a copy of the conversion from our server, matched to the browser event so it is counted once rather than twice. Contact details in that copy are hashed before they are sent; we do not send your email address or phone number in the clear.",
     ],
   },
@@ -55,7 +55,7 @@ const SECTIONS: ReadonlyArray<{ heading: string; body: string[]; points?: string
   {
     heading: "Who else sees it",
     body: [
-      "Our own consultants, and the services that make the site work: our database and email provider, the AI model behind the advisor, and — if you have accepted advertising cookies — the ad platforms, in the hashed form described above.",
+      "Our own consultants, and the services that make the site work: our database and email provider, the AI model behind the advisor, and, if you have accepted advertising cookies, the ad platforms, in the hashed form described above.",
       "We do not sell data, and we do not pass enquiries to other brokerages.",
     ],
   },
@@ -113,7 +113,7 @@ function PrivacyPage() {
                         className="body-text flex gap-5 border-b border-border py-4 text-muted-foreground"
                       >
                         <span aria-hidden="true" className="text-accent">
-                          —
+                          ,
                         </span>
                         <span>{point}</span>
                       </li>
@@ -140,7 +140,7 @@ function PrivacyPage() {
                 <a href={`mailto:${brand.contact.email}`} className="prose-link">
                   {brand.contact.email}
                 </a>
-                . {brand.name}, {brand.address.street}, {brand.address.locality} — RERA ORN{" "}
+                . {brand.name}, {brand.address.street}, {brand.address.locality}, RERA ORN{" "}
                 {brand.reraOrn}. Our{" "}
                 <Link to="/contact" className="prose-link">
                   contact page

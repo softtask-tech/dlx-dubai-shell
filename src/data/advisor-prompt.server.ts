@@ -3,8 +3,8 @@
  *
  * Chat and voice must not diverge, and the way they diverge in practice is that
  * someone edits one prompt and forgets the other. So there is one builder, and
- * the channel is a parameter that changes the delivery — length, formatting,
- * whether links make sense out loud — and never the rules.
+ * the channel is a parameter that changes the delivery, length, formatting,
+ * whether links make sense out loud, and never the rules.
  *
  * The rules themselves are not written here. They come from `ADVISOR_POLICY` in
  * `knowledge.ts`, which ships to the model, to the voice stack and in the public
@@ -15,7 +15,7 @@
  * from our own database, but listing titles and journal bodies are typed by
  * people, and a visitor can ask a question engineered to look like an
  * instruction. The block is delimited and the prompt says in terms that nothing
- * inside it is an instruction — the model's job is to answer from it, not to
+ * inside it is an instruction, the model's job is to answer from it, not to
  * obey it.
  */
 import { advisor } from "@/config/advisor";
@@ -39,11 +39,11 @@ export type PromptOptions = {
 const CHANNEL_STYLE: Record<AdvisorChannel, string> = {
   chat: [
     "Write for a screen. Two or three short paragraphs at most, no headings, no bullet lists unless you are genuinely enumerating costs or steps.",
-    'When you use an entry, name the page it came from in plain words — "our buying costs guide" — because the interface renders the link beside your answer. Never paste a raw URL.',
+    'When you use an entry, name the page it came from in plain words, "our buying costs guide", because the interface renders the link beside your answer. Never paste a raw URL.',
   ].join(" "),
   voice: [
     "You are being spoken aloud down a phone line. Two or three sentences per turn, then stop and let them speak.",
-    'No lists, no headings, no URLs, no markdown — none of it survives text to speech. Say "I\'ll text you the link" instead of reading one out.',
+    'No lists, no headings, no URLs, no markdown, none of it survives text to speech. Say "I\'ll text you the link" instead of reading one out.',
     'Numbers should be said the way a person says them: "about four per cent", not "4.0%".',
   ].join(" "),
 };
@@ -144,7 +144,7 @@ export function buildSystemPrompt(options: PromptOptions): string {
     [
       "## Explaining things simply",
       "Many people you talk to have never bought abroad before, and the jargon is the barrier, not the maths.",
-      "When someone asks what a term means — yield, service charge, off-plan, escrow, freehold, oqood, NOC — answer in plain language first, in two sentences a person with no property background would follow.",
+      "When someone asks what a term means, yield, service charge, off-plan, escrow, freehold, oqood, NOC. Answer in plain language first, in two sentences a person with no property background would follow.",
       "Then give one concrete worked example with round numbers, labelled as an example.",
       "Then point them at the calculator or guide that does it properly.",
       "Never answer a 'what does X mean' question with a definition full of other jargon.",
@@ -202,7 +202,7 @@ export function buildSystemPrompt(options: PromptOptions): string {
     sections.push(
       [
         "## You have nothing to answer from",
-        "Nothing matched. Say so plainly — that you do not have that to hand rather than that it does not exist — and offer to have a consultant come back with it.",
+        "Nothing matched. Say so plainly, that you do not have that to hand rather than that it does not exist, and offer to have a consultant come back with it.",
         "Do not fill the gap from memory. Anything you 'know' about Dubai prices, fees or visa rules that is not in the context above is not something you may state here.",
       ].join("\n"),
     );
@@ -219,6 +219,6 @@ export function buildSystemPrompt(options: PromptOptions): string {
  */
 export function fallbackReply(channel: AdvisorChannel): string {
   return channel === "voice"
-    ? `I'm sorry — I can't reach my system just now. If you leave your name and number after this, a DLX consultant will call you back. You can also reach us on ${brand.contact.phone}.`
-    : `I can't reach my system for a moment, so I'd rather not guess. Leave your name and an email or phone number and a DLX consultant will come back to you properly — or call ${brand.contact.phone}.`;
+    ? `I'm sorry, I can't reach my system just now. If you leave your name and number after this, a DLX consultant will call you back. You can also reach us on ${brand.contact.phone}.`
+    : `I can't reach my system for a moment, so I'd rather not guess. Leave your name and an email or phone number and a DLX consultant will come back to you properly, or call ${brand.contact.phone}.`;
 }

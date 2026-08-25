@@ -27,7 +27,7 @@ export const Route = createFileRoute("/developers/$slug")({
       title: developer.name,
       description:
         developer.summary ??
-        `${developer.name} — projects, delivery record and current availability, from DLX Properties.`,
+        `${developer.name}, projects, delivery record and current availability, from DLX Properties.`,
       tagline: developer.summary ?? `Projects and availability from ${developer.name}.`,
       image: developer.logo_url ?? "/og/developers.png",
       breadcrumbs: [
@@ -152,7 +152,7 @@ function DeveloperPage() {
               <h2 className="display-2 mt-6">Considering {developer.name}?</h2>
               <p className="body-text mt-8 max-w-measure text-muted-foreground">
                 We will tell you what we actually think of the product, the location and the
-                delivery record — including when we think you should look elsewhere.
+                delivery record, including when we think you should look elsewhere.
               </p>
             </Reveal>
           </div>

@@ -9,7 +9,7 @@
  * ON LEGAL, VISA AND TAX CONTENT.
  *
  * CLAUDE.md forbids inventing legal, visa or tax specifics, and these are
- * exactly the guides where a confident wrong sentence does real damage —
+ * exactly the guides where a confident wrong sentence does real damage,
  * someone reads it, believes it, and structures a purchase around it. So the
  * guides that touch those areas:
  *
@@ -84,10 +84,10 @@ export const GUIDES: readonly Guide[] = [
     title: "Can a foreigner buy property in Dubai?",
     tagline: "Freehold, leasehold, and what the difference actually means.",
     description:
-      "How foreign ownership works in Dubai — freehold and leasehold areas, what each gives you, and the practical differences that matter when you come to sell.",
+      "How foreign ownership works in Dubai, freehold and leasehold areas, what each gives you, and the practical differences that matter when you come to sell.",
     category: "buying",
     answer:
-      "Yes. Dubai has designated freehold areas where foreign nationals can own property outright, and leasehold areas where they hold a long lease instead. Most of the communities international buyers know — Palm Jumeirah, Downtown, Dubai Marina — are freehold. Which category a specific property falls into is a matter of record, and it should be confirmed on the title before you commit rather than assumed from the community's reputation.",
+      "Yes. Dubai has designated freehold areas where foreign nationals can own property outright, and leasehold areas where they hold a long lease instead. Most of the communities international buyers know (Palm Jumeirah, Downtown, Dubai Marina) are freehold. Which category a specific property falls into is a matter of record, and it should be confirmed on the title before you commit rather than assumed from the community's reputation.",
     readingMinutes: 6,
     verifyWithAuthorities: true,
     reviewedOn: REVIEWED,
@@ -95,13 +95,13 @@ export const GUIDES: readonly Guide[] = [
       {
         heading: "Freehold and leasehold",
         body: [
-          "Dubai opened designated areas to foreign freehold ownership in the early 2000s, and those areas are where almost all international buying happens. Freehold means you own the property and, in a villa's case, the land it sits on — outright, registered in your name at the Dubai Land Department, with no time limit.",
+          "Dubai opened designated areas to foreign freehold ownership in the early 2000s, and those areas are where almost all international buying happens. Freehold means you own the property and, in a villa's case, the land it sits on, outright, registered in your name at the Dubai Land Department, with no time limit.",
           "Leasehold is a long lease, commonly of several decades, in areas not designated for freehold. You hold the right to occupy and to deal with the property for the term, but the underlying ownership stays with the freeholder. It is a legitimate structure and there are good properties held that way; it simply is not the same asset, and it prices differently.",
         ],
         points: [
           "Freehold: owned outright, registered in your name, no expiry.",
           "Leasehold: a long lease, with the freehold retained by another party.",
-          "Which applies is determined by the area and is on the title — confirm it rather than assume it.",
+          "Which applies is determined by the area and is on the title, confirm it rather than assume it.",
         ],
       },
       {
@@ -114,7 +114,7 @@ export const GUIDES: readonly Guide[] = [
       {
         heading: "Where this gets specific",
         body: [
-          "The rules around foreign ownership, the designated areas and the registration process are set by the Dubai Land Department and do change. Anything that turns on your nationality, your residency status or the structure you buy through — a company, a trust, joint names — is a question for a lawyer rather than a website.",
+          "The rules around foreign ownership, the designated areas and the registration process are set by the Dubai Land Department and do change. Anything that turns on your nationality, your residency status or the structure you buy through (a company, a trust, joint names) is a question for a lawyer rather than a website.",
           "What we can do is tell you what the title says, what the building costs to run, and whether the price makes sense against what has actually transacted.",
         ],
       },
@@ -133,7 +133,7 @@ export const GUIDES: readonly Guide[] = [
       {
         question: "Can I own a property jointly, or through a company?",
         answer:
-          "Both are possible and both have consequences — for financing, for succession and potentially for tax in your home country. It is worth structuring deliberately at the start, with advice, rather than unpicking it later.",
+          "Both are possible and both have consequences, for financing, for succession and potentially for tax in your home country. It is worth structuring deliberately at the start, with advice, rather than unpicking it later.",
       },
     ],
     relatedTools: ["buying-costs", "rental-yield"],
@@ -144,7 +144,7 @@ export const GUIDES: readonly Guide[] = [
     title: "The Dubai Golden Visa, explained",
     tagline: "How the property routes work, and what to confirm.",
     description:
-      "How the UAE Golden Visa works for property buyers — the routes, family sponsorship, and what to have confirmed in writing before you structure a purchase around it.",
+      "How the UAE Golden Visa works for property buyers, the routes, family sponsorship, and what to have confirmed in writing before you structure a purchase around it.",
     category: "golden_visa",
     answer:
       "The UAE Golden Visa is a long-term renewable residency, and one of the routes to it is property investment above a threshold set by the authorities. Holders can generally sponsor a spouse and children. The thresholds, the conditions attached to mortgaged and off-plan properties, and the documentation all change, so the practical answer is to have a licensed immigration adviser confirm your position in writing before you buy on the strength of it.",
@@ -156,7 +156,7 @@ export const GUIDES: readonly Guide[] = [
         heading: "What it is",
         body: [
           "The Golden Visa is a long-term residency permit, renewable, that does not require an employer sponsor. That last part is what makes it valuable: conventional UAE residency is tied to employment, and ends when the employment does.",
-          "There are several routes to one — for investors, entrepreneurs, specialised talent, and property owners among them. This guide covers the property route, because that is the one we can actually help with.",
+          "There are several routes to one, for investors, entrepreneurs, specialised talent, and property owners among them. This guide covers the property route, because that is the one we can actually help with.",
         ],
       },
       {
@@ -175,7 +175,7 @@ export const GUIDES: readonly Guide[] = [
       {
         heading: "Family sponsorship",
         body: [
-          "A holder can generally sponsor immediate family — a spouse and children — and in some circumstances domestic staff. The conditions attached to children in particular, around age and dependency, are the ones most often assumed rather than checked.",
+          "A holder can generally sponsor immediate family (a spouse and children) and in some circumstances domestic staff. The conditions attached to children in particular, around age and dependency, are the ones most often assumed rather than checked.",
           "If the residency is the point of the purchase for your family, establish what each member's position will be before you choose the property, not after.",
         ],
       },
@@ -191,12 +191,12 @@ export const GUIDES: readonly Guide[] = [
       {
         question: "How much property do I need to own?",
         answer:
-          "There is a threshold set by the UAE authorities, and it has changed more than once. Rather than quote a figure that may be out of date by the time you read this, we would point you to a licensed adviser who will confirm the current requirement in writing for your circumstances — and our eligibility checker will show you where a given purchase sits against commonly cited thresholds in the meantime.",
+          "There is a threshold set by the UAE authorities, and it has changed more than once. Rather than quote a figure that may be out of date by the time you read this, we would point you to a licensed adviser who will confirm the current requirement in writing for your circumstances, and our eligibility checker will show you where a given purchase sits against commonly cited thresholds in the meantime.",
       },
       {
         question: "Can I get one on an off-plan property?",
         answer:
-          "Off-plan purchases are treated differently, and timing matters — what has to be completed and registered before an application can proceed is the key question. Ask your adviser this before you reserve a unit, not after.",
+          "Off-plan purchases are treated differently, and timing matters. What has to be completed and registered before an application can proceed is the key question. Ask your adviser this before you reserve a unit, not after.",
       },
       {
         question: "What happens if I sell the property?",
@@ -212,7 +212,7 @@ export const GUIDES: readonly Guide[] = [
     title: "Buying in Dubai from abroad",
     tagline: "The process, step by step, without being in the country.",
     description:
-      "The Dubai buying process for overseas buyers — from offer to Dubai Land Department transfer — including what can be handled remotely and what cannot.",
+      "The Dubai buying process for overseas buyers, from offer to Dubai Land Department transfer, including what can be handled remotely and what cannot.",
     category: "buying",
     answer:
       "A Dubai purchase runs from offer, to a signed Memorandum of Understanding with a deposit, to a developer No Objection Certificate, to transfer at a Dubai Land Department registration trustee office. Most of it can be handled remotely, with a power of attorney covering the steps that need someone present. A cash purchase of a ready property commonly completes within about a month; off-plan and mortgaged purchases take longer.",
@@ -224,13 +224,13 @@ export const GUIDES: readonly Guide[] = [
         heading: "Before you offer",
         body: [
           "Two pieces of due diligence are worth doing before you make an offer rather than after. The first is the title: what is actually being sold, by whom, and free of what. The second is the service charge schedule, which determines what the property costs you to hold and is the single most common late surprise.",
-          "For an off-plan purchase the equivalent questions are about the developer — their delivery record, the escrow arrangements, and what the payment plan actually commits you to.",
+          "For an off-plan purchase the equivalent questions are about the developer, their delivery record, the escrow arrangements, and what the payment plan actually commits you to.",
         ],
       },
       {
         heading: "Offer to contract",
         body: [
-          "An accepted offer is followed by a Memorandum of Understanding — the sale contract — and a deposit, conventionally 10%, held by the agent or a trustee rather than passed to the seller. The MOU sets the completion date and what happens if either side fails to complete.",
+          "An accepted offer is followed by a Memorandum of Understanding (the sale contract) and a deposit, conventionally 10%, held by the agent or a trustee rather than passed to the seller. The MOU sets the completion date and what happens if either side fails to complete.",
           "This is the point at which the terms are actually fixed, and the point at which having someone on your side of the table matters most.",
         ],
       },
@@ -245,7 +245,7 @@ export const GUIDES: readonly Guide[] = [
         heading: "Transfer",
         body: [
           "Transfer happens at a Dubai Land Department registration trustee office. The balance is paid, the fees are settled, and the title deed is issued in your name. It is a same-day process when everything is in order.",
-          "If you cannot attend, a properly drafted power of attorney lets someone act for you. It must be prepared and attested correctly — this is the step most likely to derail a remote purchase, and it needs to be set up early.",
+          "If you cannot attend, a properly drafted power of attorney lets someone act for you. It must be prepared and attested correctly. This is the step most likely to derail a remote purchase, and it needs to be set up early.",
         ],
         points: [
           "Balance and fees paid at the trustee office.",
@@ -286,7 +286,7 @@ export const GUIDES: readonly Guide[] = [
     title: "Off-plan or ready?",
     tagline: "Two different purchases, not two prices for the same one.",
     description:
-      "Off-plan against ready property in Dubai — payment plans, delivery risk, rental income and the questions worth asking before you choose.",
+      "Off-plan against ready property in Dubai, payment plans, delivery risk, rental income and the questions worth asking before you choose.",
     category: "investment",
     answer:
       "Ready property gives you an asset you can inspect and rent immediately, at a price that reflects both. Off-plan gives you a staged payment plan and the possibility of buying below completed value, in exchange for delivery risk and no income until handover. Which is right depends less on the market than on whether you need the property to earn from day one.",
@@ -304,12 +304,12 @@ export const GUIDES: readonly Guide[] = [
       {
         heading: "The payment plan is the product",
         body: [
-          "Off-plan plans are marketed in shorthand — 60/40, post-handover, 1% monthly — and the shorthand hides what matters. The real questions are how much falls due before handover, when each instalment lands, and whether the post-handover portion carries a cost.",
+          "Off-plan plans are marketed in shorthand: 60/40, post-handover, 1% monthly. The shorthand hides what matters. The real questions are how much falls due before handover, when each instalment lands, and whether the post-handover portion carries a cost.",
           "A plan requiring most of the money before you hold anything is a very different commitment from one weighted after handover, however similar the headline sounds.",
         ],
         points: [
           "How much is due before handover?",
-          "When does each instalment actually fall due — dates, or construction milestones?",
+          "When does each instalment actually fall due, dates, or construction milestones?",
           "Is the post-handover portion interest-free?",
           "What happens if handover slips?",
         ],
@@ -343,7 +343,7 @@ export const GUIDES: readonly Guide[] = [
       {
         question: "Can I sell before handover?",
         answer:
-          "Often yes, subject to the developer's rules — many require a percentage to be paid before they will allow a transfer, and they charge for it. Check that in the contract before you buy if an early exit is part of your plan.",
+          "Often yes, subject to the developer's rules, many require a percentage to be paid before they will allow a transfer, and they charge for it. Check that in the contract before you buy if an early exit is part of your plan.",
       },
     ],
     relatedTools: ["payment-plan", "rental-yield"],
@@ -354,7 +354,7 @@ export const GUIDES: readonly Guide[] = [
     title: "What buying in Dubai actually costs",
     tagline: "Every fee on top of the price, named.",
     description:
-      "The full cost of buying in Dubai beyond the price — Dubai Land Department transfer fee, agency commission, trustee and NOC fees — and which of them are negotiable.",
+      "The full cost of buying in Dubai beyond the price: Dubai Land Department transfer fee, agency commission, trustee and NOC fees, and which of them are negotiable.",
     category: "buying",
     answer:
       "Budget for roughly 6 to 7 per cent above the purchase price on a cash purchase of a ready property. The Dubai Land Department transfer fee is 4 per cent and fixed; agency commission is conventionally 2 per cent and negotiable; and trustee, developer NOC and title deed fees add a few thousand dirhams between them. Mortgage costs are additional.",
@@ -372,14 +372,14 @@ export const GUIDES: readonly Guide[] = [
       {
         heading: "The negotiable ones",
         body: [
-          "Agency commission is conventionally 2 per cent plus VAT. It is negotiable, and what you are paying should be agreed in writing before you commit to anything — not raised at the point of transfer.",
+          "Agency commission is conventionally 2 per cent plus VAT. It is negotiable, and what you are paying should be agreed in writing before you commit to anything, not raised at the point of transfer.",
           "Registration trustee fees are tiered by price band. Developer No Objection Certificate fees vary substantially between developers and are a common late surprise: ask your developer for the figure early.",
         ],
         points: [
-          "Agency commission — negotiable, agree it in writing up front.",
-          "Trustee fee — tiered by price, confirm with the trustee office.",
-          "Developer NOC — varies by developer, ask early.",
-          "Title deed issuance — a small administrative charge.",
+          "Agency commission, negotiable, agree it in writing up front.",
+          "Trustee fee, tiered by price, confirm with the trustee office.",
+          "Developer NOC, varies by developer, ask early.",
+          "Title deed issuance, a small administrative charge.",
         ],
       },
       {
@@ -415,7 +415,7 @@ export const GUIDES: readonly Guide[] = [
     title: "Property and tax in Dubai",
     tagline: "What the UAE charges, and why your own country still matters.",
     description:
-      "How property taxation works in Dubai for international owners — what the UAE levies, and why your tax position at home is the question that actually needs advice.",
+      "How property taxation works in Dubai for international owners, what the UAE levies, and why your tax position at home is the question that actually needs advice.",
     category: "legal_and_tax",
     answer:
       "The UAE does not levy an annual property tax or a personal income tax on rental income in the way many countries do, which is a large part of Dubai's appeal to international buyers. That does not make a Dubai property tax-free for you: your liability generally depends on where you are tax resident, and that is a question for an adviser in your own country, not for a Dubai brokerage.",
@@ -440,7 +440,7 @@ export const GUIDES: readonly Guide[] = [
       {
         heading: "What is charged in the UAE",
         body: [
-          "Transaction costs are real and are covered in our buying costs guide — the Dubai Land Department transfer fee being the largest. Service charges are an ongoing cost of ownership. VAT applies to some transactions and services rather than to residential sales generally.",
+          "Transaction costs are real and are covered in our buying costs guide, the Dubai Land Department transfer fee being the largest. Service charges are an ongoing cost of ownership. VAT applies to some transactions and services rather than to residential sales generally.",
           "The UAE has also introduced corporate taxation, which can be relevant if you hold property through a company. If you are considering a corporate structure, take advice on it before you buy rather than restructuring afterwards.",
         ],
       },
@@ -466,7 +466,7 @@ export const GUIDES: readonly Guide[] = [
       {
         question: "Should I buy through a company?",
         answer:
-          "It depends on your circumstances, and it has consequences for financing, succession, UAE corporate tax and your position at home. Take advice before you buy — it is considerably harder to restructure afterwards.",
+          "It depends on your circumstances, and it has consequences for financing, succession, UAE corporate tax and your position at home. Take advice before you buy. It is considerably harder to restructure afterwards.",
       },
     ],
     relatedTools: ["buying-costs", "rental-yield"],
@@ -480,7 +480,7 @@ export const GUIDES: readonly Guide[] = [
       "How Dubai service charges work, what drives them, and why they are the difference between a headline rental yield and what actually reaches you.",
     category: "investment",
     answer:
-      "Service charges are the annual cost of running your building, charged per square foot and set per project. In Dubai they range from single digits per square foot to well over thirty, and they come straight off your rental income — which is why a gross yield quoted without them is close to meaningless. Get the actual figure for your building before you buy.",
+      "Service charges are the annual cost of running your building, charged per square foot and set per project. In Dubai they range from single digits per square foot to well over thirty, and they come straight off your rental income, which is why a gross yield quoted without them is close to meaningless. Get the actual figure for your building before you buy.",
     readingMinutes: 5,
     verifyWithAuthorities: false,
     reviewedOn: REVIEWED,
@@ -502,7 +502,7 @@ export const GUIDES: readonly Guide[] = [
       {
         heading: "What it does to yield",
         body: [
-          "Service charges come off rental income before anything reaches you. On a typical apartment they can account for one to two percentage points of yield, sometimes more — which is often the entire difference between the yield quoted in a listing and the yield you actually receive.",
+          "Service charges come off rental income before anything reaches you. On a typical apartment they can account for one to two percentage points of yield, sometimes more, which is often the entire difference between the yield quoted in a listing and the yield you actually receive.",
           "Our yield calculator takes them off explicitly for exactly this reason. Put the real figure for your building in and the answer changes.",
         ],
       },
@@ -523,7 +523,7 @@ export const GUIDES: readonly Guide[] = [
       {
         question: "How much are service charges in Dubai?",
         answer:
-          "They vary from single digits per square foot per year to well over thirty, depending entirely on the building and its amenities. There is no useful average — the figure that matters is the one for the specific building you are buying in, and it is published per project.",
+          "They vary from single digits per square foot per year to well over thirty, depending entirely on the building and its amenities. There is no useful average, the figure that matters is the one for the specific building you are buying in, and it is published per project.",
       },
       {
         question: "Can service charges go up?",
@@ -533,7 +533,7 @@ export const GUIDES: readonly Guide[] = [
       {
         question: "Who pays them, the owner or the tenant?",
         answer:
-          "The owner. That is precisely why they matter to your yield — the rent your tenant pays is not what you keep.",
+          "The owner. That is precisely why they matter to your yield, the rent your tenant pays is not what you keep.",
       },
     ],
     relatedTools: ["rental-yield", "yield-comparison"],
@@ -544,10 +544,10 @@ export const GUIDES: readonly Guide[] = [
     title: "Moving to Dubai: the practical order",
     tagline: "The practical order to do things in.",
     description:
-      "A practical guide to relocating to Dubai — choosing where to live, schools and commutes, and the sequence that makes a move less painful.",
+      "A practical guide to relocating to Dubai, choosing where to live, schools and commutes, and the sequence that makes a move less painful.",
     category: "relocation",
     answer:
-      "Choose the community before the property, and choose it around the school run and the commute rather than the show apartment. Most families who regret a Dubai move regret the location, not the home. Rent for the first year unless you already know the city well — it is far cheaper than buying in the wrong place.",
+      "Choose the community before the property, and choose it around the school run and the commute rather than the show apartment. Most families who regret a Dubai move regret the location, not the home. Rent for the first year unless you already know the city well. It is far cheaper than buying in the wrong place.",
     readingMinutes: 7,
     verifyWithAuthorities: false,
     reviewedOn: REVIEWED,
@@ -569,19 +569,19 @@ export const GUIDES: readonly Guide[] = [
       {
         heading: "Schools and the commute",
         body: [
-          "School places drive location for most families, and the good ones fill early. Start that process before you choose where to live, not after — it constrains the map more than anything else.",
+          "School places drive location for most families, and the good ones fill early. Start that process before you choose where to live, not after, it constrains the map more than anything else.",
           "Dubai's road network is good and its distances are deceptive. A community twenty minutes away at ten in the morning can be fifty at eight. Drive the route at the time you would actually drive it.",
         ],
       },
       {
         heading: "The practical list",
         body: [
-          "Residency and the Emirates ID come first and gate much of the rest — a bank account, a tenancy in your name, utilities. Employers usually handle the visa; if you are arriving independently, get advice on the route that fits you.",
+          "Residency and the Emirates ID come first and gate much of the rest, a bank account, a tenancy in your name, utilities. Employers usually handle the visa; if you are arriving independently, get advice on the route that fits you.",
           "We handle the home and connect you with people who handle the rest. We do not process visas, place children in schools, or move your furniture, and we will say so rather than pretend otherwise.",
         ],
         points: [
-          "Residency and Emirates ID — usually employer-led.",
-          "Bank account — generally needs the Emirates ID.",
+          "Residency and Emirates ID, usually employer-led.",
+          "Bank account, generally needs the Emirates ID.",
           "Tenancy and Ejari registration.",
           "Utilities, internet, and a driving licence.",
         ],
@@ -596,7 +596,7 @@ export const GUIDES: readonly Guide[] = [
       {
         question: "How far in advance should I start?",
         answer:
-          "For schools, as early as you can — places at the sought-after ones go early. For a home, four to six weeks before you need to move is about right.",
+          "For schools, as early as you can, places at the sought-after ones go early. For a home, four to six weeks before you need to move is about right.",
       },
       {
         question: "Can you help before we arrive?",
@@ -612,7 +612,7 @@ export const GUIDES: readonly Guide[] = [
     title: "Which Dubai community suits you?",
     tagline: "What the prime districts are actually like to live in.",
     description:
-      "An honest guide to Dubai's prime residential communities — who each one suits, what living there is like, and what the recorded numbers say.",
+      "An honest guide to Dubai's prime residential communities, who each one suits, what living there is like, and what the recorded numbers say.",
     category: "area_guide",
     answer:
       "Dubai's prime communities divide roughly into waterfront (Palm Jumeirah, Dubai Marina), central (Downtown, Business Bay) and family-oriented master communities (Dubai Hills Estate, Arabian Ranches). Waterfront and central buy you location and liquidity at a price; master communities buy you space, schools and quiet. The recorded transaction data for each is on its community page.",
@@ -623,7 +623,7 @@ export const GUIDES: readonly Guide[] = [
       {
         heading: "Waterfront",
         body: [
-          "Palm Jumeirah and Dubai Marina are what most people picture. Palm Jumeirah is villas and low-rise apartments with beach access, quieter than its reputation, and priced accordingly — it commands the highest price per square foot of any established Dubai community and yields the least, which is the trade every prime market makes.",
+          "Palm Jumeirah and Dubai Marina are what most people picture. Palm Jumeirah is villas and low-rise apartments with beach access, quieter than its reputation, and priced accordingly, it commands the highest price per square foot of any established Dubai community and yields the least, which is the trade every prime market makes.",
           "Dubai Marina is dense, walkable by Dubai standards, and the most consistently rentable postcode in the city. It suits people who want life on the doorstep and are content with an apartment.",
         ],
       },
@@ -653,12 +653,12 @@ export const GUIDES: readonly Guide[] = [
       {
         question: "Which Dubai community has the best rental yield?",
         answer:
-          "Generally the more affordable apartment communities rather than the prime waterfront ones — yield and prestige tend to move in opposite directions. Our community comparison tool ranks them on recorded evidence, and the figures come from registered transactions rather than opinion.",
+          "Generally the more affordable apartment communities rather than the prime waterfront ones, yield and prestige tend to move in opposite directions. Our community comparison tool ranks them on recorded evidence, and the figures come from registered transactions rather than opinion.",
       },
       {
         question: "Which is best for families?",
         answer:
-          "The master communities — Dubai Hills Estate and its peers — for space, schools and quiet. Which one depends on where the school run and the commute take you, which is a conversation rather than a list.",
+          "The master communities, Dubai Hills Estate and its peers, for space, schools and quiet. Which one depends on where the school run and the commute take you, which is a conversation rather than a list.",
       },
       {
         question: "Where should I buy for capital growth?",
@@ -674,10 +674,10 @@ export const GUIDES: readonly Guide[] = [
     title: "The cost of living in Dubai",
     tagline: "What a month actually costs.",
     description:
-      "A practical snapshot of living costs in Dubai for relocating families and professionals — housing, schooling, transport and the things people underestimate.",
+      "A practical snapshot of living costs in Dubai for relocating families and professionals, housing, schooling, transport and the things people underestimate.",
     category: "relocation",
     answer:
-      "Housing and schooling dominate a Dubai household budget, and both vary enormously by choice — the same family can spend very different amounts depending on community and school. Utilities, transport and groceries are broadly comparable to a major Western city. The costs people underestimate are school fees, annual rent paid in few cheques, and the cost of running a car in a city built around driving.",
+      "Housing and schooling dominate a Dubai household budget, and both vary enormously by choice, the same family can spend very different amounts depending on community and school. Utilities, transport and groceries are broadly comparable to a major Western city. The costs people underestimate are school fees, annual rent paid in few cheques, and the cost of running a car in a city built around driving.",
     readingMinutes: 6,
     verifyWithAuthorities: false,
     reviewedOn: REVIEWED,
@@ -685,7 +685,7 @@ export const GUIDES: readonly Guide[] = [
       {
         heading: "Housing dominates",
         body: [
-          "Rent is the largest line in almost every Dubai budget, and the range is enormous — the same square footage costs multiples more on the Palm than in an outer community. That is a genuine choice rather than a fixed cost.",
+          "Rent is the largest line in almost every Dubai budget, and the range is enormous, the same square footage costs multiples more on the Palm than in an outer community. That is a genuine choice rather than a fixed cost.",
           "The structure catches people out more than the amount. Dubai rent is conventionally paid annually, in a small number of cheques, which means arriving with a year's rent available rather than a month's. Ask what cheque structure a landlord will accept before you commit to a budget.",
         ],
       },
@@ -693,13 +693,13 @@ export const GUIDES: readonly Guide[] = [
         heading: "Schooling",
         body: [
           "For families with children this is often the second-largest cost and sometimes the largest. Fees vary widely by school and by curriculum, and the sought-after schools cost accordingly.",
-          "Budget for the fees and for what surrounds them — registration, uniforms, transport and trips add up to more than people expect.",
+          "Budget for the fees and for what surrounds them, registration, uniforms, transport and trips add up to more than people expect.",
         ],
       },
       {
         heading: "The rest",
         body: [
-          "Utilities are moderate, though summer cooling is the significant one — a large villa cools expensively between June and September, and it surprises people every year.",
+          "Utilities are moderate, though summer cooling is the significant one, a large villa cools expensively between June and September, and it surprises people every year.",
           "Dubai is built around driving. A car, its insurance, fuel and tolls are a real monthly cost, and public transport, while good on the routes it covers, does not cover everywhere you will want to go.",
           "Groceries and eating out span the full range, from very reasonable to as expensive as you like. This is the part of the budget you control.",
         ],
@@ -716,7 +716,7 @@ export const GUIDES: readonly Guide[] = [
       {
         question: "Is Dubai expensive to live in?",
         answer:
-          "It depends almost entirely on housing and schooling, both of which span an enormous range. A family can live comfortably in Dubai for considerably less than in London or New York, or for considerably more — the choices you make about community and school decide it.",
+          "It depends almost entirely on housing and schooling, both of which span an enormous range. A family can live comfortably in Dubai for considerably less than in London or New York, or for considerably more, the choices you make about community and school decide it.",
       },
       {
         question: "Do I need to pay a year's rent upfront?",
@@ -726,7 +726,7 @@ export const GUIDES: readonly Guide[] = [
       {
         question: "How much should I budget for utilities?",
         answer:
-          "Moderate for most of the year, with summer cooling the significant variable — a large villa costs meaningfully more to cool between June and September than a well-insulated apartment.",
+          "Moderate for most of the year, with summer cooling the significant variable, a large villa costs meaningfully more to cool between June and September than a well-insulated apartment.",
       },
     ],
     relatedTools: ["rent-vs-buy", "currency-converter"],
@@ -760,7 +760,7 @@ export function activeGuideCategories(): GuideCategory[] {
  * The anchor id for a section heading.
  *
  * Shared so the contents rail and the section it points at can never drift
- * apart — a table of contents with a dead link is worse than none.
+ * apart, a table of contents with a dead link is worse than none.
  */
 export function sectionAnchor(heading: string): string {
   return heading

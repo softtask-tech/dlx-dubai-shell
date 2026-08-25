@@ -1,7 +1,7 @@
 /**
  * Motion tokens.
  *
- * The brand's motion language is slow, eased and quiet — the same curve
+ * The brand's motion language is slow, eased and quiet, the same curve
  * everywhere, so the site feels like one hand made it. Import these instead of
  * typing durations and cubic-béziers into components.
  *
@@ -19,7 +19,7 @@ export const DURATION = {
   base: 0.6,
   /** Reveal-on-scroll and section entrances. */
   slow: 1.1,
-  /** Hero entrance — the one place a long beat is earned. */
+  /** Hero entrance, the one place a long beat is earned. */
   cinematic: 1.3,
 } as const;
 

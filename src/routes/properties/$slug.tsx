@@ -132,7 +132,7 @@ function PropertyDetail() {
                 <Fact label="Bedrooms" value={formatBedrooms(property.bedrooms)} />
                 <Fact
                   label="Bathrooms"
-                  value={property.bathrooms === null ? "—" : String(property.bathrooms)}
+                  value={property.bathrooms === null ? "-" : String(property.bathrooms)}
                 />
                 <Fact label="Built-up area" value={formatArea(property.built_up_sqft)} />
                 {property.plot_sqft !== null ? (

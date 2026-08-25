@@ -16,7 +16,7 @@ import { Tag } from "@/components/ui/tag";
  * Off-plan payment plans, as dates and amounts.
  *
  * "60/40 with a 2-year post-handover plan" is marketing shorthand. What a buyer
- * needs is what falls due, and when — particularly how much lands before
+ * needs is what falls due, and when, particularly how much lands before
  * handover, since that is the money they must actually have.
  */
 export function PaymentPlanCalculator() {
@@ -112,7 +112,7 @@ export function PaymentPlanCalculator() {
             value={<Money aed={plan.dueBeforeHandover} />}
             meaning={
               plan.isUnbalanced
-                ? `Your percentages add to ${plan.totalPercent.toFixed(0)}%, not 100%. Check the plan against the developer's schedule — this is the most common place a plan is misread.`
+                ? `Your percentages add to ${plan.totalPercent.toFixed(0)}%, not 100%. Check the plan against the developer's schedule. This is the most common place a plan is misread.`
                 : `${beforeHandoverPct.toFixed(0)}% of the price falls due on or before handover. That is the money you need to actually have; the rest follows afterwards.`
             }
             tone={plan.isUnbalanced ? "caution" : "neutral"}

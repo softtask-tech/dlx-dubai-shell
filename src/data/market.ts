@@ -1,7 +1,7 @@
 /**
  * Market data queries.
  *
- * Reads only from our own cleaned tables — never from Dubai Pulse at request
+ * Reads only from our own cleaned tables, never from Dubai Pulse at request
  * time. The pipeline's job is to keep these tables current; the site's job is
  * to render them fast.
  *
@@ -24,7 +24,7 @@ import type {
 /*
  * The Phase 3 tables are newer than the generated types, so this client is
  * typed against the declarations in `market-types.ts` instead. Same connection,
- * same row-level security — only the type parameter differs.
+ * same row-level security, only the type parameter differs.
  */
 const market = supabase as unknown as SupabaseClient<MarketDatabase>;
 
@@ -100,7 +100,7 @@ async function runGetAreaPriceHistory(areaId: string, months: number): Promise<A
 /**
  * The whole market as one monthly series, for the homepage chart.
  *
- * Summed and re-medianed across communities would be wrong — a median of
+ * Summed and re-medianed across communities would be wrong, a median of
  * medians is not a median. This takes the volume-weighted mean of each month's
  * community medians, which is a defensible city-level index and is described on
  * the page as exactly that.
@@ -254,7 +254,7 @@ export function attributionFor(
   }
   if (provenance === "sample") {
     return {
-      label: "Illustrative sample data — not Dubai Land Department records",
+      label: "Illustrative sample data, not Dubai Land Department records",
       isOfficial: false,
       updatedAt,
     };

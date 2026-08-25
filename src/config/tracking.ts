@@ -2,15 +2,15 @@
  * The tracking vocabulary.
  *
  * One list of the things a visitor can do that we care about, and one mapping
- * from each to what every platform calls it. The alternative — each capture
- * point calling `fbq` and `gtag` with whatever string seemed right that day —
+ * from each to what every platform calls it. The alternative, each capture
+ * point calling `fbq` and `gtag` with whatever string seemed right that day,
  * is how analytics estates end up with `Lead`, `lead`, `LeadSubmit` and
  * `submit_lead` all meaning the same thing and none of them counting properly.
  *
  * Because the vocabulary is a union, a capture point cannot fire an event that
  * was never defined; the compiler refuses it.
  *
- * Tag ids are public by nature — they ship in the page for anyone to read — so
+ * Tag ids are public by nature (they ship in the page for anyone to read) so
  * they are `VITE_` variables. The API tokens that let a server *write*
  * conversions are not, and never appear in this file.
  */
@@ -32,7 +32,7 @@ export type TrackedEvent =
   | "submit_lead"
   | "request_report"
   | "advisor_lead"
-  /* Outcome — server-side only, sent as offline conversions */
+  /* Outcome, server-side only, sent as offline conversions */
   | "qualified_lead"
   | "deal_won";
 
@@ -91,7 +91,7 @@ export const EVENTS: Record<TrackedEvent, EventMapping> = {
  * Which tags are configured.
  *
  * Read at module load from build-time env. An unconfigured platform is simply
- * never loaded — no script, no requests, no console errors — so a deployment
+ * never loaded: no script, no requests, no console errors. So a deployment
  * without ad accounts behaves as though Phase 6 had not happened.
  */
 export const tags = {

@@ -83,12 +83,12 @@ export function YieldComparison({ areas }: { areas: readonly AreaWithStats[] }) 
                 <span className="display-2">
                   {bestYield?.stats?.gross_yield_pct
                     ? `${bestYield.stats.gross_yield_pct.toFixed(1)}%`
-                    : "—"}
+                    : "-"}
                 </span>
               }
               meaning={
                 bestYield?.stats?.gross_yield_pct
-                  ? `${bestYield.name} returns the most rent against price of those selected. Gross, before service charges — which vary enough by building to change the order.`
+                  ? `${bestYield.name} returns the most rent against price of those selected. Gross, before service charges, which vary enough by building to change the order.`
                   : "We hold no registered tenancy contracts for the communities selected, so no yield is shown."
               }
               tone="neutral"
@@ -122,15 +122,15 @@ export function YieldComparison({ areas }: { areas: readonly AreaWithStats[] }) 
                       >
                         {area.stats?.gross_yield_pct
                           ? `${area.stats.gross_yield_pct.toFixed(1)}%`
-                          : "—"}
+                          : "-"}
                       </td>
                       <td className="caption py-4 pe-6">
                         {area.stats?.yoy_price_change_pct !== null &&
                         area.stats?.yoy_price_change_pct !== undefined
                           ? `${area.stats.yoy_price_change_pct >= 0 ? "+" : ""}${area.stats.yoy_price_change_pct.toFixed(1)}%`
-                          : "—"}
+                          : "-"}
                       </td>
-                      <td className="caption py-4 pe-6">{area.stats?.transaction_count ?? "—"}</td>
+                      <td className="caption py-4 pe-6">{area.stats?.transaction_count ?? "-"}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -145,8 +145,8 @@ export function YieldComparison({ areas }: { areas: readonly AreaWithStats[] }) 
         <Assumptions>
           <p className="caption max-w-measure">
             Yields here are gross. Service charges differ enough between buildings that two
-            properties in the same community can have materially different net returns — which is
-            why the community is where you start, not where you finish.
+            properties in the same community can have materially different net returns, which is why
+            the community is where you start, not where you finish.
           </p>
         </Assumptions>
       }

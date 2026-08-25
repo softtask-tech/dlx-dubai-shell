@@ -25,7 +25,7 @@ export const Route = createFileRoute("/services/$slug")({
       title: service.title,
       description: service.description,
       tagline: service.tagline,
-      /* One card for the whole section — a per-service card would need art. */
+      /* One card for the whole section, a per-service card would need art. */
       image: serviceOgPath(service.slug),
       breadcrumbs: [
         { name: "Services", path: "/services" },
@@ -102,7 +102,7 @@ function ServicePage() {
         </div>
       </Section>
 
-      {/* Enquiry — the point of the page */}
+      {/* Enquiry, the point of the page */}
       <Section id="enquire">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">

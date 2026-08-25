@@ -21,7 +21,7 @@ import type { AdvisorTurn } from "./advisor";
 /**
  * Lovable AI is OpenAI-compatible, so the endpoint is a configuration value
  * rather than a code path. Pointing `ADVISOR_API_URL` at any compatible gateway
- * is a deployment change, not a rewrite — which matters because the model
+ * is a deployment change, not a rewrite, which matters because the model
  * behind an advisor with these guardrails will be revisited.
  */
 const DEFAULT_ENDPOINT = "https://ai.gateway.lovable.dev/v1/chat/completions";
@@ -46,8 +46,8 @@ export class RateLimited extends Error {
 /**
  * Streams a completion, yielding text as it arrives.
  *
- * One retry on a 429 and on a 5xx, because the alternative — telling a visitor
- * mid-question that the system is down — is worth one extra second of waiting.
+ * One retry on a 429 and on a 5xx, because the alternative, telling a visitor
+ * mid-question that the system is down, is worth one extra second of waiting.
  * A second failure is real and the caller falls back honestly rather than
  * spinning.
  */
@@ -251,8 +251,8 @@ export async function appendTurns(
  * A per-IP sliding window, in memory.
  *
  * Deliberately modest: this is not a defence against a determined attacker,
- * who would rotate addresses anyway. It stops the ordinary failure — a script,
- * a stuck retry loop, someone bored — from turning into a bill. The real cap is
+ * who would rotate addresses anyway. It stops the ordinary failure, a script,
+ * a stuck retry loop, someone bored, from turning into a bill. The real cap is
  * the per-conversation turn limit, which is in the database and survives a
  * restart.
  */

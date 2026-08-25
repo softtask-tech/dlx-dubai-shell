@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
  * Listing gallery: one large plate with a strip of thumbnails beneath it.
  *
  * A lightbox would be the portal answer. This reads as a magazine spread
- * instead — the selected image stays in the flow of the page at full width, and
+ * instead, the selected image stays in the flow of the page at full width, and
  * the thumbnails are real buttons so the whole thing is keyboard-operable.
  */
 export function Gallery({ images, title }: { images: readonly string[]; title: string }) {
@@ -27,7 +27,7 @@ export function Gallery({ images, title }: { images: readonly string[]; title: s
         <div className="mt-8 aspect-[16/10] w-full overflow-hidden bg-muted">
           <img
             src={current}
-            alt={`${title} — image ${selected + 1} of ${images.length}`}
+            alt={`${title}, image ${selected + 1} of ${images.length}`}
             loading="lazy"
             decoding="async"
             className="h-full w-full object-cover"

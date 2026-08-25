@@ -211,8 +211,8 @@ function LeadsInbox() {
                     })}
                   </td>
                   <td className="py-5 pr-6">
-                    <p className="body-text">{lead.full_name ?? "—"}</p>
-                    <p className="caption">{lead.email ?? lead.phone ?? "—"}</p>
+                    <p className="body-text">{lead.full_name ?? "-"}</p>
+                    <p className="caption">{lead.email ?? lead.phone ?? "-"}</p>
                   </td>
                   <td className="caption py-5 pr-6">
                     {humanise(lead.intent)}
@@ -221,8 +221,8 @@ function LeadsInbox() {
                   </td>
                   <td className="caption py-5 pr-6 whitespace-nowrap">
                     {lead.budget_max
-                      ? formatPrice(lead.budget_max, lead.budget_currency, "—")
-                      : "—"}
+                      ? formatPrice(lead.budget_max, lead.budget_currency, "-")
+                      : "-"}
                   </td>
                   <td className="caption py-5 pr-6">
                     {humanise(lead.source_type)}

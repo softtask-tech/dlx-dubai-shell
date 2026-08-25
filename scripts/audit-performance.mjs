@@ -8,17 +8,17 @@
  * Core Web Vitals failure, every one of which is visible in the served HTML and
  * the built assets:
  *
- *   LCP — is the largest text candidate actually painted by the server, or is
+ *   LCP, is the largest text candidate actually painted by the server, or is
  *         it sitting at opacity 0 waiting for JavaScript? This is the check
  *         that caught the real bug in this phase: the homepage H1 shipped
  *         hidden and only appeared after hydration, so LCP was measuring bundle
  *         download time rather than page render time.
  *
- *   CLS — does every image declare its dimensions, or reserve space some other
+ *   CLS, does every image declare its dimensions, or reserve space some other
  *         way? An image that arrives without a box pushes the page down under
  *         the reader's thumb.
  *
- *   Weight — how much JavaScript and CSS the browser must fetch, and how much
+ *   Weight, how much JavaScript and CSS the browser must fetch, and how much
  *         of it blocks rendering.
  *
  * Run against the dev server or a preview:
@@ -34,7 +34,7 @@ const ORIGIN = process.argv[2] ?? "http://127.0.0.1:5599";
 /** The pages worth auditing: one of each shape the site has. */
 const PAGES = ["/", "/ar", "/properties", "/market-intelligence", "/tools", "/guides", "/contact"];
 
-/** Budgets. Deliberately generous — these are failure thresholds, not targets. */
+/** Budgets. Deliberately generous. These are failure thresholds, not targets. */
 const BUDGET = {
   htmlKb: 250,
   /* What a first visit pulls before the page is interactive. React, the router
@@ -74,7 +74,7 @@ function note(page, message) {
 function checkHeroPaints(page, html) {
   const h1 = /<h1\b[^>]*>([\s\S]*?)<\/h1>/i.exec(html);
   if (!h1) {
-    note(page, "no <h1> found — nothing to measure for LCP");
+    note(page, "no <h1> found, nothing to measure for LCP");
     return;
   }
 
@@ -84,7 +84,7 @@ function checkHeroPaints(page, html) {
   const region = html.slice(start, h1.index + h1[0].length);
 
   if (/opacity\s*:\s*0(?![.\d])/.test(region)) {
-    fail(page, "the <h1> or an ancestor is server-rendered at opacity:0 — LCP waits for hydration");
+    fail(page, "the <h1> or an ancestor is server-rendered at opacity:0, LCP waits for hydration");
   }
   if (/visibility\s*:\s*hidden/.test(region)) {
     fail(page, "the <h1> or an ancestor is server-rendered visibility:hidden");
@@ -106,7 +106,7 @@ function checkImages(page, html) {
       const src = /src="([^"]{0,60})/.exec(img)?.[1] ?? "unknown";
       fail(
         page,
-        `<img src="${src}…"> has no width/height and does not fill a sized parent — CLS risk`,
+        `<img src="${src}…"> has no width/height and does not fill a sized parent, CLS risk`,
       );
     }
 
@@ -137,7 +137,7 @@ function checkRenderBlocking(page, html) {
  * Used to price what a page's HTML actually asks the browser to fetch, which is
  * the only weight that matters. Two earlier versions of this function got it
  * wrong in ways worth recording: the first summed the whole assets directory
- * (387 kB — the entire site including the admin and all eight calculators, which
+ * (387 kB, the entire site including the admin and all eight calculators, which
  * no visitor downloads), and the second guessed the entry chunk by filename and
  * picked a Supabase chunk. The HTML knows; ask it.
  */
@@ -181,7 +181,7 @@ async function main() {
   console.log(`Auditing ${ORIGIN}\n`);
 
   const sizes = await assetSizes();
-  if (!sizes) console.log("  (no build found — run `npm run build` to price the assets)\n");
+  if (!sizes) console.log("  (no build found, run `npm run build` to price the assets)\n");
 
   for (const page of PAGES) {
     let response;
@@ -234,7 +234,7 @@ async function main() {
          * targets Cloudflare Workers and nitro writes to .output/server, which
          * the preview plugin does not look for. Weight is therefore checked
          * from the build output below rather than per page, and the structural
-         * checks above — which are the ones that actually decide LCP and CLS —
+         * checks above, which are the ones that actually decide LCP and CLS,
          * run against whichever server is up.
          */
         weight = "";
@@ -257,7 +257,7 @@ async function main() {
       `\n  build inventory           ${(js / 1024).toFixed(0)} kB JS + ${(css / 1024).toFixed(0)} kB CSS gzipped, across ${sizes.size} files`,
     );
     console.log(
-      "                            (the whole site, every route — a visitor downloads the shared",
+      "                            (the whole site, every route, a visitor downloads the shared",
     );
     console.log("                             chunks plus the one route they opened)");
 

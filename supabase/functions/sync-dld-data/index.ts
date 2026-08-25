@@ -1,5 +1,5 @@
 /**
- * sync-dld-data — keeps the market tables current.
+ * sync-dld-data, keeps the market tables current.
  *
  * Runs on a schedule and can be triggered by hand from the admin data view.
  * The shape of a run:
@@ -16,15 +16,15 @@
  * "last updated" stamp on them.
  *
  * And a run is idempotent. Every row upserts on its source identifier, so
- * re-running after a partial failure corrects rather than duplicates — which
+ * re-running after a partial failure corrects rather than duplicates, which
  * matters because a duplicated sale would quietly bias a median.
  *
  * Environment:
- *   DUBAI_PULSE_CLIENT_ID / DUBAI_PULSE_CLIENT_SECRET — register at
+ *   DUBAI_PULSE_CLIENT_ID / DUBAI_PULSE_CLIENT_SECRET, register at
  *     https://www.dubaipulse.gov.ae for DLD dataset access
- *   DUBAI_PULSE_TOKEN_URL / DUBAI_PULSE_API_BASE — endpoints, overridable
+ *   DUBAI_PULSE_TOKEN_URL / DUBAI_PULSE_API_BASE, endpoints, overridable
  *     because the portal has moved them before
- *   DLD_SYNC_SECRET — shared secret the scheduler and the admin trigger present
+ *   DLD_SYNC_SECRET, shared secret the scheduler and the admin trigger present
  * Supabase provides SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.
  */
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";

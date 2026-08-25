@@ -3,10 +3,10 @@
  *
  * A lead's temperature is what decides whether a consultant calls within the
  * hour or the lead waits for the weekly sweep, so the rules are kept here in
- * one readable place rather than spread across forms — and they run on the
+ * one readable place rather than spread across forms, and they run on the
  * server, so a visitor cannot post themselves a score.
  *
- * The scale is 0–100 and deliberately coarse. It ranks the queue; it does not
+ * The scale is 0-100 and deliberately coarse. It ranks the queue; it does not
  * pretend to predict anything.
  */
 import type { LeadIntent, LeadTemperature, LeadTimeline } from "./types";
@@ -16,7 +16,7 @@ export type ScoreInput = {
   /**
    * Where the enquiry came from.
    *
-   * Not a judgement about the channel — a paid click is not worth more than an
+   * Not a judgement about the channel, a paid click is not worth more than an
    * organic one, and scoring it that way would flatter whichever budget is
    * currently largest. It is a judgement about *effort*: someone who ran a
    * yield calculation or asked for a market report before getting in touch has
@@ -36,7 +36,7 @@ export type ScoreInput = {
 export type ScoreResult = {
   score: number;
   temperature: LeadTemperature;
-  /** Why it scored what it did — shown in the admin inbox. */
+  /** Why it scored what it did, shown in the admin inbox. */
   reasons: string[];
 };
 
@@ -63,9 +63,9 @@ type BudgetBand = { from: number; points: number; label: string };
 /** Purchase budgets in AED, highest first. */
 const PURCHASE_BANDS: readonly BudgetBand[] = [
   { from: 10_000_000, points: 25, label: "Budget above AED 10M" },
-  { from: 5_000_000, points: 21, label: "Budget AED 5–10M" },
-  { from: 2_000_000, points: 16, label: "Budget AED 2–5M" },
-  { from: 750_000, points: 10, label: "Budget AED 750k–2M" },
+  { from: 5_000_000, points: 21, label: "Budget AED 5-10M" },
+  { from: 2_000_000, points: 16, label: "Budget AED 2-5M" },
+  { from: 750_000, points: 10, label: "Budget AED 750k-2M" },
   { from: 1, points: 5, label: "Budget stated" },
 ];
 
@@ -79,9 +79,9 @@ const PURCHASE_BANDS: readonly BudgetBand[] = [
  */
 const RENTAL_BANDS: readonly BudgetBand[] = [
   { from: 500_000, points: 25, label: "Rent above AED 500k/year" },
-  { from: 250_000, points: 21, label: "Rent AED 250–500k/year" },
-  { from: 120_000, points: 16, label: "Rent AED 120–250k/year" },
-  { from: 60_000, points: 10, label: "Rent AED 60–120k/year" },
+  { from: 250_000, points: 21, label: "Rent AED 250-500k/year" },
+  { from: 120_000, points: 16, label: "Rent AED 120-250k/year" },
+  { from: 60_000, points: 10, label: "Rent AED 60-120k/year" },
   { from: 1, points: 5, label: "Budget stated" },
 ];
 
@@ -99,7 +99,7 @@ export function scoreLead(input: ScoreInput): ScoreResult {
     reasons.push(`Intent: ${input.intent}`);
   }
 
-  /* Score the top of a stated range — it is what the client is reaching for. */
+  /* Score the top of a stated range. It is what the client is reaching for. */
   const budget = input.budgetMax ?? input.budgetMin ?? null;
   if (budget && budget > 0) {
     const bands = input.intent === "rent" ? RENTAL_BANDS : PURCHASE_BANDS;
@@ -123,7 +123,7 @@ export function scoreLead(input: ScoreInput): ScoreResult {
     reasons.push("Wrote a detailed message");
   }
 
-  /* Cash buyers move faster than financed ones — a small nudge, not a verdict. */
+  /* Cash buyers move faster than financed ones, a small nudge, not a verdict. */
   if (input.isFinancing === false) {
     score += 4;
     reasons.push("Not requiring finance");
@@ -132,7 +132,7 @@ export function scoreLead(input: ScoreInput): ScoreResult {
   /*
    * Effort spent before making contact. A visitor who worked out their own
    * buying costs, or wanted the numbers behind a community, arrives further
-   * along than one who filled in a contact form — and further along than the
+   * along than one who filled in a contact form, and further along than the
    * same person would have been from any channel.
    */
   const EFFORT: Record<string, { points: number; label: string }> = {

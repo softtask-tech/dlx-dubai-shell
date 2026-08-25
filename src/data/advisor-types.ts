@@ -20,7 +20,7 @@ export type AdvisorConversationRow = {
   summary: string | null;
   /* `JsonObject` rather than `Record<string, unknown>`: this row crosses the
    * server-function boundary to the admin app, and that boundary rejects
-   * `unknown` — rightly, since anything crossing it has to be serializable. */
+   * `unknown`, rightly, since anything crossing it has to be serializable. */
   qualification: JsonObject;
   lead_id: string | null;
   call_sid: string | null;

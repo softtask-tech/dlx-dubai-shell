@@ -24,7 +24,7 @@ const FAQS: readonly FaqEntry[] = [
   {
     question: "Where do these numbers come from?",
     answer:
-      "Dubai Land Department open data — the same registry every sale in Dubai is recorded in — cleaned into our own database and recomputed on a schedule. Every page states which data it is showing and when it was last updated. DLX is not affiliated with the Dubai Land Department.",
+      "Dubai Land Department open data, the same registry every sale in Dubai is recorded in, cleaned into our own database and recomputed on a schedule. Every page states which data it is showing and when it was last updated. DLX is not affiliated with the Dubai Land Department.",
   },
   {
     question: "Why is your median different from the figure I saw elsewhere?",
@@ -34,7 +34,7 @@ const FAQS: readonly FaqEntry[] = [
   {
     question: "Is the rental yield you show net or gross?",
     answer:
-      "Gross — a year's registered rent divided by the typical sale price. Service charges, which in Dubai are significant and vary a lot by building, come out of that. We will model the net figure for a specific property when you ask.",
+      "Gross, a year's registered rent divided by the typical sale price. Service charges, which in Dubai are significant and vary a lot by building, come out of that. We will model the net figure for a specific property when you ask.",
   },
   {
     question: "How current is this?",
@@ -101,7 +101,7 @@ function MarketIntelligencePage() {
           <div className="lg:col-span-4 lg:col-start-9">
             <Reveal delay={0.12}>
               <p className="body-text text-muted-foreground">
-                Not asking prices, not agency sentiment — what buyers actually paid, recorded in the
+                Not asking prices, not agency sentiment, what buyers actually paid, recorded in the
                 registry every Dubai sale passes through.
               </p>
               <FreshnessStamp attribution={summary.attribution} className="mt-8" />
@@ -192,7 +192,7 @@ function MarketIntelligencePage() {
                 <Eyebrow>Yields by community</Eyebrow>
                 <h2 className="display-2 mt-6">Where the rent covers the most</h2>
                 <p className="body-text mt-6 max-w-measure text-muted-foreground">
-                  Gross yield — a year's registered rent against the typical sale price. Service
+                  Gross yield, a year's registered rent against the typical sale price. Service
                   charges come out of this, and they are not small in Dubai.
                 </p>
               </Reveal>
@@ -272,25 +272,25 @@ function MarketIntelligencePage() {
                       <td className="caption py-4 pr-6 whitespace-nowrap">
                         {area.stats?.median_price_per_sqft
                           ? `AED ${Math.round(area.stats.median_price_per_sqft).toLocaleString("en-AE")}`
-                          : "—"}
+                          : "-"}
                       </td>
                       <td className="caption py-4 pr-6 whitespace-nowrap">
                         {area.stats?.median_price
                           ? `AED ${(area.stats.median_price / 1_000_000).toFixed(2)}M`
-                          : "—"}
+                          : "-"}
                       </td>
                       <td className="caption py-4 pr-6 whitespace-nowrap">
                         {area.stats?.yoy_price_change_pct !== null &&
                         area.stats?.yoy_price_change_pct !== undefined
                           ? `${area.stats.yoy_price_change_pct >= 0 ? "+" : ""}${area.stats.yoy_price_change_pct.toFixed(1)}%`
-                          : "—"}
+                          : "-"}
                       </td>
                       <td className="caption py-4 pr-6 whitespace-nowrap">
                         {area.stats?.gross_yield_pct
                           ? `${area.stats.gross_yield_pct.toFixed(1)}%`
-                          : "—"}
+                          : "-"}
                       </td>
-                      <td className="caption py-4 pr-6">{area.stats?.transaction_count ?? "—"}</td>
+                      <td className="caption py-4 pr-6">{area.stats?.transaction_count ?? "-"}</td>
                     </tr>
                   ))}
                 </tbody>

@@ -1,5 +1,5 @@
 /**
- * Lead submission — server side only.
+ * Lead submission, server side only.
  *
  * Everything that decides a lead's value happens here rather than in the
  * browser: the score is computed server-side so a visitor cannot post
@@ -83,7 +83,7 @@ export const leadSubmissionSchema = z
 
     /*
      * The browser's deduplication id for this conversion. Passed through so the
-     * server's Conversions API call carries the same one — without it the same
+     * server's Conversions API call carries the same one, without it the same
      * lead is counted by Meta twice, and a campaign looks twice as good as it
      * is, which is worse than not measuring at all.
      */
@@ -131,8 +131,8 @@ export async function submitLead(input: LeadSubmission): Promise<LeadSubmissionR
   const supabaseAdmin = await adminDb();
 
   /*
-   * Assess before scoring. A submission that fails hard is still recorded —
-   * flagged, not deleted — because a spam filter with no appeal quietly loses
+   * Assess before scoring. A submission that fails hard is still recorded,
+   * flagged, not deleted, because a spam filter with no appeal quietly loses
    * real business, and someone has to be able to find the one it got wrong.
    */
   const { assessSubmission, dedupeKeyFor, isDuplicate } = await import("./spam.server");
@@ -155,7 +155,7 @@ export async function submitLead(input: LeadSubmission): Promise<LeadSubmissionR
   /*
    * A repeat within the window is answered as though it worked and written
    * nowhere. Someone who pressed submit twice should see success, not an error
-   * telling them off — and the consultant should see one lead, not two.
+   * telling them off, and the consultant should see one lead, not two.
    */
   if (dedupeKey && (await isDuplicate(dedupeKey))) {
     return { ok: true, leadId: "00000000-0000-0000-0000-000000000000", temperature: "cold" };
@@ -267,7 +267,7 @@ export async function submitLead(input: LeadSubmission): Promise<LeadSubmissionR
 
   /*
    * Tell the ad platforms, with the event id the browser pixel used. Failure
-   * here costs measurement, never the enquiry — a lead that saved but could not
+   * here costs measurement, never the enquiry, a lead that saved but could not
    * be reported is a bookkeeping problem; a lead lost because a pixel was down
    * is a client who never hears back.
    */
@@ -311,7 +311,7 @@ export async function dispatchLeadEmails(leadId: string): Promise<void> {
 /**
  * Reports a new lead as a conversion.
  *
- * The value sent is the *budget*, not a deal value — nothing has been earned
+ * The value sent is the *budget*, not a deal value, nothing has been earned
  * yet. Sending a plausible-looking revenue figure at enquiry time is how a
  * platform learns to optimise for people who claim large budgets, which is a
  * different population from people who buy.
@@ -326,7 +326,7 @@ async function dispatchLeadConversion(
   await dispatchConversion({
     leadId,
     event: input.sourceType === "market_report" ? "request_report" : "submit_lead",
-    /* No browser id means this came from somewhere without one — a webhook, a
+    /* No browser id means this came from somewhere without one, a webhook, a
      * phone call. A fresh id is still needed so the platform can deduplicate a
      * retry of this same dispatch. */
     eventId: input.eventId ?? crypto.randomUUID(),
@@ -346,7 +346,7 @@ async function dispatchLeadConversion(
     sourceUrl: input.landingPageUrl ?? null,
   });
 
-  /* The score is not sent here — it is what decides whether this lead later
+  /* The score is not sent here. It is what decides whether this lead later
    * earns a `qualified_lead` conversion, which is the signal actually worth
    * optimising towards. See `reportLeadOutcome`. */
   void score;

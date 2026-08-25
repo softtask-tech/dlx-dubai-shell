@@ -17,8 +17,8 @@ import { Select } from "@/components/forms/fields";
  * ROI and rental yield.
  *
  * Leads with the net figure, because gross is the number that gets quoted and
- * net is the number that reaches you. The gap between them — service charges
- * and voids — is shown rather than buried, since in Dubai it is often more than
+ * net is the number that reaches you. The gap between them, service charges
+ * and voids, is shown rather than buried, since in Dubai it is often more than
  * a percentage point.
  */
 export function YieldCalculator({ areas }: { areas: readonly AreaWithStats[] }) {
@@ -119,7 +119,7 @@ export function YieldCalculator({ areas }: { areas: readonly AreaWithStats[] }) 
             value={serviceCharge}
             onChange={setServiceCharge}
             step={1}
-            hint="The single biggest swing factor. Use the real figure for your building — ask us and we will get it."
+            hint="The single biggest swing factor. Use the real figure for your building, ask us and we will get it."
           />
           <NumberField
             label="Maintenance and voids"
@@ -138,14 +138,14 @@ export function YieldCalculator({ areas }: { areas: readonly AreaWithStats[] }) 
             label="Net yield"
             value={
               <span className="display-2">
-                {result.netYieldPct === null ? "—" : `${result.netYieldPct.toFixed(2)}%`}
+                {result.netYieldPct === null ? "-" : `${result.netYieldPct.toFixed(2)}%`}
               </span>
             }
             meaning={
               result.netYieldPct === null
                 ? "Enter a purchase price to see the return."
                 : netVsGross !== null && netVsGross > 0
-                  ? `What actually reaches you after costs. That is ${netVsGross.toFixed(2)} percentage points below the gross figure most listings quote — the gap is service charges and voids.`
+                  ? `What actually reaches you after costs. That is ${netVsGross.toFixed(2)} percentage points below the gross figure most listings quote. The gap is service charges and voids.`
                   : "What reaches you after costs."
             }
             tone={result.netYieldPct !== null && result.netYieldPct >= 6 ? "positive" : "neutral"}
@@ -157,7 +157,7 @@ export function YieldCalculator({ areas }: { areas: readonly AreaWithStats[] }) 
               note="Rent over price, with nothing taken off. The number usually quoted."
               value={
                 <span className="body-text">
-                  {result.grossYieldPct === null ? "—" : `${result.grossYieldPct.toFixed(2)}%`}
+                  {result.grossYieldPct === null ? "-" : `${result.grossYieldPct.toFixed(2)}%`}
                 </span>
               }
             />
@@ -180,7 +180,7 @@ export function YieldCalculator({ areas }: { areas: readonly AreaWithStats[] }) 
               note="On net income alone, ignoring any change in value."
               value={
                 <span className="body-text">
-                  {result.paybackYears === null ? "—" : `${result.paybackYears.toFixed(1)} years`}
+                  {result.paybackYears === null ? "-" : `${result.paybackYears.toFixed(1)} years`}
                 </span>
               }
             />

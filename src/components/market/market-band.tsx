@@ -16,14 +16,14 @@ import { Section, Eyebrow } from "@/components/ui/section";
  *
  * Three layers, in the order the golden rule asks for them:
  *
- *   1. a headline anyone understands in two seconds — the market moved this
+ *   1. a headline anyone understands in two seconds, the market moved this
  *      much, here is what that means for you;
  *   2. an "explore" reveal holding the chart and the per-community detail, for
  *      the reader who wants it; and
  *   3. a route through to the full report, which is where the lead is captured.
  *
  * Deliberately not a dashboard. Four numbers, one line, and a sentence against
- * each — a visitor who reads nothing else should still leave knowing which way
+ * each, a visitor who reads nothing else should still leave knowing which way
  * the market moved and why they might care.
  */
 export function MarketBand({
@@ -59,7 +59,7 @@ export function MarketBand({
           <Reveal delay={0.1}>
             <p className="lead text-muted-foreground">
               That is the median across {summary.areasCovered} communities we track, weighted by how
-              much actually changed hands. It is the number a valuation should start from — not an
+              much actually changed hands. It is the number a valuation should start from, not an
               asking price, and not an agency's opinion.
             </p>
             <FreshnessStamp attribution={summary.attribution} className="mt-8" />

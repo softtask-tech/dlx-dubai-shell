@@ -29,13 +29,13 @@ const CATEGORIES = [
 
 /**
  * The category filter lives in the URL, so a filtered journal is shareable,
- * survives a refresh and is server-rendered — a crawler sees real posts rather
+ * survives a refresh and is server-rendered, a crawler sees real posts rather
  * than an empty shell waiting for JavaScript.
  */
 const searchSchema = z.object({ category: z.enum(CATEGORIES).optional() });
 
 /* The router sets its own `aria-current` on an active link, and every chip here
- * points at the same route — so the selected state rides on a data attribute we
+ * points at the same route, so the selected state rides on a data attribute we
  * own rather than one the router will overwrite. */
 const CHIP =
   "eyebrow border border-border px-4 py-2.5 transition-colors hover:border-accent " +
@@ -55,7 +55,7 @@ export const Route = createFileRoute("/blog/")({
     return { posts, categories: activeBlogCategories(all) };
   },
   /* Filtered views are the same posts in a different order, so the canonical
-   * stays on /blog — which is what passing the bare path here does. */
+   * stays on /blog, which is what passing the bare path here does. */
   head: () => pageHead({ path: "/blog", breadcrumbs: [{ name: "Journal", path: "/blog" }] }),
   component: BlogIndex,
 });
@@ -78,7 +78,7 @@ function BlogIndex() {
           <div className="lg:col-span-4 lg:col-start-9">
             <Reveal delay={0.12}>
               <p className="body-text text-muted-foreground">
-                What we are actually seeing — in buildings, in negotiations and in the registry —
+                What we are actually seeing, in buildings, in negotiations and in the registry,
                 written as it happens rather than polished into a newsletter.
               </p>
               <div className="mt-10 h-px w-16 bg-accent" />
@@ -122,7 +122,7 @@ function BlogIndex() {
           <Reveal>
             <p className="lead max-w-measure text-muted-foreground">
               Nothing published here yet. The playbook is where the substance lives in the meantime
-              —{" "}
+              -{" "}
               <Link to="/guides" className="prose-link">
                 read the guides
               </Link>

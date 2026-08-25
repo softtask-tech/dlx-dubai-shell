@@ -10,7 +10,7 @@
  * Arabic will land on Arabic; pointing it at an English page is worse than
  * having no alternate at all, because the reader bounces and the engine learns
  * the site lies. So `LOCALISED_PATHS` is the short, honest list, and everything
- * downstream — hreflang, the sitemap, the language switcher — reads from it.
+ * downstream (hreflang, the sitemap, the language switcher) reads from it.
  *
  * English is the default and carries no prefix: `/about`, not `/en/about`. The
  * others are path-prefixed (`/ar/about`), which is the only URL strategy that
@@ -85,7 +85,7 @@ export const LOCALES: readonly Locale[] = [
 
 export const DEFAULT_LOCALE: LocaleCode = "en";
 
-/** Every locale except the default — the ones that carry a path prefix. */
+/** Every locale except the default, the ones that carry a path prefix. */
 export const PREFIXED_LOCALES = LOCALES.filter((locale) => locale.code !== DEFAULT_LOCALE);
 
 /**
@@ -96,7 +96,7 @@ export const PREFIXED_LOCALES = LOCALES.filter((locale) => locale.code !== DEFAU
  * person. Translating them properly is worth more than translating everything
  * badly.
  *
- * The rest of the site — guides, the journal, listings, area profiles — stays
+ * The rest of the site (guides, the journal, listings, area profiles) stays
  * in English, and says so. Several of those pages carry visa thresholds, fee
  * schedules and tax statements; an unreviewed translation of a legal figure is
  * exactly the invented specific CLAUDE.md forbids. A reader who wants those in
@@ -115,7 +115,7 @@ export const LOCALISED_PATHS: readonly string[] = [
  * Where a page's social card lives, for a given language.
  *
  * English keeps the existing path so no committed card moves. The others are
- * nested by locale — `/og/ar/home.png` — because the card renders the page's
+ * nested by locale (`/og/ar/home.png`) because the card renders the page's
  * tagline in large type, and a shared Arabic page showing an English sentence is
  * the most visible way a "multilingual" site announces it is not.
  */
@@ -147,7 +147,7 @@ export function normalisePath(path: string): string {
 /**
  * The URL of a page in a given language.
  *
- * English keeps the bare path. Anything else gets the prefix — but only when
+ * English keeps the bare path. Anything else gets the prefix, but only when
  * that page is actually translated, so a caller cannot accidentally mint a URL
  * that 404s.
  */

@@ -27,7 +27,7 @@ type RevealProps = HTMLAttributes<HTMLDivElement> & {
  * into view.
  *
  * The consequence is that content is visible for every reader who does not get
- * the animation — no JavaScript, no IntersectionObserver, reduced motion, or a
+ * the animation, no JavaScript, no IntersectionObserver, reduced motion, or a
  * crawler reading the raw HTML. Body copy at `opacity: 0` in the markup is both
  * a blank page waiting to happen and the kind of hidden text search engines
  * penalise; this shape cannot produce either.

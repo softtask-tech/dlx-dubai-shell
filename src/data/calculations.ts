@@ -195,7 +195,7 @@ export type PaymentMilestone = {
 
 export type PaymentPlanResult = {
   milestones: PaymentMilestone[];
-  /** Everything due on or before handover — the number that decides affordability. */
+  /** Everything due on or before handover, the number that decides affordability. */
   dueBeforeHandover: number;
   dueAfterHandover: number;
   /** True when the percentages do not add to 100. */
@@ -274,7 +274,7 @@ export function buildPaymentPlan(input: PaymentPlanInput): PaymentPlanResult {
    * the percentages typed in. Those two differ in a case that is easy to hit:
    * a plan with a remainder but no post-handover instalments to put it in. The
    * declared percentages still sum to 100 while the schedule shown accounts for
-   * less than the price — which is exactly the silent misread this warning
+   * less than the price, which is exactly the silent misread this warning
    * exists to catch.
    */
   const totalPercent = milestones.reduce((sum, milestone) => sum + milestone.percentOfPrice, 0);
@@ -308,7 +308,7 @@ export type GoldenVisaIndication = {
   routeLabel: string;
   /** Shortfall to the next route up, when there is one. */
   shortfallToNextAed: number | null;
-  /** Points to raise with a licensed adviser — never presented as conclusions. */
+  /** Points to raise with a licensed adviser, never presented as conclusions. */
   considerations: string[];
   /** Who the holder could typically sponsor, stated as a question to confirm. */
   sponsorship: string[];
@@ -348,13 +348,13 @@ export function indicateGoldenVisa(input: GoldenVisaInput): GoldenVisaIndication
 
   if (!input.ownedOutright) {
     considerations.push(
-      "The property is mortgaged. Financed purchases can carry additional conditions — confirm what your lender's involvement means for the application before you commit.",
+      "The property is mortgaged. Financed purchases can carry additional conditions. Confirm what your lender's involvement means for the application before you commit.",
     );
   }
 
   if (input.isOffPlan) {
     considerations.push(
-      "This is off-plan. Requirements around completion and title registration differ from a ready property, and timing matters — ask your adviser what has to be in place before you can apply.",
+      "This is off-plan. Requirements around completion and title registration differ from a ready property, and timing matters. Ask your adviser what has to be in place before you can apply.",
     );
   }
 
@@ -371,10 +371,10 @@ export function indicateGoldenVisa(input: GoldenVisaInput): GoldenVisaIndication
   const sponsorship: string[] = [];
   if (route !== "below_threshold") {
     if (input.spouse)
-      sponsorship.push("A spouse can generally be sponsored — confirm the documentation required.");
+      sponsorship.push("A spouse can generally be sponsored. Confirm the documentation required.");
     if (input.children > 0) {
       sponsorship.push(
-        `${input.children} ${input.children === 1 ? "child" : "children"} — sponsorship of children is generally available, though age and dependency conditions apply and are worth confirming early.`,
+        `${input.children} ${input.children === 1 ? "child" : "children"}, sponsorship of children is generally available, though age and dependency conditions apply and are worth confirming early.`,
       );
     }
     sponsorship.push(

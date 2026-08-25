@@ -1,6 +1,6 @@
 /**
  * Audits the SEO/AEO rules that CLAUDE.md calls non-negotiable, against a
- * running server rather than against the source — which is the only way to
+ * running server rather than against the source, which is the only way to
  * catch a page that renders a different head from the one it declares.
  *
  *   npm run dev
@@ -10,11 +10,11 @@
  * It crawls every URL in `/sitemap.xml` and checks that each one has:
  *
  *   * a title, description, og:image, twitter:card and canonical;
- *   * a title and description that no other page shares — a shared description
+ *   * a title and description that no other page shares, a shared description
  *     across ten pages is the single most common way a site with good content
  *     ranks badly;
  *   * an og:image that no other *registered* page shares. Detail pages built
- *     from the database — a community, a listing, a journal post — legitimately
+ *     from the database, a community, a listing, a journal post - legitimately
  *     fall back to their section's card until someone gives them imagery of
  *     their own, so a shared card there is reported as a notice rather than
  *     failing the run. Sharing a card is a missed opportunity; sharing a
@@ -119,7 +119,7 @@ async function main() {
         /* `serializeJsonLd` escapes `<` so a payload can never close the tag. */
         collectTypes(JSON.parse(json.replaceAll("\\u003c", "<")), types);
       } catch (error) {
-        problems.push(`${path}: unparseable JSON-LD — ${error.message}`);
+        problems.push(`${path}: unparseable JSON-LD, ${error.message}`);
       }
     }
     for (const type of types) schemaCounts.set(type, (schemaCounts.get(type) ?? 0) + 1);

@@ -98,7 +98,7 @@ export function convertFromAed(
  * "AED 4,250,000" / "$1,157,000".
  *
  * The digit grouping follows the reader's language, not ours. Indian and
- * Pakistani readers group in lakhs and crores — 42,50,000, not 4,250,000 — and
+ * Pakistani readers group in lakhs and crores (42,50,000, not 4,250,000) and
  * a figure grouped the wrong way is one a buyer has to re-read to be sure of
  * the magnitude. On a number this size that is not a small thing.
  */
@@ -131,7 +131,7 @@ export function formatMoney(amount: number, currency: Currency, locale = "en-AE"
  * dollar, which is the currency a cross-border property buyer is most likely to
  * hold a second account in anyway.
  *
- * A visitor in the UAE gets AED and no conversion at all — they are already
+ * A visitor in the UAE gets AED and no conversion at all. They are already
  * reading the contract currency, and a second figure beside it would be noise.
  */
 const COUNTRY_CURRENCY: Record<string, CurrencyCode> = {

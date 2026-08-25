@@ -10,8 +10,8 @@ import { Eyebrow } from "@/components/ui/section";
  * "Best areas for…"
  *
  * Ranks communities against one of four goals. Nobody pays to appear, the
- * ordering is computed from recorded transactions, and — the part that keeps it
- * honest — a community we hold too little data on is left out rather than
+ * ordering is computed from recorded transactions, and, the part that keeps it
+ * honest, a community we hold too little data on is left out rather than
  * ranked on a thin median.
  *
  * The family and short-let goals are inferred from transaction evidence rather
@@ -31,10 +31,10 @@ const GOALS: ReadonlyArray<{ value: Goal; label: string }> = [
 ];
 
 const EXPLANATIONS: Record<Goal, string> = {
-  yield: "Ranked by gross rental yield — a year's registered rent against the typical sale price.",
+  yield: "Ranked by gross rental yield, a year's registered rent against the typical sale price.",
   growth: "Ranked by how far the median price per square foot has moved in the last year.",
   family:
-    "A proxy, not a lifestyle verdict: ranked by typical unit size, since communities transacting in larger homes are the ones families buy in. It says nothing about schools or parks — ask us about those.",
+    "A proxy, not a lifestyle verdict: ranked by typical unit size, since communities transacting in larger homes are the ones families buy in. It says nothing about schools or parks, ask us about those.",
   short_let:
     "A proxy: ranked on yield and liquidity together, since short-let returns depend on both a strong rental base and enough turnover to exit. Licensing and building rules decide whether you can actually do it.",
 };
@@ -63,7 +63,7 @@ export function BestAreas({ areas }: { areas: readonly AreaWithStats[] }) {
           break;
         case "family":
           /* Typical unit size, derived from median price over median price per
-           * square foot — larger homes, family communities. */
+           * square foot, larger homes, family communities. */
           score =
             stats.median_price && stats.median_price_per_sqft
               ? stats.median_price / stats.median_price_per_sqft
@@ -162,7 +162,7 @@ export function BestAreas({ areas }: { areas: readonly AreaWithStats[] }) {
             },
             {
               label: "Ranking",
-              value: "Computed from recorded transactions — nobody pays to appear",
+              value: "Computed from recorded transactions. Nobody pays to appear",
             },
           ]}
         >

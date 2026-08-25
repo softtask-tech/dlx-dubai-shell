@@ -1,14 +1,14 @@
 /**
- * lead-nurture — the follow-up for leads a consultant is not calling today.
+ * lead-nurture, the follow-up for leads a consultant is not calling today.
  *
- * Routing hands hot and warm leads to a person immediately. Everything else —
- * cold enquiries, people still researching — would otherwise be filed and
+ * Routing hands hot and warm leads to a person immediately. Everything else,
+ * cold enquiries, people still researching, would otherwise be filed and
  * forgotten, which on this kind of purchase is the expensive mistake: a Dubai
  * buying decision routinely takes six months, and the brokerage that is still
  * politely present at month five gets the call.
  *
  * WHAT THIS IS NOT. It is not a drip campaign. Four messages, spaced widely,
- * each one a piece of the site that is genuinely useful on its own — a guide, a
+ * each one a piece of the site that is genuinely useful on its own, a guide, a
  * calculator, the market figures. No "just checking in", no false urgency, no
  * fake scarcity. The brand's whole position is restraint, and a nurture
  * sequence that nags contradicts every other page.
@@ -20,10 +20,10 @@
  * once filled in a form.
  *
  * Environment:
- *   RESEND_API_KEY, LEAD_FROM_EMAIL — as the lead emails use
- *   SITE_URL                       — for the links and the unsubscribe
- *   NURTURE_SECRET                 — signs the unsubscribe link
- *   DLD_SYNC_SECRET                — the shared scheduler secret
+ *   RESEND_API_KEY, LEAD_FROM_EMAIL, as the lead emails use
+ *   SITE_URL, for the links and the unsubscribe
+ *   NURTURE_SECRET, signs the unsubscribe link
+ *   DLD_SYNC_SECRET, the shared scheduler secret
  */
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
@@ -33,7 +33,7 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-sync-secret",
 };
 
-/** The sequence. Wide gaps on purpose — this is a six-month decision. */
+/** The sequence. Wide gaps on purpose. This is a six-month decision. */
 const STEPS = [
   {
     afterDays: 2,
@@ -47,7 +47,7 @@ const STEPS = [
     afterDays: 9,
     subject: "What a Dubai purchase actually costs",
     heading: "The whole number, not the sticker price",
-    body: "The transfer fee is four per cent and fixed. Agency commission is conventionally two and negotiable. Then there are the trustee, NOC and title charges the brochures leave out. Our calculator shows every one, with its source and the date it was verified — and you can change the ones that vary.",
+    body: "The transfer fee is four per cent and fixed. Agency commission is conventionally two and negotiable. Then there are the trustee, NOC and title charges the brochures leave out. Our calculator shows every one, with its source and the date it was verified, and you can change the ones that vary.",
     linkLabel: "Work out the total cost",
     linkPath: "/tools/buying-costs",
   },
@@ -100,7 +100,7 @@ function emailHtml(step: (typeof STEPS)[number], siteUrl: string, unsubscribeUrl
 <tr><td style="border-top:1px solid #e8e8e8;padding-top:24px;font-family:Helvetica,Arial,sans-serif;font-size:11px;line-height:1.7;color:#8A8A8A;">
 DLX Properties · RERA ORN 40905 · Business Bay, Dubai<br/>
 You are receiving this because you enquired with us.
-<a href="${escapeHtml(unsubscribeUrl)}" style="color:#8A8A8A;">Stop these emails</a> — it takes effect immediately.
+<a href="${escapeHtml(unsubscribeUrl)}" style="color:#8A8A8A;">Stop these emails</a>. It takes effect immediately.
 </td></tr>
 </table></td></tr></table></body></html>`;
 }

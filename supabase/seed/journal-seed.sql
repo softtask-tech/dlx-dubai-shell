@@ -1,10 +1,10 @@
--- Journal seed — six opening posts for /blog.
+-- Journal seed, six opening posts for /blog.
 --
 -- Written to give the journal a real starting shelf rather than an empty page,
 -- and deliberately observational: process, judgement and the questions worth
 -- asking. None of them quotes a price, a yield or a legal threshold, because
 -- the market figures on this site come from the DLD pipeline and the legal
--- ones from `src/data/fee-schedule.ts` — a hand-written post is the last place
+-- ones from `src/data/fee-schedule.ts`, a hand-written post is the last place
 -- either belongs.
 --
 -- `on conflict (slug) do nothing` so re-running this never overwrites
@@ -26,7 +26,7 @@ values
 
 Most buyers arrive with a price in mind and negotiate hard to reach it. Almost none of them ask for the building''s service charge schedule before the offer is accepted, which is strange, because that schedule decides what the apartment costs every year for as long as they own it.
 
-Two apartments at the same price in the same community can differ meaningfully in what they cost to hold. The difference is not a mystery — it is written down, per square foot, and it is a matter of record.
+Two apartments at the same price in the same community can differ meaningfully in what they cost to hold. The difference is not a mystery. It is written down, per square foot, and it is a matter of record.
 
 ## What to ask for
 
@@ -62,13 +62,13 @@ What happens at the registration trustee office is administrative. Identities ar
 
 Clients ask three things, almost always in this order.
 
-- Do I have to be there? Not necessarily — a properly drafted power of attorney covers it, and it should be arranged early rather than the week before.
+- Do I have to be there? Not necessarily, a properly drafted power of attorney covers it, and it should be arranged early rather than the week before.
 - What if the seller does not turn up? That is what the sale agreement and the deposit are for, and it is the reason the agreement matters more than anyone expects.
 - When is it mine? On registration. Not on the offer, not on the agreement, not on the cheque.
 
 ## The part worth your attention
 
-The transfer is not where deals go wrong. Deals go wrong earlier — in a title that says something different from the listing, in a service charge arrears nobody checked, in an NOC that takes three weeks because the developer has a backlog.
+The transfer is not where deals go wrong. Deals go wrong earlier, in a title that says something different from the listing, in a service charge arrears nobody checked, in an NOC that takes three weeks because the developer has a backlog.
 
 Our guide to [the buying process for overseas buyers](/guides/buying-process-overseas-buyers) sets out the sequence in full, including the steps that can be handled remotely.',
   'buying',
@@ -106,14 +106,14 @@ Our [market intelligence](/market-intelligence) pages carry the community figure
   'A payment plan is a schedule, not a discount. What to check before you let one decide which project you buy.',
   '## The plan is a cash-flow question
 
-Off-plan payment plans are quoted as headline splits — so much during construction, so much on handover, so much after. Read as marketing, they all sound similar. Read as a schedule, they are very different from one another.
+Off-plan payment plans are quoted as headline splits, so much during construction, so much on handover, so much after. Read as marketing, they all sound similar. Read as a schedule, they are very different from one another.
 
 What matters is when each instalment actually falls due, what triggers it, and what happens to the ones after handover if your circumstances change.
 
 - Is each instalment tied to a construction milestone or to a calendar date?
 - What is due at handover, and is that the largest single payment?
 - Does anything remain payable after handover, and for how long?
-- What happens if a milestone slips — does the schedule slip with it?
+- What happens if a milestone slips, does the schedule slip with it?
 
 ## Attractive is not the same as suitable
 
@@ -134,7 +134,7 @@ Our [payment plan tool](/tools/payment-plan) lays a schedule out so you can see 
   'The honest version: what a brokerage can help with, what it cannot, and why we will not tell you whether you qualify.',
   '## We will not tell you that you qualify
 
-We are asked constantly, and the answer is always the same. We are a brokerage. We can tell you what a property costs, what the title says, and what it is worth. Whether a specific purchase supports a specific residency application, for a specific person, is a question for a licensed immigration adviser — and the answer needs to be in writing before you buy on the strength of it.
+We are asked constantly, and the answer is always the same. We are a brokerage. We can tell you what a property costs, what the title says, and what it is worth. Whether a specific purchase supports a specific residency application, for a specific person, is a question for a licensed immigration adviser, and the answer needs to be in writing before you buy on the strength of it.
 
 That is not caution for its own sake. Thresholds, conditions on mortgaged and off-plan property, and documentation all change. A sentence written confidently on a website last year can be wrong this year, and the person who pays for that is the reader.
 
@@ -160,7 +160,7 @@ Our [Golden Visa checker](/tools/golden-visa-eligibility) indicates which route 
 
 Dubai''s communities differ in ways that no floor plan communicates: the commute at eight in the morning, whether the neighbours are permanent or seasonal, how the place feels in August, how far the school run really is.
 
-People who move here and buy immediately usually buy well. They just occasionally buy in the wrong place — and correcting that costs a full round of transaction costs on both sides plus the disruption of moving a family twice.
+People who move here and buy immediately usually buy well. They just occasionally buy in the wrong place, and correcting that costs a full round of transaction costs on both sides plus the disruption of moving a family twice.
 
 ## What a year buys you
 

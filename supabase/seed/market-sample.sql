@@ -1,4 +1,4 @@
--- GENERATED FILE — do not edit by hand.
+-- GENERATED FILE, do not edit by hand.
 -- Regenerate: node scripts/generate-market-sample.mjs > supabase/seed/market-sample.sql
 --
 -- Illustrative market data for development and demos. Written with

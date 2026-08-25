@@ -5,7 +5,7 @@ import type { AdvisorTurn } from "@/data/advisor";
 import { captureLead, extractQualification } from "@/data/advisor-capture.server";
 
 /**
- * POST /api/advisor/call-lead — turns a finished call into a scored lead.
+ * POST /api/advisor/call-lead, turns a finished call into a scored lead.
  *
  * Called by the `advisor-call-summary` Edge Function, never by a browser. It
  * exists so that scoring has exactly one home: a call is scored by the same
@@ -15,7 +15,7 @@ import { captureLead, extractQualification } from "@/data/advisor-capture.server
  *
  * The telephony layer may have captured contact details itself; whatever it did
  * not catch is read back out of the transcript. Details the provider gives are
- * trusted over the extractor's reading of the transcript — a number the caller
+ * trusted over the extractor's reading of the transcript, a number the caller
  * dialled from is better evidence than a number a model heard.
  */
 const turnSchema = z.object({

@@ -20,7 +20,7 @@ import { Tag } from "@/components/ui/tag";
 /**
  * Content management.
  *
- * One editor for six tables, driven by CONTENT_SCHEMA — the same definition
+ * One editor for six tables, driven by CONTENT_SCHEMA, the same definition
  * the server writes through. Adding a column to the editor is a one-line change
  * in that file, and there is no way to render a field the server would reject
  * or to submit one it would not have shown.
@@ -182,7 +182,7 @@ function renderCell(field: FieldSpec, value: unknown) {
   if (field.kind === "boolean") {
     return value ? <Tag variant="soft">Yes</Tag> : <Tag variant="bare">No</Tag>;
   }
-  if (value === null || value === undefined || value === "") return "—";
+  if (value === null || value === undefined || value === "") return "-";
   if (Array.isArray(value)) return value.join(", ");
   const text = String(value);
   return text.length > 70 ? `${text.slice(0, 70)}…` : text;
@@ -341,7 +341,7 @@ function FieldControl({
           onChange={(event) => onChange(event.target.value)}
           {...common}
         >
-          <option value="">—</option>
+          <option value="">-</option>
           {(field.options ?? []).map((option) => (
             <option key={option} value={option}>
               {option.replace(/_/g, " ")}

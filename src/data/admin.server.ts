@@ -1,5 +1,5 @@
 /**
- * Admin data access — server side only.
+ * Admin data access, server side only.
  *
  * Every function here starts by proving the caller is an admin. The check is
  * not "did the browser say so": the access token is verified against Supabase
@@ -67,7 +67,7 @@ export async function listLeads(filters: LeadListFilters = {}): Promise<LeadWith
   if (filters.status) query = query.eq("status", filters.status);
   if (filters.temperature) query = query.eq("temperature", filters.temperature);
   if (filters.search) {
-    /* Name, email or phone — whichever the person at the desk remembers. */
+    /* Name, email or phone, whichever the person at the desk remembers. */
     const term = `%${filters.search}%`;
     query = query.or(`full_name.ilike.${term},email.ilike.${term},phone.ilike.${term}`);
   }
@@ -212,7 +212,7 @@ const CSV_COLUMNS: ReadonlyArray<[header: string, get: (lead: LeadWithAgent) => 
  * Escapes one CSV cell.
  *
  * The leading apostrophe on values starting with =, +, - or @ stops Excel and
- * Sheets treating an exported message as a formula — a lead who types
+ * Sheets treating an exported message as a formula, a lead who types
  * "=cmd|..." into the message box must never become a live cell.
  */
 function csvCell(value: unknown): string {

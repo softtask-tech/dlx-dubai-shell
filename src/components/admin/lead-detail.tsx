@@ -145,7 +145,7 @@ export function LeadDetail({
                 label="Budget"
                 value={
                   lead.budget_min || lead.budget_max
-                    ? `${formatPrice(lead.budget_min, lead.budget_currency, "—")} – ${formatPrice(lead.budget_max, lead.budget_currency, "open")}`
+                    ? `${formatPrice(lead.budget_min, lead.budget_currency, "-")} - ${formatPrice(lead.budget_max, lead.budget_currency, "open")}`
                     : "Not stated"
                 }
               />
@@ -161,8 +161,8 @@ export function LeadDetail({
                 and on a purchase this size they are often months apart. */}
             <Section title="Attribution">
               <Row label="Source" value={humanise(lead.source_type)} />
-              <Row label="Detail" value={lead.source_detail ?? "—"} />
-              <Row label="Page" value={lead.page_path ?? "—"} />
+              <Row label="Detail" value={lead.source_detail ?? "-"} />
+              <Row label="Page" value={lead.page_path ?? "-"} />
               <Row label="Last touch" value={campaignOf(lead, "last")} />
               <Row label="First touch" value={campaignOf(lead, "first")} />
               <Row
@@ -170,14 +170,14 @@ export function LeadDetail({
                 value={
                   extra(lead, "first_seen_at")
                     ? new Date(extra(lead, "first_seen_at")!).toLocaleString("en-GB")
-                    : "—"
+                    : "-"
                 }
               />
-              <Row label="Landing page" value={lead.landing_page_url ?? "—"} />
-              <Row label="Referrer" value={lead.referrer_url ?? "—"} />
+              <Row label="Landing page" value={lead.landing_page_url ?? "-"} />
+              <Row label="Referrer" value={lead.referrer_url ?? "-"} />
               {/* Which platform can still match this lead to a click. Shown as
                   presence rather than value: the ids are long, opaque and of no
-                  use to a person reading the panel — but whether they exist
+                  use to a person reading the panel, but whether they exist
                   decides whether a closed deal can be reported back. */}
               <Row label="Click ids" value={clickIdsOf(lead)} />
             </Section>
@@ -191,7 +191,7 @@ export function LeadDetail({
                     : "Not routed"
                 }
               />
-              <Row label="Decision" value={extra(lead, "routing_reason") ?? "—"} />
+              <Row label="Decision" value={extra(lead, "routing_reason") ?? "-"} />
               <Row label="Speed to lead" value={speedToLead(lead)} />
               <Row label="Spam check" value={spamOf(lead)} />
             </Section>
@@ -323,8 +323,8 @@ function clickIdsOf(lead: LeadWithAgent): string {
   if (extra(lead, "ttclid")) present.push("TikTok");
 
   return present.length > 0
-    ? `${present.join(", ")} — a closed deal can be reported back`
-    : "None — a closed deal cannot be attributed to an ad";
+    ? `${present.join(", ")}. A closed deal can be reported back`
+    : "None. A closed deal cannot be attributed to an ad";
 }
 
 /**
@@ -335,7 +335,7 @@ function clickIdsOf(lead: LeadWithAgent): string {
  */
 function speedToLead(lead: LeadWithAgent): string {
   const routedAt = extra(lead, "routed_at");
-  if (!routedAt) return "—";
+  if (!routedAt) return "-";
 
   const seconds = Math.round(
     (new Date(routedAt).getTime() - new Date(lead.created_at).getTime()) / 1000,
@@ -352,5 +352,5 @@ function spamOf(lead: LeadWithAgent): string {
 
   const reasons = Array.isArray(record["spam_reasons"]) ? (record["spam_reasons"] as string[]) : [];
   if (score === 0) return "Clean";
-  return `${score}/100 — ${reasons.join("; ") || "no reason recorded"}`;
+  return `${score}/100, ${reasons.join("; ") || "no reason recorded"}`;
 }

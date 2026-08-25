@@ -9,7 +9,7 @@
 -- zero and reporting an infinite return.
 --
 -- WHAT WAS SENT BACK. `conversion_events` logs every dispatch to Meta and
--- Google — the payload's event id, whether it succeeded, and what came back.
+-- Google, the payload's event id, whether it succeeded, and what came back.
 -- Conversions fired into the dark are the normal failure mode of server-side
 -- tracking: everything looks fine until a month of data is missing and nobody
 -- can say when it stopped.
@@ -17,7 +17,7 @@
 -- WHAT HAPPENED TO THE LEAD. Routing and outcome columns on `leads`, so a
 -- closed deal can be attributed to the ad that produced it and sent back as an
 -- offline conversion. Without the outcome, the platforms optimise for form
--- fills — which is how you buy a thousand worthless leads efficiently.
+-- fills, which is how you buy a thousand worthless leads efficiently.
 
 -- ---------------------------------------------------------------------------
 -- Lead outcome, routing and consent
@@ -50,7 +50,7 @@ alter table public.leads
   add column if not exists first_seen_at timestamptz,
   -- Meta's click id needs its browser id beside it to match reliably. `fbc`
   -- is the click id in the cookie format their API wants, and it embeds the
-  -- click *time* — which is why it is stored rather than rebuilt later from
+  -- click *time*, which is why it is stored rather than rebuilt later from
   -- `fbclid`, when that timestamp would be wrong.
   add column if not exists fbc text,
   add column if not exists fbp text,
@@ -87,12 +87,12 @@ create index if not exists leads_nurture_idx
   where unsubscribed_at is null;
 
 -- ---------------------------------------------------------------------------
--- campaign_spend — what the ads cost
+-- campaign_spend, what the ads cost
 -- ---------------------------------------------------------------------------
 
 create table if not exists public.campaign_spend (
   id uuid primary key default gen_random_uuid(),
-  -- "meta", "google", "tiktok" — free text rather than an enum so adding a
+  -- "meta", "google", "tiktok", free text rather than an enum so adding a
   -- channel is an import, not a migration.
   platform text not null,
   campaign_id text not null,
@@ -101,7 +101,7 @@ create table if not exists public.campaign_spend (
   adset_name text,
   -- Empty string rather than null for "the whole campaign". Null would be the
   -- natural choice, but the uniqueness rule below has to be a plain index for
-  -- PostgREST's upsert to target it — and a null in a unique index does not
+  -- PostgREST's upsert to target it, and a null in a unique index does not
   -- collide with another null, so re-importing a campaign-level row would
   -- insert a second one every time instead of correcting the first.
   ad_id text not null default '',
@@ -135,11 +135,11 @@ create trigger campaign_spend_set_updated_at before update on public.campaign_sp
   for each row execute function public.set_updated_at();
 
 -- ---------------------------------------------------------------------------
--- conversion_events — what we sent to the ad platforms
+-- conversion_events, what we sent to the ad platforms
 -- ---------------------------------------------------------------------------
 
 -- Guarded so the file can be re-applied against a database that already has
--- part of it — which is what happens every time this is tested locally.
+-- part of it, which is what happens every time this is tested locally.
 do $$ begin
   create type conversion_destination as enum ('meta_capi', 'google_ads', 'ga4');
 exception when duplicate_object then null; end $$;
@@ -152,7 +152,7 @@ create table if not exists public.conversion_events (
   id uuid primary key default gen_random_uuid(),
   lead_id uuid references public.leads (id) on delete cascade,
   destination conversion_destination not null,
-  -- "Lead", "QualifiedLead", "Purchase" — the name as the platform knows it.
+  -- "Lead", "QualifiedLead", "Purchase", the name as the platform knows it.
   event_name text not null,
   -- Shared with the browser pixel so the platform can deduplicate the pair.
   -- Unique per destination: the same id sent twice to Meta is one conversion.

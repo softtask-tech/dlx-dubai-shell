@@ -2,7 +2,7 @@
 --
 -- Dubai Land Department publishes transaction and rent-contract records as open
 -- data. This schema holds a cleaned copy of that, plus the metrics derived from
--- it, so the site only ever reads our own database — fast, cacheable, and
+-- it, so the site only ever reads our own database, fast, cacheable, and
 -- unaffected by the source being slow or down.
 --
 -- The organising idea is PROVENANCE. Every row records where it came from, and
@@ -21,7 +21,7 @@ create type data_provenance as enum (
 );
 
 -- ---------------------------------------------------------------------------
--- dld_transactions — one recorded sale
+-- dld_transactions, one recorded sale
 -- ---------------------------------------------------------------------------
 
 create table public.dld_transactions (
@@ -29,7 +29,7 @@ create table public.dld_transactions (
   provenance data_provenance not null,
 
   -- The source's own identifier. Unique so a re-ingest updates rather than
-  -- duplicates — the pipeline upserts on this.
+  -- duplicates, the pipeline upserts on this.
   source_transaction_id text not null,
 
   transaction_date date not null,
@@ -78,7 +78,7 @@ create index dld_transactions_pricing_idx
   where price_per_sqft is not null;
 
 -- ---------------------------------------------------------------------------
--- dld_rent_contracts — what tenancies actually register at
+-- dld_rent_contracts, what tenancies actually register at
 -- ---------------------------------------------------------------------------
 
 -- Yield cannot be derived from sales alone. DLD publishes registered tenancy
@@ -107,7 +107,7 @@ create index dld_rent_contracts_area_idx
   on public.dld_rent_contracts (area_id, contract_start_date desc);
 
 -- ---------------------------------------------------------------------------
--- area_stats — the derived metrics, one row per community
+-- area_stats, the derived metrics, one row per community
 -- ---------------------------------------------------------------------------
 
 create table public.area_stats (
@@ -132,7 +132,7 @@ create table public.area_stats (
   yoy_price_change_pct numeric(6, 2),
   yoy_volume_change_pct numeric(6, 2),
 
-  -- Null when we hold no rent contracts for the area — a yield we cannot
+  -- Null when we hold no rent contracts for the area, a yield we cannot
   -- evidence is not displayed.
   median_annual_rent numeric(14, 2),
   gross_yield_pct numeric(5, 2),
@@ -146,7 +146,7 @@ create table public.area_stats (
 create index area_stats_yield_idx on public.area_stats (gross_yield_pct desc nulls last);
 
 -- ---------------------------------------------------------------------------
--- area_price_history — the monthly series behind the charts
+-- area_price_history, the monthly series behind the charts
 -- ---------------------------------------------------------------------------
 
 create table public.area_price_history (
@@ -167,7 +167,7 @@ create index area_price_history_area_idx
   on public.area_price_history (area_id, period_month);
 
 -- ---------------------------------------------------------------------------
--- dld_ingest_runs — the audit trail the admin data view reads
+-- dld_ingest_runs, the audit trail the admin data view reads
 -- ---------------------------------------------------------------------------
 
 create table public.dld_ingest_runs (
@@ -190,7 +190,7 @@ create table public.dld_ingest_runs (
 create index dld_ingest_runs_recent_idx on public.dld_ingest_runs (started_at desc);
 
 -- ---------------------------------------------------------------------------
--- report_grants — the gate in front of the full reports
+-- report_grants, the gate in front of the full reports
 -- ---------------------------------------------------------------------------
 
 create table public.report_grants (

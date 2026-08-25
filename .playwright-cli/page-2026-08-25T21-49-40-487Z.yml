@@ -1,0 +1,211 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DLX Properties — home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - text: DLX
+      - navigation "Primary" [ref=e6]:
+        - link "Properties" [ref=e7] [cursor=pointer]:
+          - /url: /properties
+        - link "Services" [ref=e8] [cursor=pointer]:
+          - /url: /services
+        - link "Market Intelligence" [ref=e9] [cursor=pointer]:
+          - /url: /market-intelligence
+        - link "Calculators" [ref=e10] [cursor=pointer]:
+          - /url: /tools
+        - link "Guides" [ref=e11] [cursor=pointer]:
+          - /url: /guides
+        - link "About" [ref=e12] [cursor=pointer]:
+          - /url: /about
+        - link "Contact" [ref=e13] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=e14]:
+        - combobox "Show prices in" [ref=e16] [cursor=pointer]:
+          - option "AED" [selected]
+          - option "USD"
+          - option "EUR"
+          - option "GBP"
+          - option "INR"
+          - option "PKR"
+          - option "SAR"
+          - option "RUB"
+          - option "CNY"
+        - combobox "Choose a language" [ref=e17] [cursor=pointer]:
+          - option "English" [selected]
+          - option "العربية"
+          - option "हिन्दी"
+          - option "Русский"
+          - option "中文"
+  - main [ref=e18]:
+    - generic [ref=e19]:
+      - img "A minimal Dubai penthouse terrace overlooking the skyline at dawn" [ref=e20]
+      - generic [ref=e23]:
+        - generic [ref=e24]: Dubai · Private Brokerage
+        - heading "Dubai real estate, handled with intention." [level=1] [ref=e26]:
+          - generic [ref=e27]: Dubai real estate,
+          - generic [ref=e28]: handled with
+          - generic [ref=e29]: intention.
+        - generic [ref=e30]:
+          - link [ref=e31] [cursor=pointer]:
+            - /url: /properties
+            - button "View Portfolio" [ref=e32]
+          - link "Private consultation" [ref=e33] [cursor=pointer]:
+            - /url: /contact
+    - generic [ref=e36]:
+      - generic [ref=e37]: The practice
+      - generic [ref=e40]:
+        - paragraph [ref=e42]: We represent a small number of clients across Dubai's prime districts — advising quietly, negotiating precisely, and holding a long view of value.
+        - paragraph [ref=e44]: Acquisition, disposal and portfolio strategy for private owners, family offices and first-time buyers into the emirate.
+    - generic [ref=e46]:
+      - link "01 Private Sales View" [ref=e49] [cursor=pointer]:
+        - /url: /properties
+        - generic [ref=e50]: "01"
+        - generic [ref=e51]: Private Sales
+        - generic [ref=e52]: View
+      - link "02 Advisory & Services View" [ref=e54] [cursor=pointer]:
+        - /url: /services
+        - generic [ref=e55]: "02"
+        - generic [ref=e56]: Advisory & Services
+        - generic [ref=e57]: View
+      - link "03 Market Intelligence View" [ref=e59] [cursor=pointer]:
+        - /url: /market-intelligence
+        - generic [ref=e60]: "03"
+        - generic [ref=e61]: Market Intelligence
+        - generic [ref=e62]: View
+      - link "04 Guides View" [ref=e64] [cursor=pointer]:
+        - /url: /guides
+        - generic [ref=e65]: "04"
+        - generic [ref=e66]: Guides
+        - generic [ref=e67]: View
+    - generic [ref=e69]:
+      - heading "Why a small brokerage can be trusted" [level=2] [ref=e70]
+      - generic [ref=e72]:
+        - generic [ref=e74]:
+          - generic [ref=e75]: Licensed
+          - paragraph [ref=e76]: RERA ORN 40905
+          - paragraph [ref=e77]: Registered with Dubai's Real Estate Regulatory Agency.
+        - generic [ref=e79]:
+          - generic [ref=e80]: Based
+          - paragraph [ref=e81]: Business Bay, Dubai
+          - paragraph [ref=e82]: A real office, in the district we transact in.
+        - generic [ref=e84]:
+          - generic [ref=e85]: Evidence
+          - paragraph [ref=e86]: Dubai Land Department data
+          - paragraph [ref=e87]: We price from recorded transactions, and we cite them.
+        - generic [ref=e89]:
+          - generic [ref=e90]: Languages
+          - paragraph [ref=e91]: Five languages
+          - paragraph [ref=e92]: Represented in the language you would rather negotiate in.
+    - generic [ref=e95]:
+      - generic [ref=e97]:
+        - generic [ref=e98]: Questions
+        - heading "Asked and answered" [level=2] [ref=e99]
+      - generic [ref=e101]:
+        - group [ref=e103]:
+          - generic [ref=e104] [cursor=pointer]:
+            - heading "Is DLX Properties a licensed Dubai brokerage?" [level=3] [ref=e105]
+            - generic [ref=e106]: +
+        - group [ref=e108]:
+          - generic [ref=e109] [cursor=pointer]:
+            - heading "What does DLX actually do for a client?" [level=3] [ref=e110]
+            - generic [ref=e111]: +
+        - group [ref=e113]:
+          - generic [ref=e114] [cursor=pointer]:
+            - heading "Do I need to be in Dubai to buy?" [level=3] [ref=e115]
+            - generic [ref=e116]: +
+    - generic [ref=e119]:
+      - heading "Begin a quiet conversation." [level=2] [ref=e122]
+      - generic [ref=e124]:
+        - paragraph [ref=e125]: Whether you are acquiring, exiting or simply observing the market, our team is available for a discreet, no-obligation discussion.
+        - link [ref=e126] [cursor=pointer]:
+          - /url: /contact
+          - button "Contact DLX" [ref=e127]
+  - contentinfo [ref=e128]:
+    - generic [ref=e129]:
+      - generic [ref=e130]:
+        - generic [ref=e131]:
+          - paragraph [ref=e132]: DLX
+          - paragraph [ref=e133]: Dubai real estate, handled with intention.
+          - paragraph [ref=e134]: RERA ORN 40905
+        - generic [ref=e135]:
+          - generic [ref=e136]: Explore
+          - navigation "Explore" [ref=e137]:
+            - list [ref=e138]:
+              - listitem [ref=e139]:
+                - link "Home" [ref=e140] [cursor=pointer]:
+                  - /url: /
+              - listitem [ref=e141]:
+                - link "Properties" [ref=e142] [cursor=pointer]:
+                  - /url: /properties
+              - listitem [ref=e143]:
+                - link "Services" [ref=e144] [cursor=pointer]:
+                  - /url: /services
+              - listitem [ref=e145]:
+                - link "Market Intelligence" [ref=e146] [cursor=pointer]:
+                  - /url: /market-intelligence
+              - listitem [ref=e147]:
+                - link "Areas" [ref=e148] [cursor=pointer]:
+                  - /url: /areas
+              - listitem [ref=e149]:
+                - link "Calculators" [ref=e150] [cursor=pointer]:
+                  - /url: /tools
+              - listitem [ref=e151]:
+                - link "Developers" [ref=e152] [cursor=pointer]:
+                  - /url: /developers
+              - listitem [ref=e153]:
+                - link "Team" [ref=e154] [cursor=pointer]:
+                  - /url: /team
+              - listitem [ref=e155]:
+                - link "Guides" [ref=e156] [cursor=pointer]:
+                  - /url: /guides
+              - listitem [ref=e157]:
+                - link "Journal" [ref=e158] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e159]:
+                - link "About" [ref=e160] [cursor=pointer]:
+                  - /url: /about
+              - listitem [ref=e161]:
+                - link "Privacy" [ref=e162] [cursor=pointer]:
+                  - /url: /privacy
+              - listitem [ref=e163]:
+                - link "Contact" [ref=e164] [cursor=pointer]:
+                  - /url: /contact
+        - generic [ref=e165]:
+          - generic [ref=e166]: Contact
+          - generic [ref=e167]:
+            - paragraph [ref=e168]: Business Bay, DubaiUnited Arab Emirates
+            - paragraph [ref=e169]:
+              - link "+971 (0) 000 0000" [ref=e170] [cursor=pointer]:
+                - /url: tel:+9710000000
+            - paragraph [ref=e171]:
+              - link "hello@dlxproperties.ae" [ref=e172] [cursor=pointer]:
+                - /url: mailto:hello@dlxproperties.ae
+        - generic [ref=e173]:
+          - generic [ref=e174]: Social
+          - list [ref=e175]:
+            - listitem [ref=e176]:
+              - link "Instagram" [ref=e177] [cursor=pointer]:
+                - /url: https://www.instagram.com/dlxproperties
+            - listitem [ref=e178]:
+              - link "LinkedIn" [ref=e179] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/dlxproperties
+            - listitem [ref=e180]:
+              - link "YouTube" [ref=e181] [cursor=pointer]:
+                - /url: https://www.youtube.com/@dlxproperties
+          - generic [ref=e182]: Language
+          - navigation "Choose a language" [ref=e183]:
+            - link "English" [ref=e184] [cursor=pointer]:
+              - /url: /
+            - link "العربية" [ref=e185] [cursor=pointer]:
+              - /url: /ar
+            - link "हिन्दी" [ref=e186] [cursor=pointer]:
+              - /url: /hi
+            - link "Русский" [ref=e187] [cursor=pointer]:
+              - /url: /ru
+            - link "中文" [ref=e188] [cursor=pointer]:
+              - /url: /zh
+      - generic [ref=e189]:
+        - paragraph [ref=e190]: © 2026 DLX Properties · All rights reserved.
+        - paragraph [ref=e191]: Business Bay, Dubai

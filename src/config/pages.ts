@@ -1,12 +1,12 @@
 /**
- * The page registry — the authoritative list of indexable pages and the copy
+ * The page registry, the authoritative list of indexable pages and the copy
  * that describes each one.
  *
  * Everything downstream reads from here: the header and footer navigation, the
  * per-page `<title>`/description/OG tags, breadcrumb schema, the sitemap, and
  * the OG card generator (`scripts/generate-og.mjs`, which imports this file
  * directly). A page that is not in this list is not navigable, not crawlable
- * and has no social card — which is the point: registering it is one step.
+ * and has no social card, which is the point: registering it is one step.
  *
  * Keep this file free of imports, aliases and `import.meta` so plain Node can
  * load it during the OG build.
@@ -21,11 +21,11 @@ export type SitePage = {
   /** Short label used in navigation and breadcrumbs. */
   label: string;
   /**
-   * Page-specific `<title>`, before the brand suffix. Unique across the site —
+   * Page-specific `<title>`, before the brand suffix. Unique across the site,
    * two pages sharing a title is a bug, not a shortcut.
    */
   title: string;
-  /** 150–160 characters of plain, useful language. Never keyword stuffing. */
+  /** 150-160 characters of plain, useful language. Never keyword stuffing. */
   description: string;
   /** One editorial line. Rendered on the OG card and used as its alt text. */
   tagline: string;
@@ -34,10 +34,10 @@ export type SitePage = {
   /**
    * Whether the page appears in the header. Defaults to true. Pages set to
    * false are still crawlable, still in the sitemap, and still listed in the
-   * footer — they are simply not worth a slot in a nav that has to stay short.
+   * footer. They are simply not worth a slot in a nav that has to stay short.
    */
   inPrimaryNav?: boolean;
-  /** Sitemap priority, 0–1. */
+  /** Sitemap priority, 0-1. */
   priority: number;
   changeFrequency: ChangeFrequency;
 };
@@ -46,7 +46,7 @@ export const SITE_PAGES: readonly SitePage[] = [
   {
     path: "/",
     label: "Home",
-    title: "DLX Properties — Dubai real estate, handled with intention",
+    title: "DLX Properties: Dubai real estate, handled with intention",
     description:
       "A private Dubai brokerage advising on prime residential acquisitions, off-market sales and long-term portfolio strategy. RERA ORN 40905.",
     tagline: "Dubai real estate, handled with intention.",
@@ -59,7 +59,7 @@ export const SITE_PAGES: readonly SitePage[] = [
     label: "Properties",
     title: "Properties",
     description:
-      "Prime and off-market Dubai residences represented privately by DLX Properties — Palm Jumeirah, Downtown, Dubai Marina and the wider prime market.",
+      "Prime and off-market Dubai residences represented privately by DLX Properties: Palm Jumeirah, Downtown, Dubai Marina and the wider prime market.",
     tagline: "A curated portfolio, represented privately.",
     priority: 0.9,
     changeFrequency: "daily",
@@ -79,7 +79,7 @@ export const SITE_PAGES: readonly SitePage[] = [
     label: "Market Intelligence",
     title: "Dubai Market Intelligence",
     description:
-      "Dubai transaction data, district analysis and quiet commentary on where value is moving — built on official Dubai Land Department records.",
+      "Dubai transaction data, district analysis and quiet commentary on where value is moving, built on official Dubai Land Department records.",
     tagline: "Official Dubai data, read plainly.",
     priority: 0.9,
     changeFrequency: "weekly",
@@ -90,7 +90,7 @@ export const SITE_PAGES: readonly SitePage[] = [
     inPrimaryNav: false,
     title: "Dubai Communities",
     description:
-      "Every Dubai community we cover, with recorded prices, rental yields and transaction volumes — and a plain answer on whether it is worth buying there.",
+      "Every Dubai community we cover, with recorded prices, rental yields and transaction volumes, and a plain answer on whether it is worth buying there.",
     tagline: "Where the numbers say to look.",
     priority: 0.8,
     changeFrequency: "weekly",
@@ -100,7 +100,7 @@ export const SITE_PAGES: readonly SitePage[] = [
     label: "Tools",
     title: "Calculators & Tools",
     description:
-      "Work out the numbers before you commit — mortgage, rental yield, purchase costs and Golden Visa eligibility, in plain figures.",
+      "Work out the numbers before you commit: mortgage, rental yield, purchase costs and Golden Visa eligibility, in plain figures.",
     tagline: "Run the numbers before you commit.",
     priority: 0.9,
     changeFrequency: "monthly",
@@ -111,7 +111,7 @@ export const SITE_PAGES: readonly SitePage[] = [
     label: "Developers",
     title: "Developers & Projects",
     description:
-      "The Dubai developers we represent and the projects worth knowing about — who builds what, where, and how they deliver.",
+      "The Dubai developers we represent and the projects worth knowing about: who builds what, where, and how they deliver.",
     tagline: "Who builds what, and how they deliver.",
     priority: 0.7,
     changeFrequency: "weekly",
@@ -122,7 +122,7 @@ export const SITE_PAGES: readonly SitePage[] = [
     label: "Team",
     title: "The Team",
     description:
-      "The consultants behind DLX Properties — RERA-registered, multilingual, and each accountable for their own clients from first call to handover.",
+      "The consultants behind DLX Properties. RERA-registered, multilingual, and each accountable for their own clients from first call to handover.",
     tagline: "The people who will actually represent you.",
     priority: 0.6,
     changeFrequency: "monthly",
@@ -132,8 +132,8 @@ export const SITE_PAGES: readonly SitePage[] = [
     label: "Guides",
     title: "Guides",
     description:
-      "Practical guides to buying, owning and relocating to Dubai — written plainly for international buyers, investors and relocating families.",
-    tagline: "Buying, owning and relocating — explained plainly.",
+      "Practical guides to buying, owning and relocating to Dubai, written plainly for international buyers, investors and relocating families.",
+    tagline: "Buying, owning and relocating, explained plainly.",
     priority: 0.8,
     changeFrequency: "weekly",
   },
@@ -143,7 +143,7 @@ export const SITE_PAGES: readonly SitePage[] = [
     label: "Journal",
     title: "Journal",
     description:
-      "Notes from the DLX desk — what is actually happening in the Dubai market, what it means for buyers and owners, and what we are seeing that the headlines miss.",
+      "Notes from the DLX desk: what is actually happening in the Dubai market, what it means for buyers and owners, and what we are seeing that the headlines miss.",
     tagline: "Notes from the desk, as things happen.",
     priority: 0.7,
     changeFrequency: "weekly",
@@ -174,7 +174,7 @@ export const SITE_PAGES: readonly SitePage[] = [
     label: "Contact",
     title: "Contact",
     description:
-      "Speak with DLX Properties about acquiring, exiting or simply observing the Dubai market — a discreet, no-obligation conversation.",
+      "Speak with DLX Properties about acquiring, exiting or simply observing the Dubai market. A discreet, no-obligation conversation.",
     tagline: "Begin a quiet conversation.",
     priority: 0.7,
     changeFrequency: "yearly",

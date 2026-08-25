@@ -21,7 +21,7 @@ import { Eyebrow } from "@/components/ui/section";
  * criteria change, and someone might commit to a multi-million-dirham purchase
  * on the strength of what a web page told them. So the output is framed as
  * where a purchase sits against commonly cited thresholds, and what to have
- * confirmed in writing — with the disclaimer in the result itself rather than
+ * confirmed in writing, with the disclaimer in the result itself rather than
  * in small print underneath.
  */
 export function GoldenVisaChecker() {
@@ -143,7 +143,7 @@ export function GoldenVisaChecker() {
         >
           <p className="caption max-w-measure">
             DLX handles the property side of a purchase made with residency in mind. We do not
-            process visa applications and we will not tell you whether you qualify — we will
+            process visa applications and we will not tell you whether you qualify. We will
             introduce you to licensed immigration advisers who can put it in writing.
           </p>
         </Assumptions>

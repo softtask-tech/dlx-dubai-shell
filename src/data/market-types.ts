@@ -82,7 +82,7 @@ export type IngestRun = {
  * What the site is allowed to say about where its numbers came from.
  *
  * Derived from the provenance stored alongside the data, never from a constant
- * — so the attribution cannot drift away from what is actually in the table.
+ *, so the attribution cannot drift away from what is actually in the table.
  */
 export type SourceAttribution = {
   /** The line printed beneath a figure. */
