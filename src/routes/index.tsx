@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useRef, type CSSProperties } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { type CSSProperties } from "react";
 import heroImage from "@/assets/hero-dubai.jpg";
 import { site } from "@/config/site";
 import { listPartnerDevelopers } from "@/data/catalogue";
@@ -15,6 +14,7 @@ import { MarketBand } from "@/components/market/market-band";
 import { DeveloperStrip } from "@/components/site/developer-strip";
 import { Faq } from "@/components/site/faq";
 import { PropertyCard } from "@/components/site/property-card";
+import { Parallax } from "@/components/motion";
 import { Reveal } from "@/components/site/reveal";
 import { TestimonialsBlock } from "@/components/site/testimonials-block";
 import { TrustStrip } from "@/components/site/trust-strip";
@@ -71,79 +71,93 @@ export const Route = createFileRoute("/")({
 function Index() {
   const { featured, testimonials, partners, marketSummary, marketIndex, areas } =
     Route.useLoaderData();
-  const reduced = useReducedMotion();
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "14%"]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "28%"]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-
   return (
     <>
-      {/* Hero */}
-      <div ref={heroRef} className="relative h-[100svh] w-full overflow-hidden">
-        <motion.img
-          src={heroImage}
-          alt="A minimal Dubai penthouse terrace overlooking the skyline at dawn"
-          width={1920}
-          height={1280}
-          fetchPriority="high"
-          style={reduced ? {} : { y: imageY }}
-          className="absolute inset-0 h-[115%] w-full object-cover"
+      {/*
+       * The hero.
+       *
+       * A dark anchor, so the photograph runs to the top of the viewport with
+       * the masthead sitting in it rather than on a bar above it. Three text
+       * elements and one action: no eyebrow, no second call, no scroll cue.
+       * The reader knows how to scroll.
+       *
+       * The headline animates in CSS rather than through <RevealText>. It is
+       * the Largest Contentful Paint candidate on the most important page of
+       * the site, and a CSS animation starts at the first paint, before a byte
+       * of JavaScript has parsed. The parallax is the enhancement, and it is
+       * allowed to arrive late.
+       */}
+      <section
+        data-surface="dark"
+        className="relative flex min-h-[100svh] items-end overflow-hidden pb-24 lg:pb-32"
+      >
+        <Parallax speed={0.78} className="absolute inset-x-0 -top-[8%] h-[116%]">
+          <img
+            src={heroImage}
+            alt="A Dubai penthouse terrace at dawn, the skyline beyond it"
+            width={1920}
+            height={1280}
+            fetchPriority="high"
+            className="h-full w-full object-cover"
+          />
+        </Parallax>
+
+        {/* The scrim. Weighted to the foot, where the type is, and thin at the
+            top where the photograph should still read as a photograph. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/55 to-ink/25"
         />
-        <div className="absolute inset-0 bg-background/25" />
 
-        <motion.div
-          style={reduced ? {} : { y: contentY, opacity: contentOpacity }}
-          className="relative flex h-full items-end pb-24 lg:pb-32"
-        >
-          <Container>
-            <div data-hero-reveal="fade">
-              <Eyebrow className="text-foreground/60">Dubai · Private Brokerage</Eyebrow>
-            </div>
-
-            <h1 className="display-1 mt-8 max-w-5xl">
-              {["Dubai real estate,", "handled with"].map((line, i) => (
-                <span
-                  key={line}
-                  className="block overflow-hidden"
-                  /* The first line carries no delay. Everything after it is
-                   * staggered, but the LCP candidate has to be painting in the
-                   * first frame, an animation-delay on it is an LCP delay,
-                   * because Chrome does not count an element at opacity 0. */
-                  data-hero-reveal
-                  style={{ "--hero-delay": `${i * 140}ms` } as CSSProperties}
-                >
-                  {line}
-                </span>
-              ))}
+        <Container className="relative">
+          <h1 className="display-1 max-w-4xl">
+            {["Dubai real estate,", "handled with"].map((line, i) => (
               <span
-                className="block italic text-accent"
+                key={line}
+                className="block overflow-hidden"
+                /* The first line carries no delay. Everything after it is
+                 * staggered, but the LCP candidate has to be painting in the
+                 * first frame, an animation-delay on it is an LCP delay,
+                 * because Chrome does not count an element at opacity 0. */
                 data-hero-reveal
-                style={{ "--hero-delay": "280ms" } as CSSProperties}
+                style={{ "--hero-delay": `${i * 140}ms` } as CSSProperties}
               >
-                intention.
+                {line}
               </span>
-            </h1>
-
-            <div
-              data-hero-reveal="fade"
-              style={{ "--hero-delay": "560ms" } as CSSProperties}
-              className="mt-12 flex flex-wrap items-center gap-8"
+            ))}
+            {/* Emphasis in the italic of the same face, not in a second colour.
+                Gold over a photograph is a contrast gamble and the italic says
+                the same thing without taking one. `leading` and the reserve
+                below keep the descender on the `j`-height off the clip. */}
+            <span
+              className="block overflow-hidden pb-2 leading-[1.1]"
+              data-hero-reveal
+              style={{ "--hero-delay": "280ms" } as CSSProperties}
             >
-              <Link to="/properties">
-                <Button>View Portfolio</Button>
-              </Link>
-              <Link to="/contact" className="eyebrow link-underline text-foreground">
-                Private consultation
-              </Link>
-            </div>
-          </Container>
-        </motion.div>
-      </div>
+              <span className="italic">intention.</span>
+            </span>
+          </h1>
+
+          <p
+            className="body-text mt-8 max-w-xl text-on-dark-muted"
+            data-hero-reveal="fade"
+            style={{ "--hero-delay": "480ms" } as CSSProperties}
+          >
+            A private brokerage representing a small number of clients across Dubai's prime
+            districts.
+          </p>
+
+          <div
+            data-hero-reveal="fade"
+            style={{ "--hero-delay": "640ms" } as CSSProperties}
+            className="mt-12"
+          >
+            <Link to="/properties" search={{}}>
+              <Button>View the portfolio</Button>
+            </Link>
+          </div>
+        </Container>
+      </section>
 
       {/* Statement */}
       <Section>
@@ -233,27 +247,15 @@ function Index() {
         <Faq entries={FAQ_ENTRIES} />
       </Section>
 
-      {/* Closing */}
-      <Section className="bg-secondary">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-6">
-            <Reveal>
-              <h2 className="display-2">Begin a quiet conversation.</h2>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-4 lg:col-start-9">
-            <Reveal delay={0.12}>
-              <p className="body-text text-muted-foreground">
-                Whether you are acquiring, exiting or simply observing the market, our team is
-                available for a discreet, no-obligation discussion.
-              </p>
-              <Link to="/contact" className="mt-10 inline-block">
-                <Button>Contact DLX</Button>
-              </Link>
-            </Reveal>
-          </div>
-        </div>
-      </Section>
+      {/*
+       * The page closes in the footer.
+       *
+       * There used to be a closing invitation here as well, which meant two
+       * calls to the same action within one screen of each other, in the same
+       * words. The footer's is the one that survives: it is a dark anchor, it
+       * is on every page, and a second ask does not make a reader more likely
+       * to answer.
+       */}
     </>
   );
 }

@@ -191,6 +191,8 @@ export const ru: Dictionary = {
   },
 
   footer: {
+    closing: "Напишите тому, кто ответит.",
+    closingCta: "Связаться с DLX",
     tagline: "Недвижимость Дубая, с которой работают осознанно.",
     exploreHeading: "Разделы",
     contactHeading: "Контакты",

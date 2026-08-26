@@ -188,6 +188,8 @@ export const en = {
   },
 
   footer: {
+    closing: "Talk to someone who will answer.",
+    closingCta: "Contact DLX",
     tagline: brand.tagline,
     exploreHeading: "Explore",
     contactHeading: "Contact",

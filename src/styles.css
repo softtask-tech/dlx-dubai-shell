@@ -229,6 +229,18 @@
   color: var(--on-dark);
 }
 
+/*
+ * Chrome that borrows the dark palette without painting the ground under it.
+ *
+ * The masthead over a dark hero is the case: it needs every token flipped so
+ * the nav links, the currency control and the language select are all legible,
+ * but it must stay transparent so the photograph runs unbroken to the top of
+ * the viewport.
+ */
+[data-surface="dark"][data-surface-ground="none"] {
+  background-color: transparent;
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -788,6 +800,13 @@
  * Deliberately shorter than the hero's beat and shorter than a reveal: this
  * runs on every navigation, and anything a reader sees a hundred times has to
  * be almost subliminal or it becomes a tax.
+ *
+ * There is no exit animation, on purpose. Fading the old page out before the
+ * new one arrives means holding a reader on a page they have already left,
+ * and on a site whose whole claim is that it is fast, a transition that costs
+ * 300ms of nothing is the wrong trade. The masthead and the footer do not
+ * move at all, which is what makes the change read as a page turning inside a
+ * fixed binding rather than as a whole screen being swapped.
  */
 @keyframes page-turn {
   from {
@@ -801,7 +820,7 @@
 }
 
 [data-page-turn] {
-  animation: page-turn var(--duration-quick) var(--ease-editorial) both;
+  animation: page-turn var(--duration-base) var(--ease-editorial) both;
 }
 
 @media (prefers-reduced-motion: reduce) {

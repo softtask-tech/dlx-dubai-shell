@@ -189,6 +189,8 @@ export const ar: Dictionary = {
   },
 
   footer: {
+    closing: "تحدّث إلى من سيردّ عليك.",
+    closingCta: "تواصل مع دي إل إكس",
     tagline: "عقارات دبي، تُدار بروّيةٍ وقصد.",
     exploreHeading: "تصفّح",
     contactHeading: "تواصل",

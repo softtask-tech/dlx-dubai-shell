@@ -192,6 +192,8 @@ export const hi: Dictionary = {
   },
 
   footer: {
+    closing: "उससे बात कीजिए जो जवाब देगा।",
+    closingCta: "DLX से संपर्क करें",
     tagline: "दुबई प्रॉपर्टी, सोच-समझकर संभाली गई।",
     exploreHeading: "देखें",
     contactHeading: "संपर्क",

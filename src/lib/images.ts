@@ -21,9 +21,10 @@
  * outbound network can point at a local stand-in and still see a page with
  * photographs on it.
  */
-const BASE = (
-  import.meta.env["VITE_PLACEHOLDER_IMAGE_BASE"] ?? "https://picsum.photos"
-).replace(/\/+$/, "");
+const BASE = (import.meta.env["VITE_PLACEHOLDER_IMAGE_BASE"] ?? "https://picsum.photos").replace(
+  /\/+$/,
+  "",
+);
 
 /** A placeholder photograph at an exact size. Always give real dimensions. */
 export function placeholderImage(seed: string, width: number, height: number): string {
