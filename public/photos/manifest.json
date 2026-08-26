@@ -1,0 +1,171 @@
+[
+  {
+    "slug": "burj-al-arab-cloud",
+    "width": 5915,
+    "height": 4013,
+    "ratio": 1.474,
+    "widths": [
+      640,
+      1280,
+      1920,
+      2560
+    ],
+    "fallbackWidth": 1280
+  },
+  {
+    "slug": "burj-khalifa-dusk-silhouette",
+    "width": 2920,
+    "height": 5184,
+    "ratio": 0.5633,
+    "widths": [
+      640,
+      1280,
+      1920,
+      2560
+    ],
+    "fallbackWidth": 1280
+  },
+  {
+    "slug": "business-bay-dusk",
+    "width": 4536,
+    "height": 8064,
+    "ratio": 0.5625,
+    "widths": [
+      640,
+      1280,
+      1920,
+      2560
+    ],
+    "fallbackWidth": 1280
+  },
+  {
+    "slug": "downtown-aerial-night-trails",
+    "width": 7952,
+    "height": 5304,
+    "ratio": 1.4992,
+    "widths": [
+      640,
+      1280,
+      1920,
+      2560
+    ],
+    "fallbackWidth": 1280
+  },
+  {
+    "slug": "downtown-fog-day",
+    "width": 3588,
+    "height": 6378,
+    "ratio": 0.5626,
+    "widths": [
+      640,
+      1280,
+      1920,
+      2560
+    ],
+    "fallbackWidth": 1280
+  },
+  {
+    "slug": "downtown-interchange-day",
+    "width": 3346,
+    "height": 5948,
+    "ratio": 0.5625,
+    "widths": [
+      640,
+      1280,
+      1920,
+      2560
+    ],
+    "fallbackWidth": 1280
+  },
+  {
+    "slug": "downtown-night-monochrome",
+    "width": 3166,
+    "height": 5626,
+    "ratio": 0.5627,
+    "widths": [
+      640,
+      1280,
+      1920,
+      2560
+    ],
+    "fallbackWidth": 1280
+  },
+  {
+    "slug": "downtown-skyline-night",
+    "width": 7952,
+    "height": 5304,
+    "ratio": 1.4992,
+    "widths": [
+      640,
+      1280,
+      1920,
+      2560
+    ],
+    "fallbackWidth": 1280
+  },
+  {
+    "slug": "dubai-marina-from-water",
+    "width": 8027,
+    "height": 5463,
+    "ratio": 1.4693,
+    "widths": [
+      640,
+      1280,
+      1920,
+      2560
+    ],
+    "fallbackWidth": 1280
+  },
+  {
+    "slug": "harbour-golden-hour",
+    "width": 4608,
+    "height": 3456,
+    "ratio": 1.3333,
+    "widths": [
+      640,
+      1280,
+      1920,
+      2560
+    ],
+    "fallbackWidth": 1280
+  },
+  {
+    "slug": "palm-jumeirah-aerial-day",
+    "width": 3909,
+    "height": 5863,
+    "ratio": 0.6667,
+    "widths": [
+      640,
+      1280,
+      1920,
+      2560
+    ],
+    "fallbackWidth": 1280
+  },
+  {
+    "slug": "palm-jumeirah-dusk-aerial",
+    "width": 3020,
+    "height": 4027,
+    "ratio": 0.7499,
+    "widths": [
+      640,
+      1280,
+      1920,
+      2560
+    ],
+    "fallbackWidth": 1280
+  },
+  {
+    "slug": "skyline-across-water-haze",
+    "width": 9504,
+    "height": 6336,
+    "ratio": 1.5,
+    "widths": [
+      640,
+      1280,
+      1920,
+      2560
+    ],
+    "fallbackWidth": 1280
+  }
+]

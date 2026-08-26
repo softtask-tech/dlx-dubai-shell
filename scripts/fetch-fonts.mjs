@@ -39,10 +39,25 @@ const FAMILIES = [
      * second request on the critical path. */
     file: "../../src/styles.fonts.css",
     families: [
-      { query: "Playfair+Display:ital,wght@0,400..700;1,400..600", slug: "playfair-display" },
-      { query: "Geist:wght@300..600", slug: "geist" },
+      /* The workhorse. Most of the page is set in this. */
+      { query: "Instrument+Sans:ital,wght@0,400..600;1,400..500", slug: "instrument-sans" },
+      /* The accent, and only the accent. Roman and italic, no weights above
+       * 500: this face is used at display sizes where 400 already has
+       * presence, and a bold Garamond is a different, worse typeface. */
+      { query: "EB+Garamond:ital,wght@0,400..500;1,400..500", slug: "eb-garamond" },
     ],
     subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
+  },
+  {
+    /* Russian pages only. Instrument Sans is Latin-only, so Cyrillic body
+     * copy needs a face of its own; Golos Text is a Cyrillic-native
+     * neo-grotesk in the same register, which is what keeps a Russian page
+     * looking like the same site rather than a translation of it. EB
+     * Garamond carries its own Cyrillic, so the serif accent does not
+     * change. */
+    file: "cyrillic.css",
+    families: [{ query: "Golos+Text:wght@400..600", slug: "golos-text" }],
+    subsets: ["cyrillic", "cyrillic-ext"],
   },
   {
     /* Arabic pages only, linked by the $lang layout. */

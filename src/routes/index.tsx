@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { type CSSProperties } from "react";
-import heroImage from "@/assets/hero-dubai.jpg";
 import { site } from "@/config/site";
 import { listPartnerDevelopers } from "@/data/catalogue";
 import { getMarketPriceIndex, getMarketSummary, listAreasWithStats } from "@/data/market";
@@ -15,6 +14,7 @@ import { DeveloperStrip } from "@/components/site/developer-strip";
 import { Faq } from "@/components/site/faq";
 import { PropertyCard } from "@/components/site/property-card";
 import { Parallax } from "@/components/motion";
+import { Photo } from "@/components/site/photo";
 import { Reveal } from "@/components/site/reveal";
 import { TestimonialsBlock } from "@/components/site/testimonials-block";
 import { TrustStrip } from "@/components/site/trust-strip";
@@ -76,85 +76,85 @@ function Index() {
       {/*
        * The hero.
        *
-       * A dark anchor, so the photograph runs to the top of the viewport with
-       * the masthead sitting in it rather than on a bar above it. Three text
-       * elements and one action: no eyebrow, no second call, no scroll cue.
-       * The reader knows how to scroll.
+       * The heart of the page, and composed as one photograph rather than as a
+       * banner with text on it. Downtown from the air at night: the Burj lit,
+       * traffic running through the interchange, real depth to move through.
        *
-       * The headline animates in CSS rather than through <RevealText>. It is
-       * the Largest Contentful Paint candidate on the most important page of
-       * the site, and a CSS animation starts at the first paint, before a byte
-       * of JavaScript has parsed. The parallax is the enhancement, and it is
-       * allowed to arrive late.
+       * The type is deliberately mixed. Two lines of the workhorse sans carry
+       * the statement, and one line of the serif carries the word the sentence
+       * turns on. That is the whole argument for keeping a second typeface: it
+       * earns its place once, here, where the reader is meant to slow down.
+       *
+       * Three text elements and one action. No eyebrow, no second call, no
+       * scroll cue. The headline animates in CSS because it is the Largest
+       * Contentful Paint candidate and a CSS animation starts at the first
+       * paint; the parallax is the enhancement and may arrive late.
        */}
       <section
         data-surface="dark"
-        className="relative flex min-h-[100svh] items-end overflow-hidden pb-24 lg:pb-32"
+        className="relative flex min-h-[100svh] items-end overflow-hidden pb-16 lg:pb-24"
       >
-        <Parallax speed={0.78} className="absolute inset-x-0 -top-[8%] h-[116%]">
-          <img
-            src={heroImage}
-            alt="A Dubai penthouse terrace at dawn, the skyline beyond it"
-            width={1920}
-            height={1280}
-            fetchPriority="high"
+        <Parallax speed={0.8} className="absolute inset-x-0 -top-[8%] h-[116%]">
+          <Photo
+            slug="downtown-aerial-night-trails"
+            sizes="100vw"
+            priority
             className="h-full w-full object-cover"
           />
         </Parallax>
 
-        {/* The scrim. Weighted to the foot, where the type is, and thin at the
-            top where the photograph should still read as a photograph. */}
+        {/* Weighted to the foot, where the type is, and thin at the top so the
+            photograph still reads as a photograph. */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/55 to-ink/25"
+          className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/45 to-ink/15"
         />
 
         <Container className="relative">
-          <h1 className="display-1 max-w-4xl">
-            {["Dubai real estate,", "handled with"].map((line, i) => (
+          <div className="grid items-end gap-x-12 gap-y-10 lg:grid-cols-12">
+            <h1 className="lg:col-span-7">
               <span
-                key={line}
-                className="block overflow-hidden"
-                /* The first line carries no delay. Everything after it is
-                 * staggered, but the LCP candidate has to be painting in the
-                 * first frame, an animation-delay on it is an LCP delay,
-                 * because Chrome does not count an element at opacity 0. */
+                className="display-1 block"
                 data-hero-reveal
-                style={{ "--hero-delay": `${i * 140}ms` } as CSSProperties}
+                style={{ "--hero-delay": "0ms" } as CSSProperties}
               >
-                {line}
+                Dubai property,
               </span>
-            ))}
-            {/* Emphasis in the italic of the same face, not in a second colour.
-                Gold over a photograph is a contrast gamble and the italic says
-                the same thing without taking one. `leading` and the reserve
-                below keep the descender on the `j`-height off the clip. */}
-            <span
-              className="block overflow-hidden pb-2 leading-[1.1]"
-              data-hero-reveal
-              style={{ "--hero-delay": "280ms" } as CSSProperties}
+              <span
+                className="display-1 block"
+                data-hero-reveal
+                style={{ "--hero-delay": "120ms" } as CSSProperties}
+              >
+                bought on evidence
+              </span>
+              {/* The one serif line on the page above the fold. `leading` and
+                  the bottom reserve keep the descender off the clip. */}
+              <span
+                className="accent-line mt-2 block pb-2 italic leading-[1.12] text-on-dark"
+                data-hero-reveal
+                style={{ "--hero-delay": "260ms" } as CSSProperties}
+              >
+                rather than atmosphere.
+              </span>
+            </h1>
+
+            <div
+              className="lg:col-span-4 lg:col-start-9"
+              data-hero-reveal="fade"
+              style={{ "--hero-delay": "460ms" } as CSSProperties}
             >
-              <span className="italic">intention.</span>
-            </span>
-          </h1>
-
-          <p
-            className="body-text mt-8 max-w-xl text-on-dark-muted"
-            data-hero-reveal="fade"
-            style={{ "--hero-delay": "480ms" } as CSSProperties}
-          >
-            A private brokerage representing a small number of clients across Dubai's prime
-            districts.
-          </p>
-
-          <div
-            data-hero-reveal="fade"
-            style={{ "--hero-delay": "640ms" } as CSSProperties}
-            className="mt-12"
-          >
-            <Link to="/properties" search={{}}>
-              <Button>View the portfolio</Button>
-            </Link>
+              <p className="body-text max-w-md text-on-dark-muted">
+                A private Dubai brokerage. We price from Dubai Land Department records, represent a
+                small number of clients, and say what the numbers say.
+              </p>
+              {/* One action, and nothing beside it. The licence number, the
+                  language control and the trust facts all live further down
+                  or in the chrome; a hero that also carries them is a hero
+                  that has stopped being one. */}
+              <Link to="/properties" search={{}} className="mt-8 inline-block">
+                <Button>View the portfolio</Button>
+              </Link>
+            </div>
           </div>
         </Container>
       </section>

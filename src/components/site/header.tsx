@@ -149,15 +149,22 @@ export function Header() {
             className="shrink-0 transition-opacity duration-base ease-editorial hover:opacity-70"
             onClick={() => setOpen(false)}
           >
+            {/*
+             * The full lockup, not the bare monogram.
+             *
+             * Measured rather than assumed: the monogram alone is drawn from
+             * hairlines, and at masthead size against a night photograph its
+             * strokes fall below a pixel and the mark reads as a smudge. The
+             * stacked lockup puts the wide-tracked wordmark under it, which
+             * holds at small sizes and says the name, which is what a
+             * masthead is for.
+             */}
             <Wordmark
-              form="monogram"
+              form="primary"
               tone={onDark ? "on-dark" : "ink"}
-              /* The mark is drawn from hairlines, so it needs size to read.
-                 44px in an 80px bar makes it the strongest thing on the line,
-                 which is what a masthead is for; it steps down with the bar. */
               className={cn(
                 "transition-[height] duration-base ease-editorial",
-                scrolled ? "h-9" : "h-11",
+                scrolled ? "h-10" : "h-12",
               )}
             />
           </a>

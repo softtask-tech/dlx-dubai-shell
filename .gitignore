@@ -37,3 +37,9 @@ supabase/.branches
 
 # playwright-cli scratch (snapshots, console logs) from local verification runs
 .playwright-cli/
+
+# Photography originals. Multi-megabyte source JPEGs; the optimized set in
+# public/photos is what ships. See assets-source/photos/CREDITS.md to restore.
+assets-source/photos/*.jpg
+assets-source/photos/*.jpeg
+assets-source/photos/*.png
