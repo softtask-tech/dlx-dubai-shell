@@ -50,7 +50,13 @@ export function Photo({
   const height = Math.round(width / photo.ratio);
 
   return (
-    <picture className={cn("block", wrapperClassName)}>
+    /* `h-full w-full` on the picture, not only on the img. A `<picture>` is an
+       inline wrapper by default, so an `h-full` image inside it resolves
+       against a box that is itself auto-height, and the frame silently keeps
+       the photograph's own aspect instead of the one the layout asked for.
+       Where the parent has no height, `h-full` computes to auto and this
+       changes nothing. */
+    <picture className={cn("block h-full w-full", wrapperClassName)}>
       <source type="image/avif" srcSet={photoSrcSet(photo, "avif")} sizes={sizes} />
       <source type="image/webp" srcSet={photoSrcSet(photo, "webp")} sizes={sizes} />
       <img

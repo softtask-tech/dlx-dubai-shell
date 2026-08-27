@@ -32,6 +32,20 @@ type PinnedSequenceProps = {
   /** One node per stage, in the order they should be read. */
   stages: readonly ReactNode[];
   /**
+   * Drawn once, behind every stage. A pinned section holds a whole viewport
+   * still, and whatever the stages do not occupy is read as emptiness rather
+   * than as space, so the ground under them has to be something: a photograph,
+   * a field of colour, a rule. Without it the pattern looks like a bug.
+   */
+  backdrop?: ReactNode;
+  /**
+   * Drawn once, above every stage, and given the sequence's state so it can
+   * show where in the argument the reader is. This is the section's frame: the
+   * rails that stay put while the content changes, which is what makes the
+   * held viewport read as one composition instead of three slides.
+   */
+  frame?: (state: { active: number; count: number; pinned: boolean }) => ReactNode;
+  /**
    * Viewport heights of scroll per stage. Higher means the reader dwells
    * longer on each. Below about 0.8 the sequence feels rushed.
    */
@@ -46,6 +60,8 @@ type PinnedSequenceProps = {
 
 export function PinnedSequence({
   stages,
+  backdrop,
+  frame,
   dwell = 1,
   className,
   stageClassName,
@@ -108,14 +124,21 @@ export function PinnedSequence({
     <section
       ref={ref}
       aria-label={ariaLabel}
-      className={cn(pinned && "relative min-h-[100dvh] overflow-hidden", className)}
+      className={cn("relative", pinned && "min-h-[100dvh] overflow-hidden", className)}
     >
+      {backdrop ? (
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          {backdrop}
+        </div>
+      ) : null}
+
       {stages.map((stage, i) => (
         <div
           key={i}
           data-pinned-stage={pinned ? (i === active ? "active" : "idle") : undefined}
           aria-hidden={pinned && i !== active ? true : undefined}
           className={cn(
+            "relative",
             pinned
               ? "absolute inset-0 flex items-center"
               : /* The stacked fallback. Every stage is a section in its own
@@ -127,6 +150,14 @@ export function PinnedSequence({
           {stage}
         </div>
       ))}
+
+      {/* Above the stages, and inert: the frame is rails and a progress line,
+          never a control, so it must not sit between the reader and a link. */}
+      {frame ? (
+        <div className="pointer-events-none absolute inset-0 z-10">
+          {frame({ active, count: stages.length, pinned })}
+        </div>
+      ) : null}
     </section>
   );
 }

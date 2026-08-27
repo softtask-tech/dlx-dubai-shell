@@ -150,21 +150,22 @@ export function Header() {
             onClick={() => setOpen(false)}
           >
             {/*
-             * The full lockup, not the bare monogram.
+             * The monogram, trimmed and given the whole bar.
              *
-             * Measured rather than assumed: the monogram alone is drawn from
-             * hairlines, and at masthead size against a night photograph its
-             * strokes fall below a pixel and the mark reads as a smudge. The
-             * stacked lockup puts the wide-tracked wordmark under it, which
-             * holds at small sizes and says the name, which is what a
-             * masthead is for.
+             * The stacked lockup was tried here first and measured: its
+             * wordmark line is 9% of the artwork's height, so at any size an
+             * 80px masthead can give it the name rendered about four pixels
+             * tall, which is a texture rather than a word. The ligature at 44px
+             * is legible, and the name is set in full in the footer, in the
+             * page title, and in the schema, which is where a crawler reads it
+             * anyway.
              */}
             <Wordmark
-              form="primary"
+              form="monogram"
               tone={onDark ? "on-dark" : "ink"}
               className={cn(
                 "transition-[height] duration-base ease-editorial",
-                scrolled ? "h-10" : "h-12",
+                scrolled ? "h-9" : "h-11",
               )}
             />
           </a>

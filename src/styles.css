@@ -270,7 +270,7 @@
 
 @layer base {
   * {
-    border-color: var(--color-border);
+    border-color: var(--border);
   }
 
   /*
@@ -285,8 +285,8 @@
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--background);
+    color: var(--foreground);
     font-family: var(--font-sans);
     /* 400, not 300. Instrument Sans has no 300, and body copy asked to render
      * at a weight a face does not carry gets synthesised into something
@@ -310,13 +310,13 @@
   }
 
   ::selection {
-    background: var(--color-accent);
-    color: var(--color-accent-foreground);
+    background: var(--accent);
+    color: var(--accent-foreground);
   }
 
   /* Keyboard focus stays visible everywhere, in the accent, never removed. */
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
   }
 
@@ -351,8 +351,8 @@
     left: 1rem;
     top: 1rem;
     padding: 0.75rem 1.25rem;
-    background-color: var(--color-foreground);
-    color: var(--color-background);
+    background-color: var(--foreground);
+    color: var(--background);
     font-family: var(--font-sans);
     font-size: var(--text-eyebrow);
     letter-spacing: var(--tracking-editorial);
@@ -607,24 +607,37 @@
   font-size: var(--text-caption);
   line-height: var(--text-caption--line-height);
   font-weight: 400;
-  color: var(--color-muted-foreground);
+  color: var(--muted-foreground);
 }
 
-/* Editorial eyebrow / label type */
+/*
+ * Editorial eyebrow / label type.
+ *
+ * Note the `var(--muted-foreground)` rather than `var(--color-muted-foreground)`,
+ * here and everywhere else in this file. The `--color-*` names exist once, on
+ * the root, so they resolve to the light palette at declaration time and every
+ * descendant inherits that resolved value. Re-pointing `--muted-foreground`
+ * inside `data-surface="dark"` cannot reach them. Written the wrong way, every
+ * label and caption on a dark section came out at #6b6b6b on near-black, which
+ * is 3.6:1 and fails AA.
+ */
 @utility eyebrow {
   font-family: var(--font-sans);
+  /* Two or three wide-tracked words are a label, and a label that wraps is
+     not one. Anything long enough to need two lines is a heading. */
+  text-wrap: nowrap;
   font-size: var(--text-eyebrow);
   font-weight: 500;
   letter-spacing: var(--tracking-editorial);
   text-transform: uppercase;
-  color: var(--color-muted-foreground);
+  color: var(--muted-foreground);
 }
 
 /* Thin rule used to separate editorial blocks */
 @utility hairline {
   height: 1px;
   width: 100%;
-  background-color: var(--color-border);
+  background-color: var(--border);
 }
 
 @utility link-underline {
@@ -665,7 +678,7 @@
     color var(--duration-base) var(--ease-editorial),
     text-decoration-color var(--duration-base) var(--ease-editorial);
   &:hover {
-    color: var(--color-accent);
+    color: var(--accent);
     text-decoration-color: currentColor;
   }
 }

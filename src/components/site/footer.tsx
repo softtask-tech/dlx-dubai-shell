@@ -55,7 +55,10 @@ export function Footer() {
 
         <div className="mt-14 grid gap-x-10 gap-y-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <Wordmark form="primary" tone="on-dark" className="h-24" />
+            {/* Sized by width, not height: the lockup's wordmark line is a small
+                fraction of the artwork, and this is the one place on the site
+                with room to set it large enough to actually read. */}
+            <Wordmark form="primary" tone="on-dark" className="w-52 sm:w-60" />
             <p className="caption mt-8">{t.footer.licence}</p>
             <address className="caption mt-2 not-italic">
               {site.address.street}, {site.address.locality}
