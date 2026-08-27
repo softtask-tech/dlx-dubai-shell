@@ -2,10 +2,17 @@ import { Reveal } from "./reveal";
 import { useT } from "@/i18n";
 import { stagger } from "@/lib/motion";
 import { Eyebrow } from "@/components/ui/section";
+import { cn } from "@/lib/utils";
 import type { FaqEntry } from "@/lib/schema";
 
 type FaqProps = {
-  eyebrow?: string;
+  /**
+   * `null` drops the label entirely. The homepage does that: the taste budget
+   * is one eyebrow per three sections, and by the time a reader reaches the
+   * questions at the foot of eleven sections the heading is doing the work
+   * that a label above it would only repeat.
+   */
+  eyebrow?: string | null;
   title?: string;
   entries: readonly FaqEntry[];
 };
@@ -21,14 +28,14 @@ type FaqProps = {
 export function Faq({ eyebrow, title, entries }: FaqProps) {
   const t = useT();
   const heading = title ?? t.blocks.faqTitle;
-  const label = eyebrow ?? t.blocks.faqEyebrow;
+  const label = eyebrow === null ? null : (eyebrow ?? t.blocks.faqEyebrow);
 
   return (
     <div className="grid gap-14 lg:grid-cols-12">
       <div className="lg:col-span-3">
         <Reveal>
-          <Eyebrow>{label}</Eyebrow>
-          <h2 className="mt-6 font-display text-3xl leading-tight md:text-4xl">{heading}</h2>
+          {label ? <Eyebrow>{label}</Eyebrow> : null}
+          <h2 className={cn("display-2 text-balance", label && "mt-6")}>{heading}</h2>
         </Reveal>
       </div>
 

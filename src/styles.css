@@ -113,7 +113,12 @@
    * still generous, but a section now has to earn its height with something
    * in it. */
   --spacing-gutter: 1.5rem;
-  --spacing-block: 2.25rem;
+  /* No `--spacing-block` here, and the name is the reason rather than the
+     value. Tailwind generates a utility per spacing key, so a key called
+     `block` produces `.inline-block { inline-size: 2.25rem }`, which lands
+     after the display utility of the same name and silently pins every
+     `inline-block` element on the site to 36px. It is what turned the "How we
+     work" link into three stacked words. Nothing used the scale. */
   --spacing-section-sm: 4rem;
   --spacing-section: 6.5rem;
   --spacing-section-lg: 9rem;
@@ -623,9 +628,11 @@
  */
 @utility eyebrow {
   font-family: var(--font-sans);
-  /* Two or three wide-tracked words are a label, and a label that wraps is
-     not one. Anything long enough to need two lines is a heading. */
-  text-wrap: nowrap;
+  /* No `text-wrap` here. `nowrap` was tried and it pushed the whole document
+     sideways, because a long label at 0.2em tracking is wider than a phone:
+     441px of scroll width in a 390px viewport. Plain wrapping is right, and
+     the stacked-label bug it was added to hide turned out to be the
+     `--spacing-block` collision described above. */
   font-size: var(--text-eyebrow);
   font-weight: 500;
   letter-spacing: var(--tracking-editorial);

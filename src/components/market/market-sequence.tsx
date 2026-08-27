@@ -145,8 +145,9 @@ export function MarketSequence({
         aria-label="Dubai market, read from the record"
         stages={[verdict, evidence, invitation]}
         dwell={1.1}
+        stageClassName="w-full"
         /* Room for the two rails, so a stage never collides with the frame. */
-        stageClassName="w-full pt-40 pb-32 lg:pt-44 lg:pb-36"
+        pinnedStageClassName="pt-40 pb-32 lg:pt-44 lg:pb-36"
         backdrop={
           <>
             {/* The skyline the figures are about, held at the threshold of
@@ -165,7 +166,11 @@ export function MarketSequence({
           /* The top rail clears the masthead rather than sliding under it:
              while the section is pinned it sits at the very top of the
              viewport, which is exactly where the fixed header already is. */
-          <Container className="flex h-full flex-col justify-between pt-28 pb-9 lg:pt-32 lg:pb-12">
+          <Container
+            className={
+              pinned ? "flex h-full flex-col justify-between pt-28 pb-9 lg:pt-32 lg:pb-12" : "block"
+            }
+          >
             <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2">
               <Eyebrow>Dubai market, read from the record</Eyebrow>
               <FreshnessStamp attribution={summary.attribution} />

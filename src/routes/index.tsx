@@ -365,7 +365,7 @@ function Index() {
       </Manifesto>
 
       <Section className="pt-0">
-        <Faq entries={FAQ_ENTRIES} />
+        <Faq eyebrow={null} entries={FAQ_ENTRIES} />
       </Section>
     </>
   );

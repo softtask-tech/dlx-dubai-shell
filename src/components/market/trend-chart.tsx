@@ -39,6 +39,12 @@ export function TrendChart({
   const reduced = useReducedMotion();
   const ref = useRef<SVGSVGElement>(null);
   const [drawn, setDrawn] = useState(false);
+  /* `useReducedMotion` reads matchMedia, which the server cannot, so any style
+   * derived from it differs between the server HTML and the first client
+   * render and React reports a hydration mismatch. Gating on mount makes both
+   * of those renders identical and moves the decision to the second one. */
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const usable = points.filter(
     (point): point is AreaPricePoint & { median_price_per_sqft: number } =>
@@ -134,11 +140,11 @@ export function TrendChart({
           pathLength={1}
           strokeDasharray={1}
           strokeDashoffset={drawn ? 0 : 1}
-          style={{
-            transition: reduced
-              ? "none"
-              : "stroke-dashoffset 1600ms cubic-bezier(0.22, 1, 0.36, 1)",
-          }}
+          style={
+            mounted && !reduced
+              ? { transition: "stroke-dashoffset 1600ms cubic-bezier(0.22, 1, 0.36, 1)" }
+              : undefined
+          }
         />
 
         {/* The end point, so the eye lands where the line finishes. */}

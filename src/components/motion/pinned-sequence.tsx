@@ -52,8 +52,14 @@ type PinnedSequenceProps = {
   dwell?: number;
   /** Applied to the outer section in both the pinned and the stacked layout. */
   className?: string;
-  /** Applied to each stage wrapper. */
+  /** Applied to each stage wrapper, in both layouts. */
   stageClassName?: string;
+  /**
+   * Applied to each stage only while the pin holds. Padding belongs here, not
+   * in `stageClassName`: room for the frame's rails inside a held viewport is
+   * dead space once the stages are three ordinary blocks in a column.
+   */
+  pinnedStageClassName?: string;
   /** Accessible label for the section landmark. */
   "aria-label"?: string;
 };
@@ -65,6 +71,7 @@ export function PinnedSequence({
   dwell = 1,
   className,
   stageClassName,
+  pinnedStageClassName,
   "aria-label": ariaLabel,
 }: PinnedSequenceProps) {
   const reduced = useReducedMotion();
@@ -120,6 +127,8 @@ export function PinnedSequence({
     };
   }, [reduced, lenis, dwell, stages.length]);
 
+  const frameNode = frame?.({ active, count: stages.length, pinned });
+
   return (
     <section
       ref={ref}
@@ -132,6 +141,12 @@ export function PinnedSequence({
         </div>
       ) : null}
 
+      {/* In the stacked fallback the frame heads the section, so it has to come
+          before the stages in the flow. While the pin holds it is an overlay
+          and its DOM order only decides paint order, where last is what we
+          want. Same node, two positions. */}
+      {frame && !pinned ? <div className="relative z-10 pt-section-sm">{frameNode}</div> : null}
+
       {stages.map((stage, i) => (
         <div
           key={i}
@@ -140,7 +155,7 @@ export function PinnedSequence({
           className={cn(
             "relative",
             pinned
-              ? "absolute inset-0 flex items-center"
+              ? ["absolute inset-0 flex items-center", pinnedStageClassName]
               : /* The stacked fallback. Every stage is a section in its own
                  * right, so it gets section-sized breathing room. */
                 "py-section-sm first:pt-section last:pb-section",
@@ -151,12 +166,11 @@ export function PinnedSequence({
         </div>
       ))}
 
-      {/* Above the stages, and inert: the frame is rails and a progress line,
-          never a control, so it must not sit between the reader and a link. */}
-      {frame ? (
-        <div className="pointer-events-none absolute inset-0 z-10">
-          {frame({ active, count: stages.length, pinned })}
-        </div>
+      {/* Inert: the frame is rails and a progress line, never a control, so
+          while it lies over the held viewport it must not sit between the
+          reader and a link. */}
+      {frame && pinned ? (
+        <div className="pointer-events-none absolute inset-0 z-10">{frameNode}</div>
       ) : null}
     </section>
   );
