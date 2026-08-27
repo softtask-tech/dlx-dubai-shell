@@ -148,8 +148,7 @@ function DeveloperPage() {
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Reveal>
-              <Eyebrow>Enquire</Eyebrow>
-              <h2 className="display-2 mt-6">Considering {developer.name}?</h2>
+              <h2 className="display-2">Considering {developer.name}?</h2>
               <p className="body-text mt-8 max-w-measure text-muted-foreground">
                 We will tell you what we actually think of the product, the location and the
                 delivery record, including when we think you should look elsewhere.

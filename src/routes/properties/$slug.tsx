@@ -218,12 +218,20 @@ function PropertyDetail() {
               {property.floor_plan_url ? (
                 <Reveal>
                   <figure>
+                    {/* The one image on the site whose box is not already
+                        reserved by its container. A floor plan is any shape,
+                        arrives late and is lazy, so without a reserved ratio it
+                        shoves everything under it down when it decodes. 4/3 is
+                        the common case and `object-contain` means a plan that
+                        is not 4/3 letterboxes rather than crops, which on a
+                        floor plan is the difference between readable and
+                        useless. */}
                     <img
                       src={property.floor_plan_url}
                       alt={`Floor plan for ${property.title}`}
                       loading="lazy"
                       decoding="async"
-                      className="w-full bg-background"
+                      className="aspect-4/3 w-full bg-background object-contain"
                     />
                     <figcaption className="caption mt-4">Floor plan</figcaption>
                   </figure>
@@ -250,8 +258,7 @@ function PropertyDetail() {
       {property.latitude !== null && property.longitude !== null ? (
         <Section>
           <Reveal>
-            <Eyebrow>Location</Eyebrow>
-            <h2 className="display-3 mt-6">{property.area?.name ?? "Dubai"}</h2>
+            <h2 className="display-3">{property.area?.name ?? "Dubai"}</h2>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="mt-10 aspect-[16/9] w-full border border-border">

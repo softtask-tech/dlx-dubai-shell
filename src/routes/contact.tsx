@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { site, SITE_URL } from "@/config/site";
 import { listAgents, listTestimonials } from "@/data/people";
 import { faqSchema, type FaqEntry } from "@/lib/schema";
-import { pageHead } from "@/lib/seo";
+import { pageHead, withHeroPreload } from "@/lib/seo";
 import { QualifiedForm } from "@/components/forms/qualified-form";
 import { trackContactHref } from "@/components/site/contact-link";
 import { Reveal } from "@/components/site/reveal";
@@ -36,30 +36,33 @@ export const Route = createFileRoute("/contact")({
     return { agents, testimonials };
   },
   head: () =>
-    pageHead({
-      path: "/contact",
-      breadcrumbs: [{ name: "Contact", path: "/contact" }],
-      schema: [
-        faqSchema(FAQS),
-        {
-          "@context": "https://schema.org",
-          "@type": "ContactPage",
-          url: `${SITE_URL}/contact`,
-          mainEntity: {
-            "@type": "RealEstateAgent",
-            name: site.name,
-            email: site.contact.email,
-            telephone: site.contact.phoneE164,
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: site.address.street,
-              addressLocality: site.address.locality,
-              addressCountry: site.address.country,
+    withHeroPreload(
+      "dubai-marina-from-water",
+      pageHead({
+        path: "/contact",
+        breadcrumbs: [{ name: "Contact", path: "/contact" }],
+        schema: [
+          faqSchema(FAQS),
+          {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            url: `${SITE_URL}/contact`,
+            mainEntity: {
+              "@type": "RealEstateAgent",
+              name: site.name,
+              email: site.contact.email,
+              telephone: site.contact.phoneE164,
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: site.address.street,
+                addressLocality: site.address.locality,
+                addressCountry: site.address.country,
+              },
             },
           },
-        },
-      ],
-    }),
+        ],
+      }),
+    ),
   component: ContactPage,
 });
 

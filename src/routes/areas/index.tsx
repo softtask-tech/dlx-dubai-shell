@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { listAreasWithStats } from "@/data/market";
 import { attributionFor } from "@/data/market";
-import { pageHead } from "@/lib/seo";
+import { pageHead, withHeroPreload } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
 import { FreshnessStamp } from "@/components/market/freshness-stamp";
 import { Reveal } from "@/components/site/reveal";
@@ -14,18 +14,21 @@ import { Section, Eyebrow } from "@/components/ui/section";
 export const Route = createFileRoute("/areas/")({
   loader: async () => ({ areas: await listAreasWithStats() }),
   head: () =>
-    pageHead({
-      path: "/areas",
-      title: "Dubai Communities",
-      description:
-        "Every Dubai community we cover, with recorded prices, rental yields and transaction volumes, and a plain answer to whether it is worth buying there.",
-      tagline: "Where the numbers say to look.",
-      image: "/og/areas.png",
-      breadcrumbs: [
-        { name: "Market Intelligence", path: "/market-intelligence" },
-        { name: "Communities", path: "/areas" },
-      ],
-    }),
+    withHeroPreload(
+      "palm-jumeirah-aerial-day",
+      pageHead({
+        path: "/areas",
+        title: "Dubai Communities",
+        description:
+          "Every Dubai community we cover, with recorded prices, rental yields and transaction volumes, and a plain answer to whether it is worth buying there.",
+        tagline: "Where the numbers say to look.",
+        image: "/og/areas.png",
+        breadcrumbs: [
+          { name: "Market Intelligence", path: "/market-intelligence" },
+          { name: "Communities", path: "/areas" },
+        ],
+      }),
+    ),
   component: AreasIndex,
 });
 

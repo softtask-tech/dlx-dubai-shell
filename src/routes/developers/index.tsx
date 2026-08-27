@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { listDevelopers, listProjects } from "@/data/catalogue";
 import { formatHandover } from "@/lib/format";
 import { Price } from "@/components/tools/money";
-import { pageHead } from "@/lib/seo";
+import { pageHead, withHeroPreload } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
 import { Reveal } from "@/components/site/reveal";
 import { PageHero } from "@/components/site/page-hero";
@@ -19,7 +19,10 @@ export const Route = createFileRoute("/developers/")({
     return { developers, projects };
   },
   head: () =>
-    pageHead({ path: "/developers", breadcrumbs: [{ name: "Developers", path: "/developers" }] }),
+    withHeroPreload(
+      "burj-al-arab-cloud",
+      pageHead({ path: "/developers", breadcrumbs: [{ name: "Developers", path: "/developers" }] }),
+    ),
   component: DevelopersIndex,
 });
 

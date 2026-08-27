@@ -9,7 +9,7 @@ import {
 } from "@/data/blog";
 import type { ContentCategory } from "@/data/types";
 import { formatMonth } from "@/lib/format";
-import { pageHead } from "@/lib/seo";
+import { pageHead, withHeroPreload } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
 import { Reveal } from "@/components/site/reveal";
 import { TrustStrip } from "@/components/site/trust-strip";
@@ -57,7 +57,11 @@ export const Route = createFileRoute("/blog/")({
   },
   /* Filtered views are the same posts in a different order, so the canonical
    * stays on /blog, which is what passing the bare path here does. */
-  head: () => pageHead({ path: "/blog", breadcrumbs: [{ name: "Journal", path: "/blog" }] }),
+  head: () =>
+    withHeroPreload(
+      "palm-jumeirah-dusk-aerial",
+      pageHead({ path: "/blog", breadcrumbs: [{ name: "Journal", path: "/blog" }] }),
+    ),
   component: BlogIndex,
 });
 

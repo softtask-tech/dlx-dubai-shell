@@ -89,18 +89,27 @@ function AreaPage() {
        * have no picture of should look deliberate, not broken.
        */}
       {area.hero_image_url ? (
-        <div className="relative h-[55svh] w-full overflow-hidden bg-muted">
+        <div data-surface="dark" className="relative h-[55svh] w-full overflow-hidden bg-ink">
           <img
             src={area.hero_image_url}
             alt={area.name}
             fetchPriority="high"
             className="absolute inset-0 h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-background/20" />
+          {/* A bottom-weighted scrim and a dark surface, not a 20% white veil
+              with ink type on it. The veil was a contrast gamble taken once per
+              community photograph, and it left the masthead in ink mode over an
+              unknown picture. */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/25"
+          />
           <div className="relative flex h-full items-end pb-14">
             <Container>
-              <Eyebrow>Community</Eyebrow>
-              <h1 className="display-1 mt-6">{area.name}</h1>
+              <h1 className="display-1 text-balance">{area.name}</h1>
+              {area.summary ? (
+                <p className="lead mt-5 max-w-2xl text-on-dark-muted">{area.summary}</p>
+              ) : null}
             </Container>
           </div>
         </div>
@@ -118,8 +127,7 @@ function AreaPage() {
       <Section className={area.hero_image_url ? undefined : "pt-0"}>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <Reveal>
-            <Eyebrow>The last twelve months</Eyebrow>
-            <h2 className="display-2 mt-6">{area.name} in numbers</h2>
+            <h2 className="display-2">{area.name} in numbers</h2>
           </Reveal>
           <Reveal delay={0.1}>
             <FreshnessStamp attribution={attribution} />

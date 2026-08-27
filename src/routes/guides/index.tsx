@@ -7,7 +7,7 @@ import {
   guidesByCategory,
 } from "@/data/guides";
 import { faqSchema } from "@/lib/schema";
-import { pageHead } from "@/lib/seo";
+import { pageHead, withHeroPreload } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
 import { Reveal } from "@/components/site/reveal";
 import { TrustStrip } from "@/components/site/trust-strip";
@@ -25,11 +25,16 @@ import { Tag } from "@/components/ui/tag";
  */
 export const Route = createFileRoute("/guides/")({
   head: () =>
-    pageHead({
-      path: "/guides",
-      breadcrumbs: [{ name: "Guides", path: "/guides" }],
-      schema: [faqSchema(GUIDES.map((guide) => ({ question: guide.title, answer: guide.answer })))],
-    }),
+    withHeroPreload(
+      "downtown-fog-day",
+      pageHead({
+        path: "/guides",
+        breadcrumbs: [{ name: "Guides", path: "/guides" }],
+        schema: [
+          faqSchema(GUIDES.map((guide) => ({ question: guide.title, answer: guide.answer }))),
+        ],
+      }),
+    ),
   component: GuidesIndex,
 });
 

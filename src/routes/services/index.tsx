@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { SERVICES } from "@/data/services";
-import { pageHead } from "@/lib/seo";
+import { pageHead, withHeroPreload } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
 import { Reveal } from "@/components/site/reveal";
 import { TrustStrip } from "@/components/site/trust-strip";
@@ -10,7 +10,10 @@ import { Section, Eyebrow } from "@/components/ui/section";
 
 export const Route = createFileRoute("/services/")({
   head: () =>
-    pageHead({ path: "/services", breadcrumbs: [{ name: "Services", path: "/services" }] }),
+    withHeroPreload(
+      "business-bay-dusk",
+      pageHead({ path: "/services", breadcrumbs: [{ name: "Services", path: "/services" }] }),
+    ),
   component: ServicesIndex,
 });
 

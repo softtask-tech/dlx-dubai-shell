@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { listAgents } from "@/data/people";
-import { pageHead } from "@/lib/seo";
+import { pageHead, withHeroPreload } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
 import { trackContactHref } from "@/components/site/contact-link";
 import { Reveal } from "@/components/site/reveal";
@@ -12,7 +12,11 @@ import { Tag } from "@/components/ui/tag";
 
 export const Route = createFileRoute("/team")({
   loader: async () => ({ agents: await listAgents() }),
-  head: () => pageHead({ path: "/team", breadcrumbs: [{ name: "Team", path: "/team" }] }),
+  head: () =>
+    withHeroPreload(
+      "palm-jumeirah-dusk-aerial",
+      pageHead({ path: "/team", breadcrumbs: [{ name: "Team", path: "/team" }] }),
+    ),
   component: TeamPage,
 });
 

@@ -185,3 +185,29 @@ const AREA_PHOTOS: Partial<Record<string, PhotoSlug>> = {
 export function areaPhoto(slug: string): PhotoSlug {
   return AREA_PHOTOS[slug] ?? "downtown-skyline-night";
 }
+
+/**
+ * The head link that starts the hero photograph downloading before the browser
+ * has parsed the body.
+ *
+ * `priority` on the component gets the image `fetchpriority="high"` and eager
+ * loading, which helps, but the browser still cannot begin until the preload
+ * scanner reaches that tag. A preload in the head starts it in the first
+ * round trip, which is most of the Largest Contentful Paint on a page whose
+ * largest element is always a photograph.
+ *
+ * `imageSrcSet` and `imageSizes` have to match the ones the component renders
+ * exactly, or the browser preloads one file and then downloads a second.
+ */
+export function photoPreload(slug: PhotoSlug, sizes = "100vw") {
+  const photo = PHOTOS[slug];
+  return {
+    rel: "preload",
+    as: "image",
+    type: "image/avif",
+    href: `/photos/${photo.slug}-${photo.fallbackWidth}.avif`,
+    imageSrcSet: photoSrcSet(photo, "avif"),
+    imageSizes: sizes,
+    fetchPriority: "high",
+  } as const;
+}

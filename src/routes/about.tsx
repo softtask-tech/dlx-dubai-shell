@@ -4,7 +4,7 @@ import { site } from "@/config/site";
 import { listPartnerDevelopers } from "@/data/catalogue";
 import { listAgents, listTestimonials } from "@/data/people";
 import { faqSchema, reviewSchemaFor, type FaqEntry } from "@/lib/schema";
-import { pageHead } from "@/lib/seo";
+import { pageHead, withHeroPreload } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
 import { DeveloperStrip } from "@/components/site/developer-strip";
 import { Reveal } from "@/components/site/reveal";
@@ -59,11 +59,14 @@ export const Route = createFileRoute("/about")({
     return { agents, testimonials, partners };
   },
   head: ({ loaderData }) =>
-    pageHead({
-      path: "/about",
-      breadcrumbs: [{ name: "About", path: "/about" }],
-      schema: [faqSchema(FAQS), ...reviewSchemaFor(loaderData?.testimonials ?? [])],
-    }),
+    withHeroPreload(
+      "burj-khalifa-dusk-silhouette",
+      pageHead({
+        path: "/about",
+        breadcrumbs: [{ name: "About", path: "/about" }],
+        schema: [faqSchema(FAQS), ...reviewSchemaFor(loaderData?.testimonials ?? [])],
+      }),
+    ),
   component: AboutPage,
 });
 

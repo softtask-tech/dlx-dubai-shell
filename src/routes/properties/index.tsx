@@ -4,7 +4,7 @@ import { z } from "zod";
 import { listAreas } from "@/data/catalogue";
 import { listProperties, type PropertyFilters } from "@/data/properties";
 import type { Area } from "@/data/types";
-import { pageHead } from "@/lib/seo";
+import { pageHead, withHeroPreload } from "@/lib/seo";
 import { useTrackedView } from "@/lib/use-tracked-view";
 import { FullBleed } from "@/components/layouts";
 import { ListingGrid } from "@/components/site/listing-grid";
@@ -50,7 +50,10 @@ export const Route = createFileRoute("/properties/")({
     return { properties, areas };
   },
   head: () =>
-    pageHead({ path: "/properties", breadcrumbs: [{ name: "Properties", path: "/properties" }] }),
+    withHeroPreload(
+      "harbour-golden-hour",
+      pageHead({ path: "/properties", breadcrumbs: [{ name: "Properties", path: "/properties" }] }),
+    ),
   component: PropertiesIndex,
 });
 

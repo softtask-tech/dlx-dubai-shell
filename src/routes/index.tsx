@@ -8,7 +8,7 @@ import { listAgents, listTestimonials } from "@/data/people";
 import { listProperties } from "@/data/properties";
 import { SERVICES } from "@/data/services";
 import { faqSchema, reviewSchemaFor, type FaqEntry } from "@/lib/schema";
-import { pageHead } from "@/lib/seo";
+import { pageHead, withHeroPreload } from "@/lib/seo";
 import { formatPrice } from "@/lib/format";
 import { areaPhoto, type PhotoSlug } from "@/lib/photos";
 import {
@@ -80,10 +80,13 @@ export const Route = createFileRoute("/")({
   /* Review schema is built from the rows the loader actually returned, so a
    * page with no verified reviews emits no Review nodes at all. */
   head: ({ loaderData }) =>
-    pageHead({
-      path: "/",
-      schema: [faqSchema(FAQ_ENTRIES), ...reviewSchemaFor(loaderData?.testimonials ?? [])],
-    }),
+    withHeroPreload(
+      "downtown-aerial-night-trails",
+      pageHead({
+        path: "/",
+        schema: [faqSchema(FAQ_ENTRIES), ...reviewSchemaFor(loaderData?.testimonials ?? [])],
+      }),
+    ),
   component: Index,
 });
 

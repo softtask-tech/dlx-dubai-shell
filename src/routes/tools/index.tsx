@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { TOOL_CATEGORIES, TOOLS } from "@/data/tools";
 import { faqSchema } from "@/lib/schema";
-import { pageHead } from "@/lib/seo";
+import { pageHead, withHeroPreload } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
 import { CurrencyPicker } from "@/components/tools/money";
 import { Reveal } from "@/components/site/reveal";
@@ -13,14 +13,19 @@ import { Tag } from "@/components/ui/tag";
 
 export const Route = createFileRoute("/tools/")({
   head: () =>
-    pageHead({
-      path: "/tools",
-      breadcrumbs: [{ name: "Tools", path: "/tools" }],
-      /* The hub answers eight questions before a visitor opens anything. The
-       * schema carries the same pairs the cards show, so what a crawler reads
-       * and what a reader sees are one and the same. */
-      schema: [faqSchema(TOOLS.map((tool) => ({ question: tool.question, answer: tool.answer })))],
-    }),
+    withHeroPreload(
+      "downtown-night-monochrome",
+      pageHead({
+        path: "/tools",
+        breadcrumbs: [{ name: "Tools", path: "/tools" }],
+        /* The hub answers eight questions before a visitor opens anything. The
+         * schema carries the same pairs the cards show, so what a crawler reads
+         * and what a reader sees are one and the same. */
+        schema: [
+          faqSchema(TOOLS.map((tool) => ({ question: tool.question, answer: tool.answer }))),
+        ],
+      }),
+    ),
   component: ToolsIndex,
 });
 

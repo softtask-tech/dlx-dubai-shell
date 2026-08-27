@@ -287,8 +287,7 @@ function GuidePage() {
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Reveal>
-              <Eyebrow>Next step</Eyebrow>
-              <h2 className="display-2 mt-6">Ask the specific version of this question.</h2>
+              <h2 className="display-2">Ask the specific version of this question.</h2>
               <p className="body-text mt-8 max-w-measure text-muted-foreground">
                 A guide describes how something works in general. Your answer depends on the
                 property, the building and your circumstances, which is a conversation, not an
