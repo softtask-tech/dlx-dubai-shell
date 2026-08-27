@@ -10,6 +10,7 @@ import { DeveloperStrip } from "@/components/site/developer-strip";
 import { Reveal } from "@/components/site/reveal";
 import { TestimonialsBlock } from "@/components/site/testimonials-block";
 import { TrustStrip } from "@/components/site/trust-strip";
+import { PageHero } from "@/components/site/page-hero";
 import { Section, Eyebrow } from "@/components/ui/section";
 
 const PRINCIPLES = [
@@ -71,27 +72,13 @@ function AboutPage() {
 
   return (
     <>
-      <Section className="pt-44 pb-20 lg:pt-56">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <Reveal>
-              <Eyebrow>The house</Eyebrow>
-              <h1 className="display-1 mt-8">About DLX</h1>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-4 lg:col-start-9">
-            <Reveal delay={0.12}>
-              <p className="body-text text-muted-foreground">
-                A private Dubai brokerage built on restraint, discretion and relationships measured
-                in decades.
-              </p>
-              <div className="mt-10 h-px w-16 bg-accent" />
-            </Reveal>
-          </div>
-        </div>
-      </Section>
+      <PageHero
+        photo="burj-khalifa-dusk-silhouette"
+        title="About DLX."
+        lead="A private Dubai brokerage built on restraint, discretion and relationships measured in decades."
+      />
 
-      <Section className="pt-0 pb-24">
+      <Section className="pb-24">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-8 lg:col-start-3">
             <Reveal>
@@ -143,7 +130,7 @@ function AboutPage() {
       <TrustStrip />
 
       {agents.length > 0 ? (
-        <Section className="pt-0">
+        <Section>
           <Reveal>
             <Eyebrow>The team</Eyebrow>
             <h2 className="display-2 mt-6">

@@ -154,3 +154,34 @@ export function photoSrcSet(photo: Photo, format: "avif" | "webp"): string {
 export function photoFallback(photo: Photo): string {
   return `/photos/${photo.slug}-${photo.fallbackWidth}.jpg`;
 }
+
+/**
+ * Which photograph stands for which community.
+ *
+ * In source rather than in the database, because which frame belongs to which
+ * community is a design decision made photograph by photograph, and an editor
+ * swapping an area's hero image in the CMS should not silently re-cut the
+ * homepage mosaic. Anything unmapped falls back to the city itself.
+ *
+ * One map, shared by the communities index and the homepage mosaic, so a
+ * reader who scrolls the homepage and then opens the index sees the same
+ * picture attached to the same place. The investment snapshot keeps its own,
+ * for the documented reason that its card is a single large frame and wants
+ * the wider crop of each community rather than the tighter one.
+ */
+const AREA_PHOTOS: Partial<Record<string, PhotoSlug>> = {
+  "palm-jumeirah": "palm-jumeirah-aerial-day",
+  "downtown-dubai": "downtown-skyline-night",
+  "dubai-marina": "dubai-marina-from-water",
+  "business-bay": "business-bay-dusk",
+  "dubai-hills-estate": "harbour-golden-hour",
+  "jumeirah-village-circle": "downtown-fog-day",
+  "dubai-creek-harbour": "burj-khalifa-dusk-silhouette",
+  "arabian-ranches": "skyline-across-water-haze",
+  "damac-hills": "downtown-fog-day",
+  "mohammed-bin-rashid-city": "downtown-interchange-day",
+};
+
+export function areaPhoto(slug: string): PhotoSlug {
+  return AREA_PHOTOS[slug] ?? "downtown-skyline-night";
+}

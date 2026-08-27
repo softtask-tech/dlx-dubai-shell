@@ -9,6 +9,7 @@ import { trackContactHref } from "@/components/site/contact-link";
 import { Reveal } from "@/components/site/reveal";
 import { TestimonialsBlock } from "@/components/site/testimonials-block";
 import { TrustStrip } from "@/components/site/trust-strip";
+import { PageHero } from "@/components/site/page-hero";
 import { Section, Eyebrow } from "@/components/ui/section";
 
 const FAQS: readonly FaqEntry[] = [
@@ -74,28 +75,14 @@ function ContactPage() {
 
   return (
     <>
-      <Section className="pt-44 pb-20 lg:pt-56">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <Reveal>
-              <Eyebrow>Enquiries</Eyebrow>
-              <h1 className="display-1 mt-8">Begin a quiet conversation.</h1>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-4 lg:col-start-9">
-            <Reveal delay={0.12}>
-              <p className="body-text text-muted-foreground">
-                Whether you are acquiring, exiting or simply observing the market, we are available
-                for a discreet, no-obligation discussion.
-              </p>
-              <div className="mt-10 h-px w-16 bg-accent" />
-            </Reveal>
-          </div>
-        </div>
-      </Section>
+      <PageHero
+        photo="dubai-marina-from-water"
+        title="Begin a quiet conversation."
+        lead="Whether you are acquiring, exiting or simply observing the market, we are available for a discreet, no-obligation discussion."
+      />
 
       {/* Every route in, laid out plainly */}
-      <Section className="pt-0 pb-20">
+      <Section className="pb-20">
         <div className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
           <ContactRoute
             label="Call"
@@ -130,8 +117,7 @@ function ContactPage() {
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Reveal>
-              <Eyebrow>Send an enquiry</Eyebrow>
-              <h2 className="display-2 mt-6">Tell us what you need.</h2>
+              <h2 className="display-2">Tell us what you need.</h2>
               <p className="body-text mt-8 max-w-measure text-muted-foreground">
                 Three short steps. Only a way to reach you is required, everything else helps us
                 come back to you with something useful rather than a brochure.
@@ -180,8 +166,7 @@ function ContactPage() {
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-3">
             <Reveal>
-              <Eyebrow>Before you write</Eyebrow>
-              <h2 className="display-3 mt-6">Asked and answered</h2>
+              <h2 className="display-3">Asked and answered</h2>
             </Reveal>
           </div>
           <div className="lg:col-span-8 lg:col-start-5">

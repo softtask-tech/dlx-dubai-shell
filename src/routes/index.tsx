@@ -10,7 +10,7 @@ import { SERVICES } from "@/data/services";
 import { faqSchema, reviewSchemaFor, type FaqEntry } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
 import { formatPrice } from "@/lib/format";
-import type { PhotoSlug } from "@/lib/photos";
+import { areaPhoto, type PhotoSlug } from "@/lib/photos";
 import {
   EditorialIndex,
   HorizontalGallery,
@@ -49,22 +49,6 @@ const FAQ_ENTRIES: readonly FaqEntry[] = [
       "No. Much of our client base buys from abroad, and we are set up to represent buyers remotely, viewings, due diligence and negotiation handled on your behalf. Where a step legally requires you in person or through a power of attorney, we will tell you before you commit to anything.",
   },
 ] as const;
-
-/**
- * Which photograph stands in for which community, and which service.
- *
- * In source rather than in the database, because which frame sits in which
- * composition is a design decision, and an editor swapping an area's hero
- * image in the CMS should not silently re-cut the homepage.
- */
-const AREA_PHOTOS: Partial<Record<string, PhotoSlug>> = {
-  "palm-jumeirah": "palm-jumeirah-aerial-day",
-  "downtown-dubai": "downtown-skyline-night",
-  "dubai-marina": "dubai-marina-from-water",
-  "business-bay": "business-bay-dusk",
-  "dubai-hills-estate": "harbour-golden-hour",
-  "jumeirah-village-circle": "downtown-fog-day",
-};
 
 const SERVICE_PHOTOS: Partial<Record<string, PhotoSlug>> = {
   buy: "downtown-interchange-day",
@@ -322,7 +306,7 @@ function Index() {
           }
           cells={communities.map((area) => ({
             id: area.id,
-            photo: AREA_PHOTOS[area.slug] ?? "downtown-fog-day",
+            photo: areaPhoto(area.slug),
             href: `/areas/${area.slug}`,
             children: (
               <>
