@@ -9,10 +9,20 @@ import { Tag } from "@/components/ui/tag";
 /**
  * A listing as it appears in the portfolio grid.
  *
- * The whole card is one link, and the image sits in a fixed frame so a mixed
- * bag of uploaded photography still lines up in a grid.
+ * The whole card is one link, and the image sits in a frame the caller picks,
+ * so a mixed bag of uploaded photography still lines up in whatever grid it
+ * lands in. `ListingGrid` sets the ratio from the cell's width, because a
+ * portrait plate in a wide cell and a landscape one in a narrow cell are both
+ * crops nobody chose.
  */
-export function PropertyCard({ property }: { property: PropertyWithRelations }) {
+export function PropertyCard({
+  property,
+  ratio = "4 / 3",
+}: {
+  property: PropertyWithRelations;
+  /** CSS aspect ratio for the image frame. */
+  ratio?: string;
+}) {
   return (
     <Card interactive className="border-0">
       <Link
@@ -20,7 +30,7 @@ export function PropertyCard({ property }: { property: PropertyWithRelations }) 
         params={{ slug: property.slug }}
         className="flex h-full flex-col"
       >
-        <CardMedia ratio="4 / 3">
+        <CardMedia ratio={ratio}>
           {property.hero_image_url ? (
             <img
               src={property.hero_image_url}

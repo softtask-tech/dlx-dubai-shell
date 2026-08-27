@@ -5,10 +5,9 @@ import { listAreas } from "@/data/catalogue";
 import { listProperties, type PropertyFilters } from "@/data/properties";
 import type { Area } from "@/data/types";
 import { pageHead } from "@/lib/seo";
-import { stagger } from "@/lib/motion";
 import { useTrackedView } from "@/lib/use-tracked-view";
-import { Reveal } from "@/components/site/reveal";
-import { PropertyCard } from "@/components/site/property-card";
+import { FullBleed } from "@/components/layouts";
+import { ListingGrid } from "@/components/site/listing-grid";
 import { TrustStrip } from "@/components/site/trust-strip";
 import { Section, Eyebrow } from "@/components/ui/section";
 
@@ -92,29 +91,31 @@ function PropertiesIndex() {
 
   return (
     <>
-      <Section className="pt-44 pb-16 lg:pt-56">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <Reveal>
-              <Eyebrow>Portfolio</Eyebrow>
-              <h1 className="display-1 mt-8">Properties</h1>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-4 lg:col-start-9">
-            <Reveal delay={0.12}>
-              <p className="body-text text-muted-foreground">
-                A curated selection across Dubai's prime districts. Some of what we represent is
-                never advertised, if you don't see it here, ask.
-              </p>
-              <div className="mt-10 h-px w-16 bg-accent" />
-            </Reveal>
-          </div>
+      {/*
+       * A photograph, not a white page with a word on it.
+       *
+       * The old header was a title on the left and a small grey paragraph
+       * floating in the top right, with about two hundred pixels of nothing
+       * above it. That is the shape of an unfinished page, and on the one page
+       * where a buyer arrives to look at property it was the worst place on
+       * the site to have no photograph at all.
+       *
+       * A band rather than a full screen: this is an index, and the listings
+       * should be reachable in one scroll.
+       */}
+      <FullBleed photo="harbour-golden-hour" height="band" priority>
+        <div className="max-w-3xl">
+          <h1 className="display-1 text-balance">The portfolio.</h1>
+          <p className="lead mt-6 max-w-xl text-on-dark-muted">
+            A curated selection across Dubai's prime districts. Some of what we represent is never
+            advertised, so if you do not see it here, ask.
+          </p>
         </div>
-      </Section>
+      </FullBleed>
 
       <FilterBar search={search} areas={areas} />
 
-      <Section className="pt-12">
+      <Section className="pt-14">
         {properties.length === 0 ? (
           <EmptyState hasFilters={Object.keys(search).length > 0} />
         ) : (
@@ -122,12 +123,8 @@ function PropertiesIndex() {
             <p className="caption">
               {properties.length} {properties.length === 1 ? "property" : "properties"}
             </p>
-            <div className="mt-10 grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
-              {properties.map((property, index) => (
-                <Reveal key={property.id} delay={stagger(index % 3)}>
-                  <PropertyCard property={property} />
-                </Reveal>
-              ))}
+            <div className="mt-10">
+              <ListingGrid properties={properties} />
             </div>
           </>
         )}

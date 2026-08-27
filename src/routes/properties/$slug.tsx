@@ -81,8 +81,23 @@ function PropertyDetail() {
 
   return (
     <>
-      {/* Full-bleed opening plate */}
-      <div className="relative h-[70svh] w-full overflow-hidden bg-muted">
+      {/*
+       * The opening plate, on the dark side rather than the light one.
+       *
+       * This used to lay ink type over a 20% white veil on whatever photograph
+       * the listing happened to carry, which is a contrast gamble taken once
+       * per listing and lost whenever an image is dark in the corner the type
+       * lands in. It also left the masthead in ink mode over an unknown
+       * picture, and the nav labels disappeared into a grey ceiling.
+       *
+       * A bottom-weighted scrim and `data-surface="dark"` fix both at once:
+       * the type is light on a ground we control, and the masthead flips with
+       * the section because it reads that attribute.
+       */}
+      <div
+        data-surface="dark"
+        className="relative flex h-[74svh] min-h-[30rem] w-full items-end overflow-hidden bg-ink"
+      >
         {images[0] ? (
           <img
             src={images[0]}
@@ -93,21 +108,26 @@ function PropertyDetail() {
             className="absolute inset-0 h-full w-full object-cover"
           />
         ) : null}
-        <div className="absolute inset-0 bg-background/20" />
-        <div className="relative flex h-full items-end pb-14">
-          <Container>
-            <div className="flex flex-wrap items-center gap-3">
-              <Tag variant="soft">{property.area?.name ?? "Dubai"}</Tag>
-              {property.completion_status === "off_plan" ? (
-                <Tag variant="soft">Off-plan</Tag>
-              ) : null}
-              {property.status !== "available" ? (
-                <Tag variant="outline">{humanise(property.status)}</Tag>
-              ) : null}
-            </div>
-            <h1 className="display-1 mt-6 max-w-4xl">{property.title}</h1>
-          </Container>
-        </div>
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/25"
+        />
+
+        <Container className="relative pb-14 lg:pb-20">
+          {/* Plain type on the scrim, not pills on the picture. A label in a
+              white capsule floating over a photograph is the most templated
+              move in property marketing. */}
+          <p className="eyebrow text-on-dark">
+            {[
+              property.area?.name ?? "Dubai",
+              property.completion_status === "off_plan" ? "Off-plan" : null,
+              property.status !== "available" ? humanise(property.status) : null,
+            ]
+              .filter(Boolean)
+              .join(" \u00b7 ")}
+          </p>
+          <h1 className="display-1 mt-5 max-w-4xl text-balance">{property.title}</h1>
+        </Container>
       </div>
 
       {/* Facts and the agent panel, side by side */}
