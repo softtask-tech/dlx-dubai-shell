@@ -42,7 +42,7 @@ export function organizationSchema(): JsonLd {
     url: SITE_URL,
     description: site.description,
     slogan: site.tagline,
-    logo: absoluteUrl("/favicon.png"),
+    logo: absoluteUrl("/icon-512.png"),
     image: absoluteUrl("/og/home.png"),
     email: site.contact.email,
     telephone: site.contact.phoneE164,
