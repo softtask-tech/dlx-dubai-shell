@@ -7,10 +7,11 @@ import {
   guidesByCategory,
 } from "@/data/guides";
 import { faqSchema } from "@/lib/schema";
-import { pageHead } from "@/lib/seo";
+import { pageHead, withHeroPreload } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
 import { Reveal } from "@/components/site/reveal";
 import { TrustStrip } from "@/components/site/trust-strip";
+import { PageHero } from "@/components/site/page-hero";
 import { Section, Eyebrow } from "@/components/ui/section";
 import { Tag } from "@/components/ui/tag";
 
@@ -24,11 +25,16 @@ import { Tag } from "@/components/ui/tag";
  */
 export const Route = createFileRoute("/guides/")({
   head: () =>
-    pageHead({
-      path: "/guides",
-      breadcrumbs: [{ name: "Guides", path: "/guides" }],
-      schema: [faqSchema(GUIDES.map((guide) => ({ question: guide.title, answer: guide.answer })))],
-    }),
+    withHeroPreload(
+      "downtown-fog-day",
+      pageHead({
+        path: "/guides",
+        breadcrumbs: [{ name: "Guides", path: "/guides" }],
+        schema: [
+          faqSchema(GUIDES.map((guide) => ({ question: guide.title, answer: guide.answer }))),
+        ],
+      }),
+    ),
   component: GuidesIndex,
 });
 
@@ -37,26 +43,17 @@ function GuidesIndex() {
 
   return (
     <>
-      <Section className="pt-44 pb-16 lg:pt-56">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <Reveal>
-              <Eyebrow>The playbook</Eyebrow>
-              <h1 className="display-1 mt-8">Guides</h1>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-4 lg:col-start-9">
-            <Reveal delay={0.12}>
-              <p className="body-text text-muted-foreground">
-                {GUIDES.length} guides on buying, owning and moving to Dubai. Each one opens with a
-                straight answer, then explains what it depends on, and says plainly where you need
-                an authority rather than a website.
-              </p>
-              <div className="mt-10 h-px w-16 bg-accent" />
-            </Reveal>
-          </div>
-        </div>
-      </Section>
+      <PageHero
+        photo="downtown-fog-day"
+        title="The playbook."
+        lead={
+          <>
+            {GUIDES.length} guides on buying, owning and moving to Dubai. Each one opens with a
+            straight answer, then explains what it depends on, and says plainly where you need an
+            authority rather than a website.
+          </>
+        }
+      />
 
       {categories.map((category, categoryIndex) => {
         const guides = guidesByCategory(category);

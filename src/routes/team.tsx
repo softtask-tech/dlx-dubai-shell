@@ -1,17 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { listAgents } from "@/data/people";
-import { pageHead } from "@/lib/seo";
+import { pageHead, withHeroPreload } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
 import { trackContactHref } from "@/components/site/contact-link";
 import { Reveal } from "@/components/site/reveal";
 import { TrustStrip } from "@/components/site/trust-strip";
+import { PageHero } from "@/components/site/page-hero";
 import { Section, Eyebrow } from "@/components/ui/section";
 import { Tag } from "@/components/ui/tag";
 
 export const Route = createFileRoute("/team")({
   loader: async () => ({ agents: await listAgents() }),
-  head: () => pageHead({ path: "/team", breadcrumbs: [{ name: "Team", path: "/team" }] }),
+  head: () =>
+    withHeroPreload(
+      "palm-jumeirah-dusk-aerial",
+      pageHead({ path: "/team", breadcrumbs: [{ name: "Team", path: "/team" }] }),
+    ),
   component: TeamPage,
 });
 
@@ -20,27 +25,13 @@ function TeamPage() {
 
   return (
     <>
-      <Section className="pt-44 pb-20 lg:pt-56">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <Reveal>
-              <Eyebrow>The practice</Eyebrow>
-              <h1 className="display-1 mt-8">The team</h1>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-4 lg:col-start-9">
-            <Reveal delay={0.12}>
-              <p className="body-text text-muted-foreground">
-                A small team on purpose. You get a named consultant who stays with you from the
-                first call to the last signature, not a rota, and not a call centre.
-              </p>
-              <div className="mt-10 h-px w-16 bg-accent" />
-            </Reveal>
-          </div>
-        </div>
-      </Section>
+      <PageHero
+        photo="palm-jumeirah-dusk-aerial"
+        title="The team."
+        lead="A small team on purpose. You get a named consultant who stays with you from the first call to the last signature, not a rota, and not a call centre."
+      />
 
-      <Section className="pt-0">
+      <Section>
         {agents.length === 0 ? (
           <div className="border border-border p-12 text-center">
             <Eyebrow>Coming shortly</Eyebrow>

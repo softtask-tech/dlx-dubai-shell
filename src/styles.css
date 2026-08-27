@@ -52,24 +52,45 @@
   --color-on-dark-muted: var(--on-dark-muted);
 
   /* --- Typography -------------------------------------------------------
-   * Playfair Display for the editorial voice: a high-contrast transitional
-   * serif with the same vertical stress and fine hairlines as the DX monogram,
-   * which is what the display face has to answer to. Geist carries everything
-   * else. Both are self-hosted; see scripts/fetch-fonts.mjs. */
-  --font-display: "Playfair Display", ui-serif, Georgia, serif;
-  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+   *
+   * The sans is the workhorse and the serif is a guest.
+   *
+   * That is the correction, and it is the single biggest one in the redesign.
+   * A high-contrast display serif set large on every heading is what made the
+   * page read as a document: forty lines of the same shouting voice, with no
+   * hierarchy left because everything was already at maximum. Instrument Sans
+   * now carries almost all of it, including most headings; EB Garamond appears
+   * a handful of times per page, at display size, where a line is meant to be
+   * felt rather than scanned.
+   *
+   * Instrument Sans is a calm neo-grotesk in the Haas line, which is the
+   * register the reference tier is set in. It is also what the wide-tracked
+   * "DLX PROPERTIES" wordmark asks for: the eyebrows are this face, letter
+   * spaced, so the labels and the logo are speaking the same language.
+   *
+   * Both self-hosted; see scripts/fetch-fonts.mjs. */
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sans);
+  --font-accent: "EB Garamond", ui-serif, Georgia, serif;
 
   /* Fluid type scale: each step carries its own line height, so headings
    * stay proportionate from a 360px phone to a 1440px desktop without a
    * breakpoint for every size. */
-  --text-display-1: clamp(2.6rem, 1.4rem + 5.1vw, 5.25rem);
-  --text-display-1--line-height: 1.04;
-  --text-display-2: clamp(2.1rem, 1.35rem + 3.2vw, 3.5rem);
-  --text-display-2--line-height: 1.1;
-  --text-display-3: clamp(1.6rem, 1.25rem + 1.6vw, 2.25rem);
-  --text-display-3--line-height: 1.18;
-  --text-lead: clamp(1.15rem, 1rem + 0.7vw, 1.5rem);
-  --text-lead--line-height: 1.45;
+  /* A sans holds its shape at sizes a serif needs air around, so the top of
+   * the scale comes down and the middle fills in. Fewer giant lines, more
+   * usable steps. */
+  --text-display-1: clamp(2.5rem, 1.5rem + 4.2vw, 4.5rem);
+  --text-display-1--line-height: 1.02;
+  --text-display-2: clamp(1.85rem, 1.3rem + 2.3vw, 2.85rem);
+  --text-display-2--line-height: 1.08;
+  --text-display-3: clamp(1.35rem, 1.15rem + 0.9vw, 1.75rem);
+  --text-display-3--line-height: 1.25;
+  /* The accent, set in the serif. Big on purpose: this is the only place the
+   * serif appears and it has to be worth the second typeface. */
+  --text-accent: clamp(2rem, 1.3rem + 3vw, 3.75rem);
+  --text-accent--line-height: 1.14;
+  --text-lead: clamp(1.05rem, 0.98rem + 0.4vw, 1.3rem);
+  --text-lead--line-height: 1.55;
   --text-body: 1rem;
   --text-body--line-height: 1.7;
   --text-caption: 0.875rem;
@@ -77,19 +98,30 @@
   --text-eyebrow: 0.6875rem;
   --text-eyebrow--line-height: 1.4;
 
-  --tracking-editorial: 0.22em;
+  /* Wide-tracked labels echo the logo wordmark. The display tracking is the
+   * small negative a grotesk wants at size, not the serif's. */
+  --tracking-editorial: 0.2em;
   --tracking-monogram: 0.28em;
-  --tracking-display: -0.02em;
+  --tracking-display: -0.022em;
+  --tracking-accent: -0.005em;
 
   /* --- Spacing rhythm ---------------------------------------------------
-   * The vertical scale the page is composed on. `section` is the standard
-   * gap between editorial blocks; the rest step around it. Density 3, so
-   * these are deliberately larger than a standard app scale. */
+   *
+   * Density 4, down from 3, and the reason is a diagnosis: the old page had
+   * enormous empty bands between short blocks, which does not read as luxury,
+   * it reads as unfinished. Whitespace should frame content. These steps are
+   * still generous, but a section now has to earn its height with something
+   * in it. */
   --spacing-gutter: 1.5rem;
-  --spacing-block: 2.5rem;
-  --spacing-section-sm: 5rem;
-  --spacing-section: 8.5rem;
-  --spacing-section-lg: 12rem;
+  /* No `--spacing-block` here, and the name is the reason rather than the
+     value. Tailwind generates a utility per spacing key, so a key called
+     `block` produces `.inline-block { inline-size: 2.25rem }`, which lands
+     after the display utility of the same name and silently pins every
+     `inline-block` element on the site to 36px. It is what turned the "How we
+     work" link into three stacked words. Nothing used the scale. */
+  --spacing-section-sm: 4rem;
+  --spacing-section: 6.5rem;
+  --spacing-section-lg: 9rem;
 
   /* Widths. `shell` is the page's outer frame (1440px); `measure` is the
    * comfortable reading width for running text. */
@@ -175,7 +207,17 @@
   --destructive-foreground: #ffffff;
 
   --border: #e2e7e4; /* cool green-grey hairline */
-  --input: #d6ddd9;
+  /*
+   * The input rule is darker than the border, and deliberately.
+   *
+   * A field in this system has no box: the only thing telling a reader where
+   * to type is its underline, which makes that rule a user interface component
+   * rather than decoration, and WCAG asks 3:1 of those. At the old #d6ddd9 it
+   * measured 1.17:1 on paper, which is to say invisible. This is 3.57:1 on
+   * white and 3.35:1 on the cool paper, still quiet enough to read as a
+   * hairline rather than as a box.
+   */
+  --input: #7f8a85;
   /* The focus ring is a non-text indicator and needs 3:1 against what it sits
    * on. Green clears that on every surface in the system; gold does not clear
    * it on the light canvas, which is why the ring is never gold. */
@@ -222,16 +264,29 @@
   --destructive-foreground: var(--ink);
 
   --border: #26332c;
-  --input: #2f3d36;
+  /* 3.61:1 on the ink and 3.25:1 on the panel, for the same reason as above. */
+  --input: #5f7169;
   --ring: var(--gold);
 
   background-color: var(--ink);
   color: var(--on-dark);
 }
 
+/*
+ * Chrome that borrows the dark palette without painting the ground under it.
+ *
+ * The masthead over a dark hero is the case: it needs every token flipped so
+ * the nav links, the currency control and the language select are all legible,
+ * but it must stay transparent so the photograph runs unbroken to the top of
+ * the viewport.
+ */
+[data-surface="dark"][data-surface-ground="none"] {
+  background-color: transparent;
+}
+
 @layer base {
   * {
-    border-color: var(--color-border);
+    border-color: var(--border);
   }
 
   /*
@@ -246,36 +301,38 @@
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--background);
+    color: var(--foreground);
     font-family: var(--font-sans);
-    font-weight: 300;
-    letter-spacing: 0.01em;
+    /* 400, not 300. Instrument Sans has no 300, and body copy asked to render
+     * at a weight a face does not carry gets synthesised into something
+     * slightly wrong at every size. */
+    font-weight: 400;
+    letter-spacing: 0;
   }
 
   /*
-   * Playfair Display starts at 400, so a 300 here would silently synthesise or
-   * clamp. Setting it honestly at 400 is what the face is drawn for, and the
-   * airiness comes from size and leading rather than from a weight that does
-   * not exist.
+   * Headings are the sans now, at 500. A grotesk at 400 set large reads thin
+   * and slightly unresolved; 500 is the weight this face is drawn to hold a
+   * headline at, and it is still nowhere near a shout.
    */
   h1,
   h2,
   h3,
   h4 {
-    font-family: var(--font-display);
-    font-weight: 400;
+    font-family: var(--font-sans);
+    font-weight: 500;
     letter-spacing: var(--tracking-display);
   }
 
   ::selection {
-    background: var(--color-accent);
-    color: var(--color-accent-foreground);
+    background: var(--accent);
+    color: var(--accent-foreground);
   }
 
   /* Keyboard focus stays visible everywhere, in the accent, never removed. */
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
   }
 
@@ -310,8 +367,8 @@
     left: 1rem;
     top: 1rem;
     padding: 0.75rem 1.25rem;
-    background-color: var(--color-foreground);
-    color: var(--color-background);
+    background-color: var(--foreground);
+    color: var(--background);
     font-family: var(--font-sans);
     font-size: var(--text-eyebrow);
     letter-spacing: var(--tracking-editorial);
@@ -506,66 +563,99 @@
  *   eyebrow    uppercase label above a headline
  */
 @utility display-1 {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-size: var(--text-display-1);
   line-height: var(--text-display-1--line-height);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: var(--tracking-display);
 }
 
 @utility display-2 {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-size: var(--text-display-2);
   line-height: var(--text-display-2--line-height);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: var(--tracking-display);
 }
 
 @utility display-3 {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-size: var(--text-display-3);
   line-height: var(--text-display-3--line-height);
+  font-weight: 500;
+  letter-spacing: -0.012em;
+}
+
+/*
+ * The serif, and the only place it is allowed.
+ *
+ * One or two lines per page, at display size, where the sentence is the point
+ * and the reader is meant to slow down for it: the hero line, a pull quote, a
+ * closing invitation. Using it for a section title, a label or a card heading
+ * puts it back where it was, which is everywhere, which is why the old page
+ * read as a document rather than a brand.
+ */
+@utility accent-line {
+  font-family: var(--font-accent);
+  font-size: var(--text-accent);
+  line-height: var(--text-accent--line-height);
   font-weight: 400;
-  letter-spacing: var(--tracking-display);
+  letter-spacing: var(--tracking-accent);
 }
 
 @utility lead {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-size: var(--text-lead);
   line-height: var(--text-lead--line-height);
   font-weight: 400;
+  letter-spacing: -0.004em;
 }
 
 @utility body-text {
   font-family: var(--font-sans);
   font-size: var(--text-body);
   line-height: var(--text-body--line-height);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 @utility caption {
   font-family: var(--font-sans);
   font-size: var(--text-caption);
   line-height: var(--text-caption--line-height);
-  font-weight: 300;
-  color: var(--color-muted-foreground);
+  font-weight: 400;
+  color: var(--muted-foreground);
 }
 
-/* Editorial eyebrow / label type */
+/*
+ * Editorial eyebrow / label type.
+ *
+ * Note the `var(--muted-foreground)` rather than `var(--color-muted-foreground)`,
+ * here and everywhere else in this file. The `--color-*` names exist once, on
+ * the root, so they resolve to the light palette at declaration time and every
+ * descendant inherits that resolved value. Re-pointing `--muted-foreground`
+ * inside `data-surface="dark"` cannot reach them. Written the wrong way, every
+ * label and caption on a dark section came out at #6b6b6b on near-black, which
+ * is 3.6:1 and fails AA.
+ */
 @utility eyebrow {
   font-family: var(--font-sans);
+  /* No `text-wrap` here. `nowrap` was tried and it pushed the whole document
+     sideways, because a long label at 0.2em tracking is wider than a phone:
+     441px of scroll width in a 390px viewport. Plain wrapping is right, and
+     the stacked-label bug it was added to hide turned out to be the
+     `--spacing-block` collision described above. */
   font-size: var(--text-eyebrow);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: var(--tracking-editorial);
   text-transform: uppercase;
-  color: var(--color-muted-foreground);
+  color: var(--muted-foreground);
 }
 
 /* Thin rule used to separate editorial blocks */
 @utility hairline {
   height: 1px;
   width: 100%;
-  background-color: var(--color-border);
+  background-color: var(--border);
 }
 
 @utility link-underline {
@@ -606,7 +696,7 @@
     color var(--duration-base) var(--ease-editorial),
     text-decoration-color var(--duration-base) var(--ease-editorial);
   &:hover {
-    color: var(--color-accent);
+    color: var(--accent);
     text-decoration-color: currentColor;
   }
 }
@@ -620,12 +710,13 @@
  * places where a rule is drawn or a transform originates on one physical side.
  * Those are corrected here rather than duplicated at every call site.
  *
- * SECOND, THE FACES. Playfair Display and Geist both carry Cyrillic, so Russian
- * needs no swap at all: it gets the house pair, in the house voice. Arabic and
- * Devanagari have no coverage in either. Rendering a headline in a fallback
- * face is exactly the detail that separates a translated site from a localised
- * one, so each of those scripts gets a face chosen for it, loaded only on the
- * pages that need it, so the English site pays nothing.
+ * SECOND, THE FACES. EB Garamond carries Cyrillic, so the serif accent needs no
+ * swap for Russian; Instrument Sans does not, so Russian body copy takes Golos
+ * Text, a Cyrillic-native neo-grotesk in the same register. Arabic and
+ * Devanagari have no coverage in either house face. Rendering a headline in a
+ * fallback is exactly the detail that separates a translated site from a
+ * localised one, so each of those scripts gets a face chosen for it, loaded
+ * only on the pages that need it, so the English site pays nothing.
  *
  * Chinese deliberately gets no webfont. A full Simplified Chinese face is
  * several megabytes; the system stack below is what every native Chinese site
@@ -633,10 +724,12 @@
  */
 
 [dir="rtl"] {
-  /* Amiri is a Naskh face in the same register as Playfair: high contrast,
-   * unhurried, built for continuous reading rather than signage. */
-  --font-display: "Amiri", "Noto Naskh Arabic", ui-serif, serif;
+  /* Noto Sans Arabic is the workhorse, matching the Latin arrangement. Amiri
+   * is the accent: a Naskh face in the same register as EB Garamond, unhurried
+   * and built for continuous reading rather than signage. */
   --font-sans: "Noto Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sans);
+  --font-accent: "Amiri", "Noto Naskh Arabic", ui-serif, serif;
 
   /* Arabic sits lower and denser in its box than Latin at the same size, so the
    * tight Latin tracking is removed, negative letter-spacing on Arabic breaks
@@ -647,23 +740,28 @@
 }
 
 :root:lang(hi) {
-  --font-display: "Noto Serif Devanagari", ui-serif, Georgia, serif;
   --font-sans: "Noto Sans Devanagari", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sans);
+  --font-accent: "Noto Serif Devanagari", ui-serif, Georgia, serif;
   /* Devanagari hangs from its headline stroke; tight negative tracking closes
    * the shirorekha and makes a whole word look like one glyph. */
   --tracking-display: 0em;
 }
 
-/* Russian gets no rule: the Cyrillic subsets of Playfair Display and Geist are
- * both self-hosted, so a Russian page is set in the same two faces as an
- * English one and simply downloads a different slice of them. */
+:root:lang(ru) {
+  /* EB Garamond carries Cyrillic, so the serif accent is unchanged. Only the
+   * workhorse swaps. */
+  --font-sans: "Golos Text", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sans);
+}
 
 :root:lang(zh-Hans) {
-  --font-display:
-    "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", ui-serif, serif;
   --font-sans:
     "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", ui-sans-serif,
     system-ui, sans-serif;
+  --font-display: var(--font-sans);
+  --font-accent:
+    "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", ui-serif, serif;
   --tracking-display: 0em;
   --tracking-editorial: 0.12em;
 }
@@ -788,6 +886,13 @@
  * Deliberately shorter than the hero's beat and shorter than a reveal: this
  * runs on every navigation, and anything a reader sees a hundred times has to
  * be almost subliminal or it becomes a tax.
+ *
+ * There is no exit animation, on purpose. Fading the old page out before the
+ * new one arrives means holding a reader on a page they have already left,
+ * and on a site whose whole claim is that it is fast, a transition that costs
+ * 300ms of nothing is the wrong trade. The masthead and the footer do not
+ * move at all, which is what makes the change read as a page turning inside a
+ * fixed binding rather than as a whole screen being swapped.
  */
 @keyframes page-turn {
   from {
@@ -801,7 +906,7 @@
 }
 
 [data-page-turn] {
-  animation: page-turn var(--duration-quick) var(--ease-editorial) both;
+  animation: page-turn var(--duration-base) var(--ease-editorial) both;
 }
 
 @media (prefers-reduced-motion: reduce) {

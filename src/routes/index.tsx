@@ -1,23 +1,31 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useRef, type CSSProperties } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import heroImage from "@/assets/hero-dubai.jpg";
+import { type CSSProperties } from "react";
+
 import { site } from "@/config/site";
 import { listPartnerDevelopers } from "@/data/catalogue";
 import { getMarketPriceIndex, getMarketSummary, listAreasWithStats } from "@/data/market";
+import { listAgents, listTestimonials } from "@/data/people";
 import { listProperties } from "@/data/properties";
-import { listTestimonials } from "@/data/people";
-import { DURATION, EASE, stagger } from "@/lib/motion";
+import { SERVICES } from "@/data/services";
 import { faqSchema, reviewSchemaFor, type FaqEntry } from "@/lib/schema";
-import { pageHead } from "@/lib/seo";
-import { Section, Container, Eyebrow } from "@/components/ui/section";
-import { MarketBand } from "@/components/market/market-band";
-import { DeveloperStrip } from "@/components/site/developer-strip";
+import { pageHead, withHeroPreload } from "@/lib/seo";
+import { formatPrice } from "@/lib/format";
+import { areaPhoto, type PhotoSlug } from "@/lib/photos";
+import {
+  EditorialIndex,
+  HorizontalGallery,
+  Manifesto,
+  MosaicGrid,
+  SplitFeature,
+} from "@/components/layouts";
+import { MaskReveal, Parallax } from "@/components/motion";
+import { InvestmentSnapshot } from "@/components/market/investment-snapshot";
+import { MarketSequence } from "@/components/market/market-sequence";
+import { AdvisorMoment } from "@/components/site/advisor-moment";
 import { Faq } from "@/components/site/faq";
-import { PropertyCard } from "@/components/site/property-card";
-import { Reveal } from "@/components/site/reveal";
-import { TestimonialsBlock } from "@/components/site/testimonials-block";
-import { TrustStrip } from "@/components/site/trust-strip";
+import { Photo } from "@/components/site/photo";
+import { ProofBand } from "@/components/site/proof-band";
+import { Container, Eyebrow, Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 
 /**
@@ -42,217 +50,309 @@ const FAQ_ENTRIES: readonly FaqEntry[] = [
   },
 ] as const;
 
+const SERVICE_PHOTOS: Partial<Record<string, PhotoSlug>> = {
+  buy: "downtown-interchange-day",
+  sell: "business-bay-dusk",
+  "investment-advisory": "downtown-aerial-night-trails",
+  "golden-visa": "burj-khalifa-dusk-silhouette",
+  relocation: "palm-jumeirah-aerial-day",
+};
+
+/** The five the homepage leads with. The services index carries all nine. */
+const HOME_SERVICES = ["buy", "sell", "investment-advisory", "golden-visa", "relocation"] as const;
+
 export const Route = createFileRoute("/")({
   loader: async () => {
     /* Everything on the home page below the fold is real data, so an empty
      * database simply renders fewer sections rather than placeholder furniture. */
-    const [featured, testimonials, partners, marketSummary, marketIndex, areas] = await Promise.all(
-      [
-        listProperties({ limit: 3 }),
+    const [featured, testimonials, partners, marketSummary, marketIndex, areas, agents] =
+      await Promise.all([
+        listProperties({ limit: 5 }),
         listTestimonials(3),
         listPartnerDevelopers(),
         getMarketSummary(),
         getMarketPriceIndex(),
         listAreasWithStats(),
-      ],
-    );
-    return { featured, testimonials, partners, marketSummary, marketIndex, areas };
+        listAgents(),
+      ]);
+    return { featured, testimonials, partners, marketSummary, marketIndex, areas, agents };
   },
   /* Review schema is built from the rows the loader actually returned, so a
    * page with no verified reviews emits no Review nodes at all. */
   head: ({ loaderData }) =>
-    pageHead({
-      path: "/",
-      schema: [faqSchema(FAQ_ENTRIES), ...reviewSchemaFor(loaderData?.testimonials ?? [])],
-    }),
+    withHeroPreload(
+      "downtown-aerial-night-trails",
+      pageHead({
+        path: "/",
+        schema: [faqSchema(FAQ_ENTRIES), ...reviewSchemaFor(loaderData?.testimonials ?? [])],
+      }),
+    ),
   component: Index,
 });
 
+/**
+ * The homepage.
+ *
+ * Composed from `src/components/layouts`, under one rule that can be checked in
+ * a screenshot: no two consecutive sections use the same family. Reading down,
+ *
+ *   full bleed   hero
+ *   split        the thesis, image on the left
+ *   interactive  the Investment Snapshot
+ *   dark pin     the market, read from the record
+ *   index        services
+ *   gallery      selected residences, moving sideways
+ *   mosaic       communities, cells of unequal size
+ *   dark         Noor
+ *   proof        people, licence, one quote
+ *   manifesto    the closing line, in the serif
+ *   questions    the FAQ
+ *
+ * Three eyebrows across eleven sections, inside the one-per-three budget, and
+ * the hero carries none. Two pinned moments at most per page is the site-wide
+ * rule; this page spends both, on the market read and the residences track.
+ */
 function Index() {
-  const { featured, testimonials, partners, marketSummary, marketIndex, areas } =
+  const { featured, testimonials, partners, marketSummary, marketIndex, areas, agents } =
     Route.useLoaderData();
-  const reduced = useReducedMotion();
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "14%"]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "28%"]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+
+  const services = HOME_SERVICES.map((slug) => SERVICES.find((s) => s.slug === slug)).filter(
+    (service): service is (typeof SERVICES)[number] => Boolean(service),
+  );
+
+  const communities = areas.filter((area) => area.stats).slice(0, 6);
+  /* One quote, and preferably one a reader can go and check. */
+  const quote = testimonials.find((entry) => entry.source_url) ?? testimonials[0] ?? null;
 
   return (
     <>
-      {/* Hero */}
-      <div ref={heroRef} className="relative h-[100svh] w-full overflow-hidden">
-        <motion.img
-          src={heroImage}
-          alt="A minimal Dubai penthouse terrace overlooking the skyline at dawn"
-          width={1920}
-          height={1280}
-          fetchPriority="high"
-          style={reduced ? {} : { y: imageY }}
-          className="absolute inset-0 h-[115%] w-full object-cover"
+      {/*
+       * The hero.
+       *
+       * The heart of the page, composed as one photograph rather than as a
+       * banner with type on it. Downtown from the air at night: the Burj lit,
+       * traffic running through the interchange, real depth to move through.
+       *
+       * The type is deliberately mixed. Two lines of the workhorse sans carry
+       * the statement and one serif line carries the turn, which is the whole
+       * argument for keeping a second typeface. It earns its place once, here,
+       * where the reader is meant to slow down.
+       *
+       * The headline animates in CSS rather than through RevealText: it is the
+       * Largest Contentful Paint candidate and a CSS animation starts at the
+       * first paint, before a byte of JavaScript has parsed. The parallax is
+       * the enhancement and is allowed to arrive late.
+       */}
+      <section
+        data-surface="dark"
+        className="relative flex min-h-[100svh] items-end overflow-hidden pb-16 lg:pb-24"
+      >
+        <Parallax speed={0.8} className="absolute inset-x-0 -top-[8%] h-[116%]">
+          <Photo slug="downtown-aerial-night-trails" sizes="100vw" priority />
+        </Parallax>
+
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/45 to-ink/15"
         />
-        <div className="absolute inset-0 bg-background/25" />
 
-        <motion.div
-          style={reduced ? {} : { y: contentY, opacity: contentOpacity }}
-          className="relative flex h-full items-end pb-24 lg:pb-32"
-        >
-          <Container>
-            <div data-hero-reveal="fade">
-              <Eyebrow className="text-foreground/60">Dubai · Private Brokerage</Eyebrow>
-            </div>
-
-            <h1 className="display-1 mt-8 max-w-5xl">
-              {["Dubai real estate,", "handled with"].map((line, i) => (
-                <span
-                  key={line}
-                  className="block overflow-hidden"
-                  /* The first line carries no delay. Everything after it is
-                   * staggered, but the LCP candidate has to be painting in the
-                   * first frame, an animation-delay on it is an LCP delay,
-                   * because Chrome does not count an element at opacity 0. */
-                  data-hero-reveal
-                  style={{ "--hero-delay": `${i * 140}ms` } as CSSProperties}
-                >
-                  {line}
-                </span>
-              ))}
+        <Container className="relative">
+          <div className="grid items-end gap-x-12 gap-y-10 lg:grid-cols-12">
+            <h1 className="lg:col-span-7">
               <span
-                className="block italic text-accent"
+                className="display-1 block"
                 data-hero-reveal
-                style={{ "--hero-delay": "280ms" } as CSSProperties}
+                style={{ "--hero-delay": "0ms" } as CSSProperties}
               >
-                intention.
+                Dubai property,
+              </span>
+              <span
+                className="display-1 block"
+                data-hero-reveal
+                style={{ "--hero-delay": "120ms" } as CSSProperties}
+              >
+                bought on evidence
+              </span>
+              <span
+                className="accent-line mt-2 block pb-2 italic leading-[1.12]"
+                data-hero-reveal
+                style={{ "--hero-delay": "260ms" } as CSSProperties}
+              >
+                rather than atmosphere.
               </span>
             </h1>
 
             <div
+              className="lg:col-span-4 lg:col-start-9"
               data-hero-reveal="fade"
-              style={{ "--hero-delay": "560ms" } as CSSProperties}
-              className="mt-12 flex flex-wrap items-center gap-8"
+              style={{ "--hero-delay": "460ms" } as CSSProperties}
             >
-              <Link to="/properties">
-                <Button>View Portfolio</Button>
-              </Link>
-              <Link to="/contact" className="eyebrow link-underline text-foreground">
-                Private consultation
+              <p className="body-text max-w-md text-on-dark-muted">
+                A private Dubai brokerage. We price from Dubai Land Department records, represent a
+                small number of clients, and say what the numbers say.
+              </p>
+              {/* One action, and nothing beside it. */}
+              <Link to="/properties" search={{}} className="mt-8 inline-block">
+                <Button>View the portfolio</Button>
               </Link>
             </div>
-          </Container>
-        </motion.div>
-      </div>
-
-      {/* Statement */}
-      <Section>
-        <div className="grid gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-3">
-            <Reveal>
-              <Eyebrow>The practice</Eyebrow>
-            </Reveal>
           </div>
-          <div className="lg:col-span-8 lg:col-start-5">
-            <Reveal delay={0.1}>
-              <p className="display-3">
-                We represent a small number of clients across Dubai's prime districts, advising
-                quietly, negotiating precisely, and holding a long view of value.
-              </p>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <p className="body-text mt-10 max-w-measure text-muted-foreground">
-                Acquisition, disposal and portfolio strategy for private owners, family offices and
-                first-time buyers into the emirate.
-              </p>
-            </Reveal>
-          </div>
-        </div>
-      </Section>
+        </Container>
+      </section>
 
-      {/* Index of disciplines */}
-      <Section className="pt-0">
-        <div className="hairline" />
-        {[
-          { n: "01", label: "Private Sales", to: "/properties" as const },
-          { n: "02", label: "Advisory & Services", to: "/services" as const },
-          { n: "03", label: "Market Intelligence", to: "/market-intelligence" as const },
-          { n: "04", label: "Guides", to: "/guides" as const },
-        ].map((item, i) => (
-          <Reveal key={item.n} delay={stagger(i)}>
-            <Link
-              to={item.to}
-              className="group flex items-baseline justify-between gap-8 border-b border-border py-10 transition-colors hover:border-accent"
-            >
-              <span className="eyebrow">{item.n}</span>
-              <span className="display-2 flex-1 transition-transform duration-slow ease-editorial group-hover:translate-x-3">
-                {item.label}
-              </span>
-              <span className="eyebrow transition-colors group-hover:text-accent">View</span>
-            </Link>
-          </Reveal>
-        ))}
-      </Section>
+      {/* The thesis. Image left, argument right, on the cool paper. */}
+      <SplitFeature photo="skyline-across-water-haze" side="start" className="bg-paper-cool">
+        <h2 className="display-2 text-balance">
+          Most agencies show you what they are holding. We start from what you are trying to do.
+        </h2>
+        <p className="body-text mt-6 max-w-lg text-muted-foreground">
+          DLX is deliberately small. We take a limited number of mandates at a time because the
+          alternative, a pipeline of a hundred half-served buyers, is how most brokerages work and
+          why most buyers feel unrepresented.
+        </p>
+        <p className="body-text mt-4 max-w-lg text-muted-foreground">
+          One consultant stays with you from the first call to handover. They price from recorded
+          transactions, they tell you when a building has a service-charge problem, and they say so
+          when the answer is that you should not buy.
+        </p>
+        <Link to="/about" className="eyebrow link-underline mt-8 inline-block text-accent">
+          How we work
+        </Link>
+      </SplitFeature>
 
-      {/* The differentiator: official data, read plainly */}
-      <MarketBand summary={marketSummary} index={marketIndex} areas={areas} />
+      {/* The signature interactive. Three questions, a Dubai Land Department
+          cited answer, and nothing asked in return. */}
+      <InvestmentSnapshot areas={areas} />
 
-      {/* Selected listings, real inventory, or nothing at all */}
+      {/* The page's first pinned moment. */}
+      <MarketSequence summary={marketSummary} index={marketIndex} areas={areas} />
+
+      {/* Services, as an index rather than a card grid. */}
+      <EditorialIndex
+        heading={
+          <>
+            <Eyebrow>What we do</Eyebrow>
+            <h2 className="display-2 mt-5 text-balance">Five practices, one team.</h2>
+          </>
+        }
+        intro={
+          <p className="body-text mt-5 text-muted-foreground">
+            Each one is a mandate we take on properly or not at all.
+          </p>
+        }
+        rows={services.map((service) => ({
+          id: service.slug,
+          to: `/services/${service.slug}`,
+          title: service.name,
+          summary: service.tagline,
+          photo: SERVICE_PHOTOS[service.slug] ?? "downtown-fog-day",
+        }))}
+        action={
+          <Link to="/services" className="eyebrow link-underline text-accent">
+            All nine practices
+          </Link>
+        }
+      />
+
+      {/* Selected residences, as a track the reader walks along. The second and
+          last pinned moment on the page. */}
       {featured.length > 0 ? (
-        <Section className="pt-0">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <Reveal>
-              <Eyebrow>Selected</Eyebrow>
-              <h2 className="display-2 mt-6">From the portfolio</h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <Link to="/properties" search={{}} className="eyebrow link-underline text-accent">
-                View all properties
-              </Link>
-            </Reveal>
-          </div>
-          <div className="mt-12 grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((property, index) => (
-              <Reveal key={property.id} delay={stagger(index)}>
-                <PropertyCard property={property} />
-              </Reveal>
-            ))}
-          </div>
-        </Section>
+        <HorizontalGallery
+          aria-label="Selected residences"
+          className="bg-paper-cool"
+          heading={
+            <h2 className="display-2 text-balance">Selected residences, represented privately.</h2>
+          }
+        >
+          {featured.map((property) => (
+            <Link
+              key={property.id}
+              to="/properties/$slug"
+              params={{ slug: property.slug }}
+              className="group w-[78vw] shrink-0 snap-start sm:w-[52vw] lg:w-[34vw]"
+            >
+              <MaskReveal className="aspect-3/4 w-full">
+                {property.hero_image_url ? (
+                  <img
+                    src={property.hero_image_url}
+                    alt={property.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-slow ease-editorial group-hover:scale-[1.03]"
+                  />
+                ) : (
+                  <Photo slug="business-bay-dusk" sizes="(min-width: 1024px) 34vw, 78vw" />
+                )}
+              </MaskReveal>
+              <div className="mt-5">
+                {property.area ? <p className="eyebrow">{property.area.name}</p> : null}
+                <p className="display-3 mt-2 transition-colors group-hover:text-accent">
+                  {property.title}
+                </p>
+                <p className="caption mt-1.5">{formatPrice(property.price, property.currency)}</p>
+              </div>
+            </Link>
+          ))}
+        </HorizontalGallery>
       ) : null}
 
-      {/* Why a small brokerage can be trusted, first scroll, every audience */}
-      <TrustStrip className="pt-0" />
+      {/* Communities, as cells of deliberately unequal size. */}
+      {communities.length > 0 ? (
+        <MosaicGrid
+          heading={
+            <>
+              <Eyebrow>Where we transact</Eyebrow>
+              <h2 className="display-2 mt-5 text-balance">
+                Six communities, and what the record says about each.
+              </h2>
+            </>
+          }
+          cells={communities.map((area) => ({
+            id: area.id,
+            photo: areaPhoto(area.slug),
+            href: `/areas/${area.slug}`,
+            children: (
+              <>
+                <p className="display-3">{area.name}</p>
+                <p className="caption mt-2 text-on-dark-muted">
+                  {area.stats?.median_price_per_sqft
+                    ? `AED ${Math.round(area.stats.median_price_per_sqft).toLocaleString("en-AE")} /sq ft`
+                    : null}
+                  {area.stats?.gross_yield_pct
+                    ? ` · ${area.stats.gross_yield_pct.toFixed(1)}% gross`
+                    : null}
+                </p>
+              </>
+            ),
+          }))}
+          action={
+            <Link to="/areas" className="eyebrow link-underline text-accent">
+              Every community we cover
+            </Link>
+          }
+        />
+      ) : null}
 
-      <DeveloperStrip developers={partners} />
+      {/* Noor. The page's second dark anchor. */}
+      <AdvisorMoment />
 
-      <TestimonialsBlock testimonials={testimonials} />
+      {/* Proof, as one band rather than three. */}
+      <ProofBand agents={agents} partners={partners} testimonial={quote} />
 
-      {/* Questions */}
+      {/* The page's one type-only moment, and the only other place the serif
+          appears. */}
+      <Manifesto
+        footnote={
+          <>
+            {site.name}, RERA ORN {site.reraOrn}. {site.address.street}, {site.address.locality}.
+          </>
+        }
+      >
+        We would rather lose the transaction than be the reason someone bought the wrong thing.
+      </Manifesto>
+
       <Section className="pt-0">
-        <Faq entries={FAQ_ENTRIES} />
-      </Section>
-
-      {/* Closing */}
-      <Section className="bg-secondary">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-6">
-            <Reveal>
-              <h2 className="display-2">Begin a quiet conversation.</h2>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-4 lg:col-start-9">
-            <Reveal delay={0.12}>
-              <p className="body-text text-muted-foreground">
-                Whether you are acquiring, exiting or simply observing the market, our team is
-                available for a discreet, no-obligation discussion.
-              </p>
-              <Link to="/contact" className="mt-10 inline-block">
-                <Button>Contact DLX</Button>
-              </Link>
-            </Reveal>
-          </div>
-        </div>
+        <Faq eyebrow={null} entries={FAQ_ENTRIES} />
       </Section>
     </>
   );

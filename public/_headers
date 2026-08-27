@@ -17,7 +17,13 @@
 /og/*
   Cache-Control: public, max-age=604800, must-revalidate
 
-/favicon.png
+/favicon-*.png
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/icon-*.png
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/apple-touch-icon.png
   Cache-Control: public, max-age=604800, must-revalidate
 
 # Everything else is server-rendered HTML carrying live listing and market data.

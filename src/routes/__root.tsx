@@ -108,7 +108,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       ],
       links: [
         { rel: "stylesheet", href: appCss },
-        { rel: "icon", type: "image/png", href: "/favicon.png" },
+        /*
+         * The icon set, from the kit's own monogram files rather than a
+         * downscale of the logo. A browser picks the nearest size and scales
+         * from there, and a 16px tab rendered down from 512 turns the DX
+         * ligature's hairlines into grey mush, so the small sizes are the
+         * ones the kit drew at that size.
+         */
+        { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16.png" },
+        { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32.png" },
+        { rel: "icon", type: "image/png", sizes: "48x48", href: "/favicon-48.png" },
+        { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+        { rel: "manifest", href: "/site.webmanifest" },
         /* The Latin pair, on every page in every language, see src/lib/fonts.ts
          * for why a translated page still needs it. The script fonts are added
          * by the $lang layout, so English loads nothing extra. */

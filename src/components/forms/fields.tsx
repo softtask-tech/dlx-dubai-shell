@@ -34,8 +34,24 @@ export function Field({ label, name, hint, error, required, children }: FieldPro
   );
 }
 
+/*
+ * Three things here are measured rather than chosen.
+ *
+ * `border-input`, not `border-border`: with no box around a field its
+ * underline is the entire affordance, so it is a UI component and WCAG asks
+ * 3:1 of it. On the shared border token it was 1.17:1, which is a rule nobody
+ * can see.
+ *
+ * Weight 400, not `font-light`. The self-hosted Instrument Sans is a variable
+ * face covering 400 to 500, so 300 is outside its range and the browser
+ * synthesises a thinner shape that is subtly wrong at every size. The token
+ * layer says this about body copy; it applies here too.
+ *
+ * A placeholder at full `muted-foreground`, not 60% of it. Sixty percent
+ * composites to #a6a6a6, which is 2.43:1 on paper and fails.
+ */
 const controlClass =
-  "w-full border-0 border-b border-border bg-transparent pb-3 pt-1 font-sans text-base font-light text-foreground outline-none transition-colors duration-quick ease-editorial placeholder:text-muted-foreground/60 focus:border-accent disabled:opacity-50";
+  "w-full border-0 border-b border-input bg-transparent pb-3 pt-1 font-sans text-base text-foreground outline-none transition-colors duration-quick ease-editorial placeholder:text-muted-foreground focus:border-accent disabled:opacity-50";
 
 export const TextInput = React.forwardRef<
   HTMLInputElement,

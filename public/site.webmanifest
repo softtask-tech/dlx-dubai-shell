@@ -1,0 +1,14 @@
+{
+  "name": "DLX Properties",
+  "short_name": "DLX",
+  "description": "A private Dubai brokerage. We price from Dubai Land Department records.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c1411",
+  "theme_color": "#0c1411",
+  "icons": [
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" }
+  ]
+}

@@ -102,8 +102,7 @@ function ToolPage() {
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Reveal>
-              <Eyebrow>Next step</Eyebrow>
-              <h2 className="display-2 mt-6">Put a real property behind it.</h2>
+              <h2 className="display-2">Put a real property behind it.</h2>
               <p className="body-text mt-8 max-w-measure text-muted-foreground">
                 A calculator works with the numbers you give it. We work with the building, the
                 seller and the service charge schedule, which is where the answer usually changes.

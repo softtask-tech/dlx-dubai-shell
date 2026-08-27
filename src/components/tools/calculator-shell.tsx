@@ -169,7 +169,7 @@ export function NumberField({
           const next = Number(event.target.value);
           onChange(Number.isFinite(next) ? next : 0);
         }}
-        className="w-full border-0 border-b border-border bg-transparent pb-3 pt-1 font-sans text-2xl font-light text-foreground outline-none transition-colors duration-quick ease-editorial focus:border-accent"
+        className="w-full border-0 border-b border-input bg-transparent pb-3 pt-1 font-sans text-2xl text-foreground outline-none transition-colors duration-quick ease-editorial focus:border-accent"
       />
       {hint ? <p className="caption">{hint}</p> : null}
     </div>

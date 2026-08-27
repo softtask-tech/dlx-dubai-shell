@@ -74,7 +74,11 @@ export function CountUp({
   }, [value, reduced]);
 
   if (value === null) {
-    return <span ref={ref}>{fallback}</span>;
+    return (
+      <span ref={ref} className="tabular-nums">
+        {fallback}
+      </span>
+    );
   }
 
   /* Grouped the way this reader's language groups digits, the same rule the
@@ -97,7 +101,11 @@ export function CountUp({
    * figure once, correctly, and never hears it count.
    */
   return (
-    <span ref={ref}>
+    /* Tabular figures, so the digits do not change width as the number counts.
+       Proportional numerals make a counting figure jitter, and the jitter is a
+       real layout shift: it put Market Intelligence at 0.035 CLS, which is
+       under budget but is a number moving for no reason. */
+    <span ref={ref} className="tabular-nums">
       <span aria-hidden="true">
         {prefix}
         {format(display ?? value)}

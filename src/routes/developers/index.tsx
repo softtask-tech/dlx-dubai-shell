@@ -3,9 +3,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { listDevelopers, listProjects } from "@/data/catalogue";
 import { formatHandover } from "@/lib/format";
 import { Price } from "@/components/tools/money";
-import { pageHead } from "@/lib/seo";
+import { pageHead, withHeroPreload } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
 import { Reveal } from "@/components/site/reveal";
+import { PageHero } from "@/components/site/page-hero";
 import { Section, Eyebrow } from "@/components/ui/section";
 import { Tag } from "@/components/ui/tag";
 
@@ -18,7 +19,10 @@ export const Route = createFileRoute("/developers/")({
     return { developers, projects };
   },
   head: () =>
-    pageHead({ path: "/developers", breadcrumbs: [{ name: "Developers", path: "/developers" }] }),
+    withHeroPreload(
+      "burj-al-arab-cloud",
+      pageHead({ path: "/developers", breadcrumbs: [{ name: "Developers", path: "/developers" }] }),
+    ),
   component: DevelopersIndex,
 });
 
@@ -27,28 +31,14 @@ function DevelopersIndex() {
 
   return (
     <>
-      <Section className="pt-44 pb-20 lg:pt-56">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <Reveal>
-              <Eyebrow>The market</Eyebrow>
-              <h1 className="display-1 mt-8">Developers &amp; Projects</h1>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-4 lg:col-start-9">
-            <Reveal delay={0.12}>
-              <p className="body-text text-muted-foreground">
-                Who builds what in Dubai, where, and, the part that matters when you are buying
-                off-plan, how reliably they deliver.
-              </p>
-              <div className="mt-10 h-px w-16 bg-accent" />
-            </Reveal>
-          </div>
-        </div>
-      </Section>
+      <PageHero
+        photo="burj-al-arab-cloud"
+        title="Who builds what, and how they deliver."
+        lead="The developers behind Dubai's master communities, where they build, and, the part that matters when you are buying off-plan, how reliably they hand over."
+      />
 
       {developers.length > 0 ? (
-        <Section className="pt-0">
+        <Section>
           <Reveal>
             <Eyebrow>Developers</Eyebrow>
           </Reveal>

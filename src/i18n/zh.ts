@@ -184,6 +184,8 @@ export const zh: Dictionary = {
   },
 
   footer: {
+    closing: "找一个真会回复您的人。",
+    closingCta: "联系 DLX",
     tagline: "迪拜房地产，以审慎之心经手。",
     exploreHeading: "浏览",
     contactHeading: "联系",

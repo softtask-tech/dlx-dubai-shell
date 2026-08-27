@@ -15,6 +15,15 @@ import { cn } from "@/lib/utils";
  * animated on the client, so the chart is a finished picture for anyone who
  * never runs the animation, including under reduced motion, where it appears
  * fully drawn immediately.
+ *
+ * The colours come from `var(--accent)` and not from `var(--color-accent)`.
+ * That distinction is load-bearing: the `--color-*` names are declared once on
+ * the root, so they resolve to the light palette there and every descendant
+ * inherits that resolved value. Re-pointing `--accent` inside
+ * `data-surface="dark"` therefore never reaches them, and this chart drew a
+ * near-white slab and an invisible green line on the dark market section.
+ * Utilities are fine, because `@theme inline` compiles them down to the
+ * semantic variable; only hand-written `var()` in a component can get it wrong.
  */
 export function TrendChart({
   points,
@@ -30,6 +39,12 @@ export function TrendChart({
   const reduced = useReducedMotion();
   const ref = useRef<SVGSVGElement>(null);
   const [drawn, setDrawn] = useState(false);
+  /* `useReducedMotion` reads matchMedia, which the server cannot, so any style
+   * derived from it differs between the server HTML and the first client
+   * render and React reports a hydration mismatch. Gating on mount makes both
+   * of those renders identical and moves the decision to the second one. */
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const usable = points.filter(
     (point): point is AreaPricePoint & { median_price_per_sqft: number } =>
@@ -105,18 +120,19 @@ export function TrendChart({
           `Median price per square foot from ${monthLabel(first!.period_month)} to ${monthLabel(last!.period_month)}`
         }
       >
-        {/* A soft sand wash under the line, for weight rather than decoration. */}
+        {/* A wash of the accent under the line, for weight rather than
+            decoration: pale sage on paper, a warm gold haze on the ink. */}
         <path
           d={areaPath}
-          fill="var(--color-accent-soft)"
-          opacity={drawn ? 0.5 : 0}
+          fill="var(--accent)"
+          opacity={drawn ? 0.14 : 0}
           className="transition-opacity duration-slow ease-editorial"
         />
 
         <path
           d={line}
           fill="none"
-          stroke="var(--color-accent)"
+          stroke="var(--accent)"
           strokeWidth={2}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -124,11 +140,11 @@ export function TrendChart({
           pathLength={1}
           strokeDasharray={1}
           strokeDashoffset={drawn ? 0 : 1}
-          style={{
-            transition: reduced
-              ? "none"
-              : "stroke-dashoffset 1600ms cubic-bezier(0.22, 1, 0.36, 1)",
-          }}
+          style={
+            mounted && !reduced
+              ? { transition: "stroke-dashoffset 1600ms cubic-bezier(0.22, 1, 0.36, 1)" }
+              : undefined
+          }
         />
 
         {/* The end point, so the eye lands where the line finishes. */}
@@ -136,7 +152,7 @@ export function TrendChart({
           cx={x(usable.length - 1)}
           cy={y(last!.median_price_per_sqft)}
           r={4}
-          fill="var(--color-accent)"
+          fill="var(--accent)"
           opacity={drawn ? 1 : 0}
           className="transition-opacity duration-slow ease-editorial"
         />

@@ -25,6 +25,7 @@ import {
 } from "@/config/locales";
 import { absoluteUrl, ogImagePathFor, SITE_PAGES, site } from "@/config/site";
 import { breadcrumbSchema, type BreadcrumbEntry } from "@/lib/schema";
+import { photoPreload, type PhotoSlug } from "./photos";
 
 /** Open Graph images render at 1200×630, the size every platform crops from. */
 export const OG_IMAGE_WIDTH = 1200;
@@ -190,4 +191,23 @@ export function pageHead(input: PageHeadInput) {
       children: serializeJsonLd(node),
     })),
   };
+}
+
+/**
+ * Adds the hero photograph's preload to a page head.
+ *
+ * Wrapping `pageHead()` rather than taking another option, because the hero is
+ * a fact about the page's composition rather than about its metadata, and
+ * because this way a page that has no hero photograph simply does not call it.
+ *
+ * The `sizes` default matches `FullBleed`, which renders its photograph at the
+ * full viewport width. A caller whose hero is narrower must pass its own, or
+ * the browser preloads a larger file than the one it will use.
+ */
+export function withHeroPreload<T extends { links?: unknown[] }>(
+  slug: PhotoSlug,
+  head: T,
+  sizes = "100vw",
+): T {
+  return { ...head, links: [photoPreload(slug, sizes), ...(head.links ?? [])] };
 }

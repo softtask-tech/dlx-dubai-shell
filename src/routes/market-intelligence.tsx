@@ -18,6 +18,7 @@ import { Stat } from "@/components/market/stat";
 import { TransactionTicker } from "@/components/market/transaction-ticker";
 import { TrendChart } from "@/components/market/trend-chart";
 import { Reveal } from "@/components/site/reveal";
+import { FullBleed } from "@/components/layouts";
 import { Section, Container, Eyebrow } from "@/components/ui/section";
 
 const FAQS: readonly FaqEntry[] = [
@@ -90,31 +91,29 @@ function MarketIntelligencePage() {
 
   return (
     <>
-      <Section className="pt-44 pb-16 lg:pt-56">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <Reveal>
-              <Eyebrow>Research</Eyebrow>
-              <h1 className="display-1 mt-8">Dubai, in recorded numbers</h1>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-4 lg:col-start-9">
-            <Reveal delay={0.12}>
-              <p className="body-text text-muted-foreground">
-                Not asking prices, not agency sentiment, what buyers actually paid, recorded in the
-                registry every Dubai sale passes through.
-              </p>
-              <FreshnessStamp attribution={summary.attribution} className="mt-8" />
-            </Reveal>
-          </div>
+      {/*
+       * A photograph, and the sentence under the title rather than floating in
+       * the top right of it. The old opening was a white screen with a void
+       * above the headline and a small grey paragraph in the far corner, which
+       * is the shape of a page that has not been designed rather than one that
+       * is being restrained.
+       */}
+      <FullBleed photo="downtown-interchange-day" height="band" priority>
+        <div className="max-w-3xl">
+          <h1 className="display-1 text-balance">Dubai, in recorded numbers.</h1>
+          <p className="lead mt-6 max-w-2xl text-on-dark-muted">
+            Not asking prices and not agency sentiment. What buyers actually paid, recorded in the
+            registry every Dubai sale passes through.
+          </p>
+          <FreshnessStamp attribution={summary.attribution} className="mt-8" />
         </div>
-      </Section>
+      </FullBleed>
 
       {summary.areasCovered === 0 ? (
         <Section className="pt-0">
           <div className="border border-border p-12 text-center">
             <Eyebrow>Being prepared</Eyebrow>
-            <h2 className="display-3 mt-6">The market data is loading.</h2>
+            <h2 className="display-3 mt-5">The market data is loading.</h2>
             <p className="body-text mx-auto mt-6 max-w-measure text-muted-foreground">
               Once the Dubai Land Department snapshot is in, this page carries the recorded prices,
               yields and volumes for every community we cover.
@@ -126,8 +125,13 @@ function MarketIntelligencePage() {
         </Section>
       ) : (
         <>
-          {/* Headline figures */}
-          <Section className="pt-0">
+          {/*
+            The four figures on the ink, directly under the photograph. On the
+            white page they read as four cards in a row, which is the shape
+            every template uses for features; on the dark ground under a
+            photograph they read as the plate of numbers the page is about.
+          */}
+          <Section data-surface="dark" className="bg-ink">
             <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
               <Reveal delay={stagger(0)}>
                 <Stat
@@ -169,8 +173,7 @@ function MarketIntelligencePage() {
             <div className="grid gap-14 lg:grid-cols-12">
               <div className="lg:col-span-3">
                 <Reveal>
-                  <Eyebrow>The trend</Eyebrow>
-                  <h2 className="display-3 mt-6">Three years of prime Dubai</h2>
+                  <h2 className="display-3">Three years of prime Dubai</h2>
                   <p className="body-text mt-6 text-muted-foreground">
                     Median price per square foot by month, weighted by transaction volume across the
                     communities we cover.
@@ -189,8 +192,7 @@ function MarketIntelligencePage() {
           {byYield.length > 0 ? (
             <Section>
               <Reveal>
-                <Eyebrow>Yields by community</Eyebrow>
-                <h2 className="display-2 mt-6">Where the rent covers the most</h2>
+                <h2 className="display-2">Where the rent covers the most</h2>
                 <p className="body-text mt-6 max-w-measure text-muted-foreground">
                   Gross yield, a year's registered rent against the typical sale price. Service
                   charges come out of this, and they are not small in Dubai.
@@ -214,10 +216,14 @@ function MarketIntelligencePage() {
                       >
                         <span className="body-text md:col-span-3">{area.name}</span>
                         <span className="md:col-span-7">
-                          {/* The bar is the comparison; the number is the fact. */}
+                          {/* The bar is the comparison; the number is the fact.
+                              Three pixels, not one: a hairline at these lengths
+                              reads as a rule someone forgot to remove rather
+                              than as a quantity. No track behind it, because a
+                              filled grey trough is dashboard furniture. */}
                           <span
                             aria-hidden="true"
-                            className="block h-px bg-accent transition-all duration-slow ease-editorial group-hover:h-0.5"
+                            className="block h-[3px] bg-accent transition-all duration-slow ease-editorial group-hover:h-[5px]"
                             style={{ width: `${Math.max(6, (yieldPct / best) * 100)}%` }}
                           />
                         </span>
@@ -236,7 +242,7 @@ function MarketIntelligencePage() {
           <Section className="bg-secondary">
             <Reveal>
               <Eyebrow>By community</Eyebrow>
-              <h2 className="display-2 mt-6">The whole table</h2>
+              <h2 className="display-2 mt-5">The whole table</h2>
             </Reveal>
 
             <div className="mt-10 overflow-x-auto">
@@ -314,8 +320,7 @@ function MarketIntelligencePage() {
             <div className="grid gap-14 lg:grid-cols-12">
               <div className="lg:col-span-3">
                 <Reveal>
-                  <Eyebrow>The evidence</Eyebrow>
-                  <h2 className="display-3 mt-6">Individual sales</h2>
+                  <h2 className="display-3">Individual sales</h2>
                   <p className="body-text mt-6 text-muted-foreground">
                     The most recent records behind the figures above. This is the raw material, not
                     a summary of it.
@@ -337,8 +342,7 @@ function MarketIntelligencePage() {
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Reveal>
-              <Eyebrow>The full report</Eyebrow>
-              <h2 className="display-2 mt-6">The Dubai market report.</h2>
+              <h2 className="display-2">The Dubai market report.</h2>
               <p className="body-text mt-8 max-w-measure text-muted-foreground">
                 Every community, the rent evidence behind each yield, three years of movement, and
                 where we think the value is. Written for someone deciding.
@@ -365,8 +369,7 @@ function MarketIntelligencePage() {
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-3">
             <Reveal>
-              <Eyebrow>About this data</Eyebrow>
-              <h2 className="display-3 mt-6">Asked and answered</h2>
+              <h2 className="display-3">Asked and answered</h2>
             </Reveal>
           </div>
           <div className="lg:col-span-8 lg:col-start-5">

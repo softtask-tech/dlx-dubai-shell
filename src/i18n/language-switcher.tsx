@@ -69,7 +69,13 @@ export function LanguageSwitcher({
   }
 
   return (
-    <nav aria-label={t.language.ariaLabel} className={cn("flex flex-col gap-3", className)}>
+    /* `items-start` matters: each link carries its own `dir`, and a
+       right-to-left link stretched to the column width would align itself to
+       the right edge and break the list's left margin. */
+    <nav
+      aria-label={t.language.ariaLabel}
+      className={cn("flex flex-col items-start gap-3", className)}
+    >
       {LOCALES.map((entry) => {
         const isCurrent = entry.code === current;
         return (
