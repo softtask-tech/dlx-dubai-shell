@@ -207,7 +207,17 @@
   --destructive-foreground: #ffffff;
 
   --border: #e2e7e4; /* cool green-grey hairline */
-  --input: #d6ddd9;
+  /*
+   * The input rule is darker than the border, and deliberately.
+   *
+   * A field in this system has no box: the only thing telling a reader where
+   * to type is its underline, which makes that rule a user interface component
+   * rather than decoration, and WCAG asks 3:1 of those. At the old #d6ddd9 it
+   * measured 1.17:1 on paper, which is to say invisible. This is 3.57:1 on
+   * white and 3.35:1 on the cool paper, still quiet enough to read as a
+   * hairline rather than as a box.
+   */
+  --input: #7f8a85;
   /* The focus ring is a non-text indicator and needs 3:1 against what it sits
    * on. Green clears that on every surface in the system; gold does not clear
    * it on the light canvas, which is why the ring is never gold. */
@@ -254,7 +264,8 @@
   --destructive-foreground: var(--ink);
 
   --border: #26332c;
-  --input: #2f3d36;
+  /* 3.61:1 on the ink and 3.25:1 on the panel, for the same reason as above. */
+  --input: #5f7169;
   --ring: var(--gold);
 
   background-color: var(--ink);

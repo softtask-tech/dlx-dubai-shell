@@ -91,7 +91,7 @@ function RoasAdmin() {
               type="date"
               value={range.from}
               onChange={(event) => setRange((r) => ({ ...r, from: event.target.value }))}
-              className="border border-border bg-background px-3 py-2 text-sm"
+              className="border border-input bg-background px-3 py-2 text-sm"
             />
           </label>
           <label className="caption flex flex-col gap-2">
@@ -100,7 +100,7 @@ function RoasAdmin() {
               type="date"
               value={range.to}
               onChange={(event) => setRange((r) => ({ ...r, to: event.target.value }))}
-              className="border border-border bg-background px-3 py-2 text-sm"
+              className="border border-input bg-background px-3 py-2 text-sm"
             />
           </label>
         </div>

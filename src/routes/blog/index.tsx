@@ -13,6 +13,7 @@ import { pageHead } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
 import { Reveal } from "@/components/site/reveal";
 import { TrustStrip } from "@/components/site/trust-strip";
+import { PageHero } from "@/components/site/page-hero";
 import { Section, Eyebrow } from "@/components/ui/section";
 import { Tag } from "@/components/ui/tag";
 
@@ -67,25 +68,11 @@ function BlogIndex() {
 
   return (
     <>
-      <Section className="pt-44 pb-16 lg:pt-56">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <Reveal>
-              <Eyebrow>The journal</Eyebrow>
-              <h1 className="display-1 mt-8">Notes from the desk</h1>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-4 lg:col-start-9">
-            <Reveal delay={0.12}>
-              <p className="body-text text-muted-foreground">
-                What we are actually seeing, in buildings, in negotiations and in the registry,
-                written as it happens rather than polished into a newsletter.
-              </p>
-              <div className="mt-10 h-px w-16 bg-accent" />
-            </Reveal>
-          </div>
-        </div>
-      </Section>
+      <PageHero
+        photo="palm-jumeirah-dusk-aerial"
+        title="Notes from the desk."
+        lead="What we are actually seeing, in buildings, in negotiations and in the registry, written as it happens rather than polished into a newsletter."
+      />
 
       {categories.length > 1 ? (
         <Section flush>
@@ -118,7 +105,7 @@ function BlogIndex() {
       ) : null}
 
       {posts.length === 0 ? (
-        <Section className="pt-0">
+        <Section>
           <Reveal>
             <p className="lead max-w-measure text-muted-foreground">
               Nothing published here yet. The playbook is where the substance lives in the meantime
