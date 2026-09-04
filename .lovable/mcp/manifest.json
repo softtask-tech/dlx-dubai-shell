@@ -1,0 +1,190 @@
+{
+  "version": 1,
+  "sdk_version": "2.0.1",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "dlx-dubai-shell",
+      "version": "1.0.0",
+      "title": "DLX Dubai Shell"
+    },
+    "tools": [
+      {
+        "name": "list_properties",
+        "title": "List properties",
+        "description": "Search DLX Properties' published Dubai listings by listing type, property type, community, price range, bedrooms and completion status.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "listing_type": {
+              "description": "Sale or rental listings.",
+              "type": "string",
+              "enum": [
+                "sale",
+                "rent"
+              ]
+            },
+            "property_type": {
+              "type": "string",
+              "enum": [
+                "apartment",
+                "villa",
+                "townhouse",
+                "penthouse",
+                "duplex",
+                "plot",
+                "office",
+                "retail"
+              ]
+            },
+            "area": {
+              "description": "Community slug, e.g. \"palm-jumeirah\".",
+              "type": "string"
+            },
+            "min_price": {
+              "description": "Minimum price in AED.",
+              "type": "number"
+            },
+            "max_price": {
+              "description": "Maximum price in AED.",
+              "type": "number"
+            },
+            "bedrooms": {
+              "description": "Minimum number of bedrooms.",
+              "type": "number"
+            },
+            "off_plan": {
+              "description": "True for off-plan only, false for ready only.",
+              "type": "boolean"
+            },
+            "sort": {
+              "type": "string",
+              "enum": [
+                "newest",
+                "price_asc",
+                "price_desc"
+              ]
+            },
+            "limit": {
+              "description": "How many listings to return (default 12, max 50).",
+              "type": "number"
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_property",
+        "title": "Get property",
+        "description": "Full detail for one published DLX listing: price, size, amenities, DLD permit number and the consultant handling it.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "slug": {
+              "type": "string",
+              "description": "Listing slug, e.g. \"marina-gate-2-bed\"."
+            }
+          },
+          "required": [
+            "slug"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "market_overview",
+        "title": "Dubai market overview",
+        "description": "Dubai market figures from DLX's cleaned Dubai Land Department data: city-wide summary, per-community price and yield statistics, and recent transactions. Always cite the Dubai Land Department as the source.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "include_areas": {
+              "description": "Include per-community statistics (default true).",
+              "type": "boolean"
+            },
+            "include_transactions": {
+              "description": "Include the most recent transactions (default false).",
+              "type": "boolean"
+            },
+            "transaction_limit": {
+              "description": "How many transactions to include (max 50).",
+              "type": "number"
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_content",
+        "title": "List guides and services",
+        "description": "The DLX guide library and service catalogue, as short summaries. Use it to find a slug for get_guide or to answer what DLX Properties does.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "description": "Which catalogue to return (default both).",
+              "type": "string",
+              "enum": [
+                "guides",
+                "services",
+                "both"
+              ]
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_guide",
+        "title": "Get guide",
+        "description": "The full text of one DLX buyer guide (buying, selling, investment, Golden Visa, relocation, legal and tax, area guides), including its FAQs.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "slug": {
+              "type": "string",
+              "description": "Guide slug, e.g. \"golden-visa-guide\"."
+            }
+          },
+          "required": [
+            "slug"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
