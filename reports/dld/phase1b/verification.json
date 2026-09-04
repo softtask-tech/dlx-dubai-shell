@@ -1,0 +1,126 @@
+{
+  "status": "pass",
+  "database_execution": "not_run_local_postgresql_unavailable",
+  "checks": [
+    {
+      "check": "additive migrations",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "curated changes are nullable bridges only",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "curated links survive snapshot refresh",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "canonical RLS",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "public views are explicit definer barriers",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "entity public views exclude private fields",
+      "status": "pass",
+      "detail": {}
+    },
+    {
+      "check": "search public view excludes private fields",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "check": "owner coordinates internal",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "search index private",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "search RPC whitelist",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "search pagination and filters",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "exact number priority",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "search indexes",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "staging deterministic key",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "staging retry upsert",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "publish idempotent",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "publish atomic lock",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "unexpected staging entities rejected",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "public wording",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "disclaimer exact",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "status notice exact",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "required routes",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "no browser database access",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "server reads public surfaces only",
+      "status": "pass",
+      "detail": null
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+relationship,child_table,child_field,parent_table,parent_field,child_total_rows,child_null_rows,child_non_null_rows,child_distinct_keys,matched_rows,matched_distinct_keys,orphan_rows,orphan_distinct_keys,row_match_percent,key_match_percent,status
+projects.area_id -> areas.area_id,projects,area_id,areas,area_id,3039,0,3039,71,3039,71,0,0,100.0,100.0,pass
+transactions.area_id -> areas.area_id,transactions,area_id,areas,area_id,1776143,0,1776143,259,1776143,259,0,0,100.0,100.0,pass
+rent_contracts.area_id -> areas.area_id,rent_contracts,area_id,areas,area_id,10442927,3,10442924,215,10442924,215,0,0,100.0,100.0,pass
+units.area_id -> areas.area_id,units,area_id,areas,area_id,2374726,433,2374293,225,2374293,225,0,0,100.0,100.0,pass
+land_registry.area_id -> areas.area_id,land_registry,area_id,areas,area_id,263663,0,263663,260,263663,260,0,0,100.0,100.0,pass
+valuations.area_id -> areas.area_id,valuations,area_id,areas,area_id,90771,79,90692,216,90692,216,0,0,100.0,100.0,pass
+buildings.area_id -> areas.area_id,buildings,area_id,areas,area_id,256423,0,256423,219,256423,219,0,0,100.0,100.0,pass
+projects.developer_id -> developers.developer_id,projects,developer_id,developers,developer_id,3039,2,3037,1031,3029,1027,8,4,99.736582,99.612027,partial
+projects.master_developer_id -> developers.developer_id,projects,master_developer_id,developers,developer_id,3039,0,3039,112,3039,112,0,0,100.0,100.0,pass
+projects.escrow_agent_id -> escrow_agents.escrow_agent_number,projects,escrow_agent_id,escrow_agents,escrow_agent_number,3039,160,2879,39,2718,20,161,19,94.40778,51.282051,partial
+buildings.project_id -> projects.project_id,buildings,project_id,projects,project_id,256423,107483,148940,3459,132241,2942,16699,517,88.788103,85.053484,partial
+units.project_id -> projects.project_id,units,project_id,projects,project_id,2374726,1522363,852363,2835,724790,2377,127573,458,85.03302,83.844797,partial
+land_registry.project_id -> projects.project_id,land_registry,project_id,projects,project_id,263663,170388,93275,3318,85930,2864,7345,454,92.125436,86.317058,partial
+service_charges.project_id -> projects.project_id,service_charges,project_id,projects,project_id,91193,8,91185,695,67206,674,23979,21,73.702912,96.978417,partial
+brokers.real_estate_id -> offices.real_estate_id,brokers,real_estate_id,offices,real_estate_id,8724,0,8724,792,8711,789,13,3,99.850986,99.621212,partial
+brokers.real_estate_number -> offices.real_estate_number,brokers,real_estate_number,offices,real_estate_number,8724,0,8724,792,8711,789,13,3,99.850986,99.621212,partial
+offices.participant_id -> licences.participant_id,offices,participant_id,licences,participant_id,4963,0,4963,2574,849,372,4114,2202,17.106589,14.452214,partial
+offices.license_number -> licences.license_number,offices,license_number,licences,license_number,4963,14,4949,2514,962,414,3987,2100,19.43827,16.46778,partial
+developers.participant_id -> licences.participant_id,developers,participant_id,licences,participant_id,2348,0,2348,2347,78,77,2270,2270,3.321976,3.280784,partial
+developers.license_number -> licences.license_number,developers,license_number,licences,license_number,2348,75,2273,2241,105,97,2168,2144,4.619446,4.328425,partial
+permits.license_number -> licences.license_number,permits,license_number,licences,license_number,175056,0,175056,11304,10031,325,165025,10979,5.730166,2.875088,partial
+permits.license_number -> offices.license_number,permits,license_number,offices,license_number,175056,0,175056,11304,57199,1378,117857,9926,32.674687,12.190375,partial

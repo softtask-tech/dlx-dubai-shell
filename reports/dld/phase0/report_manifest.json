@@ -1,0 +1,92 @@
+[
+  {
+    "file": "attribute_dictionary.csv",
+    "bytes": 108701,
+    "sha256": "4970fcdb75ebf3dcc4c011484d1c00b9c7c42ffd43ef8c5dc68bbbefc041c06b"
+  },
+  {
+    "file": "attribute_dictionary.json",
+    "bytes": 263140,
+    "sha256": "07ee4a8af2ba44b76e53ff1b35755e93714f94f26259f43b74203f53c3bc648b"
+  },
+  {
+    "file": "audit_metadata.json",
+    "bytes": 380,
+    "sha256": "e2e8d9947f3c3d2400ccdabbb79986f6fee13f9ff7316e9d8537952905c3f2b0"
+  },
+  {
+    "file": "candidate_keys.csv",
+    "bytes": 10484,
+    "sha256": "6d2053db84e57d35786577db7bb54ca214a573e3d060b296c94f6ca4582f0a0d"
+  },
+  {
+    "file": "candidate_keys.json",
+    "bytes": 36253,
+    "sha256": "6b9f6ee985864b1717934f77673fc1a23721a10d41e8a08aef3873acd989c9c9"
+  },
+  {
+    "file": "columns.csv",
+    "bytes": 53841,
+    "sha256": "2bd66e5fa3f07795aefd34934f0e53e6e931acf471dfdf0be5b0af3e8bf446fb"
+  },
+  {
+    "file": "columns.json",
+    "bytes": 200977,
+    "sha256": "ecd95379559d50aa0e06cc4fee79a524da8854bf4a41383c4a58003a1f3a22f8"
+  },
+  {
+    "file": "datasets.csv",
+    "bytes": 1641,
+    "sha256": "764c60759a52ecba3467ab73683c648182da1de968a01bd2e26f64bc3ad2d7d7"
+  },
+  {
+    "file": "datasets.json",
+    "bytes": 15197,
+    "sha256": "bf02c03b79c6b264b51885462dff3462881f1f76f24a82df1c2e8410840df338"
+  },
+  {
+    "file": "date_ranges.csv",
+    "bytes": 6350,
+    "sha256": "9c86e82329c25e85bed3d5abec43a5e4bc4da6f96cf7368bb3776f4f577fc04c"
+  },
+  {
+    "file": "date_ranges.json",
+    "bytes": 19275,
+    "sha256": "d447d675a38135ae4951c43ed97adce69a586e500abcdbef09c029fbe40a88b3"
+  },
+  {
+    "file": "field_classification.csv",
+    "bytes": 75158,
+    "sha256": "d01eea43f79dbf3be0860a21053d65ece387fa32c2bb8bc403b553ef7eb95cde"
+  },
+  {
+    "file": "field_classification.json",
+    "bytes": 144184,
+    "sha256": "f0e140a2d9756d1c9209ebfa729b424886607167336fd93acb181375c2980749"
+  },
+  {
+    "file": "inventory.csv",
+    "bytes": 12856,
+    "sha256": "e73345fa0f1faa1655dc1f879e964701a18a0b291a5e1196c01d3e471e52a0fa"
+  },
+  {
+    "file": "inventory.json",
+    "bytes": 20739,
+    "sha256": "06ad4303f86310b31c5822d5f94c60c3fe985b338d471723ab4238bb40599403"
+  },
+  {
+    "file": "relationships.csv",
+    "bytes": 3559,
+    "sha256": "560e3eb8aea26baad5a91adf5ccffd0c71a80c783ada66af49dc1d725ea9906d"
+  },
+  {
+    "file": "relationships.json",
+    "bytes": 12380,
+    "sha256": "1b5447b8494793286757010b3917aaa4043228987966766ce93b6b6beb8cc2ea"
+  },
+  {
+    "file": "rent_identity.json",
+    "bytes": 870,
+    "sha256": "e7eb4e9b98d5967bb2d0d42aab017a5f73a8d774f2251370a431ea72e3c072db"
+  }
+]

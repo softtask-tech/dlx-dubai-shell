@@ -1,0 +1,26 @@
+dataset,table,source_csv_files,row_count,column_count,distinct_full_row_hashes,duplicate_full_rows
+Accredited Trainers by the Dubai Real Estate Institute,accredited_trainers,1,117,11,117,0
+Approved Escrow Account Agents,escrow_agents,1,25,5,25,0
+Building and Property Project Records,buildings,1,256423,46,256423,0
+Developers Recorded in Dubai Land Department,developers,1,2348,23,2348,0
+Elders and People of Determination,elders_people_of_determination,1,6120,14,6120,0
+Free Zone Companies Licensing,free_zone_companies,1,250,13,250,0
+Land Registry,land_registry,1,263663,32,263663,0
+Licenced Owner Associations,owner_associations,1,110,7,110,0
+Licensed Real Estate Valuators,valuators,1,153,15,153,0
+Lookup Dubai Community Areas,areas,1,301,5,301,0
+Lookup Real Estate Market Types,market_types,1,2,4,2,0
+Lookup Real Estate Transactions Groups,transaction_groups,1,3,4,3,0
+Lookup Real Estate Transactions Procedures,transaction_procedures,1,64,6,64,0
+Owners Association Service Charges,service_charges,1,91193,20,91193,0
+Property Map Requests,map_requests,1,1021252,16,1021252,0
+Property Valuation Records,valuations,1,90771,21,90771,0
+Real Estate Brokers,brokers,1,8724,14,8724,0
+Real Estate Licenses,licences,1,2948,24,2948,0
+Real Estate Offices,offices,1,4963,19,4963,0
+Real Estate Permits,permits,1,175056,21,175056,0
+Real Estate Projects,projects,1,3039,38,3039,0
+Real Estate Transactions,transactions,2,1776143,47,1776143,0
+Registered Freehold Real Estate Units,units,3,2374726,47,2374726,0
+Rent Contracts,rent_contracts,10,10442927,41,10442927,0
+Residential Sale Index,residential_sale_index,1,159,20,159,0

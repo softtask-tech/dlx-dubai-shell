@@ -1,0 +1,66 @@
+[
+  {
+    "test": "english developer",
+    "entity_type": "developer",
+    "query": "ZAYA ZUHA ISLAND FOR REAL ESTATE DEVELOPMENT L.L.C",
+    "normalized_query": "zaya zuha island for real estate development l l c",
+    "matches": 1,
+    "status": "pass"
+  },
+  {
+    "test": "arabic developer",
+    "entity_type": "developer",
+    "query": "جزيره زايا زوها للتطوير العقاري ش.ذ.م.م",
+    "normalized_query": "جزيره زايا زوها للتطوير العقاري ش ذ م م",
+    "matches": 1,
+    "status": "pass"
+  },
+  {
+    "test": "english broker",
+    "entity_type": "broker",
+    "query": "FUAD AHMAD BASHEER AHMAD",
+    "normalized_query": "fuad ahmad basheer ahmad",
+    "matches": 1,
+    "status": "pass"
+  },
+  {
+    "test": "arabic broker",
+    "entity_type": "broker",
+    "query": "فواد احمد بشير احمد",
+    "normalized_query": "فواد احمد بشير احمد",
+    "matches": 1,
+    "status": "pass"
+  },
+  {
+    "test": "community name",
+    "entity_type": "community",
+    "query": "Trade Center First",
+    "normalized_query": "trade center first",
+    "matches": 1,
+    "status": "pass"
+  },
+  {
+    "test": "project number",
+    "entity_type": "project",
+    "query": "2744",
+    "normalized_query": "2744",
+    "matches": 1,
+    "status": "pass"
+  },
+  {
+    "test": "licence number",
+    "entity_type": "licence",
+    "query": "568286",
+    "normalized_query": "568286",
+    "matches": 3,
+    "status": "pass"
+  },
+  {
+    "test": "permit number",
+    "entity_type": "permit",
+    "query": "56324",
+    "normalized_query": "56324",
+    "matches": 2,
+    "status": "pass"
+  }
+]

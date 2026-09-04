@@ -1,0 +1,36 @@
+{
+  "fields": [
+    "entity_type",
+    "source_key",
+    "display_name_en",
+    "display_name_ar",
+    "primary_number",
+    "secondary_number",
+    "status_en",
+    "aliases",
+    "source_export_date",
+    "source_dataset"
+  ],
+  "entity_types": [
+    "broker",
+    "community",
+    "developer",
+    "escrow_agent",
+    "free_zone_company",
+    "licence",
+    "office",
+    "owner_association",
+    "permit",
+    "project",
+    "valuator"
+  ],
+  "matching": [
+    "normalized English names",
+    "normalized Arabic names",
+    "official registration/licence/project/permit numbers",
+    "compact aliases without spaces"
+  ],
+  "result_semantics": "Official registry match only; never an endorsement, ranking, recommendation, or availability claim.",
+  "source_label": "Dubai Land Department via Dubai Pulse",
+  "non_affiliation": "Independent directory using Dubai Land Department open data; no affiliation or endorsement is implied."
+}

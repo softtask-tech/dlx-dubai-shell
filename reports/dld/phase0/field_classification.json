@@ -1,0 +1,3593 @@
+[
+  {
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "age_group",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "cource_title_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "cource_title_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "course_code",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "course_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "course_time_from",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "course_time_to",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "course_to",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "no_of_trainees",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "trainee_gender",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Approved Escrow Account Agents",
+    "field": "escrow_agent_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Approved Escrow Account Agents",
+    "field": "escrow_agent_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Approved Escrow Account Agents",
+    "field": "escrow_agent_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Approved Escrow Account Agents",
+    "field": "phone",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Approved Escrow Account Agents",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "actual_area",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "actual_common_area",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "area_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "area_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "area_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "bld_levels",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "building_number",
+    "classification": "internal",
+    "rationale": "Granular property locator; not suitable for public row-level exposure.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "built_up_area",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "car_parks",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "common_area",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "creation_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "elevators",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "flats",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "floors",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "is_free_hold",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "is_lease_hold",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "is_registered",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "land_number",
+    "classification": "internal",
+    "rationale": "Granular property locator; not suitable for public row-level exposure.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "land_sub_number",
+    "classification": "internal",
+    "rationale": "Granular property locator; not suitable for public row-level exposure.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "land_type_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "land_type_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "land_type_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "master_project_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "master_project_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "master_project_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "offices",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "parcel_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "parent_property_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "pre_registration_number",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "project_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "project_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "project_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "property_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "property_sub_type_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "property_sub_type_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "property_sub_type_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "property_type_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "property_type_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "property_type_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "rooms",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "rooms_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "rooms_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "shops",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "swimming_pools",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "zone_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "chamber_of_commerce_no",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "developer_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "developer_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "developer_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "developer_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "fax",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "legal_status",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "legal_status_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "legal_status_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "license_expiry_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "license_issue_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "license_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "license_source_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "license_source_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "license_source_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "license_type_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "license_type_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "license_type_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "participant_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "phone",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "registration_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "webpage",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Elders and People of Determination",
+    "field": "average_service_time",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Elders and People of Determination",
+    "field": "average_wating_time",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Elders and People of Determination",
+    "field": "percent_service_time_in_target",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Elders and People of Determination",
+    "field": "percent_waiting_time_in_target",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Elders and People of Determination",
+    "field": "service_location_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Elders and People of Determination",
+    "field": "service_location_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Elders and People of Determination",
+    "field": "service_month",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Elders and People of Determination",
+    "field": "service_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Elders and People of Determination",
+    "field": "service_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Elders and People of Determination",
+    "field": "service_year",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Elders and People of Determination",
+    "field": "target_service_time",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Elders and People of Determination",
+    "field": "target_waiting_time",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Elders and People of Determination",
+    "field": "total_no_of_tickets",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Elders and People of Determination",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Free Zone Companies Licensing",
+    "field": "email",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Free Zone Companies Licensing",
+    "field": "fz_company_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Free Zone Companies Licensing",
+    "field": "fz_company_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Free Zone Companies Licensing",
+    "field": "fz_company_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Free Zone Companies Licensing",
+    "field": "license_expiry_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Free Zone Companies Licensing",
+    "field": "license_issue_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Free Zone Companies Licensing",
+    "field": "license_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Free Zone Companies Licensing",
+    "field": "license_source_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Free Zone Companies Licensing",
+    "field": "license_source_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Free Zone Companies Licensing",
+    "field": "license_source_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Free Zone Companies Licensing",
+    "field": "phone",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Free Zone Companies Licensing",
+    "field": "webpage",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Free Zone Companies Licensing",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "actual_area",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "area_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "area_name_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "area_name_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "is_free_hold",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "is_registered",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "land_number",
+    "classification": "internal",
+    "rationale": "Granular property locator; not suitable for public row-level exposure.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "land_sub_number",
+    "classification": "internal",
+    "rationale": "Granular property locator; not suitable for public row-level exposure.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "land_type_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "land_type_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "land_type_id",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "master_project_ar",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "master_project_en",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "master_project_id",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "munc_number",
+    "classification": "internal",
+    "rationale": "Granular property locator; not suitable for public row-level exposure.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "munc_zip_code",
+    "classification": "internal",
+    "rationale": "Granular property locator; not suitable for public row-level exposure.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "parcel_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "pre_registration_number",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "project_id",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "project_name_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "project_name_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "property_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "property_sub_type_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "property_sub_type_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "property_sub_type_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "property_type_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "property_type_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "property_type_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "separated_from",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "separated_reference",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "zone_id",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Land Registry",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Licenced Owner Associations",
+    "field": "company_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licenced Owner Associations",
+    "field": "company_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licenced Owner Associations",
+    "field": "email",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licenced Owner Associations",
+    "field": "latitude",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licenced Owner Associations",
+    "field": "longitude",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licenced Owner Associations",
+    "field": "phone",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licenced Owner Associations",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "gender_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "gender_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "gender_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "license_end_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "license_start_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "valuation_company_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "valuation_company_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "valuation_company_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "valuator_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "valuator_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "valuator_nationality_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "valuator_nationality_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "valuator_nationality_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "valuator_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Lookup Dubai Community Areas",
+    "field": "area_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Lookup Dubai Community Areas",
+    "field": "municipality_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Lookup Dubai Community Areas",
+    "field": "name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Lookup Dubai Community Areas",
+    "field": "name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Lookup Dubai Community Areas",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Lookup Real Estate Market Types",
+    "field": "market_type_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Lookup Real Estate Market Types",
+    "field": "name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Lookup Real Estate Market Types",
+    "field": "name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Lookup Real Estate Market Types",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Lookup Real Estate Transactions Groups",
+    "field": "group_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Lookup Real Estate Transactions Groups",
+    "field": "name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Lookup Real Estate Transactions Groups",
+    "field": "name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Lookup Real Estate Transactions Groups",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Lookup Real Estate Transactions Procedures",
+    "field": "group_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Lookup Real Estate Transactions Procedures",
+    "field": "is_pre_registration",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Lookup Real Estate Transactions Procedures",
+    "field": "name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Lookup Real Estate Transactions Procedures",
+    "field": "name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Lookup Real Estate Transactions Procedures",
+    "field": "procedure_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Lookup Real Estate Transactions Procedures",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "budget_year",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "management_company_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "management_company_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "management_company_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "master_community_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "master_community_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "master_community_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "project_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "project_name",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "property_group_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "property_group_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "property_group_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "service_category_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "service_category_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "service_category_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "service_cost",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "usage_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "usage_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "usage_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Property Map Requests",
+    "field": "application_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Map Requests",
+    "field": "application_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Map Requests",
+    "field": "application_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Map Requests",
+    "field": "no_of_siteplans",
+    "classification": "aggregate-only",
+    "rationale": "Operational service activity; publish only as aggregated demand statistics.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Map Requests",
+    "field": "procedure_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Map Requests",
+    "field": "procedure_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Map Requests",
+    "field": "procedure_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Map Requests",
+    "field": "property_type_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Map Requests",
+    "field": "property_type_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Map Requests",
+    "field": "property_type_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Map Requests",
+    "field": "request_date",
+    "classification": "aggregate-only",
+    "rationale": "Operational service activity; publish only as aggregated demand statistics.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Map Requests",
+    "field": "request_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Map Requests",
+    "field": "request_source_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Map Requests",
+    "field": "request_source_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Map Requests",
+    "field": "request_source_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Map Requests",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "actual_area",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "actual_worth",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "area_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "area_name_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "area_name_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "instance_date",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "procedure_area",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "procedure_id",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "procedure_name_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "procedure_name_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "procedure_number",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "procedure_year",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "property_sub_type_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "property_sub_type_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "property_sub_type_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "property_total_value",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "property_type_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "property_type_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "property_type_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "row_status_code",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Real Estate Brokers",
+    "field": "broker_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Brokers",
+    "field": "broker_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Brokers",
+    "field": "broker_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Brokers",
+    "field": "fax",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Brokers",
+    "field": "gender",
+    "classification": "aggregate-only",
+    "rationale": "Person-level demographic attribute; publish only as a sufficiently large aggregate.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Brokers",
+    "field": "license_end_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Brokers",
+    "field": "license_start_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Brokers",
+    "field": "participant_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Brokers",
+    "field": "phone",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Brokers",
+    "field": "real_estate_broker_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Brokers",
+    "field": "real_estate_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Brokers",
+    "field": "real_estate_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Brokers",
+    "field": "webpage",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Brokers",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "activity_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "activity_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "activity_type_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "authority_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "cancel_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "chamber_commerce_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "commerce_registry_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "ded_activity_code",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "expiry_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "issue_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "legal_type_arabic",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "legal_type_english",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "legal_type_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "license_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "parcel_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "participant_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "print_rmker_arabic",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "rent_contract_no",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "status_arabic",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "status_english",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "status_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "trade_name_arabic",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "trade_name_english",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "activity_type_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "activity_type_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "activity_type_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "ded_activity_code",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "fax",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "is_branch",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "license_expiry_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "license_issue_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "license_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "license_source_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "license_source_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "license_source_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "main_office_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "participant_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "phone",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "real_estate_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "real_estate_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "webpage",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "end_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "exhibition_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "exhibition_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "license_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "location",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "main_service_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "main_service_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "parent_parmits_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "parent_service_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "paricipant_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "participant_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "permit_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "permits_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "permit_status_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "permit_status_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "permit_status_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "service_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "service_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "service_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "start_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "area_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "area_name_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "area_name_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "cancellation_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "completion_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "developer_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "developer_name",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "developer_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "escrow_agent_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "escrow_agent_name",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "master_developer_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "master_developer_name",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "master_developer_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "master_project_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "master_project_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "no_of_buildings",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "no_of_lands",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "no_of_units",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "no_of_villas",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "percent_completed",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "project_classification_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "project_classification_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "project_description_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "project_description_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "project_end_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "project_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "project_name",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "project_number",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "project_start_date",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "project_status",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "project_status_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "project_type_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "project_type_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "property_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "zoning_authority_ar",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "zoning_authority_en",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "zoning_authority_id",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "actual_worth",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "area_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "area_name_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "area_name_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "building_name_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "building_name_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "has_parking",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "instance_date",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "master_project_ar",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "master_project_en",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "meter_rent_price",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "meter_sale_price",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "nearest_landmark_ar",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "nearest_landmark_en",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "nearest_mall_ar",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "nearest_mall_en",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "nearest_metro_ar",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "nearest_metro_en",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "no_of_parties_role_1",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "no_of_parties_role_2",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "no_of_parties_role_3",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "procedure_area",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "procedure_id",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "procedure_name_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "procedure_name_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "project_name_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "project_name_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "project_number",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "property_sub_type_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "property_sub_type_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "property_sub_type_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "property_type_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "property_type_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "property_type_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "property_usage_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "property_usage_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "reg_type_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "reg_type_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "reg_type_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "rent_value",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "rooms_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "rooms_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "transaction_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "trans_group_ar",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "trans_group_en",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "trans_group_id",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "actual_area",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "actual_common_area",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "area_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "area_name_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "area_name_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "building_number",
+    "classification": "internal",
+    "rationale": "Granular property locator; not suitable for public row-level exposure.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "common_area",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "creation_date",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "floor",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "grandparent_property_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "is_free_hold",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "is_lease_hold",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "is_registered",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "land_number",
+    "classification": "internal",
+    "rationale": "Granular property locator; not suitable for public row-level exposure.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "land_sub_number",
+    "classification": "internal",
+    "rationale": "Granular property locator; not suitable for public row-level exposure.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "land_type_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "land_type_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "land_type_id",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "master_project_ar",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "master_project_en",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "master_project_id",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "munc_number",
+    "classification": "internal",
+    "rationale": "Granular property locator; not suitable for public row-level exposure.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "munc_zip_code",
+    "classification": "internal",
+    "rationale": "Granular property locator; not suitable for public row-level exposure.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "parcel_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "parent_property_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "parking_allocation_type",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "parking_allocation_type_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "parking_allocation_type_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "pre_registration_number",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "project_id",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "project_name_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "project_name_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "property_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "property_sub_type_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "property_sub_type_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "property_sub_type_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "property_type_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "property_type_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "property_type_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "rooms",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "rooms_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "rooms_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "unit_balcony_area",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "unit_number",
+    "classification": "internal",
+    "rationale": "Granular property locator; not suitable for public row-level exposure.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "unit_parking_number",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "zone_id",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "actual_area",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "annual_amount",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "area_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "area_name_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "area_name_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "contract_amount",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "contract_end_date",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "contract_id",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "contract_reg_type_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "contract_reg_type_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "contract_reg_type_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "contract_start_date",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "ejari_bus_property_type_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "ejari_bus_property_type_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "ejari_bus_property_type_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "ejari_property_sub_type_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "ejari_property_sub_type_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "ejari_property_sub_type_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "ejari_property_type_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "ejari_property_type_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "ejari_property_type_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "is_free_hold",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "line_number",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "master_project_ar",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "master_project_en",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "nearest_landmark_ar",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "nearest_landmark_en",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "nearest_mall_ar",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "nearest_mall_en",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "nearest_metro_ar",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "nearest_metro_en",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "no_of_prop",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "project_name_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "project_name_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "project_number",
+    "classification": "aggregate-only",
+    "rationale": "Granular property/transaction/rent measure; publish only through controlled aggregates.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "property_usage_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "property_usage_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "tenant_type_ar",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "tenant_type_en",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "tenant_type_id",
+    "classification": "public",
+    "rationale": "Non-personal market dimension suitable for labels, filters, and methodology.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Rent Contracts",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "all_monthly_index",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "all_monthly_price_index",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "all_quarterly_index",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "all_quarterly_price_index",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "all_yearly_index",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "all_yearly_price_index",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "first_date_of_month",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "flat_monthly_index",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "flat_monthly_price_index",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "flat_quarterly_index",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "flat_quarterly_price_index",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "flat_yearly_index",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "flat_yearly_price_index",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "villa_monthly_index",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "villa_monthly_price_index",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "villa_quarterly_index",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "villa_quarterly_price_index",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "villa_yearly_index",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "villa_yearly_price_index",
+    "classification": "public",
+    "rationale": "Open, non-personal registry/dimension field suitable for public use with DLD attribution.",
+    "source_dictionary_classification": "Open"
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "field": "load_timestamp",
+    "classification": "internal",
+    "rationale": "Operational identifier/contact or ingestion metadata; retain in the controlled data layer.",
+    "source_dictionary_classification": null
+  }
+]

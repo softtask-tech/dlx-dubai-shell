@@ -1,0 +1,617 @@
+[
+  {
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "table": "accredited_trainers",
+    "source_csv_files": 1,
+    "row_count": 117,
+    "column_count": 11,
+    "distinct_full_row_hashes": 117,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "course_time_from",
+      "course_time_to",
+      "age_group",
+      "trainee_gender",
+      "no_of_trainees",
+      "course_code",
+      "cource_title_ar",
+      "cource_title_en",
+      "course_date",
+      "course_to"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "accredited_trainers_2026-07-15_14-15-49_0001.csv",
+        "rows": 117
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Approved Escrow Account Agents",
+    "table": "escrow_agents",
+    "source_csv_files": 1,
+    "row_count": 25,
+    "column_count": 5,
+    "distinct_full_row_hashes": 25,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "escrow_agent_number"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "accredited_escrow_agents_2026-09-01_17-32-19_0001.csv",
+        "rows": 25
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Building and Property Project Records",
+    "table": "buildings",
+    "source_csv_files": 1,
+    "row_count": 256423,
+    "column_count": 46,
+    "distinct_full_row_hashes": 256423,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [],
+    "csv_files": [
+      {
+        "relative_file": "buildings_2026-09-03_17-31-45_0001.csv",
+        "rows": 256423
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "table": "developers",
+    "source_csv_files": 1,
+    "row_count": 2348,
+    "column_count": 23,
+    "distinct_full_row_hashes": 2348,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "developer_id"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "developers_2026-09-01_17-32-36_0001.csv",
+        "rows": 2348
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Elders and People of Determination",
+    "table": "elders_people_of_determination",
+    "source_csv_files": 1,
+    "row_count": 6120,
+    "column_count": 14,
+    "distinct_full_row_hashes": 6120,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "service_year",
+      "service_month"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "elders_and_people_of_determination_2026-09-01_17-52-49_0001.csv",
+        "rows": 6120
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Free Zone Companies Licensing",
+    "table": "free_zone_companies",
+    "source_csv_files": 1,
+    "row_count": 250,
+    "column_count": 13,
+    "distinct_full_row_hashes": 250,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "fz_company_number"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "free_zone_companies_licensing_2026-07-01_17-21-35_0001.csv",
+        "rows": 250
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Land Registry",
+    "table": "land_registry",
+    "source_csv_files": 1,
+    "row_count": 263663,
+    "column_count": 32,
+    "distinct_full_row_hashes": 263663,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "property_id"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "land_registry_2026-09-03_17-31-35_0001.csv",
+        "rows": 263663
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Licenced Owner Associations",
+    "table": "owner_associations",
+    "source_csv_files": 1,
+    "row_count": 110,
+    "column_count": 7,
+    "distinct_full_row_hashes": 110,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "company_name_ar",
+      "company_name_en",
+      "phone",
+      "email",
+      "latitude",
+      "longitude"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "licenced_owner_associations_2026-07-07_09-25-17_0001.csv",
+        "rows": 110
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Licensed Real Estate Valuators",
+    "table": "valuators",
+    "source_csv_files": 1,
+    "row_count": 153,
+    "column_count": 15,
+    "distinct_full_row_hashes": 153,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "valuator_number",
+      "valuation_company_number"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "valuator_licensing_2026-09-03_18-29-38_0001.csv",
+        "rows": 153
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Lookup Dubai Community Areas",
+    "table": "areas",
+    "source_csv_files": 1,
+    "row_count": 301,
+    "column_count": 5,
+    "distinct_full_row_hashes": 301,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "area_id"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "lkp_areas_2026-09-01_17-53-16_0001.csv",
+        "rows": 301
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Lookup Real Estate Market Types",
+    "table": "market_types",
+    "source_csv_files": 1,
+    "row_count": 2,
+    "column_count": 4,
+    "distinct_full_row_hashes": 2,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "market_type_id"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "lkp_market_types_2026-09-01_17-53-14_0001.csv",
+        "rows": 2
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Lookup Real Estate Transactions Groups",
+    "table": "transaction_groups",
+    "source_csv_files": 1,
+    "row_count": 3,
+    "column_count": 4,
+    "distinct_full_row_hashes": 3,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "group_id"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "lkp_transaction_groups_2026-09-01_17-53-37_0001.csv",
+        "rows": 3
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Lookup Real Estate Transactions Procedures",
+    "table": "transaction_procedures",
+    "source_csv_files": 1,
+    "row_count": 64,
+    "column_count": 6,
+    "distinct_full_row_hashes": 64,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "group_id"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "lkp_transaction_procedures_2026-09-01_17-53-40_0001.csv",
+        "rows": 64
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Owners Association Service Charges",
+    "table": "service_charges",
+    "source_csv_files": 1,
+    "row_count": 91193,
+    "column_count": 20,
+    "distinct_full_row_hashes": 91193,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "master_community_id",
+      "property_group_id",
+      "project_id",
+      "usage_id",
+      "budget_year",
+      "service_category_id"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "oa_service_charges_2026-06-30_14-26-20_0001.csv",
+        "rows": 91193
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Property Map Requests",
+    "table": "map_requests",
+    "source_csv_files": 1,
+    "row_count": 1021252,
+    "column_count": 16,
+    "distinct_full_row_hashes": 1021252,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "request_id"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "map_requests_2026-09-03_17-33-09_0001.csv",
+        "rows": 1021252
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Property Valuation Records",
+    "table": "valuations",
+    "source_csv_files": 1,
+    "row_count": 90771,
+    "column_count": 21,
+    "distinct_full_row_hashes": 90771,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [],
+    "csv_files": [
+      {
+        "relative_file": "valuation_2026-09-03_18-29-43_0001.csv",
+        "rows": 90771
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Real Estate Brokers",
+    "table": "brokers",
+    "source_csv_files": 1,
+    "row_count": 8724,
+    "column_count": 14,
+    "distinct_full_row_hashes": 8724,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "real_estate_broker_id"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "brokers_2026-07-03_10-31-51_0001.csv",
+        "rows": 8724
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Real Estate Licenses",
+    "table": "licences",
+    "source_csv_files": 1,
+    "row_count": 2948,
+    "column_count": 24,
+    "distinct_full_row_hashes": 2948,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "activity_type_id",
+      "participant_id"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "real_estate_licenses_2026-09-03_17-31-32_0001.csv",
+        "rows": 2948
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Real Estate Offices",
+    "table": "offices",
+    "source_csv_files": 1,
+    "row_count": 4963,
+    "column_count": 19,
+    "distinct_full_row_hashes": 4963,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "real_estate_id"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "offices_2026-09-01_17-56-00_0001.csv",
+        "rows": 4963
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Real Estate Permits",
+    "table": "permits",
+    "source_csv_files": 1,
+    "row_count": 175056,
+    "column_count": 21,
+    "distinct_full_row_hashes": 175056,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "permits_id"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "real_estate_permits_2026-09-03_17-32-35_0001.csv",
+        "rows": 175056
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Real Estate Projects",
+    "table": "projects",
+    "source_csv_files": 1,
+    "row_count": 3039,
+    "column_count": 38,
+    "distinct_full_row_hashes": 3039,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "project_id"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "projects_2026-07-06_16-25-21_0001.csv",
+        "rows": 3039
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Real Estate Transactions",
+    "table": "transactions",
+    "source_csv_files": 2,
+    "row_count": 1776143,
+    "column_count": 47,
+    "distinct_full_row_hashes": 1776143,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "transaction_id"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "transactions_2026-09-03_17-35-02_0001.csv",
+        "rows": 888072
+      },
+      {
+        "relative_file": "transactions_2026-09-03_17-35-02_0002.csv",
+        "rows": 888071
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Registered Freehold Real Estate Units",
+    "table": "units",
+    "source_csv_files": 3,
+    "row_count": 2374726,
+    "column_count": 47,
+    "distinct_full_row_hashes": 2374726,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [],
+    "csv_files": [
+      {
+        "relative_file": "units_2026-09-03_18-33-31_0001.csv",
+        "rows": 791575
+      },
+      {
+        "relative_file": "units_2026-09-03_18-33-31_0002.csv",
+        "rows": 791575
+      },
+      {
+        "relative_file": "units_2026-09-03_18-33-31_0003.csv",
+        "rows": 791576
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Rent Contracts",
+    "table": "rent_contracts",
+    "source_csv_files": 10,
+    "row_count": 10442927,
+    "column_count": 41,
+    "distinct_full_row_hashes": 10442927,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "line_number",
+      "contract_id"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "rent_contracts_2026-09-03_17-50-12_0001.csv",
+        "rows": 1044293
+      },
+      {
+        "relative_file": "rent_contracts_2026-09-03_17-50-12_0002.csv",
+        "rows": 1044293
+      },
+      {
+        "relative_file": "rent_contracts_2026-09-03_17-50-12_0003.csv",
+        "rows": 1044295
+      },
+      {
+        "relative_file": "rent_contracts_2026-09-03_17-50-12_0004.csv",
+        "rows": 1044294
+      },
+      {
+        "relative_file": "rent_contracts_2026-09-03_17-50-12_0005.csv",
+        "rows": 1044293
+      },
+      {
+        "relative_file": "rent_contracts_2026-09-03_17-50-12_0006.csv",
+        "rows": 1044292
+      },
+      {
+        "relative_file": "rent_contracts_2026-09-03_17-50-12_0007.csv",
+        "rows": 1044293
+      },
+      {
+        "relative_file": "rent_contracts_2026-09-03_17-50-12_0008.csv",
+        "rows": 1044291
+      },
+      {
+        "relative_file": "rent_contracts_2026-09-03_17-50-12_0009.csv",
+        "rows": 1044292
+      },
+      {
+        "relative_file": "rent_contracts_2026-09-03_17-50-12_0010.csv",
+        "rows": 1044291
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  },
+  {
+    "dataset": "Residential Sale Index",
+    "table": "residential_sale_index",
+    "source_csv_files": 1,
+    "row_count": 159,
+    "column_count": 20,
+    "distinct_full_row_hashes": 159,
+    "duplicate_full_rows": 0,
+    "declared_key_fields": [
+      "first_date_of_month"
+    ],
+    "csv_files": [
+      {
+        "relative_file": "residential_sale_index_2026-09-01_18-28-58_0001.csv",
+        "rows": 159
+      }
+    ],
+    "dictionary_only_fields": [],
+    "csv_only_fields": [
+      "load_timestamp"
+    ]
+  }
+]

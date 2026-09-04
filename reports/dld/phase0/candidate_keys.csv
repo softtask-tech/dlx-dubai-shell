@@ -1,0 +1,131 @@
+dataset,key_fields,key_width,declared_by_dld,non_null,distinct_keys,rows,duplicate_rows,is_candidate_key
+Accredited Trainers by the Dubai Real Estate Institute,age_group,1,True,True,7,117,110,False
+Accredited Trainers by the Dubai Real Estate Institute,cource_title_ar,1,True,True,2,117,115,False
+Accredited Trainers by the Dubai Real Estate Institute,cource_title_en,1,True,True,2,117,115,False
+Accredited Trainers by the Dubai Real Estate Institute,course_code,1,True,True,2,117,115,False
+Accredited Trainers by the Dubai Real Estate Institute,course_date,1,True,True,19,117,98,False
+Accredited Trainers by the Dubai Real Estate Institute,course_time_from,1,True,True,1,117,116,False
+Accredited Trainers by the Dubai Real Estate Institute,course_time_to,1,True,True,2,117,115,False
+Accredited Trainers by the Dubai Real Estate Institute,course_to,1,True,True,19,117,98,False
+Accredited Trainers by the Dubai Real Estate Institute,no_of_trainees,1,True,True,21,117,96,False
+Accredited Trainers by the Dubai Real Estate Institute,trainee_gender,1,True,True,2,117,115,False
+Accredited Trainers by the Dubai Real Estate Institute,course_time_from+course_time_to+age_group+trainee_gender+no_of_trainees+course_code+cource_title_ar+cource_title_en+course_date+course_to,10,True,True,117,117,0,True
+Approved Escrow Account Agents,escrow_agent_name_ar,1,False,True,24,25,1,False
+Approved Escrow Account Agents,escrow_agent_name_en,1,False,True,24,25,1,False
+Approved Escrow Account Agents,escrow_agent_number,1,True,True,25,25,0,True
+Building and Property Project Records,area_id,1,False,True,219,256423,256204,False
+Building and Property Project Records,land_number,1,False,True,19115,256423,237308,False
+Building and Property Project Records,land_sub_number,1,False,True,1802,256423,254621,False
+Building and Property Project Records,property_id,1,False,True,256423,256423,0,True
+Building and Property Project Records,property_sub_type_id,1,False,True,9,256423,256414,False
+Building and Property Project Records,property_type_id,1,False,True,1,256423,256422,False
+Building and Property Project Records,zone_id,1,False,True,2,256423,256421,False
+Developers Recorded in Dubai Land Department,developer_id,1,True,True,2348,2348,0,True
+Developers Recorded in Dubai Land Department,developer_name_ar,1,False,True,2328,2348,20,False
+Developers Recorded in Dubai Land Department,developer_name_en,1,False,True,2333,2348,15,False
+Developers Recorded in Dubai Land Department,developer_number,1,False,True,2348,2348,0,True
+Developers Recorded in Dubai Land Department,participant_id,1,False,True,2347,2348,1,False
+Elders and People of Determination,service_month,1,True,True,4,6120,6116,False
+Elders and People of Determination,service_year,1,True,True,1,6120,6119,False
+Elders and People of Determination,service_year+service_month,2,True,True,4,6120,6116,False
+Free Zone Companies Licensing,fz_company_name_ar,1,False,True,250,250,0,True
+Free Zone Companies Licensing,fz_company_name_en,1,False,True,250,250,0,True
+Free Zone Companies Licensing,fz_company_number,1,True,True,250,250,0,True
+Free Zone Companies Licensing,license_number,1,False,True,250,250,0,True
+Free Zone Companies Licensing,license_source_id,1,False,True,17,250,233,False
+Land Registry,area_id,1,False,True,260,263663,263403,False
+Land Registry,land_number,1,False,True,23928,263663,239735,False
+Land Registry,land_sub_number,1,False,True,2338,263663,261325,False
+Land Registry,property_id,1,True,True,263663,263663,0,True
+Land Registry,property_type_id,1,False,True,1,263663,263662,False
+Land Registry,zone_id,1,False,True,2,263663,263661,False
+Licenced Owner Associations,company_name_ar,1,True,True,110,110,0,True
+Licenced Owner Associations,company_name_en,1,True,True,110,110,0,True
+Licenced Owner Associations,email,1,True,False,108,110,2,False
+Licenced Owner Associations,latitude,1,True,False,26,110,84,False
+Licenced Owner Associations,longitude,1,True,False,27,110,83,False
+Licenced Owner Associations,phone,1,True,False,100,110,10,False
+Licenced Owner Associations,company_name_ar+company_name_en+phone+email+latitude+longitude,6,True,False,110,110,0,False
+Licensed Real Estate Valuators,gender_id,1,False,True,2,153,151,False
+Licensed Real Estate Valuators,license_start_date,1,False,True,135,153,18,False
+Licensed Real Estate Valuators,valuation_company_number,1,True,True,77,153,76,False
+Licensed Real Estate Valuators,valuator_name_ar,1,False,True,151,153,2,False
+Licensed Real Estate Valuators,valuator_nationality_id,1,False,True,38,153,115,False
+Licensed Real Estate Valuators,valuator_number,1,True,True,152,153,1,False
+Licensed Real Estate Valuators,valuator_number+valuation_company_number,2,True,True,153,153,0,True
+Lookup Dubai Community Areas,area_id,1,True,True,301,301,0,True
+Lookup Dubai Community Areas,municipality_number,1,False,True,233,301,68,False
+Lookup Dubai Community Areas,name_ar,1,False,True,300,301,1,False
+Lookup Dubai Community Areas,name_en,1,False,True,300,301,1,False
+Lookup Real Estate Market Types,market_type_id,1,True,True,2,2,0,True
+Lookup Real Estate Market Types,name_ar,1,False,True,2,2,0,True
+Lookup Real Estate Market Types,name_en,1,False,True,2,2,0,True
+Lookup Real Estate Transactions Groups,group_id,1,True,True,3,3,0,True
+Lookup Real Estate Transactions Groups,name_ar,1,False,True,3,3,0,True
+Lookup Real Estate Transactions Groups,name_en,1,False,True,3,3,0,True
+Lookup Real Estate Transactions Procedures,group_id,1,True,True,3,64,61,False
+Lookup Real Estate Transactions Procedures,name_ar,1,False,True,58,64,6,False
+Lookup Real Estate Transactions Procedures,name_en,1,False,True,58,64,6,False
+Lookup Real Estate Transactions Procedures,procedure_id,1,False,True,58,64,6,False
+Owners Association Service Charges,budget_year,1,True,True,8,91193,91185,False
+Owners Association Service Charges,management_company_id,1,False,True,83,91193,91110,False
+Owners Association Service Charges,master_community_id,1,True,True,64,91193,91129,False
+Owners Association Service Charges,project_id,1,True,False,695,91193,90498,False
+Owners Association Service Charges,property_group_id,1,True,True,2286,91193,88907,False
+Owners Association Service Charges,service_category_id,1,True,True,18,91193,91175,False
+Owners Association Service Charges,usage_id,1,True,True,16,91193,91177,False
+Owners Association Service Charges,master_community_id+property_group_id+project_id+usage_id+budget_year+service_category_id,6,True,False,91193,91193,0,False
+Property Map Requests,application_id,1,False,True,8,1021252,1021244,False
+Property Map Requests,procedure_id,1,False,True,78,1021252,1021174,False
+Property Map Requests,property_type_id,1,False,True,3,1021252,1021249,False
+Property Map Requests,request_id,1,True,True,1021252,1021252,0,True
+Property Valuation Records,procedure_id,1,False,True,1,90771,90770,False
+Property Valuation Records,procedure_number,1,False,True,10085,90771,80686,False
+Property Valuation Records,property_type_id,1,False,True,3,90771,90768,False
+Property Valuation Records,row_status_code,1,False,True,3,90771,90768,False
+Real Estate Brokers,broker_name_ar,1,False,True,8708,8724,16,False
+Real Estate Brokers,broker_number,1,False,True,8709,8724,15,False
+Real Estate Brokers,participant_id,1,False,True,8708,8724,16,False
+Real Estate Brokers,real_estate_broker_id,1,True,True,8709,8724,15,False
+Real Estate Brokers,real_estate_id,1,False,True,792,8724,7932,False
+Real Estate Brokers,real_estate_number,1,False,True,792,8724,7932,False
+Real Estate Licenses,activity_type_id,1,True,True,23,2948,2925,False
+Real Estate Licenses,authority_id,1,False,True,1777,2948,1171,False
+Real Estate Licenses,ded_activity_code,1,False,True,22,2948,2926,False
+Real Estate Licenses,participant_id,1,True,True,1777,2948,1171,False
+Real Estate Licenses,activity_type_id+participant_id,2,True,True,2948,2948,0,True
+Real Estate Offices,participant_id,1,False,True,2574,4963,2389,False
+Real Estate Offices,real_estate_id,1,True,True,2574,4963,2389,False
+Real Estate Offices,real_estate_number,1,False,True,2574,4963,2389,False
+Real Estate Permits,license_number,1,False,True,11304,175056,163752,False
+Real Estate Permits,parent_service_id,1,False,True,16,175056,175040,False
+Real Estate Permits,permit_number,1,False,True,175056,175056,0,True
+Real Estate Permits,permit_status_id,1,False,True,5,175056,175051,False
+Real Estate Permits,permits_id,1,True,True,175056,175056,0,True
+Real Estate Permits,service_id,1,False,True,53,175056,175003,False
+Real Estate Projects,area_id,1,False,True,71,3039,2968,False
+Real Estate Projects,master_developer_id,1,False,True,112,3039,2927,False
+Real Estate Projects,master_developer_number,1,False,True,112,3039,2927,False
+Real Estate Projects,project_classification_id,1,False,True,3,3039,3036,False
+Real Estate Projects,project_id,1,True,True,3039,3039,0,True
+Real Estate Projects,project_name,1,False,True,3032,3039,7,False
+Real Estate Projects,project_number,1,False,True,3039,3039,0,True
+Real Estate Projects,project_type_id,1,False,True,3,3039,3036,False
+Real Estate Projects,property_id,1,False,True,2952,3039,87,False
+Real Estate Transactions,area_id,1,False,True,259,1776143,1775884,False
+Real Estate Transactions,procedure_id,1,False,True,52,1776143,1776091,False
+Real Estate Transactions,property_type_id,1,False,True,4,1776143,1776139,False
+Real Estate Transactions,reg_type_id,1,False,True,2,1776143,1776141,False
+Real Estate Transactions,trans_group_id,1,False,True,3,1776143,1776140,False
+Real Estate Transactions,transaction_id,1,True,True,1776143,1776143,0,True
+Registered Freehold Real Estate Units,property_id,1,False,True,2374726,2374726,0,True
+Registered Freehold Real Estate Units,unit_number,1,False,True,335756,2374726,2038970,False
+Rent Contracts,contract_id,1,True,True,8713621,10442927,1729306,False
+Rent Contracts,contract_reg_type_id,1,False,True,2,10442927,10442925,False
+Rent Contracts,line_number,1,True,True,788,10442927,10442139,False
+Rent Contracts,line_number+contract_id,2,True,True,10442927,10442927,0,True
+Residential Sale Index,all_monthly_price_index,1,False,True,159,159,0,True
+Residential Sale Index,first_date_of_month,1,True,True,159,159,0,True
+Residential Sale Index,flat_monthly_index,1,False,True,136,159,23,False
+Residential Sale Index,flat_monthly_price_index,1,False,True,159,159,0,True
+Residential Sale Index,villa_monthly_price_index,1,False,True,159,159,0,True

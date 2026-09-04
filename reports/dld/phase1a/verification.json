@@ -1,0 +1,300 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "check": "builder validation",
+      "status": "pass",
+      "detail": "pass"
+    },
+    {
+      "check": "source set",
+      "status": "pass",
+      "detail": 11
+    },
+    {
+      "check": "idempotent rewrite",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "all key tests",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "all search tests",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "public field scan",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "manifest broker_office_links.parquet",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "count broker_office_links",
+      "status": "pass",
+      "detail": 8724
+    },
+    {
+      "check": "private columns absent broker_office_links",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "check": "manifest brokers.parquet",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "count brokers",
+      "status": "pass",
+      "detail": 8709
+    },
+    {
+      "check": "private columns absent brokers",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "check": "manifest communities.parquet",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "count communities",
+      "status": "pass",
+      "detail": 301
+    },
+    {
+      "check": "private columns absent communities",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "check": "manifest developers.parquet",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "count developers",
+      "status": "pass",
+      "detail": 2348
+    },
+    {
+      "check": "private columns absent developers",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "check": "manifest escrow_agents.parquet",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "count escrow_agents",
+      "status": "pass",
+      "detail": 25
+    },
+    {
+      "check": "private columns absent escrow_agents",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "check": "manifest free_zone_companies.parquet",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "count free_zone_companies",
+      "status": "pass",
+      "detail": 250
+    },
+    {
+      "check": "private columns absent free_zone_companies",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "check": "manifest licences.parquet",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "count licences",
+      "status": "pass",
+      "detail": 2948
+    },
+    {
+      "check": "private columns absent licences",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "check": "manifest office_activities.parquet",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "count office_activities",
+      "status": "pass",
+      "detail": 4963
+    },
+    {
+      "check": "private columns absent office_activities",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "check": "manifest offices.parquet",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "count offices",
+      "status": "pass",
+      "detail": 2574
+    },
+    {
+      "check": "private columns absent offices",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "check": "manifest owner_associations.parquet",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "count owner_associations",
+      "status": "pass",
+      "detail": 110
+    },
+    {
+      "check": "private columns absent owner_associations",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "check": "manifest permits.parquet",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "count permits",
+      "status": "pass",
+      "detail": 175056
+    },
+    {
+      "check": "private columns absent permits",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "check": "manifest projects.parquet",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "count projects",
+      "status": "pass",
+      "detail": 3039
+    },
+    {
+      "check": "private columns absent projects",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "check": "manifest search_index.parquet",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "count search_index",
+      "status": "pass",
+      "detail": 195513
+    },
+    {
+      "check": "private columns absent search_index",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "check": "manifest valuators.parquet",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "count valuators",
+      "status": "pass",
+      "detail": 153
+    },
+    {
+      "check": "private columns absent valuators",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "check": "project developer matched links",
+      "status": "pass",
+      "detail": 0
+    },
+    {
+      "check": "broker office matched links",
+      "status": "pass",
+      "detail": 0
+    },
+    {
+      "check": "licence office matched links",
+      "status": "pass",
+      "detail": 0
+    },
+    {
+      "check": "licence developer matched links",
+      "status": "pass",
+      "detail": 0
+    },
+    {
+      "check": "schema privacy classification",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "migration is additive",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "curated links nullable",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "RLS enabled",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "atomic advisory lock",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "non-affiliation text",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "import dry run",
+      "status": "pass",
+      "detail": "{\n  \"status\": \"pass\",\n  \"mode\": \"dry-run\",\n  \"network_used\": false,\n  \"counts\": {\n    \"communities\": 301,\n    \"developers\": 2348,\n    \"projects\": 3039,\n    \"brokers\": 8709,\n    \"broker_office_links\": 8724,\n    \"offices\": 2574,\n    \"office_activities\": 4963,\n    \"licences\": 2948,\n    \"permits\": 175056,\n    \"valuators\": 153,\n    \"escrow_agents\": 25,\n    \"owner_associations\": 110,\n    \"free_zone_companies\": 250\n  },\n  \"duplicate_keys\": {\n    \"communities\": 0,\n    \"developers\": 0,\n    \"projects\": 0,\n    \"brokers\": 0,\n    \"broker_office_links\": 0,\n    \"offices\": 0,\n    \"office_activities\": 0,\n    \"licences\": 0,\n    \"permits\": 0,\n    \"valuators\": 0,\n    \"escrow_agents\": 0,\n    \"owner_associations\": 0,\n    \"free_zone_companies\": 0\n  }\n}\n"
+    }
+  ]
+}

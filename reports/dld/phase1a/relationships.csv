@@ -1,0 +1,7 @@
+relationship,child_total_rows,child_non_null_rows,child_null_rows,child_distinct_keys,matched_rows,matched_distinct_keys,orphan_rows,orphan_distinct_keys,row_match_percent,key_match_percent
+projects.source_developer_id -> developers.developer_id,3039,3037,2,1031,3029,1027,8,4,99.736582,99.612027
+projects.area_id -> communities.area_id,3039,3039,0,71,3039,71,0,0,100.0,100.0
+projects.source_escrow_agent_number -> escrow_agents.escrow_agent_number,3039,2879,160,39,2718,20,161,19,94.40778,51.282051
+broker_office_links.source_office_id -> offices.office_id,8724,8724,0,792,8711,789,13,3,99.850986,99.621212
+offices.participant_id -> licences.participant_id,2574,2574,0,2574,372,372,2202,2202,14.452214,14.452214
+developers.participant_id -> licences.participant_id,2348,2348,0,2347,78,77,2270,2270,3.321976,3.280784

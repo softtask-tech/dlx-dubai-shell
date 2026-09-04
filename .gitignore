@@ -8,6 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+.venv/
 dist
 dist-ssr
 .output
@@ -15,6 +16,9 @@ dist-ssr
 .tanstack/**
 .nitro
 *.local
+.env
+.env.*
+!.env.example
 
 # Wrangler / Cloudflare
 .wrangler/
@@ -43,3 +47,20 @@ supabase/.branches
 assets-source/photos/*.jpg
 assets-source/photos/*.jpeg
 assets-source/photos/*.png
+
+# DLD Phase 0 local data products (never commit source extracts or private rows)
+/DLD DATA COD/
+data/dld/raw/
+data/dld/**/*.csv
+data/dld/**/*.xlsx
+data/dld/**/*.xls
+data/dld/**/*.duckdb
+data/dld/**/*.db
+data/dld/**/*.parquet
+reports/dld/private/
+reports/dld/**/*.duckdb
+reports/dld/**/*.parquet
+*.duckdb
+*.duckdb.wal
+__pycache__/
+*.py[cod]

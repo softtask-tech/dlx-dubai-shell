@@ -1,0 +1,42 @@
+{
+  "public": [
+    "official English/Arabic names",
+    "professional registration numbers",
+    "licence/project/permit numbers",
+    "status and validity dates",
+    "official entity relationships"
+  ],
+  "internal_by_default": [
+    "email",
+    "fax",
+    "matching-only source IDs",
+    "normalized aliases",
+    "participant_id",
+    "phone",
+    "webpage"
+  ],
+  "excluded_from_outputs": [
+    "email",
+    "fax",
+    "gender",
+    "gender_ar",
+    "gender_en",
+    "gender_id",
+    "load_timestamp",
+    "location",
+    "parcel_id",
+    "phone",
+    "rent_contract_no",
+    "valuator_nationality_ar",
+    "valuator_nationality_en",
+    "valuator_nationality_id",
+    "webpage"
+  ],
+  "prohibited_inferences": [
+    "endorsement",
+    "ranking",
+    "recommendation",
+    "partner status",
+    "quality score"
+  ]
+}

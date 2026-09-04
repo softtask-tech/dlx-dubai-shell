@@ -1,0 +1,1213 @@
+[
+  {
+    "table": "dld_directory_communities",
+    "ordinal": 1,
+    "field": "area_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_communities",
+    "ordinal": 2,
+    "field": "municipality_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_communities",
+    "ordinal": 3,
+    "field": "name_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_communities",
+    "ordinal": 4,
+    "field": "name_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_communities",
+    "ordinal": 5,
+    "field": "aliases",
+    "duckdb_type": "VARCHAR",
+    "visibility": "search-internal"
+  },
+  {
+    "table": "dld_directory_communities",
+    "ordinal": 6,
+    "field": "source_export_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_communities",
+    "ordinal": 7,
+    "field": "source_dataset",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_developers",
+    "ordinal": 1,
+    "field": "developer_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "internal-link"
+  },
+  {
+    "table": "dld_directory_developers",
+    "ordinal": 2,
+    "field": "participant_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "internal"
+  },
+  {
+    "table": "dld_directory_developers",
+    "ordinal": 3,
+    "field": "developer_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_developers",
+    "ordinal": 4,
+    "field": "name_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_developers",
+    "ordinal": 5,
+    "field": "name_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_developers",
+    "ordinal": 6,
+    "field": "registration_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_developers",
+    "ordinal": 7,
+    "field": "licence_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_developers",
+    "ordinal": 8,
+    "field": "licence_source_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_developers",
+    "ordinal": 9,
+    "field": "licence_source_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_developers",
+    "ordinal": 10,
+    "field": "licence_source_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_developers",
+    "ordinal": 11,
+    "field": "licence_issue_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_developers",
+    "ordinal": 12,
+    "field": "licence_expiry_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_developers",
+    "ordinal": 13,
+    "field": "legal_status_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_developers",
+    "ordinal": 14,
+    "field": "legal_status_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_developers",
+    "ordinal": 15,
+    "field": "aliases",
+    "duckdb_type": "VARCHAR",
+    "visibility": "search-internal"
+  },
+  {
+    "table": "dld_directory_developers",
+    "ordinal": 16,
+    "field": "source_export_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_developers",
+    "ordinal": 17,
+    "field": "source_dataset",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 1,
+    "field": "project_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 2,
+    "field": "project_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 3,
+    "field": "source_name",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 4,
+    "field": "name_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 5,
+    "field": "name_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 6,
+    "field": "source_developer_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "internal-link"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 7,
+    "field": "developer_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "internal-link"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 8,
+    "field": "developer_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 9,
+    "field": "source_developer_name",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 10,
+    "field": "master_developer_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "internal-link"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 11,
+    "field": "area_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 12,
+    "field": "area_name_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 13,
+    "field": "area_name_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 14,
+    "field": "source_escrow_agent_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "internal-link"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 15,
+    "field": "escrow_agent_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 16,
+    "field": "status_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 17,
+    "field": "status_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 18,
+    "field": "percent_completed",
+    "duckdb_type": "DOUBLE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 19,
+    "field": "project_start_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 20,
+    "field": "project_end_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 21,
+    "field": "completion_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 22,
+    "field": "cancellation_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 23,
+    "field": "no_of_units",
+    "duckdb_type": "BIGINT",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 24,
+    "field": "no_of_villas",
+    "duckdb_type": "BIGINT",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 25,
+    "field": "no_of_buildings",
+    "duckdb_type": "BIGINT",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 26,
+    "field": "aliases",
+    "duckdb_type": "VARCHAR",
+    "visibility": "search-internal"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 27,
+    "field": "source_export_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_projects",
+    "ordinal": 28,
+    "field": "source_dataset",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_brokers",
+    "ordinal": 1,
+    "field": "broker_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_brokers",
+    "ordinal": 2,
+    "field": "participant_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "internal"
+  },
+  {
+    "table": "dld_directory_brokers",
+    "ordinal": 3,
+    "field": "broker_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_brokers",
+    "ordinal": 4,
+    "field": "name_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_brokers",
+    "ordinal": 5,
+    "field": "name_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_brokers",
+    "ordinal": 6,
+    "field": "licence_start_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_brokers",
+    "ordinal": 7,
+    "field": "licence_end_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_brokers",
+    "ordinal": 8,
+    "field": "aliases",
+    "duckdb_type": "VARCHAR",
+    "visibility": "search-internal"
+  },
+  {
+    "table": "dld_directory_brokers",
+    "ordinal": 9,
+    "field": "source_export_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_brokers",
+    "ordinal": 10,
+    "field": "source_dataset",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_broker_office_links",
+    "ordinal": 1,
+    "field": "broker_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_broker_office_links",
+    "ordinal": 2,
+    "field": "source_office_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "internal-link"
+  },
+  {
+    "table": "dld_directory_broker_office_links",
+    "ordinal": 3,
+    "field": "office_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "internal-link"
+  },
+  {
+    "table": "dld_directory_broker_office_links",
+    "ordinal": 4,
+    "field": "office_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_broker_office_links",
+    "ordinal": 5,
+    "field": "licence_start_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_broker_office_links",
+    "ordinal": 6,
+    "field": "licence_end_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_broker_office_links",
+    "ordinal": 7,
+    "field": "source_export_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_broker_office_links",
+    "ordinal": 8,
+    "field": "source_dataset",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_offices",
+    "ordinal": 1,
+    "field": "office_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "internal-link"
+  },
+  {
+    "table": "dld_directory_offices",
+    "ordinal": 2,
+    "field": "office_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_offices",
+    "ordinal": 3,
+    "field": "participant_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "internal"
+  },
+  {
+    "table": "dld_directory_offices",
+    "ordinal": 4,
+    "field": "name_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_offices",
+    "ordinal": 5,
+    "field": "name_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_offices",
+    "ordinal": 6,
+    "field": "licence_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_offices",
+    "ordinal": 7,
+    "field": "licence_source_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_offices",
+    "ordinal": 8,
+    "field": "licence_source_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_offices",
+    "ordinal": 9,
+    "field": "licence_source_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_offices",
+    "ordinal": 10,
+    "field": "licence_issue_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_offices",
+    "ordinal": 11,
+    "field": "licence_expiry_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_offices",
+    "ordinal": 12,
+    "field": "is_branch",
+    "duckdb_type": "BOOLEAN",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_offices",
+    "ordinal": 13,
+    "field": "main_office_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_offices",
+    "ordinal": 14,
+    "field": "aliases",
+    "duckdb_type": "VARCHAR",
+    "visibility": "search-internal"
+  },
+  {
+    "table": "dld_directory_offices",
+    "ordinal": 15,
+    "field": "source_export_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_offices",
+    "ordinal": 16,
+    "field": "source_dataset",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_office_activities",
+    "ordinal": 1,
+    "field": "activity_key",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_office_activities",
+    "ordinal": 2,
+    "field": "office_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "internal-link"
+  },
+  {
+    "table": "dld_directory_office_activities",
+    "ordinal": 3,
+    "field": "activity_type_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_office_activities",
+    "ordinal": 4,
+    "field": "activity_name_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_office_activities",
+    "ordinal": 5,
+    "field": "activity_name_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_office_activities",
+    "ordinal": 6,
+    "field": "ded_activity_code",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_office_activities",
+    "ordinal": 7,
+    "field": "source_export_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_office_activities",
+    "ordinal": 8,
+    "field": "source_dataset",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 1,
+    "field": "licence_key",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 2,
+    "field": "participant_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "internal"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 3,
+    "field": "activity_type_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 4,
+    "field": "activity_name_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 5,
+    "field": "activity_name_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 6,
+    "field": "licence_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 7,
+    "field": "trade_name_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 8,
+    "field": "trade_name_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 9,
+    "field": "status_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 10,
+    "field": "status_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 11,
+    "field": "issue_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 12,
+    "field": "expiry_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 13,
+    "field": "cancel_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 14,
+    "field": "legal_type_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 15,
+    "field": "legal_type_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 16,
+    "field": "ded_activity_code",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 17,
+    "field": "authority_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 18,
+    "field": "matched_office_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "internal-link"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 19,
+    "field": "matched_developer_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "internal-link"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 20,
+    "field": "aliases",
+    "duckdb_type": "VARCHAR",
+    "visibility": "search-internal"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 21,
+    "field": "source_export_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_licences",
+    "ordinal": 22,
+    "field": "source_dataset",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 1,
+    "field": "permit_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 2,
+    "field": "permit_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 3,
+    "field": "licence_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 4,
+    "field": "participant_name_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 5,
+    "field": "participant_name_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 6,
+    "field": "service_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 7,
+    "field": "service_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 8,
+    "field": "service_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 9,
+    "field": "main_service_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 10,
+    "field": "main_service_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 11,
+    "field": "status_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 12,
+    "field": "status_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 13,
+    "field": "start_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 14,
+    "field": "end_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 15,
+    "field": "exhibition_name_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 16,
+    "field": "exhibition_name_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 17,
+    "field": "aliases",
+    "duckdb_type": "VARCHAR",
+    "visibility": "search-internal"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 18,
+    "field": "source_export_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_permits",
+    "ordinal": 19,
+    "field": "source_dataset",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_valuators",
+    "ordinal": 1,
+    "field": "valuator_key",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_valuators",
+    "ordinal": 2,
+    "field": "valuator_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_valuators",
+    "ordinal": 3,
+    "field": "name_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_valuators",
+    "ordinal": 4,
+    "field": "name_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_valuators",
+    "ordinal": 5,
+    "field": "valuation_company_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_valuators",
+    "ordinal": 6,
+    "field": "company_name_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_valuators",
+    "ordinal": 7,
+    "field": "company_name_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_valuators",
+    "ordinal": 8,
+    "field": "licence_start_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_valuators",
+    "ordinal": 9,
+    "field": "licence_end_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_valuators",
+    "ordinal": 10,
+    "field": "aliases",
+    "duckdb_type": "VARCHAR",
+    "visibility": "search-internal"
+  },
+  {
+    "table": "dld_directory_valuators",
+    "ordinal": 11,
+    "field": "source_export_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_valuators",
+    "ordinal": 12,
+    "field": "source_dataset",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_escrow_agents",
+    "ordinal": 1,
+    "field": "escrow_agent_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_escrow_agents",
+    "ordinal": 2,
+    "field": "name_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_escrow_agents",
+    "ordinal": 3,
+    "field": "name_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_escrow_agents",
+    "ordinal": 4,
+    "field": "aliases",
+    "duckdb_type": "VARCHAR",
+    "visibility": "search-internal"
+  },
+  {
+    "table": "dld_directory_escrow_agents",
+    "ordinal": 5,
+    "field": "source_export_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_escrow_agents",
+    "ordinal": 6,
+    "field": "source_dataset",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_owner_associations",
+    "ordinal": 1,
+    "field": "association_key",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_owner_associations",
+    "ordinal": 2,
+    "field": "name_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_owner_associations",
+    "ordinal": 3,
+    "field": "name_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_owner_associations",
+    "ordinal": 4,
+    "field": "latitude",
+    "duckdb_type": "DOUBLE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_owner_associations",
+    "ordinal": 5,
+    "field": "longitude",
+    "duckdb_type": "DOUBLE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_owner_associations",
+    "ordinal": 6,
+    "field": "aliases",
+    "duckdb_type": "VARCHAR",
+    "visibility": "search-internal"
+  },
+  {
+    "table": "dld_directory_owner_associations",
+    "ordinal": 7,
+    "field": "source_export_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_owner_associations",
+    "ordinal": 8,
+    "field": "source_dataset",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_free_zone_companies",
+    "ordinal": 1,
+    "field": "company_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_free_zone_companies",
+    "ordinal": 2,
+    "field": "name_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_free_zone_companies",
+    "ordinal": 3,
+    "field": "name_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_free_zone_companies",
+    "ordinal": 4,
+    "field": "licence_number",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_free_zone_companies",
+    "ordinal": 5,
+    "field": "licence_source_id",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_free_zone_companies",
+    "ordinal": 6,
+    "field": "licence_source_en",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_free_zone_companies",
+    "ordinal": 7,
+    "field": "licence_source_ar",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_free_zone_companies",
+    "ordinal": 8,
+    "field": "licence_issue_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_free_zone_companies",
+    "ordinal": 9,
+    "field": "licence_expiry_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_free_zone_companies",
+    "ordinal": 10,
+    "field": "aliases",
+    "duckdb_type": "VARCHAR",
+    "visibility": "search-internal"
+  },
+  {
+    "table": "dld_directory_free_zone_companies",
+    "ordinal": 11,
+    "field": "source_export_date",
+    "duckdb_type": "DATE",
+    "visibility": "public"
+  },
+  {
+    "table": "dld_directory_free_zone_companies",
+    "ordinal": 12,
+    "field": "source_dataset",
+    "duckdb_type": "VARCHAR",
+    "visibility": "public"
+  }
+]
