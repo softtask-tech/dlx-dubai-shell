@@ -881,25 +881,31 @@ export type Database = {
           created_at: string
           expected_counts: Json
           import_run_id: string
+          manifest_sha256: string | null
           published_at: string | null
           source_manifest: Json
           status: string
+          validation_report: Json | null
         }
         Insert: {
           created_at?: string
           expected_counts: Json
           import_run_id?: string
+          manifest_sha256?: string | null
           published_at?: string | null
           source_manifest: Json
           status?: string
+          validation_report?: Json | null
         }
         Update: {
           created_at?: string
           expected_counts?: Json
           import_run_id?: string
+          manifest_sha256?: string | null
           published_at?: string | null
           source_manifest?: Json
           status?: string
+          validation_report?: Json | null
         }
         Relationships: []
       }
@@ -1389,6 +1395,24 @@ export type Database = {
             referencedColumns: ["import_run_id"]
           },
         ]
+      }
+      dld_directory_transfer_limits: {
+        Row: {
+          entity_type: string
+          maximum_count: number
+          updated_at: string
+        }
+        Insert: {
+          entity_type: string
+          maximum_count: number
+          updated_at?: string
+        }
+        Update: {
+          entity_type?: string
+          maximum_count?: number
+          updated_at?: string
+        }
+        Relationships: []
       }
       dld_directory_valuators: {
         Row: {
@@ -3071,9 +3095,21 @@ export type Database = {
       }
     }
     Functions: {
+      dld_directory_build_aliases: {
+        Args: { values_to_index: string[] }
+        Returns: string
+      }
+      dld_directory_derive_key: {
+        Args: { entity: string; transfer_source_key: string }
+        Returns: string
+      }
       dld_directory_normalize_query: {
         Args: { value: string }
         Returns: string
+      }
+      dld_directory_transfer_fields: {
+        Args: { entity: string }
+        Returns: string[]
       }
       has_role: {
         Args: {
@@ -3084,6 +3120,10 @@ export type Database = {
       }
       link_transactions_to_areas: { Args: never; Returns: number }
       publish_dld_directory: {
+        Args: { target_run_id: string }
+        Returns: undefined
+      }
+      publish_dld_directory_sanitized: {
         Args: { target_run_id: string }
         Returns: undefined
       }
@@ -3117,6 +3157,16 @@ export type Database = {
         Returns: number
       }
       trigger_lead_nurture: { Args: never; Returns: number }
+      validate_dld_directory_sanitized: {
+        Args: { target_run_id: string }
+        Returns: {
+          code: string
+          detail: string
+          entity_type: string
+          severity: string
+          source_key: string
+        }[]
+      }
     }
     Enums: {
       advisor_channel: "chat" | "voice"
