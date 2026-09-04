@@ -57,6 +57,7 @@ data/dld/**/*.xls
 data/dld/**/*.duckdb
 data/dld/**/*.db
 data/dld/**/*.parquet
+data/dld/transfer/
 reports/dld/private/
 reports/dld/**/*.duckdb
 reports/dld/**/*.parquet
