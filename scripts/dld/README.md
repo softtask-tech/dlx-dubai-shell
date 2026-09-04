@@ -26,3 +26,16 @@ ignored Parquet plus versionable reports:
 
 `import_directory.py` is a network-free validation dry run unless `--execute` is
 explicitly supplied. Phase 1A did not use execution mode or database credentials.
+
+Phase 1D creates a portable, sanitized JSONL package for the additive sanitized
+publisher. Run its unit/static checks before generating, then independently verify
+the finished package:
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest scripts.dld.test_phase1d
+.\.venv\Scripts\python.exe scripts\dld\build_phase1d_transfer.py
+.\.venv\Scripts\python.exe scripts\dld\verify_phase1d_transfer.py --determinism
+```
+
+The ignored output is `data/dld/transfer/phase1d`. These commands are local and
+network-free; they do not connect to Supabase or Lovable.
