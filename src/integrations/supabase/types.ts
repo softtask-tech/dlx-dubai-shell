@@ -286,6 +286,7 @@ export type Database = {
           created_at: string
           description: string | null
           dld_area_name: string | null
+          dld_directory_area_id: string | null
           hero_image_url: string | null
           id: string
           is_published: boolean
@@ -303,6 +304,7 @@ export type Database = {
           created_at?: string
           description?: string | null
           dld_area_name?: string | null
+          dld_directory_area_id?: string | null
           hero_image_url?: string | null
           id?: string
           is_published?: boolean
@@ -320,6 +322,7 @@ export type Database = {
           created_at?: string
           description?: string | null
           dld_area_name?: string | null
+          dld_directory_area_id?: string | null
           hero_image_url?: string | null
           id?: string
           is_published?: boolean
@@ -334,6 +337,20 @@ export type Database = {
           updated_at?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "areas_dld_directory_area_id_fkey"
+            columns: ["dld_directory_area_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_communities"
+            referencedColumns: ["area_id"]
+          },
+          {
+            foreignKeyName: "areas_dld_directory_area_id_fkey"
+            columns: ["dld_directory_area_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_communities_public"
+            referencedColumns: ["area_id"]
+          },
           {
             foreignKeyName: "areas_parent_area_id_fkey"
             columns: ["parent_area_id"]
@@ -531,6 +548,7 @@ export type Database = {
         Row: {
           created_at: string
           description: string | null
+          dld_directory_developer_id: string | null
           founded_year: number | null
           id: string
           is_partner: boolean
@@ -547,6 +565,7 @@ export type Database = {
         Insert: {
           created_at?: string
           description?: string | null
+          dld_directory_developer_id?: string | null
           founded_year?: number | null
           id?: string
           is_partner?: boolean
@@ -563,6 +582,7 @@ export type Database = {
         Update: {
           created_at?: string
           description?: string | null
+          dld_directory_developer_id?: string | null
           founded_year?: number | null
           id?: string
           is_partner?: boolean
@@ -575,6 +595,787 @@ export type Database = {
           summary?: string | null
           updated_at?: string
           website_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "developers_dld_directory_developer_id_fkey"
+            columns: ["dld_directory_developer_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_developers"
+            referencedColumns: ["developer_id"]
+          },
+          {
+            foreignKeyName: "developers_dld_directory_developer_id_fkey"
+            columns: ["dld_directory_developer_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_developers_public"
+            referencedColumns: ["developer_id"]
+          },
+        ]
+      }
+      dld_directory_broker_office_links: {
+        Row: {
+          broker_id: string
+          licence_end_date: string | null
+          licence_start_date: string | null
+          office_id: string | null
+          office_number: string | null
+          source_dataset: string
+          source_export_date: string
+          source_office_id: string
+        }
+        Insert: {
+          broker_id: string
+          licence_end_date?: string | null
+          licence_start_date?: string | null
+          office_id?: string | null
+          office_number?: string | null
+          source_dataset: string
+          source_export_date: string
+          source_office_id: string
+        }
+        Update: {
+          broker_id?: string
+          licence_end_date?: string | null
+          licence_start_date?: string | null
+          office_id?: string | null
+          office_number?: string | null
+          source_dataset?: string
+          source_export_date?: string
+          source_office_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dld_directory_broker_office_links_broker_id_fkey"
+            columns: ["broker_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_brokers"
+            referencedColumns: ["broker_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_broker_office_links_broker_id_fkey"
+            columns: ["broker_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_brokers_public"
+            referencedColumns: ["broker_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_broker_office_links_office_id_fkey"
+            columns: ["office_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_offices"
+            referencedColumns: ["office_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_broker_office_links_office_id_fkey"
+            columns: ["office_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_offices_public"
+            referencedColumns: ["office_id"]
+          },
+        ]
+      }
+      dld_directory_brokers: {
+        Row: {
+          aliases: string
+          broker_id: string
+          broker_number: string | null
+          licence_end_date: string | null
+          licence_start_date: string | null
+          name_ar: string | null
+          name_en: string | null
+          participant_id: string | null
+          source_dataset: string
+          source_export_date: string
+        }
+        Insert: {
+          aliases?: string
+          broker_id: string
+          broker_number?: string | null
+          licence_end_date?: string | null
+          licence_start_date?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          participant_id?: string | null
+          source_dataset: string
+          source_export_date: string
+        }
+        Update: {
+          aliases?: string
+          broker_id?: string
+          broker_number?: string | null
+          licence_end_date?: string | null
+          licence_start_date?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          participant_id?: string | null
+          source_dataset?: string
+          source_export_date?: string
+        }
+        Relationships: []
+      }
+      dld_directory_communities: {
+        Row: {
+          aliases: string
+          area_id: string
+          municipality_number: string | null
+          name_ar: string | null
+          name_en: string | null
+          source_dataset: string
+          source_export_date: string
+        }
+        Insert: {
+          aliases?: string
+          area_id: string
+          municipality_number?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset: string
+          source_export_date: string
+        }
+        Update: {
+          aliases?: string
+          area_id?: string
+          municipality_number?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset?: string
+          source_export_date?: string
+        }
+        Relationships: []
+      }
+      dld_directory_developers: {
+        Row: {
+          aliases: string
+          developer_id: string
+          developer_number: string | null
+          legal_status_ar: string | null
+          legal_status_en: string | null
+          licence_expiry_date: string | null
+          licence_issue_date: string | null
+          licence_number: string | null
+          licence_source_ar: string | null
+          licence_source_en: string | null
+          licence_source_id: string | null
+          name_ar: string | null
+          name_en: string | null
+          participant_id: string | null
+          registration_date: string | null
+          source_dataset: string
+          source_export_date: string
+        }
+        Insert: {
+          aliases?: string
+          developer_id: string
+          developer_number?: string | null
+          legal_status_ar?: string | null
+          legal_status_en?: string | null
+          licence_expiry_date?: string | null
+          licence_issue_date?: string | null
+          licence_number?: string | null
+          licence_source_ar?: string | null
+          licence_source_en?: string | null
+          licence_source_id?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          participant_id?: string | null
+          registration_date?: string | null
+          source_dataset: string
+          source_export_date: string
+        }
+        Update: {
+          aliases?: string
+          developer_id?: string
+          developer_number?: string | null
+          legal_status_ar?: string | null
+          legal_status_en?: string | null
+          licence_expiry_date?: string | null
+          licence_issue_date?: string | null
+          licence_number?: string | null
+          licence_source_ar?: string | null
+          licence_source_en?: string | null
+          licence_source_id?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          participant_id?: string | null
+          registration_date?: string | null
+          source_dataset?: string
+          source_export_date?: string
+        }
+        Relationships: []
+      }
+      dld_directory_escrow_agents: {
+        Row: {
+          aliases: string
+          escrow_agent_number: string
+          name_ar: string | null
+          name_en: string | null
+          source_dataset: string
+          source_export_date: string
+        }
+        Insert: {
+          aliases?: string
+          escrow_agent_number: string
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset: string
+          source_export_date: string
+        }
+        Update: {
+          aliases?: string
+          escrow_agent_number?: string
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset?: string
+          source_export_date?: string
+        }
+        Relationships: []
+      }
+      dld_directory_free_zone_companies: {
+        Row: {
+          aliases: string
+          company_number: string
+          licence_expiry_date: string | null
+          licence_issue_date: string | null
+          licence_number: string | null
+          licence_source_ar: string | null
+          licence_source_en: string | null
+          licence_source_id: string | null
+          name_ar: string | null
+          name_en: string | null
+          source_dataset: string
+          source_export_date: string
+        }
+        Insert: {
+          aliases?: string
+          company_number: string
+          licence_expiry_date?: string | null
+          licence_issue_date?: string | null
+          licence_number?: string | null
+          licence_source_ar?: string | null
+          licence_source_en?: string | null
+          licence_source_id?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset: string
+          source_export_date: string
+        }
+        Update: {
+          aliases?: string
+          company_number?: string
+          licence_expiry_date?: string | null
+          licence_issue_date?: string | null
+          licence_number?: string | null
+          licence_source_ar?: string | null
+          licence_source_en?: string | null
+          licence_source_id?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset?: string
+          source_export_date?: string
+        }
+        Relationships: []
+      }
+      dld_directory_licences: {
+        Row: {
+          activity_name_ar: string | null
+          activity_name_en: string | null
+          activity_type_id: string | null
+          aliases: string
+          authority_id: string | null
+          cancel_date: string | null
+          ded_activity_code: string | null
+          expiry_date: string | null
+          issue_date: string | null
+          legal_type_ar: string | null
+          legal_type_en: string | null
+          licence_key: string
+          licence_number: string | null
+          matched_developer_id: string | null
+          matched_office_id: string | null
+          participant_id: string | null
+          source_dataset: string
+          source_export_date: string
+          status_ar: string | null
+          status_en: string | null
+          trade_name_ar: string | null
+          trade_name_en: string | null
+        }
+        Insert: {
+          activity_name_ar?: string | null
+          activity_name_en?: string | null
+          activity_type_id?: string | null
+          aliases?: string
+          authority_id?: string | null
+          cancel_date?: string | null
+          ded_activity_code?: string | null
+          expiry_date?: string | null
+          issue_date?: string | null
+          legal_type_ar?: string | null
+          legal_type_en?: string | null
+          licence_key: string
+          licence_number?: string | null
+          matched_developer_id?: string | null
+          matched_office_id?: string | null
+          participant_id?: string | null
+          source_dataset: string
+          source_export_date: string
+          status_ar?: string | null
+          status_en?: string | null
+          trade_name_ar?: string | null
+          trade_name_en?: string | null
+        }
+        Update: {
+          activity_name_ar?: string | null
+          activity_name_en?: string | null
+          activity_type_id?: string | null
+          aliases?: string
+          authority_id?: string | null
+          cancel_date?: string | null
+          ded_activity_code?: string | null
+          expiry_date?: string | null
+          issue_date?: string | null
+          legal_type_ar?: string | null
+          legal_type_en?: string | null
+          licence_key?: string
+          licence_number?: string | null
+          matched_developer_id?: string | null
+          matched_office_id?: string | null
+          participant_id?: string | null
+          source_dataset?: string
+          source_export_date?: string
+          status_ar?: string | null
+          status_en?: string | null
+          trade_name_ar?: string | null
+          trade_name_en?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dld_directory_licences_matched_developer_id_fkey"
+            columns: ["matched_developer_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_developers"
+            referencedColumns: ["developer_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_licences_matched_developer_id_fkey"
+            columns: ["matched_developer_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_developers_public"
+            referencedColumns: ["developer_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_licences_matched_office_id_fkey"
+            columns: ["matched_office_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_offices"
+            referencedColumns: ["office_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_licences_matched_office_id_fkey"
+            columns: ["matched_office_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_offices_public"
+            referencedColumns: ["office_id"]
+          },
+        ]
+      }
+      dld_directory_office_activities: {
+        Row: {
+          activity_key: string
+          activity_name_ar: string | null
+          activity_name_en: string | null
+          activity_type_id: string | null
+          ded_activity_code: string | null
+          office_id: string
+          source_dataset: string
+          source_export_date: string
+        }
+        Insert: {
+          activity_key: string
+          activity_name_ar?: string | null
+          activity_name_en?: string | null
+          activity_type_id?: string | null
+          ded_activity_code?: string | null
+          office_id: string
+          source_dataset: string
+          source_export_date: string
+        }
+        Update: {
+          activity_key?: string
+          activity_name_ar?: string | null
+          activity_name_en?: string | null
+          activity_type_id?: string | null
+          ded_activity_code?: string | null
+          office_id?: string
+          source_dataset?: string
+          source_export_date?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dld_directory_office_activities_office_id_fkey"
+            columns: ["office_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_offices"
+            referencedColumns: ["office_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_office_activities_office_id_fkey"
+            columns: ["office_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_offices_public"
+            referencedColumns: ["office_id"]
+          },
+        ]
+      }
+      dld_directory_offices: {
+        Row: {
+          aliases: string
+          is_branch: boolean | null
+          licence_expiry_date: string | null
+          licence_issue_date: string | null
+          licence_number: string | null
+          licence_source_ar: string | null
+          licence_source_en: string | null
+          licence_source_id: string | null
+          main_office_id: string | null
+          name_ar: string | null
+          name_en: string | null
+          office_id: string
+          office_number: string | null
+          participant_id: string | null
+          source_dataset: string
+          source_export_date: string
+        }
+        Insert: {
+          aliases?: string
+          is_branch?: boolean | null
+          licence_expiry_date?: string | null
+          licence_issue_date?: string | null
+          licence_number?: string | null
+          licence_source_ar?: string | null
+          licence_source_en?: string | null
+          licence_source_id?: string | null
+          main_office_id?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          office_id: string
+          office_number?: string | null
+          participant_id?: string | null
+          source_dataset: string
+          source_export_date: string
+        }
+        Update: {
+          aliases?: string
+          is_branch?: boolean | null
+          licence_expiry_date?: string | null
+          licence_issue_date?: string | null
+          licence_number?: string | null
+          licence_source_ar?: string | null
+          licence_source_en?: string | null
+          licence_source_id?: string | null
+          main_office_id?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          office_id?: string
+          office_number?: string | null
+          participant_id?: string | null
+          source_dataset?: string
+          source_export_date?: string
+        }
+        Relationships: []
+      }
+      dld_directory_owner_associations: {
+        Row: {
+          aliases: string
+          association_key: string
+          latitude: number | null
+          longitude: number | null
+          name_ar: string | null
+          name_en: string | null
+          source_dataset: string
+          source_export_date: string
+        }
+        Insert: {
+          aliases?: string
+          association_key: string
+          latitude?: number | null
+          longitude?: number | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset: string
+          source_export_date: string
+        }
+        Update: {
+          aliases?: string
+          association_key?: string
+          latitude?: number | null
+          longitude?: number | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset?: string
+          source_export_date?: string
+        }
+        Relationships: []
+      }
+      dld_directory_permits: {
+        Row: {
+          aliases: string
+          end_date: string | null
+          exhibition_name_ar: string | null
+          exhibition_name_en: string | null
+          licence_number: string | null
+          main_service_ar: string | null
+          main_service_en: string | null
+          participant_name_ar: string | null
+          participant_name_en: string | null
+          permit_id: string
+          permit_number: string | null
+          service_ar: string | null
+          service_en: string | null
+          service_id: string | null
+          source_dataset: string
+          source_export_date: string
+          start_date: string | null
+          status_ar: string | null
+          status_en: string | null
+        }
+        Insert: {
+          aliases?: string
+          end_date?: string | null
+          exhibition_name_ar?: string | null
+          exhibition_name_en?: string | null
+          licence_number?: string | null
+          main_service_ar?: string | null
+          main_service_en?: string | null
+          participant_name_ar?: string | null
+          participant_name_en?: string | null
+          permit_id: string
+          permit_number?: string | null
+          service_ar?: string | null
+          service_en?: string | null
+          service_id?: string | null
+          source_dataset: string
+          source_export_date: string
+          start_date?: string | null
+          status_ar?: string | null
+          status_en?: string | null
+        }
+        Update: {
+          aliases?: string
+          end_date?: string | null
+          exhibition_name_ar?: string | null
+          exhibition_name_en?: string | null
+          licence_number?: string | null
+          main_service_ar?: string | null
+          main_service_en?: string | null
+          participant_name_ar?: string | null
+          participant_name_en?: string | null
+          permit_id?: string
+          permit_number?: string | null
+          service_ar?: string | null
+          service_en?: string | null
+          service_id?: string | null
+          source_dataset?: string
+          source_export_date?: string
+          start_date?: string | null
+          status_ar?: string | null
+          status_en?: string | null
+        }
+        Relationships: []
+      }
+      dld_directory_projects: {
+        Row: {
+          aliases: string
+          area_id: string | null
+          area_name_ar: string | null
+          area_name_en: string | null
+          cancellation_date: string | null
+          completion_date: string | null
+          developer_id: string | null
+          developer_number: string | null
+          escrow_agent_number: string | null
+          master_developer_id: string | null
+          name_ar: string | null
+          name_en: string | null
+          no_of_buildings: number | null
+          no_of_units: number | null
+          no_of_villas: number | null
+          percent_completed: number | null
+          project_end_date: string | null
+          project_id: string
+          project_number: string | null
+          project_start_date: string | null
+          source_dataset: string
+          source_developer_id: string | null
+          source_developer_name: string | null
+          source_escrow_agent_number: string | null
+          source_export_date: string
+          source_name: string | null
+          status_ar: string | null
+          status_en: string | null
+        }
+        Insert: {
+          aliases?: string
+          area_id?: string | null
+          area_name_ar?: string | null
+          area_name_en?: string | null
+          cancellation_date?: string | null
+          completion_date?: string | null
+          developer_id?: string | null
+          developer_number?: string | null
+          escrow_agent_number?: string | null
+          master_developer_id?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          no_of_buildings?: number | null
+          no_of_units?: number | null
+          no_of_villas?: number | null
+          percent_completed?: number | null
+          project_end_date?: string | null
+          project_id: string
+          project_number?: string | null
+          project_start_date?: string | null
+          source_dataset: string
+          source_developer_id?: string | null
+          source_developer_name?: string | null
+          source_escrow_agent_number?: string | null
+          source_export_date: string
+          source_name?: string | null
+          status_ar?: string | null
+          status_en?: string | null
+        }
+        Update: {
+          aliases?: string
+          area_id?: string | null
+          area_name_ar?: string | null
+          area_name_en?: string | null
+          cancellation_date?: string | null
+          completion_date?: string | null
+          developer_id?: string | null
+          developer_number?: string | null
+          escrow_agent_number?: string | null
+          master_developer_id?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          no_of_buildings?: number | null
+          no_of_units?: number | null
+          no_of_villas?: number | null
+          percent_completed?: number | null
+          project_end_date?: string | null
+          project_id?: string
+          project_number?: string | null
+          project_start_date?: string | null
+          source_dataset?: string
+          source_developer_id?: string | null
+          source_developer_name?: string | null
+          source_escrow_agent_number?: string | null
+          source_export_date?: string
+          source_name?: string | null
+          status_ar?: string | null
+          status_en?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dld_directory_projects_area_id_fkey"
+            columns: ["area_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_communities"
+            referencedColumns: ["area_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_projects_area_id_fkey"
+            columns: ["area_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_communities_public"
+            referencedColumns: ["area_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_projects_developer_id_fkey"
+            columns: ["developer_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_developers"
+            referencedColumns: ["developer_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_projects_developer_id_fkey"
+            columns: ["developer_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_developers_public"
+            referencedColumns: ["developer_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_projects_escrow_agent_number_fkey"
+            columns: ["escrow_agent_number"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_escrow_agents"
+            referencedColumns: ["escrow_agent_number"]
+          },
+          {
+            foreignKeyName: "dld_directory_projects_escrow_agent_number_fkey"
+            columns: ["escrow_agent_number"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_escrow_agents_public"
+            referencedColumns: ["escrow_agent_number"]
+          },
+          {
+            foreignKeyName: "dld_directory_projects_master_developer_id_fkey"
+            columns: ["master_developer_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_developers"
+            referencedColumns: ["developer_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_projects_master_developer_id_fkey"
+            columns: ["master_developer_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_developers_public"
+            referencedColumns: ["developer_id"]
+          },
+        ]
+      }
+      dld_directory_valuators: {
+        Row: {
+          aliases: string
+          company_name_ar: string | null
+          company_name_en: string | null
+          licence_end_date: string | null
+          licence_start_date: string | null
+          name_ar: string | null
+          name_en: string | null
+          source_dataset: string
+          source_export_date: string
+          valuation_company_number: string | null
+          valuator_key: string
+          valuator_number: string | null
+        }
+        Insert: {
+          aliases?: string
+          company_name_ar?: string | null
+          company_name_en?: string | null
+          licence_end_date?: string | null
+          licence_start_date?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset: string
+          source_export_date: string
+          valuation_company_number?: string | null
+          valuator_key: string
+          valuator_number?: string | null
+        }
+        Update: {
+          aliases?: string
+          company_name_ar?: string | null
+          company_name_en?: string | null
+          licence_end_date?: string | null
+          licence_start_date?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset?: string
+          source_export_date?: string
+          valuation_company_number?: string | null
+          valuator_key?: string
+          valuator_number?: string | null
         }
         Relationships: []
       }
@@ -1114,6 +1915,7 @@ export type Database = {
           currency: string
           description: string | null
           developer_id: string | null
+          dld_directory_project_id: string | null
           floor_plan_url: string | null
           handover_quarter: number | null
           handover_year: number | null
@@ -1143,6 +1945,7 @@ export type Database = {
           currency?: string
           description?: string | null
           developer_id?: string | null
+          dld_directory_project_id?: string | null
           floor_plan_url?: string | null
           handover_quarter?: number | null
           handover_year?: number | null
@@ -1172,6 +1975,7 @@ export type Database = {
           currency?: string
           description?: string | null
           developer_id?: string | null
+          dld_directory_project_id?: string | null
           floor_plan_url?: string | null
           handover_quarter?: number | null
           handover_year?: number | null
@@ -1205,6 +2009,20 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "developers"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "projects_dld_directory_project_id_fkey"
+            columns: ["dld_directory_project_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_projects"
+            referencedColumns: ["project_id"]
+          },
+          {
+            foreignKeyName: "projects_dld_directory_project_id_fkey"
+            columns: ["dld_directory_project_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_projects_public"
+            referencedColumns: ["project_id"]
           },
         ]
       }
@@ -1506,7 +2324,659 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      dld_directory_broker_office_links_public: {
+        Row: {
+          broker_id: string | null
+          licence_end_date: string | null
+          licence_start_date: string | null
+          office_id: string | null
+          office_number: string | null
+          source_dataset: string | null
+          source_export_date: string | null
+        }
+        Insert: {
+          broker_id?: string | null
+          licence_end_date?: string | null
+          licence_start_date?: string | null
+          office_id?: string | null
+          office_number?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+        }
+        Update: {
+          broker_id?: string | null
+          licence_end_date?: string | null
+          licence_start_date?: string | null
+          office_id?: string | null
+          office_number?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dld_directory_broker_office_links_broker_id_fkey"
+            columns: ["broker_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_brokers"
+            referencedColumns: ["broker_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_broker_office_links_broker_id_fkey"
+            columns: ["broker_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_brokers_public"
+            referencedColumns: ["broker_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_broker_office_links_office_id_fkey"
+            columns: ["office_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_offices"
+            referencedColumns: ["office_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_broker_office_links_office_id_fkey"
+            columns: ["office_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_offices_public"
+            referencedColumns: ["office_id"]
+          },
+        ]
+      }
+      dld_directory_brokers_public: {
+        Row: {
+          broker_id: string | null
+          broker_number: string | null
+          licence_end_date: string | null
+          licence_start_date: string | null
+          name_ar: string | null
+          name_en: string | null
+          source_dataset: string | null
+          source_export_date: string | null
+        }
+        Insert: {
+          broker_id?: string | null
+          broker_number?: string | null
+          licence_end_date?: string | null
+          licence_start_date?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+        }
+        Update: {
+          broker_id?: string | null
+          broker_number?: string | null
+          licence_end_date?: string | null
+          licence_start_date?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+        }
+        Relationships: []
+      }
+      dld_directory_communities_public: {
+        Row: {
+          area_id: string | null
+          municipality_number: string | null
+          name_ar: string | null
+          name_en: string | null
+          source_dataset: string | null
+          source_export_date: string | null
+        }
+        Insert: {
+          area_id?: string | null
+          municipality_number?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+        }
+        Update: {
+          area_id?: string | null
+          municipality_number?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+        }
+        Relationships: []
+      }
+      dld_directory_developers_public: {
+        Row: {
+          developer_id: string | null
+          developer_number: string | null
+          legal_status_ar: string | null
+          legal_status_en: string | null
+          licence_expiry_date: string | null
+          licence_issue_date: string | null
+          licence_number: string | null
+          licence_source_ar: string | null
+          licence_source_en: string | null
+          name_ar: string | null
+          name_en: string | null
+          registration_date: string | null
+          source_dataset: string | null
+          source_export_date: string | null
+        }
+        Insert: {
+          developer_id?: string | null
+          developer_number?: string | null
+          legal_status_ar?: string | null
+          legal_status_en?: string | null
+          licence_expiry_date?: string | null
+          licence_issue_date?: string | null
+          licence_number?: string | null
+          licence_source_ar?: string | null
+          licence_source_en?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          registration_date?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+        }
+        Update: {
+          developer_id?: string | null
+          developer_number?: string | null
+          legal_status_ar?: string | null
+          legal_status_en?: string | null
+          licence_expiry_date?: string | null
+          licence_issue_date?: string | null
+          licence_number?: string | null
+          licence_source_ar?: string | null
+          licence_source_en?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          registration_date?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+        }
+        Relationships: []
+      }
+      dld_directory_escrow_agents_public: {
+        Row: {
+          escrow_agent_number: string | null
+          name_ar: string | null
+          name_en: string | null
+          source_dataset: string | null
+          source_export_date: string | null
+        }
+        Insert: {
+          escrow_agent_number?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+        }
+        Update: {
+          escrow_agent_number?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+        }
+        Relationships: []
+      }
+      dld_directory_free_zone_companies_public: {
+        Row: {
+          company_number: string | null
+          licence_expiry_date: string | null
+          licence_issue_date: string | null
+          licence_number: string | null
+          licence_source_ar: string | null
+          licence_source_en: string | null
+          name_ar: string | null
+          name_en: string | null
+          source_dataset: string | null
+          source_export_date: string | null
+        }
+        Insert: {
+          company_number?: string | null
+          licence_expiry_date?: string | null
+          licence_issue_date?: string | null
+          licence_number?: string | null
+          licence_source_ar?: string | null
+          licence_source_en?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+        }
+        Update: {
+          company_number?: string | null
+          licence_expiry_date?: string | null
+          licence_issue_date?: string | null
+          licence_number?: string | null
+          licence_source_ar?: string | null
+          licence_source_en?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+        }
+        Relationships: []
+      }
+      dld_directory_licences_public: {
+        Row: {
+          activity_name_ar: string | null
+          activity_name_en: string | null
+          activity_type_id: string | null
+          cancel_date: string | null
+          ded_activity_code: string | null
+          expiry_date: string | null
+          issue_date: string | null
+          legal_type_ar: string | null
+          legal_type_en: string | null
+          licence_key: string | null
+          licence_number: string | null
+          source_dataset: string | null
+          source_export_date: string | null
+          status_ar: string | null
+          status_en: string | null
+          trade_name_ar: string | null
+          trade_name_en: string | null
+        }
+        Insert: {
+          activity_name_ar?: string | null
+          activity_name_en?: string | null
+          activity_type_id?: string | null
+          cancel_date?: string | null
+          ded_activity_code?: string | null
+          expiry_date?: string | null
+          issue_date?: string | null
+          legal_type_ar?: string | null
+          legal_type_en?: string | null
+          licence_key?: string | null
+          licence_number?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+          status_ar?: string | null
+          status_en?: string | null
+          trade_name_ar?: string | null
+          trade_name_en?: string | null
+        }
+        Update: {
+          activity_name_ar?: string | null
+          activity_name_en?: string | null
+          activity_type_id?: string | null
+          cancel_date?: string | null
+          ded_activity_code?: string | null
+          expiry_date?: string | null
+          issue_date?: string | null
+          legal_type_ar?: string | null
+          legal_type_en?: string | null
+          licence_key?: string | null
+          licence_number?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+          status_ar?: string | null
+          status_en?: string | null
+          trade_name_ar?: string | null
+          trade_name_en?: string | null
+        }
+        Relationships: []
+      }
+      dld_directory_office_activities_public: {
+        Row: {
+          activity_key: string | null
+          activity_name_ar: string | null
+          activity_name_en: string | null
+          activity_type_id: string | null
+          ded_activity_code: string | null
+          office_id: string | null
+          source_dataset: string | null
+          source_export_date: string | null
+        }
+        Insert: {
+          activity_key?: string | null
+          activity_name_ar?: string | null
+          activity_name_en?: string | null
+          activity_type_id?: string | null
+          ded_activity_code?: string | null
+          office_id?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+        }
+        Update: {
+          activity_key?: string | null
+          activity_name_ar?: string | null
+          activity_name_en?: string | null
+          activity_type_id?: string | null
+          ded_activity_code?: string | null
+          office_id?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dld_directory_office_activities_office_id_fkey"
+            columns: ["office_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_offices"
+            referencedColumns: ["office_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_office_activities_office_id_fkey"
+            columns: ["office_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_offices_public"
+            referencedColumns: ["office_id"]
+          },
+        ]
+      }
+      dld_directory_offices_public: {
+        Row: {
+          is_branch: boolean | null
+          licence_expiry_date: string | null
+          licence_issue_date: string | null
+          licence_number: string | null
+          licence_source_ar: string | null
+          licence_source_en: string | null
+          name_ar: string | null
+          name_en: string | null
+          office_id: string | null
+          office_number: string | null
+          source_dataset: string | null
+          source_export_date: string | null
+        }
+        Insert: {
+          is_branch?: boolean | null
+          licence_expiry_date?: string | null
+          licence_issue_date?: string | null
+          licence_number?: string | null
+          licence_source_ar?: string | null
+          licence_source_en?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          office_id?: string | null
+          office_number?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+        }
+        Update: {
+          is_branch?: boolean | null
+          licence_expiry_date?: string | null
+          licence_issue_date?: string | null
+          licence_number?: string | null
+          licence_source_ar?: string | null
+          licence_source_en?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          office_id?: string | null
+          office_number?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+        }
+        Relationships: []
+      }
+      dld_directory_owner_associations_public: {
+        Row: {
+          association_key: string | null
+          name_ar: string | null
+          name_en: string | null
+          source_dataset: string | null
+          source_export_date: string | null
+        }
+        Insert: {
+          association_key?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+        }
+        Update: {
+          association_key?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+        }
+        Relationships: []
+      }
+      dld_directory_permits_public: {
+        Row: {
+          end_date: string | null
+          exhibition_name_ar: string | null
+          exhibition_name_en: string | null
+          licence_number: string | null
+          main_service_ar: string | null
+          main_service_en: string | null
+          participant_name_ar: string | null
+          participant_name_en: string | null
+          permit_id: string | null
+          permit_number: string | null
+          service_ar: string | null
+          service_en: string | null
+          service_id: string | null
+          source_dataset: string | null
+          source_export_date: string | null
+          start_date: string | null
+          status_ar: string | null
+          status_en: string | null
+        }
+        Insert: {
+          end_date?: string | null
+          exhibition_name_ar?: string | null
+          exhibition_name_en?: string | null
+          licence_number?: string | null
+          main_service_ar?: string | null
+          main_service_en?: string | null
+          participant_name_ar?: string | null
+          participant_name_en?: string | null
+          permit_id?: string | null
+          permit_number?: string | null
+          service_ar?: string | null
+          service_en?: string | null
+          service_id?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+          start_date?: string | null
+          status_ar?: string | null
+          status_en?: string | null
+        }
+        Update: {
+          end_date?: string | null
+          exhibition_name_ar?: string | null
+          exhibition_name_en?: string | null
+          licence_number?: string | null
+          main_service_ar?: string | null
+          main_service_en?: string | null
+          participant_name_ar?: string | null
+          participant_name_en?: string | null
+          permit_id?: string | null
+          permit_number?: string | null
+          service_ar?: string | null
+          service_en?: string | null
+          service_id?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+          start_date?: string | null
+          status_ar?: string | null
+          status_en?: string | null
+        }
+        Relationships: []
+      }
+      dld_directory_projects_public: {
+        Row: {
+          area_id: string | null
+          area_name_ar: string | null
+          area_name_en: string | null
+          cancellation_date: string | null
+          completion_date: string | null
+          developer_id: string | null
+          developer_number: string | null
+          escrow_agent_number: string | null
+          master_developer_id: string | null
+          name_ar: string | null
+          name_en: string | null
+          no_of_buildings: number | null
+          no_of_units: number | null
+          no_of_villas: number | null
+          percent_completed: number | null
+          project_end_date: string | null
+          project_id: string | null
+          project_number: string | null
+          project_start_date: string | null
+          source_dataset: string | null
+          source_export_date: string | null
+          source_name: string | null
+          status_ar: string | null
+          status_en: string | null
+        }
+        Insert: {
+          area_id?: string | null
+          area_name_ar?: string | null
+          area_name_en?: string | null
+          cancellation_date?: string | null
+          completion_date?: string | null
+          developer_id?: string | null
+          developer_number?: string | null
+          escrow_agent_number?: string | null
+          master_developer_id?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          no_of_buildings?: number | null
+          no_of_units?: number | null
+          no_of_villas?: number | null
+          percent_completed?: number | null
+          project_end_date?: string | null
+          project_id?: string | null
+          project_number?: string | null
+          project_start_date?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+          source_name?: string | null
+          status_ar?: string | null
+          status_en?: string | null
+        }
+        Update: {
+          area_id?: string | null
+          area_name_ar?: string | null
+          area_name_en?: string | null
+          cancellation_date?: string | null
+          completion_date?: string | null
+          developer_id?: string | null
+          developer_number?: string | null
+          escrow_agent_number?: string | null
+          master_developer_id?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          no_of_buildings?: number | null
+          no_of_units?: number | null
+          no_of_villas?: number | null
+          percent_completed?: number | null
+          project_end_date?: string | null
+          project_id?: string | null
+          project_number?: string | null
+          project_start_date?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+          source_name?: string | null
+          status_ar?: string | null
+          status_en?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dld_directory_projects_area_id_fkey"
+            columns: ["area_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_communities"
+            referencedColumns: ["area_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_projects_area_id_fkey"
+            columns: ["area_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_communities_public"
+            referencedColumns: ["area_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_projects_developer_id_fkey"
+            columns: ["developer_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_developers"
+            referencedColumns: ["developer_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_projects_developer_id_fkey"
+            columns: ["developer_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_developers_public"
+            referencedColumns: ["developer_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_projects_escrow_agent_number_fkey"
+            columns: ["escrow_agent_number"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_escrow_agents"
+            referencedColumns: ["escrow_agent_number"]
+          },
+          {
+            foreignKeyName: "dld_directory_projects_escrow_agent_number_fkey"
+            columns: ["escrow_agent_number"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_escrow_agents_public"
+            referencedColumns: ["escrow_agent_number"]
+          },
+          {
+            foreignKeyName: "dld_directory_projects_master_developer_id_fkey"
+            columns: ["master_developer_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_developers"
+            referencedColumns: ["developer_id"]
+          },
+          {
+            foreignKeyName: "dld_directory_projects_master_developer_id_fkey"
+            columns: ["master_developer_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_developers_public"
+            referencedColumns: ["developer_id"]
+          },
+        ]
+      }
+      dld_directory_valuators_public: {
+        Row: {
+          company_name_ar: string | null
+          company_name_en: string | null
+          licence_end_date: string | null
+          licence_start_date: string | null
+          name_ar: string | null
+          name_en: string | null
+          source_dataset: string | null
+          source_export_date: string | null
+          valuation_company_number: string | null
+          valuator_key: string | null
+          valuator_number: string | null
+        }
+        Insert: {
+          company_name_ar?: string | null
+          company_name_en?: string | null
+          licence_end_date?: string | null
+          licence_start_date?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+          valuation_company_number?: string | null
+          valuator_key?: string | null
+          valuator_number?: string | null
+        }
+        Update: {
+          company_name_ar?: string | null
+          company_name_en?: string | null
+          licence_end_date?: string | null
+          licence_start_date?: string | null
+          name_ar?: string | null
+          name_en?: string | null
+          source_dataset?: string | null
+          source_export_date?: string | null
+          valuation_company_number?: string | null
+          valuator_key?: string | null
+          valuator_number?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       has_role: {
