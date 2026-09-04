@@ -16,6 +16,7 @@ import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as AdvisorKnowledgeDotjsonRouteImport } from './routes/advisor-knowledge[.]json'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as MarketIntelligenceRouteImport } from './routes/market-intelligence'
+import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
@@ -26,6 +27,7 @@ import { Route as LangAboutRouteImport } from './routes/$lang/about'
 import { Route as LangContactRouteImport } from './routes/$lang/contact'
 import { Route as LangServicesRouteImport } from './routes/$lang/services'
 import { Route as LangToolsRouteImport } from './routes/$lang/tools'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminContentRouteImport } from './routes/admin/content'
 import { Route as AdminDataRouteImport } from './routes/admin/data'
@@ -90,6 +92,11 @@ const MarketIntelligenceRoute = MarketIntelligenceRouteImport.update({
   path: '/market-intelligence',
   getParentRoute: () => rootRouteImport,
 } as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -140,6 +147,12 @@ const LangToolsRoute = LangToolsRouteImport.update({
   path: '/tools',
   getParentRoute: () => LangRouteRoute,
 } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -289,6 +302,7 @@ export interface FileRoutesByFullPath {
   '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
   '/market-intelligence': typeof MarketIntelligenceRoute
+  '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -298,6 +312,7 @@ export interface FileRoutesByFullPath {
   '/$lang/contact': typeof LangContactRoute
   '/$lang/services': typeof LangServicesRoute
   '/$lang/tools': typeof LangToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
@@ -334,6 +349,7 @@ export interface FileRoutesByTo {
   '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
   '/market-intelligence': typeof MarketIntelligenceRoute
+  '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -343,6 +359,7 @@ export interface FileRoutesByTo {
   '/$lang/contact': typeof LangContactRoute
   '/$lang/services': typeof LangServicesRoute
   '/$lang/tools': typeof LangToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
@@ -382,6 +399,7 @@ export interface FileRoutesById {
   '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
   '/market-intelligence': typeof MarketIntelligenceRoute
+  '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -391,6 +409,7 @@ export interface FileRoutesById {
   '/$lang/contact': typeof LangContactRoute
   '/$lang/services': typeof LangServicesRoute
   '/$lang/tools': typeof LangToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
   '/admin/login': typeof AdminLoginRoute
@@ -431,6 +450,7 @@ export interface FileRouteTypes {
     | '/advisor-knowledge.json'
     | '/contact'
     | '/market-intelligence'
+    | '/mcp'
     | '/privacy'
     | '/robots.txt'
     | '/sitemap.xml'
@@ -440,6 +460,7 @@ export interface FileRouteTypes {
     | '/$lang/contact'
     | '/$lang/services'
     | '/$lang/tools'
+    | '/.well-known/oauth-protected-resource'
     | '/admin/content'
     | '/admin/data'
     | '/admin/login'
@@ -476,6 +497,7 @@ export interface FileRouteTypes {
     | '/advisor-knowledge.json'
     | '/contact'
     | '/market-intelligence'
+    | '/mcp'
     | '/privacy'
     | '/robots.txt'
     | '/sitemap.xml'
@@ -485,6 +507,7 @@ export interface FileRouteTypes {
     | '/$lang/contact'
     | '/$lang/services'
     | '/$lang/tools'
+    | '/.well-known/oauth-protected-resource'
     | '/admin/content'
     | '/admin/data'
     | '/admin/login'
@@ -523,6 +546,7 @@ export interface FileRouteTypes {
     | '/advisor-knowledge.json'
     | '/contact'
     | '/market-intelligence'
+    | '/mcp'
     | '/privacy'
     | '/robots.txt'
     | '/sitemap.xml'
@@ -532,6 +556,7 @@ export interface FileRouteTypes {
     | '/$lang/contact'
     | '/$lang/services'
     | '/$lang/tools'
+    | '/.well-known/oauth-protected-resource'
     | '/admin/content'
     | '/admin/data'
     | '/admin/login'
@@ -571,11 +596,13 @@ export interface RootRouteChildren {
   AdvisorKnowledgeDotjsonRoute: typeof AdvisorKnowledgeDotjsonRoute
   ContactRoute: typeof ContactRoute
   MarketIntelligenceRoute: typeof MarketIntelligenceRoute
+  McpRoute: typeof McpRoute
   PrivacyRoute: typeof PrivacyRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeamRoute: typeof TeamRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
+  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   AreasSlugRoute: typeof AreasSlugRoute
   BlogSlugRoute: typeof BlogSlugRoute
   DevelopersSlugRoute: typeof DevelopersSlugRoute
@@ -652,6 +679,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketIntelligenceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -721,6 +755,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/$lang/tools'
       preLoaderRoute: typeof LangToolsRouteImport
       parentRoute: typeof LangRouteRoute
+    }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/admin/': {
       id: '/admin/'
@@ -969,11 +1010,14 @@ const rootRouteChildren: RootRouteChildren = {
   AdvisorKnowledgeDotjsonRoute: AdvisorKnowledgeDotjsonRoute,
   ContactRoute: ContactRoute,
   MarketIntelligenceRoute: MarketIntelligenceRoute,
+  McpRoute: McpRoute,
   PrivacyRoute: PrivacyRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeamRoute: TeamRoute,
   UnsubscribeRoute: UnsubscribeRoute,
+  Char91DotwellKnownChar93OauthProtectedResourceRoute:
+    Char91DotwellKnownChar93OauthProtectedResourceRoute,
   AreasSlugRoute: AreasSlugRoute,
   BlogSlugRoute: BlogSlugRoute,
   DevelopersSlugRoute: DevelopersSlugRoute,

@@ -8,7 +8,7 @@
  * unpublished, and no lead or admin data, is reachable here.
  */
 import { defineMcp } from "@lovable.dev/mcp-js";
-import type { McpDefinition } from "@lovable.dev/mcp-js";
+import type { McpDefinitionInput } from "@lovable.dev/mcp-js";
 
 import getGuide from "./tools/get-guide";
 import getProperty from "./tools/get-property";
@@ -25,5 +25,5 @@ export default defineMcp({
   /* The definitions are structurally correct; the cast only satisfies
    * exactOptionalPropertyTypes, which reads an absent `outputSchema` as a
    * mismatch. */
-  tools: [listProperties, getProperty, marketOverview, listContent, getGuide] as unknown as McpDefinition["tools"],
+  tools: [listProperties, getProperty, marketOverview, listContent, getGuide] as unknown as McpDefinitionInput["tools"],
 });
