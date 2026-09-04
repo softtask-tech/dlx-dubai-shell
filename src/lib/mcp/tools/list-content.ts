@@ -18,33 +18,37 @@ export default defineTool({
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ kind }) => {
     const want = kind ?? "both";
-    const payload: Record<string, unknown> = {};
+    const guides =
+      want === "services"
+        ? undefined
+        : GUIDES.map((guide) => ({
+            slug: guide.slug,
+            title: guide.title,
+            category: guide.category,
+            tagline: guide.tagline,
+            answer: guide.answer,
+            reading_minutes: guide.readingMinutes,
+            reviewed_on: guide.reviewedOn,
+          }));
+    const services =
+      want === "guides"
+        ? undefined
+        : SERVICES.map((service) => ({
+            slug: service.slug,
+            name: service.name,
+            title: service.title,
+            tagline: service.tagline,
+            description: service.description,
+            audience: service.audience,
+          }));
 
-    if (want !== "services") {
-      payload.guides = GUIDES.map((guide) => ({
-        slug: guide.slug,
-        title: guide.title,
-        category: guide.category,
-        tagline: guide.tagline,
-        answer: guide.answer,
-        reading_minutes: guide.readingMinutes,
-        reviewed_on: guide.reviewedOn,
-      }));
-    }
-
-    if (want !== "guides") {
-      payload.services = SERVICES.map((service) => ({
-        slug: service.slug,
-        name: service.name,
-        title: service.title,
-        tagline: service.tagline,
-        description: service.description,
-        audience: service.audience,
-      }));
-    }
+    const payload = {
+      ...(guides ? { guides } : {}),
+      ...(services ? { services } : {}),
+    };
 
     return {
-      content: [{ type: "text", text: JSON.stringify(payload, null, 2) }],
+      content: [{ type: "text" as const, text: JSON.stringify(payload, null, 2) }],
       structuredContent: payload,
     };
   },

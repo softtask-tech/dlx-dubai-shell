@@ -19,27 +19,28 @@ export default defineTool({
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: async (input) => {
     const summary = await getMarketSummary();
-    const payload: Record<string, unknown> = {
+
+    const areas =
+      input.include_areas === false
+        ? undefined
+        : (await listAreasWithStats()).map((area) => ({
+            slug: area.slug,
+            name: area.name,
+            stats: area.stats,
+          }));
+
+    const limit = Math.min(Math.max(Math.trunc(input.transaction_limit ?? 12), 1), 50);
+    const transactions = input.include_transactions ? await listRecentTransactions(limit) : undefined;
+
+    const payload = {
       summary,
       source: "Dubai Land Department (via DLX Properties' cleaned dataset)",
+      ...(areas ? { areas } : {}),
+      ...(transactions ? { recent_transactions: transactions } : {}),
     };
 
-    if (input.include_areas !== false) {
-      const areas = await listAreasWithStats();
-      payload.areas = areas.map((area) => ({
-        slug: area.slug,
-        name: area.name,
-        stats: area.stats,
-      }));
-    }
-
-    if (input.include_transactions) {
-      const limit = Math.min(Math.max(Math.trunc(input.transaction_limit ?? 12), 1), 50);
-      payload.recent_transactions = await listRecentTransactions(limit);
-    }
-
     return {
-      content: [{ type: "text", text: JSON.stringify(payload, null, 2) }],
+      content: [{ type: "text" as const, text: JSON.stringify(payload, null, 2) }],
       structuredContent: payload,
     };
   },

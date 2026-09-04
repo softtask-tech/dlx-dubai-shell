@@ -48,19 +48,21 @@ export default defineTool({
   handler: async (input) => {
     const limit = Math.min(Math.max(Math.trunc(input.limit ?? 12), 1), 50);
     const rows = await listProperties({
-      listingType: input.listing_type,
-      propertyType: input.property_type,
-      area: input.area,
-      minPrice: input.min_price,
-      maxPrice: input.max_price,
-      bedrooms: input.bedrooms,
-      offPlan: input.off_plan,
-      sort: input.sort,
+      ...(input.listing_type ? { listingType: input.listing_type } : {}),
+      ...(input.property_type ? { propertyType: input.property_type } : {}),
+      ...(input.area ? { area: input.area } : {}),
+      ...(input.min_price !== undefined ? { minPrice: input.min_price } : {}),
+      ...(input.max_price !== undefined ? { maxPrice: input.max_price } : {}),
+      ...(input.bedrooms !== undefined ? { bedrooms: input.bedrooms } : {}),
+      ...(input.off_plan !== undefined ? { offPlan: input.off_plan } : {}),
+      ...(input.sort ? { sort: input.sort } : {}),
       limit,
     });
     const listings = rows.map(card);
     return {
-      content: [{ type: "text", text: JSON.stringify({ count: listings.length, listings }, null, 2) }],
+      content: [
+        { type: "text" as const, text: JSON.stringify({ count: listings.length, listings }, null, 2) },
+      ],
       structuredContent: { count: listings.length, listings },
     };
   },
