@@ -876,6 +876,33 @@ export type Database = {
         }
         Relationships: []
       }
+      dld_directory_import_runs: {
+        Row: {
+          created_at: string
+          expected_counts: Json
+          import_run_id: string
+          published_at: string | null
+          source_manifest: Json
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          expected_counts: Json
+          import_run_id?: string
+          published_at?: string | null
+          source_manifest: Json
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          expected_counts?: Json
+          import_run_id?: string
+          published_at?: string | null
+          source_manifest?: Json
+          status?: string
+        }
+        Relationships: []
+      }
       dld_directory_licences: {
         Row: {
           activity_name_ar: string | null
@@ -1331,6 +1358,35 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "dld_directory_developers_public"
             referencedColumns: ["developer_id"]
+          },
+        ]
+      }
+      dld_directory_stage: {
+        Row: {
+          entity_type: string
+          import_run_id: string
+          payload: Json
+          source_key: string
+        }
+        Insert: {
+          entity_type: string
+          import_run_id: string
+          payload: Json
+          source_key: string
+        }
+        Update: {
+          entity_type?: string
+          import_run_id?: string
+          payload?: Json
+          source_key?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dld_directory_stage_import_run_id_fkey"
+            columns: ["import_run_id"]
+            isOneToOne: false
+            referencedRelation: "dld_directory_import_runs"
+            referencedColumns: ["import_run_id"]
           },
         ]
       }
@@ -2935,6 +2991,42 @@ export type Database = {
           },
         ]
       }
+      dld_directory_search_index: {
+        Row: {
+          aliases: string | null
+          display_name_ar: string | null
+          display_name_en: string | null
+          entity_type: string | null
+          primary_number: string | null
+          related_context: Json | null
+          secondary_number: string | null
+          source_dataset: string | null
+          source_export_date: string | null
+          source_key: string | null
+          status_en: string | null
+          valid_from: string | null
+          valid_to: string | null
+        }
+        Relationships: []
+      }
+      dld_directory_search_public: {
+        Row: {
+          display_name_ar: string | null
+          display_name_en: string | null
+          entity_type: string | null
+          non_affiliation: string | null
+          primary_number: string | null
+          related_context: Json | null
+          secondary_number: string | null
+          source_dataset: string | null
+          source_export_date: string | null
+          source_key: string | null
+          status_en: string | null
+          valid_from: string | null
+          valid_to: string | null
+        }
+        Relationships: []
+      }
       dld_directory_valuators_public: {
         Row: {
           company_name_ar: string | null
@@ -2979,6 +3071,10 @@ export type Database = {
       }
     }
     Functions: {
+      dld_directory_normalize_query: {
+        Args: { value: string }
+        Returns: string
+      }
       has_role: {
         Args: {
           check_role: Database["public"]["Enums"]["app_role"]
@@ -2987,7 +3083,35 @@ export type Database = {
         Returns: boolean
       }
       link_transactions_to_areas: { Args: never; Returns: number }
+      publish_dld_directory: {
+        Args: { target_run_id: string }
+        Returns: undefined
+      }
       refresh_area_stats: { Args: never; Returns: number }
+      search_dld_directory: {
+        Args: {
+          entity_types?: string[]
+          page_number?: number
+          page_size?: number
+          search_query?: string
+        }
+        Returns: {
+          display_name_ar: string
+          display_name_en: string
+          entity_type: string
+          non_affiliation: string
+          primary_number: string
+          related_context: Json
+          secondary_number: string
+          source_dataset: string
+          source_export_date: string
+          source_key: string
+          status_en: string
+          total_count: number
+          valid_from: string
+          valid_to: string
+        }[]
+      }
       trigger_dld_sync: {
         Args: { dataset?: string; trigger_source?: string }
         Returns: number
