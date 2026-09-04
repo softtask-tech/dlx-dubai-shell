@@ -1,0 +1,15 @@
+{
+  "phase": 0,
+  "generated_at": "2026-09-04T16:02:09+00:00",
+  "duration_seconds": 61.234,
+  "source_directory_name": "DLD DATA COD",
+  "source_unchanged_during_run": true,
+  "file_count": 62,
+  "csv_count": 37,
+  "xlsx_count": 25,
+  "dataset_count": 25,
+  "total_rows": 16521480,
+  "supabase_writes": 0,
+  "raw_rows_in_reports": 0,
+  "duckdb_version": "1.5.5"
+}

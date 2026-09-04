@@ -1,0 +1,498 @@
+[
+  {
+    "relative_path": "Accredited Trainers by the Dubai Real Estate Institute/accredited_trainers_2026-07-15_14-15-49_0001.csv",
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "extension": ".csv",
+    "bytes": 23801,
+    "modified_ns": 1788523717072465600,
+    "sha256": "b61519976fe3e25cc581359e484cb0ad8202582af96546f306aa441a024abbef"
+  },
+  {
+    "relative_path": "Accredited Trainers by the Dubai Real Estate Institute/Accredited_Trainers_by_the_Dubai_Real_Estate_Institute_2026-09-04_attribute-details.xlsx",
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "extension": ".xlsx",
+    "bytes": 19635,
+    "modified_ns": 1788523711298884000,
+    "sha256": "b1d6e16224d748051b0f271ad6e9a3728ade3f4f2fc4d6195e9cf6c40d474a3c"
+  },
+  {
+    "relative_path": "Approved Escrow Account Agents/accredited_escrow_agents_2026-09-01_17-32-19_0001.csv",
+    "dataset": "Approved Escrow Account Agents",
+    "extension": ".csv",
+    "bytes": 3049,
+    "modified_ns": 1788523494422476200,
+    "sha256": "3c0db506de47d939920f3d9bd2298d0eb15a89db569e71908701ada6bc978d2b"
+  },
+  {
+    "relative_path": "Approved Escrow Account Agents/Approved_Escrow_Account_Agents_2026-09-04_attribute-details.xlsx",
+    "dataset": "Approved Escrow Account Agents",
+    "extension": ".xlsx",
+    "bytes": 17591,
+    "modified_ns": 1788523490733102100,
+    "sha256": "5421e1eca969fa2d16ffd56608dce7e1d7a2df74d5448859da94ad13a16aabce"
+  },
+  {
+    "relative_path": "Building and Property Project Records/Building_and_Property_Project_Records_2026-09-04_attribute-details.xlsx",
+    "dataset": "Building and Property Project Records",
+    "extension": ".xlsx",
+    "bytes": 31423,
+    "modified_ns": 1788522849600093300,
+    "sha256": "d16d1f236ae93016cb5fcee68dcadd83de8f41921bb0ba91daa58767469bb43e"
+  },
+  {
+    "relative_path": "Building and Property Project Records/buildings_2026-09-03_17-31-45_0001.csv",
+    "dataset": "Building and Property Project Records",
+    "extension": ".csv",
+    "bytes": 102098011,
+    "modified_ns": 1788522873186123200,
+    "sha256": "5d4567618cd9b82d5b9f2a9ed35592b582b1cddfc75ce5d43bd52ed18f275b12"
+  },
+  {
+    "relative_path": "Developers Recorded in Dubai Land Department/developers_2026-09-01_17-32-36_0001.csv",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "extension": ".csv",
+    "bytes": 706746,
+    "modified_ns": 1788523550527272900,
+    "sha256": "bae2e63aa1a2490c10970f1fc34e59256180376d2fbb19b460ab4dbf825d6419"
+  },
+  {
+    "relative_path": "Developers Recorded in Dubai Land Department/Developers_Recorded_in_Dubai_Land_Department_2026-09-04_attribute-details.xlsx",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "extension": ".xlsx",
+    "bytes": 23851,
+    "modified_ns": 1788523545157093300,
+    "sha256": "869b1ffd78031443db3fe808d1e929c0c88e82a2b35da1da508e7533ae5d810d"
+  },
+  {
+    "relative_path": "Elders and People of Determination/elders_and_people_of_determination_2026-09-01_17-52-49_0001.csv",
+    "dataset": "Elders and People of Determination",
+    "extension": ".csv",
+    "bytes": 1303644,
+    "modified_ns": 1788523205199347700,
+    "sha256": "98dc97ec338e1fc44f81f168f5a1ce9b4ccc2945420ad83e73e24e3858a3c7e8"
+  },
+  {
+    "relative_path": "Elders and People of Determination/Elders_and_People_of_Determination_2026-09-04_attribute-details.xlsx",
+    "dataset": "Elders and People of Determination",
+    "extension": ".xlsx",
+    "bytes": 21387,
+    "modified_ns": 1788523199101397200,
+    "sha256": "6cebfaec6379c8f96cf7d38bd7fa9aca10bc8acd65e7451622b1ea5e8b326d0e"
+  },
+  {
+    "relative_path": "Free Zone Companies Licensing/free_zone_companies_licensing_2026-07-01_17-21-35_0001.csv",
+    "dataset": "Free Zone Companies Licensing",
+    "extension": ".csv",
+    "bytes": 70859,
+    "modified_ns": 1788523314592128200,
+    "sha256": "819299c16150c397be7a2ef5425f219616a89ae403365805e7ed493189e259b0"
+  },
+  {
+    "relative_path": "Free Zone Companies Licensing/Free_Zone_Companies_Licensing_2026-09-04_attribute-details.xlsx",
+    "dataset": "Free Zone Companies Licensing",
+    "extension": ".xlsx",
+    "bytes": 20484,
+    "modified_ns": 1788523311101484900,
+    "sha256": "c0213897af80512932a0e74da3eecc7a32857bbc6db82c99c7c90a28d6a91279"
+  },
+  {
+    "relative_path": "Land Registry/land_registry_2026-09-03_17-31-35_0001.csv",
+    "dataset": "Land Registry",
+    "extension": ".csv",
+    "bytes": 79574778,
+    "modified_ns": 1788522749593400900,
+    "sha256": "f04a5c5d776ddb01bad74fd7347b29680bbad3b416d5bc15323ddd9b07d70bb4"
+  },
+  {
+    "relative_path": "Land Registry/Land_Registry_2026-09-04_attribute-details.xlsx",
+    "dataset": "Land Registry",
+    "extension": ".xlsx",
+    "bytes": 27378,
+    "modified_ns": 1788522709046369000,
+    "sha256": "ed02ac770e6a22811ab7a26bbf44be97d65708cace940c9a0c89635a227272b9"
+  },
+  {
+    "relative_path": "Licenced Owner Associations/licenced_owner_associations_2026-07-07_09-25-17_0001.csv",
+    "dataset": "Licenced Owner Associations",
+    "extension": ".csv",
+    "bytes": 22908,
+    "modified_ns": 1788523677789156000,
+    "sha256": "053c0fde4ad34d4732960699000271cde0cfc8a6f8eed6e3b3823d125f95d324"
+  },
+  {
+    "relative_path": "Licenced Owner Associations/Licenced_Owner_Associations_2026-09-04_attribute-details.xlsx",
+    "dataset": "Licenced Owner Associations",
+    "extension": ".xlsx",
+    "bytes": 18293,
+    "modified_ns": 1788523673920003900,
+    "sha256": "858e2dc2a8512691ef39728f558877138ae3a6935db7fd307c07fe0576349f94"
+  },
+  {
+    "relative_path": "Licensed Real Estate Valuators/Licensed_Real_Estate_Valuators_2026-09-04_attribute-details.xlsx",
+    "dataset": "Licensed Real Estate Valuators",
+    "extension": ".xlsx",
+    "bytes": 21136,
+    "modified_ns": 1788518272767035600,
+    "sha256": "8c14bdd841c5be0092ba93728f98890527f744f3e4a7d745363e9e9558e53deb"
+  },
+  {
+    "relative_path": "Licensed Real Estate Valuators/valuator_licensing_2026-09-03_18-29-38_0001.csv",
+    "dataset": "Licensed Real Estate Valuators",
+    "extension": ".csv",
+    "bytes": 49709,
+    "modified_ns": 1788518267372515700,
+    "sha256": "b5c4777b3aaa467352148ecd7393383587744975032b5cabc453c5e217d0faed"
+  },
+  {
+    "relative_path": "Lookup Dubai Community Areas/lkp_areas_2026-09-01_17-53-16_0001.csv",
+    "dataset": "Lookup Dubai Community Areas",
+    "extension": ".csv",
+    "bytes": 24566,
+    "modified_ns": 1788523324188799700,
+    "sha256": "fc3e95281322a50e223d265ff0c72c57f6b18fa5e6e5dbcf7de880be38498fef"
+  },
+  {
+    "relative_path": "Lookup Dubai Community Areas/Lookup_Dubai_Community_Areas_2026-09-04_attribute-details.xlsx",
+    "dataset": "Lookup Dubai Community Areas",
+    "extension": ".xlsx",
+    "bytes": 17582,
+    "modified_ns": 1788523319248340600,
+    "sha256": "21a329dbd426cacc2d78d9a5e4e355714ba562f82beab82f1548f6e187472789"
+  },
+  {
+    "relative_path": "Lookup Real Estate Market Types/lkp_market_types_2026-09-01_17-53-14_0001.csv",
+    "dataset": "Lookup Real Estate Market Types",
+    "extension": ".csv",
+    "bytes": 210,
+    "modified_ns": 1788523240516440400,
+    "sha256": "263caa002983fa56200c4043b150982aceea6cfc959e60b01ffd36d0ebcebe19"
+  },
+  {
+    "relative_path": "Lookup Real Estate Market Types/Lookup_Real_Estate_Market_Types_2026-09-04_attribute-details.xlsx",
+    "dataset": "Lookup Real Estate Market Types",
+    "extension": ".xlsx",
+    "bytes": 17275,
+    "modified_ns": 1788523236085935300,
+    "sha256": "ac1e195f47f967e07113a525b39add466ecd4707bf8f1f222f8787929e2f5ccf"
+  },
+  {
+    "relative_path": "Lookup Real Estate Transactions Groups/lkp_transaction_groups_2026-09-01_17-53-37_0001.csv",
+    "dataset": "Lookup Real Estate Transactions Groups",
+    "extension": ".csv",
+    "bytes": 214,
+    "modified_ns": 1788523152523317700,
+    "sha256": "dee593db5521699a15d91259799098b0b177f91920dd9c6cd43928a9971b4695"
+  },
+  {
+    "relative_path": "Lookup Real Estate Transactions Groups/Lookup_Real_Estate_Transactions_Groups_2026-09-04_attribute-details.xlsx",
+    "dataset": "Lookup Real Estate Transactions Groups",
+    "extension": ".xlsx",
+    "bytes": 17256,
+    "modified_ns": 1788523147728551600,
+    "sha256": "160adcdb26d5a45c4bfba2841cea29eb593a2a3140b5abe6e3bffb412ec909a2"
+  },
+  {
+    "relative_path": "Lookup Real Estate Transactions Procedures/lkp_transaction_procedures_2026-09-01_17-53-40_0001.csv",
+    "dataset": "Lookup Real Estate Transactions Procedures",
+    "extension": ".csv",
+    "bytes": 8204,
+    "modified_ns": 1788523300206598900,
+    "sha256": "1fb55f710445d9eb8608da2b3f1927eba27ec1b4cf05a6273ce3b20eaa4f42e2"
+  },
+  {
+    "relative_path": "Lookup Real Estate Transactions Procedures/Lookup_Real_Estate_Transactions_Procedures_2026-09-04_attribute-details.xlsx",
+    "dataset": "Lookup Real Estate Transactions Procedures",
+    "extension": ".xlsx",
+    "bytes": 17987,
+    "modified_ns": 1788523295352264800,
+    "sha256": "d7bef1f3bd82cfcdaac5b1997722baf75499656737ae6ac79fd0e5823069af20"
+  },
+  {
+    "relative_path": "Owners Association Service Charges/oa_service_charges_2026-06-30_14-26-20_0001.csv",
+    "dataset": "Owners Association Service Charges",
+    "extension": ".csv",
+    "bytes": 34978307,
+    "modified_ns": 1788523765325578700,
+    "sha256": "58f533d587cd45ca60b141b0ca74baba0880b50b5f0b67b8c69fdf20b02b4cd5"
+  },
+  {
+    "relative_path": "Owners Association Service Charges/Owners_Association_Service_Charges_2026-09-04_attribute-details.xlsx",
+    "dataset": "Owners Association Service Charges",
+    "extension": ".xlsx",
+    "bytes": 23602,
+    "modified_ns": 1788523757630532300,
+    "sha256": "3ce1498c305b7bff3d3571ecfa1eb88723dfb10535b16cbf36e03605c7f5a40e"
+  },
+  {
+    "relative_path": "Property Map Requests/map_requests_2026-09-03_17-33-09_0001.csv",
+    "dataset": "Property Map Requests",
+    "extension": ".csv",
+    "bytes": 260688096,
+    "modified_ns": 1788522452795511800,
+    "sha256": "db2b5bfed818c43f26d93b914b0fa36051e655c81adad8137123029a19663102"
+  },
+  {
+    "relative_path": "Property Map Requests/Property_Map_Requests_2026-09-04_attribute-details.xlsx",
+    "dataset": "Property Map Requests",
+    "extension": ".xlsx",
+    "bytes": 21826,
+    "modified_ns": 1788522440108359100,
+    "sha256": "97a0fbf4c660ee84551b7eba30fd26d5eb56cc5c2259483dcbf4901aa3db70fb"
+  },
+  {
+    "relative_path": "Property Valuation Records/Property_Valuation_Records_2026-09-04_attribute-details.xlsx",
+    "dataset": "Property Valuation Records",
+    "extension": ".xlsx",
+    "bytes": 22981,
+    "modified_ns": 1788518066596975400,
+    "sha256": "1576391090c3c963c6d606e4831940d5a674aafb5ebf66503a374412605aea92"
+  },
+  {
+    "relative_path": "Property Valuation Records/valuation_2026-09-03_18-29-43_0001.csv",
+    "dataset": "Property Valuation Records",
+    "extension": ".csv",
+    "bytes": 24677413,
+    "modified_ns": 1788518098732905000,
+    "sha256": "59c6096f73791a302514456ebdb1840604d2749572fcdf4d310bece1ae10288a"
+  },
+  {
+    "relative_path": "Real Estate Brokers/brokers_2026-07-03_10-31-51_0001.csv",
+    "dataset": "Real Estate Brokers",
+    "extension": ".csv",
+    "bytes": 1760584,
+    "modified_ns": 1788523634924145000,
+    "sha256": "21ce681cf1c2f41d0af21e437ee36886e41c255eb8beddeec1e87bba0353cea9"
+  },
+  {
+    "relative_path": "Real Estate Brokers/Real_Estate_Brokers_2026-09-04_attribute-details.xlsx",
+    "dataset": "Real Estate Brokers",
+    "extension": ".xlsx",
+    "bytes": 20590,
+    "modified_ns": 1788523630027229000,
+    "sha256": "820240d49656cd7e6e66674b42d3734f4594f0bf7590fd6e2af610073dec6ab3"
+  },
+  {
+    "relative_path": "Real Estate Licenses/real_estate_licenses_2026-09-03_17-31-32_0001.csv",
+    "dataset": "Real Estate Licenses",
+    "extension": ".csv",
+    "bytes": 1336587,
+    "modified_ns": 1788522672390855100,
+    "sha256": "8f6b09b4c91c4dc578fd774d57a7263b4096c4057583906b00dbcd558ef026c0"
+  },
+  {
+    "relative_path": "Real Estate Licenses/Real_Estate_Licenses_2026-09-04_attribute-details.xlsx",
+    "dataset": "Real Estate Licenses",
+    "extension": ".xlsx",
+    "bytes": 24320,
+    "modified_ns": 1788522663941310000,
+    "sha256": "0ef47546c9ea699ede817ead86285801683e6197ada2173fdfb1a03a98886d1c"
+  },
+  {
+    "relative_path": "Real Estate Offices/offices_2026-09-01_17-56-00_0001.csv",
+    "dataset": "Real Estate Offices",
+    "extension": ".csv",
+    "bytes": 1581074,
+    "modified_ns": 1788523067108296600,
+    "sha256": "c487357f1a4cf0fcfe6a1e382329f8214131f9cb36a91b034782188e1d8e64ec"
+  },
+  {
+    "relative_path": "Real Estate Offices/Real_Estate_Offices_2026-09-04_attribute-details.xlsx",
+    "dataset": "Real Estate Offices",
+    "extension": ".xlsx",
+    "bytes": 22398,
+    "modified_ns": 1788523059850810100,
+    "sha256": "b13f9caea3748ed9191913d0541528da5aef7118f9727d5c88bbb4bed799eda0"
+  },
+  {
+    "relative_path": "Real Estate Permits/real_estate_permits_2026-09-03_17-32-35_0001.csv",
+    "dataset": "Real Estate Permits",
+    "extension": ".csv",
+    "bytes": 55273436,
+    "modified_ns": 1788522964565572000,
+    "sha256": "4574232f832b3e71a9b18bf9cb9efceb6a36d05240f75f0ae7baafaed905369d"
+  },
+  {
+    "relative_path": "Real Estate Permits/Real_Estate_Permits_2026-09-04_attribute-details.xlsx",
+    "dataset": "Real Estate Permits",
+    "extension": ".xlsx",
+    "bytes": 23697,
+    "modified_ns": 1788522952351719600,
+    "sha256": "4d5c68431b6a9637e76582fc4fbba0e7d3cc321f866271d7b10b3ef5d88fea99"
+  },
+  {
+    "relative_path": "Real Estate Projects/projects_2026-07-06_16-25-21_0001.csv",
+    "dataset": "Real Estate Projects",
+    "extension": ".csv",
+    "bytes": 2473575,
+    "modified_ns": 1788523457809239300,
+    "sha256": "ffee59d637b1383e62ea24dab5be77e957090abf3860ce26b00b873fbdda6078"
+  },
+  {
+    "relative_path": "Real Estate Projects/Real_Estate_Projects_2026-09-04_attribute-details.xlsx",
+    "dataset": "Real Estate Projects",
+    "extension": ".xlsx",
+    "bytes": 30179,
+    "modified_ns": 1788523453322505000,
+    "sha256": "a540de44d6e5250414685873c7cabcb3ba1e601c5b2390497828d78cb5c65779"
+  },
+  {
+    "relative_path": "Real Estate Transactions/Real_Estate_Transactions_2026-09-04_attribute-details.xlsx",
+    "dataset": "Real Estate Transactions",
+    "extension": ".xlsx",
+    "bytes": 33837,
+    "modified_ns": 1788522527261794000,
+    "sha256": "9cfadabf0e2acbea19f251448d3a982e5491fccac8194f68bf05bd2c0c6579a9"
+  },
+  {
+    "relative_path": "Real Estate Transactions/transactions_2026-09-03_17-35-02_0001.csv",
+    "dataset": "Real Estate Transactions",
+    "extension": ".csv",
+    "bytes": 569687278,
+    "modified_ns": 1788522600292516700,
+    "sha256": "b329c36956aaaf546cef6e3d30ba344c37f3d20de51d6038c8aac07799289a99"
+  },
+  {
+    "relative_path": "Real Estate Transactions/transactions_2026-09-03_17-35-02_0002.csv",
+    "dataset": "Real Estate Transactions",
+    "extension": ".csv",
+    "bytes": 569382800,
+    "modified_ns": 1788522606291773500,
+    "sha256": "e73849645b30a410691cb23eb150c1b86cc2fb207e8a713cd3a58437f5199d47"
+  },
+  {
+    "relative_path": "Registered Freehold Real Estate Units/Registered_Freehold_Real_Estate_Units_2026-09-04_attribute-details.xlsx",
+    "dataset": "Registered Freehold Real Estate Units",
+    "extension": ".xlsx",
+    "bytes": 31957,
+    "modified_ns": 1788518118251902400,
+    "sha256": "b3d2fc4af4fee9982f70fb3419776c566155ced320e64332d14ebca931fa7d89"
+  },
+  {
+    "relative_path": "Registered Freehold Real Estate Units/units_2026-09-03_18-33-31_0001.csv",
+    "dataset": "Registered Freehold Real Estate Units",
+    "extension": ".csv",
+    "bytes": 332709057,
+    "modified_ns": 1788517714475445100,
+    "sha256": "f70252e7f05c20e7ba447f7548497242b10e306c4d6dbfd60575a5077d823c6b"
+  },
+  {
+    "relative_path": "Registered Freehold Real Estate Units/units_2026-09-03_18-33-31_0002.csv",
+    "dataset": "Registered Freehold Real Estate Units",
+    "extension": ".csv",
+    "bytes": 333027758,
+    "modified_ns": 1788517831196392200,
+    "sha256": "0a6df8963e745abc540eb520e32febe0e5446348f87763c4a5db2490ee574fb1"
+  },
+  {
+    "relative_path": "Registered Freehold Real Estate Units/units_2026-09-03_18-33-31_0003.csv",
+    "dataset": "Registered Freehold Real Estate Units",
+    "extension": ".csv",
+    "bytes": 332928797,
+    "modified_ns": 1788517888604006100,
+    "sha256": "136faad432a2cc91ad9afb8bbde0d99452b371ce1425f72697dfc150aa06e470"
+  },
+  {
+    "relative_path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0001.csv",
+    "dataset": "Rent Contracts",
+    "extension": ".csv",
+    "bytes": 531526014,
+    "modified_ns": 1788521991885925900,
+    "sha256": "16a9d6141e0feafc5314a4bafc48aaca4b9879ac66c22ec87d739a455e72d145"
+  },
+  {
+    "relative_path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0002.csv",
+    "dataset": "Rent Contracts",
+    "extension": ".csv",
+    "bytes": 531504667,
+    "modified_ns": 1788522202463147900,
+    "sha256": "97266338546447aa72cb7c2ed6cc0dd0878f9766a586eaed01511277bdc293e3"
+  },
+  {
+    "relative_path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0003.csv",
+    "dataset": "Rent Contracts",
+    "extension": ".csv",
+    "bytes": 531554496,
+    "modified_ns": 1788522235828277000,
+    "sha256": "2cc77cb5e8dc5206857fd6f04d934305331992ed903ecfcc0e16477f34d8f264"
+  },
+  {
+    "relative_path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0004.csv",
+    "dataset": "Rent Contracts",
+    "extension": ".csv",
+    "bytes": 531535652,
+    "modified_ns": 1788522232950492200,
+    "sha256": "f769b122821180f9e92609e794546c21085d63004b42d88ee6990b024f88199d"
+  },
+  {
+    "relative_path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0005.csv",
+    "dataset": "Rent Contracts",
+    "extension": ".csv",
+    "bytes": 531514464,
+    "modified_ns": 1788522256053325800,
+    "sha256": "1210ddfd158329592916769ae290e402011f64c5073a3494f95c49d2c8b8f53c"
+  },
+  {
+    "relative_path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0006.csv",
+    "dataset": "Rent Contracts",
+    "extension": ".csv",
+    "bytes": 531549982,
+    "modified_ns": 1788522267531722700,
+    "sha256": "29a25f04059a0462bcc8910004e6d0d5b337c824981f9f91cb3352db6d8b4213"
+  },
+  {
+    "relative_path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0007.csv",
+    "dataset": "Rent Contracts",
+    "extension": ".csv",
+    "bytes": 531450110,
+    "modified_ns": 1788522274594884800,
+    "sha256": "5e27b9379ef2654bacc14bca673909001ba11c92f31d995c3d20177a0e245d61"
+  },
+  {
+    "relative_path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0008.csv",
+    "dataset": "Rent Contracts",
+    "extension": ".csv",
+    "bytes": 531465217,
+    "modified_ns": 1788522336091314000,
+    "sha256": "9871a3b8fef2231667f953261cd621bddad95b9994ea0aeb2937ca2db9ef1d5d"
+  },
+  {
+    "relative_path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0009.csv",
+    "dataset": "Rent Contracts",
+    "extension": ".csv",
+    "bytes": 531554231,
+    "modified_ns": 1788522339029887800,
+    "sha256": "8c7b87e983f345fa8ebb13539643c6711d58b3f83d5cb61dd4f3c65cf1a52834"
+  },
+  {
+    "relative_path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0010.csv",
+    "dataset": "Rent Contracts",
+    "extension": ".csv",
+    "bytes": 531415992,
+    "modified_ns": 1788522346621617600,
+    "sha256": "6c1e8761f45b2aaad37bbeec20ab2049bb3afe0b0240fb88204da7e28db2d173"
+  },
+  {
+    "relative_path": "Rent Contracts/Rent_Contracts_2026-09-04_attribute-details.xlsx",
+    "dataset": "Rent Contracts",
+    "extension": ".xlsx",
+    "bytes": 31169,
+    "modified_ns": 1788521926903859000,
+    "sha256": "f0a7c8f470fadb48fbd933ea28a16ede74413aaa60e72951334e22aa39a830d0"
+  },
+  {
+    "relative_path": "Residential Sale Index/residential_sale_index_2026-09-01_18-28-58_0001.csv",
+    "dataset": "Residential Sale Index",
+    "extension": ".csv",
+    "bytes": 22827,
+    "modified_ns": 1788523049966319000,
+    "sha256": "88e60eba6fd44d700760cdd031d1a0e66834568ef3b756c0337bc0da5cb3217c"
+  },
+  {
+    "relative_path": "Residential Sale Index/Residential_Sale_Index_2026-09-04_attribute-details.xlsx",
+    "dataset": "Residential Sale Index",
+    "extension": ".xlsx",
+    "bytes": 23808,
+    "modified_ns": 1788523044767055900,
+    "sha256": "bed87fda69163376e158778a222ab81aff4c9d1154f2aa2350a6c1ebabf2a88d"
+  }
+]

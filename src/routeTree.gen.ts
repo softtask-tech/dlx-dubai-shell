@@ -39,6 +39,11 @@ import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as DevelopersIndexRouteImport } from './routes/developers/index'
 import { Route as DevelopersSlugRouteImport } from './routes/developers/$slug'
+import { Route as DirectoryIndexRouteImport } from './routes/directory/index'
+import { Route as DirectoryEscrowAgentsRouteImport } from './routes/directory/escrow-agents'
+import { Route as DirectoryLicencesRouteImport } from './routes/directory/licences'
+import { Route as DirectoryPermitsRouteImport } from './routes/directory/permits'
+import { Route as DirectoryValuatorsRouteImport } from './routes/directory/valuators'
 import { Route as GuidesIndexRouteImport } from './routes/guides/index'
 import { Route as GuidesSlugRouteImport } from './routes/guides/$slug'
 import { Route as LpSlugRouteImport } from './routes/lp/$slug'
@@ -56,6 +61,14 @@ import { Route as ApiAdvisorSpeakRouteImport } from './routes/api/advisor/speak'
 import { Route as ApiAdvisorVoiceRouteImport } from './routes/api/advisor/voice'
 import { Route as ApiLeadsGoogleRouteImport } from './routes/api/leads/google'
 import { Route as ApiLeadsMetaRouteImport } from './routes/api/leads/meta'
+import { Route as DirectoryBrokersIndexRouteImport } from './routes/directory/brokers/index'
+import { Route as DirectoryBrokersIdRouteImport } from './routes/directory/brokers/$id'
+import { Route as DirectoryDevelopersIndexRouteImport } from './routes/directory/developers/index'
+import { Route as DirectoryDevelopersSlugRouteImport } from './routes/directory/developers/$slug'
+import { Route as DirectoryOfficesIndexRouteImport } from './routes/directory/offices/index'
+import { Route as DirectoryOfficesIdRouteImport } from './routes/directory/offices/$id'
+import { Route as DirectoryProjectsIndexRouteImport } from './routes/directory/projects/index'
+import { Route as DirectoryProjectsSlugRouteImport } from './routes/directory/projects/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -208,6 +221,31 @@ const DevelopersSlugRoute = DevelopersSlugRouteImport.update({
   path: '/developers/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DirectoryIndexRoute = DirectoryIndexRouteImport.update({
+  id: '/directory/',
+  path: '/directory/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectoryEscrowAgentsRoute = DirectoryEscrowAgentsRouteImport.update({
+  id: '/directory/escrow-agents',
+  path: '/directory/escrow-agents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectoryLicencesRoute = DirectoryLicencesRouteImport.update({
+  id: '/directory/licences',
+  path: '/directory/licences',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectoryPermitsRoute = DirectoryPermitsRouteImport.update({
+  id: '/directory/permits',
+  path: '/directory/permits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectoryValuatorsRoute = DirectoryValuatorsRouteImport.update({
+  id: '/directory/valuators',
+  path: '/directory/valuators',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GuidesIndexRoute = GuidesIndexRouteImport.update({
   id: '/guides/',
   path: '/guides/',
@@ -293,6 +331,47 @@ const ApiLeadsMetaRoute = ApiLeadsMetaRouteImport.update({
   path: '/api/leads/meta',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DirectoryBrokersIndexRoute = DirectoryBrokersIndexRouteImport.update({
+  id: '/directory/brokers/',
+  path: '/directory/brokers/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectoryBrokersIdRoute = DirectoryBrokersIdRouteImport.update({
+  id: '/directory/brokers/$id',
+  path: '/directory/brokers/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectoryDevelopersIndexRoute =
+  DirectoryDevelopersIndexRouteImport.update({
+    id: '/directory/developers/',
+    path: '/directory/developers/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DirectoryDevelopersSlugRoute = DirectoryDevelopersSlugRouteImport.update({
+  id: '/directory/developers/$slug',
+  path: '/directory/developers/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectoryOfficesIndexRoute = DirectoryOfficesIndexRouteImport.update({
+  id: '/directory/offices/',
+  path: '/directory/offices/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectoryOfficesIdRoute = DirectoryOfficesIdRouteImport.update({
+  id: '/directory/offices/$id',
+  path: '/directory/offices/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectoryProjectsIndexRoute = DirectoryProjectsIndexRouteImport.update({
+  id: '/directory/projects/',
+  path: '/directory/projects/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectoryProjectsSlugRoute = DirectoryProjectsSlugRouteImport.update({
+  id: '/directory/projects/$slug',
+  path: '/directory/projects/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -320,6 +399,10 @@ export interface FileRoutesByFullPath {
   '/areas/$slug': typeof AreasSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
+  '/directory/escrow-agents': typeof DirectoryEscrowAgentsRoute
+  '/directory/licences': typeof DirectoryLicencesRoute
+  '/directory/permits': typeof DirectoryPermitsRoute
+  '/directory/valuators': typeof DirectoryValuatorsRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/lp/$slug': typeof LpSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -332,6 +415,7 @@ export interface FileRoutesByFullPath {
   '/areas/': typeof AreasIndexRoute
   '/blog/': typeof BlogIndexRoute
   '/developers/': typeof DevelopersIndexRoute
+  '/directory/': typeof DirectoryIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/properties/': typeof PropertiesIndexRoute
   '/services/': typeof ServicesIndexRoute
@@ -342,6 +426,14 @@ export interface FileRoutesByFullPath {
   '/api/advisor/voice': typeof ApiAdvisorVoiceRoute
   '/api/leads/google': typeof ApiLeadsGoogleRoute
   '/api/leads/meta': typeof ApiLeadsMetaRoute
+  '/directory/brokers/$id': typeof DirectoryBrokersIdRoute
+  '/directory/developers/$slug': typeof DirectoryDevelopersSlugRoute
+  '/directory/offices/$id': typeof DirectoryOfficesIdRoute
+  '/directory/projects/$slug': typeof DirectoryProjectsSlugRoute
+  '/directory/brokers/': typeof DirectoryBrokersIndexRoute
+  '/directory/developers/': typeof DirectoryDevelopersIndexRoute
+  '/directory/offices/': typeof DirectoryOfficesIndexRoute
+  '/directory/projects/': typeof DirectoryProjectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -367,6 +459,10 @@ export interface FileRoutesByTo {
   '/areas/$slug': typeof AreasSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
+  '/directory/escrow-agents': typeof DirectoryEscrowAgentsRoute
+  '/directory/licences': typeof DirectoryLicencesRoute
+  '/directory/permits': typeof DirectoryPermitsRoute
+  '/directory/valuators': typeof DirectoryValuatorsRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/lp/$slug': typeof LpSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -379,6 +475,7 @@ export interface FileRoutesByTo {
   '/areas': typeof AreasIndexRoute
   '/blog': typeof BlogIndexRoute
   '/developers': typeof DevelopersIndexRoute
+  '/directory': typeof DirectoryIndexRoute
   '/guides': typeof GuidesIndexRoute
   '/properties': typeof PropertiesIndexRoute
   '/services': typeof ServicesIndexRoute
@@ -389,6 +486,14 @@ export interface FileRoutesByTo {
   '/api/advisor/voice': typeof ApiAdvisorVoiceRoute
   '/api/leads/google': typeof ApiLeadsGoogleRoute
   '/api/leads/meta': typeof ApiLeadsMetaRoute
+  '/directory/brokers/$id': typeof DirectoryBrokersIdRoute
+  '/directory/developers/$slug': typeof DirectoryDevelopersSlugRoute
+  '/directory/offices/$id': typeof DirectoryOfficesIdRoute
+  '/directory/projects/$slug': typeof DirectoryProjectsSlugRoute
+  '/directory/brokers': typeof DirectoryBrokersIndexRoute
+  '/directory/developers': typeof DirectoryDevelopersIndexRoute
+  '/directory/offices': typeof DirectoryOfficesIndexRoute
+  '/directory/projects': typeof DirectoryProjectsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -417,6 +522,10 @@ export interface FileRoutesById {
   '/areas/$slug': typeof AreasSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/developers/$slug': typeof DevelopersSlugRoute
+  '/directory/escrow-agents': typeof DirectoryEscrowAgentsRoute
+  '/directory/licences': typeof DirectoryLicencesRoute
+  '/directory/permits': typeof DirectoryPermitsRoute
+  '/directory/valuators': typeof DirectoryValuatorsRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/lp/$slug': typeof LpSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -429,6 +538,7 @@ export interface FileRoutesById {
   '/areas/': typeof AreasIndexRoute
   '/blog/': typeof BlogIndexRoute
   '/developers/': typeof DevelopersIndexRoute
+  '/directory/': typeof DirectoryIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/properties/': typeof PropertiesIndexRoute
   '/services/': typeof ServicesIndexRoute
@@ -439,6 +549,14 @@ export interface FileRoutesById {
   '/api/advisor/voice': typeof ApiAdvisorVoiceRoute
   '/api/leads/google': typeof ApiLeadsGoogleRoute
   '/api/leads/meta': typeof ApiLeadsMetaRoute
+  '/directory/brokers/$id': typeof DirectoryBrokersIdRoute
+  '/directory/developers/$slug': typeof DirectoryDevelopersSlugRoute
+  '/directory/offices/$id': typeof DirectoryOfficesIdRoute
+  '/directory/projects/$slug': typeof DirectoryProjectsSlugRoute
+  '/directory/brokers/': typeof DirectoryBrokersIndexRoute
+  '/directory/developers/': typeof DirectoryDevelopersIndexRoute
+  '/directory/offices/': typeof DirectoryOfficesIndexRoute
+  '/directory/projects/': typeof DirectoryProjectsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -468,6 +586,10 @@ export interface FileRouteTypes {
     | '/areas/$slug'
     | '/blog/$slug'
     | '/developers/$slug'
+    | '/directory/escrow-agents'
+    | '/directory/licences'
+    | '/directory/permits'
+    | '/directory/valuators'
     | '/guides/$slug'
     | '/lp/$slug'
     | '/projects/$slug'
@@ -480,6 +602,7 @@ export interface FileRouteTypes {
     | '/areas/'
     | '/blog/'
     | '/developers/'
+    | '/directory/'
     | '/guides/'
     | '/properties/'
     | '/services/'
@@ -490,6 +613,14 @@ export interface FileRouteTypes {
     | '/api/advisor/voice'
     | '/api/leads/google'
     | '/api/leads/meta'
+    | '/directory/brokers/$id'
+    | '/directory/developers/$slug'
+    | '/directory/offices/$id'
+    | '/directory/projects/$slug'
+    | '/directory/brokers/'
+    | '/directory/developers/'
+    | '/directory/offices/'
+    | '/directory/projects/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -515,6 +646,10 @@ export interface FileRouteTypes {
     | '/areas/$slug'
     | '/blog/$slug'
     | '/developers/$slug'
+    | '/directory/escrow-agents'
+    | '/directory/licences'
+    | '/directory/permits'
+    | '/directory/valuators'
     | '/guides/$slug'
     | '/lp/$slug'
     | '/projects/$slug'
@@ -527,6 +662,7 @@ export interface FileRouteTypes {
     | '/areas'
     | '/blog'
     | '/developers'
+    | '/directory'
     | '/guides'
     | '/properties'
     | '/services'
@@ -537,6 +673,14 @@ export interface FileRouteTypes {
     | '/api/advisor/voice'
     | '/api/leads/google'
     | '/api/leads/meta'
+    | '/directory/brokers/$id'
+    | '/directory/developers/$slug'
+    | '/directory/offices/$id'
+    | '/directory/projects/$slug'
+    | '/directory/brokers'
+    | '/directory/developers'
+    | '/directory/offices'
+    | '/directory/projects'
   id:
     | '__root__'
     | '/'
@@ -564,6 +708,10 @@ export interface FileRouteTypes {
     | '/areas/$slug'
     | '/blog/$slug'
     | '/developers/$slug'
+    | '/directory/escrow-agents'
+    | '/directory/licences'
+    | '/directory/permits'
+    | '/directory/valuators'
     | '/guides/$slug'
     | '/lp/$slug'
     | '/projects/$slug'
@@ -576,6 +724,7 @@ export interface FileRouteTypes {
     | '/areas/'
     | '/blog/'
     | '/developers/'
+    | '/directory/'
     | '/guides/'
     | '/properties/'
     | '/services/'
@@ -586,6 +735,14 @@ export interface FileRouteTypes {
     | '/api/advisor/voice'
     | '/api/leads/google'
     | '/api/leads/meta'
+    | '/directory/brokers/$id'
+    | '/directory/developers/$slug'
+    | '/directory/offices/$id'
+    | '/directory/projects/$slug'
+    | '/directory/brokers/'
+    | '/directory/developers/'
+    | '/directory/offices/'
+    | '/directory/projects/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -606,6 +763,10 @@ export interface RootRouteChildren {
   AreasSlugRoute: typeof AreasSlugRoute
   BlogSlugRoute: typeof BlogSlugRoute
   DevelopersSlugRoute: typeof DevelopersSlugRoute
+  DirectoryEscrowAgentsRoute: typeof DirectoryEscrowAgentsRoute
+  DirectoryLicencesRoute: typeof DirectoryLicencesRoute
+  DirectoryPermitsRoute: typeof DirectoryPermitsRoute
+  DirectoryValuatorsRoute: typeof DirectoryValuatorsRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   LpSlugRoute: typeof LpSlugRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
@@ -616,6 +777,7 @@ export interface RootRouteChildren {
   AreasIndexRoute: typeof AreasIndexRoute
   BlogIndexRoute: typeof BlogIndexRoute
   DevelopersIndexRoute: typeof DevelopersIndexRoute
+  DirectoryIndexRoute: typeof DirectoryIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
@@ -626,6 +788,14 @@ export interface RootRouteChildren {
   ApiAdvisorVoiceRoute: typeof ApiAdvisorVoiceRoute
   ApiLeadsGoogleRoute: typeof ApiLeadsGoogleRoute
   ApiLeadsMetaRoute: typeof ApiLeadsMetaRoute
+  DirectoryBrokersIdRoute: typeof DirectoryBrokersIdRoute
+  DirectoryDevelopersSlugRoute: typeof DirectoryDevelopersSlugRoute
+  DirectoryOfficesIdRoute: typeof DirectoryOfficesIdRoute
+  DirectoryProjectsSlugRoute: typeof DirectoryProjectsSlugRoute
+  DirectoryBrokersIndexRoute: typeof DirectoryBrokersIndexRoute
+  DirectoryDevelopersIndexRoute: typeof DirectoryDevelopersIndexRoute
+  DirectoryOfficesIndexRoute: typeof DirectoryOfficesIndexRoute
+  DirectoryProjectsIndexRoute: typeof DirectoryProjectsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -840,6 +1010,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DevelopersSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/directory/': {
+      id: '/directory/'
+      path: '/directory'
+      fullPath: '/directory/'
+      preLoaderRoute: typeof DirectoryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/directory/escrow-agents': {
+      id: '/directory/escrow-agents'
+      path: '/directory/escrow-agents'
+      fullPath: '/directory/escrow-agents'
+      preLoaderRoute: typeof DirectoryEscrowAgentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/directory/licences': {
+      id: '/directory/licences'
+      path: '/directory/licences'
+      fullPath: '/directory/licences'
+      preLoaderRoute: typeof DirectoryLicencesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/directory/permits': {
+      id: '/directory/permits'
+      path: '/directory/permits'
+      fullPath: '/directory/permits'
+      preLoaderRoute: typeof DirectoryPermitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/directory/valuators': {
+      id: '/directory/valuators'
+      path: '/directory/valuators'
+      fullPath: '/directory/valuators'
+      preLoaderRoute: typeof DirectoryValuatorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/guides/': {
       id: '/guides/'
       path: '/guides'
@@ -959,6 +1164,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiLeadsMetaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/directory/brokers/': {
+      id: '/directory/brokers/'
+      path: '/directory/brokers'
+      fullPath: '/directory/brokers/'
+      preLoaderRoute: typeof DirectoryBrokersIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/directory/brokers/$id': {
+      id: '/directory/brokers/$id'
+      path: '/directory/brokers/$id'
+      fullPath: '/directory/brokers/$id'
+      preLoaderRoute: typeof DirectoryBrokersIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/directory/developers/': {
+      id: '/directory/developers/'
+      path: '/directory/developers'
+      fullPath: '/directory/developers/'
+      preLoaderRoute: typeof DirectoryDevelopersIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/directory/developers/$slug': {
+      id: '/directory/developers/$slug'
+      path: '/directory/developers/$slug'
+      fullPath: '/directory/developers/$slug'
+      preLoaderRoute: typeof DirectoryDevelopersSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/directory/offices/': {
+      id: '/directory/offices/'
+      path: '/directory/offices'
+      fullPath: '/directory/offices/'
+      preLoaderRoute: typeof DirectoryOfficesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/directory/offices/$id': {
+      id: '/directory/offices/$id'
+      path: '/directory/offices/$id'
+      fullPath: '/directory/offices/$id'
+      preLoaderRoute: typeof DirectoryOfficesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/directory/projects/': {
+      id: '/directory/projects/'
+      path: '/directory/projects'
+      fullPath: '/directory/projects/'
+      preLoaderRoute: typeof DirectoryProjectsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/directory/projects/$slug': {
+      id: '/directory/projects/$slug'
+      path: '/directory/projects/$slug'
+      fullPath: '/directory/projects/$slug'
+      preLoaderRoute: typeof DirectoryProjectsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -1021,6 +1282,10 @@ const rootRouteChildren: RootRouteChildren = {
   AreasSlugRoute: AreasSlugRoute,
   BlogSlugRoute: BlogSlugRoute,
   DevelopersSlugRoute: DevelopersSlugRoute,
+  DirectoryEscrowAgentsRoute: DirectoryEscrowAgentsRoute,
+  DirectoryLicencesRoute: DirectoryLicencesRoute,
+  DirectoryPermitsRoute: DirectoryPermitsRoute,
+  DirectoryValuatorsRoute: DirectoryValuatorsRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   LpSlugRoute: LpSlugRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
@@ -1031,6 +1296,7 @@ const rootRouteChildren: RootRouteChildren = {
   AreasIndexRoute: AreasIndexRoute,
   BlogIndexRoute: BlogIndexRoute,
   DevelopersIndexRoute: DevelopersIndexRoute,
+  DirectoryIndexRoute: DirectoryIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
@@ -1041,6 +1307,14 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAdvisorVoiceRoute: ApiAdvisorVoiceRoute,
   ApiLeadsGoogleRoute: ApiLeadsGoogleRoute,
   ApiLeadsMetaRoute: ApiLeadsMetaRoute,
+  DirectoryBrokersIdRoute: DirectoryBrokersIdRoute,
+  DirectoryDevelopersSlugRoute: DirectoryDevelopersSlugRoute,
+  DirectoryOfficesIdRoute: DirectoryOfficesIdRoute,
+  DirectoryProjectsSlugRoute: DirectoryProjectsSlugRoute,
+  DirectoryBrokersIndexRoute: DirectoryBrokersIndexRoute,
+  DirectoryDevelopersIndexRoute: DirectoryDevelopersIndexRoute,
+  DirectoryOfficesIndexRoute: DirectoryOfficesIndexRoute,
+  DirectoryProjectsIndexRoute: DirectoryProjectsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

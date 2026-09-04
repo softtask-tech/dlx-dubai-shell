@@ -117,6 +117,70 @@ export const SITE_PAGES: readonly SitePage[] = [
     changeFrequency: "weekly",
   },
   {
+    path: "/directory",
+    inPrimaryNav: false,
+    label: "DLD Directory",
+    title: "Dubai Land Department Open Data Directory",
+    description:
+      "Search public developer, project, broker, office, licence, permit, valuator, escrow-agent and community records from dated DLD exports.",
+    tagline: "Recorded in DLD open data, presented independently.",
+    priority: 0.7,
+    changeFrequency: "weekly",
+  },
+  ...(
+    [
+      [
+        "developers",
+        "Developers",
+        "Developer registration and licence facts recorded in Dubai Land Department open data.",
+      ],
+      [
+        "projects",
+        "Projects",
+        "Project numbers, status and matched relationships recorded in Dubai Land Department open data.",
+      ],
+      [
+        "brokers",
+        "Brokers",
+        "Broker names, registration numbers and matched office affiliations recorded in DLD open data.",
+      ],
+      [
+        "offices",
+        "Offices",
+        "Real estate office and licence facts recorded in Dubai Land Department open data.",
+      ],
+      [
+        "licences",
+        "Licences",
+        "Professional real estate licence facts and status dates recorded in DLD open data.",
+      ],
+      [
+        "permits",
+        "Permits",
+        "Real estate permit numbers, services and status dates recorded in DLD open data.",
+      ],
+      [
+        "valuators",
+        "Valuators",
+        "Valuator and valuation-company registration facts recorded in DLD open data.",
+      ],
+      [
+        "escrow-agents",
+        "Escrow Agents",
+        "Approved escrow-agent names and numbers recorded in Dubai Land Department open data.",
+      ],
+    ] as const
+  ).map(([slug, label, description]) => ({
+    path: `/directory/${slug}`,
+    inPrimaryNav: false,
+    label,
+    title: `${label} Recorded in DLD Open Data`,
+    description,
+    tagline: "Official public facts from a dated DLD export.",
+    priority: 0.5,
+    changeFrequency: "weekly" as const,
+  })),
+  {
     path: "/team",
     inPrimaryNav: false,
     label: "Team",

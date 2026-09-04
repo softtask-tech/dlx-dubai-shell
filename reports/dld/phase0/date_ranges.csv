@@ -1,0 +1,59 @@
+dataset,field,profile_kind,nonblank_rows,parsed_rows,unparsed_rows,minimum,maximum,before_1900_rows,from_2036_rows
+Accredited Trainers by the Dubai Real Estate Institute,course_date,datetime,117,117,0,2018-07-02T00:00:00,2018-12-15T00:00:00,0,0
+Accredited Trainers by the Dubai Real Estate Institute,load_timestamp,datetime,117,117,0,2022-02-10T16:13:14,2022-02-10T16:13:14,0,0
+Approved Escrow Account Agents,load_timestamp,datetime,25,25,0,2026-09-01T17:31:42,2026-09-01T17:31:42,0,0
+Building and Property Project Records,creation_date,datetime,247121,247121,0,2008-10-14T00:00:00,2026-09-02T00:00:00,0,0
+Building and Property Project Records,load_timestamp,datetime,256423,256423,0,2026-09-03T17:30:38,2026-09-03T17:30:38,0,0
+Developers Recorded in Dubai Land Department,license_expiry_date,datetime,2209,2209,0,2005-11-02T00:00:00,2100-10-10T00:00:00,0,3
+Developers Recorded in Dubai Land Department,license_issue_date,datetime,2188,2188,0,1963-01-01T00:00:00,2026-08-26T00:00:00,0,0
+Developers Recorded in Dubai Land Department,registration_date,datetime,2335,2335,0,2007-01-07T00:00:00,2026-08-27T00:00:00,0,0
+Developers Recorded in Dubai Land Department,load_timestamp,datetime,2348,2348,0,2026-09-01T17:31:58,2026-09-01T17:31:58,0,0
+Elders and People of Determination,service_month,month,6120,6120,0,4,8,,
+Elders and People of Determination,service_year,year,6120,6120,0,2019,2019,,
+Elders and People of Determination,load_timestamp,datetime,6120,6120,0,2019-05-29T12:12:38,2026-09-01T17:52:13,0,0
+Free Zone Companies Licensing,license_expiry_date,datetime,250,250,0,2024-05-12T00:00:00,2027-10-29T00:00:00,0,0
+Free Zone Companies Licensing,license_issue_date,datetime,250,250,0,1995-10-14T00:00:00,2024-12-09T00:00:00,0,0
+Free Zone Companies Licensing,load_timestamp,datetime,250,250,0,2024-12-01T17:56:39,2024-12-01T17:56:39,0,0
+Land Registry,load_timestamp,datetime,263663,263663,0,2026-09-03T17:30:34,2026-09-03T17:30:34,0,0
+Licenced Owner Associations,load_timestamp,datetime,110,110,0,2026-07-07T09:24:46,2026-07-07T09:24:46,0,0
+Licensed Real Estate Valuators,license_end_date,datetime,153,153,0,2026-09-19T00:00:00,2027-09-17T00:00:00,0,0
+Licensed Real Estate Valuators,license_start_date,datetime,153,153,0,2009-08-26T00:00:00,2026-08-25T00:00:00,0,0
+Licensed Real Estate Valuators,load_timestamp,datetime,153,153,0,2026-09-03T18:28:58,2026-09-03T18:28:58,0,0
+Lookup Dubai Community Areas,load_timestamp,datetime,301,301,0,2026-09-01T17:52:41,2026-09-01T17:52:41,0,0
+Lookup Real Estate Market Types,load_timestamp,datetime,2,2,0,2026-09-01T17:52:40,2026-09-01T17:52:40,0,0
+Lookup Real Estate Transactions Groups,load_timestamp,datetime,3,3,0,2026-09-01T17:53:02,2026-09-01T17:53:02,0,0
+Lookup Real Estate Transactions Procedures,load_timestamp,datetime,64,64,0,2026-09-01T17:53:06,2026-09-01T17:53:06,0,0
+Owners Association Service Charges,budget_year,year,91193,91193,0,2017,2024,,
+Owners Association Service Charges,load_timestamp,datetime,91193,91193,0,2024-01-05T13:30:03,2024-01-05T13:30:03,0,0
+Property Map Requests,request_date,datetime,1021252,1021252,0,2003-05-17T00:00:00,2026-09-03T00:00:00,0,0
+Property Map Requests,load_timestamp,datetime,1021252,1021252,0,2026-09-03T17:31:46,2026-09-03T17:31:46,0,0
+Property Valuation Records,instance_date,datetime,90771,90771,0,2000-05-07T00:00:00,2026-09-03T00:00:00,0,0
+Property Valuation Records,procedure_year,year,90771,90771,0,2000,2026,,
+Property Valuation Records,load_timestamp,datetime,90771,90771,0,2026-09-03T18:28:58,2026-09-03T18:28:58,0,0
+Real Estate Brokers,license_end_date,datetime,8724,8724,0,2025-10-02T00:00:00,2028-09-22T00:00:00,0,0
+Real Estate Brokers,license_start_date,datetime,8723,8723,0,2006-05-03T00:00:00,2025-10-01T00:00:00,0,0
+Real Estate Brokers,load_timestamp,datetime,8724,8724,0,2025-10-02T14:39:55,2025-10-02T14:39:55,0,0
+Real Estate Licenses,cancel_date,datetime,123,123,0,2010-05-31T00:00:00,2026-09-02T00:00:00,0,0
+Real Estate Licenses,expiry_date,datetime,2945,2945,0,0206-04-23T00:00:00,2029-11-23T00:00:00,1,0
+Real Estate Licenses,issue_date,datetime,2940,2940,0,1963-01-01T00:00:00,2022-07-18T00:00:00,0,0
+Real Estate Licenses,load_timestamp,datetime,2948,2948,0,2026-09-03T17:30:52,2026-09-03T17:30:52,0,0
+Real Estate Offices,license_expiry_date,datetime,4947,4947,0,2007-09-06T00:00:00,2030-08-08T00:00:00,0,0
+Real Estate Offices,license_issue_date,datetime,4940,4940,0,1963-01-01T00:00:00,2025-01-14T00:00:00,0,0
+Real Estate Offices,load_timestamp,datetime,4963,4963,0,2026-09-01T17:55:24,2026-09-01T17:55:24,0,0
+Real Estate Permits,end_date,datetime,175056,175056,0,2016-08-12T00:00:00,2027-09-08T00:00:00,0,0
+Real Estate Permits,start_date,datetime,175056,175056,0,2016-06-03T00:00:00,2027-04-29T00:00:00,0,0
+Real Estate Permits,load_timestamp,datetime,175056,175056,0,2026-09-03T17:31:42,2026-09-03T17:31:42,0,0
+Real Estate Projects,cancellation_date,datetime,33,33,0,2012-03-11T00:00:00,2025-01-29T00:00:00,0,0
+Real Estate Projects,completion_date,datetime,1848,1848,0,2003-01-01T00:00:00,2029-12-31T00:00:00,0,0
+Real Estate Projects,project_end_date,datetime,2763,2763,0,2000-08-28T00:00:00,2031-12-31T00:00:00,0,0
+Real Estate Projects,project_start_date,datetime,3034,3034,0,1998-01-01T00:00:00,2026-07-01T00:00:00,0,0
+Real Estate Projects,load_timestamp,datetime,3039,3039,0,2026-06-15T15:24:01,2026-06-15T15:24:01,0,0
+Real Estate Transactions,instance_date,datetime,1776143,1776143,0,1416-07-02T00:00:00,2026-09-02T00:00:00,4,0
+Real Estate Transactions,load_timestamp,datetime,1776143,1776143,0,2026-09-03T17:31:36,2026-09-03T17:31:36,0,0
+Registered Freehold Real Estate Units,creation_date,datetime,2276740,2276740,0,2008-10-14T00:00:00,2026-09-02T00:00:00,0,0
+Registered Freehold Real Estate Units,load_timestamp,datetime,2374726,2374726,0,2026-09-03T18:30:14,2026-09-03T18:30:14,0,0
+Rent Contracts,contract_end_date,datetime,10442927,10442927,0,2002-02-15T00:00:00,5013-05-28T00:00:00,0,1119
+Rent Contracts,contract_start_date,datetime,10442927,10442927,0,2001-02-15T00:00:00,2205-07-16T00:00:00,0,6
+Rent Contracts,load_timestamp,datetime,10442927,10442927,0,2026-09-03T17:36:42,2026-09-03T17:36:42,0,0
+Residential Sale Index,first_date_of_month,month,159,0,159,,,,
+Residential Sale Index,load_timestamp,datetime,159,159,0,2026-09-01T18:28:22,2026-09-01T18:28:22,0,0

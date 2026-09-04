@@ -1,0 +1,80 @@
+[
+  {
+    "relationship": "projects.source_developer_id -> developers.developer_id",
+    "child_total_rows": 3039,
+    "child_non_null_rows": 3037,
+    "child_null_rows": 2,
+    "child_distinct_keys": 1031,
+    "matched_rows": 3029,
+    "matched_distinct_keys": 1027,
+    "orphan_rows": 8,
+    "orphan_distinct_keys": 4,
+    "row_match_percent": 99.736582,
+    "key_match_percent": 99.612027
+  },
+  {
+    "relationship": "projects.area_id -> communities.area_id",
+    "child_total_rows": 3039,
+    "child_non_null_rows": 3039,
+    "child_null_rows": 0,
+    "child_distinct_keys": 71,
+    "matched_rows": 3039,
+    "matched_distinct_keys": 71,
+    "orphan_rows": 0,
+    "orphan_distinct_keys": 0,
+    "row_match_percent": 100.0,
+    "key_match_percent": 100.0
+  },
+  {
+    "relationship": "projects.source_escrow_agent_number -> escrow_agents.escrow_agent_number",
+    "child_total_rows": 3039,
+    "child_non_null_rows": 2879,
+    "child_null_rows": 160,
+    "child_distinct_keys": 39,
+    "matched_rows": 2718,
+    "matched_distinct_keys": 20,
+    "orphan_rows": 161,
+    "orphan_distinct_keys": 19,
+    "row_match_percent": 94.40778,
+    "key_match_percent": 51.282051
+  },
+  {
+    "relationship": "broker_office_links.source_office_id -> offices.office_id",
+    "child_total_rows": 8724,
+    "child_non_null_rows": 8724,
+    "child_null_rows": 0,
+    "child_distinct_keys": 792,
+    "matched_rows": 8711,
+    "matched_distinct_keys": 789,
+    "orphan_rows": 13,
+    "orphan_distinct_keys": 3,
+    "row_match_percent": 99.850986,
+    "key_match_percent": 99.621212
+  },
+  {
+    "relationship": "offices.participant_id -> licences.participant_id",
+    "child_total_rows": 2574,
+    "child_non_null_rows": 2574,
+    "child_null_rows": 0,
+    "child_distinct_keys": 2574,
+    "matched_rows": 372,
+    "matched_distinct_keys": 372,
+    "orphan_rows": 2202,
+    "orphan_distinct_keys": 2202,
+    "row_match_percent": 14.452214,
+    "key_match_percent": 14.452214
+  },
+  {
+    "relationship": "developers.participant_id -> licences.participant_id",
+    "child_total_rows": 2348,
+    "child_non_null_rows": 2348,
+    "child_null_rows": 0,
+    "child_distinct_keys": 2347,
+    "matched_rows": 78,
+    "matched_distinct_keys": 77,
+    "orphan_rows": 2270,
+    "orphan_distinct_keys": 2270,
+    "row_match_percent": 3.321976,
+    "key_match_percent": 3.280784
+  }
+]

@@ -1,0 +1,197 @@
+{
+  "status": "pass",
+  "phase0_database_read_only": true,
+  "approved_source_dataset_count": 11,
+  "output_counts": {
+    "communities": 301,
+    "developers": 2348,
+    "projects": 3039,
+    "brokers": 8709,
+    "broker_office_links": 8724,
+    "offices": 2574,
+    "office_activities": 4963,
+    "licences": 2948,
+    "permits": 175056,
+    "valuators": 153,
+    "escrow_agents": 25,
+    "owner_associations": 110,
+    "free_zone_companies": 250,
+    "search_index": 195513
+  },
+  "unique_key_tests": [
+    {
+      "entity": "communities",
+      "rows": 301,
+      "distinct_keys": 301,
+      "duplicate_keys": 0,
+      "status": "pass"
+    },
+    {
+      "entity": "developers",
+      "rows": 2348,
+      "distinct_keys": 2348,
+      "duplicate_keys": 0,
+      "status": "pass"
+    },
+    {
+      "entity": "projects",
+      "rows": 3039,
+      "distinct_keys": 3039,
+      "duplicate_keys": 0,
+      "status": "pass"
+    },
+    {
+      "entity": "brokers",
+      "rows": 8709,
+      "distinct_keys": 8709,
+      "duplicate_keys": 0,
+      "status": "pass"
+    },
+    {
+      "entity": "broker_office_links",
+      "rows": 8724,
+      "distinct_keys": 8724,
+      "duplicate_keys": 0,
+      "status": "pass"
+    },
+    {
+      "entity": "offices",
+      "rows": 2574,
+      "distinct_keys": 2574,
+      "duplicate_keys": 0,
+      "status": "pass"
+    },
+    {
+      "entity": "office_activities",
+      "rows": 4963,
+      "distinct_keys": 4963,
+      "duplicate_keys": 0,
+      "status": "pass"
+    },
+    {
+      "entity": "licences",
+      "rows": 2948,
+      "distinct_keys": 2948,
+      "duplicate_keys": 0,
+      "status": "pass"
+    },
+    {
+      "entity": "permits",
+      "rows": 175056,
+      "distinct_keys": 175056,
+      "duplicate_keys": 0,
+      "status": "pass"
+    },
+    {
+      "entity": "valuators",
+      "rows": 153,
+      "distinct_keys": 153,
+      "duplicate_keys": 0,
+      "status": "pass"
+    },
+    {
+      "entity": "escrow_agents",
+      "rows": 25,
+      "distinct_keys": 25,
+      "duplicate_keys": 0,
+      "status": "pass"
+    },
+    {
+      "entity": "owner_associations",
+      "rows": 110,
+      "distinct_keys": 110,
+      "duplicate_keys": 0,
+      "status": "pass"
+    },
+    {
+      "entity": "free_zone_companies",
+      "rows": 250,
+      "distinct_keys": 250,
+      "duplicate_keys": 0,
+      "status": "pass"
+    }
+  ],
+  "relationship_test_count": 6,
+  "search_tests": [
+    {
+      "test": "english developer",
+      "entity_type": "developer",
+      "query": "ZAYA ZUHA ISLAND FOR REAL ESTATE DEVELOPMENT L.L.C",
+      "normalized_query": "zaya zuha island for real estate development l l c",
+      "matches": 1,
+      "status": "pass"
+    },
+    {
+      "test": "arabic developer",
+      "entity_type": "developer",
+      "query": "جزيره زايا زوها للتطوير العقاري ش.ذ.م.م",
+      "normalized_query": "جزيره زايا زوها للتطوير العقاري ش ذ م م",
+      "matches": 1,
+      "status": "pass"
+    },
+    {
+      "test": "english broker",
+      "entity_type": "broker",
+      "query": "FUAD AHMAD BASHEER AHMAD",
+      "normalized_query": "fuad ahmad basheer ahmad",
+      "matches": 1,
+      "status": "pass"
+    },
+    {
+      "test": "arabic broker",
+      "entity_type": "broker",
+      "query": "فواد احمد بشير احمد",
+      "normalized_query": "فواد احمد بشير احمد",
+      "matches": 1,
+      "status": "pass"
+    },
+    {
+      "test": "community name",
+      "entity_type": "community",
+      "query": "Trade Center First",
+      "normalized_query": "trade center first",
+      "matches": 1,
+      "status": "pass"
+    },
+    {
+      "test": "project number",
+      "entity_type": "project",
+      "query": "2744",
+      "normalized_query": "2744",
+      "matches": 1,
+      "status": "pass"
+    },
+    {
+      "test": "licence number",
+      "entity_type": "licence",
+      "query": "568286",
+      "normalized_query": "568286",
+      "matches": 3,
+      "status": "pass"
+    },
+    {
+      "test": "permit number",
+      "entity_type": "permit",
+      "query": "56324",
+      "normalized_query": "56324",
+      "matches": 2,
+      "status": "pass"
+    }
+  ],
+  "search_entity_types": [
+    "broker",
+    "community",
+    "developer",
+    "escrow_agent",
+    "free_zone_company",
+    "licence",
+    "office",
+    "owner_association",
+    "permit",
+    "project",
+    "valuator"
+  ],
+  "forbidden_public_fields_found": [],
+  "idempotent_rerun": true,
+  "non_affiliation_wording": "Independent directory using Dubai Land Department open data; no affiliation or endorsement is implied."
+}

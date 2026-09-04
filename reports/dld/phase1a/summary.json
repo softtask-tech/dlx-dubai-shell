@@ -1,0 +1,103 @@
+{
+  "source_export_dates": {
+    "communities": "2026-09-01",
+    "developers": "2026-09-01",
+    "projects": "2026-07-06",
+    "brokers": "2026-07-03",
+    "offices": "2026-09-01",
+    "licences": "2026-09-03",
+    "permits": "2026-09-03",
+    "valuators": "2026-09-03",
+    "escrow_agents": "2026-09-01",
+    "owner_associations": "2026-07-07",
+    "free_zone_companies": "2026-07-01"
+  },
+  "output_counts": {
+    "communities": 301,
+    "developers": 2348,
+    "projects": 3039,
+    "brokers": 8709,
+    "broker_office_links": 8724,
+    "offices": 2574,
+    "office_activities": 4963,
+    "licences": 2948,
+    "permits": 175056,
+    "valuators": 153,
+    "escrow_agents": 25,
+    "owner_associations": 110,
+    "free_zone_companies": 250,
+    "search_index": 195513
+  },
+  "output_manifest": [
+    {
+      "file": "broker_office_links.parquet",
+      "bytes": 103078,
+      "sha256": "a8fb6ee313dc2cf337e35df54889a1d4b2f70e95a85ce54ba31c619d98111e18"
+    },
+    {
+      "file": "brokers.parquet",
+      "bytes": 792617,
+      "sha256": "63ab878f8c06ff3933d821ecd2d638a2351ab03f8333dd5e74b13c58e1f544b5"
+    },
+    {
+      "file": "communities.parquet",
+      "bytes": 15019,
+      "sha256": "bf7ef2720745be76e1c17aa0e307653fceb121373a5720dbf789683ba2caf26d"
+    },
+    {
+      "file": "developers.parquet",
+      "bytes": 224612,
+      "sha256": "4e8e0b7c8994f923c07441f67bd3f0620420c69d0d32b86f5c79496431d5834c"
+    },
+    {
+      "file": "escrow_agents.parquet",
+      "bytes": 4338,
+      "sha256": "1ace7b8bc5b6a8abd08f50f5a2fd517307b0ce7cf418ab35af9e873317665192"
+    },
+    {
+      "file": "free_zone_companies.parquet",
+      "bytes": 32047,
+      "sha256": "fe69817d5bdd6877c256bb88a59a1d8320fc614ec937c19cc9468992f9bcb109"
+    },
+    {
+      "file": "licences.parquet",
+      "bytes": 335285,
+      "sha256": "e7ec8d739e14b3aa8b255efd2094c9cfc6e1a5594b09216db80dd45fef4cdf30"
+    },
+    {
+      "file": "office_activities.parquet",
+      "bytes": 38397,
+      "sha256": "d39c154c21a001965cd0be3ab98e1e639a771de4cf107e3e838c42ec5ff03383"
+    },
+    {
+      "file": "offices.parquet",
+      "bytes": 110225,
+      "sha256": "0db8bb102e83b0de87e357413751fb6686b7e2c816a09c1d9a47cb3ed67ca223"
+    },
+    {
+      "file": "owner_associations.parquet",
+      "bytes": 16528,
+      "sha256": "8c3510690db6909d18b098b1b2bee625137e8e5a8c7b4da55581c3356ac63a07"
+    },
+    {
+      "file": "permits.parquet",
+      "bytes": 6291071,
+      "sha256": "4471b9483029880b1016b315d2c1379c1ed9e73244c1b40860cfcf7e684b4254"
+    },
+    {
+      "file": "projects.parquet",
+      "bytes": 243913,
+      "sha256": "99106ea6c8a0db44c04a5d90f293def8f6221f59bd79e26db7d8e3f7d8613d08"
+    },
+    {
+      "file": "search_index.parquet",
+      "bytes": 7294873,
+      "sha256": "a69567d5abb6d07b4ac34c7bf3ac2acbcdcb69abdd5d63e3e6a040a92eedc08d"
+    },
+    {
+      "file": "valuators.parquet",
+      "bytes": 26521,
+      "sha256": "eb712d87d089e637c2ac11b396df5965e3311f36cfda36652c2d4b52897d793e"
+    }
+  ]
+}

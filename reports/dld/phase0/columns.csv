@@ -1,0 +1,514 @@
+dataset,table,ordinal,field,rows,null_rows,null_percent,approx_distinct,min_length,max_length,dictionary_present,declared_data_type,declared_primary_key
+Accredited Trainers by the Dubai Real Estate Institute,accredited_trainers,1,age_group,117,0,0.0,6,3,5,True,nvarchar,True
+Accredited Trainers by the Dubai Real Estate Institute,accredited_trainers,2,cource_title_ar,117,0,0.0,2,28,30,True,nvarchar,True
+Accredited Trainers by the Dubai Real Estate Institute,accredited_trainers,3,cource_title_en,117,0,0.0,2,42,42,True,nvarchar,True
+Accredited Trainers by the Dubai Real Estate Institute,accredited_trainers,4,course_code,117,0,0.0,2,3,5,True,nvarchar,True
+Accredited Trainers by the Dubai Real Estate Institute,accredited_trainers,5,course_date,117,0,0.0,17,10,10,True,nvarchar,True
+Accredited Trainers by the Dubai Real Estate Institute,accredited_trainers,6,course_time_from,117,0,0.0,1,7,7,True,nvarchar,True
+Accredited Trainers by the Dubai Real Estate Institute,accredited_trainers,7,course_time_to,117,0,0.0,2,7,7,True,nvarchar,True
+Accredited Trainers by the Dubai Real Estate Institute,accredited_trainers,8,course_to,117,0,0.0,20,10,10,True,nvarchar,True
+Accredited Trainers by the Dubai Real Estate Institute,accredited_trainers,9,no_of_trainees,117,0,0.0,23,1,2,True,numeric,True
+Accredited Trainers by the Dubai Real Estate Institute,accredited_trainers,10,trainee_gender,117,0,0.0,2,4,6,True,nvarchar,True
+Accredited Trainers by the Dubai Real Estate Institute,accredited_trainers,11,load_timestamp,117,0,0.0,1,24,24,False,,False
+Approved Escrow Account Agents,escrow_agents,1,escrow_agent_name_ar,25,0,0.0,23,9,62,True,nvarchar,False
+Approved Escrow Account Agents,escrow_agents,2,escrow_agent_name_en,25,0,0.0,24,13,67,True,nvarchar,False
+Approved Escrow Account Agents,escrow_agents,3,escrow_agent_number,25,0,0.0,28,4,5,True,numeric,True
+Approved Escrow Account Agents,escrow_agents,4,phone,25,20,80.0,4,11,11,True,nvarchar,False
+Approved Escrow Account Agents,escrow_agents,5,load_timestamp,25,0,0.0,1,23,23,False,,False
+Building and Property Project Records,buildings,1,actual_area,256423,12849,5.010861,74119,4,13,True,number,False
+Building and Property Project Records,buildings,2,actual_common_area,256423,131641,51.337439,33929,4,7,True,number,False
+Building and Property Project Records,buildings,3,area_id,256423,0,0.0,194,3,3,True,number,False
+Building and Property Project Records,buildings,4,area_name_ar,256423,0,0.0,197,3,26,True,nvarchar,False
+Building and Property Project Records,buildings,5,area_name_en,256423,0,0.0,224,4,33,True,nvarchar,False
+Building and Property Project Records,buildings,6,bld_levels,256423,249251,97.203059,98,1,3,True,number,False
+Building and Property Project Records,buildings,7,building_number,256423,34126,13.308479,155749,1,33,True,nvarchar,False
+Building and Property Project Records,buildings,8,built_up_area,256423,19629,7.65493,25815,4,11,True,number,False
+Building and Property Project Records,buildings,9,car_parks,256423,24989,9.745226,845,1,5,True,number,False
+Building and Property Project Records,buildings,10,common_area,256423,79674,31.071316,3707,6,14,True,number,False
+Building and Property Project Records,buildings,11,creation_date,256423,9302,3.6276,4793,10,10,True,date,False
+Building and Property Project Records,buildings,12,elevators,256423,251666,98.144862,41,4,5,True,number,False
+Building and Property Project Records,buildings,13,flats,256423,251046,97.903074,372,1,4,True,number,False
+Building and Property Project Records,buildings,14,floors,256423,39495,15.402285,105,1,3,True,nvarchar,False
+Building and Property Project Records,buildings,15,is_free_hold,256423,4591,1.790401,2,1,1,True,number,False
+Building and Property Project Records,buildings,16,is_lease_hold,256423,104811,40.874259,2,1,1,True,number,False
+Building and Property Project Records,buildings,17,is_registered,256423,75684,29.515293,2,4,4,True,number,False
+Building and Property Project Records,buildings,18,land_number,256423,0,0.0,16687,1,5,True,nvarchar,False
+Building and Property Project Records,buildings,19,land_sub_number,256423,0,0.0,2064,1,4,True,number,False
+Building and Property Project Records,buildings,20,land_type_ar,256423,24003,9.360705,9,4,15,True,varchar2,False
+Building and Property Project Records,buildings,21,land_type_en,256423,24003,9.360705,9,10,22,True,varchar2,False
+Building and Property Project Records,buildings,22,land_type_id,256423,24003,9.360705,10,4,5,True,number,False
+Building and Property Project Records,buildings,23,master_project_ar,256423,127119,49.573946,151,3,53,True,nvarchar,False
+Building and Property Project Records,buildings,24,master_project_en,256423,127090,49.562637,170,5,58,True,nvarchar,False
+Building and Property Project Records,buildings,25,master_project_id,256423,127090,49.562637,190,1,3,True,number,False
+Building and Property Project Records,buildings,26,offices,256423,246931,96.298304,206,1,3,True,number,False
+Building and Property Project Records,buildings,27,parcel_id,256423,6070,2.367182,121611,10,11,True,number,False
+Building and Property Project Records,buildings,28,parent_property_id,256423,12782,4.984732,143311,5,13,True,number,False
+Building and Property Project Records,buildings,29,pre_registration_number,256423,256419,99.99844,4,6,10,True,nvarchar,False
+Building and Property Project Records,buildings,30,project_id,256423,107483,41.916287,3100,1,9,True,number,False
+Building and Property Project Records,buildings,31,project_name_ar,256423,107601,41.962304,4037,2,141,True,varchar2,False
+Building and Property Project Records,buildings,32,project_name_en,256423,107601,41.962304,3753,2,78,True,varchar2,False
+Building and Property Project Records,buildings,33,property_id,256423,0,0.0,255624,5,13,True,number,False
+Building and Property Project Records,buildings,34,property_sub_type_ar,256423,0,0.0,10,3,8,True,nvarchar,False
+Building and Property Project Records,buildings,35,property_sub_type_en,256423,0,0.0,10,4,9,True,nvarchar,False
+Building and Property Project Records,buildings,36,property_sub_type_id,256423,0,0.0,10,4,6,True,number,False
+Building and Property Project Records,buildings,37,property_type_ar,256423,0,0.0,1,4,4,True,nvarchar,False
+Building and Property Project Records,buildings,38,property_type_en,256423,0,0.0,1,8,8,True,nvarchar,False
+Building and Property Project Records,buildings,39,property_type_id,256423,0,0.0,1,4,4,True,number,False
+Building and Property Project Records,buildings,40,rooms,256423,30951,12.07029,123,1,9,True,number,False
+Building and Property Project Records,buildings,41,rooms_ar,256423,31038,12.104218,62,3,17,True,varchar2,False
+Building and Property Project Records,buildings,42,rooms_en,256423,31038,12.104218,64,2,23,True,varchar2,False
+Building and Property Project Records,buildings,43,shops,256423,246934,96.299474,87,1,4,True,number,False
+Building and Property Project Records,buildings,44,swimming_pools,256423,251699,98.157732,11,4,5,True,number,False
+Building and Property Project Records,buildings,45,zone_id,256423,0,0.0,2,4,4,True,number,False
+Building and Property Project Records,buildings,46,load_timestamp,256423,0,0.0,1,23,23,False,,False
+Developers Recorded in Dubai Land Department,developers,1,chamber_of_commerce_no,2348,1795,76.448041,495,1,7,True,VARCHAR2(20),False
+Developers Recorded in Dubai Land Department,developers,2,developer_id,2348,0,0.0,2840,1,9,True,NUMBER(10),True
+Developers Recorded in Dubai Land Department,developers,3,developer_name_ar,2348,0,0.0,2736,10,107,True,NVARCHAR2(200),False
+Developers Recorded in Dubai Land Department,developers,4,developer_name_en,2348,0,0.0,2765,7,125,True,NVARCHAR2(200),False
+Developers Recorded in Dubai Land Department,developers,5,developer_number,2348,0,0.0,2186,4,7,True,NUMBER,False
+Developers Recorded in Dubai Land Department,developers,6,fax,2348,1326,56.473595,796,1,20,True,NVARCHAR2(50),False
+Developers Recorded in Dubai Land Department,developers,7,legal_status,2348,1247,53.109029,6,4,10,True,NUMBER,False
+Developers Recorded in Dubai Land Department,developers,8,legal_status_ar,2348,1377,58.645656,5,9,15,True,NVARCHAR2(100),False
+Developers Recorded in Dubai Land Department,developers,9,legal_status_en,2348,1377,58.645656,5,8,22,True,NVARCHAR2(100),False
+Developers Recorded in Dubai Land Department,developers,10,license_expiry_date,2348,139,5.919932,1057,10,10,True,DATE (DD-MM-YYYY),False
+Developers Recorded in Dubai Land Department,developers,11,license_issue_date,2348,160,6.81431,1626,10,10,True,DATE (DD-MM-YYYY),False
+Developers Recorded in Dubai Land Department,developers,12,license_number,2348,75,3.194208,1925,1,20,True,NVARCHAR2(50),False
+Developers Recorded in Dubai Land Department,developers,13,license_source_ar,2348,1383,58.901193,18,4,56,True,NVARCHAR2(200),False
+Developers Recorded in Dubai Land Department,developers,14,license_source_en,2348,1383,58.901193,16,3,49,True,NVARCHAR2(200),False
+Developers Recorded in Dubai Land Department,developers,15,license_source_id,2348,1383,58.901193,20,1,2,True,NUMBER(10),False
+Developers Recorded in Dubai Land Department,developers,16,license_type_ar,2348,554,23.594549,9,5,18,True,NVARCHAR2(100),False
+Developers Recorded in Dubai Land Department,developers,17,license_type_en,2348,554,23.594549,10,8,15,True,NVARCHAR2(100),False
+Developers Recorded in Dubai Land Department,developers,18,license_type_id,2348,532,22.657581,11,1,7,True,NUMBER(10),False
+Developers Recorded in Dubai Land Department,developers,19,participant_id,2348,0,0.0,2127,6,9,True,NUMBER(10),False
+Developers Recorded in Dubai Land Department,developers,20,phone,2348,1072,45.655877,1158,1,21,True,NVARCHAR2(50),False
+Developers Recorded in Dubai Land Department,developers,21,registration_date,2348,13,0.553663,1262,10,10,True,DATE (DD-MM-YYYY),False
+Developers Recorded in Dubai Land Department,developers,22,webpage,2348,1626,69.250426,421,1,55,True,NVARCHAR2(100),False
+Developers Recorded in Dubai Land Department,developers,23,load_timestamp,2348,0,0.0,1,23,23,False,,False
+Elders and People of Determination,elders_people_of_determination,1,average_service_time,6120,0,0.0,18,7,7,True,VARCHAR2,False
+Elders and People of Determination,elders_people_of_determination,2,average_wating_time,6120,0,0.0,15,7,7,True,VARCHAR2,False
+Elders and People of Determination,elders_people_of_determination,3,percent_service_time_in_target,6120,0,0.0,9,1,3,True,NUMERIC,False
+Elders and People of Determination,elders_people_of_determination,4,percent_waiting_time_in_target,6120,0,0.0,5,1,3,True,NUMERIC,False
+Elders and People of Determination,elders_people_of_determination,5,service_location_ar,6120,0,0.0,1,22,22,True,NVARCHAR2,False
+Elders and People of Determination,elders_people_of_determination,6,service_location_en,6120,0,0.0,1,21,21,True,NVARCHAR2,False
+Elders and People of Determination,elders_people_of_determination,7,service_month,6120,0,0.0,4,1,1,True,NUMBER,True
+Elders and People of Determination,elders_people_of_determination,8,service_name_ar,6120,0,0.0,20,10,33,True,VARCHAR2,False
+Elders and People of Determination,elders_people_of_determination,9,service_name_en,6120,0,0.0,20,8,52,True,NVARCHAR2,False
+Elders and People of Determination,elders_people_of_determination,10,service_year,6120,0,0.0,1,4,4,True,NUMBER,True
+Elders and People of Determination,elders_people_of_determination,11,target_service_time,6120,0,0.0,1,4,4,True,VARCHAR2,False
+Elders and People of Determination,elders_people_of_determination,12,target_waiting_time,6120,0,0.0,1,5,5,True,VARCHAR2,False
+Elders and People of Determination,elders_people_of_determination,13,total_no_of_tickets,6120,0,0.0,10,1,2,True,NVARCHAR2,False
+Elders and People of Determination,elders_people_of_determination,14,load_timestamp,6120,0,0.0,75,23,23,False,,False
+Free Zone Companies Licensing,free_zone_companies,1,email,250,0,0.0,222,11,38,True,nvarchar,False
+Free Zone Companies Licensing,free_zone_companies,2,fz_company_name_ar,250,0,0.0,254,6,69,True,nvarchar,False
+Free Zone Companies Licensing,free_zone_companies,3,fz_company_name_en,250,0,0.0,235,7,80,True,nvarchar,False
+Free Zone Companies Licensing,free_zone_companies,4,fz_company_number,250,0,0.0,279,6,7,True,nvarchar,True
+Free Zone Companies Licensing,free_zone_companies,5,license_expiry_date,250,0,0.0,174,10,10,True,date,False
+Free Zone Companies Licensing,free_zone_companies,6,license_issue_date,250,0,0.0,195,10,10,True,date,False
+Free Zone Companies Licensing,free_zone_companies,7,license_number,250,0,0.0,209,2,12,True,nvarchar,False
+Free Zone Companies Licensing,free_zone_companies,8,license_source_ar,250,1,0.4,16,4,35,True,nvarchar,False
+Free Zone Companies Licensing,free_zone_companies,9,license_source_en,250,6,2.4,14,5,41,True,nvarchar,False
+Free Zone Companies Licensing,free_zone_companies,10,license_source_id,250,0,0.0,18,3,8,True,numeric,False
+Free Zone Companies Licensing,free_zone_companies,11,phone,250,138,55.2,89,1,11,True,numeric,False
+Free Zone Companies Licensing,free_zone_companies,12,webpage,250,221,88.4,27,6,30,True,nvarchar,False
+Free Zone Companies Licensing,free_zone_companies,13,load_timestamp,250,0,0.0,1,23,23,False,,False
+Land Registry,land_registry,1,actual_area,263663,449,0.170293,120965,4,13,True,"NUMBER(18,2)",False
+Land Registry,land_registry,2,area_id,263663,0,0.0,234,3,3,True,NUMBER(10),False
+Land Registry,land_registry,3,area_name_ar,263663,0,0.0,255,3,26,True,NVARCHAR2(200),False
+Land Registry,land_registry,4,area_name_en,263663,0,0.0,283,4,33,True,NVARCHAR2(200),False
+Land Registry,land_registry,5,is_free_hold,263663,8072,3.061484,2,1,1,True,NUMBER(1),False
+Land Registry,land_registry,6,is_registered,263663,7445,2.82368,1,4,4,True,NUMBER,False
+Land Registry,land_registry,7,land_number,263663,0,0.0,22145,1,5,True,NVARCHAR2(100),False
+Land Registry,land_registry,8,land_sub_number,263663,0,0.0,2395,4,7,True,NUMBER,False
+Land Registry,land_registry,9,land_type_ar,263663,20240,7.676466,15,4,18,True,VARCHAR2(50),False
+Land Registry,land_registry,10,land_type_en,263663,20240,7.676466,16,7,22,True,VARCHAR2(50),False
+Land Registry,land_registry,11,land_type_id,263663,20240,7.676466,20,1,2,True,NUMBER(4),False
+Land Registry,land_registry,12,master_project_ar,263663,153891,58.366551,175,3,53,True,NVARCHAR2(250),False
+Land Registry,land_registry,13,master_project_en,263663,153759,58.316487,189,2,58,True,NVARCHAR2(250),False
+Land Registry,land_registry,14,master_project_id,263663,153759,58.316487,204,1,3,True,NUMBER(10),False
+Land Registry,land_registry,15,munc_number,263663,32528,12.33696,9347,3,4,True,NVARCHAR2(10),False
+Land Registry,land_registry,16,munc_zip_code,263663,32528,12.33696,264,3,3,True,VARCHAR2(3),False
+Land Registry,land_registry,17,parcel_id,263663,32528,12.33696,188407,10,10,True,NUMBER,False
+Land Registry,land_registry,18,pre_registration_number,263663,143732,54.513527,114332,1,46,True,NVARCHAR2(100),False
+Land Registry,land_registry,19,project_id,263663,170388,64.623402,2915,1,10,True,NUMBER(10),False
+Land Registry,land_registry,20,project_name_ar,263663,170390,64.62416,3756,2,141,True,VARCHAR2(200),False
+Land Registry,land_registry,21,project_name_en,263663,170390,64.62416,3198,2,78,True,VARCHAR2(200),False
+Land Registry,land_registry,22,property_id,263663,0,0.0,274062,5,10,True,NUMBER(10),True
+Land Registry,land_registry,23,property_sub_type_ar,263663,43082,16.339797,66,3,37,True,NVARCHAR2(50),False
+Land Registry,land_registry,24,property_sub_type_en,263663,43082,16.339797,60,4,50,True,NVARCHAR2(50),False
+Land Registry,land_registry,25,property_sub_type_id,263663,43082,16.339797,66,1,3,True,NUMBER(4),False
+Land Registry,land_registry,26,property_type_ar,263663,0,0.0,1,3,3,True,NVARCHAR2(50),False
+Land Registry,land_registry,27,property_type_en,263663,0,0.0,1,4,4,True,NVARCHAR2(50),False
+Land Registry,land_registry,28,property_type_id,263663,0,0.0,1,1,1,True,NUMBER(4),False
+Land Registry,land_registry,29,separated_from,263663,152698,57.91408,1793,6,10,True,NUMBER(10),False
+Land Registry,land_registry,30,separated_reference,263663,138910,52.684677,1155,7,10,True,NUMBER(10),False
+Land Registry,land_registry,31,zone_id,263663,0,0.0,2,1,1,True,NUMBER(4),False
+Land Registry,land_registry,32,load_timestamp,263663,0,0.0,1,23,23,False,,False
+Licenced Owner Associations,owner_associations,1,company_name_ar,110,0,0.0,103,19,88,True,nvarchar,True
+Licenced Owner Associations,owner_associations,2,company_name_en,110,0,0.0,110,19,92,True,nvarchar,True
+Licenced Owner Associations,owner_associations,3,email,110,1,0.909091,116,9,37,True,nvarchar,True
+Licenced Owner Associations,owner_associations,4,latitude,110,2,1.818182,33,5,5,True,numeric,True
+Licenced Owner Associations,owner_associations,5,longitude,110,2,1.818182,24,5,5,True,numeric,True
+Licenced Owner Associations,owner_associations,6,phone,110,8,7.272727,89,11,11,True,nvarchar,True
+Licenced Owner Associations,owner_associations,7,load_timestamp,110,0,0.0,1,23,23,False,,False
+Licensed Real Estate Valuators,valuators,1,gender_ar,153,0,0.0,2,3,4,True,nvarchar,False
+Licensed Real Estate Valuators,valuators,2,gender_en,153,0,0.0,2,4,4,True,nvarchar,False
+Licensed Real Estate Valuators,valuators,3,gender_id,153,0,0.0,2,1,1,True,number,False
+Licensed Real Estate Valuators,valuators,4,license_end_date,153,0,0.0,87,10,10,True,nvarchar,False
+Licensed Real Estate Valuators,valuators,5,license_start_date,153,0,0.0,142,10,10,True,nvarchar,False
+Licensed Real Estate Valuators,valuators,6,valuation_company_name_ar,153,0,0.0,75,14,75,True,nvarchar,False
+Licensed Real Estate Valuators,valuators,7,valuation_company_name_en,153,0,0.0,87,19,81,True,nvarchar,False
+Licensed Real Estate Valuators,valuators,8,valuation_company_number,153,0,0.0,80,3,5,True,number,True
+Licensed Real Estate Valuators,valuators,9,valuator_name_ar,153,0,0.0,140,8,53,True,nvarchar,False
+Licensed Real Estate Valuators,valuators,10,valuator_name_en,153,0,0.0,137,8,68,True,nvarchar,False
+Licensed Real Estate Valuators,valuators,11,valuator_nationality_ar,153,0,0.0,42,3,24,True,nvarchar,False
+Licensed Real Estate Valuators,valuators,12,valuator_nationality_en,153,0,0.0,40,4,20,True,nvarchar,False
+Licensed Real Estate Valuators,valuators,13,valuator_nationality_id,153,0,0.0,37,1,3,True,number,False
+Licensed Real Estate Valuators,valuators,14,valuator_number,153,0,0.0,146,4,5,True,number,True
+Licensed Real Estate Valuators,valuators,15,load_timestamp,153,0,0.0,1,23,23,False,,False
+Lookup Dubai Community Areas,areas,1,area_id,301,0,0.0,305,6,6,True,numeric,True
+Lookup Dubai Community Areas,areas,2,municipality_number,301,0,0.0,285,1,3,True,nvarchar,False
+Lookup Dubai Community Areas,areas,3,name_ar,301,0,0.0,296,3,26,True,nvarchar,False
+Lookup Dubai Community Areas,areas,4,name_en,301,0,0.0,293,4,33,True,nvarchar,False
+Lookup Dubai Community Areas,areas,5,load_timestamp,301,0,0.0,1,23,23,False,,False
+Lookup Real Estate Market Types,market_types,1,market_type_id,2,0,0.0,2,4,4,True,numeric,True
+Lookup Real Estate Market Types,market_types,2,name_ar,2,0,0.0,2,12,13,True,nvarchar,False
+Lookup Real Estate Market Types,market_types,3,name_en,2,0,0.0,2,14,16,True,nvarchar,False
+Lookup Real Estate Market Types,market_types,4,load_timestamp,2,0,0.0,1,23,23,False,,False
+Lookup Real Estate Transactions Groups,transaction_groups,1,group_id,3,0,0.0,3,4,4,True,numeric,True
+Lookup Real Estate Transactions Groups,transaction_groups,2,name_ar,3,0,0.0,3,4,7,True,nvarchar,False
+Lookup Real Estate Transactions Groups,transaction_groups,3,name_en,3,0,0.0,3,5,9,True,nvarchar,False
+Lookup Real Estate Transactions Groups,transaction_groups,4,load_timestamp,3,0,0.0,1,23,23,False,,False
+Lookup Real Estate Transactions Procedures,transaction_procedures,1,group_id,64,0,0.0,3,4,4,True,numeric,True
+Lookup Real Estate Transactions Procedures,transaction_procedures,2,is_pre_registration,64,0,0.0,2,4,4,True,numeric,False
+Lookup Real Estate Transactions Procedures,transaction_procedures,3,name_ar,64,0,0.0,70,3,40,True,nvarchar,False
+Lookup Real Estate Transactions Procedures,transaction_procedures,4,name_en,64,0,0.0,68,4,48,True,nvarchar,False
+Lookup Real Estate Transactions Procedures,transaction_procedures,5,procedure_id,64,0,0.0,65,4,6,True,numeric,False
+Lookup Real Estate Transactions Procedures,transaction_procedures,6,load_timestamp,64,0,0.0,1,23,23,False,,False
+Owners Association Service Charges,service_charges,1,budget_year,91193,0,0.0,6,4,4,True,numeric,True
+Owners Association Service Charges,service_charges,2,management_company_id,91193,0,0.0,91,5,9,True,numeric,False
+Owners Association Service Charges,service_charges,3,management_company_name_ar,91193,0,0.0,79,19,70,True,nvarchar,False
+Owners Association Service Charges,service_charges,4,management_company_name_en,91193,0,0.0,85,19,79,True,nvarchar,False
+Owners Association Service Charges,service_charges,5,master_community_id,91193,0,0.0,66,1,3,True,numeric,True
+Owners Association Service Charges,service_charges,6,master_community_name_ar,91193,0,0.0,58,4,43,True,nvarchar,False
+Owners Association Service Charges,service_charges,7,master_community_name_en,91193,0,0.0,60,5,31,True,nvarchar,False
+Owners Association Service Charges,service_charges,8,project_id,91193,8,0.008773,688,1,9,True,numeric,True
+Owners Association Service Charges,service_charges,9,project_name,91193,8,0.008773,644,2,58,True,nvarchar,False
+Owners Association Service Charges,service_charges,10,property_group_id,91193,0,0.0,2088,6,9,True,numeric,True
+Owners Association Service Charges,service_charges,11,property_group_name_ar,91193,0,0.0,2308,2,90,True,nvarchar,False
+Owners Association Service Charges,service_charges,12,property_group_name_en,91193,0,0.0,2087,2,100,True,nvarchar,False
+Owners Association Service Charges,service_charges,13,service_category_id,91193,0,0.0,17,1,5,True,numeric,True
+Owners Association Service Charges,service_charges,14,service_category_name_ar,91193,0,0.0,17,5,22,True,nvarchar,False
+Owners Association Service Charges,service_charges,15,service_category_name_en,91193,0,0.0,17,6,23,True,nvarchar,False
+Owners Association Service Charges,service_charges,16,service_cost,91193,0,0.0,557,1,5,True,numeric,False
+Owners Association Service Charges,service_charges,17,usage_id,91193,0,0.0,15,1,2,True,numeric,True
+Owners Association Service Charges,service_charges,18,usage_name_ar,91193,0,0.0,14,5,18,True,nvarchar,False
+Owners Association Service Charges,service_charges,19,usage_name_en,91193,0,0.0,17,5,18,True,nvarchar,False
+Owners Association Service Charges,service_charges,20,load_timestamp,91193,0,0.0,1,23,23,False,,False
+Property Map Requests,map_requests,1,application_id,1021252,0,0.0,7,1,2,True,number,False
+Property Map Requests,map_requests,2,application_name_ar,1021252,0,0.0,7,5,23,True,nvarchar,False
+Property Map Requests,map_requests,3,application_name_en,1021252,0,0.0,9,2,19,True,nvarchar,False
+Property Map Requests,map_requests,4,no_of_siteplans,1021252,42,0.004113,267,1,4,True,number,False
+Property Map Requests,map_requests,5,procedure_id,1021252,0,0.0,81,1,3,True,number,False
+Property Map Requests,map_requests,6,procedure_name_ar,1021252,0,0.0,85,3,41,True,nvarchar,False
+Property Map Requests,map_requests,7,procedure_name_en,1021252,0,0.0,74,4,49,True,nvarchar,False
+Property Map Requests,map_requests,8,property_type_ar,1021252,0,0.0,2,3,4,True,nvarchar,False
+Property Map Requests,map_requests,9,property_type_en,1021252,0,0.0,3,4,8,True,nvarchar,False
+Property Map Requests,map_requests,10,property_type_id,1021252,0,0.0,3,1,1,True,number,False
+Property Map Requests,map_requests,11,request_date,1021252,0,0.0,5846,10,10,True,date,False
+Property Map Requests,map_requests,12,request_id,1021252,0,0.0,1141536,6,11,True,nvarchar,True
+Property Map Requests,map_requests,13,request_source_ar,1021252,50,0.004896,5,14,27,True,nvarchar,False
+Property Map Requests,map_requests,14,request_source_en,1021252,50,0.004896,4,21,41,True,nvarchar,False
+Property Map Requests,map_requests,15,request_source_id,1021252,50,0.004896,5,1,2,True,number,False
+Property Map Requests,map_requests,16,load_timestamp,1021252,0,0.0,1,24,24,False,,False
+Property Valuation Records,valuations,1,actual_area,90771,5,0.005508,27982,4,11,True,number,False
+Property Valuation Records,valuations,2,actual_worth,90771,0,0.0,57892,6,14,True,number,False
+Property Valuation Records,valuations,3,area_id,90771,79,0.087032,217,3,3,True,number,False
+Property Valuation Records,valuations,4,area_name_ar,90771,79,0.087032,194,3,26,True,nvarchar,False
+Property Valuation Records,valuations,5,area_name_en,90771,79,0.087032,208,4,33,True,nvarchar,False
+Property Valuation Records,valuations,6,instance_date,90771,0,0.0,5171,23,23,True,time,False
+Property Valuation Records,valuations,7,procedure_area,90771,838,0.923202,28589,4,11,True,number,False
+Property Valuation Records,valuations,8,procedure_id,90771,0,0.0,1,2,2,True,number,False
+Property Valuation Records,valuations,9,procedure_name_ar,90771,0,0.0,1,10,10,True,nvarchar,False
+Property Valuation Records,valuations,10,procedure_name_en,90771,0,0.0,1,19,19,True,nvarchar,False
+Property Valuation Records,valuations,11,procedure_number,90771,0,0.0,9290,1,5,True,number,False
+Property Valuation Records,valuations,12,procedure_year,90771,0,0.0,29,4,4,True,number,False
+Property Valuation Records,valuations,13,property_sub_type_ar,90771,5544,6.107678,66,3,37,True,nvarchar,False
+Property Valuation Records,valuations,14,property_sub_type_en,90771,5544,6.107678,60,4,37,True,nvarchar,False
+Property Valuation Records,valuations,15,property_sub_type_id,90771,5544,6.107678,68,1,3,True,number,False
+Property Valuation Records,valuations,16,property_total_value,90771,0,0.0,54749,6,14,True,number,False
+Property Valuation Records,valuations,17,property_type_ar,90771,0,0.0,2,3,4,True,nvarchar,False
+Property Valuation Records,valuations,18,property_type_en,90771,0,0.0,3,4,8,True,nvarchar,False
+Property Valuation Records,valuations,19,property_type_id,90771,0,0.0,3,1,1,True,number,False
+Property Valuation Records,valuations,20,row_status_code,90771,0,0.0,3,7,9,True,nvarchar,False
+Property Valuation Records,valuations,21,load_timestamp,90771,0,0.0,1,23,23,False,,False
+Real Estate Brokers,brokers,1,broker_name_ar,8724,0,0.0,10826,6,63,True,NVARCHAR2(200),False
+Real Estate Brokers,brokers,2,broker_name_en,8724,0,0.0,6991,6,75,True,NVARCHAR2(200),False
+Real Estate Brokers,brokers,3,broker_number,8724,0,0.0,9527,2,5,True,NUMBER(10),False
+Real Estate Brokers,brokers,4,fax,8724,8724,100.0,0,,,True,NVARCHAR2(30),False
+Real Estate Brokers,brokers,5,gender,8724,2,0.022925,2,1,1,True,BOOLEAN,False
+Real Estate Brokers,brokers,6,license_end_date,8724,0,0.0,703,10,10,True,DATE (DD-MM-YYYY),False
+Real Estate Brokers,brokers,7,license_start_date,8724,1,0.011463,2498,10,10,True,DATE (DD-MM-YYYY),False
+Real Estate Brokers,brokers,8,participant_id,8724,0,0.0,8041,6,9,True,NUMBER(10),False
+Real Estate Brokers,brokers,9,phone,8724,5027,57.62265,1154,1,11,True,NVARCHAR2(100),False
+Real Estate Brokers,brokers,10,real_estate_broker_id,8724,0,0.0,8870,1,9,True,NUMBER(10),True
+Real Estate Brokers,brokers,11,real_estate_id,8724,0,0.0,849,1,9,True,NUMBER(10),False
+Real Estate Brokers,brokers,12,real_estate_number,8724,0,0.0,827,2,5,True,NUMBER,False
+Real Estate Brokers,brokers,13,webpage,8724,3216,36.863824,282,1,42,True,NVARCHAR2(200),False
+Real Estate Brokers,brokers,14,load_timestamp,8724,0,0.0,1,23,23,False,,False
+Real Estate Licenses,licences,1,activity_name_ar,2948,0,0.0,22,9,46,True,varchar2,False
+Real Estate Licenses,licences,2,activity_name_en,2948,0,0.0,25,13,58,True,varchar2,False
+Real Estate Licenses,licences,3,activity_type_id,2948,0,0.0,27,1,2,True,number,True
+Real Estate Licenses,licences,4,authority_id,2948,0,0.0,1746,1,9,True,number,False
+Real Estate Licenses,licences,5,cancel_date,2948,2825,95.82768,60,10,10,True,date,False
+Real Estate Licenses,licences,6,chamber_commerce_number,2948,237,8.039349,1263,1,6,True,number,False
+Real Estate Licenses,licences,7,commerce_registry_number,2948,239,8.107191,1708,1,7,True,number,False
+Real Estate Licenses,licences,8,ded_activity_code,2948,0,0.0,21,6,6,True,char,False
+Real Estate Licenses,licences,9,expiry_date,2948,3,0.101764,1062,10,10,True,date,False
+Real Estate Licenses,licences,10,issue_date,2948,8,0.27137,1387,10,10,True,date,False
+Real Estate Licenses,licences,11,legal_type_arabic,2948,586,19.877883,6,5,18,True,nvarchar,False
+Real Estate Licenses,licences,12,legal_type_english,2948,586,19.877883,7,8,15,True,nvarchar,False
+Real Estate Licenses,licences,13,legal_type_id,2948,488,16.553596,10,1,7,True,number,False
+Real Estate Licenses,licences,14,license_number,2948,2,0.067843,1676,1,11,True,nvarchar,False
+Real Estate Licenses,licences,15,parcel_id,2948,2850,96.675712,53,7,7,True,varchar2,False
+Real Estate Licenses,licences,16,participant_id,2948,0,0.0,1862,6,9,True,number,True
+Real Estate Licenses,licences,17,print_rmker_arabic,2948,236,8.005427,1767,1,100,True,varchar2,False
+Real Estate Licenses,licences,18,rent_contract_no,2948,956,32.428765,1166,4,16,True,varchar2,False
+Real Estate Licenses,licences,19,status_arabic,2948,236,8.005427,7,5,19,True,varchar2,False
+Real Estate Licenses,licences,20,status_english,2948,236,8.005427,6,6,24,True,varchar2,False
+Real Estate Licenses,licences,21,status_id,2948,236,8.005427,6,1,1,True,number,False
+Real Estate Licenses,licences,22,trade_name_arabic,2948,0,0.0,1758,4,107,True,nvarchar,False
+Real Estate Licenses,licences,23,trade_name_english,2948,0,0.0,1860,3,105,True,nvarchar,False
+Real Estate Licenses,licences,24,load_timestamp,2948,0,0.0,1,23,23,False,,False
+Real Estate Offices,offices,1,activity_type_ar,4963,170,3.425348,22,9,46,True,NVARCHAR2(100),False
+Real Estate Offices,offices,2,activity_type_en,4963,170,3.425348,27,13,58,True,NVARCHAR2(100),False
+Real Estate Offices,offices,3,activity_type_id,4963,170,3.425348,25,1,2,True,NUMBER(4),False
+Real Estate Offices,offices,4,ded_activity_code,4963,171,3.445497,23,6,6,True,NUMBER(10),False
+Real Estate Offices,offices,5,fax,4963,1096,22.083417,2309,1,15,True,NVARCHAR2(30),False
+Real Estate Offices,offices,6,is_branch,4963,1507,30.364699,2,4,4,True,NUMBER,False
+Real Estate Offices,offices,7,license_expiry_date,4963,16,0.322386,1474,10,10,True,DATE (DD-MM-YYYY),False
+Real Estate Offices,offices,8,license_issue_date,4963,23,0.463429,1618,10,10,True,DATE (DD-MM-YYYY),False
+Real Estate Offices,offices,9,license_number,4963,14,0.282087,2923,1,11,True,NVARCHAR2(50),False
+Real Estate Offices,offices,10,license_source_ar,4963,55,1.108201,16,4,37,True,NVARCHAR2(200),False
+Real Estate Offices,offices,11,license_source_en,4963,55,1.108201,16,5,53,True,NVARCHAR2(200),False
+Real Estate Offices,offices,12,license_source_id,4963,42,0.846262,13,1,8,True,NUMBER(10),False
+Real Estate Offices,offices,13,main_office_id,4963,4945,99.637316,5,2,4,True,NUMBER(10),False
+Real Estate Offices,offices,14,participant_id,4963,0,0.0,2935,6,9,True,NUMBER(10),False
+Real Estate Offices,offices,15,phone,4963,570,11.484989,2496,1,63,True,NVARCHAR2(100),False
+Real Estate Offices,offices,16,real_estate_id,4963,0,0.0,2597,1,9,True,NUMBER(10),True
+Real Estate Offices,offices,17,real_estate_number,4963,0,0.0,2981,4,8,True,NUMBER,False
+Real Estate Offices,offices,18,webpage,4963,3352,67.539794,674,1,51,True,NVARCHAR2(200),False
+Real Estate Offices,offices,19,load_timestamp,4963,0,0.0,1,23,23,False,,False
+Real Estate Permits,permits,1,end_date,175056,0,0.0,4018,10,10,True,date,False
+Real Estate Permits,permits,2,exhibition_name_ar,175056,174828,99.869756,93,5,56,True,varchar2,False
+Real Estate Permits,permits,3,exhibition_name_en,175056,174828,99.869756,77,5,52,True,varchar2,False
+Real Estate Permits,permits,4,license_number,175056,0,0.0,13177,3,11,True,varchar2,False
+Real Estate Permits,permits,5,location,175056,172932,98.786674,841,1,119,True,varchar2,False
+Real Estate Permits,permits,6,main_service_ar,175056,0,0.0,15,11,46,True,nvarchar,False
+Real Estate Permits,permits,7,main_service_en,175056,0,0.0,18,8,53,True,varchar2,False
+Real Estate Permits,permits,8,parent_parmits_id,175056,174959,99.944589,106,6,9,True,number,False
+Real Estate Permits,permits,9,parent_service_id,175056,0,0.0,17,1,3,True,number,False
+Real Estate Permits,permits,10,paricipant_name_en,175056,0,0.0,10217,5,111,True,varchar2,False
+Real Estate Permits,permits,11,participant_name_ar,175056,0,0.0,10907,5,140,True,nvarchar,False
+Real Estate Permits,permits,12,permit_number,175056,0,0.0,190211,3,6,True,varchar2,False
+Real Estate Permits,permits,13,permits_id,175056,0,0.0,186591,6,9,True,number,True
+Real Estate Permits,permits,14,permit_status_ar,175056,0,0.0,4,3,15,True,nvarchar,False
+Real Estate Permits,permits,15,permit_status_en,175056,0,0.0,5,8,19,True,varchar2,False
+Real Estate Permits,permits,16,permit_status_id,175056,0,0.0,5,1,1,True,number,False
+Real Estate Permits,permits,17,service_ar,175056,0,0.0,11,8,27,True,nvarchar,False
+Real Estate Permits,permits,18,service_en,175056,0,0.0,7,11,22,True,varchar2,False
+Real Estate Permits,permits,19,service_id,175056,0,0.0,53,1,3,True,number,False
+Real Estate Permits,permits,20,start_date,175056,0,0.0,3934,10,10,True,date,False
+Real Estate Permits,permits,21,load_timestamp,175056,0,0.0,1,23,23,False,,False
+Real Estate Projects,projects,1,area_id,3039,0,0.0,69,3,3,True,NUMBER(10),False
+Real Estate Projects,projects,2,area_name_ar,3039,0,0.0,60,4,25,True,NVARCHAR2(200),False
+Real Estate Projects,projects,3,area_name_en,3039,0,0.0,60,6,33,True,NVARCHAR2(200),False
+Real Estate Projects,projects,4,cancellation_date,3039,3006,98.914116,29,10,10,True,DATE (DD-MM-YYYY),False
+Real Estate Projects,projects,5,completion_date,3039,1191,39.190523,1225,10,10,True,DATE (DD-MM-YYYY),False
+Real Estate Projects,projects,6,developer_id,3039,2,0.065811,1333,1,9,True,NUMBER(10),False
+Real Estate Projects,projects,7,developer_name,3039,0,0.0,105,12,68,True,NVARCHAR2(200),False
+Real Estate Projects,projects,8,developer_number,3039,2,0.065811,1280,1,4,True,NUMBER,False
+Real Estate Projects,projects,9,escrow_agent_id,3039,160,5.26489,44,1,9,True,NUMBER(10),False
+Real Estate Projects,projects,10,escrow_agent_name,3039,160,5.26489,41,9,62,True,NVARCHAR2(200),False
+Real Estate Projects,projects,11,master_developer_id,3039,0,0.0,130,1,9,True,NUMBER(10),False
+Real Estate Projects,projects,12,master_developer_name,3039,0,0.0,105,12,68,True,NVARCHAR2(200),False
+Real Estate Projects,projects,13,master_developer_number,3039,0,0.0,106,1,4,True,NUMBER,False
+Real Estate Projects,projects,14,master_project_ar,3039,290,9.542613,133,3,53,True,nvarchar,False
+Real Estate Projects,projects,15,master_project_en,3039,290,9.542613,146,5,58,True,nvarchar,False
+Real Estate Projects,projects,16,no_of_buildings,3039,0,0.0,24,1,3,True,numeric,False
+Real Estate Projects,projects,17,no_of_lands,3039,0,0.0,245,1,4,True,numeric,False
+Real Estate Projects,projects,18,no_of_units,3039,0,0.0,710,1,5,True,numeric,False
+Real Estate Projects,projects,19,no_of_villas,3039,0,0.0,245,1,4,True,numeric,False
+Real Estate Projects,projects,20,percent_completed,3039,5,0.164528,1012,7,9,True,"NUMBER(10,3)",False
+Real Estate Projects,projects,21,project_classification_ar,3039,0,0.0,3,3,8,True,NVARCHAR2(50),False
+Real Estate Projects,projects,22,project_classification_id,3039,0,0.0,3,1,1,True,NUMBER(10),False
+Real Estate Projects,projects,23,project_description_ar,3039,163,5.363606,1978,1,1398,True,NVARCHAR2(2000),False
+Real Estate Projects,projects,24,project_description_en,3039,141,4.639684,2456,1,1539,True,VARCHAR2(2000),False
+Real Estate Projects,projects,25,project_end_date,3039,276,9.081935,1371,10,10,True,DATE (DD-MM-YYYY),False
+Real Estate Projects,projects,26,project_id,3039,0,0.0,2656,1,9,True,NUMBER(10),True
+Real Estate Projects,projects,27,project_name,3039,0,0.0,3163,1,141,True,VARCHAR2(200),False
+Real Estate Projects,projects,28,project_number,3039,0,0.0,3162,1,4,True,NUMBER(10),False
+Real Estate Projects,projects,29,project_start_date,3039,5,0.164528,1193,10,10,True,DATE (DD-MM-YYYY),False
+Real Estate Projects,projects,30,project_status,3039,0,0.0,6,6,22,True,NVARCHAR2(200),False
+Real Estate Projects,projects,31,project_status_ar,3039,0,0.0,6,4,11,True,NVARCHAR2(100),False
+Real Estate Projects,projects,32,project_type_ar,3039,0,0.0,3,4,10,True,NVARCHAR2(100),False
+Real Estate Projects,projects,33,project_type_id,3039,0,0.0,3,1,1,True,NUMBER,False
+Real Estate Projects,projects,34,property_id,3039,0,0.0,2733,7,10,True,NUMBER(10),False
+Real Estate Projects,projects,35,zoning_authority_ar,3039,1,0.032906,4,6,23,True,nvarchar,False
+Real Estate Projects,projects,36,zoning_authority_en,3039,1,0.032906,5,8,33,True,nvarchar,False
+Real Estate Projects,projects,37,zoning_authority_id,3039,1,0.032906,5,1,1,True,numeric,False
+Real Estate Projects,projects,38,load_timestamp,3039,0,0.0,1,23,23,False,,False
+Real Estate Transactions,transactions,1,actual_worth,1776143,0,0.0,407439,4,14,True,number,False
+Real Estate Transactions,transactions,2,area_id,1776143,0,0.0,251,3,3,True,number,False
+Real Estate Transactions,transactions,3,area_name_ar,1776143,0,0.0,267,3,26,True,nvarchar,False
+Real Estate Transactions,transactions,4,area_name_en,1776143,0,0.0,254,4,33,True,nvarchar,False
+Real Estate Transactions,transactions,5,building_name_ar,1776143,502489,28.291022,5407,2,71,True,nvarchar,False
+Real Estate Transactions,transactions,6,building_name_en,1776143,501988,28.262814,4887,2,74,True,nvarchar,False
+Real Estate Transactions,transactions,7,has_parking,1776143,0,0.0,2,1,1,True,number,False
+Real Estate Transactions,transactions,8,instance_date,1776143,0,0.0,5789,10,10,True,date,False
+Real Estate Transactions,transactions,9,master_project_ar,1776143,238296,13.416487,153,3,52,True,nvarchar,False
+Real Estate Transactions,transactions,10,master_project_en,1776143,238255,13.414179,177,5,58,True,nvarchar,False
+Real Estate Transactions,transactions,11,meter_rent_price,1776143,1739247,97.92269,27973,4,11,True,number,False
+Real Estate Transactions,transactions,12,meter_sale_price,1776143,0,0.0,1038085,4,11,True,number,False
+Real Estate Transactions,transactions,13,nearest_landmark_ar,1776143,366257,20.620918,14,7,33,True,nvarchar,False
+Real Estate Transactions,transactions,14,nearest_landmark_en,1776143,366257,20.620918,13,9,33,True,nvarchar,False
+Real Estate Transactions,transactions,15,nearest_mall_ar,1776143,572456,32.230288,5,7,14,True,nvarchar,False
+Real Estate Transactions,transactions,16,nearest_mall_en,1776143,572456,32.230288,4,10,20,True,nvarchar,False
+Real Estate Transactions,transactions,17,nearest_metro_ar,1776143,561522,31.614684,53,6,42,True,nvarchar,False
+Real Estate Transactions,transactions,18,nearest_metro_en,1776143,561522,31.614684,64,9,36,True,nvarchar,False
+Real Estate Transactions,transactions,19,no_of_parties_role_1,1776143,971,0.054669,205,1,3,True,number,False
+Real Estate Transactions,transactions,20,no_of_parties_role_2,1776143,971,0.054669,32,1,2,True,number,False
+Real Estate Transactions,transactions,21,no_of_parties_role_3,1776143,971,0.054669,16,1,2,True,number,False
+Real Estate Transactions,transactions,22,procedure_area,1776143,0,0.0,93070,4,12,True,number,False
+Real Estate Transactions,transactions,23,procedure_id,1776143,0,0.0,54,1,3,True,number,False
+Real Estate Transactions,transactions,24,procedure_name_ar,1776143,0,0.0,64,3,40,True,nvarchar,False
+Real Estate Transactions,transactions,25,procedure_name_en,1776143,0,0.0,62,4,48,True,nvarchar,False
+Real Estate Transactions,transactions,26,project_name_ar,1776143,468749,26.3914,3613,2,71,True,nvarchar,False
+Real Estate Transactions,transactions,27,project_name_en,1776143,468749,26.3914,3253,2,77,True,nvarchar,False
+Real Estate Transactions,transactions,28,project_number,1776143,468749,26.3914,3743,4,7,True,number,False
+Real Estate Transactions,transactions,29,property_sub_type_ar,1776143,347903,19.587556,20,3,13,True,nvarchar,False
+Real Estate Transactions,transactions,30,property_sub_type_en,1776143,347903,19.587556,17,4,18,True,nvarchar,False
+Real Estate Transactions,transactions,31,property_sub_type_id,1776143,347903,19.587556,22,1,3,True,number,False
+Real Estate Transactions,transactions,32,property_type_ar,1776143,0,0.0,3,3,4,True,nvarchar,False
+Real Estate Transactions,transactions,33,property_type_en,1776143,0,0.0,4,4,8,True,nvarchar,False
+Real Estate Transactions,transactions,34,property_type_id,1776143,0,0.0,4,1,1,True,number,False
+Real Estate Transactions,transactions,35,property_usage_ar,1776143,0,0.0,11,4,17,True,nvarchar,False
+Real Estate Transactions,transactions,36,property_usage_en,1776143,0,0.0,10,4,24,True,nvarchar,False
+Real Estate Transactions,transactions,37,reg_type_ar,1776143,0,0.0,2,11,16,True,nvarchar,False
+Real Estate Transactions,transactions,38,reg_type_en,1776143,0,0.0,2,19,19,True,nvarchar,False
+Real Estate Transactions,transactions,39,reg_type_id,1776143,0,0.0,2,1,1,True,number,False
+Real Estate Transactions,transactions,40,rent_value,1776143,1739247,97.92269,17559,4,12,True,number,False
+Real Estate Transactions,transactions,41,rooms_ar,1776143,374396,21.079159,15,3,11,True,nvarchar,False
+Real Estate Transactions,transactions,42,rooms_en,1776143,374396,21.079159,18,3,11,True,nvarchar,False
+Real Estate Transactions,transactions,43,transaction_id,1776143,0,0.0,1746921,10,17,True,nvarchar,True
+Real Estate Transactions,transactions,44,trans_group_ar,1776143,0,0.0,3,4,7,True,nvarchar,False
+Real Estate Transactions,transactions,45,trans_group_en,1776143,0,0.0,3,5,9,True,nvarchar,False
+Real Estate Transactions,transactions,46,trans_group_id,1776143,0,0.0,3,1,1,True,number,False
+Real Estate Transactions,transactions,47,load_timestamp,1776143,0,0.0,1,24,24,False,,False
+Registered Freehold Real Estate Units,units,1,actual_area,2374726,305189,12.851546,40198,4,13,True,number,False
+Registered Freehold Real Estate Units,units,2,actual_common_area,2374726,1468626,61.844019,28909,4,8,True,number,False
+Registered Freehold Real Estate Units,units,3,area_id,2374726,433,0.018234,208,3,3,True,number,False
+Registered Freehold Real Estate Units,units,4,area_name_ar,2374726,433,0.018234,205,3,26,True,nvarchar,False
+Registered Freehold Real Estate Units,units,5,area_name_en,2374726,433,0.018234,212,4,33,True,nvarchar,False
+Registered Freehold Real Estate Units,units,6,building_number,2374726,193478,8.147382,1434,1,40,True,nvarchar,False
+Registered Freehold Real Estate Units,units,7,common_area,2374726,465865,19.617632,50295,6,12,True,number,False
+Registered Freehold Real Estate Units,units,8,creation_date,2374726,97986,4.126202,7234,24,24,True,time,False
+Registered Freehold Real Estate Units,units,9,floor,2374726,423829,17.847491,2264,1,30,True,nvarchar,False
+Registered Freehold Real Estate Units,units,10,grandparent_property_id,2374726,418350,17.616769,22918,6,13,True,number,False
+Registered Freehold Real Estate Units,units,11,is_free_hold,2374726,34890,1.469222,2,1,1,True,number,False
+Registered Freehold Real Estate Units,units,12,is_lease_hold,2374726,1154566,48.618914,2,1,1,True,number,False
+Registered Freehold Real Estate Units,units,13,is_registered,2374726,1124829,47.366686,2,4,4,True,number,False
+Registered Freehold Real Estate Units,units,14,land_number,2374726,433,0.018234,3747,1,5,True,nvarchar,False
+Registered Freehold Real Estate Units,units,15,land_sub_number,2374726,3278,0.138037,79,4,7,True,number,False
+Registered Freehold Real Estate Units,units,16,land_type_ar,2374726,388067,16.341548,9,4,15,True,varchar2,False
+Registered Freehold Real Estate Units,units,17,land_type_en,2374726,388067,16.341548,9,10,22,True,varchar2,False
+Registered Freehold Real Estate Units,units,18,land_type_id,2374726,388067,16.341548,10,1,2,True,number,False
+Registered Freehold Real Estate Units,units,19,master_project_ar,2374726,1240424,52.234405,117,3,52,True,nvarchar,False
+Registered Freehold Real Estate Units,units,20,master_project_en,2374726,1240134,52.222193,125,5,58,True,nvarchar,False
+Registered Freehold Real Estate Units,units,21,master_project_id,2374726,1240134,52.222193,137,1,3,True,number,False
+Registered Freehold Real Estate Units,units,22,munc_number,2374726,31546,1.328406,6754,1,5,True,nvarchar,False
+Registered Freehold Real Estate Units,units,23,munc_zip_code,2374726,433,0.018234,228,1,3,True,varchar2,False
+Registered Freehold Real Estate Units,units,24,parcel_id,2374726,98522,4.148773,30523,10,10,True,number,False
+Registered Freehold Real Estate Units,units,25,parent_property_id,2374726,897800,37.806467,19057,6,13,True,number,False
+Registered Freehold Real Estate Units,units,26,parking_allocation_type,2374726,2368502,99.737907,3,4,4,True,number,False
+Registered Freehold Real Estate Units,units,27,parking_allocation_type_ar,2374726,2369811,99.793029,2,2,5,True,varchar2,False
+Registered Freehold Real Estate Units,units,28,parking_allocation_type_en,2374726,2369811,99.793029,2,2,5,True,varchar2,False
+Registered Freehold Real Estate Units,units,29,pre_registration_number,2374726,2374718,99.999663,6,1,9,True,nvarchar,False
+Registered Freehold Real Estate Units,units,30,project_id,2374726,1522363,64.106891,2915,1,9,True,number,False
+Registered Freehold Real Estate Units,units,31,project_name_ar,2374726,1522363,64.106891,3415,2,71,True,varchar2,False
+Registered Freehold Real Estate Units,units,32,project_name_en,2374726,1522363,64.106891,3093,2,77,True,varchar2,False
+Registered Freehold Real Estate Units,units,33,property_id,2374726,0,0.0,1975240,4,13,True,number,False
+Registered Freehold Real Estate Units,units,34,property_sub_type_ar,2374726,1124834,47.366896,24,3,13,True,nvarchar,False
+Registered Freehold Real Estate Units,units,35,property_sub_type_en,2374726,1124834,47.366896,23,4,18,True,nvarchar,False
+Registered Freehold Real Estate Units,units,36,property_sub_type_id,2374726,1124834,47.366896,24,4,6,True,number,False
+Registered Freehold Real Estate Units,units,37,property_type_ar,2374726,265581,11.183648,1,4,4,True,nvarchar,False
+Registered Freehold Real Estate Units,units,38,property_type_en,2374726,265581,11.183648,1,4,4,True,nvarchar,False
+Registered Freehold Real Estate Units,units,39,property_type_id,2374726,265581,11.183648,1,4,4,True,number,False
+Registered Freehold Real Estate Units,units,40,rooms,2374726,292534,12.318642,105,1,10,True,number,False
+Registered Freehold Real Estate Units,units,41,rooms_ar,2374726,292547,12.31919,81,1,30,True,varchar2,False
+Registered Freehold Real Estate Units,units,42,rooms_en,2374726,292547,12.31919,100,1,27,True,varchar2,False
+Registered Freehold Real Estate Units,units,43,unit_balcony_area,2374726,1222328,51.47238,14657,4,8,True,number,False
+Registered Freehold Real Estate Units,units,44,unit_number,2374726,0,0.0,349798,1,86,True,nvarchar,False
+Registered Freehold Real Estate Units,units,45,unit_parking_number,2374726,1471183,61.951695,112350,1,2834,True,nvarchar,False
+Registered Freehold Real Estate Units,units,46,zone_id,2374726,433,0.018234,2,4,4,True,number,False
+Registered Freehold Real Estate Units,units,47,load_timestamp,2374726,0,0.0,1,24,24,False,,False
+Rent Contracts,rent_contracts,1,actual_area,10442927,1308381,12.528872,69967,4,12,True,number,False
+Rent Contracts,rent_contracts,2,annual_amount,10442927,0,0.0,406470,4,13,True,number,False
+Rent Contracts,rent_contracts,3,area_id,10442927,3,2.9e-05,197,3,3,True,number,False
+Rent Contracts,rent_contracts,4,area_name_ar,10442927,3,2.9e-05,195,3,26,True,nvarchar,False
+Rent Contracts,rent_contracts,5,area_name_en,10442927,3,2.9e-05,220,4,33,True,nvarchar,False
+Rent Contracts,rent_contracts,6,contract_amount,10442927,0,0.0,317009,4,13,True,number,False
+Rent Contracts,rent_contracts,7,contract_end_date,10442927,0,0.0,6920,10,10,True,date,False
+Rent Contracts,rent_contracts,8,contract_id,10442927,0,0.0,9712113,7,13,True,nvarchar,True
+Rent Contracts,rent_contracts,9,contract_reg_type_ar,10442927,0,0.0,2,4,5,True,nvarchar,False
+Rent Contracts,rent_contracts,10,contract_reg_type_en,10442927,0,0.0,2,3,5,True,nvarchar,False
+Rent Contracts,rent_contracts,11,contract_reg_type_id,10442927,0,0.0,2,1,1,True,number,False
+Rent Contracts,rent_contracts,12,contract_start_date,10442927,0,0.0,5685,10,10,True,date,False
+Rent Contracts,rent_contracts,13,ejari_bus_property_type_ar,10442927,3575,0.034234,4,3,13,True,nvarchar,False
+Rent Contracts,rent_contracts,14,ejari_bus_property_type_en,10442927,3575,0.034234,5,4,12,True,nvarchar,False
+Rent Contracts,rent_contracts,15,ejari_bus_property_type_id,10442927,3575,0.034234,5,1,1,True,number,False
+Rent Contracts,rent_contracts,16,ejari_property_sub_type_ar,10442927,75812,0.725965,73,1,30,True,nvarchar,False
+Rent Contracts,rent_contracts,17,ejari_property_sub_type_en,10442927,75812,0.725965,84,3,27,True,nvarchar,False
+Rent Contracts,rent_contracts,18,ejari_property_sub_type_id,10442927,69478,0.665312,83,1,10,True,number,False
+Rent Contracts,rent_contracts,19,ejari_property_type_ar,10442927,68241,0.653466,76,3,24,True,nvarchar,False
+Rent Contracts,rent_contracts,20,ejari_property_type_en,10442927,68241,0.653466,68,3,30,True,nvarchar,False
+Rent Contracts,rent_contracts,21,ejari_property_type_id,10442927,67004,0.641621,81,1,10,True,number,False
+Rent Contracts,rent_contracts,22,is_free_hold,10442927,3575,0.034234,2,1,1,True,number,False
+Rent Contracts,rent_contracts,23,line_number,10442927,0,0.0,915,1,3,True,number,True
+Rent Contracts,rent_contracts,24,master_project_ar,10442927,6992570,66.959867,138,3,52,True,nvarchar,False
+Rent Contracts,rent_contracts,25,master_project_en,10442927,6992539,66.95957,163,5,58,True,nvarchar,False
+Rent Contracts,rent_contracts,26,nearest_landmark_ar,10442927,727229,6.963843,14,7,33,True,nvarchar,False
+Rent Contracts,rent_contracts,27,nearest_landmark_en,10442927,727229,6.963843,13,9,33,True,nvarchar,False
+Rent Contracts,rent_contracts,28,nearest_mall_ar,10442927,1250985,11.979256,5,7,14,True,nvarchar,False
+Rent Contracts,rent_contracts,29,nearest_mall_en,10442927,1250985,11.979256,4,10,20,True,nvarchar,False
+Rent Contracts,rent_contracts,30,nearest_metro_ar,10442927,1155340,11.063373,53,6,42,True,nvarchar,False
+Rent Contracts,rent_contracts,31,nearest_metro_en,10442927,1155340,11.063373,64,9,36,True,nvarchar,False
+Rent Contracts,rent_contracts,32,no_of_prop,10442927,0,0.0,329,1,3,True,number,False
+Rent Contracts,rent_contracts,33,project_name_ar,10442927,8830428,84.558936,1779,2,71,True,nvarchar,False
+Rent Contracts,rent_contracts,34,project_name_en,10442927,8830428,84.558936,1541,2,77,True,nvarchar,False
+Rent Contracts,rent_contracts,35,project_number,10442927,8830428,84.558936,1882,4,7,True,number,False
+Rent Contracts,rent_contracts,36,property_usage_ar,10442927,15114,0.14473,12,4,21,True,nvarchar,False
+Rent Contracts,rent_contracts,37,property_usage_en,10442927,15114,0.14473,13,7,37,True,nvarchar,False
+Rent Contracts,rent_contracts,38,tenant_type_ar,10442927,401954,3.849055,2,3,3,True,nvarchar,False
+Rent Contracts,rent_contracts,39,tenant_type_en,10442927,401954,3.849055,2,6,9,True,nvarchar,False
+Rent Contracts,rent_contracts,40,tenant_type_id,10442927,401954,3.849055,2,1,1,True,number,False
+Rent Contracts,rent_contracts,41,load_timestamp,10442927,0,0.0,1,24,24,False,,False
+Residential Sale Index,residential_sale_index,1,all_monthly_index,159,0,0.0,132,5,5,True,numeric,False
+Residential Sale Index,residential_sale_index,2,all_monthly_price_index,159,0,0.0,149,10,11,True,numeric,False
+Residential Sale Index,residential_sale_index,3,all_quarterly_index,159,107,67.295597,47,5,5,True,numeric,False
+Residential Sale Index,residential_sale_index,4,all_quarterly_price_index,159,107,67.295597,44,10,11,True,numeric,False
+Residential Sale Index,residential_sale_index,5,all_yearly_index,159,147,92.45283,13,5,5,True,numeric,False
+Residential Sale Index,residential_sale_index,6,all_yearly_price_index,159,147,92.45283,13,10,11,True,numeric,False
+Residential Sale Index,residential_sale_index,7,first_date_of_month,159,0,0.0,125,10,10,True,date,True
+Residential Sale Index,residential_sale_index,8,flat_monthly_index,159,0,0.0,154,5,5,True,numeric,False
+Residential Sale Index,residential_sale_index,9,flat_monthly_price_index,159,0,0.0,147,10,11,True,numeric,False
+Residential Sale Index,residential_sale_index,10,flat_quarterly_index,159,107,67.295597,52,5,5,True,numeric,False
+Residential Sale Index,residential_sale_index,11,flat_quarterly_price_index,159,107,67.295597,50,10,11,True,numeric,False
+Residential Sale Index,residential_sale_index,12,flat_yearly_index,159,147,92.45283,12,5,5,True,numeric,False
+Residential Sale Index,residential_sale_index,13,flat_yearly_price_index,159,147,92.45283,13,10,11,True,numeric,False
+Residential Sale Index,residential_sale_index,14,villa_monthly_index,159,0,0.0,139,5,5,True,numeric,False
+Residential Sale Index,residential_sale_index,15,villa_monthly_price_index,159,0,0.0,180,11,11,True,numeric,False
+Residential Sale Index,residential_sale_index,16,villa_quarterly_index,159,107,67.295597,46,5,5,True,numeric,False
+Residential Sale Index,residential_sale_index,17,villa_quarterly_price_index,159,107,67.295597,56,11,11,True,numeric,False
+Residential Sale Index,residential_sale_index,18,villa_yearly_index,159,147,92.45283,12,5,5,True,numeric,False
+Residential Sale Index,residential_sale_index,19,villa_yearly_price_index,159,147,92.45283,12,11,11,True,numeric,False
+Residential Sale Index,residential_sale_index,20,load_timestamp,159,0,0.0,1,23,23,False,,False

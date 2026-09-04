@@ -16,6 +16,7 @@
     "audit:perf": "node scripts/audit-performance.mjs",
     "audit:a11y": "node scripts/audit-a11y.mjs",
     "check:copy": "node scripts/check-copy.mjs",
+    "test:directory": "node --experimental-strip-types --test src/data/directory.test.ts",
     "preflight": "node scripts/preflight.mjs"
   },
   "overrides": {
