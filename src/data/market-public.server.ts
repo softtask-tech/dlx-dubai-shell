@@ -228,15 +228,26 @@ export async function listMarketCommunitiesServer(): Promise<
 > {
   try {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { data, error } = await (supabaseAdmin as unknown as SupabaseClient).rpc(
-      "list_dld_market_communities_internal",
-      {},
-    );
+    const { data, error } = await (supabaseAdmin as unknown as SupabaseClient)
+      .from("dld_market_aggregates")
+      .select("entity_id,name_en")
+      .eq("entity_type", "community")
+      .eq("metric_code", "registered_sale_count")
+      .eq("period_grain", "year")
+      .gte("period_start", "2022-01-01")
+      .limit(4000);
     if (error) throw error;
-    return ((data ?? []) as { entity_id: string; name_en: string }[]).map((row) => ({
-      entityId: row.entity_id,
-      nameEn: row.name_en,
-    }));
+
+    const seen = new Map<string, { nameEn: string; years: number }>();
+    for (const row of (data ?? []) as { entity_id: string; name_en: string }[]) {
+      const found = seen.get(row.entity_id);
+      if (found) found.years += 1;
+      else seen.set(row.entity_id, { nameEn: row.name_en, years: 1 });
+    }
+    /* Three published years is the floor for a page worth crawling. */
+    return [...seen.entries()]
+      .filter(([, value]) => value.years >= 3)
+      .map(([entityId, value]) => ({ entityId, nameEn: value.nameEn }));
   } catch (error) {
     console.error("[data:dld-market] community index unavailable", error);
     return [];
