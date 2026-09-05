@@ -37,6 +37,13 @@ export type SitePage = {
    * footer. They are simply not worth a slot in a nav that has to stay short.
    */
   inPrimaryNav?: boolean;
+  /**
+   * A registered destination that must not be indexed: a bounded tool whose
+   * URL state is a user's own selection, not a page worth a search result.
+   * Kept out of the sitemap and the OG build, still navigable and still
+   * described properly for anyone who lands on it.
+   */
+  noIndex?: boolean;
   /** Sitemap priority, 0-1. */
   priority: number;
   changeFrequency: ChangeFrequency;
@@ -93,6 +100,18 @@ export const SITE_PAGES: readonly SitePage[] = [
       "Dubai transaction data, district analysis and quiet commentary on where value is moving, built on official Dubai Land Department records.",
     tagline: "Official Dubai data, read plainly.",
     priority: 0.9,
+    changeFrequency: "weekly",
+  },
+  {
+    path: "/market-intelligence/compare",
+    label: "Compare communities",
+    inPrimaryNav: false,
+    noIndex: true,
+    title: "Compare Dubai communities",
+    description:
+      "Place up to six Dubai communities side by side on one recorded measure, drawn from official Dubai Land Department registration records.",
+    tagline: "Up to six communities, one measure.",
+    priority: 0.3,
     changeFrequency: "weekly",
   },
   {

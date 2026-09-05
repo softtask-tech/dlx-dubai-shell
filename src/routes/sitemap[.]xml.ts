@@ -58,7 +58,7 @@ export const Route = createFileRoute("/sitemap.xml")({
         };
 
         const entries: Entry[] = [
-          ...SITE_PAGES.map((page) => ({
+          ...SITE_PAGES.filter((page) => !page.noIndex).map((page) => ({
             path: page.path,
             changefreq: page.changeFrequency,
             priority: page.priority,
