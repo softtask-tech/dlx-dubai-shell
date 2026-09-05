@@ -448,9 +448,7 @@ function Composition({
                   <span className="block flex-1 bg-border" />
                 </span>
               </span>
-              <span className="caption sm:col-span-2 sm:text-right">
-                {Math.round(share)}% new
-              </span>
+              <span className="caption sm:col-span-2 sm:text-right">{Math.round(share)}% new</span>
             </li>
           );
         })}

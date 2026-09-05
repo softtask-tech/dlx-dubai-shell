@@ -65,7 +65,9 @@ export const Route = createFileRoute("/market-intelligence/compare")({
 
     const [matches, rows] = await Promise.all([
       deps.q && deps.q.trim().length > 1
-        ? searchMarketEntitiesFn({ data: { query: deps.q.trim(), types: ["community"], limit: 20 } })
+        ? searchMarketEntitiesFn({
+            data: { query: deps.q.trim(), types: ["community"], limit: 20 },
+          })
         : Promise.resolve([]),
       ids.length > 0 && deps.period
         ? compareMarketCommunitiesFn({
@@ -199,7 +201,10 @@ function ComparePage() {
                     const selected = ids.includes(match.entity_id);
                     const full = ids.length >= MAX_COMPARE_COMMUNITIES && !selected;
                     return (
-                      <li key={match.entity_id} className="flex items-center justify-between gap-4 py-4">
+                      <li
+                        key={match.entity_id}
+                        className="flex items-center justify-between gap-4 py-4"
+                      >
                         <span className="body-text">{match.name_en}</span>
                         <button
                           type="button"
@@ -283,7 +288,9 @@ function ComparePage() {
                       <li key={row.entity_id}>
                         <div className="flex items-baseline justify-between gap-6">
                           <span className="body-text">{row.name_en}</span>
-                          <span className="lead">{formatMetricValue(metric, row.metric_value)}</span>
+                          <span className="lead">
+                            {formatMetricValue(metric, row.metric_value)}
+                          </span>
                         </div>
                         <span
                           aria-hidden="true"
@@ -356,13 +363,7 @@ function ComparePage() {
   );
 }
 
-function ComparisonTable({
-  rows,
-  metric,
-}: {
-  rows: readonly MarketRow[];
-  metric: MarketMetric;
-}) {
+function ComparisonTable({ rows, metric }: { rows: readonly MarketRow[]; metric: MarketMetric }) {
   return (
     <details className="mt-10 border-t border-border">
       <summary className="eyebrow cursor-pointer list-none py-4 [&::-webkit-details-marker]:hidden">
@@ -393,9 +394,7 @@ function ComparisonTable({
                 <th scope="row" className="caption py-3 pr-6 text-left font-normal">
                   {row.name_en}
                 </th>
-                <td className="caption py-3 pr-6">
-                  {formatMetricValue(metric, row.metric_value)}
-                </td>
+                <td className="caption py-3 pr-6">{formatMetricValue(metric, row.metric_value)}</td>
                 <td className="caption py-3">{row.observation_count.toLocaleString("en-AE")}</td>
               </tr>
             ))}

@@ -48,9 +48,8 @@ export async function loadRecordedActivity(
   entityType: "project" | "developer",
   primaryNumber: string | null,
 ) {
-  const { getMarketEntitySeriesFn, getMarketMetadataFn } = await import(
-    "./market-public.functions"
-  );
+  const { getMarketEntitySeriesFn, getMarketMetadataFn } =
+    await import("./market-public.functions");
   if (!primaryNumber || !/^[0-9]{1,12}$/.test(primaryNumber)) {
     return { rows: [], sourceExportDate: null };
   }

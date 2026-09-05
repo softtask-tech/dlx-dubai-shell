@@ -1,9 +1,4 @@
-import {
-  TOO_FEW_RECORDS,
-  formatPeriod,
-  sourceLine,
-  type MarketRow,
-} from "@/data/market-public";
+import { TOO_FEW_RECORDS, formatPeriod, sourceLine, type MarketRow } from "@/data/market-public";
 
 /**
  * Registered sale activity for one project or one developer.

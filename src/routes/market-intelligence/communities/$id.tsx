@@ -99,8 +99,16 @@ function series(id: string, metric: MarketMetric, grain: "quarter" | "year") {
 }
 
 function CommunityMarketPage() {
-  const { metadata, nameEn, nameAr, saleQuarters, rentalQuarters, rentQuarters, saleYears, rentalYears } =
-    Route.useLoaderData();
+  const {
+    metadata,
+    nameEn,
+    nameAr,
+    saleQuarters,
+    rentalQuarters,
+    rentQuarters,
+    saleYears,
+    rentalYears,
+  } = Route.useLoaderData();
 
   const latestSale = latestRow(saleQuarters);
   const latestRental = latestRow(rentalQuarters);
@@ -286,7 +294,13 @@ function CommunityMarketPage() {
 }
 
 /** States how much registered evidence sits behind the headline figures. */
-function Confidence({ rows, dark = false }: { rows: readonly (MarketRow | null)[]; dark?: boolean }) {
+function Confidence({
+  rows,
+  dark = false,
+}: {
+  rows: readonly (MarketRow | null)[];
+  dark?: boolean;
+}) {
   const present = rows.filter((row): row is MarketRow => row !== null);
   if (present.length === 0) return null;
   const weakest = present.some((row) => row.confidence === "counts_only")
