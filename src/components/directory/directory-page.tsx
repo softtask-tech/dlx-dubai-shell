@@ -126,6 +126,7 @@ export function DirectoryPage({
         )}
 
         <DirectoryPagination result={result} query={query} selectedType={selectedType} />
+        {activity}
         <DirectoryTrust />
       </Section>
     </>
@@ -247,8 +248,11 @@ function DirectoryState({ title, body }: { title: string; body: string }) {
 
 export function DirectoryDetailPage({
   result,
+  activity,
 }: {
   result: { record: DirectoryRecord | null; unavailable: boolean };
+  /** Optional registered-activity module, rendered above the trust notice. */
+  activity?: ReactNode;
 }) {
   if (result.unavailable)
     return (
@@ -293,6 +297,7 @@ export function DirectoryDetailPage({
             {directoryStatusNotice(record.source_export_date)}
           </p>
         ) : null}
+        {activity}
         <DirectoryTrust />
       </Section>
     </>
