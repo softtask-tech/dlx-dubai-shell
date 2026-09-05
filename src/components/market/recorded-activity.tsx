@@ -51,8 +51,8 @@ export function RecordedActivity({
           <div className="mt-8 overflow-x-auto">
             <table className="w-full min-w-[24rem] border-collapse">
               <caption className="caption pb-4 text-left">
-                Registered sale transactions by year, with the number of registered records behind
-                each figure.
+                Registered sale transactions by year, as recorded in Dubai Land Department open
+                data.
               </caption>
               <thead>
                 <tr className="border-b border-border">
@@ -62,9 +62,6 @@ export function RecordedActivity({
                   <th scope="col" className="eyebrow py-3 pr-6 text-left font-normal">
                     Registered sale transactions
                   </th>
-                  <th scope="col" className="eyebrow py-3 text-left font-normal">
-                    Records
-                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -73,11 +70,8 @@ export function RecordedActivity({
                     <th scope="row" className="caption py-3 pr-6 text-left font-normal">
                       {formatPeriod("year", row.period_start)}
                     </th>
-                    <td className="caption py-3 pr-6">
-                      {Math.round(row.metric_value).toLocaleString("en-AE")}
-                    </td>
                     <td className="caption py-3">
-                      {row.observation_count.toLocaleString("en-AE")}
+                      {Math.round(row.metric_value).toLocaleString("en-AE")}
                     </td>
                   </tr>
                 ))}
