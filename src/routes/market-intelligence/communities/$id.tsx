@@ -9,9 +9,10 @@ import {
   latestRow,
   sourceLine,
   type MarketConfidence,
+  type MarketMetric,
   type MarketRow,
 } from "@/data/market-public";
-import { getMarketEntitySeries, getMarketMetadata } from "@/data/market-public.server";
+import { getMarketEntitySeriesFn, getMarketMetadataFn } from "@/data/market-public.functions";
 import { datasetSchema } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
@@ -29,7 +30,7 @@ export const Route = createFileRoute("/market-intelligence/communities/$id")({
     if (!/^[0-9]{1,12}$/.test(params.id)) throw notFound();
     const [metadata, saleQuarters, rentalQuarters, rentQuarters, saleYears, rentalYears] =
       await Promise.all([
-        getMarketMetadata(),
+        getMarketMetadataFn(),
         series(params.id, "registered_sale_count", "quarter"),
         series(params.id, "registered_rental_contract_count", "quarter"),
         series(params.id, "median_registered_annual_rent_aed", "quarter"),
@@ -83,15 +84,17 @@ export const Route = createFileRoute("/market-intelligence/communities/$id")({
   component: CommunityMarketPage,
 });
 
-function series(id: string, metric: Parameters<typeof getMarketEntitySeries>[0]["metric"], grain: "quarter" | "year") {
-  return getMarketEntitySeries({
-    entityType: "community",
-    entityId: id,
-    metric,
-    grain,
-    from: FROM,
-    to: TO,
-    limit: 60,
+function series(id: string, metric: MarketMetric, grain: "quarter" | "year") {
+  return getMarketEntitySeriesFn({
+    data: {
+      entityType: "community",
+      entityId: id,
+      metric,
+      grain,
+      from: FROM,
+      to: TO,
+      limit: 60,
+    },
   });
 }
 

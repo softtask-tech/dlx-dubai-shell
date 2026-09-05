@@ -11,7 +11,7 @@ import {
   sourceLine,
   type MarketRow,
 } from "@/data/market-public";
-import { getMarketMetadata, getMarketOverview } from "@/data/market-public.server";
+import { getMarketMetadataFn, getMarketOverviewFn } from "@/data/market-public.functions";
 import { datasetSchema, faqSchema, type FaqEntry } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
@@ -61,20 +61,24 @@ const HEADLINE_METRICS = [
 export const Route = createFileRoute("/market-intelligence/")({
   loader: async () => {
     const [metadata, quarterly, monthly] = await Promise.all([
-      getMarketMetadata(),
-      getMarketOverview({
-        metrics: HEADLINE_METRICS,
-        grain: "quarter",
-        from: "2019-01-01",
-        to: "2026-12-31",
-        limit: 900,
+      getMarketMetadataFn(),
+      getMarketOverviewFn({
+        data: {
+          metrics: [...HEADLINE_METRICS],
+          grain: "quarter",
+          from: "2019-01-01",
+          to: "2026-12-31",
+          limit: 900,
+        },
       }),
-      getMarketOverview({
-        metrics: ["registered_sale_count", "registered_rental_contract_count"],
-        grain: "month",
-        from: "2021-01-01",
-        to: "2026-12-31",
-        limit: 900,
+      getMarketOverviewFn({
+        data: {
+          metrics: ["registered_sale_count", "registered_rental_contract_count"],
+          grain: "month",
+          from: "2021-01-01",
+          to: "2026-12-31",
+          limit: 900,
+        },
       }),
     ]);
     return { metadata, quarterly, monthly };
