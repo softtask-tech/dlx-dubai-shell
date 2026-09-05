@@ -30,7 +30,7 @@ export const getMarketOverviewFn = createServerFn({ method: "GET" })
         grain,
         from: isoDate,
         to: isoDate,
-        limit: z.number().int().positive().max(2000).optional(),
+        limit: z.number().int().positive().max(2000).default(900),
       })
       .parse(input),
   )
@@ -49,7 +49,7 @@ export const getMarketEntitySeriesFn = createServerFn({ method: "GET" })
         grain,
         from: isoDate,
         to: isoDate,
-        limit: z.number().int().positive().max(200).optional(),
+        limit: z.number().int().positive().max(200).default(120),
       })
       .parse(input),
   )
@@ -79,8 +79,8 @@ export const searchMarketEntitiesFn = createServerFn({ method: "GET" })
     z
       .object({
         query: z.string().max(100),
-        types: z.array(entityType).min(1).max(4).optional(),
-        limit: z.number().int().positive().max(50).optional(),
+        types: z.array(entityType).min(1).max(4).default(["community", "project", "developer"]),
+        limit: z.number().int().positive().max(50).default(20),
       })
       .parse(input),
   )
