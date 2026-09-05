@@ -15,7 +15,6 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as AdvisorKnowledgeDotjsonRouteImport } from './routes/advisor-knowledge[.]json'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as MarketIntelligenceRouteImport } from './routes/market-intelligence'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
@@ -47,6 +46,7 @@ import { Route as DirectoryValuatorsRouteImport } from './routes/directory/valua
 import { Route as GuidesIndexRouteImport } from './routes/guides/index'
 import { Route as GuidesSlugRouteImport } from './routes/guides/$slug'
 import { Route as LpSlugRouteImport } from './routes/lp/$slug'
+import { Route as MarketIntelligenceIndexRouteImport } from './routes/market-intelligence/index'
 import { Route as OffPlanIndexRouteImport } from './routes/off-plan/index'
 import { Route as OffPlanSlugRouteImport } from './routes/off-plan/$slug'
 import { Route as ProjectsSlugRouteImport } from './routes/projects/$slug'
@@ -71,6 +71,7 @@ import { Route as DirectoryOfficesIndexRouteImport } from './routes/directory/of
 import { Route as DirectoryOfficesIdRouteImport } from './routes/directory/offices/$id'
 import { Route as DirectoryProjectsIndexRouteImport } from './routes/directory/projects/index'
 import { Route as DirectoryProjectsSlugRouteImport } from './routes/directory/projects/$slug'
+import { Route as MarketIntelligenceCommunitiesIdRouteImport } from './routes/market-intelligence/communities/$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -100,11 +101,6 @@ const AdvisorKnowledgeDotjsonRoute = AdvisorKnowledgeDotjsonRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MarketIntelligenceRoute = MarketIntelligenceRouteImport.update({
-  id: '/market-intelligence',
-  path: '/market-intelligence',
   getParentRoute: () => rootRouteImport,
 } as any)
 const McpRoute = McpRouteImport.update({
@@ -263,6 +259,11 @@ const LpSlugRoute = LpSlugRouteImport.update({
   path: '/lp/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MarketIntelligenceIndexRoute = MarketIntelligenceIndexRouteImport.update({
+  id: '/market-intelligence/',
+  path: '/market-intelligence/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OffPlanIndexRoute = OffPlanIndexRouteImport.update({
   id: '/off-plan/',
   path: '/off-plan/',
@@ -384,6 +385,12 @@ const DirectoryProjectsSlugRoute = DirectoryProjectsSlugRouteImport.update({
   path: '/directory/projects/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MarketIntelligenceCommunitiesIdRoute =
+  MarketIntelligenceCommunitiesIdRouteImport.update({
+    id: '/market-intelligence/communities/$id',
+    path: '/market-intelligence/communities/$id',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -392,7 +399,6 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
-  '/market-intelligence': typeof MarketIntelligenceRoute
   '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -430,6 +436,7 @@ export interface FileRoutesByFullPath {
   '/developers/': typeof DevelopersIndexRoute
   '/directory/': typeof DirectoryIndexRoute
   '/guides/': typeof GuidesIndexRoute
+  '/market-intelligence/': typeof MarketIntelligenceIndexRoute
   '/off-plan/': typeof OffPlanIndexRoute
   '/properties/': typeof PropertiesIndexRoute
   '/services/': typeof ServicesIndexRoute
@@ -444,6 +451,7 @@ export interface FileRoutesByFullPath {
   '/directory/developers/$slug': typeof DirectoryDevelopersSlugRoute
   '/directory/offices/$id': typeof DirectoryOfficesIdRoute
   '/directory/projects/$slug': typeof DirectoryProjectsSlugRoute
+  '/market-intelligence/communities/$id': typeof MarketIntelligenceCommunitiesIdRoute
   '/directory/brokers/': typeof DirectoryBrokersIndexRoute
   '/directory/developers/': typeof DirectoryDevelopersIndexRoute
   '/directory/offices/': typeof DirectoryOfficesIndexRoute
@@ -454,7 +462,6 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
-  '/market-intelligence': typeof MarketIntelligenceRoute
   '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -492,6 +499,7 @@ export interface FileRoutesByTo {
   '/developers': typeof DevelopersIndexRoute
   '/directory': typeof DirectoryIndexRoute
   '/guides': typeof GuidesIndexRoute
+  '/market-intelligence': typeof MarketIntelligenceIndexRoute
   '/off-plan': typeof OffPlanIndexRoute
   '/properties': typeof PropertiesIndexRoute
   '/services': typeof ServicesIndexRoute
@@ -506,6 +514,7 @@ export interface FileRoutesByTo {
   '/directory/developers/$slug': typeof DirectoryDevelopersSlugRoute
   '/directory/offices/$id': typeof DirectoryOfficesIdRoute
   '/directory/projects/$slug': typeof DirectoryProjectsSlugRoute
+  '/market-intelligence/communities/$id': typeof MarketIntelligenceCommunitiesIdRoute
   '/directory/brokers': typeof DirectoryBrokersIndexRoute
   '/directory/developers': typeof DirectoryDevelopersIndexRoute
   '/directory/offices': typeof DirectoryOfficesIndexRoute
@@ -519,7 +528,6 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
-  '/market-intelligence': typeof MarketIntelligenceRoute
   '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -557,6 +565,7 @@ export interface FileRoutesById {
   '/developers/': typeof DevelopersIndexRoute
   '/directory/': typeof DirectoryIndexRoute
   '/guides/': typeof GuidesIndexRoute
+  '/market-intelligence/': typeof MarketIntelligenceIndexRoute
   '/off-plan/': typeof OffPlanIndexRoute
   '/properties/': typeof PropertiesIndexRoute
   '/services/': typeof ServicesIndexRoute
@@ -571,6 +580,7 @@ export interface FileRoutesById {
   '/directory/developers/$slug': typeof DirectoryDevelopersSlugRoute
   '/directory/offices/$id': typeof DirectoryOfficesIdRoute
   '/directory/projects/$slug': typeof DirectoryProjectsSlugRoute
+  '/market-intelligence/communities/$id': typeof MarketIntelligenceCommunitiesIdRoute
   '/directory/brokers/': typeof DirectoryBrokersIndexRoute
   '/directory/developers/': typeof DirectoryDevelopersIndexRoute
   '/directory/offices/': typeof DirectoryOfficesIndexRoute
@@ -585,7 +595,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/advisor-knowledge.json'
     | '/contact'
-    | '/market-intelligence'
     | '/mcp'
     | '/privacy'
     | '/robots.txt'
@@ -623,6 +632,7 @@ export interface FileRouteTypes {
     | '/developers/'
     | '/directory/'
     | '/guides/'
+    | '/market-intelligence/'
     | '/off-plan/'
     | '/properties/'
     | '/services/'
@@ -637,6 +647,7 @@ export interface FileRouteTypes {
     | '/directory/developers/$slug'
     | '/directory/offices/$id'
     | '/directory/projects/$slug'
+    | '/market-intelligence/communities/$id'
     | '/directory/brokers/'
     | '/directory/developers/'
     | '/directory/offices/'
@@ -647,7 +658,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/advisor-knowledge.json'
     | '/contact'
-    | '/market-intelligence'
     | '/mcp'
     | '/privacy'
     | '/robots.txt'
@@ -685,6 +695,7 @@ export interface FileRouteTypes {
     | '/developers'
     | '/directory'
     | '/guides'
+    | '/market-intelligence'
     | '/off-plan'
     | '/properties'
     | '/services'
@@ -699,6 +710,7 @@ export interface FileRouteTypes {
     | '/directory/developers/$slug'
     | '/directory/offices/$id'
     | '/directory/projects/$slug'
+    | '/market-intelligence/communities/$id'
     | '/directory/brokers'
     | '/directory/developers'
     | '/directory/offices'
@@ -711,7 +723,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/advisor-knowledge.json'
     | '/contact'
-    | '/market-intelligence'
     | '/mcp'
     | '/privacy'
     | '/robots.txt'
@@ -749,6 +760,7 @@ export interface FileRouteTypes {
     | '/developers/'
     | '/directory/'
     | '/guides/'
+    | '/market-intelligence/'
     | '/off-plan/'
     | '/properties/'
     | '/services/'
@@ -763,6 +775,7 @@ export interface FileRouteTypes {
     | '/directory/developers/$slug'
     | '/directory/offices/$id'
     | '/directory/projects/$slug'
+    | '/market-intelligence/communities/$id'
     | '/directory/brokers/'
     | '/directory/developers/'
     | '/directory/offices/'
@@ -776,7 +789,6 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AdvisorKnowledgeDotjsonRoute: typeof AdvisorKnowledgeDotjsonRoute
   ContactRoute: typeof ContactRoute
-  MarketIntelligenceRoute: typeof MarketIntelligenceRoute
   McpRoute: typeof McpRoute
   PrivacyRoute: typeof PrivacyRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
@@ -804,6 +816,7 @@ export interface RootRouteChildren {
   DevelopersIndexRoute: typeof DevelopersIndexRoute
   DirectoryIndexRoute: typeof DirectoryIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
+  MarketIntelligenceIndexRoute: typeof MarketIntelligenceIndexRoute
   OffPlanIndexRoute: typeof OffPlanIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
@@ -818,6 +831,7 @@ export interface RootRouteChildren {
   DirectoryDevelopersSlugRoute: typeof DirectoryDevelopersSlugRoute
   DirectoryOfficesIdRoute: typeof DirectoryOfficesIdRoute
   DirectoryProjectsSlugRoute: typeof DirectoryProjectsSlugRoute
+  MarketIntelligenceCommunitiesIdRoute: typeof MarketIntelligenceCommunitiesIdRoute
   DirectoryBrokersIndexRoute: typeof DirectoryBrokersIndexRoute
   DirectoryDevelopersIndexRoute: typeof DirectoryDevelopersIndexRoute
   DirectoryOfficesIndexRoute: typeof DirectoryOfficesIndexRoute
@@ -866,13 +880,6 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/market-intelligence': {
-      id: '/market-intelligence'
-      path: '/market-intelligence'
-      fullPath: '/market-intelligence'
-      preLoaderRoute: typeof MarketIntelligenceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mcp': {
@@ -1092,6 +1099,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LpSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/market-intelligence/': {
+      id: '/market-intelligence/'
+      path: '/market-intelligence'
+      fullPath: '/market-intelligence/'
+      preLoaderRoute: typeof MarketIntelligenceIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/off-plan/': {
       id: '/off-plan/'
       path: '/off-plan'
@@ -1260,6 +1274,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DirectoryProjectsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/market-intelligence/communities/$id': {
+      id: '/market-intelligence/communities/$id'
+      path: '/market-intelligence/communities/$id'
+      fullPath: '/market-intelligence/communities/$id'
+      preLoaderRoute: typeof MarketIntelligenceCommunitiesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -1310,7 +1331,6 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AdvisorKnowledgeDotjsonRoute: AdvisorKnowledgeDotjsonRoute,
   ContactRoute: ContactRoute,
-  MarketIntelligenceRoute: MarketIntelligenceRoute,
   McpRoute: McpRoute,
   PrivacyRoute: PrivacyRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
@@ -1339,6 +1359,7 @@ const rootRouteChildren: RootRouteChildren = {
   DevelopersIndexRoute: DevelopersIndexRoute,
   DirectoryIndexRoute: DirectoryIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
+  MarketIntelligenceIndexRoute: MarketIntelligenceIndexRoute,
   OffPlanIndexRoute: OffPlanIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
@@ -1353,6 +1374,7 @@ const rootRouteChildren: RootRouteChildren = {
   DirectoryDevelopersSlugRoute: DirectoryDevelopersSlugRoute,
   DirectoryOfficesIdRoute: DirectoryOfficesIdRoute,
   DirectoryProjectsSlugRoute: DirectoryProjectsSlugRoute,
+  MarketIntelligenceCommunitiesIdRoute: MarketIntelligenceCommunitiesIdRoute,
   DirectoryBrokersIndexRoute: DirectoryBrokersIndexRoute,
   DirectoryDevelopersIndexRoute: DirectoryDevelopersIndexRoute,
   DirectoryOfficesIndexRoute: DirectoryOfficesIndexRoute,

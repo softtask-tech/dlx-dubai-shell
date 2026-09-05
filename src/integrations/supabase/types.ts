@@ -1504,6 +1504,258 @@ export type Database = {
         }
         Relationships: []
       }
+      dld_market_aggregates: {
+        Row: {
+          aggregate_key: string
+          confidence: string
+          entity_id: string
+          entity_type: string
+          methodology_version: string
+          metric_code: string
+          metric_value: number
+          name_ar: string
+          name_en: string
+          observation_count: number
+          period_end: string
+          period_grain: string
+          period_start: string
+          publication_run_id: string
+          quality_flags: Json
+          segment_code: string
+          segment_type: string
+          source_export_date: string
+        }
+        Insert: {
+          aggregate_key: string
+          confidence: string
+          entity_id: string
+          entity_type: string
+          methodology_version: string
+          metric_code: string
+          metric_value: number
+          name_ar?: string
+          name_en?: string
+          observation_count: number
+          period_end: string
+          period_grain: string
+          period_start: string
+          publication_run_id: string
+          quality_flags: Json
+          segment_code: string
+          segment_type: string
+          source_export_date: string
+        }
+        Update: {
+          aggregate_key?: string
+          confidence?: string
+          entity_id?: string
+          entity_type?: string
+          methodology_version?: string
+          metric_code?: string
+          metric_value?: number
+          name_ar?: string
+          name_en?: string
+          observation_count?: number
+          period_end?: string
+          period_grain?: string
+          period_start?: string
+          publication_run_id?: string
+          quality_flags?: Json
+          segment_code?: string
+          segment_type?: string
+          source_export_date?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dld_market_aggregates_publication_run_id_fkey"
+            columns: ["publication_run_id"]
+            isOneToOne: false
+            referencedRelation: "dld_market_import_runs"
+            referencedColumns: ["import_run_id"]
+          },
+        ]
+      }
+      dld_market_import_runs: {
+        Row: {
+          created_at: string
+          expected_counts: Json
+          expected_total: number
+          import_run_id: string
+          manifest_sha256: string
+          methodology_version: string
+          package_sha256: string
+          published_at: string | null
+          schema_version: string
+          source_export_date: string
+          status: string
+          validated_at: string | null
+          validation_report: Json
+        }
+        Insert: {
+          created_at?: string
+          expected_counts: Json
+          expected_total: number
+          import_run_id?: string
+          manifest_sha256: string
+          methodology_version: string
+          package_sha256: string
+          published_at?: string | null
+          schema_version: string
+          source_export_date: string
+          status?: string
+          validated_at?: string | null
+          validation_report?: Json
+        }
+        Update: {
+          created_at?: string
+          expected_counts?: Json
+          expected_total?: number
+          import_run_id?: string
+          manifest_sha256?: string
+          methodology_version?: string
+          package_sha256?: string
+          published_at?: string | null
+          schema_version?: string
+          source_export_date?: string
+          status?: string
+          validated_at?: string | null
+          validation_report?: Json
+        }
+        Relationships: []
+      }
+      dld_market_publication_state: {
+        Row: {
+          activated_at: string | null
+          active_run_id: string | null
+          singleton: boolean
+        }
+        Insert: {
+          activated_at?: string | null
+          active_run_id?: string | null
+          singleton?: boolean
+        }
+        Update: {
+          activated_at?: string | null
+          active_run_id?: string | null
+          singleton?: boolean
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dld_market_publication_state_active_run_id_fkey"
+            columns: ["active_run_id"]
+            isOneToOne: false
+            referencedRelation: "dld_market_import_runs"
+            referencedColumns: ["import_run_id"]
+          },
+        ]
+      }
+      dld_market_scope_registry: {
+        Row: {
+          allowed_segment_codes: string[]
+          consumer: string
+          entity_type: string
+          metric_code: string
+          minimum_observations: number
+          period_grain: string
+          segment_type: string
+          value_kind: string
+        }
+        Insert: {
+          allowed_segment_codes: string[]
+          consumer: string
+          entity_type: string
+          metric_code: string
+          minimum_observations: number
+          period_grain: string
+          segment_type: string
+          value_kind: string
+        }
+        Update: {
+          allowed_segment_codes?: string[]
+          consumer?: string
+          entity_type?: string
+          metric_code?: string
+          minimum_observations?: number
+          period_grain?: string
+          segment_type?: string
+          value_kind?: string
+        }
+        Relationships: []
+      }
+      dld_market_stage: {
+        Row: {
+          aggregate_key: string
+          chunk_name: string
+          confidence: string
+          entity_id: string
+          entity_type: string
+          import_run_id: string
+          methodology_version: string
+          metric_code: string
+          metric_value: number
+          name_ar: string
+          name_en: string
+          observation_count: number
+          period_end: string
+          period_grain: string
+          period_start: string
+          quality_flags: Json
+          segment_code: string
+          segment_type: string
+          source_export_date: string
+        }
+        Insert: {
+          aggregate_key: string
+          chunk_name: string
+          confidence: string
+          entity_id: string
+          entity_type: string
+          import_run_id: string
+          methodology_version: string
+          metric_code: string
+          metric_value: number
+          name_ar?: string
+          name_en?: string
+          observation_count: number
+          period_end: string
+          period_grain: string
+          period_start: string
+          quality_flags?: Json
+          segment_code: string
+          segment_type: string
+          source_export_date: string
+        }
+        Update: {
+          aggregate_key?: string
+          chunk_name?: string
+          confidence?: string
+          entity_id?: string
+          entity_type?: string
+          import_run_id?: string
+          methodology_version?: string
+          metric_code?: string
+          metric_value?: number
+          name_ar?: string
+          name_en?: string
+          observation_count?: number
+          period_end?: string
+          period_grain?: string
+          period_start?: string
+          quality_flags?: Json
+          segment_code?: string
+          segment_type?: string
+          source_export_date?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dld_market_stage_import_run_id_fkey"
+            columns: ["import_run_id"]
+            isOneToOne: false
+            referencedRelation: "dld_market_import_runs"
+            referencedColumns: ["import_run_id"]
+          },
+        ]
+      }
       dld_rent_contracts: {
         Row: {
           annual_rent: number
@@ -3093,8 +3345,68 @@ export type Database = {
         }
         Relationships: []
       }
+      dld_market_public: {
+        Row: {
+          aggregate_key: string | null
+          confidence: string | null
+          entity_id: string | null
+          entity_type: string | null
+          methodology_version: string | null
+          metric_code: string | null
+          metric_value: number | null
+          name_ar: string | null
+          name_en: string | null
+          observation_count: number | null
+          period_end: string | null
+          period_grain: string | null
+          period_start: string | null
+          quality_flags: Json | null
+          segment_code: string | null
+          segment_type: string | null
+          source_export_date: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
+      activate_dld_market_publication: {
+        Args: { target_run_id: string }
+        Returns: undefined
+      }
+      compare_dld_market_communities: {
+        Args: {
+          community_ids: string[]
+          requested_grain: string
+          requested_metric: string
+          requested_period: string
+          result_limit?: number
+        }
+        Returns: {
+          aggregate_key: string | null
+          confidence: string | null
+          entity_id: string | null
+          entity_type: string | null
+          methodology_version: string | null
+          metric_code: string | null
+          metric_value: number | null
+          name_ar: string | null
+          name_en: string | null
+          observation_count: number | null
+          period_end: string | null
+          period_grain: string | null
+          period_start: string | null
+          quality_flags: Json | null
+          segment_code: string | null
+          segment_type: string | null
+          source_export_date: string | null
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "dld_market_public"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
       dld_directory_build_aliases: {
         Args: { values_to_index: string[] }
         Returns: string
@@ -3111,6 +3423,107 @@ export type Database = {
         Args: { entity: string }
         Returns: string[]
       }
+      dld_market_derive_aggregate_key: {
+        Args: {
+          entity_id: string
+          entity_type: string
+          methodology_version: string
+          metric_code: string
+          period_end: string
+          period_grain: string
+          period_start: string
+          segment_code: string
+          segment_type: string
+        }
+        Returns: string
+      }
+      dld_market_scope_allowed: {
+        Args: {
+          requested_entity: string
+          requested_grain: string
+          requested_metric: string
+        }
+        Returns: boolean
+      }
+      get_dld_market_entity_series: {
+        Args: {
+          from_date: string
+          requested_entity_id: string
+          requested_entity_type: string
+          requested_grain: string
+          requested_metric: string
+          result_limit?: number
+          to_date: string
+        }
+        Returns: {
+          aggregate_key: string | null
+          confidence: string | null
+          entity_id: string | null
+          entity_type: string | null
+          methodology_version: string | null
+          metric_code: string | null
+          metric_value: number | null
+          name_ar: string | null
+          name_en: string | null
+          observation_count: number | null
+          period_end: string | null
+          period_grain: string | null
+          period_start: string | null
+          quality_flags: Json | null
+          segment_code: string | null
+          segment_type: string | null
+          source_export_date: string | null
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "dld_market_public"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
+      get_dld_market_metadata: {
+        Args: never
+        Returns: {
+          methodology_version: string
+          published_at: string
+          row_count: number
+          source_export_date: string
+        }[]
+      }
+      get_dld_market_overview: {
+        Args: {
+          from_date: string
+          requested_grain: string
+          requested_metrics: string[]
+          result_limit?: number
+          to_date: string
+        }
+        Returns: {
+          aggregate_key: string | null
+          confidence: string | null
+          entity_id: string | null
+          entity_type: string | null
+          methodology_version: string | null
+          metric_code: string | null
+          metric_value: number | null
+          name_ar: string | null
+          name_en: string | null
+          observation_count: number | null
+          period_end: string | null
+          period_grain: string | null
+          period_start: string | null
+          quality_flags: Json | null
+          segment_code: string | null
+          segment_type: string | null
+          source_export_date: string | null
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "dld_market_public"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
       has_role: {
         Args: {
           check_role: Database["public"]["Enums"]["app_role"]
@@ -3126,6 +3539,10 @@ export type Database = {
       publish_dld_directory_sanitized: {
         Args: { target_run_id: string }
         Returns: undefined
+      }
+      publish_dld_market_import: {
+        Args: { target_run_id: string }
+        Returns: string
       }
       refresh_area_stats: { Args: never; Returns: number }
       search_dld_directory: {
@@ -3152,6 +3569,26 @@ export type Database = {
           valid_to: string
         }[]
       }
+      search_dld_market_entities: {
+        Args: {
+          query: string
+          requested_types?: string[]
+          result_limit?: number
+          result_offset?: number
+        }
+        Returns: {
+          entity_id: string
+          entity_type: string
+          methodology_version: string
+          name_ar: string
+          name_en: string
+          source_export_date: string
+        }[]
+      }
+      stage_dld_market_rows: {
+        Args: { rows: Json; target_chunk: string; target_run_id: string }
+        Returns: number
+      }
       trigger_dld_sync: {
         Args: { dataset?: string; trigger_source?: string }
         Returns: number
@@ -3166,6 +3603,10 @@ export type Database = {
           severity: string
           source_key: string
         }[]
+      }
+      validate_dld_market_import: {
+        Args: { target_run_id: string }
+        Returns: Json
       }
     }
     Enums: {
