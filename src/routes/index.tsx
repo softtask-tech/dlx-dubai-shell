@@ -6,6 +6,8 @@ import { listPartnerDevelopers } from "@/data/catalogue";
 import { getMarketPriceIndex, getMarketSummary, listAreasWithStats } from "@/data/market";
 import { listAgents, listTestimonials } from "@/data/people";
 import { listProperties } from "@/data/properties";
+import { getDemoProjectAccessFn } from "@/data/demo-access.functions";
+import { DEMO_OFF_PLAN_PROJECTS } from "@/data/off-plan";
 import { SERVICES } from "@/data/services";
 import { faqSchema, reviewSchemaFor, type FaqEntry } from "@/lib/schema";
 import { pageHead, withHeroPreload } from "@/lib/seo";
@@ -27,6 +29,7 @@ import { Photo } from "@/components/site/photo";
 import { ProofBand } from "@/components/site/proof-band";
 import { Container, Eyebrow, Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
+import { FeaturedOffPlan } from "@/components/commercial/featured-off-plan";
 
 /**
  * Questions a first-time visitor actually asks, answered from what this site
@@ -65,7 +68,7 @@ export const Route = createFileRoute("/")({
   loader: async () => {
     /* Everything on the home page below the fold is real data, so an empty
      * database simply renders fewer sections rather than placeholder furniture. */
-    const [featured, testimonials, partners, marketSummary, marketIndex, areas, agents] =
+    const [featured, testimonials, partners, marketSummary, marketIndex, areas, agents, demoEnabled] =
       await Promise.all([
         listProperties({ limit: 5 }),
         listTestimonials(3),
@@ -74,8 +77,18 @@ export const Route = createFileRoute("/")({
         getMarketPriceIndex(),
         listAreasWithStats(),
         listAgents(),
+        getDemoProjectAccessFn(),
       ]);
-    return { featured, testimonials, partners, marketSummary, marketIndex, areas, agents };
+    return {
+      featured,
+      testimonials,
+      partners,
+      marketSummary,
+      marketIndex,
+      areas,
+      agents,
+      demoProjects: demoEnabled ? DEMO_OFF_PLAN_PROJECTS : [],
+    };
   },
   /* Review schema is built from the rows the loader actually returned, so a
    * page with no verified reviews emits no Review nodes at all. */
@@ -113,7 +126,16 @@ export const Route = createFileRoute("/")({
  * rule; this page spends both, on the market read and the residences track.
  */
 function Index() {
-  const { featured, testimonials, partners, marketSummary, marketIndex, areas, agents } =
+  const {
+    featured,
+    testimonials,
+    partners,
+    marketSummary,
+    marketIndex,
+    areas,
+    agents,
+    demoProjects,
+  } =
     Route.useLoaderData();
 
   const services = HOME_SERVICES.map((slug) => SERVICES.find((s) => s.slug === slug)).filter(
@@ -253,6 +275,10 @@ function Index() {
           </Link>
         }
       />
+
+      {/* Fictional concepts are server-gated to local/Lovable preview hosts.
+          Production receives the honest private-inventory state instead. */}
+      <FeaturedOffPlan projects={demoProjects} />
 
       {/* Selected residences, as a track the reader walks along. The second and
           last pinned moment on the page. */}

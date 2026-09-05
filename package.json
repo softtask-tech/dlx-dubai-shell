@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
+    "prebuild": "node scripts/check-domain.mjs",
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "og": "node scripts/generate-og.mjs",
@@ -16,8 +17,10 @@
     "audit:perf": "node scripts/audit-performance.mjs",
     "audit:a11y": "node scripts/audit-a11y.mjs",
     "check:copy": "node scripts/check-copy.mjs",
+    "check:domain": "node scripts/check-domain.mjs",
+    "test:off-plan": "node --experimental-strip-types --test src/data/off-plan.test.ts",
     "test:directory": "node --experimental-strip-types --test src/data/directory.test.ts",
-    "preflight": "node scripts/preflight.mjs"
+    "preflight": "node scripts/check-domain.mjs && node scripts/preflight.mjs"
   },
   "overrides": {
     "rolldown": "1.2.1"

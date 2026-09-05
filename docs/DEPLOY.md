@@ -59,7 +59,7 @@ runtime by the server.
 four the site genuinely cannot run without:
 
 ```
-VITE_SITE_URL                   https://dlxproperties.ae   (no trailing slash)
+VITE_SITE_URL                   https://dlxproperties.com   (no trailing slash)
 VITE_SUPABASE_URL
 VITE_SUPABASE_PUBLISHABLE_KEY
 SUPABASE_SERVICE_ROLE_KEY
@@ -85,7 +85,7 @@ config, because those platforms do not read that file.
 ```nginx
 server {
   listen 443 ssl http2;
-  server_name dlxproperties.ae;
+  server_name dlxproperties.com www.dlxproperties.com;
 
   # Hashed assets are immutable by construction: change the file and the
   # filename changes with it. There is no scenario in which a stale one is
@@ -134,7 +134,7 @@ forward one of them, or every visitor sees dirhams only.
 sees:
 
 ```bash
-curl -H "x-dlx-country: PK" https://dlxproperties.ae/
+curl -H "x-dlx-country: PK" https://dlxproperties.com/
 ```
 
 ---
@@ -162,7 +162,7 @@ without it and that failure is easy to miss in a batch push.
 ## 5. After the first deploy
 
 ```bash
-npm run preflight -- --url https://dlxproperties.ae
+npm run preflight -- --url https://dlxproperties.com
 ```
 
 Seven requests that answer the only question worth asking straight after a
@@ -173,7 +173,7 @@ origin, and that an unknown path returns a real 404 rather than a soft 200.
 
 ### Then, by hand
 
-1. **Submit the sitemap.** `https://dlxproperties.ae/sitemap.xml` to
+1. **Submit the sitemap.** `https://dlxproperties.com/sitemap.xml` to
    [Google Search Console](https://search.google.com/search-console) and
    [Bing Webmaster Tools](https://www.bing.com/webmasters). In Search Console,
    check the International Targeting report a few days later: it is the only

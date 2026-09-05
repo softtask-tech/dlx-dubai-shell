@@ -20,7 +20,7 @@
  * one that has consciously left the ad tags off.
  *
  *   node scripts/preflight.mjs
- *   node scripts/preflight.mjs --url https://dlxproperties.ae   (also smoke-tests)
+ *   node scripts/preflight.mjs --url https://dlxproperties.com   (also smoke-tests)
  */
 import { readFile } from "node:fs/promises";
 
@@ -91,7 +91,7 @@ const VARIABLES = [
   {
     name: "LEAD_FROM_EMAIL",
     level: "recommended",
-    what: 'The verified Resend sender, e.g. "DLX Properties <hello@dlxproperties.ae>".',
+    what: 'The verified Resend sender, e.g. "DLX Properties <hello@dlxproperties.com>".',
     cost: "Both emails send from a default address that may not be verified with Resend, so they land in spam or bounce.",
   },
 
