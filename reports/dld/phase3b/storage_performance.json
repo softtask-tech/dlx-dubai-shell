@@ -1,0 +1,82 @@
+{
+  "database_file_bytes": 1795960832,
+  "database_reported_size": {
+    "block_size": 262144,
+    "database_name": "phase3b-building",
+    "database_size": "1.6 GiB",
+    "free_blocks": 0,
+    "memory_limit": "3.7 GiB",
+    "memory_usage": "677.5 MiB",
+    "total_blocks": 6851,
+    "used_blocks": 6851,
+    "wal_size": "0 bytes"
+  },
+  "full_rebuild_seconds": 3484.873,
+  "incremental_append": "not supported because source files are complete replacement snapshots",
+  "peak_process_working_set_bytes": 4165275648,
+  "query_latency": [
+    {
+      "milliseconds": 30.223,
+      "query": "dubai_latest_complete_month"
+    },
+    {
+      "milliseconds": 16.756,
+      "query": "community_series"
+    },
+    {
+      "milliseconds": 18.883,
+      "query": "project_series"
+    }
+  ],
+  "replacement_rebuild_estimate_seconds": 3484.873,
+  "table_storage": [
+    {
+      "allocated_block_estimate_bytes": 72876032,
+      "rows": 1776143,
+      "storage_segments": 804,
+      "table": "transaction_facts_private"
+    },
+    {
+      "allocated_block_estimate_bytes": 422838272,
+      "rows": 8713621,
+      "storage_segments": 5112,
+      "table": "rental_contract_facts_private"
+    },
+    {
+      "allocated_block_estimate_bytes": 222822400,
+      "rows": 10442927,
+      "storage_segments": 2210,
+      "table": "rental_contract_lines_private"
+    },
+    {
+      "allocated_block_estimate_bytes": 2621440,
+      "rows": 72752,
+      "storage_segments": 15,
+      "table": "relationship_quarantine_private"
+    },
+    {
+      "allocated_block_estimate_bytes": 19660800,
+      "rows": 711775,
+      "storage_segments": 278,
+      "table": "aggregate_cells_private"
+    },
+    {
+      "allocated_block_estimate_bytes": 67895296,
+      "rows": 2000448,
+      "storage_segments": 942,
+      "table": "aggregate_metrics_private"
+    },
+    {
+      "allocated_block_estimate_bytes": 16777216,
+      "rows": 854251,
+      "storage_segments": 307,
+      "table": "public_aggregates_sanitized"
+    },
+    {
+      "allocated_block_estimate_bytes": 262144,
+      "rows": 2862,
+      "storage_segments": 12,
+      "table": "residential_sale_index_private"
+    }
+  ]
+}

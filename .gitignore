@@ -59,6 +59,7 @@ data/dld/**/*.db
 data/dld/**/*.parquet
 data/dld/transfer/
 data/dld/local/phase3a-tmp/
+data/dld/local/phase3b/
 reports/dld/private/
 reports/dld/**/*.duckdb
 reports/dld/**/*.parquet

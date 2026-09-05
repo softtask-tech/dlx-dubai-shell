@@ -1,0 +1,50 @@
+[
+  {
+    "blocked_cells": 0,
+    "data_domain": "rent",
+    "metric_name": "rent_annual_amount_median",
+    "private_cells_10_to_29": 66914,
+    "private_cells_30_plus": 142116,
+    "private_cells_below_10_omitted": 76494
+  },
+  {
+    "blocked_cells": 0,
+    "data_domain": "rent",
+    "metric_name": "rent_count",
+    "private_cells_10_to_29": 66914,
+    "private_cells_30_plus": 142116,
+    "private_cells_below_10_omitted": 76494
+  },
+  {
+    "blocked_cells": 334383,
+    "data_domain": "sales",
+    "metric_name": "sale_recorded_median",
+    "private_cells_10_to_29": 69304,
+    "private_cells_30_plus": 75841,
+    "private_cells_below_10_omitted": 189238
+  },
+  {
+    "blocked_cells": 334383,
+    "data_domain": "sales",
+    "metric_name": "sale_recorded_total",
+    "private_cells_10_to_29": 69304,
+    "private_cells_30_plus": 75841,
+    "private_cells_below_10_omitted": 189238
+  },
+  {
+    "blocked_cells": 334383,
+    "data_domain": "sales",
+    "metric_name": "sale_recorded_unit_median",
+    "private_cells_10_to_29": 69304,
+    "private_cells_30_plus": 75841,
+    "private_cells_below_10_omitted": 189238
+  },
+  {
+    "blocked_cells": 0,
+    "data_domain": "sales",
+    "metric_name": "sales_count",
+    "private_cells_10_to_29": 90261,
+    "private_cells_30_plus": 101580,
+    "private_cells_below_10_omitted": 234410
+  }
+]

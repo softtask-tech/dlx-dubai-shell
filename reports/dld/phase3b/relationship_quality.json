@@ -1,0 +1,71 @@
+{
+  "quarantine": [
+    {
+      "issue": "declared_property_count_mismatch",
+      "record_count": 5594,
+      "source_kind": "rent_contract"
+    },
+    {
+      "issue": "duration_out_of_range",
+      "record_count": 141,
+      "source_kind": "rent_contract"
+    },
+    {
+      "issue": "start_after_export",
+      "record_count": 11630,
+      "source_kind": "rent_contract"
+    },
+    {
+      "issue": "unmatched_nonnull_project",
+      "record_count": 16968,
+      "source_kind": "rent_line"
+    },
+    {
+      "issue": "invalid_transaction_date",
+      "record_count": 4,
+      "source_kind": "transaction"
+    },
+    {
+      "issue": "unmatched_developer_for_matched_project",
+      "record_count": 809,
+      "source_kind": "transaction"
+    },
+    {
+      "issue": "unmatched_nonnull_project",
+      "record_count": 37606,
+      "source_kind": "transaction"
+    }
+  ],
+  "transactions": [
+    {
+      "record_count": 1776143,
+      "relationship": "community",
+      "state": "matched"
+    },
+    {
+      "record_count": 1268979,
+      "relationship": "developer",
+      "state": "matched"
+    },
+    {
+      "record_count": 507164,
+      "relationship": "developer",
+      "state": "unmatched"
+    },
+    {
+      "record_count": 1776143,
+      "relationship": "procedure_group",
+      "state": "valid"
+    },
+    {
+      "record_count": 1269788,
+      "relationship": "project",
+      "state": "matched"
+    },
+    {
+      "record_count": 506355,
+      "relationship": "project",
+      "state": "unmatched"
+    }
+  ]
+}
