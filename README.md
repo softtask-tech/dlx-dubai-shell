@@ -18,7 +18,7 @@ AESTHETIC — ultra-luxury editorial (think high-end fashion/architecture brand,
 
 BUILD THE SHELL ONLY
 
-- A global layout with a minimal elegant header (logo placeholder "DLX", nav: Home · Properties · Services · Market Intelligence · Guides · About · Contact) and a refined footer (RERA ORN 40905, contact placeholders, social links).
+- A global layout with a restrained grouped header and a refined footer with contact and social links.
 
 - A striking Home page hero: full-bleed, a single large editorial serif headline ("Dubai real estate, handled with intention."), quiet parallax/reveal motion, sand accent used once. No search bar in the hero.
 
@@ -37,11 +37,11 @@ later plugs into.
 
 ### One source of truth
 
-| File | Holds |
-| --- | --- |
+| File                  | Holds                                                                                               |
+| --------------------- | --------------------------------------------------------------------------------------------------- |
 | `src/config/brand.ts` | Brand facts — name, RERA ORN, address, contacts, socials. Import-free so build scripts can read it. |
-| `src/config/pages.ts` | The page registry: path, nav label, title, description, tagline, sitemap priority. |
-| `src/config/site.ts` | Re-exports both, plus `SITE_URL` and `absoluteUrl()`. Components import only this. |
+| `src/config/pages.ts` | The page registry: path, nav label, title, description, tagline, sitemap priority.                  |
+| `src/config/site.ts`  | Re-exports both, plus `SITE_URL` and `absoluteUrl()`. Components import only this.                  |
 
 **Adding a page is two steps**: create the route file, and register it in
 `SITE_PAGES`. Registration is what gives it navigation, meta tags, a social
@@ -58,7 +58,7 @@ Review). Pages are server-rendered, so crawlers and AI read all of it without
 executing JavaScript.
 
 - `/sitemap.xml` and `/robots.txt` are generated from the registry at request
-  time. `robots.txt` allows search *and* AI crawlers by name on the canonical
+  time. `robots.txt` allows search _and_ AI crawlers by name on the canonical
   origin, and serves `Disallow: /` everywhere else — preview deployments cannot
   be indexed by accident.
 - Social cards live in `public/og/`. Regenerate them with `npm run og` after
@@ -79,10 +79,10 @@ visible focus rings, and Escape-to-close on the mobile menu.
 
 The schema lives in `supabase/migrations/` — nine tables in three groups:
 
-| Group | Tables |
-| --- | --- |
-| Places and people | `areas`, `developers`, `agents` |
-| Inventory | `projects`, `properties` |
+| Group              | Tables                                          |
+| ------------------ | ----------------------------------------------- |
+| Places and people  | `areas`, `developers`, `agents`                 |
+| Inventory          | `projects`, `properties`                        |
 | Content and demand | `guides`, `blog_posts`, `testimonials`, `leads` |
 
 `leads` is the single destination for every capture surface: it carries contact
@@ -115,13 +115,13 @@ The market figures come from Dubai Land Department open data, cleaned into our
 own tables. The site reads only those tables — never Dubai Pulse at request
 time — so the source being slow or down is an ingestion problem, not an outage.
 
-| Table | Holds |
-| --- | --- |
-| `dld_transactions` | One cleaned sale per row |
+| Table                | Holds                                         |
+| -------------------- | --------------------------------------------- |
+| `dld_transactions`   | One cleaned sale per row                      |
 | `dld_rent_contracts` | Registered tenancies, the other half of yield |
-| `area_stats` | Derived metrics, one row per community |
-| `area_price_history` | The monthly series behind the charts |
-| `dld_ingest_runs` | What each sync did, for the admin data view |
+| `area_stats`         | Derived metrics, one row per community        |
+| `area_price_history` | The monthly series behind the charts          |
+| `dld_ingest_runs`    | What each sync did, for the admin data view   |
 
 **Provenance is the organising idea.** Every row records where it came from, and
 every page derives its source line from that column rather than a constant. A
@@ -173,7 +173,7 @@ and are kept identical so a row accepted by one is accepted by the other.
 `refresh_area_stats()` computes a rolling twelve months against the twelve
 before it. The median leads rather than the average, because a handful of trophy
 sales pull a mean far above what a normal buyer transacts at. Only registered
-*sales* with a usable size feed pricing — mortgages and gifts are transfers, not
+_sales_ with a usable size feed pricing — mortgages and gifts are transfers, not
 evidence of value. Yields are gross, and every page says so.
 
 ### Lead pipeline
@@ -339,7 +339,7 @@ acceptance, discarded on refusal.
 measuring to what Meta, GA4 and Google Ads each call it — as a union type, so a
 capture point cannot fire an event nobody defined. Instrumented: listings,
 areas, calculators, listing search, every form step, the advisor, and the phone
-and WhatsApp taps, which on a brokerage site are often *the* conversion.
+and WhatsApp taps, which on a brokerage site are often _the_ conversion.
 
 **Every conversion is counted once.** The browser pixel and the server's
 Conversions API copy share an event id. Without it Meta counts both, the
@@ -389,27 +389,27 @@ deliberately do **not** degrade: a failure to save an enquiry has to be loud.
 
 Copy `.env.example` to `.env`. Every variable is documented there.
 
-| Variable | Purpose |
-| --- | --- |
-| `VITE_SITE_URL` | Canonical origin for this deployment. Drives canonical URLs, `og:url`, JSON-LD IDs, the sitemap, and whether `robots.txt` allows indexing. |
-| `VITE_SUPABASE_URL` / `VITE_SUPABASE_PUBLISHABLE_KEY` / `VITE_SUPABASE_PROJECT_ID` | Browser-side Supabase client. |
-| `SUPABASE_URL` / `SUPABASE_PUBLISHABLE_KEY` / `SUPABASE_PROJECT_ID` | Server-side Supabase access. |
-| `SUPABASE_SERVICE_ROLE_KEY` | Server only — writes leads and powers the admin app. Bypasses RLS, so never expose it to the browser. |
-| `LOVABLE_API_KEY` | Server only — the AI advisor's model. Without it the advisor does not render at all. |
-| `ADVISOR_API_URL` / `ADVISOR_MODEL` | Optional. Any OpenAI-compatible gateway and model id. |
-| `FISH_AUDIO_API_KEY` / `FISH_AUDIO_VOICE_ID` | Server only — the advisor's voice, on the phone line and the "Listen" control. Unset, both degrade to text. |
-| `VOICE_WEBHOOK_SECRET` | Shared secret for the voice endpoints and the call-summary webhook. Unset, they refuse every request. |
+| Variable                                                                           | Purpose                                                                                                                                    |
+| ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `VITE_SITE_URL`                                                                    | Canonical origin for this deployment. Drives canonical URLs, `og:url`, JSON-LD IDs, the sitemap, and whether `robots.txt` allows indexing. |
+| `VITE_SUPABASE_URL` / `VITE_SUPABASE_PUBLISHABLE_KEY` / `VITE_SUPABASE_PROJECT_ID` | Browser-side Supabase client.                                                                                                              |
+| `SUPABASE_URL` / `SUPABASE_PUBLISHABLE_KEY` / `SUPABASE_PROJECT_ID`                | Server-side Supabase access.                                                                                                               |
+| `SUPABASE_SERVICE_ROLE_KEY`                                                        | Server only — writes leads and powers the admin app. Bypasses RLS, so never expose it to the browser.                                      |
+| `LOVABLE_API_KEY`                                                                  | Server only — the AI advisor's model. Without it the advisor does not render at all.                                                       |
+| `ADVISOR_API_URL` / `ADVISOR_MODEL`                                                | Optional. Any OpenAI-compatible gateway and model id.                                                                                      |
+| `FISH_AUDIO_API_KEY` / `FISH_AUDIO_VOICE_ID`                                       | Server only — the advisor's voice, on the phone line and the "Listen" control. Unset, both degrade to text.                                |
+| `VOICE_WEBHOOK_SECRET`                                                             | Shared secret for the voice endpoints and the call-summary webhook. Unset, they refuse every request.                                      |
 
 Edge Function secrets (`npx supabase secrets set …`, not `.env`):
 
-| Secret | Purpose |
-| --- | --- |
-| `RESEND_API_KEY` | Sends both lead emails. Without it the function logs and skips; enquiries are still saved. |
-| `LEAD_FROM_EMAIL` | Verified Resend sender. |
-| `LEAD_ADMIN_EMAIL` | Where notifications land. Comma-separated for several. |
-| `SITE_DOMAIN`, `BRAND_PHONE` | Used in the email templates. |
-| `VOICE_WEBHOOK_SECRET` | Authenticates the telephony layer against `advisor-call-summary`. |
-| `SITE_URL` | Origin of the deployed site, so `advisor-call-summary` can hand the lead back for scoring. |
+| Secret                       | Purpose                                                                                    |
+| ---------------------------- | ------------------------------------------------------------------------------------------ |
+| `RESEND_API_KEY`             | Sends both lead emails. Without it the function logs and skips; enquiries are still saved. |
+| `LEAD_FROM_EMAIL`            | Verified Resend sender.                                                                    |
+| `LEAD_ADMIN_EMAIL`           | Where notifications land. Comma-separated for several.                                     |
+| `SITE_DOMAIN`, `BRAND_PHONE` | Used in the email templates.                                                               |
+| `VOICE_WEBHOOK_SECRET`       | Authenticates the telephony layer against `advisor-call-summary`.                          |
+| `SITE_URL`                   | Origin of the deployed site, so `advisor-call-summary` can hand the lead back for scoring. |
 
 ### Auditing the SEO rules
 
@@ -429,7 +429,7 @@ non-zero, so it can gate a deploy.
 Sharing a social card is reported but does not fail the run. Detail pages built
 from the database — a community, a listing, a journal post — cannot have a card
 drawn for them at build time, so they fall back to their section's until someone
-gives the row a hero image. That is a missed opportunity; a shared *description*
+gives the row a hero image. That is a missed opportunity; a shared _description_
 is a mistake, and only one of the two should block a deploy. The run lists every
 page that fell back, so the gap stays visible rather than becoming invisible.
 

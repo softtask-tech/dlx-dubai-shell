@@ -18,7 +18,7 @@ export const Route = createFileRoute("/off-plan/")({
       description:
         "A considered route into Dubai off-plan property, separating verified availability, payment terms, delivery and market evidence from sales narrative.",
       tagline: "Off-plan decisions built from terms, timing and evidence.",
-      image: "/og/properties.png",
+      image: "/og/off-plan.png",
     }),
   component: OffPlanRoute,
 });

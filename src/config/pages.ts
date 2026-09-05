@@ -48,7 +48,7 @@ export const SITE_PAGES: readonly SitePage[] = [
     label: "Home",
     title: "DLX Properties: Dubai real estate, handled with intention",
     description:
-      "A private Dubai brokerage advising on prime residential acquisitions, off-market sales and long-term portfolio strategy. RERA ORN 40905.",
+      "A private Dubai brokerage advising on prime residential acquisitions, off-market sales and long-term portfolio strategy.",
     tagline: "Dubai real estate, handled with intention.",
     fullTitle: true,
     priority: 1.0,
@@ -228,7 +228,7 @@ export const SITE_PAGES: readonly SitePage[] = [
     label: "About",
     title: "About DLX",
     description:
-      "DLX Properties is a private Dubai brokerage, RERA ORN 40905, built on restraint, discretion and client relationships measured in decades.",
+      "DLX Properties is a private Dubai brokerage built on restraint, discretion and client relationships measured in decades.",
     tagline: "A private brokerage, built on restraint.",
     priority: 0.6,
     changeFrequency: "yearly",

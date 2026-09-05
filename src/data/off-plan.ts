@@ -6,6 +6,16 @@ export type CommercialProjectMedia = {
   illustrative: true;
 };
 
+export type AdvertisingCompliance = {
+  officeRegistrationNumber: string | null;
+  responsibleBrokerBrn: string | null;
+  advertisementPermitNumber: string | null;
+  authorityIssuedQrAsset: string | null;
+  permitValidTo: string | null;
+  sourceUpdatedAt: string | null;
+  validationStatus: "unavailable-preview" | "pending" | "passed" | "failed";
+};
+
 export type CommercialProject = {
   isDemo: true;
   publicationStatus: "demo";
@@ -36,6 +46,17 @@ export type CommercialProject = {
   assignedConsultant: null;
   sourceLabel: "DLX concept fixture";
   updatedAt: "2026-09-05";
+  advertisingCompliance: AdvertisingCompliance;
+};
+
+const previewCompliance: AdvertisingCompliance = {
+  officeRegistrationNumber: null,
+  responsibleBrokerBrn: null,
+  advertisementPermitNumber: null,
+  authorityIssuedQrAsset: null,
+  permitValidTo: null,
+  sourceUpdatedAt: null,
+  validationStatus: "unavailable-preview",
 };
 
 const media = (src: string, alt: string, caption: string): CommercialProjectMedia => ({
@@ -91,6 +112,7 @@ export const DEMO_OFF_PLAN_PROJECTS: readonly CommercialProject[] = [
     assignedConsultant: null,
     sourceLabel: "DLX concept fixture",
     updatedAt: "2026-09-05",
+    advertisingCompliance: previewCompliance,
   },
   {
     isDemo: true,
@@ -137,6 +159,7 @@ export const DEMO_OFF_PLAN_PROJECTS: readonly CommercialProject[] = [
     assignedConsultant: null,
     sourceLabel: "DLX concept fixture",
     updatedAt: "2026-09-05",
+    advertisingCompliance: previewCompliance,
   },
   {
     isDemo: true,
@@ -183,6 +206,7 @@ export const DEMO_OFF_PLAN_PROJECTS: readonly CommercialProject[] = [
     assignedConsultant: null,
     sourceLabel: "DLX concept fixture",
     updatedAt: "2026-09-05",
+    advertisingCompliance: previewCompliance,
   },
 ] as const;
 

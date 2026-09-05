@@ -1,5 +1,5 @@
-import { PageHero } from "@/components/site/page-hero";
-import { Eyebrow, Section } from "@/components/ui/section";
+import type { ReactNode } from "react";
+import { Container, Eyebrow, Section } from "@/components/ui/section";
 import {
   DIRECTORY_DISCLAIMER,
   DIRECTORY_RECORDED_LABEL,
@@ -39,8 +39,8 @@ export function DirectoryPage({
 }) {
   return (
     <>
-      <PageHero photo="burj-al-arab-cloud" title={title} lead={lead} />
-      <Section>
+      <DirectoryIntro title={title} lead={lead} />
+      <Section className="pt-0">
         <nav
           aria-label="Directory sections"
           className="flex flex-wrap gap-x-6 gap-y-3 border-b border-border pb-8"
@@ -58,7 +58,7 @@ export function DirectoryPage({
         <form
           action={selectedType ? undefined : "/directory"}
           method="get"
-          className="mt-10 grid gap-4 border border-border p-6 md:grid-cols-[1fr_14rem_auto]"
+          className="sticky top-18 z-30 mt-8 grid gap-4 border border-border bg-background p-4 shadow-sm md:static md:grid-cols-[1fr_14rem_auto] md:p-6 md:shadow-none"
         >
           <label className="block">
             <span className="eyebrow">Name or official number</span>
@@ -126,9 +126,7 @@ export function DirectoryPage({
         )}
 
         <DirectoryPagination result={result} query={query} selectedType={selectedType} />
-        <p className="caption mt-12 max-w-3xl border-t border-border pt-6 text-muted-foreground">
-          {DIRECTORY_DISCLAIMER}
-        </p>
+        <DirectoryTrust />
       </Section>
     </>
   );
@@ -269,18 +267,17 @@ export function DirectoryDetailPage({
   const record = result.record;
   return (
     <>
-      <PageHero
-        photo="burj-al-arab-cloud"
+      <DirectoryIntro
         title={record.display_name_en ?? record.display_name_ar ?? "Official record"}
         lead={DIRECTORY_RECORDED_LABEL}
       >
         {record.display_name_en && record.display_name_ar ? (
-          <p lang="ar" dir="rtl" className="lead mt-5 text-right text-on-dark-muted">
+          <p lang="ar" dir="rtl" className="lead mt-5 text-right text-muted-foreground">
             {record.display_name_ar}
           </p>
         ) : null}
-      </PageHero>
-      <Section>
+      </DirectoryIntro>
+      <Section className="pt-0">
         <Eyebrow>{DIRECTORY_TYPE_LABELS[record.entity_type]}</Eyebrow>
         <dl className="mt-8 grid gap-8 border-y border-border py-8 md:grid-cols-3">
           <DirectoryFact label="Official number" value={record.primary_number} />
@@ -296,7 +293,7 @@ export function DirectoryDetailPage({
             {directoryStatusNotice(record.source_export_date)}
           </p>
         ) : null}
-        <p className="caption mt-6 max-w-3xl text-muted-foreground">{DIRECTORY_DISCLAIMER}</p>
+        <DirectoryTrust />
       </Section>
     </>
   );
@@ -314,12 +311,65 @@ function DirectoryFact({ label, value }: { label: string; value: string | null }
 function DirectoryDetailState({ title, body }: { title: string; body: string }) {
   return (
     <>
-      <PageHero photo="burj-al-arab-cloud" title={title} lead={body} />
-      <Section>
+      <DirectoryIntro title={title} lead={body} />
+      <Section className="pt-0">
         <a href="/directory" className="eyebrow link-underline">
           Return to directory
         </a>
       </Section>
     </>
+  );
+}
+
+function DirectoryIntro({
+  title,
+  lead,
+  children,
+}: {
+  title: string;
+  lead: string;
+  children?: ReactNode;
+}) {
+  return (
+    <section className="border-b border-border bg-paper-cool pt-32 pb-12 md:pt-40 md:pb-16">
+      <Container>
+        <nav aria-label="Breadcrumb" className="eyebrow text-muted-foreground">
+          <a href="/" className="link-underline">
+            Home
+          </a>
+          <span aria-hidden className="mx-2">
+            /
+          </span>
+          <a href="/directory" className="link-underline">
+            Property data
+          </a>
+        </nav>
+        <div className="mt-8 grid gap-6 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7">
+            <Eyebrow>Official public record</Eyebrow>
+            <h1 className="display-2 mt-4 text-balance">{title}</h1>
+          </div>
+          <div className="lg:col-span-4 lg:col-start-9">
+            <p className="body-text text-muted-foreground">{lead}</p>
+            {children}
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function DirectoryTrust() {
+  return (
+    <aside
+      className="mt-12 border-l-2 border-accent bg-paper-cool p-6"
+      aria-label="Directory source and independence"
+    >
+      <p className="eyebrow">Source and independence</p>
+      <p className="caption mt-3 max-w-3xl text-muted-foreground">
+        {DIRECTORY_DISCLAIMER} Relationships that cannot be matched safely remain unavailable; the
+        browser never queries internal directory tables.
+      </p>
+    </aside>
   );
 }

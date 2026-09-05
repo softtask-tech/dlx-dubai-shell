@@ -18,7 +18,7 @@ export const brand = {
   tagline: "Dubai real estate, handled with intention.",
   description:
     "A private Dubai brokerage advising on prime residential acquisitions, off-market sales and long-term portfolio strategy.",
-  /** RERA Office Registration Number, shown on every page in the footer. */
+  /** Internal corporate compliance fact. Render only in an applicable compliance block. */
   reraOrn: "40905",
   locale: "en_AE",
   language: "en",

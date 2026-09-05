@@ -8,7 +8,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { lazy, Suspense, useEffect, useRef, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -24,11 +24,15 @@ import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/section";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
-import { AdvisorDock } from "@/components/advisor/advisor-dock";
 import { ConsentBar } from "@/components/site/consent-bar";
+import { MobileContactBar } from "@/components/site/mobile-contact-bar";
 import { advisorAvailabilityFn } from "@/data/advisor.functions";
 import { hasDecided, initTracking, trackPageView } from "@/lib/tracking";
 import { LenisProvider } from "@/components/motion/lenis-provider";
+
+const AdvisorDock = lazy(() =>
+  import("@/components/advisor/advisor-dock").then((module) => ({ default: module.AdvisorDock })),
+);
 
 function NotFoundComponent() {
   return (
@@ -236,10 +240,15 @@ function RootComponent() {
               <Outlet />
             </main>
             {isCampaignPage ? null : <Footer />}
+            {isCampaignPage ? null : <MobileContactBar />}
             {/* One bar at a time. The advisor waits until the visitor has answered
                 the cookie question, so the foot of the page never carries two. */}
             <ConsentBar onDecided={() => setConsentDecided(true)} />
-            {advisorAvailability.chat && consentDecided && !isCampaignPage ? <AdvisorDock /> : null}
+            {advisorAvailability.chat && consentDecided && !isCampaignPage ? (
+              <Suspense fallback={null}>
+                <AdvisorDock />
+              </Suspense>
+            ) : null}
           </LenisProvider>
         </CurrencyProvider>
       </LocaleProvider>

@@ -112,6 +112,14 @@ export function CommercialProjectDetail({
           </div>
           <aside className="flex flex-col gap-9 lg:col-span-3 lg:col-start-10">
             <TrustSourcePanel project={project} />
+            <aside className="border border-border p-5" aria-label="Advertising compliance preview">
+              <Eyebrow>Advertising compliance</Eyebrow>
+              <p className="caption mt-4 text-muted-foreground">
+                ORN, responsible broker BRN, DLD advertisement permit and authority-issued QR code
+                are unavailable in this concept preview. A real project cannot be published until
+                every required field passes validation.
+              </p>
+            </aside>
             <ConsultantModule project={project} />
             <RelatedProjects project={project} projects={allProjects} />
           </aside>

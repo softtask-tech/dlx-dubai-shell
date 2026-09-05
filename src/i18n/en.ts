@@ -21,13 +21,13 @@ export const en = {
     "/": {
       title: "DLX Properties, Dubai real estate, handled with intention",
       description:
-        "A private Dubai brokerage advising on prime residential acquisitions, off-market sales and long-term portfolio strategy. RERA ORN 40905.",
+        "A private Dubai brokerage advising on prime residential acquisitions, off-market sales and long-term portfolio strategy.",
       tagline: "Dubai real estate, handled with intention.",
     },
     "/about": {
       title: "About DLX",
       description:
-        "A small Dubai brokerage that represents a limited number of clients at a time. Licensed under RERA ORN 40905, working from Business Bay.",
+        "A small Dubai brokerage that represents a limited number of clients at a time, working from Business Bay.",
       tagline: "Fewer clients, handled properly.",
     },
     "/services": {
@@ -112,7 +112,7 @@ export const en = {
     faq: [
       {
         question: "Is DLX Properties a licensed Dubai brokerage?",
-        answer: `Yes. ${brand.name} trades under RERA Office Registration Number ${brand.reraOrn} and works from ${brand.address.street}, ${brand.address.locality}. Every transaction we handle runs through the Dubai Land Department's official process.`,
+        answer: `Yes. ${brand.name} is a Dubai real-estate brokerage working from ${brand.address.street}, ${brand.address.locality}. Applicable identifiers are shown in the relevant compliance context.`,
       },
       {
         question: "What does DLX actually do for a client?",
@@ -132,7 +132,7 @@ export const en = {
     title: "Fewer clients, handled properly.",
     lead: "DLX is deliberately small. We take on a limited number of mandates at a time because the alternative, a pipeline of a hundred half-served buyers, is how most brokerages work and why most buyers feel unrepresented.",
     licenceEyebrow: "Licence",
-    licenceBody: `${brand.name} is licensed by the Dubai Land Department's regulator, RERA, under Office Registration Number ${brand.reraOrn}. Our office is in ${brand.address.street}, ${brand.address.locality}. Every transaction runs through the Land Department's official process, and every figure we publish is sourced and dated.`,
+    licenceBody: `${brand.name} is a Dubai real-estate brokerage with an office in ${brand.address.street}, ${brand.address.locality}. Applicable regulatory identifiers are shown with the relevant advertisement or legal disclosure.`,
     principlesEyebrow: "How we work",
     principles: [
       {
@@ -184,7 +184,7 @@ export const en = {
     hoursBody:
       "Sunday to Thursday, 9am - 6pm Gulf Standard Time. Messages are read at weekends too.",
     directEyebrow: "Direct",
-    licenceLine: `RERA ORN ${brand.reraOrn}`,
+    licenceLine: "Dubai real-estate brokerage",
   },
 
   footer: {
@@ -194,7 +194,7 @@ export const en = {
     exploreHeading: "Explore",
     contactHeading: "Contact",
     legalHeading: "Legal",
-    licence: `RERA ORN ${brand.reraOrn}`,
+    licence: "Business Bay, Dubai",
     rights: "All rights reserved.",
     languageHeading: "Language",
   },
@@ -297,7 +297,7 @@ export const en = {
     credentials: [
       {
         label: "Licensed",
-        value: `RERA ORN ${brand.reraOrn}`,
+        value: "Dubai real-estate brokerage",
         detail: "Registered with Dubai's Real Estate Regulatory Agency.",
       },
       {

@@ -24,14 +24,12 @@ export const zh: Dictionary = {
   meta: {
     "/": {
       title: "DLX Properties, 迪拜房地产，以审慎之心经手",
-      description:
-        "迪拜私人地产经纪：优质住宅收购、非公开交易与长期资产配置顾问。RERA 持牌编号 40905。",
+      description: "迪拜私人地产经纪：优质住宅收购、非公开交易与长期资产配置顾问。",
       tagline: "迪拜房地产，以审慎之心经手。",
     },
     "/about": {
       title: "关于 DLX",
-      description:
-        "一家刻意保持小规模的迪拜经纪行，同期只服务有限客户。RERA 持牌编号 40905，办公室位于商业湾。",
+      description: "一家刻意保持小规模的迪拜经纪行，同期只服务有限客户，办公室位于商业湾。",
       tagline: "客户更少，服务更实。",
     },
     "/services": {
@@ -109,7 +107,7 @@ export const zh: Dictionary = {
     faq: [
       {
         question: "DLX Properties 是迪拜持牌经纪行吗？",
-        answer: `是。${brand.name} 以 RERA 办公室注册编号 ${brand.reraOrn} 持牌经营，办公室位于迪拜商业湾。我们经手的每一笔交易，都通过迪拜土地局（Dubai Land Department）的官方流程完成。`,
+        answer: `是。${brand.name} 是一家位于商业湾的迪拜房地产经纪公司。适用的监管标识会在相应合规场景中展示。`,
       },
       {
         question: "DLX 具体为客户做什么？",
@@ -129,7 +127,7 @@ export const zh: Dictionary = {
     title: "客户更少，服务更实。",
     lead: "DLX 刻意保持小规模。我们同期只接有限委托，因为另一条路--同时应付上百位只被服务了一半的买家--正是多数经纪行的做法，也正是多数买家觉得无人真正代表自己的原因。",
     licenceEyebrow: "牌照",
-    licenceBody: `${brand.name} 由迪拜土地局下属监管机构 RERA 发牌，办公室注册编号 ${brand.reraOrn}，办公地点位于迪拜商业湾。每笔交易均走土地局官方流程；我们公布的每一个数字，都附来源与日期。`,
+    licenceBody: `${brand.name} 是一家位于商业湾的迪拜房地产经纪公司。适用的监管标识会随相关广告或法律披露展示。`,
     principlesEyebrow: "我们如何做事",
     principles: [
       {
@@ -180,7 +178,7 @@ export const zh: Dictionary = {
     hoursEyebrow: "工作时间",
     hoursBody: "周日至周四 9:00-18:00（海湾标准时间）。周末的留言我们同样会看。",
     directEyebrow: "直接联系",
-    licenceLine: `RERA 持牌编号 ${brand.reraOrn}`,
+    licenceLine: "迪拜房地产经纪",
   },
 
   footer: {
@@ -190,7 +188,7 @@ export const zh: Dictionary = {
     exploreHeading: "浏览",
     contactHeading: "联系",
     legalHeading: "法律信息",
-    licence: `RERA 持牌编号 ${brand.reraOrn}`,
+    licence: "迪拜商业湾",
     rights: "版权所有。",
     languageHeading: "语言",
   },
@@ -286,7 +284,7 @@ export const zh: Dictionary = {
     credentials: [
       {
         label: "持牌",
-        value: `RERA 注册编号 ${brand.reraOrn}`,
+        value: "迪拜房地产经纪",
         detail: "已在迪拜房地产监管局备案。",
       },
       {

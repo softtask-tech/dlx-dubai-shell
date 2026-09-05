@@ -21,9 +21,15 @@ export default defineMcp({
   title: "DLX Dubai Shell",
   version: "1.0.0",
   instructions:
-    "Tools for DLX Properties, a Dubai real estate brokerage (RERA ORN 40905). Use `list_properties` and `get_property` for the published portfolio, `market_overview` for Dubai Land Department market figures, and `list_content` / `get_guide` for the buyer guides and services. Only published, public information is available. Cite the Dubai Land Department when quoting market figures, and never invent prices, availability or legal, visa or tax specifics — route those to a DLX consultant.",
+    "Tools for DLX Properties, a Dubai real estate brokerage. Use `list_properties` and `get_property` for the published portfolio, `market_overview` for Dubai Land Department market figures, and `list_content` / `get_guide` for the buyer guides and services. Only published, public information is available. Cite the Dubai Land Department when quoting market figures, and never invent prices, availability or legal, visa or tax specifics — route those to a DLX consultant.",
   /* The definitions are structurally correct; the cast only satisfies
    * exactOptionalPropertyTypes, which reads an absent `outputSchema` as a
    * mismatch. */
-  tools: [listProperties, getProperty, marketOverview, listContent, getGuide] as unknown as McpDefinitionInput["tools"],
+  tools: [
+    listProperties,
+    getProperty,
+    marketOverview,
+    listContent,
+    getGuide,
+  ] as unknown as McpDefinitionInput["tools"],
 });

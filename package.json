@@ -20,6 +20,8 @@
     "check:domain": "node scripts/check-domain.mjs",
     "test:off-plan": "node --experimental-strip-types --test src/data/off-plan.test.ts",
     "test:directory": "node --experimental-strip-types --test src/data/directory.test.ts",
+    "test:phase2c": "node --experimental-strip-types --test src/config/navigation.test.ts src/data/off-plan.test.ts && node scripts/check-phase2c-compliance.mjs",
+    "check:compliance": "node scripts/check-phase2c-compliance.mjs",
     "preflight": "node scripts/check-domain.mjs && node scripts/preflight.mjs"
   },
   "overrides": {

@@ -127,6 +127,8 @@
    * comfortable reading width for running text. */
   --container-shell: 90rem;
   --container-measure: 34rem;
+  --container-narrow: 46rem;
+  --container-wide: 76rem;
 
   /* --- Motion -----------------------------------------------------------
    * Mirrored in src/lib/motion.ts, which owns the JS-side values. */
@@ -222,6 +224,13 @@
    * on. Green clears that on every surface in the system; gold does not clear
    * it on the light canvas, which is why the ring is never gold. */
   --ring: var(--green);
+  --status-positive: #236347;
+  --status-warning: #8a5a12;
+  --status-neutral: #52605a;
+  --chart-1: #2e5a4b;
+  --chart-2: #6c8c80;
+  --chart-3: #c2a45c;
+  --chart-4: #65717a;
 }
 
 /*
@@ -403,6 +412,23 @@
     opacity: 1 !important;
     transform: none !important;
   }
+}
+
+/* Shared interaction contract: visible keyboard focus and a 44px minimum target. */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Useful at 320px: controls wrap before the page is allowed to overflow. */
+html,
+body {
+  overflow-x: clip;
 }
 
 /* --- Line reveal ----------------------------------------------------------
@@ -760,8 +786,7 @@
     "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", ui-sans-serif,
     system-ui, sans-serif;
   --font-display: var(--font-sans);
-  --font-accent:
-    "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", ui-serif, serif;
+  --font-accent: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", ui-serif, serif;
   --tracking-display: 0em;
   --tracking-editorial: 0.12em;
 }

@@ -46,10 +46,26 @@ test("the three fixtures are fictional, isolated and carry no official claims", 
     assert.equal(project.startingPrice, null);
     assert.equal(project.handover, null);
     assert.equal(project.brochureUrl, null);
+    assert.deepEqual(project.advertisingCompliance, {
+      officeRegistrationNumber: null,
+      responsibleBrokerBrn: null,
+      advertisementPermitNumber: null,
+      authorityIssuedQrAsset: null,
+      permitValidTo: null,
+      sourceUpdatedAt: null,
+      validationStatus: "unavailable-preview",
+    });
     assert.match(project.developerName, /fictional/i);
     assert.match(project.hero.caption, /not a real project/i);
     assert.equal(getDemoOffPlanProject(project.slug)?.slug, project.slug);
   }
+});
+
+test("prototype advertising compliance cannot be mistaken for genuine data", () => {
+  const page = readFileSync("src/components/commercial/project-detail.tsx", "utf8");
+  assert.match(page, /unavailable in this concept preview/i);
+  assert.match(page, /cannot be published until\s+every required field passes validation/i);
+  assert.equal(page.includes("generateQRCode"), false);
 });
 
 test("demo enquiry component has no network, CRM or conversion imports", () => {
