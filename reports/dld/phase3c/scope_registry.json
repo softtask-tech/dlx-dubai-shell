@@ -1,0 +1,196 @@
+{
+  "methodology_version": "dld-market-publication-phase3c-v1",
+  "minimum_count": 10,
+  "minimum_value_or_change": 30,
+  "publication_floor": "2010-01-01",
+  "rules": [
+    {
+      "consumer": "Dubai market overview and trend charts",
+      "entity_types": [
+        "dubai"
+      ],
+      "period_grains": [
+        "month",
+        "quarter",
+        "year"
+      ],
+      "segments": {
+        "all": [
+          "all"
+        ],
+        "property_class": [
+          "property_subtype:4",
+          "property_subtype:60"
+        ],
+        "registration_type": [
+          "registration:0",
+          "registration:1"
+        ]
+      },
+      "seo": "Dubai market methodology and trend pages",
+      "source_metrics": [
+        "sales_count",
+        "sales_count_period_change"
+      ]
+    },
+    {
+      "consumer": "Dubai rental overview and trend charts",
+      "entity_types": [
+        "dubai"
+      ],
+      "period_grains": [
+        "month",
+        "quarter",
+        "year"
+      ],
+      "segments": {
+        "all": [
+          "all"
+        ],
+        "registration_type": [
+          "registration:1",
+          "registration:2"
+        ]
+      },
+      "seo": "Dubai rental methodology and trend pages",
+      "source_metrics": [
+        "rent_count",
+        "rent_count_period_change",
+        "rent_annual_amount_median",
+        "rent_annual_amount_median_period_change"
+      ]
+    },
+    {
+      "consumer": "Community activity sparklines",
+      "entity_types": [
+        "community"
+      ],
+      "period_grains": [
+        "month"
+      ],
+      "segments": {
+        "all": [
+          "all"
+        ]
+      },
+      "seo": "None; supporting data only",
+      "source_metrics": [
+        "sales_count",
+        "rent_count"
+      ]
+    },
+    {
+      "consumer": "Community overview and comparison charts",
+      "entity_types": [
+        "community"
+      ],
+      "period_grains": [
+        "quarter"
+      ],
+      "segments": {
+        "all": [
+          "all"
+        ]
+      },
+      "seo": "Published community market pages",
+      "source_metrics": [
+        "sales_count",
+        "sales_count_period_change",
+        "rent_count",
+        "rent_count_period_change",
+        "rent_annual_amount_median",
+        "rent_annual_amount_median_period_change"
+      ]
+    },
+    {
+      "consumer": "Community annual sales composition",
+      "entity_types": [
+        "community"
+      ],
+      "period_grains": [
+        "year"
+      ],
+      "segments": {
+        "all": [
+          "all"
+        ],
+        "property_class": [
+          "property_subtype:4",
+          "property_subtype:60"
+        ],
+        "registration_type": [
+          "registration:0",
+          "registration:1"
+        ]
+      },
+      "seo": "Published community market pages",
+      "source_metrics": [
+        "sales_count"
+      ]
+    },
+    {
+      "consumer": "Community annual trend summaries",
+      "entity_types": [
+        "community"
+      ],
+      "period_grains": [
+        "year"
+      ],
+      "segments": {
+        "all": [
+          "all"
+        ]
+      },
+      "seo": "Published community market pages",
+      "source_metrics": [
+        "sales_count_period_change",
+        "rent_count_period_change",
+        "rent_annual_amount_median",
+        "rent_annual_amount_median_period_change"
+      ]
+    },
+    {
+      "consumer": "Community annual rental composition",
+      "entity_types": [
+        "community"
+      ],
+      "period_grains": [
+        "year"
+      ],
+      "segments": {
+        "all": [
+          "all"
+        ],
+        "registration_type": [
+          "registration:1",
+          "registration:2"
+        ]
+      },
+      "seo": "Published community market pages",
+      "source_metrics": [
+        "rent_count"
+      ]
+    },
+    {
+      "consumer": "Recorded project/developer sales activity",
+      "entity_types": [
+        "project",
+        "developer"
+      ],
+      "period_grains": [
+        "quarter",
+        "year"
+      ],
+      "segments": {
+        "all": [
+          "all"
+        ]
+      },
+      "seo": "Supporting facts on exact-match entity pages",
+      "source_metrics": [
+        "sales_count"
+      ]
+    }
+  ],
+  "schema_version": "dld-market-scope/1"
+}

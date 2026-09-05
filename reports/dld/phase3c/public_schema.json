@@ -1,0 +1,24 @@
+{
+  "columns": [
+    "aggregate_key",
+    "entity_type",
+    "entity_id",
+    "name_en",
+    "name_ar",
+    "period_grain",
+    "period_start",
+    "period_end",
+    "metric_code",
+    "segment_type",
+    "segment_code",
+    "metric_value",
+    "observation_count",
+    "confidence",
+    "quality_flags",
+    "source_export_date",
+    "methodology_version"
+  ],
+  "entity_id": "public DLD area/project/developer number, or dubai",
+  "format": "UTF-8 CSV with a header in every chunk",
+  "prohibited": "transaction, contract, property, unit, land, participant, contact, or private relationship identifiers"
+}

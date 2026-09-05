@@ -1,0 +1,40 @@
+{
+  "files": [
+    {
+      "bytes": 986,
+      "file": "migration_review.json",
+      "sha256": "5ec127ae401fe2dcb618d57b6c5266471c01ab2a2b870835d37e047bb8df88bc"
+    },
+    {
+      "bytes": 4008,
+      "file": "package_summary.json",
+      "sha256": "7fd90e43820aa5f32cf7dedf1e7a839a4bfd8ed51c900e3331097287d8477373"
+    },
+    {
+      "bytes": 608,
+      "file": "public_schema.json",
+      "sha256": "b5a97a3495d0ec80953a016361ae4f81a62d16a44dd79ce22de43f3119efaa33"
+    },
+    {
+      "bytes": 467,
+      "file": "query_plan_review.json",
+      "sha256": "36cb0a8a962b3b4cfd2cf2978d902a3ac406940d791d0747d7285ad451464f08"
+    },
+    {
+      "bytes": 2547,
+      "file": "safe_samples.json",
+      "sha256": "6c88b56afaacccca35a67eed28e518527f7fbe87461f239539e3584f4ac65319"
+    },
+    {
+      "bytes": 4240,
+      "file": "scope_registry.json",
+      "sha256": "2798a747e602a75576affffebdfa68eb56ffe2e4dce2b22a712264a8733715ab"
+    },
+    {
+      "bytes": 190,
+      "file": "verification.json",
+      "sha256": "f9d8729a6a889ec820a5e9bbdffefd4cfacd35e02a9a2e5223def51ec16a59a2"
+    }
+  ],
+  "schema_version": "dld-phase3c-reports/1"
+}
