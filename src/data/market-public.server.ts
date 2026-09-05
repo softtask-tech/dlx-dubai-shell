@@ -213,3 +213,32 @@ export async function searchMarketEntities(input: {
     return [];
   }
 }
+
+/**
+ * Communities substantial enough to deserve an indexable page.
+ *
+ * The public functions deliberately have no "list everything" entry point, so
+ * this reads the canonical table directly with the trusted server client. It is
+ * used only to build the sitemap, and it applies a floor: a community with a
+ * handful of published quarters is a thin page, and thin pages are worse than
+ * absent ones.
+ */
+export async function listMarketCommunitiesServer(): Promise<
+  { entityId: string; nameEn: string }[]
+> {
+  try {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data, error } = await (supabaseAdmin as unknown as SupabaseClient).rpc(
+      "list_dld_market_communities_internal",
+      {},
+    );
+    if (error) throw error;
+    return ((data ?? []) as { entity_id: string; name_en: string }[]).map((row) => ({
+      entityId: row.entity_id,
+      nameEn: row.name_en,
+    }));
+  } catch (error) {
+    console.error("[data:dld-market] community index unavailable", error);
+    return [];
+  }
+}
