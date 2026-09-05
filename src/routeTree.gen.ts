@@ -47,6 +47,7 @@ import { Route as GuidesIndexRouteImport } from './routes/guides/index'
 import { Route as GuidesSlugRouteImport } from './routes/guides/$slug'
 import { Route as LpSlugRouteImport } from './routes/lp/$slug'
 import { Route as MarketIntelligenceIndexRouteImport } from './routes/market-intelligence/index'
+import { Route as MarketIntelligenceCompareRouteImport } from './routes/market-intelligence/compare'
 import { Route as OffPlanIndexRouteImport } from './routes/off-plan/index'
 import { Route as OffPlanSlugRouteImport } from './routes/off-plan/$slug'
 import { Route as ProjectsSlugRouteImport } from './routes/projects/$slug'
@@ -264,6 +265,12 @@ const MarketIntelligenceIndexRoute = MarketIntelligenceIndexRouteImport.update({
   path: '/market-intelligence/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MarketIntelligenceCompareRoute =
+  MarketIntelligenceCompareRouteImport.update({
+    id: '/market-intelligence/compare',
+    path: '/market-intelligence/compare',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const OffPlanIndexRoute = OffPlanIndexRouteImport.update({
   id: '/off-plan/',
   path: '/off-plan/',
@@ -423,6 +430,7 @@ export interface FileRoutesByFullPath {
   '/directory/valuators': typeof DirectoryValuatorsRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/lp/$slug': typeof LpSlugRoute
+  '/market-intelligence/compare': typeof MarketIntelligenceCompareRoute
   '/off-plan/$slug': typeof OffPlanSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
@@ -486,6 +494,7 @@ export interface FileRoutesByTo {
   '/directory/valuators': typeof DirectoryValuatorsRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/lp/$slug': typeof LpSlugRoute
+  '/market-intelligence/compare': typeof MarketIntelligenceCompareRoute
   '/off-plan/$slug': typeof OffPlanSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
@@ -552,6 +561,7 @@ export interface FileRoutesById {
   '/directory/valuators': typeof DirectoryValuatorsRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/lp/$slug': typeof LpSlugRoute
+  '/market-intelligence/compare': typeof MarketIntelligenceCompareRoute
   '/off-plan/$slug': typeof OffPlanSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
@@ -619,6 +629,7 @@ export interface FileRouteTypes {
     | '/directory/valuators'
     | '/guides/$slug'
     | '/lp/$slug'
+    | '/market-intelligence/compare'
     | '/off-plan/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
@@ -682,6 +693,7 @@ export interface FileRouteTypes {
     | '/directory/valuators'
     | '/guides/$slug'
     | '/lp/$slug'
+    | '/market-intelligence/compare'
     | '/off-plan/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
@@ -747,6 +759,7 @@ export interface FileRouteTypes {
     | '/directory/valuators'
     | '/guides/$slug'
     | '/lp/$slug'
+    | '/market-intelligence/compare'
     | '/off-plan/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
@@ -805,6 +818,7 @@ export interface RootRouteChildren {
   DirectoryValuatorsRoute: typeof DirectoryValuatorsRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   LpSlugRoute: typeof LpSlugRoute
+  MarketIntelligenceCompareRoute: typeof MarketIntelligenceCompareRoute
   OffPlanSlugRoute: typeof OffPlanSlugRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
   PropertiesSlugRoute: typeof PropertiesSlugRoute
@@ -1106,6 +1120,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketIntelligenceIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/market-intelligence/compare': {
+      id: '/market-intelligence/compare'
+      path: '/market-intelligence/compare'
+      fullPath: '/market-intelligence/compare'
+      preLoaderRoute: typeof MarketIntelligenceCompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/off-plan/': {
       id: '/off-plan/'
       path: '/off-plan'
@@ -1348,6 +1369,7 @@ const rootRouteChildren: RootRouteChildren = {
   DirectoryValuatorsRoute: DirectoryValuatorsRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   LpSlugRoute: LpSlugRoute,
+  MarketIntelligenceCompareRoute: MarketIntelligenceCompareRoute,
   OffPlanSlugRoute: OffPlanSlugRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
   PropertiesSlugRoute: PropertiesSlugRoute,
