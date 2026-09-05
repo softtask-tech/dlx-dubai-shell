@@ -1,0 +1,14 @@
+{
+  "database_opened_read_only": true,
+  "dataset_count": 25,
+  "file_count": 62,
+  "latest_source_export_date": "2026-09-04",
+  "methodology_version": "dld-market-audit-phase3a-v1",
+  "raw_rows_emitted": 0,
+  "schema_version": 1,
+  "source_export_dates": [
+    "2026-09-04"
+  ],
+  "source_path_resolved": "C:\\Users\\adams\\Downloads\\DLD DATA COD",
+  "source_row_count": 16521480
+}

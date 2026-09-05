@@ -1,0 +1,6134 @@
+[
+  {
+    "candidate_primary_keys": [
+      "course_time_from+course_time_to+age_group+trainee_gender+no_of_trainees+course_code+cource_title_ar+cource_title_en+course_date+course_to"
+    ],
+    "column_count": 11,
+    "columns": [
+      {
+        "approx_distinct": 6,
+        "declared_type": "nvarchar",
+        "name": "age_group",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "nvarchar",
+        "name": "cource_title_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "nvarchar",
+        "name": "cource_title_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "nvarchar",
+        "name": "course_code",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 17,
+        "declared_type": "nvarchar",
+        "name": "course_date",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "nvarchar",
+        "name": "course_time_from",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "nvarchar",
+        "name": "course_time_to",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 20,
+        "declared_type": "nvarchar",
+        "name": "course_to",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 23,
+        "declared_type": "numeric",
+        "name": "no_of_trainees",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "nvarchar",
+        "name": "trainee_gender",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 43436,
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "dataset_kind": "directory/snapshot",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+        "field": "course_date",
+        "from_2036_rows": 0,
+        "maximum": "2018-12-15T00:00:00",
+        "minimum": "2018-07-02T00:00:00",
+        "nonblank_rows": 117,
+        "parsed_rows": 117,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2022-02-10T16:13:14",
+        "minimum": "2022-02-10T16:13:14",
+        "nonblank_rows": 117,
+        "parsed_rows": 117,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 23801,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Accredited Trainers by the Dubai Real Estate Institute/accredited_trainers_2026-07-15_14-15-49_0001.csv",
+        "sha256": "b61519976fe3e25cc581359e484cb0ad8202582af96546f306aa441a024abbef",
+        "sheets": [],
+        "source_export_date": "2026-07-15",
+        "uncompressed_bytes": 23801
+      },
+      {
+        "compressed_bytes": 19635,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Accredited Trainers by the Dubai Real Estate Institute/Accredited_Trainers_by_the_Dubai_Real_Estate_Institute_2026-09-04_attribute-details.xlsx",
+        "sha256": "b1d6e16224d748051b0f271ad6e9a3728ade3f4f2fc4d6195e9cf6c40d474a3c",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 11
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 18503
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [],
+    "personally_identifying_or_sensitive_columns": [
+      "age_group",
+      "no_of_trainees",
+      "trainee_gender"
+    ],
+    "row_count": 117,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "accredited_trainers",
+    "uncompressed_bytes": 42304
+  },
+  {
+    "candidate_primary_keys": [
+      "escrow_agent_number"
+    ],
+    "column_count": 5,
+    "columns": [
+      {
+        "approx_distinct": 23,
+        "declared_type": "nvarchar",
+        "name": "escrow_agent_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 24,
+        "declared_type": "nvarchar",
+        "name": "escrow_agent_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 28,
+        "declared_type": "numeric",
+        "name": "escrow_agent_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 4,
+        "declared_type": "nvarchar",
+        "name": "phone",
+        "null_count": 20,
+        "null_percent": 80.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 20640,
+    "dataset": "Approved Escrow Account Agents",
+    "dataset_kind": "directory/snapshot",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Approved Escrow Account Agents",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-01T17:31:42",
+        "minimum": "2026-09-01T17:31:42",
+        "nonblank_rows": 25,
+        "parsed_rows": 25,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 3049,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Approved Escrow Account Agents/accredited_escrow_agents_2026-09-01_17-32-19_0001.csv",
+        "sha256": "3c0db506de47d939920f3d9bd2298d0eb15a89db569e71908701ada6bc978d2b",
+        "sheets": [],
+        "source_export_date": "2026-09-01",
+        "uncompressed_bytes": 3049
+      },
+      {
+        "compressed_bytes": 17591,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Approved Escrow Account Agents/Approved_Escrow_Account_Agents_2026-09-04_attribute-details.xlsx",
+        "sha256": "5421e1eca969fa2d16ffd56608dce7e1d7a2df74d5448859da94ad13a16aabce",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 5
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 16459
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [],
+    "personally_identifying_or_sensitive_columns": [
+      "phone"
+    ],
+    "row_count": 25,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "escrow_agents",
+    "uncompressed_bytes": 19508
+  },
+  {
+    "candidate_primary_keys": [
+      "property_id"
+    ],
+    "column_count": 46,
+    "columns": [
+      {
+        "approx_distinct": 74119,
+        "declared_type": "number",
+        "name": "actual_area",
+        "null_count": 12849,
+        "null_percent": 5.010861
+      },
+      {
+        "approx_distinct": 33929,
+        "declared_type": "number",
+        "name": "actual_common_area",
+        "null_count": 131641,
+        "null_percent": 51.337439
+      },
+      {
+        "approx_distinct": 194,
+        "declared_type": "number",
+        "name": "area_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 197,
+        "declared_type": "nvarchar",
+        "name": "area_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 224,
+        "declared_type": "nvarchar",
+        "name": "area_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 98,
+        "declared_type": "number",
+        "name": "bld_levels",
+        "null_count": 249251,
+        "null_percent": 97.203059
+      },
+      {
+        "approx_distinct": 155749,
+        "declared_type": "nvarchar",
+        "name": "building_number",
+        "null_count": 34126,
+        "null_percent": 13.308479
+      },
+      {
+        "approx_distinct": 25815,
+        "declared_type": "number",
+        "name": "built_up_area",
+        "null_count": 19629,
+        "null_percent": 7.65493
+      },
+      {
+        "approx_distinct": 845,
+        "declared_type": "number",
+        "name": "car_parks",
+        "null_count": 24989,
+        "null_percent": 9.745226
+      },
+      {
+        "approx_distinct": 3707,
+        "declared_type": "number",
+        "name": "common_area",
+        "null_count": 79674,
+        "null_percent": 31.071316
+      },
+      {
+        "approx_distinct": 4793,
+        "declared_type": "date",
+        "name": "creation_date",
+        "null_count": 9302,
+        "null_percent": 3.6276
+      },
+      {
+        "approx_distinct": 41,
+        "declared_type": "number",
+        "name": "elevators",
+        "null_count": 251666,
+        "null_percent": 98.144862
+      },
+      {
+        "approx_distinct": 372,
+        "declared_type": "number",
+        "name": "flats",
+        "null_count": 251046,
+        "null_percent": 97.903074
+      },
+      {
+        "approx_distinct": 105,
+        "declared_type": "nvarchar",
+        "name": "floors",
+        "null_count": 39495,
+        "null_percent": 15.402285
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "number",
+        "name": "is_free_hold",
+        "null_count": 4591,
+        "null_percent": 1.790401
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "number",
+        "name": "is_lease_hold",
+        "null_count": 104811,
+        "null_percent": 40.874259
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "number",
+        "name": "is_registered",
+        "null_count": 75684,
+        "null_percent": 29.515293
+      },
+      {
+        "approx_distinct": 16687,
+        "declared_type": "nvarchar",
+        "name": "land_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2064,
+        "declared_type": "number",
+        "name": "land_sub_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 9,
+        "declared_type": "varchar2",
+        "name": "land_type_ar",
+        "null_count": 24003,
+        "null_percent": 9.360705
+      },
+      {
+        "approx_distinct": 9,
+        "declared_type": "varchar2",
+        "name": "land_type_en",
+        "null_count": 24003,
+        "null_percent": 9.360705
+      },
+      {
+        "approx_distinct": 10,
+        "declared_type": "number",
+        "name": "land_type_id",
+        "null_count": 24003,
+        "null_percent": 9.360705
+      },
+      {
+        "approx_distinct": 151,
+        "declared_type": "nvarchar",
+        "name": "master_project_ar",
+        "null_count": 127119,
+        "null_percent": 49.573946
+      },
+      {
+        "approx_distinct": 170,
+        "declared_type": "nvarchar",
+        "name": "master_project_en",
+        "null_count": 127090,
+        "null_percent": 49.562637
+      },
+      {
+        "approx_distinct": 190,
+        "declared_type": "number",
+        "name": "master_project_id",
+        "null_count": 127090,
+        "null_percent": 49.562637
+      },
+      {
+        "approx_distinct": 206,
+        "declared_type": "number",
+        "name": "offices",
+        "null_count": 246931,
+        "null_percent": 96.298304
+      },
+      {
+        "approx_distinct": 121611,
+        "declared_type": "number",
+        "name": "parcel_id",
+        "null_count": 6070,
+        "null_percent": 2.367182
+      },
+      {
+        "approx_distinct": 143311,
+        "declared_type": "number",
+        "name": "parent_property_id",
+        "null_count": 12782,
+        "null_percent": 4.984732
+      },
+      {
+        "approx_distinct": 4,
+        "declared_type": "nvarchar",
+        "name": "pre_registration_number",
+        "null_count": 256419,
+        "null_percent": 99.99844
+      },
+      {
+        "approx_distinct": 3100,
+        "declared_type": "number",
+        "name": "project_id",
+        "null_count": 107483,
+        "null_percent": 41.916287
+      },
+      {
+        "approx_distinct": 4037,
+        "declared_type": "varchar2",
+        "name": "project_name_ar",
+        "null_count": 107601,
+        "null_percent": 41.962304
+      },
+      {
+        "approx_distinct": 3753,
+        "declared_type": "varchar2",
+        "name": "project_name_en",
+        "null_count": 107601,
+        "null_percent": 41.962304
+      },
+      {
+        "approx_distinct": 255624,
+        "declared_type": "number",
+        "name": "property_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 10,
+        "declared_type": "nvarchar",
+        "name": "property_sub_type_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 10,
+        "declared_type": "nvarchar",
+        "name": "property_sub_type_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 10,
+        "declared_type": "number",
+        "name": "property_sub_type_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "nvarchar",
+        "name": "property_type_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "nvarchar",
+        "name": "property_type_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "number",
+        "name": "property_type_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 123,
+        "declared_type": "number",
+        "name": "rooms",
+        "null_count": 30951,
+        "null_percent": 12.07029
+      },
+      {
+        "approx_distinct": 62,
+        "declared_type": "varchar2",
+        "name": "rooms_ar",
+        "null_count": 31038,
+        "null_percent": 12.104218
+      },
+      {
+        "approx_distinct": 64,
+        "declared_type": "varchar2",
+        "name": "rooms_en",
+        "null_count": 31038,
+        "null_percent": 12.104218
+      },
+      {
+        "approx_distinct": 87,
+        "declared_type": "number",
+        "name": "shops",
+        "null_count": 246934,
+        "null_percent": 96.299474
+      },
+      {
+        "approx_distinct": 11,
+        "declared_type": "number",
+        "name": "swimming_pools",
+        "null_count": 251699,
+        "null_percent": 98.157732
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "number",
+        "name": "zone_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 102129434,
+    "dataset": "Building and Property Project Records",
+    "dataset_kind": "property/registry snapshot",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Building and Property Project Records",
+        "field": "creation_date",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-02T00:00:00",
+        "minimum": "2008-10-14T00:00:00",
+        "nonblank_rows": 247121,
+        "parsed_rows": 247121,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Building and Property Project Records",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-03T17:30:38",
+        "minimum": "2026-09-03T17:30:38",
+        "nonblank_rows": 256423,
+        "parsed_rows": 256423,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [
+      "building_number",
+      "land_number",
+      "land_sub_number",
+      "land_type_id",
+      "master_project_id",
+      "parcel_id",
+      "parent_property_id",
+      "project_id",
+      "property_id",
+      "property_sub_type_id",
+      "property_type_id"
+    ],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 31423,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Building and Property Project Records/Building_and_Property_Project_Records_2026-09-04_attribute-details.xlsx",
+        "sha256": "d16d1f236ae93016cb5fcee68dcadd83de8f41921bb0ba91daa58767469bb43e",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 46
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 30291
+      },
+      {
+        "compressed_bytes": 102098011,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Building and Property Project Records/buildings_2026-09-03_17-31-45_0001.csv",
+        "sha256": "5d4567618cd9b82d5b9f2a9ed35592b582b1cddfc75ce5d43bd52ed18f275b12",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 102098011
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [
+      "actual_area",
+      "actual_common_area",
+      "area_id",
+      "built_up_area",
+      "common_area",
+      "land_number",
+      "parcel_id",
+      "zone_id"
+    ],
+    "personally_identifying_or_sensitive_columns": [],
+    "row_count": 256423,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "buildings",
+    "uncompressed_bytes": 102128302
+  },
+  {
+    "candidate_primary_keys": [
+      "developer_id",
+      "developer_number"
+    ],
+    "column_count": 23,
+    "columns": [
+      {
+        "approx_distinct": 495,
+        "declared_type": "VARCHAR2(20)",
+        "name": "chamber_of_commerce_no",
+        "null_count": 1795,
+        "null_percent": 76.448041
+      },
+      {
+        "approx_distinct": 2840,
+        "declared_type": "NUMBER(10)",
+        "name": "developer_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2736,
+        "declared_type": "NVARCHAR2(200)",
+        "name": "developer_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2765,
+        "declared_type": "NVARCHAR2(200)",
+        "name": "developer_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2186,
+        "declared_type": "NUMBER",
+        "name": "developer_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 796,
+        "declared_type": "NVARCHAR2(50)",
+        "name": "fax",
+        "null_count": 1326,
+        "null_percent": 56.473595
+      },
+      {
+        "approx_distinct": 6,
+        "declared_type": "NUMBER",
+        "name": "legal_status",
+        "null_count": 1247,
+        "null_percent": 53.109029
+      },
+      {
+        "approx_distinct": 5,
+        "declared_type": "NVARCHAR2(100)",
+        "name": "legal_status_ar",
+        "null_count": 1377,
+        "null_percent": 58.645656
+      },
+      {
+        "approx_distinct": 5,
+        "declared_type": "NVARCHAR2(100)",
+        "name": "legal_status_en",
+        "null_count": 1377,
+        "null_percent": 58.645656
+      },
+      {
+        "approx_distinct": 1057,
+        "declared_type": "DATE (DD-MM-YYYY)",
+        "name": "license_expiry_date",
+        "null_count": 139,
+        "null_percent": 5.919932
+      },
+      {
+        "approx_distinct": 1626,
+        "declared_type": "DATE (DD-MM-YYYY)",
+        "name": "license_issue_date",
+        "null_count": 160,
+        "null_percent": 6.81431
+      },
+      {
+        "approx_distinct": 1925,
+        "declared_type": "NVARCHAR2(50)",
+        "name": "license_number",
+        "null_count": 75,
+        "null_percent": 3.194208
+      },
+      {
+        "approx_distinct": 18,
+        "declared_type": "NVARCHAR2(200)",
+        "name": "license_source_ar",
+        "null_count": 1383,
+        "null_percent": 58.901193
+      },
+      {
+        "approx_distinct": 16,
+        "declared_type": "NVARCHAR2(200)",
+        "name": "license_source_en",
+        "null_count": 1383,
+        "null_percent": 58.901193
+      },
+      {
+        "approx_distinct": 20,
+        "declared_type": "NUMBER(10)",
+        "name": "license_source_id",
+        "null_count": 1383,
+        "null_percent": 58.901193
+      },
+      {
+        "approx_distinct": 9,
+        "declared_type": "NVARCHAR2(100)",
+        "name": "license_type_ar",
+        "null_count": 554,
+        "null_percent": 23.594549
+      },
+      {
+        "approx_distinct": 10,
+        "declared_type": "NVARCHAR2(100)",
+        "name": "license_type_en",
+        "null_count": 554,
+        "null_percent": 23.594549
+      },
+      {
+        "approx_distinct": 11,
+        "declared_type": "NUMBER(10)",
+        "name": "license_type_id",
+        "null_count": 532,
+        "null_percent": 22.657581
+      },
+      {
+        "approx_distinct": 2127,
+        "declared_type": "NUMBER(10)",
+        "name": "participant_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1158,
+        "declared_type": "NVARCHAR2(50)",
+        "name": "phone",
+        "null_count": 1072,
+        "null_percent": 45.655877
+      },
+      {
+        "approx_distinct": 1262,
+        "declared_type": "DATE (DD-MM-YYYY)",
+        "name": "registration_date",
+        "null_count": 13,
+        "null_percent": 0.553663
+      },
+      {
+        "approx_distinct": 421,
+        "declared_type": "NVARCHAR2(100)",
+        "name": "webpage",
+        "null_count": 1626,
+        "null_percent": 69.250426
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 730597,
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "dataset_kind": "directory/snapshot",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Developers Recorded in Dubai Land Department",
+        "field": "license_expiry_date",
+        "from_2036_rows": 3,
+        "maximum": "2100-10-10T00:00:00",
+        "minimum": "2005-11-02T00:00:00",
+        "nonblank_rows": 2209,
+        "parsed_rows": 2209,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Developers Recorded in Dubai Land Department",
+        "field": "license_issue_date",
+        "from_2036_rows": 0,
+        "maximum": "2026-08-26T00:00:00",
+        "minimum": "1963-01-01T00:00:00",
+        "nonblank_rows": 2188,
+        "parsed_rows": 2188,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Developers Recorded in Dubai Land Department",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-01T17:31:58",
+        "minimum": "2026-09-01T17:31:58",
+        "nonblank_rows": 2348,
+        "parsed_rows": 2348,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Developers Recorded in Dubai Land Department",
+        "field": "registration_date",
+        "from_2036_rows": 0,
+        "maximum": "2026-08-27T00:00:00",
+        "minimum": "2007-01-07T00:00:00",
+        "nonblank_rows": 2335,
+        "parsed_rows": 2335,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [
+      "developer_id",
+      "developer_number"
+    ],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 706746,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Developers Recorded in Dubai Land Department/developers_2026-09-01_17-32-36_0001.csv",
+        "sha256": "bae2e63aa1a2490c10970f1fc34e59256180376d2fbb19b460ab4dbf825d6419",
+        "sheets": [],
+        "source_export_date": "2026-09-01",
+        "uncompressed_bytes": 706746
+      },
+      {
+        "compressed_bytes": 23851,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Developers Recorded in Dubai Land Department/Developers_Recorded_in_Dubai_Land_Department_2026-09-04_attribute-details.xlsx",
+        "sha256": "869b1ffd78031443db3fe808d1e929c0c88e82a2b35da1da508e7533ae5d810d",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 23
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 22719
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [],
+    "personally_identifying_or_sensitive_columns": [
+      "fax",
+      "phone"
+    ],
+    "row_count": 2348,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "developers",
+    "uncompressed_bytes": 729465
+  },
+  {
+    "candidate_primary_keys": [],
+    "column_count": 14,
+    "columns": [
+      {
+        "approx_distinct": 18,
+        "declared_type": "VARCHAR2",
+        "name": "average_service_time",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 15,
+        "declared_type": "VARCHAR2",
+        "name": "average_wating_time",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 9,
+        "declared_type": "NUMERIC",
+        "name": "percent_service_time_in_target",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 5,
+        "declared_type": "NUMERIC",
+        "name": "percent_waiting_time_in_target",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "NVARCHAR2",
+        "name": "service_location_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "NVARCHAR2",
+        "name": "service_location_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 4,
+        "declared_type": "NUMBER",
+        "name": "service_month",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 20,
+        "declared_type": "VARCHAR2",
+        "name": "service_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 20,
+        "declared_type": "NVARCHAR2",
+        "name": "service_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "NUMBER",
+        "name": "service_year",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "VARCHAR2",
+        "name": "target_service_time",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "VARCHAR2",
+        "name": "target_waiting_time",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 10,
+        "declared_type": "NVARCHAR2",
+        "name": "total_no_of_tickets",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 75,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 1325031,
+    "dataset": "Elders and People of Determination",
+    "dataset_kind": "directory/snapshot",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Elders and People of Determination",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-01T17:52:13",
+        "minimum": "2019-05-29T12:12:38",
+        "nonblank_rows": 6120,
+        "parsed_rows": 6120,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": null,
+        "dataset": "Elders and People of Determination",
+        "field": "service_month",
+        "from_2036_rows": null,
+        "maximum": "8",
+        "minimum": "4",
+        "nonblank_rows": 6120,
+        "parsed_rows": 6120,
+        "profile_kind": "month",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": null,
+        "dataset": "Elders and People of Determination",
+        "field": "service_year",
+        "from_2036_rows": null,
+        "maximum": "2019",
+        "minimum": "2019",
+        "nonblank_rows": 6120,
+        "parsed_rows": 6120,
+        "profile_kind": "year",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 1303644,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Elders and People of Determination/elders_and_people_of_determination_2026-09-01_17-52-49_0001.csv",
+        "sha256": "98dc97ec338e1fc44f81f168f5a1ce9b4ccc2945420ad83e73e24e3858a3c7e8",
+        "sheets": [],
+        "source_export_date": "2026-09-01",
+        "uncompressed_bytes": 1303644
+      },
+      {
+        "compressed_bytes": 21387,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Elders and People of Determination/Elders_and_People_of_Determination_2026-09-04_attribute-details.xlsx",
+        "sha256": "6cebfaec6379c8f96cf7d38bd7fa9aca10bc8acd65e7451622b1ea5e8b326d0e",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 14
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 20255
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [],
+    "personally_identifying_or_sensitive_columns": [],
+    "row_count": 6120,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "elders_people_of_determination",
+    "uncompressed_bytes": 1323899
+  },
+  {
+    "candidate_primary_keys": [
+      "fz_company_name_ar",
+      "fz_company_name_en",
+      "fz_company_number",
+      "license_number"
+    ],
+    "column_count": 13,
+    "columns": [
+      {
+        "approx_distinct": 222,
+        "declared_type": "nvarchar",
+        "name": "email",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 254,
+        "declared_type": "nvarchar",
+        "name": "fz_company_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 235,
+        "declared_type": "nvarchar",
+        "name": "fz_company_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 279,
+        "declared_type": "nvarchar",
+        "name": "fz_company_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 174,
+        "declared_type": "date",
+        "name": "license_expiry_date",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 195,
+        "declared_type": "date",
+        "name": "license_issue_date",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 209,
+        "declared_type": "nvarchar",
+        "name": "license_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 16,
+        "declared_type": "nvarchar",
+        "name": "license_source_ar",
+        "null_count": 1,
+        "null_percent": 0.4
+      },
+      {
+        "approx_distinct": 14,
+        "declared_type": "nvarchar",
+        "name": "license_source_en",
+        "null_count": 6,
+        "null_percent": 2.4
+      },
+      {
+        "approx_distinct": 18,
+        "declared_type": "numeric",
+        "name": "license_source_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 89,
+        "declared_type": "numeric",
+        "name": "phone",
+        "null_count": 138,
+        "null_percent": 55.2
+      },
+      {
+        "approx_distinct": 27,
+        "declared_type": "nvarchar",
+        "name": "webpage",
+        "null_count": 221,
+        "null_percent": 88.4
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 91343,
+    "dataset": "Free Zone Companies Licensing",
+    "dataset_kind": "directory/snapshot",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Free Zone Companies Licensing",
+        "field": "license_expiry_date",
+        "from_2036_rows": 0,
+        "maximum": "2027-10-29T00:00:00",
+        "minimum": "2024-05-12T00:00:00",
+        "nonblank_rows": 250,
+        "parsed_rows": 250,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Free Zone Companies Licensing",
+        "field": "license_issue_date",
+        "from_2036_rows": 0,
+        "maximum": "2024-12-09T00:00:00",
+        "minimum": "1995-10-14T00:00:00",
+        "nonblank_rows": 250,
+        "parsed_rows": 250,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Free Zone Companies Licensing",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2024-12-01T17:56:39",
+        "minimum": "2024-12-01T17:56:39",
+        "nonblank_rows": 250,
+        "parsed_rows": 250,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 70859,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Free Zone Companies Licensing/free_zone_companies_licensing_2026-07-01_17-21-35_0001.csv",
+        "sha256": "819299c16150c397be7a2ef5425f219616a89ae403365805e7ed493189e259b0",
+        "sheets": [],
+        "source_export_date": "2026-07-01",
+        "uncompressed_bytes": 70859
+      },
+      {
+        "compressed_bytes": 20484,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Free Zone Companies Licensing/Free_Zone_Companies_Licensing_2026-09-04_attribute-details.xlsx",
+        "sha256": "c0213897af80512932a0e74da3eecc7a32857bbc6db82c99c7c90a28d6a91279",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 13
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 19352
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [],
+    "personally_identifying_or_sensitive_columns": [
+      "email",
+      "phone"
+    ],
+    "row_count": 250,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "free_zone_companies",
+    "uncompressed_bytes": 90211
+  },
+  {
+    "candidate_primary_keys": [
+      "property_id"
+    ],
+    "column_count": 32,
+    "columns": [
+      {
+        "approx_distinct": 120965,
+        "declared_type": "NUMBER(18,2)",
+        "name": "actual_area",
+        "null_count": 449,
+        "null_percent": 0.170293
+      },
+      {
+        "approx_distinct": 234,
+        "declared_type": "NUMBER(10)",
+        "name": "area_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 255,
+        "declared_type": "NVARCHAR2(200)",
+        "name": "area_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 283,
+        "declared_type": "NVARCHAR2(200)",
+        "name": "area_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "NUMBER(1)",
+        "name": "is_free_hold",
+        "null_count": 8072,
+        "null_percent": 3.061484
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "NUMBER",
+        "name": "is_registered",
+        "null_count": 7445,
+        "null_percent": 2.82368
+      },
+      {
+        "approx_distinct": 22145,
+        "declared_type": "NVARCHAR2(100)",
+        "name": "land_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2395,
+        "declared_type": "NUMBER",
+        "name": "land_sub_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 15,
+        "declared_type": "VARCHAR2(50)",
+        "name": "land_type_ar",
+        "null_count": 20240,
+        "null_percent": 7.676466
+      },
+      {
+        "approx_distinct": 16,
+        "declared_type": "VARCHAR2(50)",
+        "name": "land_type_en",
+        "null_count": 20240,
+        "null_percent": 7.676466
+      },
+      {
+        "approx_distinct": 20,
+        "declared_type": "NUMBER(4)",
+        "name": "land_type_id",
+        "null_count": 20240,
+        "null_percent": 7.676466
+      },
+      {
+        "approx_distinct": 175,
+        "declared_type": "NVARCHAR2(250)",
+        "name": "master_project_ar",
+        "null_count": 153891,
+        "null_percent": 58.366551
+      },
+      {
+        "approx_distinct": 189,
+        "declared_type": "NVARCHAR2(250)",
+        "name": "master_project_en",
+        "null_count": 153759,
+        "null_percent": 58.316487
+      },
+      {
+        "approx_distinct": 204,
+        "declared_type": "NUMBER(10)",
+        "name": "master_project_id",
+        "null_count": 153759,
+        "null_percent": 58.316487
+      },
+      {
+        "approx_distinct": 9347,
+        "declared_type": "NVARCHAR2(10)",
+        "name": "munc_number",
+        "null_count": 32528,
+        "null_percent": 12.33696
+      },
+      {
+        "approx_distinct": 264,
+        "declared_type": "VARCHAR2(3)",
+        "name": "munc_zip_code",
+        "null_count": 32528,
+        "null_percent": 12.33696
+      },
+      {
+        "approx_distinct": 188407,
+        "declared_type": "NUMBER",
+        "name": "parcel_id",
+        "null_count": 32528,
+        "null_percent": 12.33696
+      },
+      {
+        "approx_distinct": 114332,
+        "declared_type": "NVARCHAR2(100)",
+        "name": "pre_registration_number",
+        "null_count": 143732,
+        "null_percent": 54.513527
+      },
+      {
+        "approx_distinct": 2915,
+        "declared_type": "NUMBER(10)",
+        "name": "project_id",
+        "null_count": 170388,
+        "null_percent": 64.623402
+      },
+      {
+        "approx_distinct": 3756,
+        "declared_type": "VARCHAR2(200)",
+        "name": "project_name_ar",
+        "null_count": 170390,
+        "null_percent": 64.62416
+      },
+      {
+        "approx_distinct": 3198,
+        "declared_type": "VARCHAR2(200)",
+        "name": "project_name_en",
+        "null_count": 170390,
+        "null_percent": 64.62416
+      },
+      {
+        "approx_distinct": 274062,
+        "declared_type": "NUMBER(10)",
+        "name": "property_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 66,
+        "declared_type": "NVARCHAR2(50)",
+        "name": "property_sub_type_ar",
+        "null_count": 43082,
+        "null_percent": 16.339797
+      },
+      {
+        "approx_distinct": 60,
+        "declared_type": "NVARCHAR2(50)",
+        "name": "property_sub_type_en",
+        "null_count": 43082,
+        "null_percent": 16.339797
+      },
+      {
+        "approx_distinct": 66,
+        "declared_type": "NUMBER(4)",
+        "name": "property_sub_type_id",
+        "null_count": 43082,
+        "null_percent": 16.339797
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "NVARCHAR2(50)",
+        "name": "property_type_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "NVARCHAR2(50)",
+        "name": "property_type_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "NUMBER(4)",
+        "name": "property_type_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1793,
+        "declared_type": "NUMBER(10)",
+        "name": "separated_from",
+        "null_count": 152698,
+        "null_percent": 57.91408
+      },
+      {
+        "approx_distinct": 1155,
+        "declared_type": "NUMBER(10)",
+        "name": "separated_reference",
+        "null_count": 138910,
+        "null_percent": 52.684677
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "NUMBER(4)",
+        "name": "zone_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 79602156,
+    "dataset": "Land Registry",
+    "dataset_kind": "property/registry snapshot",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Land Registry",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-03T17:30:34",
+        "minimum": "2026-09-03T17:30:34",
+        "nonblank_rows": 263663,
+        "parsed_rows": 263663,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [
+      "land_number",
+      "land_sub_number",
+      "land_type_id",
+      "master_project_id",
+      "parcel_id",
+      "project_id",
+      "property_id",
+      "property_sub_type_id",
+      "property_type_id"
+    ],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "Windows-1256 (sample inference)"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 79574778,
+        "encoding": "Windows-1256 (sample inference)",
+        "format": "CSV",
+        "path": "Land Registry/land_registry_2026-09-03_17-31-35_0001.csv",
+        "sha256": "f04a5c5d776ddb01bad74fd7347b29680bbad3b416d5bc15323ddd9b07d70bb4",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 79574778
+      },
+      {
+        "compressed_bytes": 27378,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Land Registry/Land_Registry_2026-09-04_attribute-details.xlsx",
+        "sha256": "ed02ac770e6a22811ab7a26bbf44be97d65708cace940c9a0c89635a227272b9",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 32
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 26246
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [
+      "actual_area",
+      "area_id",
+      "land_number",
+      "munc_number",
+      "parcel_id",
+      "zone_id"
+    ],
+    "personally_identifying_or_sensitive_columns": [],
+    "row_count": 263663,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "land_registry",
+    "uncompressed_bytes": 79601024
+  },
+  {
+    "candidate_primary_keys": [
+      "company_name_ar",
+      "company_name_en"
+    ],
+    "column_count": 7,
+    "columns": [
+      {
+        "approx_distinct": 103,
+        "declared_type": "nvarchar",
+        "name": "company_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 110,
+        "declared_type": "nvarchar",
+        "name": "company_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 116,
+        "declared_type": "nvarchar",
+        "name": "email",
+        "null_count": 1,
+        "null_percent": 0.909091
+      },
+      {
+        "approx_distinct": 33,
+        "declared_type": "numeric",
+        "name": "latitude",
+        "null_count": 2,
+        "null_percent": 1.818182
+      },
+      {
+        "approx_distinct": 24,
+        "declared_type": "numeric",
+        "name": "longitude",
+        "null_count": 2,
+        "null_percent": 1.818182
+      },
+      {
+        "approx_distinct": 89,
+        "declared_type": "nvarchar",
+        "name": "phone",
+        "null_count": 8,
+        "null_percent": 7.272727
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 41201,
+    "dataset": "Licenced Owner Associations",
+    "dataset_kind": "directory/snapshot",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Licenced Owner Associations",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-07-07T09:24:46",
+        "minimum": "2026-07-07T09:24:46",
+        "nonblank_rows": 110,
+        "parsed_rows": 110,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 22908,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Licenced Owner Associations/licenced_owner_associations_2026-07-07_09-25-17_0001.csv",
+        "sha256": "053c0fde4ad34d4732960699000271cde0cfc8a6f8eed6e3b3823d125f95d324",
+        "sheets": [],
+        "source_export_date": "2026-07-07",
+        "uncompressed_bytes": 22908
+      },
+      {
+        "compressed_bytes": 18293,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Licenced Owner Associations/Licenced_Owner_Associations_2026-09-04_attribute-details.xlsx",
+        "sha256": "858e2dc2a8512691ef39728f558877138ae3a6935db7fd307c07fe0576349f94",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 7
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 17161
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [],
+    "personally_identifying_or_sensitive_columns": [
+      "email",
+      "phone"
+    ],
+    "row_count": 110,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "owner_associations",
+    "uncompressed_bytes": 40069
+  },
+  {
+    "candidate_primary_keys": [
+      "valuator_number+valuation_company_number"
+    ],
+    "column_count": 15,
+    "columns": [
+      {
+        "approx_distinct": 2,
+        "declared_type": "nvarchar",
+        "name": "gender_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "nvarchar",
+        "name": "gender_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "number",
+        "name": "gender_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 87,
+        "declared_type": "nvarchar",
+        "name": "license_end_date",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 142,
+        "declared_type": "nvarchar",
+        "name": "license_start_date",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 75,
+        "declared_type": "nvarchar",
+        "name": "valuation_company_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 87,
+        "declared_type": "nvarchar",
+        "name": "valuation_company_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 80,
+        "declared_type": "number",
+        "name": "valuation_company_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 140,
+        "declared_type": "nvarchar",
+        "name": "valuator_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 137,
+        "declared_type": "nvarchar",
+        "name": "valuator_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 42,
+        "declared_type": "nvarchar",
+        "name": "valuator_nationality_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 40,
+        "declared_type": "nvarchar",
+        "name": "valuator_nationality_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 37,
+        "declared_type": "number",
+        "name": "valuator_nationality_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 146,
+        "declared_type": "number",
+        "name": "valuator_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 70845,
+    "dataset": "Licensed Real Estate Valuators",
+    "dataset_kind": "directory/snapshot",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Licensed Real Estate Valuators",
+        "field": "license_end_date",
+        "from_2036_rows": 0,
+        "maximum": "2027-09-17T00:00:00",
+        "minimum": "2026-09-19T00:00:00",
+        "nonblank_rows": 153,
+        "parsed_rows": 153,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Licensed Real Estate Valuators",
+        "field": "license_start_date",
+        "from_2036_rows": 0,
+        "maximum": "2026-08-25T00:00:00",
+        "minimum": "2009-08-26T00:00:00",
+        "nonblank_rows": 153,
+        "parsed_rows": 153,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Licensed Real Estate Valuators",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-03T18:28:58",
+        "minimum": "2026-09-03T18:28:58",
+        "nonblank_rows": 153,
+        "parsed_rows": 153,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 21136,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Licensed Real Estate Valuators/Licensed_Real_Estate_Valuators_2026-09-04_attribute-details.xlsx",
+        "sha256": "8c14bdd841c5be0092ba93728f98890527f744f3e4a7d745363e9e9558e53deb",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 15
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 20004
+      },
+      {
+        "compressed_bytes": 49709,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Licensed Real Estate Valuators/valuator_licensing_2026-09-03_18-29-38_0001.csv",
+        "sha256": "b5c4777b3aaa467352148ecd7393383587744975032b5cabc453c5e217d0faed",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 49709
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [],
+    "personally_identifying_or_sensitive_columns": [
+      "gender_ar",
+      "gender_en",
+      "gender_id",
+      "valuator_nationality_ar",
+      "valuator_nationality_en",
+      "valuator_nationality_id"
+    ],
+    "row_count": 153,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "valuators",
+    "uncompressed_bytes": 69713
+  },
+  {
+    "candidate_primary_keys": [
+      "area_id"
+    ],
+    "column_count": 5,
+    "columns": [
+      {
+        "approx_distinct": 305,
+        "declared_type": "numeric",
+        "name": "area_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 285,
+        "declared_type": "nvarchar",
+        "name": "municipality_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 296,
+        "declared_type": "nvarchar",
+        "name": "name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 293,
+        "declared_type": "nvarchar",
+        "name": "name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 42148,
+    "dataset": "Lookup Dubai Community Areas",
+    "dataset_kind": "lookup",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Lookup Dubai Community Areas",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-01T17:52:41",
+        "minimum": "2026-09-01T17:52:41",
+        "nonblank_rows": 301,
+        "parsed_rows": 301,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 24566,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Lookup Dubai Community Areas/lkp_areas_2026-09-01_17-53-16_0001.csv",
+        "sha256": "fc3e95281322a50e223d265ff0c72c57f6b18fa5e6e5dbcf7de880be38498fef",
+        "sheets": [],
+        "source_export_date": "2026-09-01",
+        "uncompressed_bytes": 24566
+      },
+      {
+        "compressed_bytes": 17582,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Lookup Dubai Community Areas/Lookup_Dubai_Community_Areas_2026-09-04_attribute-details.xlsx",
+        "sha256": "21a329dbd426cacc2d78d9a5e4e355714ba562f82beab82f1548f6e187472789",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 5
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 16450
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [
+      "area_id",
+      "municipality_number"
+    ],
+    "personally_identifying_or_sensitive_columns": [],
+    "row_count": 301,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "areas",
+    "uncompressed_bytes": 41016
+  },
+  {
+    "candidate_primary_keys": [
+      "market_type_id",
+      "name_ar",
+      "name_en"
+    ],
+    "column_count": 4,
+    "columns": [
+      {
+        "approx_distinct": 2,
+        "declared_type": "numeric",
+        "name": "market_type_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "nvarchar",
+        "name": "name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "nvarchar",
+        "name": "name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 17485,
+    "dataset": "Lookup Real Estate Market Types",
+    "dataset_kind": "lookup",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Lookup Real Estate Market Types",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-01T17:52:40",
+        "minimum": "2026-09-01T17:52:40",
+        "nonblank_rows": 2,
+        "parsed_rows": 2,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 210,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Lookup Real Estate Market Types/lkp_market_types_2026-09-01_17-53-14_0001.csv",
+        "sha256": "263caa002983fa56200c4043b150982aceea6cfc959e60b01ffd36d0ebcebe19",
+        "sheets": [],
+        "source_export_date": "2026-09-01",
+        "uncompressed_bytes": 210
+      },
+      {
+        "compressed_bytes": 17275,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Lookup Real Estate Market Types/Lookup_Real_Estate_Market_Types_2026-09-04_attribute-details.xlsx",
+        "sha256": "ac1e195f47f967e07113a525b39add466ecd4707bf8f1f222f8787929e2f5ccf",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 4
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 16143
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [],
+    "personally_identifying_or_sensitive_columns": [],
+    "row_count": 2,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "market_types",
+    "uncompressed_bytes": 16353
+  },
+  {
+    "candidate_primary_keys": [
+      "group_id",
+      "name_ar",
+      "name_en"
+    ],
+    "column_count": 4,
+    "columns": [
+      {
+        "approx_distinct": 3,
+        "declared_type": "numeric",
+        "name": "group_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 3,
+        "declared_type": "nvarchar",
+        "name": "name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 3,
+        "declared_type": "nvarchar",
+        "name": "name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 17470,
+    "dataset": "Lookup Real Estate Transactions Groups",
+    "dataset_kind": "lookup",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Lookup Real Estate Transactions Groups",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-01T17:53:02",
+        "minimum": "2026-09-01T17:53:02",
+        "nonblank_rows": 3,
+        "parsed_rows": 3,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 214,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Lookup Real Estate Transactions Groups/lkp_transaction_groups_2026-09-01_17-53-37_0001.csv",
+        "sha256": "dee593db5521699a15d91259799098b0b177f91920dd9c6cd43928a9971b4695",
+        "sheets": [],
+        "source_export_date": "2026-09-01",
+        "uncompressed_bytes": 214
+      },
+      {
+        "compressed_bytes": 17256,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Lookup Real Estate Transactions Groups/Lookup_Real_Estate_Transactions_Groups_2026-09-04_attribute-details.xlsx",
+        "sha256": "160adcdb26d5a45c4bfba2841cea29eb593a2a3140b5abe6e3bffb412ec909a2",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 4
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 16124
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [],
+    "personally_identifying_or_sensitive_columns": [],
+    "row_count": 3,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "transaction_groups",
+    "uncompressed_bytes": 16338
+  },
+  {
+    "candidate_primary_keys": [],
+    "column_count": 6,
+    "columns": [
+      {
+        "approx_distinct": 3,
+        "declared_type": "numeric",
+        "name": "group_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "numeric",
+        "name": "is_pre_registration",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 70,
+        "declared_type": "nvarchar",
+        "name": "name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 68,
+        "declared_type": "nvarchar",
+        "name": "name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 65,
+        "declared_type": "numeric",
+        "name": "procedure_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 26191,
+    "dataset": "Lookup Real Estate Transactions Procedures",
+    "dataset_kind": "lookup",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Lookup Real Estate Transactions Procedures",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-01T17:53:06",
+        "minimum": "2026-09-01T17:53:06",
+        "nonblank_rows": 64,
+        "parsed_rows": 64,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 8204,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Lookup Real Estate Transactions Procedures/lkp_transaction_procedures_2026-09-01_17-53-40_0001.csv",
+        "sha256": "1fb55f710445d9eb8608da2b3f1927eba27ec1b4cf05a6273ce3b20eaa4f42e2",
+        "sheets": [],
+        "source_export_date": "2026-09-01",
+        "uncompressed_bytes": 8204
+      },
+      {
+        "compressed_bytes": 17987,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Lookup Real Estate Transactions Procedures/Lookup_Real_Estate_Transactions_Procedures_2026-09-04_attribute-details.xlsx",
+        "sha256": "d7bef1f3bd82cfcdaac5b1997722baf75499656737ae6ac79fd0e5823069af20",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 6
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 16855
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [],
+    "personally_identifying_or_sensitive_columns": [],
+    "row_count": 64,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "transaction_procedures",
+    "uncompressed_bytes": 25059
+  },
+  {
+    "candidate_primary_keys": [],
+    "column_count": 20,
+    "columns": [
+      {
+        "approx_distinct": 6,
+        "declared_type": "numeric",
+        "name": "budget_year",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 91,
+        "declared_type": "numeric",
+        "name": "management_company_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 79,
+        "declared_type": "nvarchar",
+        "name": "management_company_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 85,
+        "declared_type": "nvarchar",
+        "name": "management_company_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 66,
+        "declared_type": "numeric",
+        "name": "master_community_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 58,
+        "declared_type": "nvarchar",
+        "name": "master_community_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 60,
+        "declared_type": "nvarchar",
+        "name": "master_community_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 688,
+        "declared_type": "numeric",
+        "name": "project_id",
+        "null_count": 8,
+        "null_percent": 0.008773
+      },
+      {
+        "approx_distinct": 644,
+        "declared_type": "nvarchar",
+        "name": "project_name",
+        "null_count": 8,
+        "null_percent": 0.008773
+      },
+      {
+        "approx_distinct": 2088,
+        "declared_type": "numeric",
+        "name": "property_group_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2308,
+        "declared_type": "nvarchar",
+        "name": "property_group_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2087,
+        "declared_type": "nvarchar",
+        "name": "property_group_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 17,
+        "declared_type": "numeric",
+        "name": "service_category_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 17,
+        "declared_type": "nvarchar",
+        "name": "service_category_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 17,
+        "declared_type": "nvarchar",
+        "name": "service_category_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 557,
+        "declared_type": "numeric",
+        "name": "service_cost",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 15,
+        "declared_type": "numeric",
+        "name": "usage_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 14,
+        "declared_type": "nvarchar",
+        "name": "usage_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 17,
+        "declared_type": "nvarchar",
+        "name": "usage_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 35001909,
+    "dataset": "Owners Association Service Charges",
+    "dataset_kind": "directory/snapshot",
+    "date_coverage": [
+      {
+        "before_1900_rows": null,
+        "dataset": "Owners Association Service Charges",
+        "field": "budget_year",
+        "from_2036_rows": null,
+        "maximum": "2024",
+        "minimum": "2017",
+        "nonblank_rows": 91193,
+        "parsed_rows": 91193,
+        "profile_kind": "year",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Owners Association Service Charges",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2024-01-05T13:30:03",
+        "minimum": "2024-01-05T13:30:03",
+        "nonblank_rows": 91193,
+        "parsed_rows": 91193,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [
+      "master_community_id",
+      "project_id",
+      "property_group_id"
+    ],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 34978307,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Owners Association Service Charges/oa_service_charges_2026-06-30_14-26-20_0001.csv",
+        "sha256": "58f533d587cd45ca60b141b0ca74baba0880b50b5f0b67b8c69fdf20b02b4cd5",
+        "sheets": [],
+        "source_export_date": "2026-06-30",
+        "uncompressed_bytes": 34978307
+      },
+      {
+        "compressed_bytes": 23602,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Owners Association Service Charges/Owners_Association_Service_Charges_2026-09-04_attribute-details.xlsx",
+        "sha256": "3ce1498c305b7bff3d3571ecfa1eb88723dfb10535b16cbf36e03605c7f5a40e",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 20
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 22470
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [],
+    "personally_identifying_or_sensitive_columns": [],
+    "row_count": 91193,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "service_charges",
+    "uncompressed_bytes": 35000777
+  },
+  {
+    "candidate_primary_keys": [
+      "request_id"
+    ],
+    "column_count": 16,
+    "columns": [
+      {
+        "approx_distinct": 7,
+        "declared_type": "number",
+        "name": "application_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 7,
+        "declared_type": "nvarchar",
+        "name": "application_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 9,
+        "declared_type": "nvarchar",
+        "name": "application_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 267,
+        "declared_type": "number",
+        "name": "no_of_siteplans",
+        "null_count": 42,
+        "null_percent": 0.004113
+      },
+      {
+        "approx_distinct": 81,
+        "declared_type": "number",
+        "name": "procedure_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 85,
+        "declared_type": "nvarchar",
+        "name": "procedure_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 74,
+        "declared_type": "nvarchar",
+        "name": "procedure_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "nvarchar",
+        "name": "property_type_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 3,
+        "declared_type": "nvarchar",
+        "name": "property_type_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 3,
+        "declared_type": "number",
+        "name": "property_type_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 5846,
+        "declared_type": "date",
+        "name": "request_date",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1141536,
+        "declared_type": "nvarchar",
+        "name": "request_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 5,
+        "declared_type": "nvarchar",
+        "name": "request_source_ar",
+        "null_count": 50,
+        "null_percent": 0.004896
+      },
+      {
+        "approx_distinct": 4,
+        "declared_type": "nvarchar",
+        "name": "request_source_en",
+        "null_count": 50,
+        "null_percent": 0.004896
+      },
+      {
+        "approx_distinct": 5,
+        "declared_type": "number",
+        "name": "request_source_id",
+        "null_count": 50,
+        "null_percent": 0.004896
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 260709922,
+    "dataset": "Property Map Requests",
+    "dataset_kind": "event",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Property Map Requests",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-03T17:31:46",
+        "minimum": "2026-09-03T17:31:46",
+        "nonblank_rows": 1021252,
+        "parsed_rows": 1021252,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Property Map Requests",
+        "field": "request_date",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-03T00:00:00",
+        "minimum": "2003-05-17T00:00:00",
+        "nonblank_rows": 1021252,
+        "parsed_rows": 1021252,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [
+      "property_type_id"
+    ],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 260688096,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Property Map Requests/map_requests_2026-09-03_17-33-09_0001.csv",
+        "sha256": "db2b5bfed818c43f26d93b914b0fa36051e655c81adad8137123029a19663102",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 260688096
+      },
+      {
+        "compressed_bytes": 21826,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Property Map Requests/Property_Map_Requests_2026-09-04_attribute-details.xlsx",
+        "sha256": "97a0fbf4c660ee84551b7eba30fd26d5eb56cc5c2259483dcbf4901aa3db70fb",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 16
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 20694
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [],
+    "personally_identifying_or_sensitive_columns": [],
+    "row_count": 1021252,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "map_requests",
+    "uncompressed_bytes": 260708790
+  },
+  {
+    "candidate_primary_keys": [],
+    "column_count": 21,
+    "columns": [
+      {
+        "approx_distinct": 27982,
+        "declared_type": "number",
+        "name": "actual_area",
+        "null_count": 5,
+        "null_percent": 0.005508
+      },
+      {
+        "approx_distinct": 57892,
+        "declared_type": "number",
+        "name": "actual_worth",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 217,
+        "declared_type": "number",
+        "name": "area_id",
+        "null_count": 79,
+        "null_percent": 0.087032
+      },
+      {
+        "approx_distinct": 194,
+        "declared_type": "nvarchar",
+        "name": "area_name_ar",
+        "null_count": 79,
+        "null_percent": 0.087032
+      },
+      {
+        "approx_distinct": 208,
+        "declared_type": "nvarchar",
+        "name": "area_name_en",
+        "null_count": 79,
+        "null_percent": 0.087032
+      },
+      {
+        "approx_distinct": 5171,
+        "declared_type": "time",
+        "name": "instance_date",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 28589,
+        "declared_type": "number",
+        "name": "procedure_area",
+        "null_count": 838,
+        "null_percent": 0.923202
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "number",
+        "name": "procedure_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "nvarchar",
+        "name": "procedure_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "nvarchar",
+        "name": "procedure_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 9290,
+        "declared_type": "number",
+        "name": "procedure_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 29,
+        "declared_type": "number",
+        "name": "procedure_year",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 66,
+        "declared_type": "nvarchar",
+        "name": "property_sub_type_ar",
+        "null_count": 5544,
+        "null_percent": 6.107678
+      },
+      {
+        "approx_distinct": 60,
+        "declared_type": "nvarchar",
+        "name": "property_sub_type_en",
+        "null_count": 5544,
+        "null_percent": 6.107678
+      },
+      {
+        "approx_distinct": 68,
+        "declared_type": "number",
+        "name": "property_sub_type_id",
+        "null_count": 5544,
+        "null_percent": 6.107678
+      },
+      {
+        "approx_distinct": 54749,
+        "declared_type": "number",
+        "name": "property_total_value",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "nvarchar",
+        "name": "property_type_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 3,
+        "declared_type": "nvarchar",
+        "name": "property_type_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 3,
+        "declared_type": "number",
+        "name": "property_type_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 3,
+        "declared_type": "nvarchar",
+        "name": "row_status_code",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 24700394,
+    "dataset": "Property Valuation Records",
+    "dataset_kind": "event",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Property Valuation Records",
+        "field": "instance_date",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-03T00:00:00",
+        "minimum": "2000-05-07T00:00:00",
+        "nonblank_rows": 90771,
+        "parsed_rows": 90771,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Property Valuation Records",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-03T18:28:58",
+        "minimum": "2026-09-03T18:28:58",
+        "nonblank_rows": 90771,
+        "parsed_rows": 90771,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": null,
+        "dataset": "Property Valuation Records",
+        "field": "procedure_year",
+        "from_2036_rows": null,
+        "maximum": "2026",
+        "minimum": "2000",
+        "nonblank_rows": 90771,
+        "parsed_rows": 90771,
+        "profile_kind": "year",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [
+      "property_sub_type_id",
+      "property_type_id"
+    ],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 22981,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Property Valuation Records/Property_Valuation_Records_2026-09-04_attribute-details.xlsx",
+        "sha256": "1576391090c3c963c6d606e4831940d5a674aafb5ebf66503a374412605aea92",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 21
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 21849
+      },
+      {
+        "compressed_bytes": 24677413,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Property Valuation Records/valuation_2026-09-03_18-29-43_0001.csv",
+        "sha256": "59c6096f73791a302514456ebdb1840604d2749572fcdf4d310bece1ae10288a",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 24677413
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [
+      "actual_area",
+      "area_id",
+      "procedure_area"
+    ],
+    "personally_identifying_or_sensitive_columns": [],
+    "row_count": 90771,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "valuations",
+    "uncompressed_bytes": 24699262
+  },
+  {
+    "candidate_primary_keys": [],
+    "column_count": 14,
+    "columns": [
+      {
+        "approx_distinct": 10826,
+        "declared_type": "NVARCHAR2(200)",
+        "name": "broker_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 6991,
+        "declared_type": "NVARCHAR2(200)",
+        "name": "broker_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 9527,
+        "declared_type": "NUMBER(10)",
+        "name": "broker_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 0,
+        "declared_type": "NVARCHAR2(30)",
+        "name": "fax",
+        "null_count": 8724,
+        "null_percent": 100.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "BOOLEAN",
+        "name": "gender",
+        "null_count": 2,
+        "null_percent": 0.022925
+      },
+      {
+        "approx_distinct": 703,
+        "declared_type": "DATE (DD-MM-YYYY)",
+        "name": "license_end_date",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2498,
+        "declared_type": "DATE (DD-MM-YYYY)",
+        "name": "license_start_date",
+        "null_count": 1,
+        "null_percent": 0.011463
+      },
+      {
+        "approx_distinct": 8041,
+        "declared_type": "NUMBER(10)",
+        "name": "participant_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1154,
+        "declared_type": "NVARCHAR2(100)",
+        "name": "phone",
+        "null_count": 5027,
+        "null_percent": 57.62265
+      },
+      {
+        "approx_distinct": 8870,
+        "declared_type": "NUMBER(10)",
+        "name": "real_estate_broker_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 849,
+        "declared_type": "NUMBER(10)",
+        "name": "real_estate_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 827,
+        "declared_type": "NUMBER",
+        "name": "real_estate_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 282,
+        "declared_type": "NVARCHAR2(200)",
+        "name": "webpage",
+        "null_count": 3216,
+        "null_percent": 36.863824
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 1781174,
+    "dataset": "Real Estate Brokers",
+    "dataset_kind": "directory/snapshot",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Real Estate Brokers",
+        "field": "license_end_date",
+        "from_2036_rows": 0,
+        "maximum": "2028-09-22T00:00:00",
+        "minimum": "2025-10-02T00:00:00",
+        "nonblank_rows": 8724,
+        "parsed_rows": 8724,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Real Estate Brokers",
+        "field": "license_start_date",
+        "from_2036_rows": 0,
+        "maximum": "2025-10-01T00:00:00",
+        "minimum": "2006-05-03T00:00:00",
+        "nonblank_rows": 8723,
+        "parsed_rows": 8723,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Real Estate Brokers",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2025-10-02T14:39:55",
+        "minimum": "2025-10-02T14:39:55",
+        "nonblank_rows": 8724,
+        "parsed_rows": 8724,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 1760584,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Real Estate Brokers/brokers_2026-07-03_10-31-51_0001.csv",
+        "sha256": "21ce681cf1c2f41d0af21e437ee36886e41c255eb8beddeec1e87bba0353cea9",
+        "sheets": [],
+        "source_export_date": "2026-07-03",
+        "uncompressed_bytes": 1760584
+      },
+      {
+        "compressed_bytes": 20590,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Real Estate Brokers/Real_Estate_Brokers_2026-09-04_attribute-details.xlsx",
+        "sha256": "820240d49656cd7e6e66674b42d3734f4594f0bf7590fd6e2af610073dec6ab3",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 14
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 19458
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [],
+    "personally_identifying_or_sensitive_columns": [
+      "fax",
+      "gender",
+      "phone"
+    ],
+    "row_count": 8724,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "brokers",
+    "uncompressed_bytes": 1780042
+  },
+  {
+    "candidate_primary_keys": [
+      "activity_type_id+participant_id"
+    ],
+    "column_count": 24,
+    "columns": [
+      {
+        "approx_distinct": 22,
+        "declared_type": "varchar2",
+        "name": "activity_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 25,
+        "declared_type": "varchar2",
+        "name": "activity_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 27,
+        "declared_type": "number",
+        "name": "activity_type_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1746,
+        "declared_type": "number",
+        "name": "authority_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 60,
+        "declared_type": "date",
+        "name": "cancel_date",
+        "null_count": 2825,
+        "null_percent": 95.82768
+      },
+      {
+        "approx_distinct": 1263,
+        "declared_type": "number",
+        "name": "chamber_commerce_number",
+        "null_count": 237,
+        "null_percent": 8.039349
+      },
+      {
+        "approx_distinct": 1708,
+        "declared_type": "number",
+        "name": "commerce_registry_number",
+        "null_count": 239,
+        "null_percent": 8.107191
+      },
+      {
+        "approx_distinct": 21,
+        "declared_type": "char",
+        "name": "ded_activity_code",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1062,
+        "declared_type": "date",
+        "name": "expiry_date",
+        "null_count": 3,
+        "null_percent": 0.101764
+      },
+      {
+        "approx_distinct": 1387,
+        "declared_type": "date",
+        "name": "issue_date",
+        "null_count": 8,
+        "null_percent": 0.27137
+      },
+      {
+        "approx_distinct": 6,
+        "declared_type": "nvarchar",
+        "name": "legal_type_arabic",
+        "null_count": 586,
+        "null_percent": 19.877883
+      },
+      {
+        "approx_distinct": 7,
+        "declared_type": "nvarchar",
+        "name": "legal_type_english",
+        "null_count": 586,
+        "null_percent": 19.877883
+      },
+      {
+        "approx_distinct": 10,
+        "declared_type": "number",
+        "name": "legal_type_id",
+        "null_count": 488,
+        "null_percent": 16.553596
+      },
+      {
+        "approx_distinct": 1676,
+        "declared_type": "nvarchar",
+        "name": "license_number",
+        "null_count": 2,
+        "null_percent": 0.067843
+      },
+      {
+        "approx_distinct": 53,
+        "declared_type": "varchar2",
+        "name": "parcel_id",
+        "null_count": 2850,
+        "null_percent": 96.675712
+      },
+      {
+        "approx_distinct": 1862,
+        "declared_type": "number",
+        "name": "participant_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1767,
+        "declared_type": "varchar2",
+        "name": "print_rmker_arabic",
+        "null_count": 236,
+        "null_percent": 8.005427
+      },
+      {
+        "approx_distinct": 1166,
+        "declared_type": "varchar2",
+        "name": "rent_contract_no",
+        "null_count": 956,
+        "null_percent": 32.428765
+      },
+      {
+        "approx_distinct": 7,
+        "declared_type": "varchar2",
+        "name": "status_arabic",
+        "null_count": 236,
+        "null_percent": 8.005427
+      },
+      {
+        "approx_distinct": 6,
+        "declared_type": "varchar2",
+        "name": "status_english",
+        "null_count": 236,
+        "null_percent": 8.005427
+      },
+      {
+        "approx_distinct": 6,
+        "declared_type": "number",
+        "name": "status_id",
+        "null_count": 236,
+        "null_percent": 8.005427
+      },
+      {
+        "approx_distinct": 1758,
+        "declared_type": "nvarchar",
+        "name": "trade_name_arabic",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1860,
+        "declared_type": "nvarchar",
+        "name": "trade_name_english",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 1360907,
+    "dataset": "Real Estate Licenses",
+    "dataset_kind": "directory/snapshot",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Real Estate Licenses",
+        "field": "cancel_date",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-02T00:00:00",
+        "minimum": "2010-05-31T00:00:00",
+        "nonblank_rows": 123,
+        "parsed_rows": 123,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 1,
+        "dataset": "Real Estate Licenses",
+        "field": "expiry_date",
+        "from_2036_rows": 0,
+        "maximum": "2029-11-23T00:00:00",
+        "minimum": "0206-04-23T00:00:00",
+        "nonblank_rows": 2945,
+        "parsed_rows": 2945,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Real Estate Licenses",
+        "field": "issue_date",
+        "from_2036_rows": 0,
+        "maximum": "2022-07-18T00:00:00",
+        "minimum": "1963-01-01T00:00:00",
+        "nonblank_rows": 2940,
+        "parsed_rows": 2940,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Real Estate Licenses",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-03T17:30:52",
+        "minimum": "2026-09-03T17:30:52",
+        "nonblank_rows": 2948,
+        "parsed_rows": 2948,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [
+      "parcel_id"
+    ],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 1336587,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Real Estate Licenses/real_estate_licenses_2026-09-03_17-31-32_0001.csv",
+        "sha256": "8f6b09b4c91c4dc578fd774d57a7263b4096c4057583906b00dbcd558ef026c0",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 1336587
+      },
+      {
+        "compressed_bytes": 24320,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Real Estate Licenses/Real_Estate_Licenses_2026-09-04_attribute-details.xlsx",
+        "sha256": "0ef47546c9ea699ede817ead86285801683e6197ada2173fdfb1a03a98886d1c",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 24
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 23188
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [
+      "parcel_id"
+    ],
+    "personally_identifying_or_sensitive_columns": [],
+    "row_count": 2948,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "licences",
+    "uncompressed_bytes": 1359775
+  },
+  {
+    "candidate_primary_keys": [],
+    "column_count": 19,
+    "columns": [
+      {
+        "approx_distinct": 22,
+        "declared_type": "NVARCHAR2(100)",
+        "name": "activity_type_ar",
+        "null_count": 170,
+        "null_percent": 3.425348
+      },
+      {
+        "approx_distinct": 27,
+        "declared_type": "NVARCHAR2(100)",
+        "name": "activity_type_en",
+        "null_count": 170,
+        "null_percent": 3.425348
+      },
+      {
+        "approx_distinct": 25,
+        "declared_type": "NUMBER(4)",
+        "name": "activity_type_id",
+        "null_count": 170,
+        "null_percent": 3.425348
+      },
+      {
+        "approx_distinct": 23,
+        "declared_type": "NUMBER(10)",
+        "name": "ded_activity_code",
+        "null_count": 171,
+        "null_percent": 3.445497
+      },
+      {
+        "approx_distinct": 2309,
+        "declared_type": "NVARCHAR2(30)",
+        "name": "fax",
+        "null_count": 1096,
+        "null_percent": 22.083417
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "NUMBER",
+        "name": "is_branch",
+        "null_count": 1507,
+        "null_percent": 30.364699
+      },
+      {
+        "approx_distinct": 1474,
+        "declared_type": "DATE (DD-MM-YYYY)",
+        "name": "license_expiry_date",
+        "null_count": 16,
+        "null_percent": 0.322386
+      },
+      {
+        "approx_distinct": 1618,
+        "declared_type": "DATE (DD-MM-YYYY)",
+        "name": "license_issue_date",
+        "null_count": 23,
+        "null_percent": 0.463429
+      },
+      {
+        "approx_distinct": 2923,
+        "declared_type": "NVARCHAR2(50)",
+        "name": "license_number",
+        "null_count": 14,
+        "null_percent": 0.282087
+      },
+      {
+        "approx_distinct": 16,
+        "declared_type": "NVARCHAR2(200)",
+        "name": "license_source_ar",
+        "null_count": 55,
+        "null_percent": 1.108201
+      },
+      {
+        "approx_distinct": 16,
+        "declared_type": "NVARCHAR2(200)",
+        "name": "license_source_en",
+        "null_count": 55,
+        "null_percent": 1.108201
+      },
+      {
+        "approx_distinct": 13,
+        "declared_type": "NUMBER(10)",
+        "name": "license_source_id",
+        "null_count": 42,
+        "null_percent": 0.846262
+      },
+      {
+        "approx_distinct": 5,
+        "declared_type": "NUMBER(10)",
+        "name": "main_office_id",
+        "null_count": 4945,
+        "null_percent": 99.637316
+      },
+      {
+        "approx_distinct": 2935,
+        "declared_type": "NUMBER(10)",
+        "name": "participant_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2496,
+        "declared_type": "NVARCHAR2(100)",
+        "name": "phone",
+        "null_count": 570,
+        "null_percent": 11.484989
+      },
+      {
+        "approx_distinct": 2597,
+        "declared_type": "NUMBER(10)",
+        "name": "real_estate_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2981,
+        "declared_type": "NUMBER",
+        "name": "real_estate_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 674,
+        "declared_type": "NVARCHAR2(200)",
+        "name": "webpage",
+        "null_count": 3352,
+        "null_percent": 67.539794
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 1603472,
+    "dataset": "Real Estate Offices",
+    "dataset_kind": "directory/snapshot",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Real Estate Offices",
+        "field": "license_expiry_date",
+        "from_2036_rows": 0,
+        "maximum": "2030-08-08T00:00:00",
+        "minimum": "2007-09-06T00:00:00",
+        "nonblank_rows": 4947,
+        "parsed_rows": 4947,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Real Estate Offices",
+        "field": "license_issue_date",
+        "from_2036_rows": 0,
+        "maximum": "2025-01-14T00:00:00",
+        "minimum": "1963-01-01T00:00:00",
+        "nonblank_rows": 4940,
+        "parsed_rows": 4940,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Real Estate Offices",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-01T17:55:24",
+        "minimum": "2026-09-01T17:55:24",
+        "nonblank_rows": 4963,
+        "parsed_rows": 4963,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 1581074,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Real Estate Offices/offices_2026-09-01_17-56-00_0001.csv",
+        "sha256": "c487357f1a4cf0fcfe6a1e382329f8214131f9cb36a91b034782188e1d8e64ec",
+        "sheets": [],
+        "source_export_date": "2026-09-01",
+        "uncompressed_bytes": 1581074
+      },
+      {
+        "compressed_bytes": 22398,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Real Estate Offices/Real_Estate_Offices_2026-09-04_attribute-details.xlsx",
+        "sha256": "b13f9caea3748ed9191913d0541528da5aef7118f9727d5c88bbb4bed799eda0",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 19
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 21266
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [],
+    "personally_identifying_or_sensitive_columns": [
+      "fax",
+      "phone"
+    ],
+    "row_count": 4963,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "offices",
+    "uncompressed_bytes": 1602340
+  },
+  {
+    "candidate_primary_keys": [
+      "permit_number",
+      "permits_id"
+    ],
+    "column_count": 21,
+    "columns": [
+      {
+        "approx_distinct": 4018,
+        "declared_type": "date",
+        "name": "end_date",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 93,
+        "declared_type": "varchar2",
+        "name": "exhibition_name_ar",
+        "null_count": 174828,
+        "null_percent": 99.869756
+      },
+      {
+        "approx_distinct": 77,
+        "declared_type": "varchar2",
+        "name": "exhibition_name_en",
+        "null_count": 174828,
+        "null_percent": 99.869756
+      },
+      {
+        "approx_distinct": 13177,
+        "declared_type": "varchar2",
+        "name": "license_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 841,
+        "declared_type": "varchar2",
+        "name": "location",
+        "null_count": 172932,
+        "null_percent": 98.786674
+      },
+      {
+        "approx_distinct": 15,
+        "declared_type": "nvarchar",
+        "name": "main_service_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 18,
+        "declared_type": "varchar2",
+        "name": "main_service_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 106,
+        "declared_type": "number",
+        "name": "parent_parmits_id",
+        "null_count": 174959,
+        "null_percent": 99.944589
+      },
+      {
+        "approx_distinct": 17,
+        "declared_type": "number",
+        "name": "parent_service_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 10217,
+        "declared_type": "varchar2",
+        "name": "paricipant_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 10907,
+        "declared_type": "nvarchar",
+        "name": "participant_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 190211,
+        "declared_type": "varchar2",
+        "name": "permit_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 186591,
+        "declared_type": "number",
+        "name": "permits_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 4,
+        "declared_type": "nvarchar",
+        "name": "permit_status_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 5,
+        "declared_type": "varchar2",
+        "name": "permit_status_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 5,
+        "declared_type": "number",
+        "name": "permit_status_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 11,
+        "declared_type": "nvarchar",
+        "name": "service_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 7,
+        "declared_type": "varchar2",
+        "name": "service_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 53,
+        "declared_type": "number",
+        "name": "service_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 3934,
+        "declared_type": "date",
+        "name": "start_date",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 55297133,
+    "dataset": "Real Estate Permits",
+    "dataset_kind": "directory/snapshot",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Real Estate Permits",
+        "field": "end_date",
+        "from_2036_rows": 0,
+        "maximum": "2027-09-08T00:00:00",
+        "minimum": "2016-08-12T00:00:00",
+        "nonblank_rows": 175056,
+        "parsed_rows": 175056,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Real Estate Permits",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-03T17:31:42",
+        "minimum": "2026-09-03T17:31:42",
+        "nonblank_rows": 175056,
+        "parsed_rows": 175056,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Real Estate Permits",
+        "field": "start_date",
+        "from_2036_rows": 0,
+        "maximum": "2027-04-29T00:00:00",
+        "minimum": "2016-06-03T00:00:00",
+        "nonblank_rows": 175056,
+        "parsed_rows": 175056,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 55273436,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Real Estate Permits/real_estate_permits_2026-09-03_17-32-35_0001.csv",
+        "sha256": "4574232f832b3e71a9b18bf9cb9efceb6a36d05240f75f0ae7baafaed905369d",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 55273436
+      },
+      {
+        "compressed_bytes": 23697,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Real Estate Permits/Real_Estate_Permits_2026-09-04_attribute-details.xlsx",
+        "sha256": "4d5c68431b6a9637e76582fc4fbba0e7d3cc321f866271d7b10b3ef5d88fea99",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 21
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 22565
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [],
+    "personally_identifying_or_sensitive_columns": [],
+    "row_count": 175056,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "permits",
+    "uncompressed_bytes": 55296001
+  },
+  {
+    "candidate_primary_keys": [
+      "project_id",
+      "project_number"
+    ],
+    "column_count": 38,
+    "columns": [
+      {
+        "approx_distinct": 69,
+        "declared_type": "NUMBER(10)",
+        "name": "area_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 60,
+        "declared_type": "NVARCHAR2(200)",
+        "name": "area_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 60,
+        "declared_type": "NVARCHAR2(200)",
+        "name": "area_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 29,
+        "declared_type": "DATE (DD-MM-YYYY)",
+        "name": "cancellation_date",
+        "null_count": 3006,
+        "null_percent": 98.914116
+      },
+      {
+        "approx_distinct": 1225,
+        "declared_type": "DATE (DD-MM-YYYY)",
+        "name": "completion_date",
+        "null_count": 1191,
+        "null_percent": 39.190523
+      },
+      {
+        "approx_distinct": 1333,
+        "declared_type": "NUMBER(10)",
+        "name": "developer_id",
+        "null_count": 2,
+        "null_percent": 0.065811
+      },
+      {
+        "approx_distinct": 105,
+        "declared_type": "NVARCHAR2(200)",
+        "name": "developer_name",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1280,
+        "declared_type": "NUMBER",
+        "name": "developer_number",
+        "null_count": 2,
+        "null_percent": 0.065811
+      },
+      {
+        "approx_distinct": 44,
+        "declared_type": "NUMBER(10)",
+        "name": "escrow_agent_id",
+        "null_count": 160,
+        "null_percent": 5.26489
+      },
+      {
+        "approx_distinct": 41,
+        "declared_type": "NVARCHAR2(200)",
+        "name": "escrow_agent_name",
+        "null_count": 160,
+        "null_percent": 5.26489
+      },
+      {
+        "approx_distinct": 130,
+        "declared_type": "NUMBER(10)",
+        "name": "master_developer_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 105,
+        "declared_type": "NVARCHAR2(200)",
+        "name": "master_developer_name",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 106,
+        "declared_type": "NUMBER",
+        "name": "master_developer_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 133,
+        "declared_type": "nvarchar",
+        "name": "master_project_ar",
+        "null_count": 290,
+        "null_percent": 9.542613
+      },
+      {
+        "approx_distinct": 146,
+        "declared_type": "nvarchar",
+        "name": "master_project_en",
+        "null_count": 290,
+        "null_percent": 9.542613
+      },
+      {
+        "approx_distinct": 24,
+        "declared_type": "numeric",
+        "name": "no_of_buildings",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 245,
+        "declared_type": "numeric",
+        "name": "no_of_lands",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 710,
+        "declared_type": "numeric",
+        "name": "no_of_units",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 245,
+        "declared_type": "numeric",
+        "name": "no_of_villas",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1012,
+        "declared_type": "NUMBER(10,3)",
+        "name": "percent_completed",
+        "null_count": 5,
+        "null_percent": 0.164528
+      },
+      {
+        "approx_distinct": 3,
+        "declared_type": "NVARCHAR2(50)",
+        "name": "project_classification_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 3,
+        "declared_type": "NUMBER(10)",
+        "name": "project_classification_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1978,
+        "declared_type": "NVARCHAR2(2000)",
+        "name": "project_description_ar",
+        "null_count": 163,
+        "null_percent": 5.363606
+      },
+      {
+        "approx_distinct": 2456,
+        "declared_type": "VARCHAR2(2000)",
+        "name": "project_description_en",
+        "null_count": 141,
+        "null_percent": 4.639684
+      },
+      {
+        "approx_distinct": 1371,
+        "declared_type": "DATE (DD-MM-YYYY)",
+        "name": "project_end_date",
+        "null_count": 276,
+        "null_percent": 9.081935
+      },
+      {
+        "approx_distinct": 2656,
+        "declared_type": "NUMBER(10)",
+        "name": "project_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 3163,
+        "declared_type": "VARCHAR2(200)",
+        "name": "project_name",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 3162,
+        "declared_type": "NUMBER(10)",
+        "name": "project_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1193,
+        "declared_type": "DATE (DD-MM-YYYY)",
+        "name": "project_start_date",
+        "null_count": 5,
+        "null_percent": 0.164528
+      },
+      {
+        "approx_distinct": 6,
+        "declared_type": "NVARCHAR2(200)",
+        "name": "project_status",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 6,
+        "declared_type": "NVARCHAR2(100)",
+        "name": "project_status_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 3,
+        "declared_type": "NVARCHAR2(100)",
+        "name": "project_type_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 3,
+        "declared_type": "NUMBER",
+        "name": "project_type_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2733,
+        "declared_type": "NUMBER(10)",
+        "name": "property_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 4,
+        "declared_type": "nvarchar",
+        "name": "zoning_authority_ar",
+        "null_count": 1,
+        "null_percent": 0.032906
+      },
+      {
+        "approx_distinct": 5,
+        "declared_type": "nvarchar",
+        "name": "zoning_authority_en",
+        "null_count": 1,
+        "null_percent": 0.032906
+      },
+      {
+        "approx_distinct": 5,
+        "declared_type": "numeric",
+        "name": "zoning_authority_id",
+        "null_count": 1,
+        "null_percent": 0.032906
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 2503754,
+    "dataset": "Real Estate Projects",
+    "dataset_kind": "directory/snapshot",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Real Estate Projects",
+        "field": "cancellation_date",
+        "from_2036_rows": 0,
+        "maximum": "2025-01-29T00:00:00",
+        "minimum": "2012-03-11T00:00:00",
+        "nonblank_rows": 33,
+        "parsed_rows": 33,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Real Estate Projects",
+        "field": "completion_date",
+        "from_2036_rows": 0,
+        "maximum": "2029-12-31T00:00:00",
+        "minimum": "2003-01-01T00:00:00",
+        "nonblank_rows": 1848,
+        "parsed_rows": 1848,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Real Estate Projects",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-06-15T15:24:01",
+        "minimum": "2026-06-15T15:24:01",
+        "nonblank_rows": 3039,
+        "parsed_rows": 3039,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Real Estate Projects",
+        "field": "project_end_date",
+        "from_2036_rows": 0,
+        "maximum": "2031-12-31T00:00:00",
+        "minimum": "2000-08-28T00:00:00",
+        "nonblank_rows": 2763,
+        "parsed_rows": 2763,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Real Estate Projects",
+        "field": "project_start_date",
+        "from_2036_rows": 0,
+        "maximum": "2026-07-01T00:00:00",
+        "minimum": "1998-01-01T00:00:00",
+        "nonblank_rows": 3034,
+        "parsed_rows": 3034,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [
+      "developer_id",
+      "developer_number",
+      "master_developer_id",
+      "master_developer_number",
+      "project_classification_id",
+      "project_id",
+      "project_number",
+      "project_type_id",
+      "property_id"
+    ],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 2473575,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Real Estate Projects/projects_2026-07-06_16-25-21_0001.csv",
+        "sha256": "ffee59d637b1383e62ea24dab5be77e957090abf3860ce26b00b873fbdda6078",
+        "sheets": [],
+        "source_export_date": "2026-07-06",
+        "uncompressed_bytes": 2473575
+      },
+      {
+        "compressed_bytes": 30179,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Real Estate Projects/Real_Estate_Projects_2026-09-04_attribute-details.xlsx",
+        "sha256": "a540de44d6e5250414685873c7cabcb3ba1e601c5b2390497828d78cb5c65779",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 38
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 29047
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [
+      "area_id"
+    ],
+    "personally_identifying_or_sensitive_columns": [],
+    "row_count": 3039,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "projects",
+    "uncompressed_bytes": 2502622
+  },
+  {
+    "candidate_primary_keys": [
+      "transaction_id"
+    ],
+    "column_count": 47,
+    "columns": [
+      {
+        "approx_distinct": 407439,
+        "declared_type": "number",
+        "name": "actual_worth",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 251,
+        "declared_type": "number",
+        "name": "area_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 267,
+        "declared_type": "nvarchar",
+        "name": "area_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 254,
+        "declared_type": "nvarchar",
+        "name": "area_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 5407,
+        "declared_type": "nvarchar",
+        "name": "building_name_ar",
+        "null_count": 502489,
+        "null_percent": 28.291022
+      },
+      {
+        "approx_distinct": 4887,
+        "declared_type": "nvarchar",
+        "name": "building_name_en",
+        "null_count": 501988,
+        "null_percent": 28.262814
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "number",
+        "name": "has_parking",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 5789,
+        "declared_type": "date",
+        "name": "instance_date",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 153,
+        "declared_type": "nvarchar",
+        "name": "master_project_ar",
+        "null_count": 238296,
+        "null_percent": 13.416487
+      },
+      {
+        "approx_distinct": 177,
+        "declared_type": "nvarchar",
+        "name": "master_project_en",
+        "null_count": 238255,
+        "null_percent": 13.414179
+      },
+      {
+        "approx_distinct": 27973,
+        "declared_type": "number",
+        "name": "meter_rent_price",
+        "null_count": 1739247,
+        "null_percent": 97.92269
+      },
+      {
+        "approx_distinct": 1038085,
+        "declared_type": "number",
+        "name": "meter_sale_price",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 14,
+        "declared_type": "nvarchar",
+        "name": "nearest_landmark_ar",
+        "null_count": 366257,
+        "null_percent": 20.620918
+      },
+      {
+        "approx_distinct": 13,
+        "declared_type": "nvarchar",
+        "name": "nearest_landmark_en",
+        "null_count": 366257,
+        "null_percent": 20.620918
+      },
+      {
+        "approx_distinct": 5,
+        "declared_type": "nvarchar",
+        "name": "nearest_mall_ar",
+        "null_count": 572456,
+        "null_percent": 32.230288
+      },
+      {
+        "approx_distinct": 4,
+        "declared_type": "nvarchar",
+        "name": "nearest_mall_en",
+        "null_count": 572456,
+        "null_percent": 32.230288
+      },
+      {
+        "approx_distinct": 53,
+        "declared_type": "nvarchar",
+        "name": "nearest_metro_ar",
+        "null_count": 561522,
+        "null_percent": 31.614684
+      },
+      {
+        "approx_distinct": 64,
+        "declared_type": "nvarchar",
+        "name": "nearest_metro_en",
+        "null_count": 561522,
+        "null_percent": 31.614684
+      },
+      {
+        "approx_distinct": 205,
+        "declared_type": "number",
+        "name": "no_of_parties_role_1",
+        "null_count": 971,
+        "null_percent": 0.054669
+      },
+      {
+        "approx_distinct": 32,
+        "declared_type": "number",
+        "name": "no_of_parties_role_2",
+        "null_count": 971,
+        "null_percent": 0.054669
+      },
+      {
+        "approx_distinct": 16,
+        "declared_type": "number",
+        "name": "no_of_parties_role_3",
+        "null_count": 971,
+        "null_percent": 0.054669
+      },
+      {
+        "approx_distinct": 93070,
+        "declared_type": "number",
+        "name": "procedure_area",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 54,
+        "declared_type": "number",
+        "name": "procedure_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 64,
+        "declared_type": "nvarchar",
+        "name": "procedure_name_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 62,
+        "declared_type": "nvarchar",
+        "name": "procedure_name_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 3613,
+        "declared_type": "nvarchar",
+        "name": "project_name_ar",
+        "null_count": 468749,
+        "null_percent": 26.3914
+      },
+      {
+        "approx_distinct": 3253,
+        "declared_type": "nvarchar",
+        "name": "project_name_en",
+        "null_count": 468749,
+        "null_percent": 26.3914
+      },
+      {
+        "approx_distinct": 3743,
+        "declared_type": "number",
+        "name": "project_number",
+        "null_count": 468749,
+        "null_percent": 26.3914
+      },
+      {
+        "approx_distinct": 20,
+        "declared_type": "nvarchar",
+        "name": "property_sub_type_ar",
+        "null_count": 347903,
+        "null_percent": 19.587556
+      },
+      {
+        "approx_distinct": 17,
+        "declared_type": "nvarchar",
+        "name": "property_sub_type_en",
+        "null_count": 347903,
+        "null_percent": 19.587556
+      },
+      {
+        "approx_distinct": 22,
+        "declared_type": "number",
+        "name": "property_sub_type_id",
+        "null_count": 347903,
+        "null_percent": 19.587556
+      },
+      {
+        "approx_distinct": 3,
+        "declared_type": "nvarchar",
+        "name": "property_type_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 4,
+        "declared_type": "nvarchar",
+        "name": "property_type_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 4,
+        "declared_type": "number",
+        "name": "property_type_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 11,
+        "declared_type": "nvarchar",
+        "name": "property_usage_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 10,
+        "declared_type": "nvarchar",
+        "name": "property_usage_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "nvarchar",
+        "name": "reg_type_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "nvarchar",
+        "name": "reg_type_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "number",
+        "name": "reg_type_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 17559,
+        "declared_type": "number",
+        "name": "rent_value",
+        "null_count": 1739247,
+        "null_percent": 97.92269
+      },
+      {
+        "approx_distinct": 15,
+        "declared_type": "nvarchar",
+        "name": "rooms_ar",
+        "null_count": 374396,
+        "null_percent": 21.079159
+      },
+      {
+        "approx_distinct": 18,
+        "declared_type": "nvarchar",
+        "name": "rooms_en",
+        "null_count": 374396,
+        "null_percent": 21.079159
+      },
+      {
+        "approx_distinct": 1746921,
+        "declared_type": "nvarchar",
+        "name": "transaction_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 3,
+        "declared_type": "nvarchar",
+        "name": "trans_group_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 3,
+        "declared_type": "nvarchar",
+        "name": "trans_group_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 3,
+        "declared_type": "number",
+        "name": "trans_group_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 1139103915,
+    "dataset": "Real Estate Transactions",
+    "dataset_kind": "event",
+    "date_coverage": [
+      {
+        "before_1900_rows": 4,
+        "dataset": "Real Estate Transactions",
+        "field": "instance_date",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-02T00:00:00",
+        "minimum": "1416-07-02T00:00:00",
+        "nonblank_rows": 1776143,
+        "parsed_rows": 1776143,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Real Estate Transactions",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-03T17:31:36",
+        "minimum": "2026-09-03T17:31:36",
+        "nonblank_rows": 1776143,
+        "parsed_rows": 1776143,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [
+      "project_number",
+      "property_sub_type_id",
+      "property_type_id"
+    ],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 3,
+    "files": [
+      {
+        "compressed_bytes": 33837,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Real Estate Transactions/Real_Estate_Transactions_2026-09-04_attribute-details.xlsx",
+        "sha256": "9cfadabf0e2acbea19f251448d3a982e5491fccac8194f68bf05bd2c0c6579a9",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 47
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 32705
+      },
+      {
+        "compressed_bytes": 569687278,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Real Estate Transactions/transactions_2026-09-03_17-35-02_0001.csv",
+        "sha256": "b329c36956aaaf546cef6e3d30ba344c37f3d20de51d6038c8aac07799289a99",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 569687278
+      },
+      {
+        "compressed_bytes": 569382800,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Real Estate Transactions/transactions_2026-09-03_17-35-02_0002.csv",
+        "sha256": "e73849645b30a410691cb23eb150c1b86cc2fb207e8a713cd3a58437f5199d47",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 569382800
+      }
+    ],
+    "formats": {
+      "csv": 2,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [
+      "area_id",
+      "procedure_area"
+    ],
+    "personally_identifying_or_sensitive_columns": [],
+    "row_count": 1776143,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "transactions",
+    "uncompressed_bytes": 1139102783
+  },
+  {
+    "candidate_primary_keys": [
+      "property_id"
+    ],
+    "column_count": 47,
+    "columns": [
+      {
+        "approx_distinct": 40198,
+        "declared_type": "number",
+        "name": "actual_area",
+        "null_count": 305189,
+        "null_percent": 12.851546
+      },
+      {
+        "approx_distinct": 28909,
+        "declared_type": "number",
+        "name": "actual_common_area",
+        "null_count": 1468626,
+        "null_percent": 61.844019
+      },
+      {
+        "approx_distinct": 208,
+        "declared_type": "number",
+        "name": "area_id",
+        "null_count": 433,
+        "null_percent": 0.018234
+      },
+      {
+        "approx_distinct": 205,
+        "declared_type": "nvarchar",
+        "name": "area_name_ar",
+        "null_count": 433,
+        "null_percent": 0.018234
+      },
+      {
+        "approx_distinct": 212,
+        "declared_type": "nvarchar",
+        "name": "area_name_en",
+        "null_count": 433,
+        "null_percent": 0.018234
+      },
+      {
+        "approx_distinct": 1434,
+        "declared_type": "nvarchar",
+        "name": "building_number",
+        "null_count": 193478,
+        "null_percent": 8.147382
+      },
+      {
+        "approx_distinct": 50295,
+        "declared_type": "number",
+        "name": "common_area",
+        "null_count": 465865,
+        "null_percent": 19.617632
+      },
+      {
+        "approx_distinct": 7234,
+        "declared_type": "time",
+        "name": "creation_date",
+        "null_count": 97986,
+        "null_percent": 4.126202
+      },
+      {
+        "approx_distinct": 2264,
+        "declared_type": "nvarchar",
+        "name": "floor",
+        "null_count": 423829,
+        "null_percent": 17.847491
+      },
+      {
+        "approx_distinct": 22918,
+        "declared_type": "number",
+        "name": "grandparent_property_id",
+        "null_count": 418350,
+        "null_percent": 17.616769
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "number",
+        "name": "is_free_hold",
+        "null_count": 34890,
+        "null_percent": 1.469222
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "number",
+        "name": "is_lease_hold",
+        "null_count": 1154566,
+        "null_percent": 48.618914
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "number",
+        "name": "is_registered",
+        "null_count": 1124829,
+        "null_percent": 47.366686
+      },
+      {
+        "approx_distinct": 3747,
+        "declared_type": "nvarchar",
+        "name": "land_number",
+        "null_count": 433,
+        "null_percent": 0.018234
+      },
+      {
+        "approx_distinct": 79,
+        "declared_type": "number",
+        "name": "land_sub_number",
+        "null_count": 3278,
+        "null_percent": 0.138037
+      },
+      {
+        "approx_distinct": 9,
+        "declared_type": "varchar2",
+        "name": "land_type_ar",
+        "null_count": 388067,
+        "null_percent": 16.341548
+      },
+      {
+        "approx_distinct": 9,
+        "declared_type": "varchar2",
+        "name": "land_type_en",
+        "null_count": 388067,
+        "null_percent": 16.341548
+      },
+      {
+        "approx_distinct": 10,
+        "declared_type": "number",
+        "name": "land_type_id",
+        "null_count": 388067,
+        "null_percent": 16.341548
+      },
+      {
+        "approx_distinct": 117,
+        "declared_type": "nvarchar",
+        "name": "master_project_ar",
+        "null_count": 1240424,
+        "null_percent": 52.234405
+      },
+      {
+        "approx_distinct": 125,
+        "declared_type": "nvarchar",
+        "name": "master_project_en",
+        "null_count": 1240134,
+        "null_percent": 52.222193
+      },
+      {
+        "approx_distinct": 137,
+        "declared_type": "number",
+        "name": "master_project_id",
+        "null_count": 1240134,
+        "null_percent": 52.222193
+      },
+      {
+        "approx_distinct": 6754,
+        "declared_type": "nvarchar",
+        "name": "munc_number",
+        "null_count": 31546,
+        "null_percent": 1.328406
+      },
+      {
+        "approx_distinct": 228,
+        "declared_type": "varchar2",
+        "name": "munc_zip_code",
+        "null_count": 433,
+        "null_percent": 0.018234
+      },
+      {
+        "approx_distinct": 30523,
+        "declared_type": "number",
+        "name": "parcel_id",
+        "null_count": 98522,
+        "null_percent": 4.148773
+      },
+      {
+        "approx_distinct": 19057,
+        "declared_type": "number",
+        "name": "parent_property_id",
+        "null_count": 897800,
+        "null_percent": 37.806467
+      },
+      {
+        "approx_distinct": 3,
+        "declared_type": "number",
+        "name": "parking_allocation_type",
+        "null_count": 2368502,
+        "null_percent": 99.737907
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "varchar2",
+        "name": "parking_allocation_type_ar",
+        "null_count": 2369811,
+        "null_percent": 99.793029
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "varchar2",
+        "name": "parking_allocation_type_en",
+        "null_count": 2369811,
+        "null_percent": 99.793029
+      },
+      {
+        "approx_distinct": 6,
+        "declared_type": "nvarchar",
+        "name": "pre_registration_number",
+        "null_count": 2374718,
+        "null_percent": 99.999663
+      },
+      {
+        "approx_distinct": 2915,
+        "declared_type": "number",
+        "name": "project_id",
+        "null_count": 1522363,
+        "null_percent": 64.106891
+      },
+      {
+        "approx_distinct": 3415,
+        "declared_type": "varchar2",
+        "name": "project_name_ar",
+        "null_count": 1522363,
+        "null_percent": 64.106891
+      },
+      {
+        "approx_distinct": 3093,
+        "declared_type": "varchar2",
+        "name": "project_name_en",
+        "null_count": 1522363,
+        "null_percent": 64.106891
+      },
+      {
+        "approx_distinct": 1975240,
+        "declared_type": "number",
+        "name": "property_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 24,
+        "declared_type": "nvarchar",
+        "name": "property_sub_type_ar",
+        "null_count": 1124834,
+        "null_percent": 47.366896
+      },
+      {
+        "approx_distinct": 23,
+        "declared_type": "nvarchar",
+        "name": "property_sub_type_en",
+        "null_count": 1124834,
+        "null_percent": 47.366896
+      },
+      {
+        "approx_distinct": 24,
+        "declared_type": "number",
+        "name": "property_sub_type_id",
+        "null_count": 1124834,
+        "null_percent": 47.366896
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "nvarchar",
+        "name": "property_type_ar",
+        "null_count": 265581,
+        "null_percent": 11.183648
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "nvarchar",
+        "name": "property_type_en",
+        "null_count": 265581,
+        "null_percent": 11.183648
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": "number",
+        "name": "property_type_id",
+        "null_count": 265581,
+        "null_percent": 11.183648
+      },
+      {
+        "approx_distinct": 105,
+        "declared_type": "number",
+        "name": "rooms",
+        "null_count": 292534,
+        "null_percent": 12.318642
+      },
+      {
+        "approx_distinct": 81,
+        "declared_type": "varchar2",
+        "name": "rooms_ar",
+        "null_count": 292547,
+        "null_percent": 12.31919
+      },
+      {
+        "approx_distinct": 100,
+        "declared_type": "varchar2",
+        "name": "rooms_en",
+        "null_count": 292547,
+        "null_percent": 12.31919
+      },
+      {
+        "approx_distinct": 14657,
+        "declared_type": "number",
+        "name": "unit_balcony_area",
+        "null_count": 1222328,
+        "null_percent": 51.47238
+      },
+      {
+        "approx_distinct": 349798,
+        "declared_type": "nvarchar",
+        "name": "unit_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 112350,
+        "declared_type": "nvarchar",
+        "name": "unit_parking_number",
+        "null_count": 1471183,
+        "null_percent": 61.951695
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "number",
+        "name": "zone_id",
+        "null_count": 433,
+        "null_percent": 0.018234
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 998697569,
+    "dataset": "Registered Freehold Real Estate Units",
+    "dataset_kind": "property/registry snapshot",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Registered Freehold Real Estate Units",
+        "field": "creation_date",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-02T00:00:00",
+        "minimum": "2008-10-14T00:00:00",
+        "nonblank_rows": 2276740,
+        "parsed_rows": 2276740,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Registered Freehold Real Estate Units",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-03T18:30:14",
+        "minimum": "2026-09-03T18:30:14",
+        "nonblank_rows": 2374726,
+        "parsed_rows": 2374726,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [
+      "building_number",
+      "grandparent_property_id",
+      "land_number",
+      "land_sub_number",
+      "land_type_id",
+      "master_project_id",
+      "parcel_id",
+      "parent_property_id",
+      "project_id",
+      "property_id",
+      "property_sub_type_id",
+      "property_type_id",
+      "unit_number",
+      "unit_parking_number"
+    ],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8",
+      "Windows-1256 (sample inference)"
+    ],
+    "file_count": 4,
+    "files": [
+      {
+        "compressed_bytes": 31957,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Registered Freehold Real Estate Units/Registered_Freehold_Real_Estate_Units_2026-09-04_attribute-details.xlsx",
+        "sha256": "b3d2fc4af4fee9982f70fb3419776c566155ced320e64332d14ebca931fa7d89",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 47
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 30825
+      },
+      {
+        "compressed_bytes": 332709057,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Registered Freehold Real Estate Units/units_2026-09-03_18-33-31_0001.csv",
+        "sha256": "f70252e7f05c20e7ba447f7548497242b10e306c4d6dbfd60575a5077d823c6b",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 332709057
+      },
+      {
+        "compressed_bytes": 333027758,
+        "encoding": "Windows-1256 (sample inference)",
+        "format": "CSV",
+        "path": "Registered Freehold Real Estate Units/units_2026-09-03_18-33-31_0002.csv",
+        "sha256": "0a6df8963e745abc540eb520e32febe0e5446348f87763c4a5db2490ee574fb1",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 333027758
+      },
+      {
+        "compressed_bytes": 332928797,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Registered Freehold Real Estate Units/units_2026-09-03_18-33-31_0003.csv",
+        "sha256": "136faad432a2cc91ad9afb8bbde0d99452b371ce1425f72697dfc150aa06e470",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 332928797
+      }
+    ],
+    "formats": {
+      "csv": 3,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [
+      "actual_area",
+      "actual_common_area",
+      "area_id",
+      "common_area",
+      "land_number",
+      "munc_number",
+      "parcel_id",
+      "unit_balcony_area",
+      "zone_id"
+    ],
+    "personally_identifying_or_sensitive_columns": [],
+    "row_count": 2374726,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "units",
+    "uncompressed_bytes": 998696437
+  },
+  {
+    "candidate_primary_keys": [
+      "line_number+contract_id"
+    ],
+    "column_count": 41,
+    "columns": [
+      {
+        "approx_distinct": 69967,
+        "declared_type": "number",
+        "name": "actual_area",
+        "null_count": 1308381,
+        "null_percent": 12.528872
+      },
+      {
+        "approx_distinct": 406470,
+        "declared_type": "number",
+        "name": "annual_amount",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 197,
+        "declared_type": "number",
+        "name": "area_id",
+        "null_count": 3,
+        "null_percent": 2.9e-05
+      },
+      {
+        "approx_distinct": 195,
+        "declared_type": "nvarchar",
+        "name": "area_name_ar",
+        "null_count": 3,
+        "null_percent": 2.9e-05
+      },
+      {
+        "approx_distinct": 220,
+        "declared_type": "nvarchar",
+        "name": "area_name_en",
+        "null_count": 3,
+        "null_percent": 2.9e-05
+      },
+      {
+        "approx_distinct": 317009,
+        "declared_type": "number",
+        "name": "contract_amount",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 6920,
+        "declared_type": "date",
+        "name": "contract_end_date",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 9712113,
+        "declared_type": "nvarchar",
+        "name": "contract_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "nvarchar",
+        "name": "contract_reg_type_ar",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "nvarchar",
+        "name": "contract_reg_type_en",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "number",
+        "name": "contract_reg_type_id",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 5685,
+        "declared_type": "date",
+        "name": "contract_start_date",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 4,
+        "declared_type": "nvarchar",
+        "name": "ejari_bus_property_type_ar",
+        "null_count": 3575,
+        "null_percent": 0.034234
+      },
+      {
+        "approx_distinct": 5,
+        "declared_type": "nvarchar",
+        "name": "ejari_bus_property_type_en",
+        "null_count": 3575,
+        "null_percent": 0.034234
+      },
+      {
+        "approx_distinct": 5,
+        "declared_type": "number",
+        "name": "ejari_bus_property_type_id",
+        "null_count": 3575,
+        "null_percent": 0.034234
+      },
+      {
+        "approx_distinct": 73,
+        "declared_type": "nvarchar",
+        "name": "ejari_property_sub_type_ar",
+        "null_count": 75812,
+        "null_percent": 0.725965
+      },
+      {
+        "approx_distinct": 84,
+        "declared_type": "nvarchar",
+        "name": "ejari_property_sub_type_en",
+        "null_count": 75812,
+        "null_percent": 0.725965
+      },
+      {
+        "approx_distinct": 83,
+        "declared_type": "number",
+        "name": "ejari_property_sub_type_id",
+        "null_count": 69478,
+        "null_percent": 0.665312
+      },
+      {
+        "approx_distinct": 76,
+        "declared_type": "nvarchar",
+        "name": "ejari_property_type_ar",
+        "null_count": 68241,
+        "null_percent": 0.653466
+      },
+      {
+        "approx_distinct": 68,
+        "declared_type": "nvarchar",
+        "name": "ejari_property_type_en",
+        "null_count": 68241,
+        "null_percent": 0.653466
+      },
+      {
+        "approx_distinct": 81,
+        "declared_type": "number",
+        "name": "ejari_property_type_id",
+        "null_count": 67004,
+        "null_percent": 0.641621
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "number",
+        "name": "is_free_hold",
+        "null_count": 3575,
+        "null_percent": 0.034234
+      },
+      {
+        "approx_distinct": 915,
+        "declared_type": "number",
+        "name": "line_number",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 138,
+        "declared_type": "nvarchar",
+        "name": "master_project_ar",
+        "null_count": 6992570,
+        "null_percent": 66.959867
+      },
+      {
+        "approx_distinct": 163,
+        "declared_type": "nvarchar",
+        "name": "master_project_en",
+        "null_count": 6992539,
+        "null_percent": 66.95957
+      },
+      {
+        "approx_distinct": 14,
+        "declared_type": "nvarchar",
+        "name": "nearest_landmark_ar",
+        "null_count": 727229,
+        "null_percent": 6.963843
+      },
+      {
+        "approx_distinct": 13,
+        "declared_type": "nvarchar",
+        "name": "nearest_landmark_en",
+        "null_count": 727229,
+        "null_percent": 6.963843
+      },
+      {
+        "approx_distinct": 5,
+        "declared_type": "nvarchar",
+        "name": "nearest_mall_ar",
+        "null_count": 1250985,
+        "null_percent": 11.979256
+      },
+      {
+        "approx_distinct": 4,
+        "declared_type": "nvarchar",
+        "name": "nearest_mall_en",
+        "null_count": 1250985,
+        "null_percent": 11.979256
+      },
+      {
+        "approx_distinct": 53,
+        "declared_type": "nvarchar",
+        "name": "nearest_metro_ar",
+        "null_count": 1155340,
+        "null_percent": 11.063373
+      },
+      {
+        "approx_distinct": 64,
+        "declared_type": "nvarchar",
+        "name": "nearest_metro_en",
+        "null_count": 1155340,
+        "null_percent": 11.063373
+      },
+      {
+        "approx_distinct": 329,
+        "declared_type": "number",
+        "name": "no_of_prop",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 1779,
+        "declared_type": "nvarchar",
+        "name": "project_name_ar",
+        "null_count": 8830428,
+        "null_percent": 84.558936
+      },
+      {
+        "approx_distinct": 1541,
+        "declared_type": "nvarchar",
+        "name": "project_name_en",
+        "null_count": 8830428,
+        "null_percent": 84.558936
+      },
+      {
+        "approx_distinct": 1882,
+        "declared_type": "number",
+        "name": "project_number",
+        "null_count": 8830428,
+        "null_percent": 84.558936
+      },
+      {
+        "approx_distinct": 12,
+        "declared_type": "nvarchar",
+        "name": "property_usage_ar",
+        "null_count": 15114,
+        "null_percent": 0.14473
+      },
+      {
+        "approx_distinct": 13,
+        "declared_type": "nvarchar",
+        "name": "property_usage_en",
+        "null_count": 15114,
+        "null_percent": 0.14473
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "nvarchar",
+        "name": "tenant_type_ar",
+        "null_count": 401954,
+        "null_percent": 3.849055
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "nvarchar",
+        "name": "tenant_type_en",
+        "null_count": 401954,
+        "null_percent": 3.849055
+      },
+      {
+        "approx_distinct": 2,
+        "declared_type": "number",
+        "name": "tenant_type_id",
+        "null_count": 401954,
+        "null_percent": 3.849055
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 5315101994,
+    "dataset": "Rent Contracts",
+    "dataset_kind": "contract-line snapshot",
+    "date_coverage": [
+      {
+        "before_1900_rows": 0,
+        "dataset": "Rent Contracts",
+        "field": "contract_end_date",
+        "from_2036_rows": 1119,
+        "maximum": "5013-05-28T00:00:00",
+        "minimum": "2002-02-15T00:00:00",
+        "nonblank_rows": 10442927,
+        "parsed_rows": 10442927,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Rent Contracts",
+        "field": "contract_start_date",
+        "from_2036_rows": 6,
+        "maximum": "2205-07-16T00:00:00",
+        "minimum": "2001-02-15T00:00:00",
+        "nonblank_rows": 10442927,
+        "parsed_rows": 10442927,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Rent Contracts",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-03T17:36:42",
+        "minimum": "2026-09-03T17:36:42",
+        "nonblank_rows": 10442927,
+        "parsed_rows": 10442927,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [
+      "ejari_bus_property_type_id",
+      "ejari_property_sub_type_id",
+      "ejari_property_type_id",
+      "project_number"
+    ],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 11,
+    "files": [
+      {
+        "compressed_bytes": 531526014,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0001.csv",
+        "sha256": "16a9d6141e0feafc5314a4bafc48aaca4b9879ac66c22ec87d739a455e72d145",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 531526014
+      },
+      {
+        "compressed_bytes": 531504667,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0002.csv",
+        "sha256": "97266338546447aa72cb7c2ed6cc0dd0878f9766a586eaed01511277bdc293e3",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 531504667
+      },
+      {
+        "compressed_bytes": 531554496,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0003.csv",
+        "sha256": "2cc77cb5e8dc5206857fd6f04d934305331992ed903ecfcc0e16477f34d8f264",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 531554496
+      },
+      {
+        "compressed_bytes": 531535652,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0004.csv",
+        "sha256": "f769b122821180f9e92609e794546c21085d63004b42d88ee6990b024f88199d",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 531535652
+      },
+      {
+        "compressed_bytes": 531514464,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0005.csv",
+        "sha256": "1210ddfd158329592916769ae290e402011f64c5073a3494f95c49d2c8b8f53c",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 531514464
+      },
+      {
+        "compressed_bytes": 531549982,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0006.csv",
+        "sha256": "29a25f04059a0462bcc8910004e6d0d5b337c824981f9f91cb3352db6d8b4213",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 531549982
+      },
+      {
+        "compressed_bytes": 531450110,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0007.csv",
+        "sha256": "5e27b9379ef2654bacc14bca673909001ba11c92f31d995c3d20177a0e245d61",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 531450110
+      },
+      {
+        "compressed_bytes": 531465217,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0008.csv",
+        "sha256": "9871a3b8fef2231667f953261cd621bddad95b9994ea0aeb2937ca2db9ef1d5d",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 531465217
+      },
+      {
+        "compressed_bytes": 531554231,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0009.csv",
+        "sha256": "8c7b87e983f345fa8ebb13539643c6711d58b3f83d5cb61dd4f3c65cf1a52834",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 531554231
+      },
+      {
+        "compressed_bytes": 531415992,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Rent Contracts/rent_contracts_2026-09-03_17-50-12_0010.csv",
+        "sha256": "6c1e8761f45b2aaad37bbeec20ab2049bb3afe0b0240fb88204da7e28db2d173",
+        "sheets": [],
+        "source_export_date": "2026-09-03",
+        "uncompressed_bytes": 531415992
+      },
+      {
+        "compressed_bytes": 31169,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Rent Contracts/Rent_Contracts_2026-09-04_attribute-details.xlsx",
+        "sha256": "f0a7c8f470fadb48fbd933ea28a16ede74413aaa60e72951334e22aa39a830d0",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 41
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 30037
+      }
+    ],
+    "formats": {
+      "csv": 10,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [
+      "actual_area",
+      "area_id"
+    ],
+    "personally_identifying_or_sensitive_columns": [
+      "tenant_type_ar",
+      "tenant_type_en",
+      "tenant_type_id"
+    ],
+    "row_count": 10442927,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "rent_contracts",
+    "uncompressed_bytes": 5315100862
+  },
+  {
+    "candidate_primary_keys": [
+      "all_monthly_price_index",
+      "first_date_of_month",
+      "flat_monthly_price_index",
+      "villa_monthly_price_index"
+    ],
+    "column_count": 20,
+    "columns": [
+      {
+        "approx_distinct": 132,
+        "declared_type": "numeric",
+        "name": "all_monthly_index",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 149,
+        "declared_type": "numeric",
+        "name": "all_monthly_price_index",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 47,
+        "declared_type": "numeric",
+        "name": "all_quarterly_index",
+        "null_count": 107,
+        "null_percent": 67.295597
+      },
+      {
+        "approx_distinct": 44,
+        "declared_type": "numeric",
+        "name": "all_quarterly_price_index",
+        "null_count": 107,
+        "null_percent": 67.295597
+      },
+      {
+        "approx_distinct": 13,
+        "declared_type": "numeric",
+        "name": "all_yearly_index",
+        "null_count": 147,
+        "null_percent": 92.45283
+      },
+      {
+        "approx_distinct": 13,
+        "declared_type": "numeric",
+        "name": "all_yearly_price_index",
+        "null_count": 147,
+        "null_percent": 92.45283
+      },
+      {
+        "approx_distinct": 125,
+        "declared_type": "date",
+        "name": "first_date_of_month",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 154,
+        "declared_type": "numeric",
+        "name": "flat_monthly_index",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 147,
+        "declared_type": "numeric",
+        "name": "flat_monthly_price_index",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 52,
+        "declared_type": "numeric",
+        "name": "flat_quarterly_index",
+        "null_count": 107,
+        "null_percent": 67.295597
+      },
+      {
+        "approx_distinct": 50,
+        "declared_type": "numeric",
+        "name": "flat_quarterly_price_index",
+        "null_count": 107,
+        "null_percent": 67.295597
+      },
+      {
+        "approx_distinct": 12,
+        "declared_type": "numeric",
+        "name": "flat_yearly_index",
+        "null_count": 147,
+        "null_percent": 92.45283
+      },
+      {
+        "approx_distinct": 13,
+        "declared_type": "numeric",
+        "name": "flat_yearly_price_index",
+        "null_count": 147,
+        "null_percent": 92.45283
+      },
+      {
+        "approx_distinct": 139,
+        "declared_type": "numeric",
+        "name": "villa_monthly_index",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 180,
+        "declared_type": "numeric",
+        "name": "villa_monthly_price_index",
+        "null_count": 0,
+        "null_percent": 0.0
+      },
+      {
+        "approx_distinct": 46,
+        "declared_type": "numeric",
+        "name": "villa_quarterly_index",
+        "null_count": 107,
+        "null_percent": 67.295597
+      },
+      {
+        "approx_distinct": 56,
+        "declared_type": "numeric",
+        "name": "villa_quarterly_price_index",
+        "null_count": 107,
+        "null_percent": 67.295597
+      },
+      {
+        "approx_distinct": 12,
+        "declared_type": "numeric",
+        "name": "villa_yearly_index",
+        "null_count": 147,
+        "null_percent": 92.45283
+      },
+      {
+        "approx_distinct": 12,
+        "declared_type": "numeric",
+        "name": "villa_yearly_price_index",
+        "null_count": 147,
+        "null_percent": 92.45283
+      },
+      {
+        "approx_distinct": 1,
+        "declared_type": null,
+        "name": "load_timestamp",
+        "null_count": 0,
+        "null_percent": 0.0
+      }
+    ],
+    "compressed_bytes": 46635,
+    "dataset": "Residential Sale Index",
+    "dataset_kind": "aggregate time-series snapshot",
+    "date_coverage": [
+      {
+        "before_1900_rows": null,
+        "dataset": "Residential Sale Index",
+        "field": "first_date_of_month",
+        "from_2036_rows": null,
+        "maximum": "2024-05-01T00:00:00",
+        "minimum": "2011-03-01T00:00:00",
+        "nonblank_rows": 159,
+        "parsed_rows": 159,
+        "phase3a_correction": "ISO date parsed as a month key; Phase 0's generic month parser did not recognize this representation.",
+        "profile_kind": "month",
+        "unparsed_rows": 0
+      },
+      {
+        "before_1900_rows": 0,
+        "dataset": "Residential Sale Index",
+        "field": "load_timestamp",
+        "from_2036_rows": 0,
+        "maximum": "2026-09-01T18:28:22",
+        "minimum": "2026-09-01T18:28:22",
+        "nonblank_rows": 159,
+        "parsed_rows": 159,
+        "profile_kind": "datetime",
+        "unparsed_rows": 0
+      }
+    ],
+    "developer_project_property_identifiers": [],
+    "duplicate_decode_risks": [
+      "CSV chunks are one logical snapshot; do not append a repeated export.",
+      "Identifiers are strings in the raw landing layer; normalize before comparisons."
+    ],
+    "encodings": [
+      "UTF-8"
+    ],
+    "file_count": 2,
+    "files": [
+      {
+        "compressed_bytes": 22827,
+        "encoding": "UTF-8",
+        "format": "CSV",
+        "path": "Residential Sale Index/residential_sale_index_2026-09-01_18-28-58_0001.csv",
+        "sha256": "88e60eba6fd44d700760cdd031d1a0e66834568ef3b756c0337bc0da5cb3217c",
+        "sheets": [],
+        "source_export_date": "2026-09-01",
+        "uncompressed_bytes": 22827
+      },
+      {
+        "compressed_bytes": 23808,
+        "encoding": "binary OOXML",
+        "format": "XLSX",
+        "path": "Residential Sale Index/Residential_Sale_Index_2026-09-04_attribute-details.xlsx",
+        "sha256": "bed87fda69163376e158778a222ab81aff4c9d1154f2aa2350a6c1ebabf2a88d",
+        "sheets": [
+          {
+            "columns": 9,
+            "name": "Sheet1",
+            "rows_including_header": 20
+          }
+        ],
+        "source_export_date": "2026-09-04",
+        "uncompressed_bytes": 22676
+      }
+    ],
+    "formats": {
+      "csv": 1,
+      "xlsx": 1
+    },
+    "geographic_identifiers": [],
+    "personally_identifying_or_sensitive_columns": [],
+    "row_count": 159,
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "source_export_date": "2026-09-04",
+    "table": "residential_sale_index",
+    "uncompressed_bytes": 45503
+  }
+]

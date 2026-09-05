@@ -1,0 +1,92 @@
+dimension,value,records
+transaction_group,Sales,1360071
+transaction_group,Mortgages,349883
+transaction_group,Gifts,66189
+procedure,Sell - Pre registration,622767
+procedure,Sell,511714
+procedure,Mortgage Registration,241851
+procedure,Delayed Sell,154141
+procedure,Lease to Own Registration,59583
+procedure,Grant,58645
+procedure,Modify Mortgage,22437
+procedure,Delayed Mortgage,20137
+procedure,Sell Development,12858
+procedure,Development Registration,12818
+procedure,Lease Finance Registration,8227
+procedure,Lease to Own Registration Pre-Registration,7113
+procedure,Development Mortgage,6741
+procedure,Mortgage Pre-Registration,6293
+procedure,Development Registration Pre-Registration,5575
+procedure,Grant Pre-Registration,3827
+procedure,Mortgage Transfer,3303
+procedure,Grant on Delayed Sell,2372
+procedure,Sale On Payment Plan,2368
+procedure,Delayed Lease to Own Registration,2178
+procedure,Portfolio Mortgage Registration,1804
+procedure,Grant Development,1345
+procedure,Delayed Development,1343
+procedure,Lease Development Registration,942
+procedure,Lease to Own Transfer,869
+procedure,Modify Development Mortgage,812
+procedure,Delayed Sell Lease to Own Registration,718
+procedure,Lease to Own on Development Registration,620
+procedure,Portfolio Mortgage Modification,619
+procedure,Adding Land By Sell,469
+procedure,Lease to Own Modify,431
+procedure,Lease Finance Modification,387
+procedure,Sell Development - Pre Registration,271
+procedure,Delayed Sell Development,163
+procedure,Modify Delayed Mortgage,103
+procedure,Portfolio Mortgage Registration Pre-Registration,78
+procedure,Portfolio Mortgage Development Registration,53
+procedure,Mortgage Transfer Pre-Registration,42
+procedure,Modify Mortgage Pre-Registration,28
+procedure,Portfolio Mortgage Modification Pre-Registration,20
+procedure,Delayed Portfolio Mortgage,18
+procedure,Development Mortgage Pre-Registration,12
+procedure,Lease to Own on Development Modification,10
+procedure,Portfolio Mortgage Development Modification,9
+procedure,Transfer Development Mortgage,9
+procedure,Portfolio Development Registration,6
+procedure,Lease to Own Transfer Pre-Registration,5
+procedure,Portfolio Mortgage Transfer,4
+procedure,Lease Development Modify,2
+procedure,Delayed Lease to Own Modify,1
+procedure,Delayed Lease to Own Transfer,1
+procedure,Delayed Sell Lease To Own Modification,1
+registration_type,Existing Properties,1130112
+registration_type,Off-Plan Properties,646031
+property_type,Unit,1274155
+property_type,Villa,307835
+property_type,Land,157501
+property_type,Building,36652
+property_sub_type,Flat,1136741
+property_sub_type,[missing],347903
+property_sub_type,Villa,153812
+property_sub_type,Office,73260
+property_sub_type,Hotel Apartment,29561
+property_sub_type,Shop,18123
+property_sub_type,Hotel Rooms,14619
+property_sub_type,Workshop,560
+property_sub_type,Stacked Townhouses,531
+property_sub_type,Store,320
+property_sub_type,Building,277
+property_sub_type,Warehouse,170
+property_sub_type,Show Rooms,71
+property_sub_type,Clinic,70
+property_sub_type,Hotel,47
+property_sub_type,Sized Partition,42
+property_sub_type,Gymnasium,28
+property_sub_type,Parking,4
+property_sub_type,Nursery,2
+property_sub_type,Unit,2
+usage,Residential,1478502
+usage,Commercial,188178
+usage,Other,47931
+usage,Hospitality,44253
+usage,أخرى,6302
+usage,Industrial,4948
+usage,Multi-Use,4109
+usage,Agricultural,1149
+usage,Storage,710
+usage,Residential / Commercial,61

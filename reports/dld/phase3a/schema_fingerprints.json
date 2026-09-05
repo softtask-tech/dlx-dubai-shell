@@ -1,0 +1,2329 @@
+[
+  {
+    "columns": [
+      {
+        "name": "age_group",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "cource_title_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "cource_title_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "course_code",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "course_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "course_time_from",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "course_time_to",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "course_to",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "no_of_trainees",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "trainee_gender",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "sha256": "45908377ecc457ab2830748ef7b482e413e163bced59253ffc3430f341aeab49",
+    "table": "accredited_trainers"
+  },
+  {
+    "columns": [
+      {
+        "name": "escrow_agent_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "escrow_agent_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "escrow_agent_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "phone",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Approved Escrow Account Agents",
+    "sha256": "c0cee2c8c9179d81a1bc6dacc646100c8dd1818e1cc8d206c120700c236c3481",
+    "table": "escrow_agents"
+  },
+  {
+    "columns": [
+      {
+        "name": "actual_area",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "actual_common_area",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "bld_levels",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "building_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "built_up_area",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "car_parks",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "common_area",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "creation_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "elevators",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "flats",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "floors",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "is_free_hold",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "is_lease_hold",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "is_registered",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "land_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "land_sub_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "land_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "land_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "land_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_project_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_project_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_project_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "offices",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "parcel_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "parent_property_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "pre_registration_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_sub_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_sub_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_sub_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "rooms",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "rooms_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "rooms_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "shops",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "swimming_pools",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "zone_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Building and Property Project Records",
+    "sha256": "b571abaf261d9f7e3bd9005b94aa6ca05d9d5b7503a54257dee63eda2a3f61b0",
+    "table": "buildings"
+  },
+  {
+    "columns": [
+      {
+        "name": "chamber_of_commerce_no",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "developer_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "developer_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "developer_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "developer_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "fax",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "legal_status",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "legal_status_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "legal_status_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_expiry_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_issue_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_source_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_source_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_source_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "participant_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "phone",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "registration_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "webpage",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "sha256": "370d6b292f77fea04b491aa96ffde79c14b48118848115276d95cfceea7294dc",
+    "table": "developers"
+  },
+  {
+    "columns": [
+      {
+        "name": "average_service_time",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "average_wating_time",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "percent_service_time_in_target",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "percent_waiting_time_in_target",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "service_location_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "service_location_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "service_month",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "service_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "service_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "service_year",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "target_service_time",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "target_waiting_time",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "total_no_of_tickets",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Elders and People of Determination",
+    "sha256": "62c7e11bc6e0b54c480075f81ea76f6d6b1e73e43f46d551d60b4ed8562b0d14",
+    "table": "elders_people_of_determination"
+  },
+  {
+    "columns": [
+      {
+        "name": "email",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "fz_company_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "fz_company_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "fz_company_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_expiry_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_issue_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_source_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_source_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_source_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "phone",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "webpage",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Free Zone Companies Licensing",
+    "sha256": "4f0d17ea2fc09c854997dc9bbc2b0ff683a9a5cd4971f9687639ef60b216baee",
+    "table": "free_zone_companies"
+  },
+  {
+    "columns": [
+      {
+        "name": "actual_area",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "is_free_hold",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "is_registered",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "land_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "land_sub_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "land_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "land_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "land_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_project_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_project_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_project_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "munc_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "munc_zip_code",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "parcel_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "pre_registration_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_sub_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_sub_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_sub_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "separated_from",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "separated_reference",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "zone_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Land Registry",
+    "sha256": "11b11d34f4a7e5c912995fb344b9075c5a6fa7cdd112a2857ce728c5359df402",
+    "table": "land_registry"
+  },
+  {
+    "columns": [
+      {
+        "name": "company_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "company_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "email",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "latitude",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "longitude",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "phone",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Licenced Owner Associations",
+    "sha256": "37a9920f28fa3ac030e0f9fc6d60b5950ead692fa36966c9bff6b2b9257d03c6",
+    "table": "owner_associations"
+  },
+  {
+    "columns": [
+      {
+        "name": "gender_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "gender_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "gender_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_end_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_start_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "valuation_company_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "valuation_company_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "valuation_company_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "valuator_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "valuator_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "valuator_nationality_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "valuator_nationality_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "valuator_nationality_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "valuator_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Licensed Real Estate Valuators",
+    "sha256": "81f1c1e53d3a441d526e73d28f36540794fd71b3152247b148337ecbcf8e5f89",
+    "table": "valuators"
+  },
+  {
+    "columns": [
+      {
+        "name": "area_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "municipality_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Lookup Dubai Community Areas",
+    "sha256": "6e76ee4af66cd6934a1a4b130c773d2e74710c39876e9a5771b2f2cdf78da369",
+    "table": "areas"
+  },
+  {
+    "columns": [
+      {
+        "name": "market_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Lookup Real Estate Market Types",
+    "sha256": "cbfcad6d2c27b6b79868ba3f688d41dc00a13e67ff57be208b73e74345dfe941",
+    "table": "market_types"
+  },
+  {
+    "columns": [
+      {
+        "name": "group_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Lookup Real Estate Transactions Groups",
+    "sha256": "62dc0cbfe00487cc804345d657d9726c33c057000ef00dcd7c55edf864617a59",
+    "table": "transaction_groups"
+  },
+  {
+    "columns": [
+      {
+        "name": "group_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "is_pre_registration",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "procedure_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Lookup Real Estate Transactions Procedures",
+    "sha256": "1da396bb47c44a21501ba6d2dad6a9d469f5890fd9846b989b56be33c39cc703",
+    "table": "transaction_procedures"
+  },
+  {
+    "columns": [
+      {
+        "name": "budget_year",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "management_company_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "management_company_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "management_company_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_community_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_community_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_community_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_name",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_group_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_group_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_group_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "service_category_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "service_category_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "service_category_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "service_cost",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "usage_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "usage_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "usage_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Owners Association Service Charges",
+    "sha256": "ab1f5921cc927471db65bbd6257d25d450fad8f517f79237e28957d1e8ef218c",
+    "table": "service_charges"
+  },
+  {
+    "columns": [
+      {
+        "name": "application_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "application_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "application_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "no_of_siteplans",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "procedure_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "procedure_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "procedure_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "request_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "request_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "request_source_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "request_source_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "request_source_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Property Map Requests",
+    "sha256": "60e96b77d50aa45f66a2e95277b1a271ec9b2f9a012acf39bf940b104e4ad8d3",
+    "table": "map_requests"
+  },
+  {
+    "columns": [
+      {
+        "name": "actual_area",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "actual_worth",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "instance_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "procedure_area",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "procedure_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "procedure_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "procedure_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "procedure_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "procedure_year",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_sub_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_sub_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_sub_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_total_value",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "row_status_code",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Property Valuation Records",
+    "sha256": "6426d4db92cf529d4946030f6d482bd037bf3a5af955c374da4a175b05f18207",
+    "table": "valuations"
+  },
+  {
+    "columns": [
+      {
+        "name": "broker_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "broker_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "broker_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "fax",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "gender",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_end_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_start_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "participant_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "phone",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "real_estate_broker_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "real_estate_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "real_estate_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "webpage",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Real Estate Brokers",
+    "sha256": "8ca567a5507e95e0dd825bd9e2e998d4226454bdeddb7e9e05ab8f7dc7e634da",
+    "table": "brokers"
+  },
+  {
+    "columns": [
+      {
+        "name": "activity_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "activity_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "activity_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "authority_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "cancel_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "chamber_commerce_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "commerce_registry_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "ded_activity_code",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "expiry_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "issue_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "legal_type_arabic",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "legal_type_english",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "legal_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "parcel_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "participant_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "print_rmker_arabic",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "rent_contract_no",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "status_arabic",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "status_english",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "status_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "trade_name_arabic",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "trade_name_english",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Real Estate Licenses",
+    "sha256": "4753f7ad9f3c352b7e178f1b3a67fafec511487568c2013be1c085789d4dc699",
+    "table": "licences"
+  },
+  {
+    "columns": [
+      {
+        "name": "activity_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "activity_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "activity_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "ded_activity_code",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "fax",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "is_branch",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_expiry_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_issue_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_source_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_source_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_source_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "main_office_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "participant_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "phone",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "real_estate_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "real_estate_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "webpage",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Real Estate Offices",
+    "sha256": "153d86d6349990175c83ad195240db6fdec75c0d8c8085ee92d35f7611bd0340",
+    "table": "offices"
+  },
+  {
+    "columns": [
+      {
+        "name": "end_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "exhibition_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "exhibition_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "license_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "location",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "main_service_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "main_service_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "parent_parmits_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "parent_service_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "paricipant_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "participant_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "permit_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "permits_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "permit_status_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "permit_status_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "permit_status_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "service_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "service_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "service_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "start_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Real Estate Permits",
+    "sha256": "49a01d88acb50c6633fd0d3e3b91ee359705e1409eab8fe46fb1bde9965148b6",
+    "table": "permits"
+  },
+  {
+    "columns": [
+      {
+        "name": "area_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "cancellation_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "completion_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "developer_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "developer_name",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "developer_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "escrow_agent_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "escrow_agent_name",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_developer_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_developer_name",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_developer_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_project_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_project_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "no_of_buildings",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "no_of_lands",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "no_of_units",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "no_of_villas",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "percent_completed",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_classification_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_classification_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_description_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_description_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_end_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_name",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_start_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_status",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_status_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "zoning_authority_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "zoning_authority_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "zoning_authority_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Real Estate Projects",
+    "sha256": "ccb0b75eb49688bddbdb04cfd612f1a0ab4d7925165b29366b1032fc17fd9fc4",
+    "table": "projects"
+  },
+  {
+    "columns": [
+      {
+        "name": "actual_worth",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "building_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "building_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "has_parking",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "instance_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_project_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_project_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "meter_rent_price",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "meter_sale_price",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "nearest_landmark_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "nearest_landmark_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "nearest_mall_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "nearest_mall_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "nearest_metro_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "nearest_metro_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "no_of_parties_role_1",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "no_of_parties_role_2",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "no_of_parties_role_3",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "procedure_area",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "procedure_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "procedure_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "procedure_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_sub_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_sub_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_sub_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_usage_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_usage_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "reg_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "reg_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "reg_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "rent_value",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "rooms_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "rooms_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "transaction_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "trans_group_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "trans_group_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "trans_group_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Real Estate Transactions",
+    "sha256": "f538efcf8c50e6d334d1b6673820ed8305cdea65d8fa4340527fafd916bc6bfb",
+    "table": "transactions"
+  },
+  {
+    "columns": [
+      {
+        "name": "actual_area",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "actual_common_area",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "building_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "common_area",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "creation_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "floor",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "grandparent_property_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "is_free_hold",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "is_lease_hold",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "is_registered",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "land_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "land_sub_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "land_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "land_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "land_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_project_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_project_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_project_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "munc_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "munc_zip_code",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "parcel_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "parent_property_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "parking_allocation_type",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "parking_allocation_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "parking_allocation_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "pre_registration_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_sub_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_sub_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_sub_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "rooms",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "rooms_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "rooms_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "unit_balcony_area",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "unit_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "unit_parking_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "zone_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Registered Freehold Real Estate Units",
+    "sha256": "3ef95e882b737d2ecda5ab49ffa855c4b04a6273d380bbff3cce3179231abd7a",
+    "table": "units"
+  },
+  {
+    "columns": [
+      {
+        "name": "actual_area",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "annual_amount",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "area_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "contract_amount",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "contract_end_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "contract_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "contract_reg_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "contract_reg_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "contract_reg_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "contract_start_date",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "ejari_bus_property_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "ejari_bus_property_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "ejari_bus_property_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "ejari_property_sub_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "ejari_property_sub_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "ejari_property_sub_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "ejari_property_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "ejari_property_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "ejari_property_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "is_free_hold",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "line_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_project_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "master_project_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "nearest_landmark_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "nearest_landmark_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "nearest_mall_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "nearest_mall_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "nearest_metro_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "nearest_metro_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "no_of_prop",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_name_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_name_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "project_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_usage_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "property_usage_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "tenant_type_ar",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "tenant_type_en",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "tenant_type_id",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Rent Contracts",
+    "sha256": "c257a476836787daa2e706aa482fdfc9a39e62ce8acd3312f81845496e940ad2",
+    "table": "rent_contracts"
+  },
+  {
+    "columns": [
+      {
+        "name": "all_monthly_index",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "all_monthly_price_index",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "all_quarterly_index",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "all_quarterly_price_index",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "all_yearly_index",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "all_yearly_price_index",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "first_date_of_month",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "flat_monthly_index",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "flat_monthly_price_index",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "flat_quarterly_index",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "flat_quarterly_price_index",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "flat_yearly_index",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "flat_yearly_price_index",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "villa_monthly_index",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "villa_monthly_price_index",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "villa_quarterly_index",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "villa_quarterly_price_index",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "villa_yearly_index",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "villa_yearly_price_index",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "load_timestamp",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "_source_file",
+        "type": "VARCHAR"
+      }
+    ],
+    "dataset": "Residential Sale Index",
+    "sha256": "66cf270ecdeef84b11c1fb79596e7ebc7da67a3a6927db321db26ac039548a68",
+    "table": "residential_sale_index"
+  }
+]

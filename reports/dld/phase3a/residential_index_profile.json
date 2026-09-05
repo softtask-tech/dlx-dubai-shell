@@ -1,0 +1,103 @@
+{
+  "coverage_by_value_field": [
+    {
+      "field": "all_monthly_index",
+      "invalid_numeric_rows": 0,
+      "missing_rows": 0
+    },
+    {
+      "field": "all_monthly_price_index",
+      "invalid_numeric_rows": 0,
+      "missing_rows": 0
+    },
+    {
+      "field": "all_quarterly_index",
+      "invalid_numeric_rows": 0,
+      "missing_rows": 107
+    },
+    {
+      "field": "all_quarterly_price_index",
+      "invalid_numeric_rows": 0,
+      "missing_rows": 107
+    },
+    {
+      "field": "all_yearly_index",
+      "invalid_numeric_rows": 0,
+      "missing_rows": 147
+    },
+    {
+      "field": "all_yearly_price_index",
+      "invalid_numeric_rows": 0,
+      "missing_rows": 147
+    },
+    {
+      "field": "flat_monthly_index",
+      "invalid_numeric_rows": 0,
+      "missing_rows": 0
+    },
+    {
+      "field": "flat_monthly_price_index",
+      "invalid_numeric_rows": 0,
+      "missing_rows": 0
+    },
+    {
+      "field": "flat_quarterly_index",
+      "invalid_numeric_rows": 0,
+      "missing_rows": 107
+    },
+    {
+      "field": "flat_quarterly_price_index",
+      "invalid_numeric_rows": 0,
+      "missing_rows": 107
+    },
+    {
+      "field": "flat_yearly_index",
+      "invalid_numeric_rows": 0,
+      "missing_rows": 147
+    },
+    {
+      "field": "flat_yearly_price_index",
+      "invalid_numeric_rows": 0,
+      "missing_rows": 147
+    },
+    {
+      "field": "villa_monthly_index",
+      "invalid_numeric_rows": 0,
+      "missing_rows": 0
+    },
+    {
+      "field": "villa_monthly_price_index",
+      "invalid_numeric_rows": 0,
+      "missing_rows": 0
+    },
+    {
+      "field": "villa_quarterly_index",
+      "invalid_numeric_rows": 0,
+      "missing_rows": 107
+    },
+    {
+      "field": "villa_quarterly_price_index",
+      "invalid_numeric_rows": 0,
+      "missing_rows": 107
+    },
+    {
+      "field": "villa_yearly_index",
+      "invalid_numeric_rows": 0,
+      "missing_rows": 147
+    },
+    {
+      "field": "villa_yearly_price_index",
+      "invalid_numeric_rows": 0,
+      "missing_rows": 147
+    }
+  ],
+  "distinct_period_keys": 159,
+  "frequency": "monthly rows with monthly, quarterly and yearly index/value columns supplied together",
+  "invalid_period_keys": 0,
+  "metric_status": "source aggregate for separate methodology review; not mixed into transaction-derived Phase 3B metrics",
+  "non_month_start_keys": 0,
+  "period_max": "2024-05-01T00:00:00",
+  "period_min": "2011-03-01T00:00:00",
+  "row_semantics": "One published residential sale-index month; first_date_of_month is unique.",
+  "total_rows": 159
+}

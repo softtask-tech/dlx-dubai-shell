@@ -1,0 +1,183 @@
+dimension,value,property_lines
+registration_type,New,5427926
+registration_type,Renew,5015001
+business_property_type,Unit,8478074
+business_property_type,Virtual Unit,1213504
+business_property_type,Villa,680419
+business_property_type,Land,63429
+business_property_type,Building,3926
+business_property_type,[missing],3575
+property_type,Flat,5434430
+property_type,Office,1569844
+property_type,Labor Camps,1204815
+property_type,Shop,923144
+property_type,Villa,613421
+property_type,Warehouse,244044
+property_type,Hotel,83506
+property_type,Studio,82685
+property_type,[missing],68241
+property_type,Complex Villas,60388
+property_type,Showroom,37124
+property_type,Hotel apartments,20564
+property_type,Portacabin,11450
+property_type,Workshop,9116
+property_type,Staff Accommodation,8933
+property_type,Restaurant,7747
+property_type,Store,6706
+property_type,Clinic,6057
+property_type,Warehouse complex,5329
+property_type,Parking,4689
+property_type,Kiosk,4608
+property_type,Building,3651
+property_type,Mezzanine,3643
+property_type,Open Land,3482
+property_type,Factory,3428
+property_type,Complex Warehouse,3132
+property_type,Open space,3054
+property_type,Garage,2272
+property_type,Arabian House,1583
+property_type,Storage,1186
+property_type,Desk,1182
+property_type,Ladies Saloon,1158
+property_type,Health club,1103
+property_type,Medical center,1044
+property_type,School,750
+property_type,GYM,594
+property_type,Resturants Complex,524
+property_type,Nursery,385
+property_type,"Supermarket, a multi-section",357
+property_type,Supermarket,346
+property_type,Comercial Complex,303
+property_type,Endowments attached to mosques,284
+property_type,ATM,279
+property_type,kitchen,258
+property_type,Hospital,247
+property_type,Bank,216
+property_type,Penthouse,199
+property_type,Villa addendum,198
+property_type,College,178
+property_type,Pharmacy,166
+property_type,hotel building,142
+property_type,Spa,121
+property_type,Service Center,99
+property_type,Sign Board,99
+property_type,Lab,59
+property_type,Farm,55
+property_type,Land Parking,52
+property_type,Pertol station,39
+property_type,Car Wash,38
+property_type,Laundry,38
+property_type,Hall,36
+property_type,Horse stable,26
+property_type,Petrol station,21
+property_type,Cinema,19
+property_type,OPEN STORAGE SHED,14
+property_type,Sports Club,12
+property_type,Shopping Center,5
+property_type,church,5
+property_type,Building multi-storey parking,1
+property_type,Garden,1
+property_type,University,1
+property_type,swimming pool,1
+property_sub_type,1bed room+Hall,2124684
+property_sub_type,2 bed rooms+hall,1959937
+property_sub_type,Office,1555332
+property_sub_type,Studio,1087706
+property_sub_type,Room in labor Camp,1053710
+property_sub_type,Shop,848457
+property_sub_type,3 bed rooms+hall,705077
+property_sub_type,Warehouse,250579
+property_sub_type,4 bed rooms+hall,239655
+property_sub_type,Labor Camp,142976
+property_sub_type,5 bed rooms+hall,96304
+property_sub_type,[missing],75812
+property_sub_type,Hotel,64565
+property_sub_type,Shop with a mezzanine,45430
+property_sub_type,Showroom,37020
+property_sub_type,6 bed rooms+hall,18767
+property_sub_type,Kiosk,14094
+property_sub_type,Restaurant,14071
+property_sub_type,Workshop,11810
+property_sub_type,Portacabin Rooms,11310
+property_sub_type,Room,10856
+property_sub_type,Staff Accommodatoion,9264
+property_sub_type,Clinic,6655
+property_sub_type,Showroom with mezzanine,5894
+property_sub_type,Parking,4796
+property_sub_type,7 bed rooms+hall,4544
+property_sub_type,Store,3630
+property_sub_type,Supermarket,3447
+property_sub_type,Open Land,3256
+property_sub_type,Storage,3233
+property_sub_type,Factory,3006
+property_sub_type,8 bed rooms+hall,2922
+property_sub_type,Coffe shop,2010
+property_sub_type,Duplex,1919
+property_sub_type,Commercial villa,1557
+property_sub_type,Garage,1455
+property_sub_type,10 bed rooms+hall,1432
+property_sub_type,Pharmacy,1292
+property_sub_type,Desk,1182
+property_sub_type,Ladies Saloon,1158
+property_sub_type,Health club,1088
+property_sub_type,Penthouse,1062
+property_sub_type,9 bed rooms+hall,1053
+property_sub_type,Food court,875
+property_sub_type,Open space,844
+property_sub_type,Hat Saloon,810
+property_sub_type,Nursery,755
+property_sub_type,Store cooled,661
+property_sub_type,GYM,619
+property_sub_type,School,572
+property_sub_type,Hotel apartments,515
+property_sub_type,Fish counter,306
+property_sub_type,ATM,302
+property_sub_type,kitchen,258
+property_sub_type,Warehouse with a mezzanine,239
+property_sub_type,College,230
+property_sub_type,Bank,227
+property_sub_type,Hospital,226
+property_sub_type,"Coffe shop,Fast Food",136
+property_sub_type,11 bed rooms+hall,131
+property_sub_type,Spa,121
+property_sub_type,Sign board,108
+property_sub_type,Service Center,102
+property_sub_type,2 bed rooms+hall+Maids Room,99
+property_sub_type,Mezzanine,91
+property_sub_type,15 bed room+hall,83
+property_sub_type,laboratory,79
+property_sub_type,Grocery,68
+property_sub_type,WorkShop with a mezzanine,67
+property_sub_type,Laundry,52
+property_sub_type,Car wash,51
+property_sub_type,Machine,47
+property_sub_type,Pertol Station,42
+property_sub_type,Farm,39
+property_sub_type,Counter Printing,32
+property_sub_type,Cinema,28
+property_sub_type,Horse stable,26
+property_sub_type,Hall weddings,20
+property_sub_type,hotel building,19
+property_sub_type,Poultry Farm,16
+property_sub_type,OPEN STORAGE SHED,14
+property_sub_type,church,5
+property_sub_type,"Internet cafe , Fast Food",2
+property_sub_type,Garden,1
+property_sub_type,Lab,1
+property_sub_type,swimming pool,1
+usage,Residential,7383781
+usage,Commercial,2926690
+usage,Industrial,63587
+usage,Multi Usage,21549
+usage,Industrial / Commercial,16845
+usage,[missing],15114
+usage,Industrial / Commercial / Residential,4458
+usage,Storage,3632
+usage,Tourist origin,2299
+usage,Educational facility,1946
+usage,Health Facility,1495
+usage,Residential / Commercial,889
+usage,Agriculture,642
+tenant_type,Authority,5280939
+tenant_type,Person,4760034
+tenant_type,[missing],401954

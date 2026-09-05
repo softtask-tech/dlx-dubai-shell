@@ -1,0 +1,380 @@
+{
+  "ambiguous_join_rows": 71154,
+  "arabic_english_note": "Official bilingual labels are retained independently. Phase 0 found dictionary description swaps and differing distinct-name counts; do not translate or use one language as an authoritative key.",
+  "exact_duplicate_rows_all_datasets": 0,
+  "high_null_fields_50pct_or_more": [
+    {
+      "dataset": "Real Estate Brokers",
+      "field": "fax",
+      "null_percent": 100.0
+    },
+    {
+      "dataset": "Registered Freehold Real Estate Units",
+      "field": "pre_registration_number",
+      "null_percent": 99.999663
+    },
+    {
+      "dataset": "Building and Property Project Records",
+      "field": "pre_registration_number",
+      "null_percent": 99.99844
+    },
+    {
+      "dataset": "Real Estate Permits",
+      "field": "parent_parmits_id",
+      "null_percent": 99.944589
+    },
+    {
+      "dataset": "Real Estate Permits",
+      "field": "exhibition_name_ar",
+      "null_percent": 99.869756
+    },
+    {
+      "dataset": "Real Estate Permits",
+      "field": "exhibition_name_en",
+      "null_percent": 99.869756
+    },
+    {
+      "dataset": "Registered Freehold Real Estate Units",
+      "field": "parking_allocation_type_ar",
+      "null_percent": 99.793029
+    },
+    {
+      "dataset": "Registered Freehold Real Estate Units",
+      "field": "parking_allocation_type_en",
+      "null_percent": 99.793029
+    },
+    {
+      "dataset": "Registered Freehold Real Estate Units",
+      "field": "parking_allocation_type",
+      "null_percent": 99.737907
+    },
+    {
+      "dataset": "Real Estate Offices",
+      "field": "main_office_id",
+      "null_percent": 99.637316
+    },
+    {
+      "dataset": "Real Estate Projects",
+      "field": "cancellation_date",
+      "null_percent": 98.914116
+    },
+    {
+      "dataset": "Real Estate Permits",
+      "field": "location",
+      "null_percent": 98.786674
+    },
+    {
+      "dataset": "Building and Property Project Records",
+      "field": "swimming_pools",
+      "null_percent": 98.157732
+    },
+    {
+      "dataset": "Building and Property Project Records",
+      "field": "elevators",
+      "null_percent": 98.144862
+    },
+    {
+      "dataset": "Real Estate Transactions",
+      "field": "meter_rent_price",
+      "null_percent": 97.92269
+    },
+    {
+      "dataset": "Real Estate Transactions",
+      "field": "rent_value",
+      "null_percent": 97.92269
+    },
+    {
+      "dataset": "Building and Property Project Records",
+      "field": "flats",
+      "null_percent": 97.903074
+    },
+    {
+      "dataset": "Building and Property Project Records",
+      "field": "bld_levels",
+      "null_percent": 97.203059
+    },
+    {
+      "dataset": "Real Estate Licenses",
+      "field": "parcel_id",
+      "null_percent": 96.675712
+    },
+    {
+      "dataset": "Building and Property Project Records",
+      "field": "shops",
+      "null_percent": 96.299474
+    },
+    {
+      "dataset": "Building and Property Project Records",
+      "field": "offices",
+      "null_percent": 96.298304
+    },
+    {
+      "dataset": "Real Estate Licenses",
+      "field": "cancel_date",
+      "null_percent": 95.82768
+    },
+    {
+      "dataset": "Residential Sale Index",
+      "field": "all_yearly_index",
+      "null_percent": 92.45283
+    },
+    {
+      "dataset": "Residential Sale Index",
+      "field": "all_yearly_price_index",
+      "null_percent": 92.45283
+    },
+    {
+      "dataset": "Residential Sale Index",
+      "field": "flat_yearly_index",
+      "null_percent": 92.45283
+    },
+    {
+      "dataset": "Residential Sale Index",
+      "field": "flat_yearly_price_index",
+      "null_percent": 92.45283
+    },
+    {
+      "dataset": "Residential Sale Index",
+      "field": "villa_yearly_index",
+      "null_percent": 92.45283
+    },
+    {
+      "dataset": "Residential Sale Index",
+      "field": "villa_yearly_price_index",
+      "null_percent": 92.45283
+    },
+    {
+      "dataset": "Free Zone Companies Licensing",
+      "field": "webpage",
+      "null_percent": 88.4
+    },
+    {
+      "dataset": "Rent Contracts",
+      "field": "project_name_ar",
+      "null_percent": 84.558936
+    },
+    {
+      "dataset": "Rent Contracts",
+      "field": "project_name_en",
+      "null_percent": 84.558936
+    },
+    {
+      "dataset": "Rent Contracts",
+      "field": "project_number",
+      "null_percent": 84.558936
+    },
+    {
+      "dataset": "Approved Escrow Account Agents",
+      "field": "phone",
+      "null_percent": 80.0
+    },
+    {
+      "dataset": "Developers Recorded in Dubai Land Department",
+      "field": "chamber_of_commerce_no",
+      "null_percent": 76.448041
+    },
+    {
+      "dataset": "Developers Recorded in Dubai Land Department",
+      "field": "webpage",
+      "null_percent": 69.250426
+    },
+    {
+      "dataset": "Real Estate Offices",
+      "field": "webpage",
+      "null_percent": 67.539794
+    },
+    {
+      "dataset": "Residential Sale Index",
+      "field": "all_quarterly_index",
+      "null_percent": 67.295597
+    },
+    {
+      "dataset": "Residential Sale Index",
+      "field": "all_quarterly_price_index",
+      "null_percent": 67.295597
+    },
+    {
+      "dataset": "Residential Sale Index",
+      "field": "flat_quarterly_index",
+      "null_percent": 67.295597
+    },
+    {
+      "dataset": "Residential Sale Index",
+      "field": "flat_quarterly_price_index",
+      "null_percent": 67.295597
+    },
+    {
+      "dataset": "Residential Sale Index",
+      "field": "villa_quarterly_index",
+      "null_percent": 67.295597
+    },
+    {
+      "dataset": "Residential Sale Index",
+      "field": "villa_quarterly_price_index",
+      "null_percent": 67.295597
+    },
+    {
+      "dataset": "Rent Contracts",
+      "field": "master_project_ar",
+      "null_percent": 66.959867
+    },
+    {
+      "dataset": "Rent Contracts",
+      "field": "master_project_en",
+      "null_percent": 66.95957
+    },
+    {
+      "dataset": "Land Registry",
+      "field": "project_name_ar",
+      "null_percent": 64.62416
+    },
+    {
+      "dataset": "Land Registry",
+      "field": "project_name_en",
+      "null_percent": 64.62416
+    },
+    {
+      "dataset": "Land Registry",
+      "field": "project_id",
+      "null_percent": 64.623402
+    },
+    {
+      "dataset": "Registered Freehold Real Estate Units",
+      "field": "project_id",
+      "null_percent": 64.106891
+    },
+    {
+      "dataset": "Registered Freehold Real Estate Units",
+      "field": "project_name_ar",
+      "null_percent": 64.106891
+    },
+    {
+      "dataset": "Registered Freehold Real Estate Units",
+      "field": "project_name_en",
+      "null_percent": 64.106891
+    },
+    {
+      "dataset": "Registered Freehold Real Estate Units",
+      "field": "unit_parking_number",
+      "null_percent": 61.951695
+    },
+    {
+      "dataset": "Registered Freehold Real Estate Units",
+      "field": "actual_common_area",
+      "null_percent": 61.844019
+    },
+    {
+      "dataset": "Developers Recorded in Dubai Land Department",
+      "field": "license_source_ar",
+      "null_percent": 58.901193
+    },
+    {
+      "dataset": "Developers Recorded in Dubai Land Department",
+      "field": "license_source_en",
+      "null_percent": 58.901193
+    },
+    {
+      "dataset": "Developers Recorded in Dubai Land Department",
+      "field": "license_source_id",
+      "null_percent": 58.901193
+    },
+    {
+      "dataset": "Developers Recorded in Dubai Land Department",
+      "field": "legal_status_ar",
+      "null_percent": 58.645656
+    },
+    {
+      "dataset": "Developers Recorded in Dubai Land Department",
+      "field": "legal_status_en",
+      "null_percent": 58.645656
+    },
+    {
+      "dataset": "Land Registry",
+      "field": "master_project_ar",
+      "null_percent": 58.366551
+    },
+    {
+      "dataset": "Land Registry",
+      "field": "master_project_en",
+      "null_percent": 58.316487
+    },
+    {
+      "dataset": "Land Registry",
+      "field": "master_project_id",
+      "null_percent": 58.316487
+    },
+    {
+      "dataset": "Land Registry",
+      "field": "separated_from",
+      "null_percent": 57.91408
+    },
+    {
+      "dataset": "Real Estate Brokers",
+      "field": "phone",
+      "null_percent": 57.62265
+    },
+    {
+      "dataset": "Developers Recorded in Dubai Land Department",
+      "field": "fax",
+      "null_percent": 56.473595
+    },
+    {
+      "dataset": "Free Zone Companies Licensing",
+      "field": "phone",
+      "null_percent": 55.2
+    },
+    {
+      "dataset": "Land Registry",
+      "field": "pre_registration_number",
+      "null_percent": 54.513527
+    },
+    {
+      "dataset": "Developers Recorded in Dubai Land Department",
+      "field": "legal_status",
+      "null_percent": 53.109029
+    },
+    {
+      "dataset": "Land Registry",
+      "field": "separated_reference",
+      "null_percent": 52.684677
+    },
+    {
+      "dataset": "Registered Freehold Real Estate Units",
+      "field": "master_project_ar",
+      "null_percent": 52.234405
+    },
+    {
+      "dataset": "Registered Freehold Real Estate Units",
+      "field": "master_project_en",
+      "null_percent": 52.222193
+    },
+    {
+      "dataset": "Registered Freehold Real Estate Units",
+      "field": "master_project_id",
+      "null_percent": 52.222193
+    },
+    {
+      "dataset": "Registered Freehold Real Estate Units",
+      "field": "unit_balcony_area",
+      "null_percent": 51.47238
+    },
+    {
+      "dataset": "Building and Property Project Records",
+      "field": "actual_common_area",
+      "null_percent": 51.337439
+    }
+  ],
+  "invalid_transaction_dates": 0,
+  "negative_rent_values": 0,
+  "negative_transaction_values": 0,
+  "rent_contract_line_key_duplicates": 0,
+  "rent_declared_property_count_mismatches": 5594,
+  "rent_inconsistent_header_contracts": 0,
+  "schema_drift_note": "CSV chunks within each dataset share one materialized schema. Future snapshots must be fingerprinted before union or replacement.",
+  "transaction_dates_after_export": 0,
+  "transaction_dates_before_1900": 4,
+  "unit_note": "Transaction procedure_area is documented in square metres and is empirically checked against meter_sale_price. Rent actual_area has no explicit unit in its dictionary and needs confirmation.",
+  "unresolved_join_rows": 852230,
+  "zero_rent_values": 0,
+  "zero_transaction_values": 0
+}

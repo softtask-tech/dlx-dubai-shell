@@ -1,0 +1,514 @@
+dataset,field,classification,publication,reason
+Accredited Trainers by the Dubai Real Estate Institute,age_group,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Accredited Trainers by the Dubai Real Estate Institute,cource_title_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Accredited Trainers by the Dubai Real Estate Institute,cource_title_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Accredited Trainers by the Dubai Real Estate Institute,course_code,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Accredited Trainers by the Dubai Real Estate Institute,course_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Accredited Trainers by the Dubai Real Estate Institute,course_time_from,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Accredited Trainers by the Dubai Real Estate Institute,course_time_to,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Accredited Trainers by the Dubai Real Estate Institute,course_to,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Accredited Trainers by the Dubai Real Estate Institute,no_of_trainees,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Accredited Trainers by the Dubai Real Estate Institute,trainee_gender,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Accredited Trainers by the Dubai Real Estate Institute,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Approved Escrow Account Agents,escrow_agent_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Approved Escrow Account Agents,escrow_agent_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Approved Escrow Account Agents,escrow_agent_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Approved Escrow Account Agents,phone,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Approved Escrow Account Agents,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Building and Property Project Records,actual_area,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,actual_common_area,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,area_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,area_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,area_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,bld_levels,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,building_number,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Building and Property Project Records,built_up_area,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,car_parks,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,common_area,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,creation_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,elevators,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,flats,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,floors,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,is_free_hold,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,is_lease_hold,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,is_registered,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,land_number,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Building and Property Project Records,land_sub_number,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Building and Property Project Records,land_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,land_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,land_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,master_project_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,master_project_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,master_project_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,offices,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,parcel_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Building and Property Project Records,parent_property_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Building and Property Project Records,pre_registration_number,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Building and Property Project Records,project_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,project_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,project_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,property_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Building and Property Project Records,property_sub_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,property_sub_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,property_sub_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,property_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,property_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,property_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,rooms,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,rooms_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,rooms_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,shops,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,swimming_pools,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,zone_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Building and Property Project Records,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Developers Recorded in Dubai Land Department,chamber_of_commerce_no,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Developers Recorded in Dubai Land Department,developer_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Developers Recorded in Dubai Land Department,developer_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Developers Recorded in Dubai Land Department,developer_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Developers Recorded in Dubai Land Department,developer_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Developers Recorded in Dubai Land Department,fax,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Developers Recorded in Dubai Land Department,legal_status,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Developers Recorded in Dubai Land Department,legal_status_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Developers Recorded in Dubai Land Department,legal_status_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Developers Recorded in Dubai Land Department,license_expiry_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Developers Recorded in Dubai Land Department,license_issue_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Developers Recorded in Dubai Land Department,license_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Developers Recorded in Dubai Land Department,license_source_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Developers Recorded in Dubai Land Department,license_source_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Developers Recorded in Dubai Land Department,license_source_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Developers Recorded in Dubai Land Department,license_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Developers Recorded in Dubai Land Department,license_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Developers Recorded in Dubai Land Department,license_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Developers Recorded in Dubai Land Department,participant_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Developers Recorded in Dubai Land Department,phone,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Developers Recorded in Dubai Land Department,registration_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Developers Recorded in Dubai Land Department,webpage,internal matching field,prohibited,Pipeline lineage field.
+Developers Recorded in Dubai Land Department,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Elders and People of Determination,average_service_time,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Elders and People of Determination,average_wating_time,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Elders and People of Determination,percent_service_time_in_target,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Elders and People of Determination,percent_waiting_time_in_target,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Elders and People of Determination,service_location_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Elders and People of Determination,service_location_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Elders and People of Determination,service_month,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Elders and People of Determination,service_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Elders and People of Determination,service_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Elders and People of Determination,service_year,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Elders and People of Determination,target_service_time,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Elders and People of Determination,target_waiting_time,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Elders and People of Determination,total_no_of_tickets,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Elders and People of Determination,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Free Zone Companies Licensing,email,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Free Zone Companies Licensing,fz_company_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Free Zone Companies Licensing,fz_company_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Free Zone Companies Licensing,fz_company_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Free Zone Companies Licensing,license_expiry_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Free Zone Companies Licensing,license_issue_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Free Zone Companies Licensing,license_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Free Zone Companies Licensing,license_source_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Free Zone Companies Licensing,license_source_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Free Zone Companies Licensing,license_source_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Free Zone Companies Licensing,phone,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Free Zone Companies Licensing,webpage,internal matching field,prohibited,Pipeline lineage field.
+Free Zone Companies Licensing,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Land Registry,actual_area,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Land Registry,area_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Land Registry,area_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Land Registry,area_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Land Registry,is_free_hold,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Land Registry,is_registered,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Land Registry,land_number,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Land Registry,land_sub_number,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Land Registry,land_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Land Registry,land_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Land Registry,land_type_id,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Land Registry,master_project_ar,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Land Registry,master_project_en,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Land Registry,master_project_id,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Land Registry,munc_number,internal matching field,prohibited,Pipeline lineage field.
+Land Registry,munc_zip_code,internal matching field,prohibited,Pipeline lineage field.
+Land Registry,parcel_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Land Registry,pre_registration_number,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Land Registry,project_id,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Land Registry,project_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Land Registry,project_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Land Registry,property_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Land Registry,property_sub_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Land Registry,property_sub_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Land Registry,property_sub_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Land Registry,property_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Land Registry,property_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Land Registry,property_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Land Registry,separated_from,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Land Registry,separated_reference,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Land Registry,zone_id,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Land Registry,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Licenced Owner Associations,company_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Licenced Owner Associations,company_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Licenced Owner Associations,email,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Licenced Owner Associations,latitude,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Licenced Owner Associations,longitude,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Licenced Owner Associations,phone,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Licenced Owner Associations,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Licensed Real Estate Valuators,gender_ar,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Licensed Real Estate Valuators,gender_en,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Licensed Real Estate Valuators,gender_id,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Licensed Real Estate Valuators,license_end_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Licensed Real Estate Valuators,license_start_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Licensed Real Estate Valuators,valuation_company_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Licensed Real Estate Valuators,valuation_company_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Licensed Real Estate Valuators,valuation_company_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Licensed Real Estate Valuators,valuator_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Licensed Real Estate Valuators,valuator_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Licensed Real Estate Valuators,valuator_nationality_ar,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Licensed Real Estate Valuators,valuator_nationality_en,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Licensed Real Estate Valuators,valuator_nationality_id,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Licensed Real Estate Valuators,valuator_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Licensed Real Estate Valuators,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Lookup Dubai Community Areas,area_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Lookup Dubai Community Areas,municipality_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Lookup Dubai Community Areas,name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Lookup Dubai Community Areas,name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Lookup Dubai Community Areas,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Lookup Real Estate Market Types,market_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Lookup Real Estate Market Types,name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Lookup Real Estate Market Types,name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Lookup Real Estate Market Types,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Lookup Real Estate Transactions Groups,group_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Lookup Real Estate Transactions Groups,name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Lookup Real Estate Transactions Groups,name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Lookup Real Estate Transactions Groups,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Lookup Real Estate Transactions Procedures,group_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Lookup Real Estate Transactions Procedures,is_pre_registration,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Lookup Real Estate Transactions Procedures,name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Lookup Real Estate Transactions Procedures,name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Lookup Real Estate Transactions Procedures,procedure_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Lookup Real Estate Transactions Procedures,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Owners Association Service Charges,budget_year,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,management_company_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,management_company_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,management_company_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,master_community_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,master_community_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,master_community_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,project_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,project_name,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,property_group_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,property_group_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,property_group_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,service_category_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,service_category_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,service_category_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,service_cost,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,usage_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,usage_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,usage_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Owners Association Service Charges,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Property Map Requests,application_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Property Map Requests,application_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Map Requests,application_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Map Requests,no_of_siteplans,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Property Map Requests,procedure_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Map Requests,procedure_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Map Requests,procedure_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Map Requests,property_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Map Requests,property_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Map Requests,property_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Map Requests,request_date,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Property Map Requests,request_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Property Map Requests,request_source_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Map Requests,request_source_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Map Requests,request_source_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Map Requests,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Property Valuation Records,actual_area,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Property Valuation Records,actual_worth,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Property Valuation Records,area_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Valuation Records,area_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Valuation Records,area_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Valuation Records,instance_date,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Property Valuation Records,procedure_area,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Property Valuation Records,procedure_id,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Property Valuation Records,procedure_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Valuation Records,procedure_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Valuation Records,procedure_number,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Property Valuation Records,procedure_year,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Property Valuation Records,property_sub_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Valuation Records,property_sub_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Valuation Records,property_sub_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Valuation Records,property_total_value,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Property Valuation Records,property_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Valuation Records,property_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Valuation Records,property_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Property Valuation Records,row_status_code,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Property Valuation Records,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Real Estate Brokers,broker_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Brokers,broker_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Brokers,broker_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Brokers,fax,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Real Estate Brokers,gender,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Real Estate Brokers,license_end_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Brokers,license_start_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Brokers,participant_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Real Estate Brokers,phone,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Real Estate Brokers,real_estate_broker_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Brokers,real_estate_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Brokers,real_estate_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Brokers,webpage,internal matching field,prohibited,Pipeline lineage field.
+Real Estate Brokers,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Real Estate Licenses,activity_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,activity_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,activity_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,authority_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,cancel_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,chamber_commerce_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,commerce_registry_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,ded_activity_code,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,expiry_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,issue_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,legal_type_arabic,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,legal_type_english,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,legal_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,license_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,parcel_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Real Estate Licenses,participant_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Real Estate Licenses,print_rmker_arabic,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,rent_contract_no,internal matching field,prohibited,Pipeline lineage field.
+Real Estate Licenses,status_arabic,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,status_english,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,status_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,trade_name_arabic,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,trade_name_english,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Licenses,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Real Estate Offices,activity_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Offices,activity_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Offices,activity_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Offices,ded_activity_code,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Offices,fax,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Real Estate Offices,is_branch,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Offices,license_expiry_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Offices,license_issue_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Offices,license_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Offices,license_source_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Offices,license_source_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Offices,license_source_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Offices,main_office_id,internal matching field,prohibited,Pipeline lineage field.
+Real Estate Offices,participant_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Real Estate Offices,phone,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Real Estate Offices,real_estate_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Offices,real_estate_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Offices,webpage,internal matching field,prohibited,Pipeline lineage field.
+Real Estate Offices,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Real Estate Permits,end_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,exhibition_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,exhibition_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,license_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,location,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,main_service_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,main_service_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,parent_parmits_id,internal matching field,prohibited,Pipeline lineage field.
+Real Estate Permits,parent_service_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,paricipant_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,participant_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,permit_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,permits_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,permit_status_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,permit_status_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,permit_status_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,service_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,service_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,service_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,start_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Permits,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Real Estate Projects,area_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,area_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,area_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,cancellation_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,completion_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,developer_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,developer_name,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,developer_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,escrow_agent_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,escrow_agent_name,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,master_developer_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,master_developer_name,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,master_developer_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,master_project_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,master_project_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,no_of_buildings,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,no_of_lands,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,no_of_units,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,no_of_villas,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,percent_completed,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,project_classification_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,project_classification_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,project_description_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,project_description_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,project_end_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,project_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,project_name,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,project_number,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,project_start_date,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,project_status,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,project_status_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,project_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,project_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,property_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Real Estate Projects,zoning_authority_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,zoning_authority_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,zoning_authority_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Projects,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Real Estate Transactions,actual_worth,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,area_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,area_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,area_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,building_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,building_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,has_parking,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,instance_date,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,master_project_ar,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,master_project_en,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,meter_rent_price,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,meter_sale_price,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,nearest_landmark_ar,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,nearest_landmark_en,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,nearest_mall_ar,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,nearest_mall_en,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,nearest_metro_ar,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,nearest_metro_en,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,no_of_parties_role_1,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,no_of_parties_role_2,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,no_of_parties_role_3,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,procedure_area,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,procedure_id,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,procedure_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,procedure_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,project_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,project_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,project_number,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,property_sub_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,property_sub_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,property_sub_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,property_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,property_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,property_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,property_usage_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,property_usage_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,reg_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,reg_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,reg_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,rent_value,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,rooms_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,rooms_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Real Estate Transactions,transaction_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Real Estate Transactions,trans_group_ar,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,trans_group_en,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,trans_group_id,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Real Estate Transactions,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Registered Freehold Real Estate Units,actual_area,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Registered Freehold Real Estate Units,actual_common_area,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Registered Freehold Real Estate Units,area_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,area_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,area_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,building_number,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Registered Freehold Real Estate Units,common_area,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Registered Freehold Real Estate Units,creation_date,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Registered Freehold Real Estate Units,floor,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Registered Freehold Real Estate Units,grandparent_property_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Registered Freehold Real Estate Units,is_free_hold,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,is_lease_hold,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,is_registered,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,land_number,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Registered Freehold Real Estate Units,land_sub_number,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Registered Freehold Real Estate Units,land_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,land_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,land_type_id,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Registered Freehold Real Estate Units,master_project_ar,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Registered Freehold Real Estate Units,master_project_en,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Registered Freehold Real Estate Units,master_project_id,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Registered Freehold Real Estate Units,munc_number,internal matching field,prohibited,Pipeline lineage field.
+Registered Freehold Real Estate Units,munc_zip_code,internal matching field,prohibited,Pipeline lineage field.
+Registered Freehold Real Estate Units,parcel_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Registered Freehold Real Estate Units,parent_property_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Registered Freehold Real Estate Units,parking_allocation_type,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Registered Freehold Real Estate Units,parking_allocation_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,parking_allocation_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,pre_registration_number,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Registered Freehold Real Estate Units,project_id,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Registered Freehold Real Estate Units,project_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,project_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,property_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Registered Freehold Real Estate Units,property_sub_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,property_sub_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,property_sub_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,property_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,property_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,property_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,rooms,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,rooms_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,rooms_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Registered Freehold Real Estate Units,unit_balcony_area,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Registered Freehold Real Estate Units,unit_number,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Registered Freehold Real Estate Units,unit_parking_number,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Registered Freehold Real Estate Units,zone_id,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Registered Freehold Real Estate Units,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Rent Contracts,actual_area,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Rent Contracts,annual_amount,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Rent Contracts,area_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,area_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,area_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,contract_amount,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Rent Contracts,contract_end_date,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Rent Contracts,contract_id,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Rent Contracts,contract_reg_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,contract_reg_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,contract_reg_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,contract_start_date,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Rent Contracts,ejari_bus_property_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,ejari_bus_property_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,ejari_bus_property_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,ejari_property_sub_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,ejari_property_sub_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,ejari_property_sub_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,ejari_property_type_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,ejari_property_type_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,ejari_property_type_id,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,is_free_hold,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,line_number,internal matching field,prohibited,"Granular event, contract, participant or property locator."
+Rent Contracts,master_project_ar,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Rent Contracts,master_project_en,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Rent Contracts,nearest_landmark_ar,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Rent Contracts,nearest_landmark_en,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Rent Contracts,nearest_mall_ar,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Rent Contracts,nearest_mall_en,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Rent Contracts,nearest_metro_ar,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Rent Contracts,nearest_metro_en,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Rent Contracts,no_of_prop,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Rent Contracts,project_name_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,project_name_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,project_number,safe only after aggregation,aggregate-only,Fact-level measure or identifier from a granular source.
+Rent Contracts,property_usage_ar,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,property_usage_en,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Rent Contracts,tenant_type_ar,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Rent Contracts,tenant_type_en,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Rent Contracts,tenant_type_id,personal/sensitive,prohibited,"Contact, demographic or participant-characteristic field."
+Rent Contracts,load_timestamp,internal matching field,prohibited,Pipeline lineage field.
+Residential Sale Index,all_monthly_index,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,all_monthly_price_index,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,all_quarterly_index,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,all_quarterly_price_index,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,all_yearly_index,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,all_yearly_price_index,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,first_date_of_month,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,flat_monthly_index,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,flat_monthly_price_index,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,flat_quarterly_index,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,flat_quarterly_price_index,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,flat_yearly_index,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,flat_yearly_price_index,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,villa_monthly_index,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,villa_monthly_price_index,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,villa_quarterly_index,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,villa_quarterly_price_index,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,villa_yearly_index,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,villa_yearly_price_index,safe public dimension,public-dimension,Official categorical label or non-personal directory fact.
+Residential Sale Index,load_timestamp,internal matching field,prohibited,Pipeline lineage field.

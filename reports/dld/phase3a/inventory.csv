@@ -1,0 +1,26 @@
+dataset,table,dataset_kind,file_count,compressed_bytes,uncompressed_bytes,row_count,column_count,source_export_date
+Accredited Trainers by the Dubai Real Estate Institute,accredited_trainers,directory/snapshot,2,43436,42304,117,11,2026-09-04
+Approved Escrow Account Agents,escrow_agents,directory/snapshot,2,20640,19508,25,5,2026-09-04
+Building and Property Project Records,buildings,property/registry snapshot,2,102129434,102128302,256423,46,2026-09-04
+Developers Recorded in Dubai Land Department,developers,directory/snapshot,2,730597,729465,2348,23,2026-09-04
+Elders and People of Determination,elders_people_of_determination,directory/snapshot,2,1325031,1323899,6120,14,2026-09-04
+Free Zone Companies Licensing,free_zone_companies,directory/snapshot,2,91343,90211,250,13,2026-09-04
+Land Registry,land_registry,property/registry snapshot,2,79602156,79601024,263663,32,2026-09-04
+Licenced Owner Associations,owner_associations,directory/snapshot,2,41201,40069,110,7,2026-09-04
+Licensed Real Estate Valuators,valuators,directory/snapshot,2,70845,69713,153,15,2026-09-04
+Lookup Dubai Community Areas,areas,lookup,2,42148,41016,301,5,2026-09-04
+Lookup Real Estate Market Types,market_types,lookup,2,17485,16353,2,4,2026-09-04
+Lookup Real Estate Transactions Groups,transaction_groups,lookup,2,17470,16338,3,4,2026-09-04
+Lookup Real Estate Transactions Procedures,transaction_procedures,lookup,2,26191,25059,64,6,2026-09-04
+Owners Association Service Charges,service_charges,directory/snapshot,2,35001909,35000777,91193,20,2026-09-04
+Property Map Requests,map_requests,event,2,260709922,260708790,1021252,16,2026-09-04
+Property Valuation Records,valuations,event,2,24700394,24699262,90771,21,2026-09-04
+Real Estate Brokers,brokers,directory/snapshot,2,1781174,1780042,8724,14,2026-09-04
+Real Estate Licenses,licences,directory/snapshot,2,1360907,1359775,2948,24,2026-09-04
+Real Estate Offices,offices,directory/snapshot,2,1603472,1602340,4963,19,2026-09-04
+Real Estate Permits,permits,directory/snapshot,2,55297133,55296001,175056,21,2026-09-04
+Real Estate Projects,projects,directory/snapshot,2,2503754,2502622,3039,38,2026-09-04
+Real Estate Transactions,transactions,event,3,1139103915,1139102783,1776143,47,2026-09-04
+Registered Freehold Real Estate Units,units,property/registry snapshot,4,998697569,998696437,2374726,47,2026-09-04
+Rent Contracts,rent_contracts,contract-line snapshot,11,5315101994,5315100862,10442927,41,2026-09-04
+Residential Sale Index,residential_sale_index,aggregate time-series snapshot,2,46635,45503,159,20,2026-09-04

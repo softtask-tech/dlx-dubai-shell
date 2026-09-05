@@ -1,0 +1,3593 @@
+[
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "age_group",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "cource_title_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "cource_title_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "course_code",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "course_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "course_time_from",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "course_time_to",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "course_to",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "no_of_trainees",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "trainee_gender",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Accredited Trainers by the Dubai Real Estate Institute",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Approved Escrow Account Agents",
+    "field": "escrow_agent_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Approved Escrow Account Agents",
+    "field": "escrow_agent_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Approved Escrow Account Agents",
+    "field": "escrow_agent_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Approved Escrow Account Agents",
+    "field": "phone",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Approved Escrow Account Agents",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "actual_area",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "actual_common_area",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "area_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "area_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "area_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "bld_levels",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Building and Property Project Records",
+    "field": "building_number",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "built_up_area",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "car_parks",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "common_area",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "creation_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "elevators",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "flats",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "floors",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "is_free_hold",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "is_lease_hold",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "is_registered",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Building and Property Project Records",
+    "field": "land_number",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Building and Property Project Records",
+    "field": "land_sub_number",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "land_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "land_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "land_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "master_project_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "master_project_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "master_project_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "offices",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Building and Property Project Records",
+    "field": "parcel_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Building and Property Project Records",
+    "field": "parent_property_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Building and Property Project Records",
+    "field": "pre_registration_number",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "project_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "project_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "project_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Building and Property Project Records",
+    "field": "property_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "property_sub_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "property_sub_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "property_sub_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "property_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "property_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "property_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "rooms",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "rooms_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "rooms_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "shops",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "swimming_pools",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Building and Property Project Records",
+    "field": "zone_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Building and Property Project Records",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "chamber_of_commerce_no",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "developer_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "developer_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "developer_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "developer_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "fax",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "legal_status",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "legal_status_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "legal_status_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "license_expiry_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "license_issue_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "license_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "license_source_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "license_source_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "license_source_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "license_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "license_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "license_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "participant_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "phone",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "registration_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "webpage",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Developers Recorded in Dubai Land Department",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Elders and People of Determination",
+    "field": "average_service_time",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Elders and People of Determination",
+    "field": "average_wating_time",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Elders and People of Determination",
+    "field": "percent_service_time_in_target",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Elders and People of Determination",
+    "field": "percent_waiting_time_in_target",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Elders and People of Determination",
+    "field": "service_location_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Elders and People of Determination",
+    "field": "service_location_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Elders and People of Determination",
+    "field": "service_month",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Elders and People of Determination",
+    "field": "service_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Elders and People of Determination",
+    "field": "service_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Elders and People of Determination",
+    "field": "service_year",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Elders and People of Determination",
+    "field": "target_service_time",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Elders and People of Determination",
+    "field": "target_waiting_time",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Elders and People of Determination",
+    "field": "total_no_of_tickets",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Elders and People of Determination",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Free Zone Companies Licensing",
+    "field": "email",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Free Zone Companies Licensing",
+    "field": "fz_company_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Free Zone Companies Licensing",
+    "field": "fz_company_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Free Zone Companies Licensing",
+    "field": "fz_company_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Free Zone Companies Licensing",
+    "field": "license_expiry_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Free Zone Companies Licensing",
+    "field": "license_issue_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Free Zone Companies Licensing",
+    "field": "license_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Free Zone Companies Licensing",
+    "field": "license_source_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Free Zone Companies Licensing",
+    "field": "license_source_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Free Zone Companies Licensing",
+    "field": "license_source_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Free Zone Companies Licensing",
+    "field": "phone",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Free Zone Companies Licensing",
+    "field": "webpage",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Free Zone Companies Licensing",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Land Registry",
+    "field": "actual_area",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Land Registry",
+    "field": "area_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Land Registry",
+    "field": "area_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Land Registry",
+    "field": "area_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Land Registry",
+    "field": "is_free_hold",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Land Registry",
+    "field": "is_registered",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Land Registry",
+    "field": "land_number",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Land Registry",
+    "field": "land_sub_number",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Land Registry",
+    "field": "land_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Land Registry",
+    "field": "land_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Land Registry",
+    "field": "land_type_id",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Land Registry",
+    "field": "master_project_ar",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Land Registry",
+    "field": "master_project_en",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Land Registry",
+    "field": "master_project_id",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Land Registry",
+    "field": "munc_number",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Land Registry",
+    "field": "munc_zip_code",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Land Registry",
+    "field": "parcel_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Land Registry",
+    "field": "pre_registration_number",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Land Registry",
+    "field": "project_id",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Land Registry",
+    "field": "project_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Land Registry",
+    "field": "project_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Land Registry",
+    "field": "property_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Land Registry",
+    "field": "property_sub_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Land Registry",
+    "field": "property_sub_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Land Registry",
+    "field": "property_sub_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Land Registry",
+    "field": "property_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Land Registry",
+    "field": "property_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Land Registry",
+    "field": "property_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Land Registry",
+    "field": "separated_from",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Land Registry",
+    "field": "separated_reference",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Land Registry",
+    "field": "zone_id",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Land Registry",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Licenced Owner Associations",
+    "field": "company_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Licenced Owner Associations",
+    "field": "company_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Licenced Owner Associations",
+    "field": "email",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Licenced Owner Associations",
+    "field": "latitude",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Licenced Owner Associations",
+    "field": "longitude",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Licenced Owner Associations",
+    "field": "phone",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Licenced Owner Associations",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "gender_ar",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "gender_en",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "gender_id",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "license_end_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "license_start_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "valuation_company_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "valuation_company_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "valuation_company_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "valuator_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "valuator_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "valuator_nationality_ar",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "valuator_nationality_en",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "valuator_nationality_id",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "valuator_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Licensed Real Estate Valuators",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Lookup Dubai Community Areas",
+    "field": "area_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Lookup Dubai Community Areas",
+    "field": "municipality_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Lookup Dubai Community Areas",
+    "field": "name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Lookup Dubai Community Areas",
+    "field": "name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Lookup Dubai Community Areas",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Lookup Real Estate Market Types",
+    "field": "market_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Lookup Real Estate Market Types",
+    "field": "name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Lookup Real Estate Market Types",
+    "field": "name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Lookup Real Estate Market Types",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Lookup Real Estate Transactions Groups",
+    "field": "group_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Lookup Real Estate Transactions Groups",
+    "field": "name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Lookup Real Estate Transactions Groups",
+    "field": "name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Lookup Real Estate Transactions Groups",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Lookup Real Estate Transactions Procedures",
+    "field": "group_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Lookup Real Estate Transactions Procedures",
+    "field": "is_pre_registration",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Lookup Real Estate Transactions Procedures",
+    "field": "name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Lookup Real Estate Transactions Procedures",
+    "field": "name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Lookup Real Estate Transactions Procedures",
+    "field": "procedure_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Lookup Real Estate Transactions Procedures",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "budget_year",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "management_company_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "management_company_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "management_company_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "master_community_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "master_community_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "master_community_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "project_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "project_name",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "property_group_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "property_group_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "property_group_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "service_category_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "service_category_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "service_category_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "service_cost",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "usage_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "usage_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Owners Association Service Charges",
+    "field": "usage_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Owners Association Service Charges",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Property Map Requests",
+    "field": "application_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Map Requests",
+    "field": "application_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Map Requests",
+    "field": "application_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Property Map Requests",
+    "field": "no_of_siteplans",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Map Requests",
+    "field": "procedure_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Map Requests",
+    "field": "procedure_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Map Requests",
+    "field": "procedure_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Map Requests",
+    "field": "property_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Map Requests",
+    "field": "property_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Map Requests",
+    "field": "property_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Property Map Requests",
+    "field": "request_date",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Property Map Requests",
+    "field": "request_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Map Requests",
+    "field": "request_source_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Map Requests",
+    "field": "request_source_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Map Requests",
+    "field": "request_source_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Property Map Requests",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Property Valuation Records",
+    "field": "actual_area",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Property Valuation Records",
+    "field": "actual_worth",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Valuation Records",
+    "field": "area_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Valuation Records",
+    "field": "area_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Valuation Records",
+    "field": "area_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Property Valuation Records",
+    "field": "instance_date",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Property Valuation Records",
+    "field": "procedure_area",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Property Valuation Records",
+    "field": "procedure_id",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Valuation Records",
+    "field": "procedure_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Valuation Records",
+    "field": "procedure_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Property Valuation Records",
+    "field": "procedure_number",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Property Valuation Records",
+    "field": "procedure_year",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Valuation Records",
+    "field": "property_sub_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Valuation Records",
+    "field": "property_sub_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Valuation Records",
+    "field": "property_sub_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Property Valuation Records",
+    "field": "property_total_value",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Valuation Records",
+    "field": "property_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Valuation Records",
+    "field": "property_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Property Valuation Records",
+    "field": "property_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Property Valuation Records",
+    "field": "row_status_code",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Property Valuation Records",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Brokers",
+    "field": "broker_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Brokers",
+    "field": "broker_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Brokers",
+    "field": "broker_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Real Estate Brokers",
+    "field": "fax",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Real Estate Brokers",
+    "field": "gender",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Brokers",
+    "field": "license_end_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Brokers",
+    "field": "license_start_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Real Estate Brokers",
+    "field": "participant_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Real Estate Brokers",
+    "field": "phone",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Brokers",
+    "field": "real_estate_broker_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Brokers",
+    "field": "real_estate_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Brokers",
+    "field": "real_estate_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Real Estate Brokers",
+    "field": "webpage",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Real Estate Brokers",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "activity_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "activity_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "activity_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "authority_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "cancel_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "chamber_commerce_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "commerce_registry_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "ded_activity_code",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "expiry_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "issue_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "legal_type_arabic",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "legal_type_english",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "legal_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "license_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Real Estate Licenses",
+    "field": "parcel_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Real Estate Licenses",
+    "field": "participant_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "print_rmker_arabic",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Real Estate Licenses",
+    "field": "rent_contract_no",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "status_arabic",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "status_english",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "status_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "trade_name_arabic",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Licenses",
+    "field": "trade_name_english",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Real Estate Licenses",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Offices",
+    "field": "activity_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Offices",
+    "field": "activity_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Offices",
+    "field": "activity_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Offices",
+    "field": "ded_activity_code",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Real Estate Offices",
+    "field": "fax",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Offices",
+    "field": "is_branch",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Offices",
+    "field": "license_expiry_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Offices",
+    "field": "license_issue_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Offices",
+    "field": "license_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Offices",
+    "field": "license_source_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Offices",
+    "field": "license_source_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Offices",
+    "field": "license_source_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Real Estate Offices",
+    "field": "main_office_id",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Real Estate Offices",
+    "field": "participant_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Real Estate Offices",
+    "field": "phone",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Offices",
+    "field": "real_estate_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Offices",
+    "field": "real_estate_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Real Estate Offices",
+    "field": "webpage",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Real Estate Offices",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "end_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "exhibition_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "exhibition_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "license_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "location",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "main_service_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "main_service_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Real Estate Permits",
+    "field": "parent_parmits_id",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "parent_service_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "paricipant_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "participant_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "permit_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "permits_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "permit_status_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "permit_status_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "permit_status_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "service_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "service_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "service_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Permits",
+    "field": "start_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Real Estate Permits",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "area_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "area_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "area_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "cancellation_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "completion_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "developer_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "developer_name",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "developer_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "escrow_agent_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "escrow_agent_name",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "master_developer_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "master_developer_name",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "master_developer_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "master_project_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "master_project_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "no_of_buildings",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "no_of_lands",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "no_of_units",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "no_of_villas",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "percent_completed",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "project_classification_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "project_classification_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "project_description_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "project_description_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "project_end_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "project_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "project_name",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "project_number",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "project_start_date",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "project_status",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "project_status_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "project_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "project_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Real Estate Projects",
+    "field": "property_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "zoning_authority_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "zoning_authority_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Projects",
+    "field": "zoning_authority_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Real Estate Projects",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "actual_worth",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "area_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "area_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "area_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "building_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "building_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "has_parking",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "instance_date",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "master_project_ar",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "master_project_en",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "meter_rent_price",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "meter_sale_price",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "nearest_landmark_ar",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "nearest_landmark_en",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "nearest_mall_ar",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "nearest_mall_en",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "nearest_metro_ar",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "nearest_metro_en",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "no_of_parties_role_1",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "no_of_parties_role_2",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "no_of_parties_role_3",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "procedure_area",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "procedure_id",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "procedure_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "procedure_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "project_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "project_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "project_number",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "property_sub_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "property_sub_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "property_sub_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "property_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "property_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "property_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "property_usage_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "property_usage_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "reg_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "reg_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "reg_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "rent_value",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "rooms_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Real Estate Transactions",
+    "field": "rooms_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Real Estate Transactions",
+    "field": "transaction_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "trans_group_ar",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "trans_group_en",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Real Estate Transactions",
+    "field": "trans_group_id",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Real Estate Transactions",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "actual_area",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "actual_common_area",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "area_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "area_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "area_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "building_number",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "common_area",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "creation_date",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "floor",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "grandparent_property_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "is_free_hold",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "is_lease_hold",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "is_registered",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "land_number",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "land_sub_number",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "land_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "land_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "land_type_id",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "master_project_ar",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "master_project_en",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "master_project_id",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "munc_number",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "munc_zip_code",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "parcel_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "parent_property_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "parking_allocation_type",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "parking_allocation_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "parking_allocation_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "pre_registration_number",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "project_id",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "project_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "project_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "property_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "property_sub_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "property_sub_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "property_sub_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "property_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "property_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "property_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "rooms",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "rooms_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "rooms_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "unit_balcony_area",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "unit_number",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "unit_parking_number",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "zone_id",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Registered Freehold Real Estate Units",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Rent Contracts",
+    "field": "actual_area",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Rent Contracts",
+    "field": "annual_amount",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "area_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "area_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "area_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Rent Contracts",
+    "field": "contract_amount",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Rent Contracts",
+    "field": "contract_end_date",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Rent Contracts",
+    "field": "contract_id",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "contract_reg_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "contract_reg_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "contract_reg_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Rent Contracts",
+    "field": "contract_start_date",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "ejari_bus_property_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "ejari_bus_property_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "ejari_bus_property_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "ejari_property_sub_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "ejari_property_sub_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "ejari_property_sub_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "ejari_property_type_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "ejari_property_type_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "ejari_property_type_id",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "is_free_hold",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Rent Contracts",
+    "field": "line_number",
+    "publication": "prohibited",
+    "reason": "Granular event, contract, participant or property locator."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Rent Contracts",
+    "field": "master_project_ar",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Rent Contracts",
+    "field": "master_project_en",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Rent Contracts",
+    "field": "nearest_landmark_ar",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Rent Contracts",
+    "field": "nearest_landmark_en",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Rent Contracts",
+    "field": "nearest_mall_ar",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Rent Contracts",
+    "field": "nearest_mall_en",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Rent Contracts",
+    "field": "nearest_metro_ar",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Rent Contracts",
+    "field": "nearest_metro_en",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Rent Contracts",
+    "field": "no_of_prop",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "project_name_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "project_name_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe only after aggregation",
+    "dataset": "Rent Contracts",
+    "field": "project_number",
+    "publication": "aggregate-only",
+    "reason": "Fact-level measure or identifier from a granular source."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "property_usage_ar",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Rent Contracts",
+    "field": "property_usage_en",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Rent Contracts",
+    "field": "tenant_type_ar",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Rent Contracts",
+    "field": "tenant_type_en",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "personal/sensitive",
+    "dataset": "Rent Contracts",
+    "field": "tenant_type_id",
+    "publication": "prohibited",
+    "reason": "Contact, demographic or participant-characteristic field."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Rent Contracts",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "all_monthly_index",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "all_monthly_price_index",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "all_quarterly_index",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "all_quarterly_price_index",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "all_yearly_index",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "all_yearly_price_index",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "first_date_of_month",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "flat_monthly_index",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "flat_monthly_price_index",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "flat_quarterly_index",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "flat_quarterly_price_index",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "flat_yearly_index",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "flat_yearly_price_index",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "villa_monthly_index",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "villa_monthly_price_index",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "villa_quarterly_index",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "villa_quarterly_price_index",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "villa_yearly_index",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "safe public dimension",
+    "dataset": "Residential Sale Index",
+    "field": "villa_yearly_price_index",
+    "publication": "public-dimension",
+    "reason": "Official categorical label or non-personal directory fact."
+  },
+  {
+    "classification": "internal matching field",
+    "dataset": "Residential Sale Index",
+    "field": "load_timestamp",
+    "publication": "prohibited",
+    "reason": "Pipeline lineage field."
+  }
+]
