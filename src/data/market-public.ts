@@ -108,9 +108,9 @@ export const SEGMENT_LABELS: Record<string, string> = {
 };
 
 export const CONFIDENCE_LABELS: Record<MarketConfidence, string> = {
-  higher: "Higher confidence — a large number of records behind this figure",
-  moderate: "Moderate confidence — a smaller number of records behind this figure",
-  counts_only: "Counts only — recorded activity, with no value published",
+  higher: "Higher confidence, a large number of records behind this figure",
+  moderate: "Moderate confidence, a smaller number of records behind this figure",
+  counts_only: "Counts only: recorded activity, with no value published",
 };
 
 /** Percent-style metrics are rendered differently from counts and amounts. */
@@ -129,7 +129,7 @@ export function formatMetricValue(metric: MarketMetric, value: number): string {
   return Math.round(value).toLocaleString("en-AE");
 }
 
-/** "Q2 2026", "June 2026", "2025" — the period a figure actually covers. */
+/** "Q2 2026", "June 2026", "2025": the period a figure actually covers. */
 export function formatPeriod(grain: MarketGrain, periodStart: string): string {
   const [year, month] = periodStart.split("-").map(Number);
   if (!year) return periodStart;
@@ -207,4 +207,4 @@ export const UNAVAILABLE_METADATA: MarketMetadata = {
 
 /** The honest empty state, used wherever a period has too few records. */
 export const TOO_FEW_RECORDS =
-  "Not published for this period — too few registered records to report without identifying individual transactions.";
+  "Not published for this period: too few registered records to report without identifying individual transactions.";
