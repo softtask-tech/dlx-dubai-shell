@@ -1,9 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { DirectoryDetailPage } from "@/components/directory/directory-page";
-import { loadDirectoryDetail } from "@/data/directory-route";
+import { RecordedActivity } from "@/components/market/recorded-activity";
+import { loadDirectoryDetail, loadRecordedActivity } from "@/data/directory-route";
 import { directoryDetailHead } from "@/data/directory-seo";
 export const Route = createFileRoute("/directory/developers/$slug")({
-  loader: ({ params }) => loadDirectoryDetail("developer", params.slug, true),
+  loader: async ({ params }) => {
+    const result = await loadDirectoryDetail("developer", params.slug, true);
+    const activity = await loadRecordedActivity("developer", result.record?.primary_number ?? null);
+    return { ...result, activity };
+  },
   head: ({ loaderData }) =>
     directoryDetailHead({
       record: loaderData?.record ?? null,
@@ -18,5 +23,19 @@ export const Route = createFileRoute("/directory/developers/$slug")({
 });
 
 function DeveloperDetail() {
-  return <DirectoryDetailPage result={Route.useLoaderData()} />;
+  const { record, unavailable, activity } = Route.useLoaderData();
+  return (
+    <DirectoryDetailPage
+      result={{ record, unavailable }}
+      activity={
+        activity.rows.length > 0 ? (
+          <RecordedActivity
+            rows={activity.rows}
+            subject="developer"
+            sourceExportDate={activity.sourceExportDate}
+          />
+        ) : undefined
+      }
+    />
+  );
 }
