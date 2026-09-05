@@ -85,8 +85,14 @@ export const Route = createFileRoute("/market-intelligence/communities/$id")({
   component: CommunityMarketPage,
 });
 
-function series(id: string, metric: MarketMetric, grain: "quarter" | "year") {
-  return getMarketEntitySeriesFn({
+/**
+ * One headline series for this community. Published aggregates also carry
+ * breakdowns (apartments, villas, new and renewed tenancies), so the whole
+ * community total is the "all" segment and nothing else: mixing a breakdown
+ * row into the headline would quietly understate the period.
+ */
+async function series(id: string, metric: MarketMetric, grain: "quarter" | "year") {
+  const rows = await getMarketEntitySeriesFn({
     data: {
       entityType: "community",
       entityId: id,
@@ -97,6 +103,7 @@ function series(id: string, metric: MarketMetric, grain: "quarter" | "year") {
       limit: 60,
     },
   });
+  return rows.filter((row) => row.segment_code === "all");
 }
 
 function CommunityMarketPage() {
