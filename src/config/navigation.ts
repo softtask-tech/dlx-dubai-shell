@@ -39,6 +39,11 @@ export const NAVIGATION_GROUPS: readonly NavigationGroup[] = [
         href: "/market-intelligence",
         description: "Published evidence and methodology.",
       },
+      {
+        label: "Compare communities",
+        href: "/market-intelligence/compare",
+        description: "Six communities on one measure.",
+      },
       { label: "Calculators", href: "/tools", description: "Purchase, mortgage and yield tools." },
       { label: "Journal", href: "/blog", description: "Analysis from the DLX desk." },
     ],
