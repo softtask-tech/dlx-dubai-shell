@@ -31,7 +31,7 @@ export type MarketRow = {
   metric_value: number;
   observation_count: number;
   confidence: MarketConfidence;
-  quality_flags: unknown[];
+  quality_flags: string[];
   source_export_date: string;
   methodology_version: string;
 };
