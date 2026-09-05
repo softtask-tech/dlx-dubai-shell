@@ -145,7 +145,10 @@ function ContactPage() {
               <p className="body-text mt-5 text-muted-foreground">
                 {site.address.locality}, {site.address.countryName}
               </p>
-              <p className="caption mt-6">RERA ORN {site.reraOrn}</p>
+              <p className="caption mt-6">
+                Corporate registration details are available in the legal disclosure and on
+                applicable property advertising.
+              </p>
             </Reveal>
           </div>
           <div className="lg:col-span-8 lg:col-start-5">

@@ -151,9 +151,9 @@ function ReportShell({
       <Section flush className="border-t border-border py-10">
         <Container>
           <p className="caption">
-            Prepared by {site.name} · RERA ORN {site.reraOrn} · {site.address.street},{" "}
-            {site.address.locality}. {site.name} is not affiliated with the Dubai Land Department.
-            This report is information, not personal advice.
+            Prepared by {site.name} · {site.address.street}, {site.address.locality}. {site.name} is
+            not affiliated with the Dubai Land Department. This report is information, not personal
+            advice.
           </p>
         </Container>
       </Section>

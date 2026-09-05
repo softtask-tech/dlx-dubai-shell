@@ -183,8 +183,7 @@ function LandingPage() {
       <footer className="border-t border-border">
         <Container className="flex flex-col gap-4 py-10 md:flex-row md:items-center md:justify-between">
           <p className="caption text-muted-foreground">
-            {brand.name} · RERA ORN {brand.reraOrn} · {brand.address.street},{" "}
-            {brand.address.locality}
+            {brand.name} · {brand.address.street}, {brand.address.locality}
           </p>
           <div className="flex gap-6">
             {page.readMore ? (

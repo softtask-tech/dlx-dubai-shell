@@ -30,6 +30,8 @@ import { ProofBand } from "@/components/site/proof-band";
 import { Container, Eyebrow, Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { FeaturedOffPlan } from "@/components/commercial/featured-off-plan";
+import { DiscoveryPanel } from "@/components/home/discovery-panel";
+import { ContextualConversion } from "@/components/conversion/contextual-conversion";
 
 /**
  * Questions a first-time visitor actually asks, answered from what this site
@@ -39,7 +41,7 @@ import { FeaturedOffPlan } from "@/components/commercial/featured-off-plan";
 const FAQ_ENTRIES: readonly FaqEntry[] = [
   {
     question: "Is DLX Properties a licensed Dubai brokerage?",
-    answer: `Yes. ${site.name} trades under RERA Office Registration Number ${site.reraOrn} and works from ${site.address.street}, ${site.address.locality}. Every transaction we handle runs through the Dubai Land Department's official process.`,
+    answer: `Yes. ${site.name} is a Dubai real-estate brokerage based in ${site.address.street}, ${site.address.locality}. Applicable regulatory identifiers belong with the relevant advertisement or compliance disclosure, not promotional copy.`,
   },
   {
     question: "What does DLX actually do for a client?",
@@ -68,17 +70,25 @@ export const Route = createFileRoute("/")({
   loader: async () => {
     /* Everything on the home page below the fold is real data, so an empty
      * database simply renders fewer sections rather than placeholder furniture. */
-    const [featured, testimonials, partners, marketSummary, marketIndex, areas, agents, demoEnabled] =
-      await Promise.all([
-        listProperties({ limit: 5 }),
-        listTestimonials(3),
-        listPartnerDevelopers(),
-        getMarketSummary(),
-        getMarketPriceIndex(),
-        listAreasWithStats(),
-        listAgents(),
-        getDemoProjectAccessFn(),
-      ]);
+    const [
+      featured,
+      testimonials,
+      partners,
+      marketSummary,
+      marketIndex,
+      areas,
+      agents,
+      demoEnabled,
+    ] = await Promise.all([
+      listProperties({ limit: 5 }),
+      listTestimonials(3),
+      listPartnerDevelopers(),
+      getMarketSummary(),
+      getMarketPriceIndex(),
+      listAreasWithStats(),
+      listAgents(),
+      getDemoProjectAccessFn(),
+    ]);
     return {
       featured,
       testimonials,
@@ -135,8 +145,7 @@ function Index() {
     areas,
     agents,
     demoProjects,
-  } =
-    Route.useLoaderData();
+  } = Route.useLoaderData();
 
   const services = HOME_SERVICES.map((slug) => SERVICES.find((s) => s.slug === slug)).filter(
     (service): service is (typeof SERVICES)[number] => Boolean(service),
@@ -221,6 +230,8 @@ function Index() {
           </div>
         </Container>
       </section>
+
+      <DiscoveryPanel />
 
       {/* The thesis. Image left, argument right, on the cool paper. */}
       <SplitFeature photo="skyline-across-water-haze" side="start" className="bg-paper-cool">
@@ -370,12 +381,18 @@ function Index() {
       <Manifesto
         footnote={
           <>
-            {site.name}, RERA ORN {site.reraOrn}. {site.address.street}, {site.address.locality}.
+            {site.name}. {site.address.street}, {site.address.locality}.
           </>
         }
       >
         We would rather lose the transaction than be the reason someone bought the wrong thing.
       </Manifesto>
+
+      <ContextualConversion
+        source="homepage-closing"
+        intent="consultation"
+        title="A private conversation, grounded in your objective."
+      />
 
       <Section className="pt-0">
         <Faq eyebrow={null} entries={FAQ_ENTRIES} />

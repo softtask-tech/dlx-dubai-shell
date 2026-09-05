@@ -30,7 +30,6 @@ const RESEND_ENDPOINT = "https://api.resend.com/emails";
 const BRAND: BrandInfo = {
   name: "DLX Properties",
   domain: Deno.env.get("SITE_DOMAIN") ?? "dlxproperties.com",
-  reraOrn: "40905",
   email: Deno.env.get("LEAD_ADMIN_EMAIL")?.split(",")[0]?.trim() ?? "hello@dlxproperties.com",
   phone: Deno.env.get("BRAND_PHONE") ?? "+971 (0) 000 0000",
 };

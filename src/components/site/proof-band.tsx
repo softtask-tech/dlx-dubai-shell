@@ -76,10 +76,10 @@ export function ProofBand({
               wide one, so the two halves are not mistaken for a pair. */}
           <div className="lg:col-span-4 lg:col-start-9">
             <div className="border-t border-foreground pt-6">
-              <p className="display-3">RERA ORN {site.reraOrn}</p>
+              <p className="display-3">Independent representation</p>
               <p className="caption mt-3">
-                Registered with Dubai's Real Estate Regulatory Agency. A real office in{" "}
-                {site.address.street}, the district we transact in.
+                A focused Dubai brokerage with a real office in {site.address.street} and a clear,
+                evidence-led process.
               </p>
             </div>
 

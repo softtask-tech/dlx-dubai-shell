@@ -35,7 +35,7 @@ const PRINCIPLES = [
 const FAQS: readonly FaqEntry[] = [
   {
     question: "Is DLX Properties a licensed Dubai brokerage?",
-    answer: `Yes. ${site.name} trades under RERA Office Registration Number ${site.reraOrn} and works from ${site.address.street}, ${site.address.locality}. Every transaction we handle runs through the Dubai Land Department's official process.`,
+    answer: `Yes. ${site.name} is a Dubai real-estate brokerage based in ${site.address.street}, ${site.address.locality}. Applicable regulatory identifiers are presented in the relevant compliance context.`,
   },
   {
     question: "How big is the team?",

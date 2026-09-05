@@ -38,6 +38,14 @@ commercial status; currency; handover range; construction status/progress;
 assigned consultant; nullable official DLD directory project ID; `available_as_of`,
 `source_updated_at`, editorial timestamps and source/provenance notes.
 
+Advertising compliance is a separate validated object, never one generic licence:
+`office_registration_number`, `responsible_broker_brn`,
+`advertisement_permit_number`, `authority_issued_qr_asset_or_reference`,
+`permit_valid_to`, `compliance_source_updated_at`, and `validation_status`.
+Publication of an advertising page must fail closed unless the fields required for
+that advertisement have passed validation. The QR value must be an authority-issued
+asset or approved official verification destination, never a locally generated code.
+
 Public policies must require `content_origin = 'real'` and
 `publication_state = 'public'`. A demo row must never satisfy public RLS even if a
 publication flag is set incorrectly.

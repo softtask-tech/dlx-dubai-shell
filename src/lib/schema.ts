@@ -55,12 +55,6 @@ export function organizationSchema(): JsonLd {
     areaServed: site.areasServed.map((name) => ({ "@type": "Place", name })),
     knowsLanguage: ["en", "ar"],
     sameAs: site.socials.map((s) => s.href),
-    /* RERA Office Registration Number, the licence a Dubai brokerage trades under. */
-    identifier: {
-      "@type": "PropertyValue",
-      name: "RERA ORN",
-      value: site.reraOrn,
-    },
   };
 }
 

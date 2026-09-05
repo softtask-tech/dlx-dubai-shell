@@ -44,7 +44,6 @@ export type LeadEmailData = {
 export type BrandInfo = {
   name: string;
   domain: string;
-  reraOrn: string;
   email: string;
   phone: string;
 };
@@ -98,7 +97,7 @@ function header(): string {
 function footer(brand: BrandInfo): string {
   return `<tr><td style="padding:32px 40px 40px 40px;border-top:1px solid ${BORDER};">
 <p style="margin:0;font-family:${SANS};font-size:12px;line-height:1.7;color:${SLATE};">
-${escapeHtml(brand.name)} · RERA ORN ${escapeHtml(brand.reraOrn)} · Business Bay, Dubai<br />
+${escapeHtml(brand.name)} · Business Bay, Dubai<br />
 <a href="mailto:${escapeHtml(brand.email)}" style="color:${SLATE};">${escapeHtml(brand.email)}</a>
  · <a href="https://${escapeHtml(brand.domain)}" style="color:${SLATE};">${escapeHtml(brand.domain)}</a>
 </p></td></tr>`;

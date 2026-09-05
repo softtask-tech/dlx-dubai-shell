@@ -98,7 +98,7 @@ function emailHtml(step: (typeof STEPS)[number], siteUrl: string, unsubscribeUrl
 <tr><td style="font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.7;color:#4a4a4a;padding-bottom:32px;">${escapeHtml(step.body)}</td></tr>
 <tr><td style="padding-bottom:40px;"><a href="${escapeHtml(link)}" style="font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#000000;border:1px solid #d8d8d8;padding:14px 28px;text-decoration:none;display:inline-block;">${escapeHtml(step.linkLabel)}</a></td></tr>
 <tr><td style="border-top:1px solid #e8e8e8;padding-top:24px;font-family:Helvetica,Arial,sans-serif;font-size:11px;line-height:1.7;color:#8A8A8A;">
-DLX Properties · RERA ORN 40905 · Business Bay, Dubai<br/>
+DLX Properties · Business Bay, Dubai<br/>
 You are receiving this because you enquired with us.
 <a href="${escapeHtml(unsubscribeUrl)}" style="color:#8A8A8A;">Stop these emails</a>. It takes effect immediately.
 </td></tr>

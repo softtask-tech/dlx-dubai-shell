@@ -1,4 +1,5 @@
 # DLX PROPERTIES — UI / UX OVERHAUL PLAYBOOK v2 (for Claude Code)
+
 **Project:** DLX flagship website · **Ref:** ST-UAE-2026/163/DLX
 **Mode:** REDESIGN — overhaul the visual + motion layer, preserve everything that already works.
 **This version fixes the "it looks like a blog" problem with real assets, better type, and layout variety.**
@@ -6,6 +7,7 @@
 ---
 
 ## HOW TO USE THIS
+
 1. Save as `DESIGN_OVERHAUL.md` in the repo root (replaces any earlier version). Read alongside `CLAUDE.md`.
 2. Two skills are attached — **use them**: **taste-skill** (`design-taste-frontend`) as the design rulebook + its Pre-Flight Check; **playwright-cli** to screenshot every page at multiple scroll positions and self-critique visually before declaring a phase done.
 3. Feed phases U0 → U5 one at a time. Each: todo list → step by step → PHASE SUMMARY.
@@ -13,7 +15,9 @@
 ---
 
 ## THE BRIEF, AND WHY THE CURRENT BUILD FAILS
+
 The live build reads like a blog, not a luxury brokerage. Diagnosed causes (fix all four):
+
 1. **Every section is the same template** (small grey uppercase eyebrow → big serif line → grey sentence → hairline rule, repeated). Monotony reads as a document. **The redesign must give every section a different composition.**
 2. **Almost no photography.** We now have 21 high-quality Dubai photos. **Imagery must carry the page, alternating with editorial text.**
 3. **Wrong typeface, set badly.** A heavy display serif shouting on every line. The reference tier (Emaar) uses a refined Garamond-class serif with restraint + a clean sans workhorse. **Replace the type system.**
@@ -26,6 +30,7 @@ The live build reads like a blog, not a luxury brokerage. Diagnosed causes (fix 
 ## REAL ASSETS (wire these in — no more text logos, no gradient placeholders)
 
 **Logo kit** (`DLX-Properties-Logo-Kit/`): use the REAL logo, not a text "DLX".
+
 - Header (on light): `01-Primary-Logo/black-on-white/` primary lockup, or the monogram from `02-Monogram-Icon/transparent/DLX-monogram-black-transparent-1024.png`.
 - Header (on dark/over photos) + footer: `01-Primary-Logo/transparent/DLX-primary-white-transparent.png`.
 - Favicon / app icons: `02-Monogram-Icon/favicon-app-icon/` (16–512).
@@ -38,6 +43,7 @@ The live build reads like a blog, not a luxury brokerage. Diagnosed causes (fix 
 ---
 
 ## LOCKED TYPOGRAPHY (this is the biggest single fix)
+
 Match the Emaar-class reference: a refined serif used with restraint, on a clean sans workhorse that echoes the logo's wide-tracked "DLX PROPERTIES" wordmark.
 
 - **Editorial serif (accents only, NOT every heading):** a Garamond-class or high-contrast transitional serif. Preferred self-hosted options: **EB Garamond**, **Cormorant** (used sparingly, larger sizes only), or license **Adobe Garamond Pro / Canela / Freight Display**. Use for the occasional hero line and pull-quotes, never for labels or every section title.
@@ -49,6 +55,7 @@ Match the Emaar-class reference: a refined serif used with restraint, on a clean
 ---
 
 ## LOCKED PALETTE (unchanged — Emaar-light canvas + Sobha green/gold anchors)
+
 ```
 --paper:#FFFFFF  --paper-cool:#F6F8F7 (cool off-white, never warm cream)
 --ink:#0C1411 (green-black)  --ink-panel:#132019
@@ -56,12 +63,15 @@ Match the Emaar-class reference: a refined serif used with restraint, on a clean
 --gold:#C2A45C  (WHISPER only: hairlines/small marks/text-on-dark; never a fill)
 --text:#141414  --muted:#8A8A8A  --on-dark:#ECEFEC  --on-dark-muted:#9FB2A8
 ```
+
 Luxury comes from green + photography; gold whispers. Sharp corners (radius 0) throughout.
 
 ---
 
 ## LAYOUT VARIETY (kills the blog feel — MANDATORY)
+
 No two consecutive sections may share a composition. Build a library of distinct section layouts and rotate them:
+
 - Full-bleed image with overlaid type (cinematic).
 - Asymmetric split (image one side, editorial the other, alternating sides).
 - Editorial index / list (services), image thumbnails per row, not equal cards.
@@ -69,12 +79,14 @@ No two consecutive sections may share a composition. Build a library of distinct
 - Horizontal gallery / scroll (residences).
 - Image grid with varied cell sizes (communities), not a uniform 3-col grid.
 - Type-only manifesto moment (rare, once).
-Rule of thumb: cinematic image moment → tight editorial text → data → image → index. Alternate light and dark deliberately. Content-rich, not padding-rich.
+  Rule of thumb: cinematic image moment → tight editorial text → data → image → index. Alternate light and dark deliberately. Content-rich, not padding-rich.
 
 ---
 
 ## MOTION (Sobha-quality feel, disciplined)
+
 Add `lenis`, `gsap`+`ScrollTrigger`, `split-type`; keep `motion/react`.
+
 - **Lenis smooth scroll** globally (off under reduced-motion).
 - **Staggered line reveals** on section enter (SplitType).
 - **Image parallax/depth** (`data-speed` ~1.15 vs ~0.75).
@@ -85,6 +97,7 @@ Add `lenis`, `gsap`+`ScrollTrigger`, `split-type`; keep `motion/react`.
 ---
 
 ## HARD BANS (these are the AI/blog tells — remove on sight)
+
 - No custom cursor. No "Scroll" cue.
 - **Zero em-dashes (—) / en-dash separators (–)** anywhere visible. Use hyphens, commas, colons, or two sentences.
 - **No eyebrow above every section.** Max one per three sections. (The current LICENSED / BASED / EVIDENCE / PORTFOLIO pattern is exactly the blog tell — cut most of them.)
@@ -96,11 +109,13 @@ Add `lenis`, `gsap`+`ScrollTrigger`, `split-type`; keep `motion/react`.
 ---
 
 ## WHAT MUST NOT CHANGE (visual overhaul only)
+
 Preserve: routes + page registry; Supabase schema/RLS/Edge Functions; DLD data logic + provenance; lead pipeline (form field names, qualification, scoring, sources, Resend dual emails); AI advisor (Noor) logic + guardrails; SEO/meta system, schema, sitemap, robots, OG; analytics/consent/Pixel/CAPI/GA4; admin logic + ROAS data. Re-skin and re-compose the front end; keep the plumbing and all external contracts intact.
 
 ---
 
 ## WORKING METHOD (every phase)
+
 1. Read `CLAUDE.md`, this file, and the taste `SKILL.md`. State the design read + dials.
 2. Todo list → step by step, preserving the "must not change" list.
 3. **Verify with playwright-cli:** screenshot each changed page top/mid/lower on desktop + mobile, view them, self-critique vs the rubric, fix anything that reads generated or blog-like.
@@ -112,6 +127,7 @@ Preserve: routes + page registry; Supabase schema/RLS/Edge Functions; DLD data l
 # PHASES
 
 ## PHASE U0 — Assets, Type System, Motion Foundation
+
 1. Redesign audit; list the blog-tells to retire (repeating template, over-used eyebrows, heavy serif, empty voids).
 2. Import the real logo kit + wire favicons/app icons. Optimize + import the 21 photos (responsive, self-hosted).
 3. Replace the type system: self-host the refined serif + the neo-grotesk sans; set the scale so sans is the workhorse and serif is a rare accent. Remove Jost + the heavy display-serif-on-everything.
@@ -124,13 +140,16 @@ Preserve: routes + page registry; Supabase schema/RLS/Edge Functions; DLD data l
 **Acceptance:** real logo + photos + new type live, palette + motion primitives ready, layout library exists, cursor/scroll-cue/em-dashes gone.
 
 ## PHASE U1 — Global Shell
+
 1. Rebuild nav: real logo lockup, minimal single line, transparent over dark hero → solid on scroll, refined mobile menu (fix the current oversized serif list). Preserve destinations.
-2. Rebuild footer as a green-black anchor: white logo lockup, large refined closing line, contact, RERA ORN 40905, legal links.
+2. Rebuild footer as a green-black anchor: white logo lockup, large refined closing line, contact and legal links. Keep regulatory identifiers in applicable compliance blocks.
 3. Tasteful page transitions (reduced-motion safe).
 4. Verify light/dark/mobile. PHASE SUMMARY.
 
 ## PHASE U2 — Homepage (flagship, photography-led, every section different)
+
 Compose from the layout library; no two consecutive sections alike; real photos throughout; one eyebrow per three sections.
+
 1. **Hero** — full-bleed real photograph (Burj night or Marina dusk), refined headline (serif accent acceptable here, ≤2 lines), one line, one action, slow parallax + one line-reveal. No eyebrow, no scroll cue.
 2. **Thesis** — short editorial statement over a calm daylight image split. Sans-led.
 3. **Investment Snapshot** — the signature interactive, refined; wired to the real lead/qualification pipeline; DLD-cited result card.
@@ -141,20 +160,24 @@ Compose from the layout library; no two consecutive sections alike; real photos 
 8. **Noor** — green-black cinematic advisor moment showing guarded behaviour (cites DLD, hands off to human); wired to the real advisor.
 9. **Proof** — named team (real faces when provided), developer partner marks, one short testimonial with attribution.
 10. **Closing invitation + footer anchor.**
-Verify all breakpoints; run pre-flight. PHASE SUMMARY.
+    Verify all breakpoints; run pre-flight. PHASE SUMMARY.
 
 ## PHASE U3 — Inner Pages (reuse the layout library; keep data/logic)
+
 Community/area profile · Market Intelligence · Service pages · Listing index + detail · Guides/playbook + blog · Tools/calculators. Each imagery-led and varied, none reusing the section above it. Fix the "Properties" page from the screenshots (add hero image, real listings/data, remove empty voids). Verify each. PHASE SUMMARY.
 
 ## PHASE U4 — Admin, Forms & Lead UI
+
 Re-skin the qualified multi-step form (preserve field names/steps/scoring/events); light legibility polish on admin + ROAS (no logic change); check all states pass contrast. Verify. PHASE SUMMARY.
 
 ## PHASE U5 — Motion Polish, Mobile, Performance, Pre-Flight
+
 Final motion pass (two-pin budget, timings, parallax); mobile (pins release, grids collapse, touch targets); reduced-motion audit; Core Web Vitals (LCP<2.5s hero preload, CLS<0.1, INP<200ms); full taste Pre-Flight across the site; final playwright-cli sweep desktop+mobile. Final PHASE SUMMARY with before/after.
 
 ---
 
 ## REMINDERS
+
 - The fix for "looks like a blog" = layout variety + real photography + right type + framed whitespace. Enforce all four.
 - Preserve the plumbing; overhaul the surface.
 - Real logo, real photos, real Dubai developer/community/project data.

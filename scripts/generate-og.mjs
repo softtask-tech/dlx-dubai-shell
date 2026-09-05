@@ -242,7 +242,7 @@ body {
     <h1 class="tagline">${escapeHtml(tagline)}</h1>
   </div>
   <div class="row">
-    <span class="licence" dir="ltr">${escapeHtml(`${brand.address.locality} · RERA ORN ${brand.reraOrn}`)}</span>
+    <span class="licence" dir="ltr">${escapeHtml(`${brand.address.locality} · ${brand.domain}`)}</span>
     <span class="eyebrow" dir="ltr">${escapeHtml(brand.domain)}</span>
   </div>
 </body>

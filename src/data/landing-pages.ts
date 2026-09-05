@@ -60,7 +60,7 @@ export const LANDING_PAGES: readonly LandingPage[] = [
     proof: [
       { figure: "4%", label: "DLD transfer fee, fixed, and in every figure we quote" },
       { figure: "0", label: "Developer commissions that change what we recommend" },
-      { figure: "RERA 40905", label: "Registered brokerage, Business Bay" },
+      { figure: "DLD", label: "Official processes and dated source evidence" },
     ],
     bullets: [
       "Every instalment dated, with the handover payment shown separately.",
