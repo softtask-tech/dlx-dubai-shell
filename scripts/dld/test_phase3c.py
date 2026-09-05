@@ -7,10 +7,11 @@ import tempfile
 import unittest
 import sys
 from datetime import date
+from decimal import Decimal
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from phase3c_package import FIELDS, PROHIBITED_TOKENS, aggregate_key, observation_is_publishable, public_metric, public_segment, registry_predicate
+from phase3c_package import FIELDS, PROHIBITED_TOKENS, aggregate_key, build_developer_number_map, canonicalize_developer_number, observation_is_publishable, public_metric, public_segment, registry_predicate
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -86,6 +87,28 @@ class Phase3CTests(unittest.TestCase):
     def test_arabic_round_trip(self):
         text = "دبي مارينا"
         self.assertEqual(text.encode("utf-8").decode("utf-8"), text)
+
+    def test_developer_number_canonicalization(self):
+        cases = [(1000, "1000"), (Decimal("1000.00"), "1000"), (101.0, "101"), ("101", "101"), (" 101.00 ", "101"), ("000101.0", "101")]
+        for source, expected in cases:
+            with self.subTest(source=source):
+                self.assertEqual(canonicalize_developer_number(source), expected)
+
+    def test_developer_number_rejections(self):
+        for value in ("101.5", Decimal("0"), -1, "NaN", float("nan"), "Infinity", float("inf"), "1e3", "1E+3", "10 1", "1,000", "+101", "abc", "", None, True):
+            with self.subTest(value=value):
+                with self.assertRaises(ValueError):
+                    canonicalize_developer_number(value)
+
+    def test_scientific_notation_policy_is_reject(self):
+        for value in ("1e3", "1E+3", Decimal("1E+3")):
+            with self.assertRaises(ValueError):
+                canonicalize_developer_number(value)
+
+    def test_developer_number_collision_detection(self):
+        with self.assertRaises(ValueError):
+            build_developer_number_map([(1, "101.00"), (2, "101")])
+        self.assertEqual(build_developer_number_map([(1, "101.00"), (1, "101")]), {1: "101"})
 
 
 if __name__ == "__main__":

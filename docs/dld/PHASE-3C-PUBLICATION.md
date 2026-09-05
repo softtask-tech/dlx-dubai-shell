@@ -36,3 +36,24 @@ Inputs are capped to 10 metrics, 20 community IDs, three entity types, 100 query
 2. Confirm public wording and consumers with editorial/compliance owners.
 3. Confirm Lovable’s approved service-side CSV staging mechanism and persist package/manifest hashes.
 4. Activate the directory first: project/developer validation depends on its canonical records.
+
+## Developer-identifier corrective release
+
+The original package serialized 7,948 developer rows across 727 official
+developer numbers with a `.00` suffix. The corrective generator now reads the
+authoritative `developer_number`, trims only surrounding whitespace, validates
+it using exact decimal arithmetic, and emits positive integral values as plain
+base-10 integer text. It rejects fractional, zero, negative, non-finite,
+nonnumeric, punctuated, embedded-whitespace, and scientific-notation forms.
+
+- Previous ZIP SHA-256: `f18884565a37d56b04ff5406ae11ff844d6f8b7de9be25c3b0b7934ef0dc9a84`
+- Corrected ZIP SHA-256: `d526b997241ba9211dcb1d713203eb432b521a34fc05209d38f33d6cea8cee90`
+- Previous manifest SHA-256: `f6492b17ea6c497f40714294677185e9a0591d338057c3228dddf1f21bee04d6`
+- Corrected manifest SHA-256: `0507b2938d5db7378ae3fec27eee980782bf77d0a899a77d6322ea500138132a`
+- Corrected ZIP size: 5,782,531 bytes; 108,982 rows in seven chunks.
+
+All 727 corrected identifiers resolve exactly once in the Phase 1A developer
+registry. The baseline comparison proves all non-developer rows are identical
+and that developer values, observations, periods, confidence, and quality flags
+are unchanged. Only the 7,948 developer entity IDs and their derived aggregate
+keys changed semantically.

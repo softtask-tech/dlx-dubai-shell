@@ -1,0 +1,26 @@
+{
+  "canonicalization": "positive integral official developer_number to base-10 integer text; scientific notation and unsafe forms rejected",
+  "developer_identity": {
+    "aggregate_rows": 7948,
+    "canonical_pattern": "^[1-9][0-9]*$",
+    "distinct_identifiers": 727,
+    "exact_directory_matches": 727
+  },
+  "logical_comparison": {
+    "canonical_collision_groups": 0,
+    "developer_ids_changed": 7948,
+    "developer_keys_changed": 7948,
+    "developer_logical_fields_unchanged": true,
+    "developer_rows": 7948,
+    "new_distinct_developer_ids": 727,
+    "nondeveloper_rows_byte_identical": true,
+    "old_distinct_developer_ids": 727,
+    "total_rows_unchanged": true
+  },
+  "new_manifest_sha256": "0507b2938d5db7378ae3fec27eee980782bf77d0a899a77d6322ea500138132a",
+  "new_zip_bytes": 5782531,
+  "new_zip_sha256": "d526b997241ba9211dcb1d713203eb432b521a34fc05209d38f33d6cea8cee90",
+  "old_manifest_sha256": "f6492b17ea6c497f40714294677185e9a0591d338057c3228dddf1f21bee04d6",
+  "old_zip_sha256": "f18884565a37d56b04ff5406ae11ff844d6f8b7de9be25c3b0b7934ef0dc9a84",
+  "reason": "Developer numbers were previously serialized with a zero-only decimal suffix"
+}

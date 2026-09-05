@@ -1,14 +1,19 @@
 {
   "files": [
     {
+      "bytes": 1166,
+      "file": "corrective_release.json",
+      "sha256": "ddb948ec51720a55b723ef361cd6e4b07da6f3a6b3409ba17636a4f18dc909b3"
+    },
+    {
       "bytes": 986,
       "file": "migration_review.json",
       "sha256": "5ec127ae401fe2dcb618d57b6c5266471c01ab2a2b870835d37e047bb8df88bc"
     },
     {
-      "bytes": 4008,
+      "bytes": 4177,
       "file": "package_summary.json",
-      "sha256": "7fd90e43820aa5f32cf7dedf1e7a839a4bfd8ed51c900e3331097287d8477373"
+      "sha256": "d91a0f477876d9c7c988630f60e078e5b5ad9da833201da94c64f57c8e40db7e"
     },
     {
       "bytes": 608,
@@ -21,9 +26,9 @@
       "sha256": "36cb0a8a962b3b4cfd2cf2978d902a3ac406940d791d0747d7285ad451464f08"
     },
     {
-      "bytes": 2547,
+      "bytes": 2544,
       "file": "safe_samples.json",
-      "sha256": "6c88b56afaacccca35a67eed28e518527f7fbe87461f239539e3584f4ac65319"
+      "sha256": "ba27cf9e212eb820de40f173d7fd26bd2f0b6a56d6ae27c89c2198a0fd498e81"
     },
     {
       "bytes": 4240,
@@ -31,9 +36,9 @@
       "sha256": "2798a747e602a75576affffebdfa68eb56ffe2e4dce2b22a712264a8733715ab"
     },
     {
-      "bytes": 190,
+      "bytes": 723,
       "file": "verification.json",
-      "sha256": "f9d8729a6a889ec820a5e9bbdffefd4cfacd35e02a9a2e5223def51ec16a59a2"
+      "sha256": "86e8ce55e8c90a7573b9683391b76a77b7dc4b0044cf7c3d8c9376883bf96a27"
     }
   ],
   "schema_version": "dld-phase3c-reports/1"

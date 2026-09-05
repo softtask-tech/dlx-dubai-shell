@@ -1,6 +1,23 @@
 {
   "chunk_count": 7,
-  "deterministic_generation": "verified separately by verify_phase3c.py --deterministic",
+  "corrective_comparison": {
+    "canonical_collision_groups": 0,
+    "developer_ids_changed": 7948,
+    "developer_keys_changed": 7948,
+    "developer_logical_fields_unchanged": true,
+    "developer_rows": 7948,
+    "new_distinct_developer_ids": 727,
+    "nondeveloper_rows_byte_identical": true,
+    "old_distinct_developer_ids": 727,
+    "total_rows_unchanged": true
+  },
+  "deterministic_generation": "verified by verify_phase3c.py --deterministic",
+  "developer_identity": {
+    "aggregate_rows": 7948,
+    "canonical_pattern": "^[1-9][0-9]*$",
+    "distinct_identifiers": 727,
+    "exact_directory_matches": 727
+  },
   "package_verified": true,
   "privacy_scan": "pass",
   "row_count": 108982

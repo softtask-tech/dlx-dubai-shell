@@ -8,10 +8,12 @@ import csv
 import hashlib
 import io
 import json
+import re
 import shutil
 import zipfile
 from collections import Counter
 from datetime import date, datetime, timezone
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -21,6 +23,7 @@ import duckdb
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_DB = ROOT / "data/dld/local/phase3b/phase3b.duckdb"
 DEFAULT_OUTPUT = ROOT / "data/dld/transfer/phase3c"
+DEFAULT_DEVELOPER_REGISTRY = ROOT / "data/dld/directory/phase1a/developers.parquet"
 REGISTRY_PATH = Path(__file__).with_name("phase3c_scope_registry.json")
 SCHEMA_VERSION = "dld-market-transfer/1"
 METHODOLOGY_VERSION = "dld-market-publication-phase3c-v1"
@@ -36,12 +39,51 @@ PROHIBITED_TOKENS = {
     "participant_id", "phone", "email", "fax", "nationality", "developer_id",
     "recorded_value", "annual_amount", "actual_area", "rsi",
 }
+DEVELOPER_NUMBER_PATTERN = re.compile(r"^[0-9]+(?:\.0+)?$")
 
 
 def observation_is_publishable(metric_code: str, observations: int) -> bool:
     """Apply the public count/value/change threshold without revealing a small cell."""
     threshold = 30 if metric_code.endswith("_change") or metric_code == "median_registered_annual_rent_aed" else 10
     return observations >= threshold
+
+
+def canonicalize_developer_number(value: Any) -> str:
+    """Return an official developer number as positive base-10 integer text.
+
+    Outer whitespace is controlled by trimming. Embedded whitespace, signs,
+    punctuation other than a zero-only decimal part, and scientific notation are
+    rejected. Decimal parses are exact; binary floating-point rounding is never
+    used to decide integrality.
+    """
+    if value is None or isinstance(value, bool):
+        raise ValueError("developer number must be a numeric identifier")
+    text = str(value).strip()
+    if not text or not DEVELOPER_NUMBER_PATTERN.fullmatch(text):
+        raise ValueError(f"invalid developer number representation: {text!r}")
+    try:
+        number = Decimal(text)
+    except InvalidOperation as error:
+        raise ValueError("invalid developer number") from error
+    if not number.is_finite() or number <= 0 or number != number.to_integral_value():
+        raise ValueError("developer number must be finite, positive, and integral")
+    return str(int(number))
+
+
+def build_developer_number_map(rows: Iterable[tuple[Any, Any]]) -> dict[int, str]:
+    """Build a collision-free internal-to-public lookup from authoritative values."""
+    result: dict[int, str] = {}
+    owners: dict[str, int] = {}
+    for internal_value, official_value in rows:
+        internal_id = int(internal_value)
+        canonical = canonicalize_developer_number(official_value)
+        if internal_id in result and result[internal_id] != canonical:
+            raise ValueError(f"developer {internal_id} has conflicting official numbers")
+        if canonical in owners and owners[canonical] != internal_id:
+            raise ValueError(f"developer-number canonicalization collision: {canonical}")
+        result[internal_id] = canonical
+        owners[canonical] = internal_id
+    return result
 
 
 def canonical_json(value: Any) -> bytes:
@@ -207,14 +249,28 @@ def write_chunks(output: Path, records: Iterable[dict[str, Any]]) -> tuple[list[
     return chunks, counts
 
 
-def package(database: Path, output: Path) -> dict[str, Any]:
+def package(database: Path, output: Path, developer_registry: Path = DEFAULT_DEVELOPER_REGISTRY) -> dict[str, Any]:
     registry = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
     if output.exists():
         shutil.rmtree(output)
     output.mkdir(parents=True)
     conn = duckdb.connect(str(database), read_only=True)
-    developer_numbers = {int(row[0]): str(row[1]) for row in conn.execute("select developer_id, developer_number from dim_developers").fetchall()}
     predicate = registry_predicate(registry)
+    developer_numbers = build_developer_number_map(conn.execute("select developer_id, developer_number from dim_developers").fetchall())
+    directory_rows = conn.execute("select developer_number from read_parquet(?)", [str(developer_registry)]).fetchall()
+    directory_numbers = [canonicalize_developer_number(row[0]) for row in directory_rows]
+    if len(directory_numbers) != len(set(directory_numbers)):
+        raise ValueError("Phase 1A developer-number registry is not unique after canonicalization")
+    referenced_internal_ids = {
+        int(row[0]) for row in conn.execute(
+            f"select distinct try_cast(split_part(entity_key,':',2) as bigint) from public_aggregates_sanitized "
+            f"where entity_type='developer' and completeness_state='complete' and suppression_state='publishable' "
+            f"and period_start >= date '2010-01-01' and ({predicate})"
+        ).fetchall()
+    }
+    referenced_numbers = {developer_numbers[item] for item in referenced_internal_ids}
+    if not referenced_numbers <= set(directory_numbers):
+        raise ValueError("developer aggregate does not exactly match the Phase 1A public developer-number registry")
     query = f"""
       select data_domain,entity_type,entity_key,entity_name_en,entity_name_ar,
         segment_type,segment_key,period_type,period_start,period_end,metric_name,
@@ -265,6 +321,12 @@ Rollback: do not activate a failed run. To restore an earlier successful run, us
         "original_phase3b_rows": int(original_rows),
         "total_expected_rows": total_rows,
         "expected_counts": dict(sorted(counts.items())),
+        "developer_identity": {
+            "distinct_identifiers": len(referenced_numbers),
+            "aggregate_rows": sum(value for key, value in counts.items() if key.startswith("developer|")),
+            "exact_directory_matches": len(referenced_numbers),
+            "canonical_pattern": "^[1-9][0-9]*$",
+        },
         "chunks": chunks,
     }
     (output / "manifest.json").write_bytes(canonical_json(manifest))
@@ -287,8 +349,9 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--database", type=Path, default=DEFAULT_DB)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--developer-registry", type=Path, default=DEFAULT_DEVELOPER_REGISTRY)
     args = parser.parse_args()
-    package(args.database.resolve(), args.output.resolve())
+    package(args.database.resolve(), args.output.resolve(), args.developer_registry.resolve())
     return 0
 
 
