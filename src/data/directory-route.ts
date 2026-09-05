@@ -38,3 +38,38 @@ export async function loadDirectoryDetail(
     },
   });
 }
+
+/**
+ * Registered sale activity for one official record, matched on its public
+ * number and nothing else. A record with no official number, or one the
+ * published aggregates do not cover, simply gets no module.
+ */
+export async function loadRecordedActivity(
+  entityType: "project" | "developer",
+  primaryNumber: string | null,
+) {
+  const { getMarketEntitySeriesFn, getMarketMetadataFn } = await import(
+    "./market-public.functions"
+  );
+  if (!primaryNumber || !/^[0-9]{1,12}$/.test(primaryNumber)) {
+    return { rows: [], sourceExportDate: null };
+  }
+  const [metadata, rows] = await Promise.all([
+    getMarketMetadataFn(),
+    getMarketEntitySeriesFn({
+      data: {
+        entityType,
+        entityId: primaryNumber,
+        metric: "registered_sale_count",
+        grain: "year",
+        from: "2015-01-01",
+        to: "2026-12-31",
+        limit: 20,
+      },
+    }),
+  ]);
+  return {
+    rows: rows.filter((row) => row.segment_code === "all"),
+    sourceExportDate: metadata.sourceExportDate,
+  };
+}
