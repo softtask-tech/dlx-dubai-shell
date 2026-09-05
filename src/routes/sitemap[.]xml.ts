@@ -41,13 +41,13 @@ export const Route = createFileRoute("/sitemap.xml")({
          */
         const [propertySlugs, developerSlugs, projectSlugs, areas, postSlugs, marketCommunities] =
           await Promise.all([
-          listPropertySlugs().catch(() => [] as string[]),
-          listDeveloperSlugs().catch(() => [] as string[]),
-          listProjectSlugs().catch(() => [] as string[]),
-          listAreasWithStats().catch(() => []),
-          listPostSlugs().catch(() => [] as string[]),
-          listMarketCommunitiesServer().catch(() => []),
-        ]);
+            listPropertySlugs().catch(() => [] as string[]),
+            listDeveloperSlugs().catch(() => [] as string[]),
+            listProjectSlugs().catch(() => [] as string[]),
+            listAreasWithStats().catch(() => []),
+            listPostSlugs().catch(() => [] as string[]),
+            listMarketCommunitiesServer().catch(() => []),
+          ]);
 
         type Entry = {
           path: string;

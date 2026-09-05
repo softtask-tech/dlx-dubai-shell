@@ -61,7 +61,10 @@ export default defineTool({
     const listings = rows.map(card);
     return {
       content: [
-        { type: "text" as const, text: JSON.stringify({ count: listings.length, listings }, null, 2) },
+        {
+          type: "text" as const,
+          text: JSON.stringify({ count: listings.length, listings }, null, 2),
+        },
       ],
       structuredContent: { count: listings.length, listings },
     };

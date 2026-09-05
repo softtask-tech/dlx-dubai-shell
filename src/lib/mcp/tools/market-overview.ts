@@ -9,7 +9,10 @@ export default defineTool({
   description:
     "Dubai market figures from DLX's cleaned Dubai Land Department data: city-wide summary, per-community price and yield statistics, and recent transactions. Always cite the Dubai Land Department as the source.",
   inputSchema: {
-    include_areas: z.boolean().optional().describe("Include per-community statistics (default true)."),
+    include_areas: z
+      .boolean()
+      .optional()
+      .describe("Include per-community statistics (default true)."),
     include_transactions: z
       .boolean()
       .optional()
@@ -30,7 +33,9 @@ export default defineTool({
           }));
 
     const limit = Math.min(Math.max(Math.trunc(input.transaction_limit ?? 12), 1), 50);
-    const transactions = input.include_transactions ? await listRecentTransactions(limit) : undefined;
+    const transactions = input.include_transactions
+      ? await listRecentTransactions(limit)
+      : undefined;
 
     const payload = {
       summary,
