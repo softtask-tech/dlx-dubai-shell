@@ -14,7 +14,7 @@ export const brand = {
   shortName: "DLX",
   legalName: "DLX Properties L.L.C.",
   /** Bare domain, shown on social cards and used as the default canonical origin. */
-  domain: "dlxproperties.ae",
+  domain: "dlxproperties.com",
   tagline: "Dubai real estate, handled with intention.",
   description:
     "A private Dubai brokerage advising on prime residential acquisitions, off-market sales and long-term portfolio strategy.",
@@ -33,7 +33,7 @@ export const brand = {
   /** Business Bay, Dubai, used for LocalBusiness geo coordinates. */
   geo: { latitude: 25.1857, longitude: 55.2766 },
   contact: {
-    email: "hello@dlxproperties.ae",
+    email: "hello@dlxproperties.com",
     phone: "+971 (0) 000 0000",
     /** E.164 form for `tel:` links and schema. */
     phoneE164: "+9710000000",

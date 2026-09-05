@@ -47,6 +47,8 @@ import { Route as DirectoryValuatorsRouteImport } from './routes/directory/valua
 import { Route as GuidesIndexRouteImport } from './routes/guides/index'
 import { Route as GuidesSlugRouteImport } from './routes/guides/$slug'
 import { Route as LpSlugRouteImport } from './routes/lp/$slug'
+import { Route as OffPlanIndexRouteImport } from './routes/off-plan/index'
+import { Route as OffPlanSlugRouteImport } from './routes/off-plan/$slug'
 import { Route as ProjectsSlugRouteImport } from './routes/projects/$slug'
 import { Route as PropertiesIndexRouteImport } from './routes/properties/index'
 import { Route as PropertiesSlugRouteImport } from './routes/properties/$slug'
@@ -261,6 +263,16 @@ const LpSlugRoute = LpSlugRouteImport.update({
   path: '/lp/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OffPlanIndexRoute = OffPlanIndexRouteImport.update({
+  id: '/off-plan/',
+  path: '/off-plan/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OffPlanSlugRoute = OffPlanSlugRouteImport.update({
+  id: '/off-plan/$slug',
+  path: '/off-plan/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
   id: '/projects/$slug',
   path: '/projects/$slug',
@@ -405,6 +417,7 @@ export interface FileRoutesByFullPath {
   '/directory/valuators': typeof DirectoryValuatorsRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/lp/$slug': typeof LpSlugRoute
+  '/off-plan/$slug': typeof OffPlanSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/reports/$token': typeof ReportsTokenRoute
@@ -417,6 +430,7 @@ export interface FileRoutesByFullPath {
   '/developers/': typeof DevelopersIndexRoute
   '/directory/': typeof DirectoryIndexRoute
   '/guides/': typeof GuidesIndexRoute
+  '/off-plan/': typeof OffPlanIndexRoute
   '/properties/': typeof PropertiesIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/tools/': typeof ToolsIndexRoute
@@ -465,6 +479,7 @@ export interface FileRoutesByTo {
   '/directory/valuators': typeof DirectoryValuatorsRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/lp/$slug': typeof LpSlugRoute
+  '/off-plan/$slug': typeof OffPlanSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/reports/$token': typeof ReportsTokenRoute
@@ -477,6 +492,7 @@ export interface FileRoutesByTo {
   '/developers': typeof DevelopersIndexRoute
   '/directory': typeof DirectoryIndexRoute
   '/guides': typeof GuidesIndexRoute
+  '/off-plan': typeof OffPlanIndexRoute
   '/properties': typeof PropertiesIndexRoute
   '/services': typeof ServicesIndexRoute
   '/tools': typeof ToolsIndexRoute
@@ -528,6 +544,7 @@ export interface FileRoutesById {
   '/directory/valuators': typeof DirectoryValuatorsRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/lp/$slug': typeof LpSlugRoute
+  '/off-plan/$slug': typeof OffPlanSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/reports/$token': typeof ReportsTokenRoute
@@ -540,6 +557,7 @@ export interface FileRoutesById {
   '/developers/': typeof DevelopersIndexRoute
   '/directory/': typeof DirectoryIndexRoute
   '/guides/': typeof GuidesIndexRoute
+  '/off-plan/': typeof OffPlanIndexRoute
   '/properties/': typeof PropertiesIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/tools/': typeof ToolsIndexRoute
@@ -592,6 +610,7 @@ export interface FileRouteTypes {
     | '/directory/valuators'
     | '/guides/$slug'
     | '/lp/$slug'
+    | '/off-plan/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
     | '/reports/$token'
@@ -604,6 +623,7 @@ export interface FileRouteTypes {
     | '/developers/'
     | '/directory/'
     | '/guides/'
+    | '/off-plan/'
     | '/properties/'
     | '/services/'
     | '/tools/'
@@ -652,6 +672,7 @@ export interface FileRouteTypes {
     | '/directory/valuators'
     | '/guides/$slug'
     | '/lp/$slug'
+    | '/off-plan/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
     | '/reports/$token'
@@ -664,6 +685,7 @@ export interface FileRouteTypes {
     | '/developers'
     | '/directory'
     | '/guides'
+    | '/off-plan'
     | '/properties'
     | '/services'
     | '/tools'
@@ -714,6 +736,7 @@ export interface FileRouteTypes {
     | '/directory/valuators'
     | '/guides/$slug'
     | '/lp/$slug'
+    | '/off-plan/$slug'
     | '/projects/$slug'
     | '/properties/$slug'
     | '/reports/$token'
@@ -726,6 +749,7 @@ export interface FileRouteTypes {
     | '/developers/'
     | '/directory/'
     | '/guides/'
+    | '/off-plan/'
     | '/properties/'
     | '/services/'
     | '/tools/'
@@ -769,6 +793,7 @@ export interface RootRouteChildren {
   DirectoryValuatorsRoute: typeof DirectoryValuatorsRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   LpSlugRoute: typeof LpSlugRoute
+  OffPlanSlugRoute: typeof OffPlanSlugRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
   PropertiesSlugRoute: typeof PropertiesSlugRoute
   ReportsTokenRoute: typeof ReportsTokenRoute
@@ -779,6 +804,7 @@ export interface RootRouteChildren {
   DevelopersIndexRoute: typeof DevelopersIndexRoute
   DirectoryIndexRoute: typeof DirectoryIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
+  OffPlanIndexRoute: typeof OffPlanIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
   ToolsIndexRoute: typeof ToolsIndexRoute
@@ -1066,6 +1092,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LpSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/off-plan/': {
+      id: '/off-plan/'
+      path: '/off-plan'
+      fullPath: '/off-plan/'
+      preLoaderRoute: typeof OffPlanIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/off-plan/$slug': {
+      id: '/off-plan/$slug'
+      path: '/off-plan/$slug'
+      fullPath: '/off-plan/$slug'
+      preLoaderRoute: typeof OffPlanSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects/$slug': {
       id: '/projects/$slug'
       path: '/projects/$slug'
@@ -1288,6 +1328,7 @@ const rootRouteChildren: RootRouteChildren = {
   DirectoryValuatorsRoute: DirectoryValuatorsRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   LpSlugRoute: LpSlugRoute,
+  OffPlanSlugRoute: OffPlanSlugRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
   PropertiesSlugRoute: PropertiesSlugRoute,
   ReportsTokenRoute: ReportsTokenRoute,
@@ -1298,6 +1339,7 @@ const rootRouteChildren: RootRouteChildren = {
   DevelopersIndexRoute: DevelopersIndexRoute,
   DirectoryIndexRoute: DirectoryIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
+  OffPlanIndexRoute: OffPlanIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
   ToolsIndexRoute: ToolsIndexRoute,

@@ -118,10 +118,10 @@ Deno.serve(async (request) => {
     Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "",
   );
 
-  const siteUrl = (Deno.env.get("SITE_URL") ?? "https://dlxproperties.ae").replace(/\/$/, "");
+  const siteUrl = (Deno.env.get("SITE_URL") ?? "https://dlxproperties.com").replace(/\/$/, "");
   const nurtureSecret = Deno.env.get("NURTURE_SECRET") ?? secret;
   const apiKey = Deno.env.get("RESEND_API_KEY");
-  const from = Deno.env.get("LEAD_FROM_EMAIL") ?? "DLX Properties <hello@dlxproperties.ae>";
+  const from = Deno.env.get("LEAD_FROM_EMAIL") ?? "DLX Properties <hello@dlxproperties.com>";
 
   /*
    * Only leads nobody is actively working. An automated email landing in the

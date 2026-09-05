@@ -12,7 +12,7 @@
  *
  * Environment:
  *   RESEND_API_KEY, https://resend.com/api-keys
- *   LEAD_FROM_EMAIL, verified sender, e.g. "DLX Properties <hello@dlxproperties.ae>"
+ *   LEAD_FROM_EMAIL, verified sender, e.g. "DLX Properties <hello@dlxproperties.com>"
  *   LEAD_ADMIN_EMAIL, where notifications land (comma-separated for several)
  * Supabase provides SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY automatically.
  */
@@ -29,9 +29,9 @@ const RESEND_ENDPOINT = "https://api.resend.com/emails";
 
 const BRAND: BrandInfo = {
   name: "DLX Properties",
-  domain: Deno.env.get("SITE_DOMAIN") ?? "dlxproperties.ae",
+  domain: Deno.env.get("SITE_DOMAIN") ?? "dlxproperties.com",
   reraOrn: "40905",
-  email: Deno.env.get("LEAD_ADMIN_EMAIL")?.split(",")[0]?.trim() ?? "hello@dlxproperties.ae",
+  email: Deno.env.get("LEAD_ADMIN_EMAIL")?.split(",")[0]?.trim() ?? "hello@dlxproperties.com",
   phone: Deno.env.get("BRAND_PHONE") ?? "+971 (0) 000 0000",
 };
 

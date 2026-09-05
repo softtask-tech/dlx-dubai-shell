@@ -65,6 +65,17 @@ export const SITE_PAGES: readonly SitePage[] = [
     changeFrequency: "daily",
   },
   {
+    path: "/off-plan",
+    label: "Off-plan",
+    inPrimaryNav: false,
+    title: "Off-plan Property in Dubai",
+    description:
+      "A considered route into Dubai off-plan property, separating verified availability, payment terms, delivery and market evidence from sales narrative.",
+    tagline: "Off-plan decisions built from terms, timing and evidence.",
+    priority: 0.8,
+    changeFrequency: "weekly",
+  },
+  {
     path: "/services",
     label: "Services",
     title: "Services",

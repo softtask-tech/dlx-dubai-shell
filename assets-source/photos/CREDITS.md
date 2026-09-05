@@ -30,3 +30,11 @@ then run `npm i -D sharp && node scripts/build-photos.mjs`.
 These are stock, and they are placeholders in the sense that matters: the
 moment DLX supplies its own licensed listing, developer and lifestyle
 photography, it drops into the same slugs and nothing about the layouts moves.
+
+## Phase 2B concept imagery
+
+The optimized `off-plan-harbour-canvas`, `off-plan-saffron-grove` and
+`off-plan-meridian-gate` hero and detail assets were generated with OpenAI's built-in image
+generation tool on 5 September 2026. They depict fictional, non-identifiable
+architecture for local/Lovable preview only. They contain no developer branding,
+copied project architecture, embedded claims or intended real-world location.
