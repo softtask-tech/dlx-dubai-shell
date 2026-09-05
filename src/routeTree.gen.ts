@@ -46,6 +46,7 @@ import { Route as DirectoryValuatorsRouteImport } from './routes/directory/valua
 import { Route as GuidesIndexRouteImport } from './routes/guides/index'
 import { Route as GuidesSlugRouteImport } from './routes/guides/$slug'
 import { Route as LpSlugRouteImport } from './routes/lp/$slug'
+import { Route as MarketIntelligenceIndexRouteImport } from './routes/market-intelligence/index'
 import { Route as OffPlanIndexRouteImport } from './routes/off-plan/index'
 import { Route as OffPlanSlugRouteImport } from './routes/off-plan/$slug'
 import { Route as ProjectsSlugRouteImport } from './routes/projects/$slug'
@@ -257,6 +258,11 @@ const LpSlugRoute = LpSlugRouteImport.update({
   path: '/lp/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MarketIntelligenceIndexRoute = MarketIntelligenceIndexRouteImport.update({
+  id: '/market-intelligence/',
+  path: '/market-intelligence/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OffPlanIndexRoute = OffPlanIndexRouteImport.update({
   id: '/off-plan/',
   path: '/off-plan/',
@@ -423,6 +429,7 @@ export interface FileRoutesByFullPath {
   '/developers/': typeof DevelopersIndexRoute
   '/directory/': typeof DirectoryIndexRoute
   '/guides/': typeof GuidesIndexRoute
+  '/market-intelligence/': typeof MarketIntelligenceIndexRoute
   '/off-plan/': typeof OffPlanIndexRoute
   '/properties/': typeof PropertiesIndexRoute
   '/services/': typeof ServicesIndexRoute
@@ -484,6 +491,7 @@ export interface FileRoutesByTo {
   '/developers': typeof DevelopersIndexRoute
   '/directory': typeof DirectoryIndexRoute
   '/guides': typeof GuidesIndexRoute
+  '/market-intelligence': typeof MarketIntelligenceIndexRoute
   '/off-plan': typeof OffPlanIndexRoute
   '/properties': typeof PropertiesIndexRoute
   '/services': typeof ServicesIndexRoute
@@ -548,6 +556,7 @@ export interface FileRoutesById {
   '/developers/': typeof DevelopersIndexRoute
   '/directory/': typeof DirectoryIndexRoute
   '/guides/': typeof GuidesIndexRoute
+  '/market-intelligence/': typeof MarketIntelligenceIndexRoute
   '/off-plan/': typeof OffPlanIndexRoute
   '/properties/': typeof PropertiesIndexRoute
   '/services/': typeof ServicesIndexRoute
@@ -613,6 +622,7 @@ export interface FileRouteTypes {
     | '/developers/'
     | '/directory/'
     | '/guides/'
+    | '/market-intelligence/'
     | '/off-plan/'
     | '/properties/'
     | '/services/'
@@ -674,6 +684,7 @@ export interface FileRouteTypes {
     | '/developers'
     | '/directory'
     | '/guides'
+    | '/market-intelligence'
     | '/off-plan'
     | '/properties'
     | '/services'
@@ -737,6 +748,7 @@ export interface FileRouteTypes {
     | '/developers/'
     | '/directory/'
     | '/guides/'
+    | '/market-intelligence/'
     | '/off-plan/'
     | '/properties/'
     | '/services/'
@@ -791,6 +803,7 @@ export interface RootRouteChildren {
   DevelopersIndexRoute: typeof DevelopersIndexRoute
   DirectoryIndexRoute: typeof DirectoryIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
+  MarketIntelligenceIndexRoute: typeof MarketIntelligenceIndexRoute
   OffPlanIndexRoute: typeof OffPlanIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
@@ -1072,6 +1085,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LpSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/market-intelligence/': {
+      id: '/market-intelligence/'
+      path: '/market-intelligence'
+      fullPath: '/market-intelligence/'
+      preLoaderRoute: typeof MarketIntelligenceIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/off-plan/': {
       id: '/off-plan/'
       path: '/off-plan'
@@ -1318,6 +1338,7 @@ const rootRouteChildren: RootRouteChildren = {
   DevelopersIndexRoute: DevelopersIndexRoute,
   DirectoryIndexRoute: DirectoryIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
+  MarketIntelligenceIndexRoute: MarketIntelligenceIndexRoute,
   OffPlanIndexRoute: OffPlanIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
