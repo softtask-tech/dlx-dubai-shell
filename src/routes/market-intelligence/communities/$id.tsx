@@ -297,7 +297,7 @@ function Confidence({ rows, dark = false }: { rows: readonly (MarketRow | null)[
   const records = Math.max(...present.map((row) => row.observation_count));
   return (
     <p className={`caption mt-12 max-w-measure ${dark ? "text-on-dark-muted" : ""}`}>
-      {CONFIDENCE_LABELS[weakest as MarketConfidence]} Based on up to{" "}
+      {CONFIDENCE_LABELS[weakest as MarketConfidence]}. Based on up to{" "}
       {records.toLocaleString("en-AE")} registered records in the period.
     </p>
   );
