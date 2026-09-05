@@ -23,6 +23,12 @@
     "quarter": 50555,
     "year": 27359
   },
+  "developer_identity": {
+    "aggregate_rows": 7948,
+    "canonical_pattern": "^[1-9][0-9]*$",
+    "distinct_identifiers": 727,
+    "exact_directory_matches": 727
+  },
   "expected_counts": {
     "community|month|registered_rental_contract_count": 21100,
     "community|month|registered_sale_count": 5625,

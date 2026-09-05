@@ -76,3 +76,8 @@ UTF-8 CSV/ZIP transfer package without connecting to Supabase:
 ```
 
 The additive Phase 3C migration is a review artifact and remains unapplied.
+
+For the developer-number corrective release, keep the prior ZIP at the ignored
+default baseline path shown by `verify_phase3c.py --help`. The verifier requires
+developer IDs to match `^[1-9][0-9]*$`, resolve exactly once in the Phase 1A
+developer registry, and pass a field-by-field comparison with that baseline.

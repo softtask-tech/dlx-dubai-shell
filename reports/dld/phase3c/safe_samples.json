@@ -19,9 +19,9 @@
     "source_export_date": "2026-09-04"
   },
   {
-    "aggregate_key": "c9bdbf32899cdf83bbdabf3d05d2aab05867adec4007c500b6991d5a7a2db0b5",
+    "aggregate_key": "36dc91df328478cda6995e10cb67f6695c52c5b71578f90c76e1b50dee0c3983",
     "confidence": "higher",
-    "entity_id": "966.00",
+    "entity_id": "966",
     "entity_type": "developer",
     "methodology_version": "dld-market-publication-phase3c-v1",
     "metric_code": "registered_sale_count",
