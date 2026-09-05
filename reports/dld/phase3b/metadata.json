@@ -1,0 +1,11 @@
+{
+  "database_opened_from_phase0_read_only": true,
+  "methodology_version": "dld-market-aggregation-phase3b-v1",
+  "remote_connections": 0,
+  "rental_actual_area_unit_status": "unresolved",
+  "schema_version": 1,
+  "source_export_date": "2026-09-04",
+  "source_package_hash": "17e79fdc966c4edc958736cc3e1d1e9dc0f59fbcdd0e614d98b725f42385a99a",
+  "source_rows": 16521480,
+  "transaction_currency_status": "unresolved"
+}

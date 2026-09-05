@@ -1,0 +1,42 @@
+{
+  "artifact": {
+    "bytes": 552924623,
+    "path": "C:\\Users\\adams\\Downloads\\dlx-dubai-shell\\data\\dld\\local\\phase3b\\sanitized_public_aggregates.jsonl",
+    "rows": 854251,
+    "sha256": "0fd63f89936be3449d70d9918c7459ddf38acd863dc1e0dcd3ad80102db673fb"
+  },
+  "columns": [
+    "data_domain",
+    "entity_type",
+    "entity_key",
+    "entity_name_en",
+    "entity_name_ar",
+    "segment_type",
+    "segment_key",
+    "segment_name_en",
+    "segment_name_ar",
+    "period_type",
+    "period_start",
+    "period_end",
+    "metric_name",
+    "metric_value",
+    "observation_count",
+    "suppression_state",
+    "confidence_state",
+    "completeness_state",
+    "quality_flags",
+    "source_export_date",
+    "methodology_version"
+  ],
+  "exclusions": [
+    "cells below 10",
+    "sale currency-dependent metrics",
+    "rent unit-price metrics",
+    "gross yield",
+    "primary/secondary classification",
+    "raw facts and internal identifiers",
+    "Residential Sale Index"
+  ],
+  "future_portable_package": "Split the sorted JSONL into deterministic chunks of at most 4 MB, hash each chunk, and bind counts/schema/methodology to a signed manifest before any separately approved transfer.",
+  "status": "proposed local sanitized artifact; not uploaded"
+}

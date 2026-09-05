@@ -1,0 +1,1162 @@
+{
+  "aggregate_cells_private": [
+    {
+      "column_name": "data_domain",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "entity_type",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "entity_key",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "entity_name_en",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "entity_name_ar",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "segment_type",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "segment_key",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "segment_name_en",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "segment_name_ar",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "period_type",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "period_start",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "period_end",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "is_complete_period",
+      "column_type": "BOOLEAN",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "observation_count",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "recorded_value_observations",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "recorded_value_total",
+      "column_type": "DOUBLE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "recorded_value_median",
+      "column_type": "DOUBLE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "unit_value_observations",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "unit_value_median",
+      "column_type": "DOUBLE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "annual_amount_observations",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "annual_amount_median",
+      "column_type": "DOUBLE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    }
+  ],
+  "aggregate_metrics_private": [
+    {
+      "column_name": "data_domain",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "entity_type",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "entity_key",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "entity_name_en",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "entity_name_ar",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "segment_type",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "segment_key",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "segment_name_en",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "segment_name_ar",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "period_type",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "period_start",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "period_end",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "is_complete_period",
+      "column_type": "BOOLEAN",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "observation_count",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "recorded_value_observations",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "recorded_value_total",
+      "column_type": "DOUBLE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "recorded_value_median",
+      "column_type": "DOUBLE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "unit_value_observations",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "unit_value_median",
+      "column_type": "DOUBLE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "annual_amount_observations",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "annual_amount_median",
+      "column_type": "DOUBLE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "metric_name",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "metric_observations",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "metric_value",
+      "column_type": "DOUBLE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "publication_state",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    }
+  ],
+  "public_aggregates_sanitized": [
+    {
+      "column_name": "data_domain",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "entity_type",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "entity_key",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "entity_name_en",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "entity_name_ar",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "segment_type",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "segment_key",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "segment_name_en",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "segment_name_ar",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "period_type",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "period_start",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "period_end",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "metric_name",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "metric_value",
+      "column_type": "DOUBLE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "observation_count",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "suppression_state",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "confidence_state",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "completeness_state",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "quality_flags",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "source_export_date",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "methodology_version",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    }
+  ],
+  "relationship_quarantine_private": [
+    {
+      "column_name": "source_kind",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "source_key_hash",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "issue",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    }
+  ],
+  "rental_contract_facts_private": [
+    {
+      "column_name": "contract_id",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "line_count",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "start_date",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "max_start_date",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "end_date",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "max_end_date",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "invalid_start_lines",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "invalid_end_lines",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "contract_amount",
+      "column_type": "DOUBLE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "max_contract_amount",
+      "column_type": "DOUBLE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "annual_amount",
+      "column_type": "DOUBLE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "max_annual_amount",
+      "column_type": "DOUBLE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "registration_type_id",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "max_registration_type_id",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "declared_property_count",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "distinct_area_ids",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "unresolved_area_lines",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "candidate_area_id",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "distinct_project_numbers",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "unresolved_project_lines",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "candidate_project_number",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "duration_days",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "header_consistent",
+      "column_type": "BOOLEAN",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "contract_classification",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "amount_eligible",
+      "column_type": "BOOLEAN",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "safe_area_id",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "safe_project_number",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "declared_property_count_mismatch",
+      "column_type": "BOOLEAN",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "month_start",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "quarter_start",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "year_start",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "source_export_date",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "methodology_version",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    }
+  ],
+  "rental_contract_lines_private": [
+    {
+      "column_name": "contract_id",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "line_number",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "area_id",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "project_number",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "property_type_id",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "property_subtype_id",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "business_property_type_id",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "community_relationship_state",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "project_relationship_state",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "source_export_date",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "methodology_version",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    }
+  ],
+  "residential_sale_index_private": [
+    {
+      "column_name": "source_period",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "category",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "period_type",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "value_type",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "official_value",
+      "column_type": "DOUBLE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "source_export_date",
+      "column_type": "DATE",
+      "default": "CAST('2026-09-04' AS \"DATE\")",
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    }
+  ],
+  "transaction_facts_private": [
+    {
+      "column_name": "transaction_id",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "transaction_date",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "group_id",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "procedure_id",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "area_id",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "project_number",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "registration_type_id",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "property_type_id",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "property_subtype_id",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "recorded_value",
+      "column_type": "DOUBLE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "procedure_area_sqm",
+      "column_type": "DOUBLE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "economic_classification",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "procedure_relationship_state",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "community_relationship_state",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "project_relationship_state",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "developer_id",
+      "column_type": "BIGINT",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "developer_relationship_state",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "recorded_value_per_sqm",
+      "column_type": "DOUBLE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "month_start",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "quarter_start",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "year_start",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "source_export_date",
+      "column_type": "DATE",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    },
+    {
+      "column_name": "methodology_version",
+      "column_type": "VARCHAR",
+      "default": null,
+      "extra": null,
+      "key": null,
+      "null": "YES"
+    }
+  ]
+}

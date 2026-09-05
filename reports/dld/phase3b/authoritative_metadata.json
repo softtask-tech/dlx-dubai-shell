@@ -1,0 +1,53 @@
+{
+  "access_date": "2026-09-06",
+  "official_sources": [
+    {
+      "supports": "transaction field meanings and procedure_area in square metres; does not state actual_worth currency",
+      "url": "https://www.gslb.dubaipulse.gov.ae/data/dld-transactions/dld_transactions-open-api"
+    },
+    {
+      "supports": "official transaction export field labels and transaction size in square metres; amount currency remains unstated on the field contract",
+      "url": "https://dubailand.gov.ae/en/open-data/real-estate-data/"
+    },
+    {
+      "supports": "official separate Residential Sale Index, hedonic methodology, monthly/quarterly/yearly series and usage disclaimer",
+      "url": "https://dubailand.gov.ae/en/open-data/residential-properties-price-index-rppi/"
+    },
+    {
+      "supports": "hedonic imputation methodology and residential category coverage",
+      "url": "https://dubailand.gov.ae/media/qnslugbi/the-dubai-house-price-index-methodology.pdf"
+    }
+  ],
+  "supplied_dld_dictionary": [
+    {
+      "field": "transactions.procedure_area",
+      "interpretation": "square metres",
+      "status": "supported"
+    },
+    {
+      "field": "transactions.actual_worth",
+      "interpretation": "property price; currency not declared",
+      "status": "currency unresolved"
+    },
+    {
+      "field": "rent.contract_amount",
+      "interpretation": "contract amount in AED",
+      "status": "supported"
+    },
+    {
+      "field": "rent.annual_amount",
+      "interpretation": "calculated annual amount for a non-12-month contract; derived from the AED contract amount",
+      "status": "supported for annual-rent medians"
+    },
+    {
+      "field": "rent.actual_area",
+      "interpretation": "property current area; unit not declared",
+      "status": "unit unresolved"
+    },
+    {
+      "field": "transaction registration type",
+      "interpretation": "existing or off-plan",
+      "status": "supported"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "classifications": [
+    {
+      "classification": "eligible_market_sale",
+      "record_count": 1290990
+    },
+    {
+      "classification": "excluded_sales_procedure",
+      "record_count": 69081
+    },
+    {
+      "classification": "gift",
+      "record_count": 66189
+    },
+    {
+      "classification": "invalid_date",
+      "record_count": 4
+    },
+    {
+      "classification": "mortgage",
+      "record_count": 349879
+    }
+  ],
+  "total": 1776143
+}

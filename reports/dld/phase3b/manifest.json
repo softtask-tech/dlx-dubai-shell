@@ -1,0 +1,71 @@
+{
+  "files": [
+    {
+      "bytes": 19554,
+      "file": "aggregate_summary.json",
+      "sha256": "c0c3cdd8671eaa4c95ab9fa16398b2faf49445305cbd7f64a18f088f25e86d81"
+    },
+    {
+      "bytes": 1990,
+      "file": "authoritative_metadata.json",
+      "sha256": "15444399951777c270a185d2c283e93d89703212574a72444d5056e65a7d7c12"
+    },
+    {
+      "bytes": 668,
+      "file": "deployment_architecture.json",
+      "sha256": "426a0aac72f0440893e63277c13e270fca8cd5b3cf348d005e100475601ccbcb"
+    },
+    {
+      "bytes": 430,
+      "file": "metadata.json",
+      "sha256": "d1a5ea0bb1a746ee2c7d111a0557ca4d6c29763d9316bcbd74399e1f4b71a1cb"
+    },
+    {
+      "bytes": 536,
+      "file": "migration_proposal.json",
+      "sha256": "4f46b8a2558e6861d785dc6ccf964099bde357be75a6fef9bd21dd44546ea202"
+    },
+    {
+      "bytes": 1597,
+      "file": "relationship_quality.json",
+      "sha256": "bb5d584e8aaa3bacf0fddd0f5d2fa5e59d4747362979dcdd371fd55f43583d3b"
+    },
+    {
+      "bytes": 954,
+      "file": "rental_reconciliation.json",
+      "sha256": "dc39287e0ca17d95fd5540b31eef76c5ddad12410837f9ae58f7a3e60782f9d8"
+    },
+    {
+      "bytes": 556,
+      "file": "residential_index.json",
+      "sha256": "91c46464c6280970484f4295ea8990ef5704cc6f178919055927b00a8c6de10a"
+    },
+    {
+      "bytes": 28037,
+      "file": "sanitized_samples.json",
+      "sha256": "3f5f6ac8e68c18830c9ac51b0636fffd2ee41d098925b8e67b73bc1e70de2b9a"
+    },
+    {
+      "bytes": 25533,
+      "file": "schemas.json",
+      "sha256": "3ddd44fe5fe1fed6db7434261e00ff90103a10c42544626e2900c659c2fa7014"
+    },
+    {
+      "bytes": 1389,
+      "file": "suppression_summary.json",
+      "sha256": "5dceb00a51c1f9ec2129cd9cb81e0a5b3e1b2809415be553c9b98880b58adeff"
+    },
+    {
+      "bytes": 487,
+      "file": "transaction_classification.json",
+      "sha256": "417f7165c015ba44fff131970f1e95a332b7d6d3bcedb01e017dcfdc1ea27bdf"
+    },
+    {
+      "bytes": 1307,
+      "file": "transfer_contract.json",
+      "sha256": "e3017a2ba9a8c6cef22b39e8c69e99fd117b82d755ef62b4f9bb9b1585703b06"
+    }
+  ],
+  "methodology_version": "dld-market-aggregation-phase3b-v1",
+  "schema_version": 1
+}

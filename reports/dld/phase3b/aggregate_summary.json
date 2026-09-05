@@ -1,0 +1,704 @@
+[
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "community",
+    "metric_name": "rent_annual_amount_median",
+    "period_type": "month",
+    "public_rows": 56261,
+    "summed_observation_counts": 17066124
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "rent",
+    "entity_type": "community",
+    "metric_name": "rent_annual_amount_median",
+    "period_type": "month",
+    "public_rows": 217,
+    "summed_observation_counts": 23647
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "community",
+    "metric_name": "rent_annual_amount_median_period_change",
+    "period_type": "month",
+    "public_rows": 53559,
+    "summed_observation_counts": 16920899
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "community",
+    "metric_name": "rent_count",
+    "period_type": "month",
+    "public_rows": 69079,
+    "summed_observation_counts": 17297544
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "rent",
+    "entity_type": "community",
+    "metric_name": "rent_count",
+    "period_type": "month",
+    "public_rows": 314,
+    "summed_observation_counts": 25409
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "community",
+    "metric_name": "rent_count_period_change",
+    "period_type": "month",
+    "public_rows": 53559,
+    "summed_observation_counts": 16920899
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "community",
+    "metric_name": "rent_annual_amount_median",
+    "period_type": "quarter",
+    "public_rows": 22813,
+    "summed_observation_counts": 16992309
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "rent",
+    "entity_type": "community",
+    "metric_name": "rent_annual_amount_median",
+    "period_type": "quarter",
+    "public_rows": 408,
+    "summed_observation_counts": 322437
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "community",
+    "metric_name": "rent_annual_amount_median_period_change",
+    "period_type": "quarter",
+    "public_rows": 21718,
+    "summed_observation_counts": 16926385
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "community",
+    "metric_name": "rent_count",
+    "period_type": "quarter",
+    "public_rows": 26645,
+    "summed_observation_counts": 17060860
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "rent",
+    "entity_type": "community",
+    "metric_name": "rent_count",
+    "period_type": "quarter",
+    "public_rows": 478,
+    "summed_observation_counts": 323701
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "community",
+    "metric_name": "rent_count_period_change",
+    "period_type": "quarter",
+    "public_rows": 21718,
+    "summed_observation_counts": 16926385
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "community",
+    "metric_name": "rent_annual_amount_median",
+    "period_type": "year",
+    "public_rows": 6686,
+    "summed_observation_counts": 16092657
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "rent",
+    "entity_type": "community",
+    "metric_name": "rent_annual_amount_median",
+    "period_type": "year",
+    "public_rows": 498,
+    "summed_observation_counts": 1296456
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "community",
+    "metric_name": "rent_annual_amount_median_period_change",
+    "period_type": "year",
+    "public_rows": 6109,
+    "summed_observation_counts": 16012114
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "community",
+    "metric_name": "rent_count",
+    "period_type": "year",
+    "public_rows": 7251,
+    "summed_observation_counts": 16102878
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "rent",
+    "entity_type": "community",
+    "metric_name": "rent_count",
+    "period_type": "year",
+    "public_rows": 529,
+    "summed_observation_counts": 1297060
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "community",
+    "metric_name": "rent_count_period_change",
+    "period_type": "year",
+    "public_rows": 6109,
+    "summed_observation_counts": 16012114
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "dubai",
+    "metric_name": "rent_annual_amount_median",
+    "period_type": "month",
+    "public_rows": 588,
+    "summed_observation_counts": 17377391
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "rent",
+    "entity_type": "dubai",
+    "metric_name": "rent_annual_amount_median",
+    "period_type": "month",
+    "public_rows": 3,
+    "summed_observation_counts": 26060
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "dubai",
+    "metric_name": "rent_annual_amount_median_period_change",
+    "period_type": "month",
+    "public_rows": 585,
+    "summed_observation_counts": 17375249
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "dubai",
+    "metric_name": "rent_count",
+    "period_type": "month",
+    "public_rows": 594,
+    "summed_observation_counts": 17377489
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "rent",
+    "entity_type": "dubai",
+    "metric_name": "rent_count",
+    "period_type": "month",
+    "public_rows": 3,
+    "summed_observation_counts": 26060
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "dubai",
+    "metric_name": "rent_count_period_change",
+    "period_type": "month",
+    "public_rows": 585,
+    "summed_observation_counts": 17375249
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "dubai",
+    "metric_name": "rent_annual_amount_median",
+    "period_type": "quarter",
+    "public_rows": 196,
+    "summed_observation_counts": 17079563
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "rent",
+    "entity_type": "dubai",
+    "metric_name": "rent_annual_amount_median",
+    "period_type": "quarter",
+    "public_rows": 3,
+    "summed_observation_counts": 323986
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "dubai",
+    "metric_name": "rent_annual_amount_median_period_change",
+    "period_type": "quarter",
+    "public_rows": 193,
+    "summed_observation_counts": 17077323
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "dubai",
+    "metric_name": "rent_count",
+    "period_type": "quarter",
+    "public_rows": 198,
+    "summed_observation_counts": 17079585
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "rent",
+    "entity_type": "dubai",
+    "metric_name": "rent_count",
+    "period_type": "quarter",
+    "public_rows": 3,
+    "summed_observation_counts": 323986
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "dubai",
+    "metric_name": "rent_count_period_change",
+    "period_type": "quarter",
+    "public_rows": 193,
+    "summed_observation_counts": 17077323
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "dubai",
+    "metric_name": "rent_annual_amount_median",
+    "period_type": "year",
+    "public_rows": 50,
+    "summed_observation_counts": 16106422
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "rent",
+    "entity_type": "dubai",
+    "metric_name": "rent_annual_amount_median",
+    "period_type": "year",
+    "public_rows": 3,
+    "summed_observation_counts": 1297212
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "dubai",
+    "metric_name": "rent_annual_amount_median_period_change",
+    "period_type": "year",
+    "public_rows": 47,
+    "summed_observation_counts": 16106001
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "dubai",
+    "metric_name": "rent_count",
+    "period_type": "year",
+    "public_rows": 52,
+    "summed_observation_counts": 16106448
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "rent",
+    "entity_type": "dubai",
+    "metric_name": "rent_count",
+    "period_type": "year",
+    "public_rows": 3,
+    "summed_observation_counts": 1297212
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "dubai",
+    "metric_name": "rent_count_period_change",
+    "period_type": "year",
+    "public_rows": 47,
+    "summed_observation_counts": 16106001
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "project",
+    "metric_name": "rent_annual_amount_median",
+    "period_type": "quarter",
+    "public_rows": 31106,
+    "summed_observation_counts": 2101014
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "rent",
+    "entity_type": "project",
+    "metric_name": "rent_annual_amount_median",
+    "period_type": "quarter",
+    "public_rows": 929,
+    "summed_observation_counts": 57000
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "project",
+    "metric_name": "rent_annual_amount_median_period_change",
+    "period_type": "quarter",
+    "public_rows": 23767,
+    "summed_observation_counts": 1768940
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "project",
+    "metric_name": "rent_count",
+    "period_type": "quarter",
+    "public_rows": 73119,
+    "summed_observation_counts": 2847737
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "rent",
+    "entity_type": "project",
+    "metric_name": "rent_count",
+    "period_type": "quarter",
+    "public_rows": 2465,
+    "summed_observation_counts": 84002
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "project",
+    "metric_name": "rent_count_period_change",
+    "period_type": "quarter",
+    "public_rows": 23767,
+    "summed_observation_counts": 1768940
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "project",
+    "metric_name": "rent_annual_amount_median",
+    "period_type": "year",
+    "public_rows": 19785,
+    "summed_observation_counts": 2712659
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "rent",
+    "entity_type": "project",
+    "metric_name": "rent_annual_amount_median",
+    "period_type": "year",
+    "public_rows": 2570,
+    "summed_observation_counts": 266915
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "project",
+    "metric_name": "rent_annual_amount_median_period_change",
+    "period_type": "year",
+    "public_rows": 16191,
+    "summed_observation_counts": 2385755
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "project",
+    "metric_name": "rent_count",
+    "period_type": "year",
+    "public_rows": 24616,
+    "summed_observation_counts": 2805215
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "rent",
+    "entity_type": "project",
+    "metric_name": "rent_count",
+    "period_type": "year",
+    "public_rows": 3681,
+    "summed_observation_counts": 288144
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "rent",
+    "entity_type": "project",
+    "metric_name": "rent_count_period_change",
+    "period_type": "year",
+    "public_rows": 16191,
+    "summed_observation_counts": 2385755
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "community",
+    "metric_name": "sales_count",
+    "period_type": "month",
+    "public_rows": 28226,
+    "summed_observation_counts": 3468060
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "sales",
+    "entity_type": "community",
+    "metric_name": "sales_count",
+    "period_type": "month",
+    "public_rows": 86,
+    "summed_observation_counts": 2506
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "community",
+    "metric_name": "sales_count_period_change",
+    "period_type": "month",
+    "public_rows": 16517,
+    "summed_observation_counts": 3136166
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "community",
+    "metric_name": "sales_count",
+    "period_type": "quarter",
+    "public_rows": 13161,
+    "summed_observation_counts": 3449980
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "sales",
+    "entity_type": "community",
+    "metric_name": "sales_count",
+    "period_type": "quarter",
+    "public_rows": 267,
+    "summed_observation_counts": 75515
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "community",
+    "metric_name": "sales_count_period_change",
+    "period_type": "quarter",
+    "public_rows": 8374,
+    "summed_observation_counts": 3267076
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "community",
+    "metric_name": "sales_count",
+    "period_type": "year",
+    "public_rows": 5313,
+    "summed_observation_counts": 3246505
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "sales",
+    "entity_type": "community",
+    "metric_name": "sales_count",
+    "period_type": "year",
+    "public_rows": 347,
+    "summed_observation_counts": 314693
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "community",
+    "metric_name": "sales_count_period_change",
+    "period_type": "year",
+    "public_rows": 2950,
+    "summed_observation_counts": 3011456
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "developer",
+    "metric_name": "sales_count",
+    "period_type": "quarter",
+    "public_rows": 30728,
+    "summed_observation_counts": 2641169
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "sales",
+    "entity_type": "developer",
+    "metric_name": "sales_count",
+    "period_type": "quarter",
+    "public_rows": 661,
+    "summed_observation_counts": 47072
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "developer",
+    "metric_name": "sales_count_period_change",
+    "period_type": "quarter",
+    "public_rows": 10965,
+    "summed_observation_counts": 2001926
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "developer",
+    "metric_name": "sales_count",
+    "period_type": "year",
+    "public_rows": 13490,
+    "summed_observation_counts": 2580543
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "sales",
+    "entity_type": "developer",
+    "metric_name": "sales_count",
+    "period_type": "year",
+    "public_rows": 1817,
+    "summed_observation_counts": 210925
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "developer",
+    "metric_name": "sales_count_period_change",
+    "period_type": "year",
+    "public_rows": 5955,
+    "summed_observation_counts": 2009875
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "dubai",
+    "metric_name": "sales_count",
+    "period_type": "month",
+    "public_rows": 1367,
+    "summed_observation_counts": 3572254
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "sales",
+    "entity_type": "dubai",
+    "metric_name": "sales_count",
+    "period_type": "month",
+    "public_rows": 5,
+    "summed_observation_counts": 3025
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "dubai",
+    "metric_name": "sales_count_period_change",
+    "period_type": "month",
+    "public_rows": 1353,
+    "summed_observation_counts": 3570784
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "dubai",
+    "metric_name": "sales_count",
+    "period_type": "quarter",
+    "public_rows": 454,
+    "summed_observation_counts": 3499314
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "sales",
+    "entity_type": "dubai",
+    "metric_name": "sales_count",
+    "period_type": "quarter",
+    "public_rows": 5,
+    "summed_observation_counts": 75977
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "dubai",
+    "metric_name": "sales_count_period_change",
+    "period_type": "quarter",
+    "public_rows": 449,
+    "summed_observation_counts": 3495666
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "dubai",
+    "metric_name": "sales_count",
+    "period_type": "year",
+    "public_rows": 116,
+    "summed_observation_counts": 3260124
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "sales",
+    "entity_type": "dubai",
+    "metric_name": "sales_count",
+    "period_type": "year",
+    "public_rows": 5,
+    "summed_observation_counts": 315207
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "dubai",
+    "metric_name": "sales_count_period_change",
+    "period_type": "year",
+    "public_rows": 108,
+    "summed_observation_counts": 3226806
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "project",
+    "metric_name": "sales_count",
+    "period_type": "quarter",
+    "public_rows": 57834,
+    "summed_observation_counts": 2386225
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "sales",
+    "entity_type": "project",
+    "metric_name": "sales_count",
+    "period_type": "quarter",
+    "public_rows": 960,
+    "summed_observation_counts": 35271
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "project",
+    "metric_name": "sales_count_period_change",
+    "period_type": "quarter",
+    "public_rows": 9856,
+    "summed_observation_counts": 848391
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "project",
+    "metric_name": "sales_count",
+    "period_type": "year",
+    "public_rows": 32535,
+    "summed_observation_counts": 2544283
+  },
+  {
+    "completeness_state": "incomplete",
+    "data_domain": "sales",
+    "entity_type": "project",
+    "metric_name": "sales_count",
+    "period_type": "year",
+    "public_rows": 4464,
+    "summed_observation_counts": 200767
+  },
+  {
+    "completeness_state": "complete",
+    "data_domain": "sales",
+    "entity_type": "project",
+    "metric_name": "sales_count_period_change",
+    "period_type": "year",
+    "public_rows": 10399,
+    "summed_observation_counts": 992000
+  }
+]

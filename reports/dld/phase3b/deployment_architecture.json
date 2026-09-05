@@ -1,0 +1,9 @@
+{
+  "options": {
+    "A": "Not recommended initially: largest remote private-data footprint and operational/RLS burden.",
+    "B": "Viable later for managed recurring processing, but requires secure object-storage governance and compute orchestration.",
+    "C": "Recommended now: private facts remain offline; only verified aggregate rows cross the boundary after approval."
+  },
+  "reason": "Minimizes privacy exposure, Supabase storage and public attack surface while preserving deterministic rebuilds from immutable source snapshots.",
+  "recommendation": "C: local/offline private facts with a publication package containing sanitized aggregates only"
+}

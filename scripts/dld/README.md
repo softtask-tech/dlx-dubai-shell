@@ -50,3 +50,16 @@ aggregate/schema/policy reports:
 
 No transaction, contract, participant or property row is written to the
 versioned reports. Private analytical facts remain a Phase 3B proposal only.
+
+Phase 3B builds the approved typed facts and safe aggregate candidates into an
+ignored local directory, then verifies the private/public boundary:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\dld\phase3b_build.py --force
+.\.venv\Scripts\python.exe scripts\dld\verify_phase3b.py
+```
+
+Omit `--force` to verify idempotency: the same source-package hash and
+methodology returns a no-op. The local DuckDB and full sorted aggregate JSONL
+remain under `data/dld/local/phase3b/` and must never be committed or uploaded
+without a separately approved publication checkpoint.

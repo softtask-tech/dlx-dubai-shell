@@ -1,0 +1,17 @@
+{
+  "future_additive_objects": [
+    "dld_market_import_runs",
+    "dld_market_aggregate_stage",
+    "dld_market_aggregates",
+    "publish_dld_market_aggregates"
+  ],
+  "requirements": [
+    "manifest hash and methodology uniqueness",
+    "exact schema/count/hash validation",
+    "server-side prohibited metric validation",
+    "atomic stage-to-publish transaction",
+    "RLS-denied staging and public read view",
+    "rollback to prior immutable run"
+  ],
+  "status": "documentation only; no SQL migration created"
+}

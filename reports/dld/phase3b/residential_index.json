@@ -1,0 +1,18 @@
+{
+  "categories": [
+    "all",
+    "flat",
+    "villa"
+  ],
+  "methodology_url": "https://dubailand.gov.ae/media/qnslugbi/the-dubai-house-price-index-methodology.pdf",
+  "period_types": [
+    "monthly",
+    "quarterly",
+    "yearly"
+  ],
+  "private_rows": 2862,
+  "publication_state": "separate; excluded from commercial transfer pending legal/methodology review",
+  "source_period_max": "2024-05-01",
+  "source_period_min": "2011-03-01",
+  "source_url": "https://dubailand.gov.ae/en/open-data/residential-properties-price-index-rppi/"
+}
