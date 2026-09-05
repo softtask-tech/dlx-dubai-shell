@@ -1,0 +1,7 @@
+{
+  "chunk_count": 7,
+  "deterministic_generation": "verified separately by verify_phase3c.py --deterministic",
+  "package_verified": true,
+  "privacy_scan": "pass",
+  "row_count": 108982
+}

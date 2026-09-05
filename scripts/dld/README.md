@@ -63,3 +63,16 @@ Omit `--force` to verify idempotency: the same source-package hash and
 methodology returns a no-op. The local DuckDB and full sorted aggregate JSONL
 remain under `data/dld/local/phase3b/` and must never be committed or uploaded
 without a separately approved publication checkpoint.
+
+Phase 3C reduces that private cube through the explicit
+`phase3c_scope_registry.json` allowlist and writes an ignored, deterministic
+UTF-8 CSV/ZIP transfer package without connecting to Supabase:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\dld\phase3c_package.py
+.\.venv\Scripts\python.exe scripts\dld\verify_phase3c.py --deterministic
+.\.venv\Scripts\python.exe scripts\dld\phase3c_reports.py
+.\.venv\Scripts\python.exe -m unittest scripts.dld.test_phase3c
+```
+
+The additive Phase 3C migration is a review artifact and remains unapplied.

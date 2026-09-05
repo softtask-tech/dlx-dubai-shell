@@ -1,0 +1,17 @@
+{
+  "schema_version": "dld-market-scope/1",
+  "methodology_version": "dld-market-publication-phase3c-v1",
+  "publication_floor": "2010-01-01",
+  "minimum_count": 10,
+  "minimum_value_or_change": 30,
+  "rules": [
+    {"entity_types":["dubai"],"period_grains":["month","quarter","year"],"source_metrics":["sales_count","sales_count_period_change"],"segments":{"all":["all"],"registration_type":["registration:0","registration:1"],"property_class":["property_subtype:4","property_subtype:60"]},"consumer":"Dubai market overview and trend charts","seo":"Dubai market methodology and trend pages"},
+    {"entity_types":["dubai"],"period_grains":["month","quarter","year"],"source_metrics":["rent_count","rent_count_period_change","rent_annual_amount_median","rent_annual_amount_median_period_change"],"segments":{"all":["all"],"registration_type":["registration:1","registration:2"]},"consumer":"Dubai rental overview and trend charts","seo":"Dubai rental methodology and trend pages"},
+    {"entity_types":["community"],"period_grains":["month"],"source_metrics":["sales_count","rent_count"],"segments":{"all":["all"]},"consumer":"Community activity sparklines","seo":"None; supporting data only"},
+    {"entity_types":["community"],"period_grains":["quarter"],"source_metrics":["sales_count","sales_count_period_change","rent_count","rent_count_period_change","rent_annual_amount_median","rent_annual_amount_median_period_change"],"segments":{"all":["all"]},"consumer":"Community overview and comparison charts","seo":"Published community market pages"},
+    {"entity_types":["community"],"period_grains":["year"],"source_metrics":["sales_count"],"segments":{"all":["all"],"registration_type":["registration:0","registration:1"],"property_class":["property_subtype:4","property_subtype:60"]},"consumer":"Community annual sales composition","seo":"Published community market pages"},
+    {"entity_types":["community"],"period_grains":["year"],"source_metrics":["sales_count_period_change","rent_count_period_change","rent_annual_amount_median","rent_annual_amount_median_period_change"],"segments":{"all":["all"]},"consumer":"Community annual trend summaries","seo":"Published community market pages"},
+    {"entity_types":["community"],"period_grains":["year"],"source_metrics":["rent_count"],"segments":{"all":["all"],"registration_type":["registration:1","registration:2"]},"consumer":"Community annual rental composition","seo":"Published community market pages"},
+    {"entity_types":["project","developer"],"period_grains":["quarter","year"],"source_metrics":["sales_count"],"segments":{"all":["all"]},"consumer":"Recorded project/developer sales activity","seo":"Supporting facts on exact-match entity pages"}
+  ]
+}

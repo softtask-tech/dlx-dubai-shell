@@ -1,0 +1,9 @@
+{
+  "postgres_execution": "not run; no local PostgreSQL/Supabase executable was available and remote access was prohibited",
+  "required_before_apply": "Run EXPLAIN (ANALYZE, BUFFERS) for every RPC in an isolated local Supabase clone.",
+  "static_index_mapping": {
+    "community_comparison": "dld_market_aggregate_compare_idx",
+    "entity_search": "name indexes; contains matching remains capped",
+    "overview_and_series": "dld_market_aggregate_series_idx"
+  }
+}

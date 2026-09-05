@@ -1,0 +1,27 @@
+{
+  "atomicity": "advisory transaction lock; validation, canonical insert and active-pointer switch share one transaction; repeated publication is a no-op",
+  "migration": "20260906010000_dld_market_compact_publication.sql",
+  "private_tables": [
+    "dld_market_import_runs",
+    "dld_market_scope_registry",
+    "dld_market_stage",
+    "dld_market_aggregates",
+    "dld_market_publication_state"
+  ],
+  "private_view": "dld_market_public (internal sanitized projection used by RPCs; no client SELECT grant)",
+  "public_functions": [
+    "get_dld_market_overview",
+    "get_dld_market_entity_series",
+    "compare_dld_market_communities",
+    "search_dld_market_entities",
+    "get_dld_market_metadata"
+  ],
+  "security": "RLS and explicit table/view revocations; bounded RPC grants only",
+  "service_role_functions": [
+    "stage_dld_market_rows",
+    "validate_dld_market_import",
+    "publish_dld_market_import",
+    "activate_dld_market_publication"
+  ],
+  "status": "unapplied"
+}
