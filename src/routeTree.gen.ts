@@ -15,7 +15,6 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as AdvisorKnowledgeDotjsonRouteImport } from './routes/advisor-knowledge[.]json'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as MarketIntelligenceRouteImport } from './routes/market-intelligence'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
@@ -100,11 +99,6 @@ const AdvisorKnowledgeDotjsonRoute = AdvisorKnowledgeDotjsonRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MarketIntelligenceRoute = MarketIntelligenceRouteImport.update({
-  id: '/market-intelligence',
-  path: '/market-intelligence',
   getParentRoute: () => rootRouteImport,
 } as any)
 const McpRoute = McpRouteImport.update({
@@ -392,7 +386,6 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
-  '/market-intelligence': typeof MarketIntelligenceRoute
   '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -454,7 +447,6 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
-  '/market-intelligence': typeof MarketIntelligenceRoute
   '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -519,7 +511,6 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/advisor-knowledge.json': typeof AdvisorKnowledgeDotjsonRoute
   '/contact': typeof ContactRoute
-  '/market-intelligence': typeof MarketIntelligenceRoute
   '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -585,7 +576,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/advisor-knowledge.json'
     | '/contact'
-    | '/market-intelligence'
     | '/mcp'
     | '/privacy'
     | '/robots.txt'
@@ -647,7 +637,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/advisor-knowledge.json'
     | '/contact'
-    | '/market-intelligence'
     | '/mcp'
     | '/privacy'
     | '/robots.txt'
@@ -711,7 +700,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/advisor-knowledge.json'
     | '/contact'
-    | '/market-intelligence'
     | '/mcp'
     | '/privacy'
     | '/robots.txt'
@@ -776,7 +764,6 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AdvisorKnowledgeDotjsonRoute: typeof AdvisorKnowledgeDotjsonRoute
   ContactRoute: typeof ContactRoute
-  MarketIntelligenceRoute: typeof MarketIntelligenceRoute
   McpRoute: typeof McpRoute
   PrivacyRoute: typeof PrivacyRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
@@ -866,13 +853,6 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/market-intelligence': {
-      id: '/market-intelligence'
-      path: '/market-intelligence'
-      fullPath: '/market-intelligence'
-      preLoaderRoute: typeof MarketIntelligenceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mcp': {
@@ -1310,7 +1290,6 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AdvisorKnowledgeDotjsonRoute: AdvisorKnowledgeDotjsonRoute,
   ContactRoute: ContactRoute,
-  MarketIntelligenceRoute: MarketIntelligenceRoute,
   McpRoute: McpRoute,
   PrivacyRoute: PrivacyRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
