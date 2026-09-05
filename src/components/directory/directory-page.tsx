@@ -126,7 +126,6 @@ export function DirectoryPage({
         )}
 
         <DirectoryPagination result={result} query={query} selectedType={selectedType} />
-        {activity}
         <DirectoryTrust />
       </Section>
     </>
