@@ -6,6 +6,7 @@ import { listPostSlugs } from "@/data/blog";
 import { listDeveloperSlugs, listProjectSlugs } from "@/data/catalogue";
 import { GUIDES } from "@/data/guides";
 import { listAreasWithStats } from "@/data/market";
+import { listMarketCommunitiesServer } from "@/data/market-public.server";
 import { listPropertySlugs } from "@/data/properties";
 import { SERVICES } from "@/data/services";
 import { TOOLS } from "@/data/tools";
@@ -38,12 +39,14 @@ export const Route = createFileRoute("/sitemap.xml")({
          * If Supabase is unreachable the sitemap still ships the static pages
          * rather than failing: a partial sitemap beats a 500.
          */
-        const [propertySlugs, developerSlugs, projectSlugs, areas, postSlugs] = await Promise.all([
+        const [propertySlugs, developerSlugs, projectSlugs, areas, postSlugs, marketCommunities] =
+          await Promise.all([
           listPropertySlugs().catch(() => [] as string[]),
           listDeveloperSlugs().catch(() => [] as string[]),
           listProjectSlugs().catch(() => [] as string[]),
           listAreasWithStats().catch(() => []),
           listPostSlugs().catch(() => [] as string[]),
+          listMarketCommunitiesServer().catch(() => []),
         ]);
 
         type Entry = {
@@ -105,6 +108,14 @@ export const Route = createFileRoute("/sitemap.xml")({
             path: `/areas/${area.slug}`,
             changefreq: "weekly",
             priority: 0.8,
+          })),
+          /* Only communities with several published years reach the sitemap;
+           * the comparison view is deliberately absent, its permutations are
+           * infinite and none of them is a page worth indexing. */
+          ...marketCommunities.map((community) => ({
+            path: `/market-intelligence/communities/${community.entityId}`,
+            changefreq: "monthly",
+            priority: 0.7,
           })),
         ];
 
