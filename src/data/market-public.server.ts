@@ -213,3 +213,43 @@ export async function searchMarketEntities(input: {
     return [];
   }
 }
+
+/**
+ * Communities substantial enough to deserve an indexable page.
+ *
+ * The public functions deliberately have no "list everything" entry point, so
+ * this reads the canonical table directly with the trusted server client. It is
+ * used only to build the sitemap, and it applies a floor: a community with a
+ * handful of published quarters is a thin page, and thin pages are worse than
+ * absent ones.
+ */
+export async function listMarketCommunitiesServer(): Promise<
+  { entityId: string; nameEn: string }[]
+> {
+  try {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data, error } = await (supabaseAdmin as unknown as SupabaseClient)
+      .from("dld_market_aggregates")
+      .select("entity_id,name_en")
+      .eq("entity_type", "community")
+      .eq("metric_code", "registered_sale_count")
+      .eq("period_grain", "year")
+      .gte("period_start", "2022-01-01")
+      .limit(4000);
+    if (error) throw error;
+
+    const seen = new Map<string, { nameEn: string; years: number }>();
+    for (const row of (data ?? []) as { entity_id: string; name_en: string }[]) {
+      const found = seen.get(row.entity_id);
+      if (found) found.years += 1;
+      else seen.set(row.entity_id, { nameEn: row.name_en, years: 1 });
+    }
+    /* Three published years is the floor for a page worth crawling. */
+    return [...seen.entries()]
+      .filter(([, value]) => value.years >= 3)
+      .map(([entityId, value]) => ({ entityId, nameEn: value.nameEn }));
+  } catch (error) {
+    console.error("[data:dld-market] community index unavailable", error);
+    return [];
+  }
+}

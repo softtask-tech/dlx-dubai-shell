@@ -9,9 +9,10 @@ import {
   latestRow,
   sourceLine,
   type MarketConfidence,
+  type MarketMetric,
   type MarketRow,
 } from "@/data/market-public";
-import { getMarketEntitySeries, getMarketMetadata } from "@/data/market-public.server";
+import { getMarketEntitySeriesFn, getMarketMetadataFn } from "@/data/market-public.functions";
 import { datasetSchema } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
@@ -29,7 +30,7 @@ export const Route = createFileRoute("/market-intelligence/communities/$id")({
     if (!/^[0-9]{1,12}$/.test(params.id)) throw notFound();
     const [metadata, saleQuarters, rentalQuarters, rentQuarters, saleYears, rentalYears] =
       await Promise.all([
-        getMarketMetadata(),
+        getMarketMetadataFn(),
         series(params.id, "registered_sale_count", "quarter"),
         series(params.id, "registered_rental_contract_count", "quarter"),
         series(params.id, "median_registered_annual_rent_aed", "quarter"),
@@ -62,6 +63,7 @@ export const Route = createFileRoute("/market-intelligence/communities/$id")({
       title: `${name} registered activity`,
       description: `Registered sale transactions, registered rental contracts and the median registered annual rent for ${name}, drawn from Dubai Land Department open data with the record count behind every figure.`,
       tagline: `${name}, as the registry records it.`,
+      image: "/og/market-intelligence.png",
       breadcrumbs: [
         { name: "Market Intelligence", path: "/market-intelligence" },
         { name, path: `/market-intelligence/communities/${loaderData?.id ?? ""}` },
@@ -83,21 +85,38 @@ export const Route = createFileRoute("/market-intelligence/communities/$id")({
   component: CommunityMarketPage,
 });
 
-function series(id: string, metric: Parameters<typeof getMarketEntitySeries>[0]["metric"], grain: "quarter" | "year") {
-  return getMarketEntitySeries({
-    entityType: "community",
-    entityId: id,
-    metric,
-    grain,
-    from: FROM,
-    to: TO,
-    limit: 60,
+/**
+ * One headline series for this community. Published aggregates also carry
+ * breakdowns (apartments, villas, new and renewed tenancies), so the whole
+ * community total is the "all" segment and nothing else: mixing a breakdown
+ * row into the headline would quietly understate the period.
+ */
+async function series(id: string, metric: MarketMetric, grain: "quarter" | "year") {
+  const rows = await getMarketEntitySeriesFn({
+    data: {
+      entityType: "community",
+      entityId: id,
+      metric,
+      grain,
+      from: FROM,
+      to: TO,
+      limit: 60,
+    },
   });
+  return rows.filter((row) => row.segment_code === "all");
 }
 
 function CommunityMarketPage() {
-  const { metadata, nameEn, nameAr, saleQuarters, rentalQuarters, rentQuarters, saleYears, rentalYears } =
-    Route.useLoaderData();
+  const {
+    metadata,
+    nameEn,
+    nameAr,
+    saleQuarters,
+    rentalQuarters,
+    rentQuarters,
+    saleYears,
+    rentalYears,
+  } = Route.useLoaderData();
 
   const latestSale = latestRow(saleQuarters);
   const latestRental = latestRow(rentalQuarters);
@@ -283,7 +302,13 @@ function CommunityMarketPage() {
 }
 
 /** States how much registered evidence sits behind the headline figures. */
-function Confidence({ rows, dark = false }: { rows: readonly (MarketRow | null)[]; dark?: boolean }) {
+function Confidence({
+  rows,
+  dark = false,
+}: {
+  rows: readonly (MarketRow | null)[];
+  dark?: boolean;
+}) {
   const present = rows.filter((row): row is MarketRow => row !== null);
   if (present.length === 0) return null;
   const weakest = present.some((row) => row.confidence === "counts_only")
@@ -294,7 +319,7 @@ function Confidence({ rows, dark = false }: { rows: readonly (MarketRow | null)[
   const records = Math.max(...present.map((row) => row.observation_count));
   return (
     <p className={`caption mt-12 max-w-measure ${dark ? "text-on-dark-muted" : ""}`}>
-      {CONFIDENCE_LABELS[weakest as MarketConfidence]} Based on up to{" "}
+      {CONFIDENCE_LABELS[weakest as MarketConfidence]}. Based on up to{" "}
       {records.toLocaleString("en-AE")} registered records in the period.
     </p>
   );

@@ -259,7 +259,7 @@ body {
  */
 function cards() {
   return [
-    ...SITE_PAGES.map((page) => ({
+    ...SITE_PAGES.filter((page) => !page.noIndex).map((page) => ({
       path: ogImagePathFor(page.path),
       /* "Home" is a navigation word, not a share-card word. */
       label: page.path === "/" ? "Private Brokerage" : page.label,
