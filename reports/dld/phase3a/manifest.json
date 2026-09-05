@@ -1,0 +1,131 @@
+{
+  "files": [
+    {
+      "bytes": 3021,
+      "file": "analytical_model.json",
+      "sha256": "d56009f5a82c8edaf6e9868ca9785ba5983de2ff5363836e6a8801c29f54a1aa"
+    },
+    {
+      "bytes": 7857,
+      "file": "bilingual_quality.csv",
+      "sha256": "a1fa408f5a317b0bf6fec2fc55f72a2e3afe45f09341a2f0f33db7976281b636"
+    },
+    {
+      "bytes": 31546,
+      "file": "bilingual_quality.json",
+      "sha256": "2b4c73d9a4aa833cf9684428928c9f2d51c165eee35d3cbdf98475a50901dd8b"
+    },
+    {
+      "bytes": 2571,
+      "file": "inventory.csv",
+      "sha256": "20bfaf6fd890eb2dfabe33a4bd6a1314d5ea56ba2cee5d4f5c6788fcfda777fd"
+    },
+    {
+      "bytes": 173070,
+      "file": "inventory.json",
+      "sha256": "eddfc0383afe2c2081c197dd5455121afd81626dd601a5b9c302af0827829afb"
+    },
+    {
+      "bytes": 3269,
+      "file": "join_matrix.csv",
+      "sha256": "093a6765143a9da3101213a002c029dca420fbe5da2f8273319c0b2bba2c5f04"
+    },
+    {
+      "bytes": 10421,
+      "file": "join_matrix.json",
+      "sha256": "f09c696afda4d70a0be7dc62ee6cf4ba2688c093ef83d58f2928d1bf7a8ccb5c"
+    },
+    {
+      "bytes": 398,
+      "file": "metadata.json",
+      "sha256": "47b10ddfda4fca1cafc69633966222add70ca8904707e0ee8230bba4b682c507"
+    },
+    {
+      "bytes": 13267,
+      "file": "metric_definitions.csv",
+      "sha256": "9cf30affc9bacee121000c7275a504421baf33fd07512684deb4df077068c454"
+    },
+    {
+      "bytes": 20006,
+      "file": "metric_definitions.json",
+      "sha256": "f869359fb323b763ceac2b179c7d598c48b6f2219e2c04c20b92223dc0318a34"
+    },
+    {
+      "bytes": 71764,
+      "file": "privacy_registry.csv",
+      "sha256": "a8c5ee11fc368c9ecd5031b9e9bb878847a6b0cecd26cbe12481e820ace9059d"
+    },
+    {
+      "bytes": 129062,
+      "file": "privacy_registry.json",
+      "sha256": "b8f59f312aabafea4bc76fa1dec6462229a90e714718a0b6d088cb08d582b501"
+    },
+    {
+      "bytes": 13334,
+      "file": "procedure_policy.csv",
+      "sha256": "3bd8d1a0fd3e8d240539fcac8c9a3d563101383379d47aec8dc31cfb9320e2fd"
+    },
+    {
+      "bytes": 30772,
+      "file": "procedure_policy.json",
+      "sha256": "c078b5f8f2152b4200ab44d2069c9064b8d8b5c974bbe07637779ecbd0410eb7"
+    },
+    {
+      "bytes": 10659,
+      "file": "quality_summary.json",
+      "sha256": "ff21295e65b42f3621f30640528241972b2823078b3c854af4b8d85195893506"
+    },
+    {
+      "bytes": 6068,
+      "file": "rent_categories.csv",
+      "sha256": "389b65d69213f2d3c673a1030c2abd239d28a1d4cac3bfeeb5eb0a0a5c52c291"
+    },
+    {
+      "bytes": 5886,
+      "file": "rent_periods.csv",
+      "sha256": "44ed6d3ae930f8f8576f337cd2f7267500bcc50089227f82f535258cbb517eed"
+    },
+    {
+      "bytes": 2701,
+      "file": "rent_profile.json",
+      "sha256": "f272e06184b9d4acd5b239ea0959fb029b11df4b0c395017dde0d62e9792c4d8"
+    },
+    {
+      "bytes": 2663,
+      "file": "residential_index_profile.json",
+      "sha256": "ebbe2d667c5592846dd5f50c4525133082a3a7ebbf595eae89b619725e613433"
+    },
+    {
+      "bytes": 48968,
+      "file": "schema_fingerprints.json",
+      "sha256": "8dca021f0af545402f065491207910eb543d801d3f670f661cf0963213badca1"
+    },
+    {
+      "bytes": 652,
+      "file": "storage_estimates.json",
+      "sha256": "e6b0e6247e89b5d6f979c9f1584415d0ae9dcafc568ee0b91260d81cd9812258"
+    },
+    {
+      "bytes": 3492,
+      "file": "transaction_categories.csv",
+      "sha256": "94a99a64a33a6055d07c2854b85b59d53dee0844d7b81656c690a2c8cf0037e3"
+    },
+    {
+      "bytes": 14101,
+      "file": "transaction_periods.csv",
+      "sha256": "44c4f3a3aeb9738a7129bfb7ecc2ea16a2a9b010af2aaa7fbd95cb0345247fed"
+    },
+    {
+      "bytes": 2013,
+      "file": "transaction_profile.json",
+      "sha256": "d72bd2dd4e0db99f11b5d1abb3ef3ca40a1f23edb0e9ccd3b66a81756326da85"
+    },
+    {
+      "bytes": 1725,
+      "file": "update_architecture.json",
+      "sha256": "3fcc7611b8a7dc8679b9fe169c0b316c54e147d7920009c8d65c5ddf756d0a84"
+    }
+  ],
+  "methodology_version": "dld-market-audit-phase3a-v1",
+  "schema_version": 1
+}

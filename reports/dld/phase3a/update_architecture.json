@@ -1,0 +1,33 @@
+{
+  "corrections": "Diff stable keys and row hashes. Recompute affected periods plus the latest incomplete period; if semantics/schema change, rebuild all history under a new methodology version.",
+  "detection": [
+    "Require a manifest with dataset, chunk order, byte size, SHA-256, row count, schema fingerprint and source export date.",
+    "Reject duplicate package hashes and mixed export dates unless explicitly declared.",
+    "Compare source keys and schema fingerprints with the prior accepted run before processing."
+  ],
+  "freshness": [
+    "source_export_date",
+    "package_hash",
+    "published_at",
+    "methodology_version",
+    "latest_complete_period",
+    "quality_status"
+  ],
+  "idempotency": "Rebuilding the same package hash and methodology version produces the same private facts and aggregates; publication is a no-op if already complete.",
+  "late_arrivals": "Recompute every period containing inserted, removed or changed source keys and any trailing comparison windows that depend on those periods.",
+  "replacement_strategy": "Treat each accepted export as a replacement snapshot for the included dataset. Do not append chunk files or append a later full snapshot.",
+  "rollback": "Keep the prior immutable publication run addressable; pointer switch and all aggregate writes must share one transaction.",
+  "snapshot_assessment": "Files sharing one export date and numbered chunk suffixes form full dataset snapshots, not independent increments.",
+  "stable_keys": {
+    "rent_contract_headers": [
+      "contract_id"
+    ],
+    "rent_contract_lines": [
+      "contract_id",
+      "line_number"
+    ],
+    "transactions": [
+      "transaction_id"
+    ]
+  }
+}

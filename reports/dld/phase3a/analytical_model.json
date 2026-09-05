@@ -1,0 +1,99 @@
+{
+  "aggregate_tables": [
+    {
+      "grain": "period + geography + property type + existing/off-plan",
+      "measures": [
+        "sample_size",
+        "transaction_count",
+        "transaction_value",
+        "median_price",
+        "median_price_per_sqft"
+      ],
+      "table": "dld_market_sales_periodic"
+    },
+    {
+      "grain": "period + geography + property type + new/renewed",
+      "measures": [
+        "sample_size",
+        "contract_count",
+        "median_annual_rent",
+        "median_rent_per_sqft"
+      ],
+      "table": "dld_market_rents_periodic"
+    }
+  ],
+  "atomicity": "Stage a complete run, validate counts/schema/referential integrity/suppression, then switch one publication-run pointer in a transaction; any failure rolls back.",
+  "forbidden_public_payloads": [
+    "raw transactions",
+    "raw contracts",
+    "participant attributes",
+    "unit/property/land identifiers",
+    "internal join keys",
+    "unsuppressed small cells"
+  ],
+  "private_layers": [
+    {
+      "grain": "one source export",
+      "purpose": "checksums, schema version, source dates and publication state",
+      "table": "dld_source_manifests"
+    },
+    {
+      "grain": "one file/chunk",
+      "purpose": "file hash, row count, schema fingerprint and replacement lineage",
+      "table": "dld_source_files"
+    },
+    {
+      "grain": "one unique transaction_id",
+      "purpose": "typed transaction events; never browser-readable",
+      "table": "dld_transaction_facts_private"
+    },
+    {
+      "grain": "one contract_id",
+      "purpose": "deduplicated header dates and amounts",
+      "table": "dld_rent_contracts_private"
+    },
+    {
+      "grain": "one (contract_id,line_number)",
+      "purpose": "property-line dimensions without public raw access",
+      "table": "dld_rent_contract_lines_private"
+    },
+    {
+      "grain": "one run/check/dimension",
+      "purpose": "reconciliation, invalid values, joins and suppression evidence",
+      "table": "dld_data_quality_results"
+    },
+    {
+      "grain": "one atomic methodology/source publication",
+      "purpose": "version, counts, rollback pointer and status",
+      "table": "dld_market_publication_runs"
+    }
+  ],
+  "public_columns_only": [
+    "dimension keys/slugs",
+    "official safe names",
+    "period",
+    "metric value",
+    "sample_size",
+    "source_export_date",
+    "methodology_version",
+    "suppression_flag",
+    "confidence_flag"
+  ],
+  "public_views_or_functions": [
+    "public_dld_market_overview",
+    "public_dld_community_series",
+    "public_dld_project_series",
+    "public_dld_developer_activity",
+    "search_public_dld_market_series"
+  ],
+  "safe_dimensions": [
+    "dld_dim_period",
+    "dld_dim_community",
+    "dld_dim_project",
+    "dld_dim_developer",
+    "dld_dim_property_type",
+    "dld_dim_procedure",
+    "dld_dim_market_segment"
+  ],
+  "status": "design only; no migration created or applied"
+}

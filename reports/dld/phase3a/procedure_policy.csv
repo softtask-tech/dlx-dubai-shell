@@ -1,0 +1,65 @@
+group_id,procedure_id,official_name_en,official_name_ar,is_pre_registration,transaction_rows,classification,eligible_for_sale_market_metrics,policy_version,rationale
+1,4,Adding Land By Sell,إضافة أرض بالبيع,False,469,administrative_or_ambiguous_sales_group,False,dld-market-audit-phase3a-v1,The official label indicates development/land registration or is otherwise insufficient to prove an arm's-length sale.
+1,11,Sell,بيع,False,511714,market_sale_candidate,True,dld-market-audit-phase3a-v1,Conservative exact allowlist of procedures whose official English name directly describes a sale.
+1,41,Delayed Sell,بيع مبدئى,False,154141,market_sale_candidate,True,dld-market-audit-phase3a-v1,Conservative exact allowlist of procedures whose official English name directly describes a sale.
+1,45,Sell Development,بيع حق منفعة,False,12858,administrative_or_ambiguous_sales_group,False,dld-market-audit-phase3a-v1,The official label indicates development/land registration or is otherwise insufficient to prove an arm's-length sale.
+1,93,Delayed Sell Development,بيع حق منفعة مؤجل,False,163,administrative_or_ambiguous_sales_group,False,dld-market-audit-phase3a-v1,The official label indicates development/land registration or is otherwise insufficient to prove an arm's-length sale.
+1,95,Delayed Development,تسجيل حق منفعة مؤجل,False,1343,administrative_or_ambiguous_sales_group,False,dld-market-audit-phase3a-v1,The official label indicates development/land registration or is otherwise insufficient to prove an arm's-length sale.
+1,102,Sell - Pre registration,بيع - تسجيل مبدئى,True,622767,market_sale_candidate,True,dld-market-audit-phase3a-v1,Conservative exact allowlist of procedures whose official English name directly describes a sale.
+1,107,Lease to Own Registration Pre-Registration,تسجيل إيجارة تنتهى بالتملك - تسجيل مبدئى,True,3556,lease_to_own_non_standard,False,dld-market-audit-phase3a-v1,Lease-to-own is economically distinct and excluded from sale-market metrics.
+1,110,Lease to Own Registration,تسجيل إيجارة تنتهى بالتملك,False,29793,lease_to_own_non_standard,False,dld-market-audit-phase3a-v1,Lease-to-own is economically distinct and excluded from sale-market metrics.
+1,133,Development Registration,تسجيل حق منفعة,False,12818,administrative_or_ambiguous_sales_group,False,dld-market-audit-phase3a-v1,The official label indicates development/land registration or is otherwise insufficient to prove an arm's-length sale.
+1,150,Portfolio Development Registration,تسجيل حق منفعة محافظ,False,6,administrative_or_ambiguous_sales_group,False,dld-market-audit-phase3a-v1,The official label indicates development/land registration or is otherwise insufficient to prove an arm's-length sale.
+1,361,Delayed Lease to Own Registration,تسجيل إيجارة تنتهى بالتملك المؤجل,False,1089,lease_to_own_non_standard,False,dld-market-audit-phase3a-v1,Lease-to-own is economically distinct and excluded from sale-market metrics.
+1,371,Lease Development Registration,تسجيل حق منفعة بالاجارة,False,471,administrative_or_ambiguous_sales_group,False,dld-market-audit-phase3a-v1,The official label indicates development/land registration or is otherwise insufficient to prove an arm's-length sale.
+1,460,Sale On Payment Plan,بيع مقيد بسنوات الدفع,False,2368,market_sale_candidate,True,dld-market-audit-phase3a-v1,Conservative exact allowlist of procedures whose official English name directly describes a sale.
+1,715,Delayed Sell Lease to Own Registration,تسجيل إيجاره تنتهى بالتملك على بيع مبدئى,False,359,lease_to_own_non_standard,False,dld-market-audit-phase3a-v1,Lease-to-own is economically distinct and excluded from sale-market metrics.
+1,814,Lease to Own on Development Registration,تسجيل إيجارة تنتهي بالتملك على حق منفعة,False,310,lease_to_own_non_standard,False,dld-market-audit-phase3a-v1,Lease-to-own is economically distinct and excluded from sale-market metrics.
+1,851,Development Registration Pre-Registration,تسجيل حق منفعة - تسجيل مبدئي,True,5575,administrative_or_ambiguous_sales_group,False,dld-market-audit-phase3a-v1,The official label indicates development/land registration or is otherwise insufficient to prove an arm's-length sale.
+1,852,Sell Development - Pre Registration,بيع حق منفعة - تسجيل مبدئي,True,271,administrative_or_ambiguous_sales_group,False,dld-market-audit-phase3a-v1,The official label indicates development/land registration or is otherwise insufficient to prove an arm's-length sale.
+2,13,Mortgage Registration,تسجيل رهن,False,241851,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,14,Modify Mortgage,تعديل رهن,False,22437,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,32,Lease to Own Modify,تعديل إيجارة تنتهى بالتملك,False,431,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,37,Lease to Own Transfer,تحويل إيجارة تنتهى بالتملك,False,869,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,39,Development Mortgage,رهن حق منفعة,False,6741,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,43,Portfolio Mortgage Registration,تسجيل رهن محافظ,False,1804,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,44,Mortgage Transfer,تحويل رهن,False,3303,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,49,Portfolio Mortgage Modification,تعديل رهن محافظ,False,619,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,56,Modify Development Mortgage,تعديل رهن حق منفعة,False,812,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,57,Transfer Development Mortgage,تحويل رهن حق منفعة,False,9,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,60,Delayed Portfolio Mortgage,رهن محافظ بيع مؤجل,False,18,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,101,Portfolio Mortgage Registration Pre-Registration,تسجيل رهن محافظ - تسجيل مبدئى,True,78,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,103,Lease to Own Transfer Pre-Registration,تحويل إيجارة تنتهى بالتملك - تسجيل مبدئى,True,5,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,104,Lease to Own Modify Pre-Registration,تعديل إيجارة تنتهى بالتملك - تسجيل مبدئى,True,0,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,105,Mortgage Pre-Registration,تسجيل رهن - تسجيل مبدئى,True,6293,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,107,Lease to Own Registration Pre-Registration,تسجيل إيجارة تنتهى بالتملك - تسجيل مبدئى,True,3557,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,108,Modify Mortgage Pre-Registration,تعديل رهن - تسجيل مبدئي,True,28,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,110,Lease to Own Registration,تسجيل إيجارة تنتهى بالتملك,False,29790,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,111,Portfolio Mortgage Transfer,تحويل رهن محافظ,False,4,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,113,Mortgage Transfer Pre-Registration,تحويل رهن- تسجيل مبدئي,True,42,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,135,Portfolio Mortgage Modification Pre-Registration,تعديل رهن محافظ - تسجيل مبدئى,True,20,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,137,Portfolio Mortgage Transfer Pre-Regstraion,تحويل رهن محافظ - تسجيل مبدئى,True,0,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,151,Portfolio Mortgage Development Registration,تسجيل رهن حق منفعة محافظ,False,53,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,152,Portfolio Mortgage Development Modification,تعديل رهن حق منفعة محافظ,False,9,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,190,Delayed Mortgage,رهن بيع مبدئى,False,20137,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,191,Modify Delayed Mortgage ,تعديل رهن بيع مبدئى,False,103,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,192,Transfer Delayed Mortgage ,تحويل رهن بيع مبدئى,False,0,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,361,Delayed Lease to Own Registration,تسجيل إيجارة تنتهى بالتملك المؤجل,False,1089,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,362,Delayed Lease to Own Modify,تعديل إيجارة تنتهى بالتملك المؤجل,False,1,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,363,Delayed Lease to Own Transfer,تحويل إيجارة تنتهى بالتملك المؤجل,False,1,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,371,Lease Development Registration,تسجيل حق منفعة بالاجارة,False,471,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,372,Lease Development Modify,تعديل حق منفعة بالاجارة,False,2,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,373,Lease Development Transfer,تحويل حق منفعة بالاجارة,False,0,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,715,Delayed Sell Lease to Own Registration,تسجيل إيجاره تنتهى بالتملك على بيع مبدئى,False,359,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,716,Delayed Sell Lease To Own Modification,تعديل إيجاره تنتهى بالتملك على بيع مبدئى,False,1,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,717,Delayed Sell Lease To Own Transfer,تحويل إيجارة تنتهى بالتملك على بيع مبدئى,False,0,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,810,Lease Finance Registration,تسجيل اجارة تمويلية,False,8227,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,811,Lease Finance Modification,تعديل اجارة تمويلية,False,387,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,814,Lease to Own on Development Registration,تسجيل إيجارة تنتهي بالتملك على حق منفعة,False,310,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,815,Lease to Own on Development Modification,تعديل إيجارة تنتهي بالتملك على حق منفعة,False,10,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,816,Lease to Own on Development Transfer,تحويل إيجارة تنتهي بالتملك على حق منفعة,False,0,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+2,861,Development Mortgage Pre-Registration,رهن حق منفعة تسجيل مبدئى,True,12,mortgage_or_finance,False,dld-market-audit-phase3a-v1,Official transaction group is Mortgages.
+3,9,Grant,هبه,False,58645,gift_or_grant,False,dld-market-audit-phase3a-v1,Official transaction group is Gifts.
+3,59,Grant Development,هبة حق المنفعة,False,1345,gift_or_grant,False,dld-market-audit-phase3a-v1,Official transaction group is Gifts.
+3,120,Grant Pre-Registration,هبه - تسجيل مبدئى,True,3827,gift_or_grant,False,dld-market-audit-phase3a-v1,Official transaction group is Gifts.
+3,219,Grant on Delayed Sell,هبة على بيع مبدئى,False,2372,gift_or_grant,False,dld-market-audit-phase3a-v1,Official transaction group is Gifts.

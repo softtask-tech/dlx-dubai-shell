@@ -1,0 +1,92 @@
+dataset,english_field,arabic_field,both_present,english_only,arabic_only,both_missing,identical_non_null,arabic_script_in_english,no_arabic_script_in_arabic
+Accredited Trainers by the Dubai Real Estate Institute,cource_title_en,cource_title_ar,117,0,0,0,0,0,0
+Approved Escrow Account Agents,escrow_agent_name_en,escrow_agent_name_ar,25,0,0,0,0,0,0
+Building and Property Project Records,area_name_en,area_name_ar,256423,0,0,0,0,0,0
+Building and Property Project Records,land_type_en,land_type_ar,232420,0,0,24003,119,0,119
+Building and Property Project Records,master_project_en,master_project_ar,129304,29,0,127090,0,0,0
+Building and Property Project Records,project_name_en,project_name_ar,148822,0,0,107601,261,0,504
+Building and Property Project Records,property_sub_type_en,property_sub_type_ar,256423,0,0,0,0,0,0
+Building and Property Project Records,property_type_en,property_type_ar,256423,0,0,0,0,0,0
+Building and Property Project Records,rooms_en,rooms_ar,225385,0,0,31038,12,0,12
+Developers Recorded in Dubai Land Department,developer_name_en,developer_name_ar,2348,0,0,0,1,0,2
+Developers Recorded in Dubai Land Department,legal_status_en,legal_status_ar,971,0,0,1377,134,5,129
+Developers Recorded in Dubai Land Department,license_source_en,license_source_ar,965,0,0,1383,0,0,0
+Developers Recorded in Dubai Land Department,license_type_en,license_type_ar,1794,0,0,554,0,0,0
+Elders and People of Determination,service_location_en,service_location_ar,6120,0,0,0,0,0,0
+Elders and People of Determination,service_name_en,service_name_ar,6120,0,0,0,0,0,0
+Free Zone Companies Licensing,fz_company_name_en,fz_company_name_ar,250,0,0,0,5,5,0
+Free Zone Companies Licensing,license_source_en,license_source_ar,244,0,5,1,0,0,0
+Land Registry,area_name_en,area_name_ar,263663,0,0,0,0,0,0
+Land Registry,land_type_en,land_type_ar,243423,0,0,20240,5982,0,5982
+Land Registry,master_project_en,master_project_ar,109772,132,0,153759,0,0,0
+Land Registry,project_name_en,project_name_ar,93273,0,0,170390,322,0,475
+Land Registry,property_sub_type_en,property_sub_type_ar,220581,0,0,43082,68,68,0
+Land Registry,property_type_en,property_type_ar,263663,0,0,0,0,0,0
+Licenced Owner Associations,company_name_en,company_name_ar,110,0,0,0,0,0,0
+Licensed Real Estate Valuators,gender_en,gender_ar,153,0,0,0,0,24,0
+Licensed Real Estate Valuators,valuation_company_name_en,valuation_company_name_ar,153,0,0,0,1,0,1
+Licensed Real Estate Valuators,valuator_name_en,valuator_name_ar,153,0,0,0,0,0,0
+Licensed Real Estate Valuators,valuator_nationality_en,valuator_nationality_ar,153,0,0,0,0,0,0
+Lookup Dubai Community Areas,name_en,name_ar,301,0,0,0,0,0,0
+Lookup Real Estate Market Types,name_en,name_ar,2,0,0,0,0,0,0
+Lookup Real Estate Transactions Groups,name_en,name_ar,3,0,0,0,0,0,0
+Lookup Real Estate Transactions Procedures,name_en,name_ar,64,0,0,0,0,0,0
+Owners Association Service Charges,management_company_name_en,management_company_name_ar,91193,0,0,0,0,0,0
+Owners Association Service Charges,master_community_name_en,master_community_name_ar,91193,0,0,0,0,0,0
+Owners Association Service Charges,property_group_name_en,property_group_name_ar,91193,0,0,0,9658,0,14278
+Owners Association Service Charges,service_category_name_en,service_category_name_ar,91193,0,0,0,0,0,0
+Owners Association Service Charges,usage_name_en,usage_name_ar,91193,0,0,0,508,0,3523
+Property Map Requests,application_name_en,application_name_ar,1021252,0,0,0,50,0,50
+Property Map Requests,procedure_name_en,procedure_name_ar,1021252,0,0,0,0,0,0
+Property Map Requests,property_type_en,property_type_ar,1021252,0,0,0,0,0,0
+Property Map Requests,request_source_en,request_source_ar,1021202,0,0,50,0,0,0
+Property Valuation Records,area_name_en,area_name_ar,90692,0,0,79,0,0,0
+Property Valuation Records,procedure_name_en,procedure_name_ar,90771,0,0,0,0,0,0
+Property Valuation Records,property_sub_type_en,property_sub_type_ar,85227,0,0,5544,13,13,0
+Property Valuation Records,property_type_en,property_type_ar,90771,0,0,0,0,0,0
+Real Estate Brokers,broker_name_en,broker_name_ar,8724,0,0,0,3,0,3
+Real Estate Licenses,activity_name_en,activity_name_ar,2948,0,0,0,54,0,55
+Real Estate Offices,activity_type_en,activity_type_ar,4793,0,0,170,2,0,2
+Real Estate Offices,license_source_en,license_source_ar,4908,0,0,55,0,0,0
+Real Estate Permits,exhibition_name_en,exhibition_name_ar,228,0,0,174828,8,0,8
+Real Estate Permits,main_service_en,main_service_ar,175056,0,0,0,0,0,0
+Real Estate Permits,permit_status_en,permit_status_ar,175056,0,0,0,0,0,0
+Real Estate Permits,service_en,service_ar,175056,0,0,0,0,0,0
+Real Estate Projects,area_name_en,area_name_ar,3039,0,0,0,0,0,0
+Real Estate Projects,master_project_en,master_project_ar,2749,0,0,290,0,0,0
+Real Estate Projects,project_description_en,project_description_ar,2876,22,0,141,359,21,1269
+Real Estate Projects,zoning_authority_en,zoning_authority_ar,3038,0,0,1,0,0,0
+Real Estate Transactions,area_name_en,area_name_ar,1776143,0,0,0,0,0,0
+Real Estate Transactions,building_name_en,building_name_ar,1273654,501,0,501988,56697,0,57461
+Real Estate Transactions,master_project_en,master_project_ar,1537847,41,0,238255,0,0,0
+Real Estate Transactions,nearest_landmark_en,nearest_landmark_ar,1409886,0,0,366257,0,0,0
+Real Estate Transactions,nearest_mall_en,nearest_mall_ar,1203687,0,0,572456,0,0,0
+Real Estate Transactions,nearest_metro_en,nearest_metro_ar,1214621,0,0,561522,0,0,0
+Real Estate Transactions,procedure_name_en,procedure_name_ar,1776143,0,0,0,0,0,0
+Real Estate Transactions,project_name_en,project_name_ar,1307394,0,0,468749,7376,0,8254
+Real Estate Transactions,property_sub_type_en,property_sub_type_ar,1428240,0,0,347903,0,0,0
+Real Estate Transactions,property_type_en,property_type_ar,1776143,0,0,0,0,0,0
+Real Estate Transactions,property_usage_en,property_usage_ar,1776143,0,0,0,0,6302,6302
+Real Estate Transactions,reg_type_en,reg_type_ar,1776143,0,0,0,0,0,0
+Real Estate Transactions,rooms_en,rooms_ar,1401747,0,0,374396,21,0,21
+Real Estate Transactions,trans_group_en,trans_group_ar,1776143,0,0,0,0,0,0
+Registered Freehold Real Estate Units,area_name_en,area_name_ar,2374293,0,0,433,0,0,0
+Registered Freehold Real Estate Units,land_type_en,land_type_ar,1986659,0,0,388067,3488,0,3488
+Registered Freehold Real Estate Units,master_project_en,master_project_ar,1134302,290,0,1240134,0,0,0
+Registered Freehold Real Estate Units,parking_allocation_type_en,parking_allocation_type_ar,4915,0,0,2369811,4915,0,4915
+Registered Freehold Real Estate Units,project_name_en,project_name_ar,852363,0,0,1522363,4648,0,4847
+Registered Freehold Real Estate Units,property_sub_type_en,property_sub_type_ar,1249892,0,0,1124834,0,0,0
+Registered Freehold Real Estate Units,property_type_en,property_type_ar,2109145,0,0,265581,0,0,0
+Registered Freehold Real Estate Units,rooms_en,rooms_ar,2082179,0,0,292547,18457,0,18457
+Rent Contracts,area_name_en,area_name_ar,10442924,0,0,3,0,0,0
+Rent Contracts,contract_reg_type_en,contract_reg_type_ar,10442927,0,0,0,0,0,0
+Rent Contracts,ejari_bus_property_type_en,ejari_bus_property_type_ar,10439352,0,0,3575,0,0,0
+Rent Contracts,ejari_property_sub_type_en,ejari_property_sub_type_ar,10367115,0,0,75812,64565,0,64565
+Rent Contracts,ejari_property_type_en,ejari_property_type_ar,10374686,0,0,68241,0,0,0
+Rent Contracts,master_project_en,master_project_ar,3450357,31,0,6992539,0,0,0
+Rent Contracts,nearest_landmark_en,nearest_landmark_ar,9715698,0,0,727229,0,0,0
+Rent Contracts,nearest_mall_en,nearest_mall_ar,9191942,0,0,1250985,0,0,0
+Rent Contracts,nearest_metro_en,nearest_metro_ar,9287587,0,0,1155340,0,0,0
+Rent Contracts,project_name_en,project_name_ar,1612499,0,0,8830428,8366,0,11593
+Rent Contracts,property_usage_en,property_usage_ar,10427813,0,0,15114,0,0,0
+Rent Contracts,tenant_type_en,tenant_type_ar,10040973,0,0,401954,0,0,0

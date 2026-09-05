@@ -39,3 +39,14 @@ the finished package:
 
 The ignored output is `data/dld/transfer/phase1d`. These commands are local and
 network-free; they do not connect to Supabase or Lovable.
+
+Phase 3A reuses the Phase 0 DuckDB database in read-only mode and emits only
+aggregate/schema/policy reports:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\dld\phase3a_audit.py --source 'C:\path\to\DLD DATA COD'
+.\.venv\Scripts\python.exe scripts\dld\verify_phase3a.py
+```
+
+No transaction, contract, participant or property row is written to the
+versioned reports. Private analytical facts remain a Phase 3B proposal only.

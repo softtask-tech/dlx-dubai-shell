@@ -1,0 +1,16 @@
+{
+  "assumptions": [
+    "Normalized facts use typed dates/numerics and dictionary-encoded dimensions.",
+    "Public series are precomputed by month and approved dimensions, not raw-row copies.",
+    "Estimates include indexes/metadata only as a broad compression range and require measurement in Phase 3B."
+  ],
+  "estimated_public_aggregate_bytes": 17196480,
+  "estimated_public_aggregate_rows": 107478,
+  "phase0_duckdb_bytes": 993275904,
+  "private_fact_model_compressed_estimate_range_bytes": [
+    600104128,
+    1320229081
+  ],
+  "private_fact_model_uncompressed_estimate_bytes": 2400416512,
+  "source_files_bytes": 8020066755
+}
