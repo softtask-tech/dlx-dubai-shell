@@ -63,6 +63,7 @@ export const Route = createFileRoute("/market-intelligence/communities/$id")({
       title: `${name} registered activity`,
       description: `Registered sale transactions, registered rental contracts and the median registered annual rent for ${name}, drawn from Dubai Land Department open data with the record count behind every figure.`,
       tagline: `${name}, as the registry records it.`,
+      image: "/og/market-intelligence.png",
       breadcrumbs: [
         { name: "Market Intelligence", path: "/market-intelligence" },
         { name, path: `/market-intelligence/communities/${loaderData?.id ?? ""}` },

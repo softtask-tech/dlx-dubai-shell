@@ -113,6 +113,7 @@ export const Route = createFileRoute("/market-intelligence/compare")({
       description:
         "Put up to six Dubai communities side by side on registered sale transactions, registered rental contracts or the median registered annual rent, from Dubai Land Department open data.",
       tagline: "Six communities, one honest measure.",
+      image: "/og/market-intelligence.png",
       noIndex: true,
       breadcrumbs: [
         { name: "Market Intelligence", path: "/market-intelligence" },
