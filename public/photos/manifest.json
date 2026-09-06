@@ -1,144 +1,79 @@
 [
   {
-    "slug": "interchange-overhead-blue-hour",
-    "width": 1920,
-    "height": 1280,
-    "ratio": 1.5,
-    "widths": [
-      640,
-      1280,
-      1920
-    ],
-    "fallbackWidth": 1280
-  },
-  {
-    "slug": "marble-brass-detail",
-    "width": 1920,
-    "height": 1280,
-    "ratio": 1.5,
-    "widths": [
-      640,
-      1280,
-      1920
-    ],
-    "fallbackWidth": 1280
-  },
-  {
-    "slug": "marina-dusk-water-level",
-    "width": 1920,
-    "height": 1280,
-    "ratio": 1.5,
-    "widths": [
-      640,
-      1280,
-      1920
-    ],
-    "fallbackWidth": 1280
-  },
-  {
     "slug": "off-plan-azizi-florence-park",
-    "width": 1920,
-    "height": 1280,
-    "ratio": 1.5,
+    "width": 4371,
+    "height": 3469,
+    "ratio": 1.26,
     "widths": [
       640,
       1280,
-      1920
+      1920,
+      2560
     ],
     "fallbackWidth": 1280
   },
   {
     "slug": "off-plan-azizi-florence-villa",
-    "width": 1920,
-    "height": 1280,
-    "ratio": 1.5,
+    "width": 5504,
+    "height": 3072,
+    "ratio": 1.7917,
     "widths": [
       640,
       1280,
-      1920
+      1920,
+      2560
     ],
     "fallbackWidth": 1280
   },
   {
     "slug": "off-plan-azizi-florence",
-    "width": 1920,
-    "height": 1280,
-    "ratio": 1.5,
+    "width": 7369,
+    "height": 3504,
+    "ratio": 2.103,
     "widths": [
       640,
       1280,
-      1920
+      1920,
+      2560
     ],
     "fallbackWidth": 1280
   },
   {
     "slug": "off-plan-sobha-city-villa",
-    "width": 1920,
-    "height": 1280,
-    "ratio": 1.5,
+    "width": 3756,
+    "height": 3072,
+    "ratio": 1.2227,
     "widths": [
       640,
       1280,
-      1920
+      1920,
+      2560
     ],
     "fallbackWidth": 1280
   },
   {
     "slug": "off-plan-sobha-city-waterfront",
-    "width": 1920,
-    "height": 1280,
-    "ratio": 1.5,
+    "width": 4527,
+    "height": 2549,
+    "ratio": 1.776,
     "widths": [
       640,
       1280,
-      1920
+      1920,
+      2560
     ],
     "fallbackWidth": 1280
   },
   {
     "slug": "off-plan-sobha-city",
-    "width": 1920,
-    "height": 1280,
-    "ratio": 1.5,
+    "width": 3999,
+    "height": 2250,
+    "ratio": 1.7773,
     "widths": [
       640,
       1280,
-      1920
-    ],
-    "fallbackWidth": 1280
-  },
-  {
-    "slug": "terrace-edge-haze",
-    "width": 1920,
-    "height": 1280,
-    "ratio": 1.5,
-    "widths": [
-      640,
-      1280,
-      1920
-    ],
-    "fallbackWidth": 1280
-  },
-  {
-    "slug": "tower-facade-raking-light",
-    "width": 1280,
-    "height": 1920,
-    "ratio": 0.6667,
-    "widths": [
-      640,
-      1280
-    ],
-    "fallbackWidth": 1280
-  },
-  {
-    "slug": "villa-courtyard-morning",
-    "width": 1920,
-    "height": 1280,
-    "ratio": 1.5,
-    "widths": [
-      640,
-      1280,
-      1920
+      1920,
+      2560
     ],
     "fallbackWidth": 1280
   }
