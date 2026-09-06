@@ -245,21 +245,22 @@ export const OFF_PLAN_PROJECTS: readonly CommercialProject[] = [
       "Sobha Realty's first masterplanned community in Abu Dhabi: around 60% open and green space, a 2 km waterfront promenade and three home collections.",
     hero: media(
       "/photos/off-plan-sobha-city",
-      "Illustrative impression of a low-rise waterfront community with canals, promenades and dense tree planting",
-      "Illustrative impression prepared by DLX. Refer to the developer's brochure for official renders.",
+      "Aerial render of Sobha City, Abu Dhabi, with its marina, waterfront residences and green corridors",
+      "Developer render. Source: Sobha Realty — Sobha City master brochure.",
     ),
     gallery: [
       media(
         "/photos/off-plan-sobha-city-waterfront",
-        "Illustrative impression of a shaded waterfront promenade beside calm water",
-        "Illustrative impression of the promenade. Not an official developer render.",
+        "Render of the Sobha City waterfront, with terraced residences above a swimmable lagoon",
+        "Developer render of the waterfront. Source: Sobha Realty.",
       ),
       media(
         "/photos/off-plan-sobha-city-villa",
-        "Illustrative impression of a contemporary garden villa with deep terraces and mature planting",
-        "Illustrative impression of a garden villa. Not an official developer render.",
+        "Render of garden villas at Sobha City with landscaped play areas between them",
+        "Developer render of the villa collections. Source: Sobha Realty.",
       ),
     ],
+
     startingPrice: null,
     priceNote:
       "Pricing is released by Sobha Realty per collection and per release. We send you the live list rather than publish a figure that may already be superseded.",
