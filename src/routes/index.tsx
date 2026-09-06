@@ -17,7 +17,6 @@ import {
   BentoSection,
   EditorialIndex,
   MediaTile,
-  QuoteTile,
   SectionHead,
   StatTile,
   Tile,
