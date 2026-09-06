@@ -33,11 +33,12 @@ import type { LocaleCode } from "@/config/locales";
  * wanted.
  */
 const PRELOAD = [
-  /* Only the workhorse. The serif accent appears once or twice per page,
-   * always below or beside the first line rather than as it, so preloading it
-   * would compete with the face the whole page is actually set in. */
+  /* The workhorse, plus the display face: every page opens with a heading set
+   * in Archivo, so it is on the critical path exactly like the body sans. */
   "/fonts/instrument-sans-latin-400-600-normal.woff2",
+  "/fonts/archivo-latin-400-800-normal.woff2",
 ] as const;
+
 
 /**
  * The extra stylesheet each language needs on top of the Latin pair.

@@ -19,16 +19,16 @@ export const en = {
   /** Page metadata for the localised pages. Titles stay unique per language. */
   meta: {
     "/": {
-      title: "DLX Properties, Dubai real estate, handled with intention",
+      title: "DLX Properties — Dubai property, decided on evidence",
       description:
-        "A private Dubai brokerage advising on prime residential acquisitions, off-market sales and long-term portfolio strategy.",
-      tagline: "Dubai real estate, handled with intention.",
+        "Official Dubai Land Department records, live off-plan launches and a consultant team that answers. Search 200,000+ registered developers, projects and communities.",
+      tagline: "Dubai property, decided on evidence.",
     },
     "/about": {
       title: "About DLX",
       description:
-        "A small Dubai brokerage that represents a limited number of clients at a time, working from Business Bay.",
-      tagline: "Fewer clients, handled properly.",
+        "A Dubai brokerage built on official Dubai Land Department data, a full off-plan desk and a consultant team of specialists.",
+      tagline: "Evidence first, then advice.",
     },
     "/services": {
       title: "Services",
@@ -87,13 +87,13 @@ export const en = {
   home: {
     eyebrow: "Dubai · Private Brokerage",
     /** Rendered one line at a time; the last line takes the accent. */
-    headline: ["Dubai real estate,", "handled with"],
-    headlineAccent: "intention.",
+    headline: ["Dubai property,", "decided on"],
+    headlineAccent: "evidence.",
     ctaPortfolio: "View Portfolio",
     ctaConsult: "Private consultation",
     practiceEyebrow: "The practice",
     practiceStatement:
-      "We represent a small number of clients across Dubai's prime districts, advising quietly, negotiating precisely, and holding a long view of value.",
+      "We pair official Dubai Land Department records with on-the-ground execution across Dubai's prime districts: what actually registered, what is launching, and what it means for you.",
     practiceSupport:
       "Acquisition, disposal and portfolio strategy for private owners, family offices and first-time buyers into the emirate.",
     disciplines: {
@@ -112,12 +112,12 @@ export const en = {
     faq: [
       {
         question: "Is DLX Properties a licensed Dubai brokerage?",
-        answer: `Yes. ${brand.name} is a Dubai real-estate brokerage working from ${brand.address.street}, ${brand.address.locality}. Applicable identifiers are shown in the relevant compliance context.`,
+        answer: `Yes. ${brand.name} is a Dubai real-estate brokerage registered in ${brand.address.locality}. Applicable identifiers are shown in the relevant compliance context.`,
       },
       {
         question: "What does DLX actually do for a client?",
         answer:
-          "Three things: acquisition, disposal and portfolio strategy. We represent a small number of clients at a time, sourcing and negotiating on a purchase, running a discreet sale, or advising owners on what to hold, sell or restructure.",
+          "Four things: off-plan launches, acquisition, disposal and portfolio strategy — each backed by the registered transaction record for the community you are buying into.",
       },
       {
         question: "Do I need to be in Dubai to buy?",
@@ -129,10 +129,10 @@ export const en = {
 
   about: {
     eyebrow: "About",
-    title: "Fewer clients, handled properly.",
-    lead: "DLX is deliberately small. We take on a limited number of mandates at a time because the alternative, a pipeline of a hundred half-served buyers, is how most brokerages work and why most buyers feel unrepresented.",
+    title: "Evidence first, then advice.",
+    lead: "Most brokerages sell you a feeling. We start with the official record — every registered developer, project and community in Dubai — and then put a named consultant beside it.",
     licenceEyebrow: "Licence",
-    licenceBody: `${brand.name} is a Dubai real-estate brokerage with an office in ${brand.address.street}, ${brand.address.locality}. Applicable regulatory identifiers are shown with the relevant advertisement or legal disclosure.`,
+    licenceBody: `${brand.name} is a Dubai real-estate brokerage with its office at ${brand.address.street}, ${brand.address.locality}. Applicable regulatory identifiers are shown with the relevant advertisement or legal disclosure.`,
     principlesEyebrow: "How we work",
     principles: [
       {
@@ -194,7 +194,7 @@ export const en = {
     exploreHeading: "Explore",
     contactHeading: "Contact",
     legalHeading: "Legal",
-    licence: "Business Bay, Dubai",
+    licence: "Dubai Investment Park First, Dubai",
     rights: "All rights reserved.",
     languageHeading: "Language",
   },
@@ -293,7 +293,7 @@ export const en = {
   },
 
   trust: {
-    heading: "Why a small brokerage can be trusted",
+    heading: "Why buyers trust DLX",
     credentials: [
       {
         label: "Licensed",

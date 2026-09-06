@@ -15,29 +15,40 @@ export const brand = {
   legalName: "DLX Properties L.L.C.",
   /** Bare domain, shown on social cards and used as the default canonical origin. */
   domain: "dlxproperties.com",
-  tagline: "Dubai real estate, handled with intention.",
+  tagline: "Dubai property, decided on evidence.",
   description:
-    "A private Dubai brokerage advising on prime residential acquisitions, off-market sales and long-term portfolio strategy.",
+    "A Dubai brokerage pairing official Dubai Land Department records with hands-on advice on off-plan launches, prime residential acquisitions and long-term portfolio strategy.",
   /** Internal corporate compliance fact. Render only in an applicable compliance block. */
   reraOrn: "40905",
+  /** DED trade licence number. Compliance blocks only. */
+  tradeLicence: "1307563",
   locale: "en_AE",
   language: "en",
   foundingLocation: "Dubai, United Arab Emirates",
   address: {
-    street: "Business Bay",
+    street: "S210, Property Investment Office 4 S1, Dubai Investment Park First",
     locality: "Dubai",
     region: "Dubai",
     country: "AE",
     countryName: "United Arab Emirates",
   },
-  /** Business Bay, Dubai, used for LocalBusiness geo coordinates. */
-  geo: { latitude: 25.1857, longitude: 55.2766 },
+  /** Dubai Investment Park First, used for LocalBusiness geo coordinates. */
+  geo: { latitude: 24.9857, longitude: 55.1713 },
+  /** Office hours, in schema.org openingHours order. */
+  openingHours: [
+    { days: "Mon–Thu, Sat", hours: "9:00 – 17:00" },
+    { days: "Friday", hours: "14:00 – 20:00" },
+    { days: "Sunday", hours: "Closed" },
+  ],
   contact: {
-    email: "hello@dlxproperties.com",
-    phone: "+971 (0) 000 0000",
+    email: "info@dlxproperties.com",
+    phone: "+971 54 599 6911",
     /** E.164 form for `tel:` links and schema. */
-    phoneE164: "+9710000000",
+    phoneE164: "+971545996911",
+    /** Digits only, for wa.me links. */
+    whatsapp: "971545996911",
   },
+
   socials: [
     { label: "Instagram", href: "https://www.instagram.com/dlxproperties" },
     { label: "LinkedIn", href: "https://www.linkedin.com/company/dlxproperties" },

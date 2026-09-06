@@ -66,8 +66,8 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-/** Business Bay, roughly. Used for the embedded map. */
-const MAP_BBOX = "55.2600,25.1780,55.2940,25.1940";
+/** Dubai Investment Park First, roughly. Used for the embedded map. */
+const MAP_BBOX = "55.1560,24.9760,55.1880,24.9960";
 
 function ContactPage() {
   const { testimonials } = Route.useLoaderData();
