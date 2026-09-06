@@ -276,9 +276,17 @@ export function ConsultantModule({ project }: { project: CommercialProject }) {
       >
         {brand.contact.phone}
       </a>
+      {/* The people behind the promise, one click away, which is what makes the
+       * sentence above verifiable rather than a claim. */}
+      <div className="mt-3">
+        <Link to="/team" className="eyebrow link-underline text-muted-foreground">
+          Meet the consultants
+        </Link>
+      </div>
     </div>
   );
 }
+
 
 export function LeadActions({ projectName }: { projectName: string }) {
   const message = encodeURIComponent(`Hello DLX, I would like the details for ${projectName}.`);
