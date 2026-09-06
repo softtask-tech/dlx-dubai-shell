@@ -4,18 +4,24 @@
 @import "./styles.fonts.css";
 
 /*
- * DLX Properties: ultra-luxury editorial design system.
+ * DLX Properties — "Midnight & Brass".
  *
- * A cool-white canvas with deep green-black cinematic anchors. Green is the
- * signature and the single accent; gold is a whisper, used for hairlines, small
- * marks and text on dark, never as a fill and never on the light canvas.
+ * A near-black canvas, ivory type, one warm brass accent, and a modular bento
+ * architecture. The page is a gallery at night: tiles of data, photography and
+ * invitation sitting on a dark ground, separated by hairlines rather than by
+ * empty bands. Light sections exist, but they are the exception and they are
+ * declared with data-surface="light".
+ *
+ * Display type is Syne; everything else is Plus Jakarta Sans.
  */
 
 @theme inline {
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
+  /* Tiles have a real, small radius. Zero-radius read as a document; this is
+   * a designed object. */
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -39,58 +45,41 @@
   --color-ring: var(--ring);
 
   /* Named palette entries, so the brand colours can be referenced directly
-   * (bg-ink, text-gold) as well as through their semantic roles. */
+   * (bg-ink, text-brass) as well as through their semantic roles. */
   --color-ink: var(--ink);
   --color-ink-panel: var(--ink-panel);
+  --color-ink-raised: var(--ink-raised);
   --color-paper: var(--paper);
   --color-paper-cool: var(--paper-cool);
-  --color-green: var(--green);
-  --color-green-deep: var(--green-deep);
-  --color-gold: var(--gold);
+  --color-brass: var(--brass);
+  --color-brass-soft: var(--brass-soft);
+  --color-gold: var(--brass);
   --color-slate: var(--slate);
   --color-on-dark: var(--on-dark);
   --color-on-dark-muted: var(--on-dark-muted);
 
   /* --- Typography -------------------------------------------------------
    *
-   * The sans is the workhorse and the serif is a guest.
-   *
-   * That is the correction, and it is the single biggest one in the redesign.
-   * A high-contrast display serif set large on every heading is what made the
-   * page read as a document: forty lines of the same shouting voice, with no
-   * hierarchy left because everything was already at maximum. Instrument Sans
-   * now carries almost all of it, including most headings; EB Garamond appears
-   * a handful of times per page, at display size, where a line is meant to be
-   * felt rather than scanned.
-   *
-   * Instrument Sans is a calm neo-grotesk in the Haas line, which is the
-   * register the reference tier is set in. It is also what the wide-tracked
-   * "DLX PROPERTIES" wordmark asks for: the eyebrows are this face, letter
-   * spaced, so the labels and the logo are speaking the same language.
+   * Syne carries the voice: a contemporary display face with wide, slightly
+   * eccentric forms that reads as a design studio rather than a newspaper.
+   * Plus Jakarta Sans does everything else — body, labels, figures, tables.
    *
    * Both self-hosted; see scripts/fetch-fonts.mjs. */
-  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Archivo", var(--font-sans);
-  --font-accent: "Archivo", var(--font-sans);
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Syne", "Plus Jakarta Sans", ui-sans-serif, sans-serif;
+  --font-accent: var(--font-display);
 
-  /* Fluid type scale: each step carries its own line height, so headings
-   * stay proportionate from a 360px phone to a 1440px desktop without a
-   * breakpoint for every size. */
-  /* A sans holds its shape at sizes a serif needs air around, so the top of
-   * the scale comes down and the middle fills in. Fewer giant lines, more
-   * usable steps. */
-  --text-display-1: clamp(2.5rem, 1.5rem + 4.2vw, 4.5rem);
-  --text-display-1--line-height: 1.02;
-  --text-display-2: clamp(1.85rem, 1.3rem + 2.3vw, 2.85rem);
-  --text-display-2--line-height: 1.08;
-  --text-display-3: clamp(1.35rem, 1.15rem + 0.9vw, 1.75rem);
-  --text-display-3--line-height: 1.25;
-  /* The accent, set in the serif. Big on purpose: this is the only place the
-   * serif appears and it has to be worth the second typeface. */
+  /* Fluid type scale: each step carries its own line height. */
+  --text-display-1: clamp(2.75rem, 1.5rem + 5vw, 5.5rem);
+  --text-display-1--line-height: 0.98;
+  --text-display-2: clamp(2rem, 1.35rem + 2.6vw, 3.25rem);
+  --text-display-2--line-height: 1.04;
+  --text-display-3: clamp(1.25rem, 1.1rem + 0.8vw, 1.6rem);
+  --text-display-3--line-height: 1.2;
   --text-accent: clamp(2rem, 1.3rem + 3vw, 3.75rem);
-  --text-accent--line-height: 1.14;
-  --text-lead: clamp(1.05rem, 0.98rem + 0.4vw, 1.3rem);
-  --text-lead--line-height: 1.55;
+  --text-accent--line-height: 1.1;
+  --text-lead: clamp(1.02rem, 0.96rem + 0.35vw, 1.22rem);
+  --text-lead--line-height: 1.6;
   --text-body: 1rem;
   --text-body--line-height: 1.7;
   --text-caption: 0.875rem;
@@ -98,163 +87,60 @@
   --text-eyebrow: 0.6875rem;
   --text-eyebrow--line-height: 1.4;
 
-  /* Wide-tracked labels echo the logo wordmark. The display tracking is the
-   * small negative a grotesk wants at size, not the serif's. */
-  --tracking-editorial: 0.2em;
-  --tracking-monogram: 0.28em;
-  --tracking-display: -0.022em;
-  --tracking-accent: -0.005em;
+  --tracking-editorial: 0.22em;
+  --tracking-monogram: 0.3em;
+  --tracking-display: -0.03em;
+  --tracking-accent: -0.02em;
 
-  /* --- Spacing rhythm ---------------------------------------------------
-   *
-   * Density 4, down from 3, and the reason is a diagnosis: the old page had
-   * enormous empty bands between short blocks, which does not read as luxury,
-   * it reads as unfinished. Whitespace should frame content. These steps are
-   * still generous, but a section now has to earn its height with something
-   * in it. */
+  /* --- Spacing rhythm --------------------------------------------------- */
   --spacing-gutter: 1.5rem;
-  /* No `--spacing-block` here, and the name is the reason rather than the
-     value. Tailwind generates a utility per spacing key, so a key called
-     `block` produces `.inline-block { inline-size: 2.25rem }`, which lands
-     after the display utility of the same name and silently pins every
-     `inline-block` element on the site to 36px. It is what turned the "How we
-     work" link into three stacked words. Nothing used the scale. */
-  --spacing-section-sm: 4rem;
-  --spacing-section: 6.5rem;
-  --spacing-section-lg: 9rem;
+  --spacing-section-sm: 3.5rem;
+  --spacing-section: 5.5rem;
+  --spacing-section-lg: 8rem;
 
-  /* Widths. `shell` is the page's outer frame (1440px); `measure` is the
-   * comfortable reading width for running text. */
   --container-shell: 90rem;
   --container-measure: 34rem;
   --container-narrow: 46rem;
   --container-wide: 76rem;
 
-  /* --- Motion -----------------------------------------------------------
-   * Mirrored in src/lib/motion.ts, which owns the JS-side values. */
+  /* --- Motion ----------------------------------------------------------- */
   --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
   --duration-quick: 400ms;
   --duration-base: 600ms;
   --duration-slow: 1100ms;
-  /* The hero's own tempo. Mirrors DURATION.cinematic in src/lib/motion.ts,
-   * which the parallax still reads. */
   --duration-cinematic: 1300ms;
 }
 
 :root {
-  --radius: 0px;
+  --radius: 10px;
 
   /* --- The palette ------------------------------------------------------
-   *
-   * A cool-white canvas, deep green-black anchors, one green accent, and gold
-   * as a hairline whisper. Nothing else is a brand colour.
-   *
-   * Written as hex rather than oklch on purpose: several of these exist to hit
-   * a measured contrast ratio, and a colour-space conversion landing a couple
-   * of percent off would quietly drop them under it.
+   * Near-black canvas, ivory type, one brass accent, grey for quiet detail.
    */
-  --ink: #06121f; /* deep green-black, the cinematic anchor */
-  --ink-panel: #0d1e30; /* a lifted panel inside a dark section */
-  --paper: #ffffff;
-  --paper-cool: #f4f7fa; /* faint green-grey off-white, never warm cream */
-  --green-deep: #0f3352;
-  --green: #14507d; /* the signature, and the single accent */
-  --gold: #b98b3e; /* hairlines, small marks, and text on dark. Never a fill. */
-  --slate: #8a8a8a; /* brand grey: rules and display type, not small text */
-  --on-dark: #e8eef4;
-  --on-dark-muted: #a3b6c8;
+  --ink: #0b0b0c; /* the canvas */
+  --ink-panel: #121214; /* a tile on the canvas */
+  --ink-raised: #17171a; /* a tile that is hovered or emphasised */
+  --paper: #f7f5f1; /* ivory, used for inverted sections and type */
+  --paper-cool: #ebe7e0;
+  --brass: #b08d4c;
+  --brass-soft: #d9bd85; /* brass lightened for small text on the canvas */
+  --slate: #8a8a8a;
+  --on-dark: #f7f5f1;
+  --on-dark-muted: #a5a29c;
 
-  /*
-   * The readable greys.
-   *
-   * `--slate` is the brand grey and it is 3.45:1 on white, which carries a
-   * hairline or a 44px number but not a 14px caption. Small text uses the
-   * darkened member of the same hue below, measured at 5.33:1 on white and
-   * 5.00:1 on the cool paper. It reads as the same grey; it is simply legible.
-   *
-   * Gold gets the same treatment in reverse: it is 2.40:1 on white, so it is
-   * never used for text on the light canvas at all. On the dark anchors it is
-   * 7.79:1 and carries small text comfortably.
-   */
-  --slate-readable: #64707b; /* 5.33:1 on paper, 5.00:1 on paper-cool */
-  --text: #101418; /* cool near-black, not warm espresso. 18.4:1 on paper */
+  --slate-readable: #6b6862; /* for small text on ivory sections */
+  --text: #f7f5f1;
 
-  --background: var(--paper);
-  --foreground: var(--text);
-
-  --card: var(--paper);
-  --card-foreground: var(--text);
-  --popover: var(--paper);
-  --popover-foreground: var(--text);
-
-  /* Primary sits on the ink, not on pure black: a filled button is a small
-   * dark anchor and it belongs to the same family as the big ones. */
-  --primary: var(--ink);
-  --primary-foreground: var(--on-dark);
-
-  /* The quiet second surface. Cool, never beige. */
-  --secondary: var(--paper-cool);
-  --secondary-foreground: var(--text);
-
-  --muted: #eef2f6;
-  --muted-foreground: var(--slate-readable);
-
-  /* One accent, everywhere: green. 7.84:1 on paper, so it carries link text
-   * and small labels without a second, darker variant. */
-  --accent: var(--green);
-  --accent-foreground: var(--on-dark);
-  --accent-soft: var(--paper-cool);
-
-  --destructive: #9b2c2c;
-  --destructive-foreground: #ffffff;
-
-  --border: #dde4ea; /* cool green-grey hairline */
-  /*
-   * The input rule is darker than the border, and deliberately.
-   *
-   * A field in this system has no box: the only thing telling a reader where
-   * to type is its underline, which makes that rule a user interface component
-   * rather than decoration, and WCAG asks 3:1 of those. At the old #d6ddd9 it
-   * measured 1.17:1 on paper, which is to say invisible. This is 3.57:1 on
-   * white and 3.35:1 on the cool paper, still quiet enough to read as a
-   * hairline rather than as a box.
-   */
-  --input: #7c8896;
-  /* The focus ring is a non-text indicator and needs 3:1 against what it sits
-   * on. Green clears that on every surface in the system; gold does not clear
-   * it on the light canvas, which is why the ring is never gold. */
-  --ring: var(--green);
-  --status-positive: #1c6b4b;
-  --status-warning: #8a5a12;
-  --status-neutral: #55626d;
-  --chart-1: #14507d;
-  --chart-2: #5b8db8;
-  --chart-3: #b98b3e;
-  --chart-4: #7a8894;
-}
-
-/*
- * The dark anchors.
- *
- * The page is light. A handful of sections are deliberately cut from deep
- * green-black: the hero, the market read, the advisor, the footer. That is a
- * composed light-and-dark story the brief asks for by name, not a theme
- * fluctuating section to section, and it is expressed by re-pointing the same
- * semantic tokens rather than by every component learning two sets of classes.
- *
- * Put `data-surface="dark"` on the section and everything inside it, including
- * shared components that know nothing about it, lands in the right colours.
- */
-[data-surface="dark"] {
   --background: var(--ink);
   --foreground: var(--on-dark);
 
   --card: var(--ink-panel);
   --card-foreground: var(--on-dark);
-  --popover: var(--ink-panel);
+  --popover: var(--ink-raised);
   --popover-foreground: var(--on-dark);
 
-  --primary: var(--on-dark);
+  /* A filled button is ivory on the canvas: the brightest thing on screen. */
+  --primary: var(--paper);
   --primary-foreground: var(--ink);
 
   --secondary: var(--ink-panel);
@@ -263,35 +149,112 @@
   --muted: var(--ink-panel);
   --muted-foreground: var(--on-dark-muted);
 
-  /* Gold is the accent on dark and only on dark: 7.79:1 on the ink, and the
-   * one place in the system where it is allowed to carry text. */
-  --accent: var(--gold);
-  --accent-foreground: var(--ink);
-  --accent-soft: var(--ink-panel);
+  /* Brass is the single accent. On the canvas it measures 6.0:1 (soft) and is
+   * used for small marks, figures, hairlines and hover states. */
+  --accent: var(--brass);
+  --accent-foreground: #100d07;
+  --accent-soft: var(--ink-raised);
 
-  --destructive: #e88b8b;
-  --destructive-foreground: var(--ink);
+  --destructive: #e0817d;
+  --destructive-foreground: #14100f;
 
-  --border: #26332c;
-  /* 3.61:1 on the ink and 3.25:1 on the panel, for the same reason as above. */
-  --input: #5f7169;
-  --ring: var(--gold);
+  --border: #262629;
+  --border-strong: #35353a;
+  --input: #4c4c52;
+  --ring: var(--brass-soft);
+  --status-positive: #6fc39a;
+  --status-warning: #d6a75a;
+  --status-neutral: #9a978f;
+  --chart-1: #b08d4c;
+  --chart-2: #d9bd85;
+  --chart-3: #7f8a99;
+  --chart-4: #f7f5f1;
+
+  /* Tile surface treatment, referenced by the bento utilities. */
+  --tile-sheen: linear-gradient(
+    150deg,
+    color-mix(in srgb, var(--paper) 5%, transparent) 0%,
+    transparent 42%
+  );
+  --shadow-tile: 0 1px 0 0 color-mix(in srgb, var(--paper) 6%, transparent) inset;
+  --shadow-lifted: 0 30px 80px -40px rgb(0 0 0 / 0.9);
+}
+
+/*
+ * The dark surface is now the default, so data-surface="dark" is simply an
+ * explicit restatement of the root palette. Kept because existing markup
+ * declares it, and because it re-grounds a section nested inside a light one.
+ */
+[data-surface="dark"] {
+  --background: var(--ink);
+  --foreground: var(--on-dark);
+  --card: var(--ink-panel);
+  --card-foreground: var(--on-dark);
+  --popover: var(--ink-raised);
+  --popover-foreground: var(--on-dark);
+  --primary: var(--paper);
+  --primary-foreground: var(--ink);
+  --secondary: var(--ink-panel);
+  --secondary-foreground: var(--on-dark);
+  --muted: var(--ink-panel);
+  --muted-foreground: var(--on-dark-muted);
+  --accent: var(--brass);
+  --accent-foreground: #100d07;
+  --accent-soft: var(--ink-raised);
+  --destructive: #e0817d;
+  --destructive-foreground: #14100f;
+  --border: #262629;
+  --border-strong: #35353a;
+  --input: #4c4c52;
+  --ring: var(--brass-soft);
 
   background-color: var(--ink);
   color: var(--on-dark);
 }
 
 /*
- * Chrome that borrows the dark palette without painting the ground under it.
- *
- * The masthead over a dark hero is the case: it needs every token flipped so
- * the nav links, the currency control and the language select are all legible,
- * but it must stay transparent so the photograph runs unbroken to the top of
- * the viewport.
+ * The inverted sections: ivory paper on the dark site. Used sparingly — a
+ * report body, a long-form guide, a print-like page — for the relief of a
+ * different ground.
  */
-[data-surface="dark"][data-surface-ground="none"] {
+[data-surface="light"] {
+  --background: var(--paper);
+  --foreground: #14130f;
+  --card: #ffffff;
+  --card-foreground: #14130f;
+  --popover: #ffffff;
+  --popover-foreground: #14130f;
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+  --secondary: var(--paper-cool);
+  --secondary-foreground: #14130f;
+  --muted: var(--paper-cool);
+  --muted-foreground: var(--slate-readable);
+  --accent: #8a6b2f; /* brass darkened to 4.9:1 on ivory */
+  --accent-foreground: var(--paper);
+  --accent-soft: var(--paper-cool);
+  --destructive: #9b2c2c;
+  --destructive-foreground: #ffffff;
+  --border: #dcd7cd;
+  --border-strong: #c6c0b4;
+  --input: #8b857a;
+  --ring: #8a6b2f;
+  --shadow-tile: 0 1px 0 0 color-mix(in srgb, #000 4%, transparent) inset;
+  --tile-sheen: none;
+
+  background-color: var(--paper);
+  color: #14130f;
+}
+
+/*
+ * Chrome that borrows a palette without painting the ground under it — the
+ * masthead over a full-bleed hero, for instance.
+ */
+[data-surface="dark"][data-surface-ground="none"],
+[data-surface="light"][data-surface-ground="none"] {
   background-color: transparent;
 }
+
 
 @layer base {
   * {
