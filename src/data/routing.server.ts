@@ -79,6 +79,20 @@ async function nextAgent(
   return chosen ? { id: chosen.id, name: chosen.full_name } : null;
 }
 
+/** The consultant a visitor asked for, if they are still taking work. */
+async function agentBySlug(slug: string): Promise<{ id: string; name: string } | null> {
+  const admin = await adminDb();
+  const { data, error } = await admin
+    .from("agents")
+    .select("id, full_name")
+    .eq("slug", slug)
+    .eq("is_active", true)
+    .maybeSingle();
+
+  if (error || !data) return null;
+  return { id: data.id, name: data.full_name };
+}
+
 /**
  * Routes a lead, or deliberately does not.
  *
