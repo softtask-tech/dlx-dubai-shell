@@ -156,7 +156,7 @@ export function Header() {
       {mobileOpen ? (
         <div
           id="mobile-navigation"
-          className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-border bg-background lg:hidden"
+          className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-border bg-background lg:hidden"
         >
           <nav aria-label="Mobile navigation" className="px-5 py-7">
             {NAVIGATION_GROUPS.map((group) => (
