@@ -1013,11 +1013,12 @@ body {
 
 @utility figure-xl {
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 1.4rem + 3.2vw, 3.75rem);
-  line-height: 0.95;
-  font-weight: 700;
-  letter-spacing: -0.04em;
+  font-size: clamp(2.75rem, 1.4rem + 5vw, 5rem);
+  line-height: 0.9;
+  font-weight: 400;
+  letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
+
 }
 
 @utility figure-md {
