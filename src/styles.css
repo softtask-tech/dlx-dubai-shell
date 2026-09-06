@@ -899,3 +899,141 @@ body {
     animation: none !important;
   }
 }
+
+/* --- The bento architecture ------------------------------------------------
+ *
+ * Pages are built from tiles on a 12-column grid rather than from stacked
+ * full-width bands. A tile owns its own padding, its own hairline and its own
+ * hover state, so a data figure, a photograph and an invitation can sit
+ * side by side without any of them looking like an afterthought.
+ *
+ * Span utilities are plain Tailwind (col-span-*, row-span-*) at the call site;
+ * what lives here is the grid itself and the tile surface.
+ */
+@utility bento {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  @media (min-width: 48rem) {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  @media (min-width: 64rem) {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+@utility tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  background-image: var(--tile-sheen);
+  box-shadow: var(--shadow-tile);
+  color: var(--card-foreground);
+  padding: 1.5rem;
+  isolation: isolate;
+  @media (min-width: 64rem) {
+    padding: 2rem;
+  }
+}
+
+/* A tile that is a link or a button: it lifts, its hairline warms to brass. */
+@utility tile-interactive {
+  transition:
+    border-color var(--duration-quick) var(--ease-editorial),
+    background-color var(--duration-quick) var(--ease-editorial),
+    transform var(--duration-quick) var(--ease-editorial);
+  &:hover {
+    border-color: color-mix(in srgb, var(--brass) 55%, transparent);
+    background-color: var(--ink-raised);
+    transform: translateY(-3px);
+  }
+}
+
+/* A tile whose whole area is a photograph: no padding, content overlaid. */
+@utility tile-media {
+  padding: 0;
+  justify-content: flex-end;
+  background-color: var(--ink-raised);
+}
+
+/* The brass keyline used to mark a lead tile or an active state. */
+@utility tile-accent {
+  border-color: color-mix(in srgb, var(--brass) 45%, transparent);
+  &::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block: 0;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--brass) 25%,
+      var(--brass) 75%,
+      transparent
+    );
+  }
+}
+
+/* A big number: tabular, tight, display face. Used in every stat tile. */
+@utility figure-xl {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 1.4rem + 3.2vw, 3.75rem);
+  line-height: 0.95;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+@utility figure-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.15rem + 1.4vw, 2.25rem);
+  line-height: 1;
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* A small brass-marked label chip, for statuses and categories. */
+@utility chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--border-strong, var(--border));
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@utility chip-accent {
+  border-color: color-mix(in srgb, var(--brass) 50%, transparent);
+  color: var(--brass-soft);
+}
+
+/* The soft brass glow behind a hero or a lead tile. Purely atmospheric. */
+@utility brass-glow {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(
+      60% 50% at 50% 40%,
+      color-mix(in srgb, var(--brass) 18%, transparent),
+      transparent 70%
+    );
+  }
+}
