@@ -64,7 +64,7 @@ export function Chapter({
 export function ChapterPlate({
   photo,
   sizes = "100vw",
-  priority,
+  priority = false,
   className,
   children,
 }: {
