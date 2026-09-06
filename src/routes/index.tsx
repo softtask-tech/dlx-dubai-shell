@@ -14,17 +14,12 @@ import { pageHead, withHeroPreload } from "@/lib/seo";
 import { formatPrice } from "@/lib/format";
 import { areaPhoto, type PhotoSlug } from "@/lib/photos";
 import {
-  BentoSection,
-  EditorialIndex,
-  MediaTile,
-  SectionHead,
-  StatTile,
-  Tile,
-  TileLink,
+  Chapter,
+  FigureBand,
+  IndexRows,
   HorizontalGallery,
   Manifesto,
   MosaicGrid,
-  SplitFeature,
 } from "@/components/layouts";
 import { MaskReveal, Parallax } from "@/components/motion";
 import { InvestmentSnapshot } from "@/components/market/investment-snapshot";
