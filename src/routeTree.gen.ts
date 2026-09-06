@@ -56,6 +56,7 @@ import { Route as PropertiesSlugRouteImport } from './routes/properties/$slug'
 import { Route as ReportsTokenRouteImport } from './routes/reports/$token'
 import { Route as ServicesIndexRouteImport } from './routes/services/index'
 import { Route as ServicesSlugRouteImport } from './routes/services/$slug'
+import { Route as TeamSlugRouteImport } from './routes/team.$slug'
 import { Route as ToolsIndexRouteImport } from './routes/tools/index'
 import { Route as ToolsSlugRouteImport } from './routes/tools/$slug'
 import { Route as ApiAdvisorCallLeadRouteImport } from './routes/api/advisor/call-lead'
@@ -311,6 +312,11 @@ const ServicesSlugRoute = ServicesSlugRouteImport.update({
   path: '/services/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TeamSlugRoute = TeamSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => TeamRoute,
+} as any)
 const ToolsIndexRoute = ToolsIndexRouteImport.update({
   id: '/tools/',
   path: '/tools/',
@@ -410,7 +416,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/team': typeof TeamRoute
+  '/team': typeof TeamRouteWithChildren
   '/unsubscribe': typeof UnsubscribeRoute
   '/$lang/about': typeof LangAboutRoute
   '/$lang/contact': typeof LangContactRoute
@@ -436,6 +442,7 @@ export interface FileRoutesByFullPath {
   '/properties/$slug': typeof PropertiesSlugRoute
   '/reports/$token': typeof ReportsTokenRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/team/$slug': typeof TeamSlugRoute
   '/tools/$slug': typeof ToolsSlugRoute
   '/$lang/': typeof LangIndexRoute
   '/admin/': typeof AdminIndexRoute
@@ -474,7 +481,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/team': typeof TeamRoute
+  '/team': typeof TeamRouteWithChildren
   '/unsubscribe': typeof UnsubscribeRoute
   '/$lang/about': typeof LangAboutRoute
   '/$lang/contact': typeof LangContactRoute
@@ -500,6 +507,7 @@ export interface FileRoutesByTo {
   '/properties/$slug': typeof PropertiesSlugRoute
   '/reports/$token': typeof ReportsTokenRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/team/$slug': typeof TeamSlugRoute
   '/tools/$slug': typeof ToolsSlugRoute
   '/$lang': typeof LangIndexRoute
   '/admin': typeof AdminIndexRoute
@@ -541,7 +549,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/team': typeof TeamRoute
+  '/team': typeof TeamRouteWithChildren
   '/unsubscribe': typeof UnsubscribeRoute
   '/$lang/about': typeof LangAboutRoute
   '/$lang/contact': typeof LangContactRoute
@@ -567,6 +575,7 @@ export interface FileRoutesById {
   '/properties/$slug': typeof PropertiesSlugRoute
   '/reports/$token': typeof ReportsTokenRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/team/$slug': typeof TeamSlugRoute
   '/tools/$slug': typeof ToolsSlugRoute
   '/$lang/': typeof LangIndexRoute
   '/admin/': typeof AdminIndexRoute
@@ -635,6 +644,7 @@ export interface FileRouteTypes {
     | '/properties/$slug'
     | '/reports/$token'
     | '/services/$slug'
+    | '/team/$slug'
     | '/tools/$slug'
     | '/$lang/'
     | '/admin/'
@@ -699,6 +709,7 @@ export interface FileRouteTypes {
     | '/properties/$slug'
     | '/reports/$token'
     | '/services/$slug'
+    | '/team/$slug'
     | '/tools/$slug'
     | '/$lang'
     | '/admin'
@@ -765,6 +776,7 @@ export interface FileRouteTypes {
     | '/properties/$slug'
     | '/reports/$token'
     | '/services/$slug'
+    | '/team/$slug'
     | '/tools/$slug'
     | '/$lang/'
     | '/admin/'
@@ -806,7 +818,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  TeamRoute: typeof TeamRoute
+  TeamRoute: typeof TeamRouteWithChildren
   UnsubscribeRoute: typeof UnsubscribeRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   AreasSlugRoute: typeof AreasSlugRoute
@@ -1183,6 +1195,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/team/$slug': {
+      id: '/team/$slug'
+      path: '/$slug'
+      fullPath: '/team/$slug'
+      preLoaderRoute: typeof TeamSlugRouteImport
+      parentRoute: typeof TeamRoute
+    }
     '/tools/': {
       id: '/tools/'
       path: '/tools'
@@ -1345,6 +1364,16 @@ const AdminRouteRouteWithChildren = AdminRouteRoute._addFileChildren(
   AdminRouteRouteChildren,
 )
 
+interface TeamRouteChildren {
+  TeamSlugRoute: typeof TeamSlugRoute
+}
+
+const TeamRouteChildren: TeamRouteChildren = {
+  TeamSlugRoute: TeamSlugRoute,
+}
+
+const TeamRouteWithChildren = TeamRoute._addFileChildren(TeamRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LangRouteRoute: LangRouteRouteWithChildren,
@@ -1356,7 +1385,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  TeamRoute: TeamRoute,
+  TeamRoute: TeamRouteWithChildren,
   UnsubscribeRoute: UnsubscribeRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
