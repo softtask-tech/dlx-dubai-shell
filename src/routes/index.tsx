@@ -62,11 +62,11 @@ const FAQ_ENTRIES: readonly FaqEntry[] = [
 ] as const;
 
 const SERVICE_PHOTOS: Partial<Record<string, PhotoSlug>> = {
-  buy: "downtown-interchange-day",
-  sell: "business-bay-dusk",
-  "investment-advisory": "downtown-aerial-night-trails",
+  buy: "interchange-overhead-blue-hour",
+  sell: "tower-facade-raking-light",
+  "investment-advisory": "marble-brass-detail",
   "golden-visa": "burj-khalifa-dusk-silhouette",
-  relocation: "palm-jumeirah-aerial-day",
+  relocation: "villa-courtyard-morning",
 };
 
 /** The five the homepage leads with. The services index carries all nine. */
@@ -110,7 +110,7 @@ export const Route = createFileRoute("/")({
    * page with no verified reviews emits no Review nodes at all. */
   head: ({ loaderData }) =>
     withHeroPreload(
-      "downtown-aerial-night-trails",
+      "marina-dusk-water-level",
       pageHead({
         path: "/",
         schema: [faqSchema(FAQ_ENTRIES), ...reviewSchemaFor(loaderData?.testimonials ?? [])],
@@ -275,7 +275,7 @@ function Index() {
       <DiscoveryPanel />
 
       {/* The thesis. Image left, argument right, on the cool paper. */}
-      <SplitFeature photo="skyline-across-water-haze" side="start" className="bg-secondary">
+      <SplitFeature photo="terrace-edge-haze" side="start" className="bg-secondary">
         <h2 className="display-2 text-balance">
           Most agencies show you what they are holding. We start from what you are trying to do.
         </h2>
@@ -336,7 +336,7 @@ function Index() {
         ) : null}
 
         <MediaTile
-          photo="palm-jumeirah-aerial-day"
+          photo="villa-courtyard-morning"
           ratio="aspect-4/3"
           className="lg:col-span-8"
           to="/areas"
@@ -452,7 +452,7 @@ function Index() {
                     className="h-full w-full object-cover transition-transform duration-slow ease-editorial group-hover:scale-[1.03]"
                   />
                 ) : (
-                  <Photo slug="business-bay-dusk" sizes="(min-width: 1024px) 34vw, 78vw" />
+                  <Photo slug="tower-facade-raking-light" sizes="(min-width: 1024px) 34vw, 78vw" />
                 )}
               </MaskReveal>
               <div className="mt-5">
