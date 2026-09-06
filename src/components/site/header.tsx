@@ -120,23 +120,23 @@ export function Header() {
       {activeGroup ? (
         <div
           id={`nav-${activeGroup.toLowerCase().replace(/\s/g, "-")}`}
-          className="absolute inset-x-0 top-full hidden border-b border-border bg-background shadow-sm lg:block"
+          className="absolute inset-x-0 top-full hidden border-b border-border bg-background/95 backdrop-blur-xl lg:block"
         >
-          <div className="mx-auto grid max-w-shell grid-cols-12 gap-8 px-16 py-8">
+          <div className="mx-auto grid max-w-shell grid-cols-12 gap-6 px-16 py-8">
             <div className="col-span-3">
               <p className="eyebrow text-accent">{activeGroup}</p>
               <p className="body-text mt-3 text-muted-foreground">
                 Focused routes with useful published content.
               </p>
             </div>
-            <div className="col-span-9 grid grid-cols-3 gap-4">
+            <div className="col-span-9 grid grid-cols-3 gap-3">
               {NAVIGATION_GROUPS.find((group) => group.label === activeGroup)?.items.map((item) => (
                 <a
                   key={item.href}
                   href={pathIn(code, item.href)}
-                  className="focus-ring border-t border-border py-4 transition-colors hover:border-accent"
+                  className="focus-ring tile tile-interactive !p-4"
                 >
-                  <span className="font-medium">{item.label}</span>
+                  <span className="font-display font-semibold tracking-display">{item.label}</span>
                   {item.description ? (
                     <span className="caption mt-1 block text-muted-foreground">
                       {item.description}
@@ -147,6 +147,7 @@ export function Header() {
             </div>
           </div>
         </div>
+
       ) : null}
 
       {mobileOpen ? (
