@@ -180,62 +180,97 @@ function Index() {
        * first paint, before a byte of JavaScript has parsed. The parallax is
        * the enhancement and is allowed to arrive late.
        */}
-      <section
-        data-surface="dark"
-        className="relative flex min-h-[100svh] items-end overflow-hidden pb-16 lg:pb-24"
-      >
-        <Parallax speed={0.8} className="absolute inset-x-0 -top-[8%] h-[116%]">
-          <Photo slug="downtown-aerial-night-trails" sizes="100vw" priority />
-        </Parallax>
+      <section className="relative border-b border-border pt-16">
+        <div className="grid min-h-[calc(100svh-4rem)] lg:grid-cols-3">
+          {/* The frame. Two thirds of the masthead, and the type never sits on
+              top of it: a photograph is either a picture or a background, and
+              this one is a picture. */}
+          <div className="relative overflow-hidden lg:col-span-2 lg:order-1">
+            <Parallax speed={0.4} className="absolute inset-x-0 -top-[6%] h-[112%]">
+              <Photo slug="marina-dusk-water-level" sizes="(min-width: 1024px) 67vw, 100vw" priority />
+            </Parallax>
+            <div className="relative aspect-4/3 w-full lg:h-full lg:aspect-auto" />
+          </div>
 
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/45 to-ink/15"
-        />
-
-        <Container className="relative">
-          <div className="grid items-end gap-x-12 gap-y-10 lg:grid-cols-12">
-            <h1 className="lg:col-span-7">
-              <span
-                className="display-1 block"
-                data-hero-reveal
+          {/* The stone panel. One sentence, one action, three figures from the
+              official record, and the stamp that says where they came from. */}
+          <div className="flex flex-col justify-between gap-12 bg-secondary px-6 py-14 md:px-12 lg:order-2 lg:py-16">
+            <div>
+              <p
+                className="eyebrow text-accent"
+                data-hero-reveal="fade"
                 style={{ "--hero-delay": "0ms" } as CSSProperties}
               >
-                Dubai property,
-              </span>
-              <span
-                className="display-1 block"
-                data-hero-reveal
-                style={{ "--hero-delay": "120ms" } as CSSProperties}
-              >
-                bought on evidence
-              </span>
-              <span
-                className="accent-line mt-2 block pb-2 italic leading-[1.12]"
-                data-hero-reveal
-                style={{ "--hero-delay": "260ms" } as CSSProperties}
-              >
-                rather than atmosphere.
-              </span>
-            </h1>
-
-            <div
-              className="lg:col-span-4 lg:col-start-9"
-              data-hero-reveal="fade"
-              style={{ "--hero-delay": "460ms" } as CSSProperties}
-            >
-              <p className="body-text max-w-md text-on-dark-muted">
-                A private Dubai brokerage. We price from Dubai Land Department records, represent a
-                small number of clients, and say what the numbers say.
+                Private brokerage · Dubai
               </p>
-              {/* One action, and nothing beside it. */}
-              <Link to="/properties" search={{}} className="mt-8 inline-block">
-                <Button>View the portfolio</Button>
-              </Link>
+              <h1 className="mt-8">
+                <span
+                  className="display-1 block"
+                  data-hero-reveal
+                  style={{ "--hero-delay": "80ms" } as CSSProperties}
+                >
+                  Bought on
+                </span>
+                <span
+                  className="display-1 block"
+                  data-hero-reveal
+                  style={{ "--hero-delay": "200ms" } as CSSProperties}
+                >
+                  evidence.
+                </span>
+              </h1>
+              <p
+                className="lead mt-8 max-w-sm text-muted-foreground"
+                data-hero-reveal="fade"
+                style={{ "--hero-delay": "340ms" } as CSSProperties}
+              >
+                We price from Dubai Land Department records, represent a small number of clients,
+                and say what the numbers say.
+              </p>
+              <div
+                data-hero-reveal="fade"
+                style={{ "--hero-delay": "440ms" } as CSSProperties}
+              >
+                <Link to="/properties" search={{}} className="mt-10 inline-block">
+                  <Button>View the portfolio</Button>
+                </Link>
+              </div>
             </div>
+
+            <dl
+              className="grid grid-cols-3 gap-6 border-t border-border pt-8"
+              data-hero-reveal="fade"
+              style={{ "--hero-delay": "560ms" } as CSSProperties}
+            >
+              <div>
+                <dt className="eyebrow">Communities</dt>
+                <dd className="figure-md mt-2">
+                  {marketSummary.areasCovered.toLocaleString("en-AE")}
+                </dd>
+              </div>
+              <div>
+                <dt className="eyebrow">Transactions</dt>
+                <dd className="figure-md mt-2">
+                  {marketSummary.transactionCount.toLocaleString("en-AE")}
+                </dd>
+              </div>
+              {marketSummary.medianPricePerSqft ? (
+                <div>
+                  <dt className="eyebrow">Median AED/sqft</dt>
+                  <dd className="figure-md mt-2">
+                    {Math.round(marketSummary.medianPricePerSqft).toLocaleString("en-AE")}
+                  </dd>
+                </div>
+              ) : null}
+              <p className="caption col-span-3 flex items-center gap-2 border-t border-border pt-4">
+                <span aria-hidden className="h-px w-6 bg-brass" />
+                {marketSummary.attribution.label}
+              </p>
+            </dl>
           </div>
-        </Container>
+        </div>
       </section>
+
 
       <DiscoveryPanel />
 
