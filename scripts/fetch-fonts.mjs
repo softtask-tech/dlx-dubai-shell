@@ -39,14 +39,11 @@ const FAMILIES = [
      * second request on the critical path. */
     file: "../../src/styles.fonts.css",
     families: [
-      /* The workhorse. Most of the page is set in this. */
-      { query: "Instrument+Sans:ital,wght@0,400..600;1,400..500", slug: "instrument-sans" },
-      /* The accent, and only the accent. Roman and italic, no weights above
-       * 500: this face is used at display sizes where 400 already has
-       * presence, and a bold Garamond is a different, worse typeface. */
-      /* The display face: a tight grotesk with real weight, used for every
-       * heading, figure and label. */
-      { query: "Archivo:ital,wght@0,400..800;1,400..700", slug: "archivo" },
+      /* The workhorse: body copy, labels, tables, controls. */
+      { query: "Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..600", slug: "plus-jakarta-sans" },
+      /* The display face: every headline, figure and monogram. */
+      { query: "Syne:wght@400..800", slug: "syne" },
+
     ],
     subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
   },
