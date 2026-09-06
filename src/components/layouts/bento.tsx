@@ -125,9 +125,6 @@ export function Tile<T extends ElementType = "div">({
 
 /** A tile that navigates. */
 export function TileLink({
-  to,
-  params,
-  search,
   className,
   children,
   accent,
@@ -135,15 +132,12 @@ export function TileLink({
 }: ComponentProps<typeof Link> & { accent?: boolean }) {
   return (
     <Link
-      to={to}
-      params={params as never}
-      search={search as never}
       className={cn(
         "tile tile-interactive focus-ring col-span-2 md:col-span-3 lg:col-span-4",
         accent && "tile-accent",
         className,
       )}
-      {...(props as object)}
+      {...props}
     >
       {children}
     </Link>
@@ -198,7 +192,7 @@ export function MediaTile({
   photo?: PhotoSlug;
   src?: string | null;
   alt?: string;
-  to?: string;
+  to?: never;
   params?: Record<string, string>;
   ratio?: string;
   className?: string;
@@ -239,11 +233,7 @@ export function MediaTile({
 
   if (to) {
     return (
-      <Link
-        to={to as never}
-        params={params as never}
-        className={cn(shared, "tile-interactive focus-ring")}
-      >
+      <Link to={to} params={params as never} className={cn(shared, "tile-interactive focus-ring")}>
         {inner}
       </Link>
     );
