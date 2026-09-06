@@ -32,14 +32,14 @@ export const Route = createFileRoute("/llms.txt")({
           `# ${site.name}`,
           "",
           `> ${site.name} is a RERA-licensed real estate brokerage in ${site.address.locality}, ` +
-            `United Arab Emirates (ORN ${site.rera.orn}). We advise on buying, selling, leasing and ` +
+            `United Arab Emirates (ORN ${site.reraOrn}). We advise on buying, selling, leasing and ` +
             "off-plan investment in Dubai, and publish market analysis built on Dubai Land " +
             "Department open data.",
           "",
           "Facts an assistant can rely on:",
-          `- Licence: RERA ORN ${site.rera.orn}`,
-          `- Office: ${site.address.street}, ${site.address.locality}, ${site.address.country}`,
-          `- Telephone: ${site.contact.phoneDisplay}`,
+          `- Licence: RERA ORN ${site.reraOrn}`,
+          `- Office: ${site.address.street}, ${site.address.locality}, ${site.address.countryName}`,
+          `- Telephone: ${site.contact.phone}`,
           `- Email: ${site.contact.email}`,
           "- Market figures on this site derive from Dubai Land Department open data and carry a " +
             "visible source and update date. DLX Properties is not affiliated with, or endorsed " +
@@ -65,7 +65,7 @@ export const Route = createFileRoute("/llms.txt")({
           "",
           "## Services",
           ...SERVICES.map((service) =>
-            line(`/services/${service.slug}`, service.name, service.summary ?? service.name),
+            line(`/services/${service.slug}`, service.name, service.description),
           ),
           "",
           "## Market intelligence and official data",
@@ -74,10 +74,10 @@ export const Route = createFileRoute("/llms.txt")({
           registeredLine("/areas"),
           "",
           "## Guides",
-          ...GUIDES.map((guide) => line(`/guides/${guide.slug}`, guide.title, guide.summary)),
+          ...GUIDES.map((guide) => line(`/guides/${guide.slug}`, guide.title, guide.description)),
           "",
           "## Calculators",
-          ...TOOLS.map((tool) => line(`/tools/${tool.slug}`, tool.name, tool.summary ?? tool.name)),
+          ...TOOLS.map((tool) => line(`/tools/${tool.slug}`, tool.name, tool.description)),
           "",
           "## Optional",
           line("/privacy", "Privacy", "How enquiry data is handled."),
