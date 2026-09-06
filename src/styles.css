@@ -283,19 +283,16 @@
     letter-spacing: 0;
   }
 
-  /*
-   * Headings are the sans now, at 500. A grotesk at 400 set large reads thin
-   * and slightly unresolved; 500 is the weight this face is drawn to hold a
-   * headline at, and it is still nowhere near a shout.
-   */
+  /* Headings are Syne, tightly tracked. */
   h1,
   h2,
   h3,
   h4 {
-    font-family: var(--font-sans);
-    font-weight: 500;
+    font-family: var(--font-display);
+    font-weight: 600;
     letter-spacing: var(--tracking-display);
   }
+
 
   ::selection {
     background: var(--accent);
