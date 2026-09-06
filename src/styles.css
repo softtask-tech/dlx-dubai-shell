@@ -4,24 +4,23 @@
 @import "./styles.fonts.css";
 
 /*
- * DLX Properties — "Midnight & Brass".
+ * DLX Properties — "Bone & Ink".
  *
- * A near-black canvas, ivory type, one warm brass accent, and a modular bento
- * architecture. The page is a gallery at night: tiles of data, photography and
- * invitation sitting on a dark ground, separated by hairlines rather than by
- * empty bands. Light sections exist, but they are the exception and they are
- * declared with data-surface="light".
+ * Warm off-white paper, pure black type, one gold reserved for figures that
+ * come from the official record. No cards, no rounded tiles, no shadows, no
+ * gradients: hairlines and space do the separating. Ink is not a mood — it is
+ * an inversion used at most twice on a page, declared with data-surface="ink".
  *
- * Display type is Syne; everything else is Plus Jakarta Sans.
+ * Display type is Instrument Serif; everything else is Work Sans.
  */
 
 @theme inline {
-  /* Tiles have a real, small radius. Zero-radius read as a document; this is
-   * a designed object. */
-  --radius-sm: 4px;
-  --radius-md: 10px;
-  --radius-lg: 18px;
-  --radius-xl: 28px;
+  /* A monograph has no rounded corners. Radii exist only so third-party
+   * controls (inputs, popovers) do not look broken. */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -45,161 +44,170 @@
   --color-ring: var(--ring);
 
   /* Named palette entries, so the brand colours can be referenced directly
-   * (bg-ink, text-brass) as well as through their semantic roles. */
-  --color-stone: var(--stone);
-  --color-stone-panel: var(--stone-panel);
-  --color-stone-deep: var(--stone-deep);
-  --color-steel: var(--steel);
-  --color-steel-soft: var(--steel-soft);
+   * (bg-ink, text-gold) as well as through their semantic roles. The stone/
+   * steel names are kept as aliases so older markup keeps resolving. */
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-paper-shade: var(--paper-shade);
   --color-ink: var(--ink);
   --color-ink-panel: var(--ink-panel);
   --color-ink-raised: var(--ink-raised);
-  --color-paper: var(--paper);
-  --color-paper-cool: var(--paper-cool);
-  --color-brass: var(--brass);
-  --color-brass-soft: var(--brass-soft);
-  --color-gold: var(--brass);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-ink: var(--gold-ink);
+  --color-brass: var(--gold);
+  --color-brass-soft: var(--gold-soft);
+  --color-stone: var(--paper);
+  --color-stone-panel: var(--paper-deep);
+  --color-stone-deep: var(--paper-shade);
+  --color-steel: var(--gold-ink);
+  --color-steel-soft: var(--gold-soft);
+  --color-paper-cool: var(--paper-deep);
   --color-slate: var(--slate);
   --color-on-dark: var(--on-dark);
   --color-on-dark-muted: var(--on-dark-muted);
 
   /* --- Typography -------------------------------------------------------
    *
-   * Syne carries the voice: a contemporary display face with wide, slightly
-   * eccentric forms that reads as a design studio rather than a newspaper.
-   * Plus Jakarta Sans does everything else — body, labels, figures, tables.
+   * Instrument Serif carries the voice: high-contrast, narrow, editorial —
+   * a monograph cover rather than a newspaper. Work Sans does everything
+   * else: body, labels, figures, tables.
    *
    * Both self-hosted; see scripts/fetch-fonts.mjs. */
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Syne", "Plus Jakarta Sans", ui-sans-serif, sans-serif;
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
   --font-accent: var(--font-display);
 
-  /* Fluid type scale: each step carries its own line height. */
-  --text-display-1: clamp(2.75rem, 1.5rem + 5vw, 5.5rem);
-  --text-display-1--line-height: 0.98;
-  --text-display-2: clamp(2rem, 1.35rem + 2.6vw, 3.25rem);
-  --text-display-2--line-height: 1.04;
-  --text-display-3: clamp(1.25rem, 1.1rem + 0.8vw, 1.6rem);
-  --text-display-3--line-height: 1.2;
-  --text-accent: clamp(2rem, 1.3rem + 3vw, 3.75rem);
-  --text-accent--line-height: 1.1;
-  --text-lead: clamp(1.02rem, 0.96rem + 0.35vw, 1.22rem);
-  --text-lead--line-height: 1.6;
-  --text-body: 1rem;
-  --text-body--line-height: 1.7;
-  --text-caption: 0.875rem;
-  --text-caption--line-height: 1.6;
+  /* Fluid type scale. The serif is narrow, so display sizes run larger than
+   * they would with a grotesk, and line height runs tighter. */
+  --text-display-1: clamp(3rem, 1.1rem + 7.4vw, 8rem);
+  --text-display-1--line-height: 0.92;
+  --text-display-2: clamp(2.25rem, 1.2rem + 4.2vw, 4.75rem);
+  --text-display-2--line-height: 0.98;
+  --text-display-3: clamp(1.35rem, 1.15rem + 1vw, 2rem);
+  --text-display-3--line-height: 1.15;
+  --text-accent: clamp(2.25rem, 1.2rem + 4.4vw, 5rem);
+  --text-accent--line-height: 1.02;
+  --text-lead: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+  --text-lead--line-height: 1.7;
+  --text-body: 0.9375rem;
+  --text-body--line-height: 1.8;
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.65;
   --text-eyebrow: 0.6875rem;
   --text-eyebrow--line-height: 1.4;
 
-  --tracking-editorial: 0.22em;
+  --tracking-editorial: 0.26em;
   --tracking-monogram: 0.3em;
-  --tracking-display: -0.03em;
-  --tracking-accent: -0.02em;
+  --tracking-display: -0.015em;
+  --tracking-accent: -0.01em;
 
   /* --- Spacing rhythm --------------------------------------------------- */
   --spacing-gutter: 1.5rem;
-  --spacing-section-sm: 3.5rem;
-  --spacing-section: 5.5rem;
-  --spacing-section-lg: 8rem;
+  --spacing-section-sm: 4rem;
+  --spacing-section: 7rem;
+  --spacing-section-lg: 11rem;
 
-  --container-shell: 90rem;
-  --container-measure: 34rem;
-  --container-narrow: 46rem;
-  --container-wide: 76rem;
+  --container-shell: 96rem;
+  --container-measure: 32rem;
+  --container-narrow: 44rem;
+  --container-wide: 74rem;
 
   /* --- Motion ----------------------------------------------------------- */
-  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
-  --duration-quick: 400ms;
-  --duration-base: 600ms;
-  --duration-slow: 1100ms;
-  --duration-cinematic: 1300ms;
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-quick: 420ms;
+  --duration-base: 700ms;
+  --duration-slow: 1200ms;
+  --duration-cinematic: 1600ms;
 }
 
 :root {
-  --radius: 10px;
+  --radius: 0px;
 
   /* --- The palette ------------------------------------------------------
    *
-   * Marble & Ink. A cool off-white stone canvas, pure black type, one muted
-   * steel-blue accent for anything interactive, and brass held back for the
-   * figures that come from the official record. Ink is not the ground; it is
-   * an event, used twice a page at most.
+   * Bone & Ink. Warm off-white paper, pure black type, one gold held back
+   * for the figures that come from the Dubai Land Department record.
    */
-  --stone: #f2f2f0; /* the canvas */
-  --stone-panel: #e6e6e3; /* a panel on the canvas */
-  --stone-deep: #d9d9d6; /* a panel that is hovered, or a quiet band */
+  --paper: #f6f3ee; /* the canvas */
+  --paper-deep: #ece7de; /* a panel on the canvas */
+  --paper-shade: #e0d9cc; /* a hovered panel, or a quiet band */
   --ink: #0a0a0a; /* type, and the inverted ground */
-  --ink-panel: #141416; /* a tile inside an inverted band */
-  --ink-raised: #1c1c1f;
-  --steel: #3e5c6b; /* the accent: links, actions, active state */
-  --steel-deep: #2c4351;
-  --steel-soft: #9db8c4; /* the accent, lightened for ink grounds */
-  --brass: #b08d4c; /* reserved: official figures and their hairlines */
-  --brass-soft: #d9bd85;
-  --slate: #6f6f6b;
-  --brass-ink: #8a6b2f; /* brass darkened for small type on stone */
+  --ink-panel: #121211;
+  --ink-raised: #1b1a18;
+  --gold: #b08d4c; /* hairlines and large official figures */
+  --gold-soft: #d9bd85; /* the same, on an ink ground */
+  --gold-ink: #8a6b2f; /* gold darkened enough for small type on paper */
+  --slate: #7a756d;
 
   /* Legacy aliases, so existing markup keeps resolving. */
-  --paper: var(--stone);
-  --paper-cool: var(--stone-panel);
-  --on-dark: #f4f4f2;
-  --on-dark-muted: #a2a2a0;
-  --slate-readable: #5c5c58;
+  --stone: var(--paper);
+  --stone-panel: var(--paper-deep);
+  --stone-deep: var(--paper-shade);
+  --steel: var(--gold-ink);
+  --steel-deep: #6d541f;
+  --steel-soft: var(--gold-soft);
+  --brass: var(--gold);
+  --brass-soft: var(--gold-soft);
+  --brass-ink: var(--gold-ink);
+  --paper-cool: var(--paper-deep);
+  --on-dark: #f6f3ee;
+  --on-dark-muted: #a09a90;
+  --slate-readable: #635e56;
   --text: var(--ink);
 
-  --background: var(--stone);
+  --background: var(--paper);
   --foreground: var(--ink);
 
-  --card: #fbfbfa;
+  --card: var(--paper);
   --card-foreground: var(--ink);
-  --popover: #ffffff;
+  --popover: #fbf9f5;
   --popover-foreground: var(--ink);
 
-  /* A filled button is ink on stone: the darkest thing on screen. */
+  /* A filled button is ink on paper: the darkest thing on screen. */
   --primary: var(--ink);
-  --primary-foreground: var(--stone);
+  --primary-foreground: var(--paper);
 
-  --secondary: var(--stone-panel);
+  --secondary: var(--paper-deep);
   --secondary-foreground: var(--ink);
 
-  --muted: var(--stone-panel);
-  --muted-foreground: #5c5c58;
+  --muted: var(--paper-deep);
+  --muted-foreground: #635e56;
 
-  --accent: var(--steel);
-  --accent-foreground: #f4f6f7;
-  --accent-soft: #dfe7eb;
+  --accent: var(--gold-ink);
+  --accent-foreground: #fbf9f5;
+  --accent-soft: #ece2cd;
 
-  --destructive: #9b2c2c;
-  --destructive-foreground: #ffffff;
+  --destructive: #8f2b25;
+  --destructive-foreground: #fbf9f5;
 
-  --border: #d7d7d3;
-  --border-strong: #bcbcb7;
-  --input: #8b8b86;
-  --ring: var(--steel);
+  --border: #d7d0c3;
+  --border-strong: #b8b0a1;
+  --input: #8b857b;
+  --ring: var(--gold-ink);
   --status-positive: #2f6f52;
-  --status-warning: #8a6b2f;
-  --status-neutral: #6f6f6b;
-  --chart-1: #3e5c6b;
-  --chart-2: #9db8c4;
-  --chart-3: #b08d4c;
-  --chart-4: #0a0a0a;
+  --status-warning: var(--gold-ink);
+  --status-neutral: var(--slate);
+  --chart-1: #0a0a0a;
+  --chart-2: #b08d4c;
+  --chart-3: #7a756d;
+  --chart-4: #d7d0c3;
 
-  /* Panels are flat on stone: a hairline and a change of value, no sheen. */
+  /* Nothing is raised off the paper. */
   --tile-sheen: none;
   --shadow-tile: none;
-  --shadow-lifted: 0 30px 70px -45px rgb(10 10 10 / 0.45);
+  --shadow-lifted: none;
 }
 
 /*
- * The inversion. An ink band inside the stone site — the market read and the
- * closing invitation, and nothing else on a given page.
+ * The inversion. An ink chapter inside the paper site — the evidence band and
+ * the closing invitation, and nothing else on a given page.
  */
 [data-surface="dark"],
 [data-surface="ink"] {
   --background: var(--ink);
   --foreground: var(--on-dark);
-  --card: var(--ink-panel);
+  --card: var(--ink);
   --card-foreground: var(--on-dark);
   --popover: var(--ink-raised);
   --popover-foreground: var(--on-dark);
@@ -209,74 +217,74 @@
   --secondary-foreground: var(--on-dark);
   --muted: var(--ink-panel);
   --muted-foreground: var(--on-dark-muted);
-  --accent: var(--steel-soft);
-  --accent-foreground: #0a0f12;
+  --accent: var(--gold-soft);
+  --accent-foreground: #0a0a0a;
   --accent-soft: var(--ink-raised);
   --destructive: #e0817d;
   --destructive-foreground: #14100f;
-  --border: #26262a;
-  --border-strong: #3a3a40;
-  --input: #4c4c52;
-  --brass-ink: var(--brass-soft);
-  --ring: var(--steel-soft);
-  --chart-1: #9db8c4;
-  --chart-2: #3e5c6b;
-  --chart-3: #d9bd85;
-  --chart-4: #f4f4f2;
-  --tile-sheen: linear-gradient(
-    150deg,
-    color-mix(in srgb, #ffffff 5%, transparent) 0%,
-    transparent 42%
-  );
-  --shadow-tile: 0 1px 0 0 color-mix(in srgb, #ffffff 6%, transparent) inset;
+  --border: #2a2825;
+  --border-strong: #423f3a;
+  --input: #524e48;
+  --brass-ink: var(--gold-soft);
+  --gold-ink: var(--gold-soft);
+  --ring: var(--gold-soft);
+  --chart-1: #f6f3ee;
+  --chart-2: #d9bd85;
+  --chart-3: #a09a90;
+  --chart-4: #423f3a;
+  --tile-sheen: none;
+  --shadow-tile: none;
 
   background-color: var(--ink);
   color: var(--on-dark);
 }
 
 /*
- * A stone band declared explicitly, for a section nested inside an inversion.
+ * A paper band declared explicitly, for a section nested inside an inversion.
  */
 [data-surface="light"],
-[data-surface="stone"] {
-  --background: var(--stone);
+[data-surface="stone"],
+[data-surface="paper"] {
+  --background: var(--paper);
   --foreground: var(--ink);
-  --card: #fbfbfa;
+  --card: var(--paper);
   --card-foreground: var(--ink);
-  --popover: #ffffff;
+  --popover: #fbf9f5;
   --popover-foreground: var(--ink);
   --primary: var(--ink);
-  --primary-foreground: var(--stone);
-  --secondary: var(--stone-panel);
+  --primary-foreground: var(--paper);
+  --secondary: var(--paper-deep);
   --secondary-foreground: var(--ink);
-  --muted: var(--stone-panel);
-  --muted-foreground: #5c5c58;
-  --accent: var(--steel);
-  --accent-foreground: #f4f6f7;
-  --accent-soft: #dfe7eb;
-  --destructive: #9b2c2c;
-  --destructive-foreground: #ffffff;
-  --border: #d7d7d3;
-  --border-strong: #bcbcb7;
-  --input: #8b8b86;
-  --ring: var(--steel);
+  --muted: var(--paper-deep);
+  --muted-foreground: #635e56;
+  --accent: var(--gold-ink);
+  --accent-foreground: #fbf9f5;
+  --accent-soft: #ece2cd;
+  --destructive: #8f2b25;
+  --destructive-foreground: #fbf9f5;
+  --border: #d7d0c3;
+  --border-strong: #b8b0a1;
+  --input: #8b857b;
+  --ring: var(--gold-ink);
   --tile-sheen: none;
   --shadow-tile: none;
 
-  background-color: var(--stone);
+  background-color: var(--paper);
   color: var(--ink);
 }
 
 /*
  * Chrome that borrows a palette without painting the ground under it — the
- * masthead over a full-bleed hero, for instance.
+ * masthead over a full-bleed opening frame, for instance.
  */
 [data-surface="dark"][data-surface-ground="none"],
 [data-surface="ink"][data-surface-ground="none"],
 [data-surface="stone"][data-surface-ground="none"],
+[data-surface="paper"][data-surface-ground="none"],
 [data-surface="light"][data-surface-ground="none"] {
   background-color: transparent;
 }
+
 
 
 
