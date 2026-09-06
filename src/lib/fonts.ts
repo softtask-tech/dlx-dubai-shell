@@ -33,11 +33,12 @@ import type { LocaleCode } from "@/config/locales";
  * wanted.
  */
 const PRELOAD = [
-  /* The workhorse, plus the display face: every page opens with a heading set
-   * in Syne, so it is on the critical path exactly like the body sans. */
-  "/fonts/plus-jakarta-sans-latin-400-800-normal.woff2",
-  "/fonts/syne-latin-400-800-normal.woff2",
+  /* The workhorse, plus the display serif: every page opens with a heading set
+   * in Instrument Serif, so it is on the critical path like the body sans. */
+  "/fonts/work-sans-latin-300-700-normal.woff2",
+  "/fonts/instrument-serif-latin-400-normal.woff2",
 ] as const;
+
 
 
 /**
