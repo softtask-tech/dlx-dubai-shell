@@ -120,26 +120,19 @@ export const Route = createFileRoute("/")({
 });
 
 /**
- * The homepage.
+ * The homepage, as seven chapters.
  *
- * Composed from `src/components/layouts`, under one rule that can be checked in
- * a screenshot: no two consecutive sections use the same family. Reading down,
+ * Bone & Ink: paper canvas, ink type, one gold hairline reserved for figures
+ * that come from the official record. The ink inversion is used exactly twice —
+ * the evidence band and the closing invitation — so black reads as an event.
  *
- *   full bleed   hero
- *   split        the thesis, image on the left
- *   interactive  the Investment Snapshot
- *   dark pin     the market, read from the record
- *   index        services
- *   gallery      selected residences, moving sideways
- *   mosaic       communities, cells of unequal size
- *   dark         Noor
- *   proof        people, licence, one quote
- *   manifesto    the closing line, in the serif
- *   questions    the FAQ
- *
- * Three eyebrows across eleven sections, inside the one-per-three budget, and
- * the hero carries none. Two pinned moments at most per page is the site-wide
- * rule; this page spends both, on the market read and the residences track.
+ *   I    Opening      one photograph, the name, the licence line
+ *   II   Statement    one enormous sentence, offset, on paper
+ *   III  Evidence     inverted ink, three figures, the DLD stamp
+ *   IV   Portfolio    a numbered register of practices and residences
+ *   V    The two      the off-plan concepts, image to the edge
+ *   VI   Understand   the advisor and the snapshot, as sentences
+ *   VII  Closing      inverted ink, the invitation
  */
 function Index() {
   const {
@@ -158,46 +151,52 @@ function Index() {
   );
 
   const communities = areas.filter((area) => area.stats).slice(0, 6);
-  /* One quote, and preferably one a reader can go and check. */
   const quote = testimonials.find((entry) => entry.source_url) ?? testimonials[0] ?? null;
+
+  const figures = [
+    {
+      label: "Communities covered",
+      value: marketSummary.areasCovered.toLocaleString("en-AE"),
+      meaning: "Each one with its own recorded price and yield history.",
+    },
+    {
+      label: "Recorded transactions",
+      value: marketSummary.transactionCount.toLocaleString("en-AE"),
+      meaning: "The sample behind every median published on this site.",
+    },
+    ...(marketSummary.medianPricePerSqft
+      ? [
+          {
+            label: "Median AED per sq ft",
+            value: Math.round(marketSummary.medianPricePerSqft).toLocaleString("en-AE"),
+            meaning: "A sanity check on any asking price you are shown.",
+          },
+        ]
+      : []),
+  ];
 
   return (
     <>
-      {/*
-       * The hero.
-       *
-       * The heart of the page, composed as one photograph rather than as a
-       * banner with type on it. Downtown from the air at night: the Burj lit,
-       * traffic running through the interchange, real depth to move through.
-       *
-       * The type is deliberately mixed. Two lines of the workhorse sans carry
-       * the statement and one serif line carries the turn, which is the whole
-       * argument for keeping a second typeface. It earns its place once, here,
-       * where the reader is meant to slow down.
-       *
-       * The headline animates in CSS rather than through RevealText: it is the
-       * Largest Contentful Paint candidate and a CSS animation starts at the
-       * first paint, before a byte of JavaScript has parsed. The parallax is
-       * the enhancement and is allowed to arrive late.
-       */}
-      <section className="relative border-b border-border pt-16">
-        <div className="grid min-h-[calc(100svh-4rem)] lg:grid-cols-3">
-          {/* The frame. Two thirds of the masthead, and the type never sits on
-              top of it: a photograph is either a picture or a background, and
-              this one is a picture. */}
-          <div className="relative overflow-hidden lg:col-span-2 lg:order-1">
-            <Parallax speed={0.4} className="absolute inset-x-0 -top-[6%] h-[112%]">
-              <Photo slug="marina-dusk-water-level" sizes="(min-width: 1024px) 67vw, 100vw" priority />
-            </Parallax>
-            <div className="relative aspect-4/3 w-full lg:h-full lg:aspect-auto" />
-          </div>
+      {/* I — Opening. The photograph is a picture, not a background; the type
+          sits beneath it on paper, the way a plate sits in a monograph. */}
+      <section className="pt-16">
+        <div className="relative overflow-hidden">
+          <Parallax speed={0.35} className="absolute inset-x-0 -top-[6%] h-[112%]">
+            <Photo
+              slug="marina-dusk-water-level"
+              sizes="100vw"
+              priority
+              className="h-full w-full object-cover"
+            />
+          </Parallax>
+          <div className="relative h-[58svh] min-h-[22rem] w-full lg:h-[68svh]" />
+        </div>
 
-          {/* The stone panel. One sentence, one action, three figures from the
-              official record, and the stamp that says where they came from. */}
-          <div className="flex flex-col justify-between gap-12 bg-secondary px-6 py-14 md:px-12 lg:order-2 lg:py-16">
-            <div>
+        <Container className="py-section">
+          <div className="grid gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-8">
               <p
-                className="eyebrow text-accent"
+                className="eyebrow"
                 data-hero-reveal="fade"
                 style={{ "--hero-delay": "0ms" } as CSSProperties}
               >
@@ -205,22 +204,24 @@ function Index() {
               </p>
               <h1 className="mt-8">
                 <span
-                  className="display-1 block lg:text-[clamp(2.75rem,3.4vw,4.25rem)]"
+                  className="display-1 block"
                   data-hero-reveal
                   style={{ "--hero-delay": "80ms" } as CSSProperties}
                 >
                   Bought on
                 </span>
                 <span
-                  className="display-1 block lg:text-[clamp(2.75rem,3.4vw,4.25rem)]"
+                  className="display-1 block ps-[8vw]"
                   data-hero-reveal
                   style={{ "--hero-delay": "200ms" } as CSSProperties}
                 >
                   evidence.
                 </span>
               </h1>
+            </div>
+            <div className="flex flex-col justify-end lg:col-span-4">
               <p
-                className="lead mt-8 max-w-sm text-muted-foreground"
+                className="lead max-w-sm text-muted-foreground"
                 data-hero-reveal="fade"
                 style={{ "--hero-delay": "340ms" } as CSSProperties}
               >
@@ -235,202 +236,86 @@ function Index() {
                   <Button>View the portfolio</Button>
                 </Link>
               </div>
-            </div>
-
-            <dl
-              className="grid grid-cols-3 gap-6 border-t border-border pt-8"
-              data-hero-reveal="fade"
-              style={{ "--hero-delay": "560ms" } as CSSProperties}
-            >
-              <div>
-                <dt className="eyebrow">Communities</dt>
-                <dd className="figure-md mt-2">
-                  {marketSummary.areasCovered.toLocaleString("en-AE")}
-                </dd>
-              </div>
-              <div>
-                <dt className="eyebrow">Transactions</dt>
-                <dd className="figure-md mt-2">
-                  {marketSummary.transactionCount.toLocaleString("en-AE")}
-                </dd>
-              </div>
-              {marketSummary.medianPricePerSqft ? (
-                <div>
-                  <dt className="eyebrow">Median AED/sqft</dt>
-                  <dd className="figure-md mt-2">
-                    {Math.round(marketSummary.medianPricePerSqft).toLocaleString("en-AE")}
-                  </dd>
-                </div>
-              ) : null}
-              <p className="caption col-span-3 flex items-center gap-2 border-t border-border pt-4">
-                <span aria-hidden className="h-px w-6 bg-brass" />
+              <p className="caption mt-10 flex items-center gap-3 border-t border-border pt-5">
+                <span aria-hidden className="h-px w-8 bg-brass" />
                 {marketSummary.attribution.label}
               </p>
-            </dl>
+            </div>
           </div>
-        </div>
+        </Container>
       </section>
-
 
       <DiscoveryPanel />
 
-      {/* The thesis. Image left, argument right, on the cool paper. */}
-      <SplitFeature photo="terrace-edge-haze" side="start" className="bg-secondary">
-        <h2 className="display-2 text-balance">
-          Most agencies show you what they are holding. We start from what you are trying to do.
-        </h2>
-        <p className="body-text mt-6 max-w-lg text-muted-foreground">
-          DLX is deliberately small. We take a limited number of mandates at a time because the
-          alternative, a pipeline of a hundred half-served buyers, is how most brokerages work and
-          why most buyers feel unrepresented.
-        </p>
-        <p className="body-text mt-4 max-w-lg text-muted-foreground">
-          One consultant stays with you from the first call to handover. They price from recorded
-          transactions, they tell you when a building has a service-charge problem, and they say so
-          when the answer is that you should not buy.
-        </p>
-        <Link to="/about" className="eyebrow link-underline mt-8 inline-block text-accent">
-          How we work
-        </Link>
-      </SplitFeature>
-
-      {/* The intelligence grid.
-       *
-       * The record, arranged as tiles rather than a band: a reader can enter at
-       * whichever figure is theirs. Every number carries a plain sentence and
-       * the Dubai Land Department attribution the licence requires. */}
-      <BentoSection
-        aria-labelledby="evidence-title"
-        head={
-          <SectionHead
-            eyebrow="The record"
-            title={<span id="evidence-title">What the official data says this month.</span>}
-            lead="Figures come from Dubai Land Department records we hold ourselves, not from portal listings."
-            action={
-              <Link to="/market-intelligence" className="eyebrow link-underline text-accent">
-                Open market intelligence
-              </Link>
-            }
-          />
-        }
-      >
-        <StatTile
-          label="Communities covered"
-          value={marketSummary.areasCovered.toLocaleString("en-AE")}
-          meaning="Every community below has its own recorded price and yield history."
-          source={marketSummary.attribution.label}
-        />
-        <StatTile
-          label="Recorded transactions"
-          value={marketSummary.transactionCount.toLocaleString("en-AE")}
-          meaning="The sample behind every median on this site."
-          source={marketSummary.attribution.label}
-        />
-        {marketSummary.medianPricePerSqft ? (
-          <StatTile
-            label="Median price"
-            value={`AED ${Math.round(marketSummary.medianPricePerSqft).toLocaleString("en-AE")}`}
-            meaning="Per square foot, across the communities we cover. Useful as a sanity check on any asking price."
-            source={marketSummary.attribution.label}
-          />
-        ) : null}
-
-        <MediaTile
-          photo="villa-courtyard-morning"
-          ratio="aspect-4/3"
-          className="lg:col-span-8"
-          to="/areas"
-        >
-          <p className="eyebrow text-on-dark-muted">Where we transact</p>
-          <p className="display-3 mt-2">Community by community, priced from the record.</p>
-        </MediaTile>
-
-        {marketSummary.bestYield ? (
-          <StatTile
-            className="lg:col-span-4"
-            label="Strongest gross yield"
-            value={`${marketSummary.bestYield.yieldPct.toFixed(1)}%`}
-            meaning={`${marketSummary.bestYield.areaName} currently returns the most rent relative to price of the communities we track.`}
-            source={marketSummary.attribution.label}
-          />
-        ) : null}
-
-        {marketSummary.yoyPriceChangePct !== null ? (
-          <StatTile
-            label="Year on year"
-            value={`${marketSummary.yoyPriceChangePct > 0 ? "+" : ""}${marketSummary.yoyPriceChangePct.toFixed(1)}%`}
-            meaning="Change in median price across the covered communities over twelve months."
-            source={marketSummary.attribution.label}
-          />
-        ) : null}
-
-        <Tile accent className="justify-between gap-8 lg:col-span-4">
-          <p className="eyebrow">Ask instead of reading</p>
-          <div>
-            <p className="display-3 text-balance">
-              Tell us the objective. We will tell you what the data supports.
+      {/* II — Statement. Type alone, offset, no photograph competing with it. */}
+      <Chapter index="I" label="Position" surface="deep">
+        <div className="grid gap-12 lg:grid-cols-12">
+          <h2 className="display-2 text-balance lg:col-span-8 lg:col-start-3">
+            Most agencies show you what they are holding. We start from what you are trying to do.
+          </h2>
+          <div className="lg:col-span-6 lg:col-start-7">
+            <p className="body-text text-muted-foreground">
+              DLX is deliberately small. We take a limited number of mandates at a time because the
+              alternative, a pipeline of a hundred half-served buyers, is how most brokerages work
+              and why most buyers feel unrepresented.
             </p>
-            <Link to="/contact" className="mt-6 inline-block">
-              <Button variant="accent">Speak to a consultant</Button>
+            <p className="body-text mt-5 text-muted-foreground">
+              One consultant stays with you from the first call to handover. They price from
+              recorded transactions, they tell you when a building has a service-charge problem, and
+              they say so when the answer is that you should not buy.
+            </p>
+            <Link to="/about" className="eyebrow link-underline mt-8 inline-block text-accent">
+              How we work
             </Link>
           </div>
-        </Tile>
+        </div>
+      </Chapter>
 
-        <TileLink to="/directory" className="justify-between gap-8 lg:col-span-4">
-          <p className="eyebrow text-accent">Directory</p>
-          <div>
-            <p className="display-3 text-balance">Search the published register yourself.</p>
-            <p className="caption mt-3 text-muted-foreground">
-              Developers, projects, buildings and communities, as recorded.
-            </p>
-          </div>
-        </TileLink>
-      </BentoSection>
+      {/* III — Evidence. The first of the two ink inversions. */}
+      <Chapter index="II" label="The record" surface="ink">
+        <h2 className="display-2 mb-16 max-w-3xl text-balance">
+          What the official data says this month.
+        </h2>
+        <FigureBand
+          figures={figures}
+          source={marketSummary.attribution.label}
+          action={
+            <Link to="/market-intelligence" className="eyebrow link-underline">
+              Open market intelligence
+            </Link>
+          }
+        />
+      </Chapter>
 
-      {/* The signature interactive. Three questions, a Dubai Land Department
-          cited answer, and nothing asked in return. */}
+      {/* The signature interactive, and the pinned market read. */}
       <InvestmentSnapshot areas={areas} />
-
-      {/* The page's first pinned moment. */}
       <MarketSequence summary={marketSummary} index={marketIndex} areas={areas} />
 
-      {/* Services, as an index rather than a card grid. */}
-      <EditorialIndex
-        heading={
-          <>
-            <Eyebrow>What we do</Eyebrow>
-            <h2 className="display-2 mt-5 text-balance">Five practices, one team.</h2>
-          </>
-        }
-        intro={
-          <p className="body-text mt-5 text-muted-foreground">
-            Each one is a mandate we take on properly or not at all.
-          </p>
-        }
-        rows={services.map((service) => ({
-          id: service.slug,
-          to: `/services/${service.slug}`,
-          title: service.name,
-          summary: service.tagline,
-          photo: SERVICE_PHOTOS[service.slug] ?? "downtown-fog-day",
-        }))}
-        action={
+      {/* IV — Portfolio. A register, set in type. */}
+      <Chapter index="III" label="What we do">
+        <h2 className="display-2 mb-14 max-w-3xl text-balance">Five practices, one team.</h2>
+        <IndexRows
+          rows={services.map((service) => ({
+            id: service.slug,
+            to: `/services/${service.slug}`,
+            title: service.name,
+            detail: service.tagline,
+          }))}
+        />
+        <div className="mt-10">
           <Link to="/services" className="eyebrow link-underline text-accent">
             All nine practices
           </Link>
-        }
-      />
+        </div>
+      </Chapter>
 
-      {/* Fictional concepts are server-gated to local/Lovable preview hosts.
-          Production receives the honest private-inventory state instead. */}
+      {/* V — The two off-plan concepts. */}
       <FeaturedOffPlan projects={demoProjects} />
 
-      {/* Selected residences, as a track the reader walks along. The second and
-          last pinned moment on the page. */}
       {featured.length > 0 ? (
         <HorizontalGallery
           aria-label="Selected residences"
-          className="bg-secondary"
+          className="border-t border-border bg-secondary"
           heading={
             <h2 className="display-2 text-balance">Selected residences, represented privately.</h2>
           }
@@ -467,7 +352,7 @@ function Index() {
         </HorizontalGallery>
       ) : null}
 
-      {/* Communities, as cells of deliberately unequal size. */}
+      {/* VI — Understand. Communities, then the advisor as a sentence. */}
       {communities.length > 0 ? (
         <MosaicGrid
           heading={
@@ -504,14 +389,11 @@ function Index() {
         />
       ) : null}
 
-      {/* Noor. The page's second dark anchor. */}
       <AdvisorMoment />
 
-      {/* Proof, as one band rather than three. */}
       <ProofBand agents={agents} partners={partners} testimonial={quote} />
 
-      {/* The page's one type-only moment, and the only other place the serif
-          appears. */}
+      {/* VII — Closing. The second and last ink inversion. */}
       <Manifesto
         footnote={
           <>
@@ -534,3 +416,4 @@ function Index() {
     </>
   );
 }
+
