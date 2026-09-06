@@ -221,7 +221,7 @@ export const OFF_PLAN_PROJECTS: readonly CommercialProject[] = [
         note: "Released per cluster. Ask us for the plans of the current release.",
       },
     ],
-    brochureUrl: null,
+    brochureUrl: florenceBrochure.url,
     investmentConsiderations: [
       "This is a Sharjah masterplan, not Dubai. Ownership rules, service costs and rental demand differ from Dubai freehold, and it does not by itself qualify you for a Dubai property Golden Visa. Ask us to walk you through the difference before you decide.",
       "Delivery is phased across six clusters. Which cluster and which release you buy in decides when you get your keys and what the surroundings look like on the day you move in.",
@@ -358,7 +358,7 @@ export const OFF_PLAN_PROJECTS: readonly CommercialProject[] = [
         note: "Released per phase. Ask us for the plans of the current release.",
       },
     ],
-    brochureUrl: null,
+    brochureUrl: sobhaBrochure.url,
     investmentConsiderations: [
       "This is Abu Dhabi, not Dubai. Investment zones, transfer costs and rental demand behave differently, and our Dubai Land Department market data does not cover it — so treat any Dubai comparison as indicative only.",
       "A first community in a new emirate for the developer means the delivery sequence and the surrounding infrastructure timetable matter. Ask which phase you are buying into.",
