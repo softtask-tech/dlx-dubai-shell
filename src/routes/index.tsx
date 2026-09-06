@@ -234,7 +234,7 @@ function Index() {
       <DiscoveryPanel />
 
       {/* The thesis. Image left, argument right, on the cool paper. */}
-      <SplitFeature photo="skyline-across-water-haze" side="start" className="bg-paper-cool">
+      <SplitFeature photo="skyline-across-water-haze" side="start" className="bg-secondary">
         <h2 className="display-2 text-balance">
           Most agencies show you what they are holding. We start from what you are trying to do.
         </h2>
@@ -296,7 +296,7 @@ function Index() {
       {featured.length > 0 ? (
         <HorizontalGallery
           aria-label="Selected residences"
-          className="bg-paper-cool"
+          className="bg-secondary"
           heading={
             <h2 className="display-2 text-balance">Selected residences, represented privately.</h2>
           }

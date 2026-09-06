@@ -129,7 +129,7 @@ export function InvestmentSnapshot({ areas }: { areas: readonly AreaWithStats[] 
   const objectiveCopy = OBJECTIVES.find((o) => o.id === objective)!;
 
   return (
-    <section className="bg-paper-cool py-section">
+    <section className="bg-secondary py-section">
       <Container>
         <div className="grid gap-x-14 gap-y-12 lg:grid-cols-12">
           {/* The questions. Left column, quiet, no form furniture: these are
@@ -261,7 +261,7 @@ export function InvestmentSnapshot({ areas }: { areas: readonly AreaWithStats[] 
             ) : (
               /* The honest empty state. A budget with nothing under it gets
                  told so, not shown the cheapest thing we have. */
-              <div className="flex min-h-[26rem] flex-col justify-end border border-border bg-paper p-8 lg:p-10">
+              <div className="flex min-h-[26rem] flex-col justify-end border border-border bg-card p-8 lg:p-10">
                 <p className="display-3">Nothing in the record fits that yet.</p>
                 <p className="body-text mt-4 max-w-md text-muted-foreground">
                   We hold too few registered sales in that band to rank communities honestly. Tell a
