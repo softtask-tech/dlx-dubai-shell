@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 import type { CommercialProject } from "@/data/off-plan";
 import { QualifiedForm } from "@/components/forms/qualified-form";
+import { BrochureRequest } from "./brochure-request";
 import {
   CommercialPrice,
   ConceptProjectImage,
