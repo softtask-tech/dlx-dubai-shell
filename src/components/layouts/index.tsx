@@ -30,3 +30,13 @@ export { HorizontalGallery } from "./horizontal-gallery";
 export { Manifesto } from "./manifesto";
 export { MosaicGrid, type MosaicCell } from "./mosaic-grid";
 export { SplitFeature } from "./split-feature";
+export {
+  BentoGrid,
+  BentoSection,
+  MediaTile,
+  QuoteTile,
+  SectionHead,
+  StatTile,
+  Tile,
+  TileLink,
+} from "./bento";
