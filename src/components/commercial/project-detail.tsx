@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 import type { CommercialProject } from "@/data/off-plan";
 import { QualifiedForm } from "@/components/forms/qualified-form";
+import { BrochureRequest } from "./brochure-request";
 import {
   CommercialPrice,
   ConceptProjectImage,
@@ -74,6 +75,11 @@ export function CommercialProjectDetail({
 
       <Section className="pt-0">
         <ProjectGallery project={project} />
+        {project.brochureUrl ? (
+          <div className="mt-8 max-w-3xl">
+            <BrochureRequest project={project} />
+          </div>
+        ) : null}
       </Section>
 
       <Section>
