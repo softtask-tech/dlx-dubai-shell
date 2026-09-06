@@ -205,14 +205,14 @@ function Index() {
               </p>
               <h1 className="mt-8">
                 <span
-                  className="display-1 block"
+                  className="display-1 block lg:text-[clamp(2.75rem,3.4vw,4.25rem)]"
                   data-hero-reveal
                   style={{ "--hero-delay": "80ms" } as CSSProperties}
                 >
                   Bought on
                 </span>
                 <span
-                  className="display-1 block"
+                  className="display-1 block lg:text-[clamp(2.75rem,3.4vw,4.25rem)]"
                   data-hero-reveal
                   style={{ "--hero-delay": "200ms" } as CSSProperties}
                 >
