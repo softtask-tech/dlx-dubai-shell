@@ -138,6 +138,7 @@
   --brass: #b08d4c; /* reserved: official figures and their hairlines */
   --brass-soft: #d9bd85;
   --slate: #6f6f6b;
+  --brass-ink: #8a6b2f; /* brass darkened for small type on stone */
 
   /* Legacy aliases, so existing markup keeps resolving. */
   --paper: var(--stone);
@@ -216,6 +217,7 @@
   --border: #26262a;
   --border-strong: #3a3a40;
   --input: #4c4c52;
+  --brass-ink: var(--brass-soft);
   --ring: var(--steel-soft);
   --chart-1: #9db8c4;
   --chart-2: #3e5c6b;
@@ -951,7 +953,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   border: 1px solid var(--border);
   background-color: var(--card);
   background-image: var(--tile-sheen);
@@ -964,16 +966,14 @@ body {
   }
 }
 
-/* A tile that is a link or a button: it lifts, its hairline warms to brass. */
+/* A tile that is a link or a button: the ground deepens, the hairline firms. */
 @utility tile-interactive {
   transition:
     border-color var(--duration-quick) var(--ease-editorial),
-    background-color var(--duration-quick) var(--ease-editorial),
-    transform var(--duration-quick) var(--ease-editorial);
+    background-color var(--duration-quick) var(--ease-editorial);
   &:hover {
-    border-color: color-mix(in srgb, var(--brass) 55%, transparent);
-    background-color: var(--ink-raised);
-    transform: translateY(-3px);
+    border-color: var(--border-strong);
+    background-color: var(--secondary);
   }
 }
 
@@ -981,10 +981,10 @@ body {
 @utility tile-media {
   padding: 0;
   justify-content: flex-end;
-  background-color: var(--ink-raised);
+  background-color: var(--stone-deep);
 }
 
-/* The brass keyline used to mark a lead tile or an active state. */
+/* The brass keyline. Reserved for a figure that comes from the official record. */
 @utility tile-accent {
   border-color: color-mix(in srgb, var(--brass) 45%, transparent);
   &::before {
@@ -1003,7 +1003,6 @@ body {
   }
 }
 
-/* A big number: tabular, tight, display face. Used in every stat tile. */
 @utility figure-xl {
   font-family: var(--font-display);
   font-size: clamp(2.25rem, 1.4rem + 3.2vw, 3.75rem);
@@ -1040,22 +1039,27 @@ body {
 
 @utility chip-accent {
   border-color: color-mix(in srgb, var(--brass) 50%, transparent);
-  color: var(--brass-soft);
+  color: var(--brass-ink);
 }
 
 /* The soft brass glow behind a hero or a lead tile. Purely atmospheric. */
+/* Atmospheric glow behind a lead tile. Only meaningful on an ink ground; on
+ * stone it is deliberately nothing at all. */
 @utility brass-glow {
   position: relative;
-  &::after {
-    content: "";
-    position: absolute;
-    inset: -20%;
-    z-index: -1;
-    pointer-events: none;
-    background: radial-gradient(
-      60% 50% at 50% 40%,
-      color-mix(in srgb, var(--brass) 18%, transparent),
-      transparent 70%
-    );
-  }
 }
+
+[data-surface="dark"] .brass-glow::after,
+[data-surface="ink"] .brass-glow::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    60% 50% at 50% 40%,
+    color-mix(in srgb, var(--brass) 16%, transparent),
+    transparent 70%
+  );
+}
+
