@@ -44,7 +44,9 @@ const FAMILIES = [
       /* The accent, and only the accent. Roman and italic, no weights above
        * 500: this face is used at display sizes where 400 already has
        * presence, and a bold Garamond is a different, worse typeface. */
-      { query: "EB+Garamond:ital,wght@0,400..500;1,400..500", slug: "eb-garamond" },
+      /* The display face: a tight grotesk with real weight, used for every
+       * heading, figure and label. */
+      { query: "Archivo:ital,wght@0,400..800;1,400..700", slug: "archivo" },
     ],
     subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
   },
