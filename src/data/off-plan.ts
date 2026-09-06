@@ -6,8 +6,8 @@
  * handover — the field stays null and the page says so. Nothing is estimated,
  * inferred or filled in for the sake of a complete-looking page.
  */
-import florenceBrochure from "../assets/azizi-florence-brochure.pdf.asset.json";
-import sobhaBrochure from "../assets/sobha-city-brochure.pdf.asset.json";
+import florenceBrochure from "../assets/azizi-florence-brochure.pdf.asset.json" with { type: "json" };
+import sobhaBrochure from "../assets/sobha-city-brochure.pdf.asset.json" with { type: "json" };
 
 export type CommercialProjectMedia = {
   /** Base path; responsive AVIF/WebP/JPEG variants are appended by the renderer. */
