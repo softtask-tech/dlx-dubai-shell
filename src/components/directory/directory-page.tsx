@@ -335,7 +335,7 @@ function DirectoryIntro({
   children?: ReactNode;
 }) {
   return (
-    <section className="border-b border-border bg-paper-cool pt-32 pb-12 md:pt-40 md:pb-16">
+    <section className="border-b border-border bg-secondary pt-32 pb-12 md:pt-40 md:pb-16">
       <Container>
         <nav aria-label="Breadcrumb" className="eyebrow text-muted-foreground">
           <a href="/" className="link-underline">
@@ -366,7 +366,7 @@ function DirectoryIntro({
 function DirectoryTrust() {
   return (
     <aside
-      className="mt-12 border-l-2 border-accent bg-paper-cool p-6"
+      className="mt-12 border-l-2 border-accent bg-secondary p-6"
       aria-label="Directory source and independence"
     >
       <p className="eyebrow">Source and independence</p>

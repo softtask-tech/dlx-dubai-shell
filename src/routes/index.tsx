@@ -14,7 +14,13 @@ import { pageHead, withHeroPreload } from "@/lib/seo";
 import { formatPrice } from "@/lib/format";
 import { areaPhoto, type PhotoSlug } from "@/lib/photos";
 import {
+  BentoSection,
   EditorialIndex,
+  MediaTile,
+  SectionHead,
+  StatTile,
+  Tile,
+  TileLink,
   HorizontalGallery,
   Manifesto,
   MosaicGrid,
@@ -234,7 +240,7 @@ function Index() {
       <DiscoveryPanel />
 
       {/* The thesis. Image left, argument right, on the cool paper. */}
-      <SplitFeature photo="skyline-across-water-haze" side="start" className="bg-paper-cool">
+      <SplitFeature photo="skyline-across-water-haze" side="start" className="bg-secondary">
         <h2 className="display-2 text-balance">
           Most agencies show you what they are holding. We start from what you are trying to do.
         </h2>
@@ -252,6 +258,99 @@ function Index() {
           How we work
         </Link>
       </SplitFeature>
+
+      {/* The intelligence grid.
+       *
+       * The record, arranged as tiles rather than a band: a reader can enter at
+       * whichever figure is theirs. Every number carries a plain sentence and
+       * the Dubai Land Department attribution the licence requires. */}
+      <BentoSection
+        aria-labelledby="evidence-title"
+        head={
+          <SectionHead
+            eyebrow="The record"
+            title={<span id="evidence-title">What the official data says this month.</span>}
+            lead="Figures come from Dubai Land Department records we hold ourselves, not from portal listings."
+            action={
+              <Link to="/market-intelligence" className="eyebrow link-underline text-accent">
+                Open market intelligence
+              </Link>
+            }
+          />
+        }
+      >
+        <StatTile
+          label="Communities covered"
+          value={marketSummary.areasCovered.toLocaleString("en-AE")}
+          meaning="Every community below has its own recorded price and yield history."
+          source={marketSummary.attribution.label}
+        />
+        <StatTile
+          label="Recorded transactions"
+          value={marketSummary.transactionCount.toLocaleString("en-AE")}
+          meaning="The sample behind every median on this site."
+          source={marketSummary.attribution.label}
+        />
+        {marketSummary.medianPricePerSqft ? (
+          <StatTile
+            label="Median price"
+            value={`AED ${Math.round(marketSummary.medianPricePerSqft).toLocaleString("en-AE")}`}
+            meaning="Per square foot, across the communities we cover. Useful as a sanity check on any asking price."
+            source={marketSummary.attribution.label}
+          />
+        ) : null}
+
+        <MediaTile
+          photo="palm-jumeirah-aerial-day"
+          ratio="aspect-4/3"
+          className="lg:col-span-8"
+          to="/areas"
+        >
+          <p className="eyebrow text-on-dark-muted">Where we transact</p>
+          <p className="display-3 mt-2">Community by community, priced from the record.</p>
+        </MediaTile>
+
+        {marketSummary.bestYield ? (
+          <StatTile
+            className="lg:col-span-4"
+            label="Strongest gross yield"
+            value={`${marketSummary.bestYield.yieldPct.toFixed(1)}%`}
+            meaning={`${marketSummary.bestYield.areaName} currently returns the most rent relative to price of the communities we track.`}
+            source={marketSummary.attribution.label}
+          />
+        ) : null}
+
+        {marketSummary.yoyPriceChangePct !== null ? (
+          <StatTile
+            label="Year on year"
+            value={`${marketSummary.yoyPriceChangePct > 0 ? "+" : ""}${marketSummary.yoyPriceChangePct.toFixed(1)}%`}
+            meaning="Change in median price across the covered communities over twelve months."
+            source={marketSummary.attribution.label}
+          />
+        ) : null}
+
+        <Tile accent className="justify-between gap-8 lg:col-span-4">
+          <p className="eyebrow">Ask instead of reading</p>
+          <div>
+            <p className="display-3 text-balance">
+              Tell us the objective. We will tell you what the data supports.
+            </p>
+            <Link to="/contact" className="mt-6 inline-block">
+              <Button variant="accent">Speak to a consultant</Button>
+            </Link>
+          </div>
+        </Tile>
+
+        <TileLink to="/directory" className="justify-between gap-8 lg:col-span-4">
+          <p className="eyebrow text-accent">Directory</p>
+          <div>
+            <p className="display-3 text-balance">Search the published register yourself.</p>
+            <p className="caption mt-3 text-muted-foreground">
+              Developers, projects, buildings and communities, as recorded.
+            </p>
+          </div>
+        </TileLink>
+      </BentoSection>
 
       {/* The signature interactive. Three questions, a Dubai Land Department
           cited answer, and nothing asked in return. */}
@@ -296,7 +395,7 @@ function Index() {
       {featured.length > 0 ? (
         <HorizontalGallery
           aria-label="Selected residences"
-          className="bg-paper-cool"
+          className="bg-secondary"
           heading={
             <h2 className="display-2 text-balance">Selected residences, represented privately.</h2>
           }

@@ -79,7 +79,7 @@ export function ProjectGallery({ project }: { project: CommercialProject }) {
           <figcaption className="caption mt-3 text-muted-foreground">{item.caption}</figcaption>
         </figure>
       ))}
-      <div className="flex min-h-56 items-end border border-border bg-paper-cool p-7">
+      <div className="flex min-h-56 items-end border border-border bg-secondary p-7">
         <div>
           <Eyebrow>Brochure and full gallery</Eyebrow>
           <p className="body-text mt-4 text-muted-foreground">To be confirmed</p>

@@ -7,7 +7,7 @@
  * it is the request that decides when the headline paints. The files live in
  * `public/fonts` and are fetched by `scripts/fetch-fonts.mjs`.
  *
- * The Latin faces (Instrument Sans and EB Garamond) are compiled into the site
+ * The Latin faces (Plus Jakarta Sans and Syne) are compiled into the site
  * stylesheet, so they cost no extra request on any page. What this module adds
  * is two things:
  *
@@ -34,9 +34,9 @@ import type { LocaleCode } from "@/config/locales";
  */
 const PRELOAD = [
   /* The workhorse, plus the display face: every page opens with a heading set
-   * in Archivo, so it is on the critical path exactly like the body sans. */
-  "/fonts/instrument-sans-latin-400-600-normal.woff2",
-  "/fonts/archivo-latin-400-800-normal.woff2",
+   * in Syne, so it is on the critical path exactly like the body sans. */
+  "/fonts/plus-jakarta-sans-latin-400-800-normal.woff2",
+  "/fonts/syne-latin-400-800-normal.woff2",
 ] as const;
 
 
@@ -50,7 +50,7 @@ const PRELOAD = [
 const PER_LOCALE: Partial<Record<LocaleCode, string>> = {
   ar: "/fonts/arabic.css",
   hi: "/fonts/devanagari.css",
-  /* Only the workhorse: EB Garamond's Cyrillic is already in the site
+  /* Only the workhorse: Plus Jakarta Sans carries Cyrillic already in the site
    * stylesheet, so the serif accent needs nothing extra here. */
   ru: "/fonts/cyrillic.css",
 };

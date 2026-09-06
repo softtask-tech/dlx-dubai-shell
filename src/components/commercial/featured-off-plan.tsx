@@ -10,7 +10,7 @@ export function FeaturedOffPlan({ projects }: { projects: readonly CommercialPro
   const [lead, ...supporting] = projects;
   if (!lead) return null;
   return (
-    <Section className="bg-paper-cool" aria-labelledby="featured-off-plan-title">
+    <Section className="bg-secondary" aria-labelledby="featured-off-plan-title">
       <div className="mb-10 flex flex-col justify-between gap-7 border-b border-border pb-8 md:flex-row md:items-end">
         <div>
           <Eyebrow>Design preview · fictional projects</Eyebrow>
@@ -46,7 +46,7 @@ export function FeaturedOffPlan({ projects }: { projects: readonly CommercialPro
 
 export function OffPlanComingSoon({ compact = false }: { compact?: boolean }) {
   return (
-    <Section className="bg-paper-cool">
+    <Section className="bg-secondary">
       <Container className="px-0">
         <div
           className={`grid gap-10 border-y border-border py-12 ${compact ? "lg:grid-cols-12" : "lg:grid-cols-2"}`}

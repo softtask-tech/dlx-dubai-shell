@@ -26,7 +26,7 @@ export function CommercialProjectDetail({
 }) {
   return (
     <>
-      <section className="bg-paper-cool pb-12 pt-20 md:pb-16 md:pt-12">
+      <section className="bg-secondary pb-12 pt-20 md:pb-16 md:pt-12">
         <Container>
           <nav aria-label="Breadcrumb" className="caption mb-8 flex gap-2 text-muted-foreground">
             <Link to="/off-plan" className="link-underline">
@@ -138,7 +138,7 @@ export function CommercialProjectDetail({
         </div>
       </Section>
 
-      <Section id="enquire" className="bg-paper-cool">
+      <Section id="enquire" className="bg-secondary">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Eyebrow>No-write demonstration</Eyebrow>

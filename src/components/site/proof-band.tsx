@@ -32,7 +32,7 @@ export function ProofBand({
   const team = agents.slice(0, 4);
 
   return (
-    <section className="bg-paper-cool py-section">
+    <section className="bg-secondary py-section">
       <Container>
         <div className="grid gap-x-14 gap-y-14 lg:grid-cols-12">
           {/* The people. Named, with the role and the broker number, because

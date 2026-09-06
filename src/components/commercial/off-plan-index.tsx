@@ -9,7 +9,7 @@ export function OffPlanIndex({ projects }: { projects: readonly CommercialProjec
   const preview = projects.length > 0;
   return (
     <>
-      <section className="border-b border-border bg-paper-cool py-16 md:py-24">
+      <section className="border-b border-border bg-secondary py-16 md:py-24">
         <Container>
           {preview ? (
             <div className="mb-10 border border-accent bg-accent-soft p-5" role="note">
