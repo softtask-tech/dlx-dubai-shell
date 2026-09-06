@@ -114,8 +114,9 @@ export function SourceDisclosure({
         <p className="caption mt-3 max-w-2xl">
           Source: {project.sourceLabel}. Prices, payment terms and handover dates are set per
           release and are confirmed to you in writing — we do not publish figures the developer has
-          not issued. Images on this page are illustrative impressions, not official renders.
+          not issued. Images on this page are the developer's own renders.
         </p>
+
       ) : null}
     </div>
   );
