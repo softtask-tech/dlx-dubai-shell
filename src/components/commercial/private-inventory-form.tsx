@@ -88,8 +88,8 @@ export function PrivateInventoryForm() {
         <Eyebrow>Private search</Eyebrow>
         <h2 className="display-3 mt-5">What should we look for?</h2>
         <p className="body-text mt-4 text-muted-foreground">
-          No invented catalogue. Give us the brief and we will come back with what can actually be
-          evidenced and accessed.
+          Tell us the brief and a consultant replies with current availability and pricing on the
+          two communities above, or whatever else fits.
         </p>
       </div>
       <div className="grid gap-7 sm:grid-cols-2">

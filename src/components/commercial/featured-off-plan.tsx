@@ -13,16 +13,16 @@ export function FeaturedOffPlan({ projects }: { projects: readonly CommercialPro
     <Section className="bg-secondary" aria-labelledby="featured-off-plan-title">
       <div className="mb-10 flex flex-col justify-between gap-7 border-b border-border pb-8 md:flex-row md:items-end">
         <div>
-          <Eyebrow>Design preview · fictional projects</Eyebrow>
+          <Eyebrow>In focus · off-plan</Eyebrow>
           <h2 id="featured-off-plan-title" className="display-2 mt-5 max-w-3xl text-balance">
-            Three ways an off-plan decision should be presented.
+            Two masterplanned communities we are representing right now.
           </h2>
         </div>
         <Link to="/off-plan" className="eyebrow link-underline shrink-0 text-accent">
           View all off-plan
         </Link>
       </div>
-      <p className="caption mb-5 md:hidden">Swipe to explore the three concept pages.</p>
+      <p className="caption mb-5 md:hidden">Swipe to see both projects.</p>
       <div className="-mx-6 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4 md:hidden">
         {projects.map((project) => (
           <div key={project.slug} className="w-[86vw] shrink-0 snap-start">
