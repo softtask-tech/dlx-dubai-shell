@@ -41,9 +41,6 @@ export function Header() {
           className="focus-ring flex shrink-0 items-center gap-3"
         >
           <Wordmark form="monogram" tone="on-dark" className="h-8" />
-          <span className="hidden text-eyebrow font-semibold tracking-monogram text-muted-foreground uppercase sm:block">
-            {"Dubai"}
-          </span>
         </a>
 
         <nav
