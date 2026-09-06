@@ -74,6 +74,11 @@ export function CommercialProjectDetail({
 
       <Section className="pt-0">
         <ProjectGallery project={project} />
+        {project.brochureUrl ? (
+          <div className="mt-8 max-w-3xl">
+            <BrochureRequest project={project} />
+          </div>
+        ) : null}
       </Section>
 
       <Section>
