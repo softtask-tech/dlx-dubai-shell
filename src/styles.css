@@ -46,6 +46,11 @@
 
   /* Named palette entries, so the brand colours can be referenced directly
    * (bg-ink, text-brass) as well as through their semantic roles. */
+  --color-stone: var(--stone);
+  --color-stone-panel: var(--stone-panel);
+  --color-stone-deep: var(--stone-deep);
+  --color-steel: var(--steel);
+  --color-steel-soft: var(--steel-soft);
   --color-ink: var(--ink);
   --color-ink-panel: var(--ink-panel);
   --color-ink-raised: var(--ink-raised);
@@ -128,7 +133,7 @@
   --ink-panel: #141416; /* a tile inside an inverted band */
   --ink-raised: #1c1c1f;
   --steel: #3e5c6b; /* the accent: links, actions, active state */
-  --steel-deep: #2c4插 /* placeholder */;
+  --steel-deep: #2c4351;
   --steel-soft: #9db8c4; /* the accent, lightened for ink grounds */
   --brass: #b08d4c; /* reserved: official figures and their hairlines */
   --brass-soft: #d9bd85;
