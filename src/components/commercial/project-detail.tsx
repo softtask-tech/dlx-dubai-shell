@@ -1,18 +1,21 @@
 import { Link } from "@tanstack/react-router";
 
 import type { CommercialProject } from "@/data/off-plan";
-import { DemoEnquiryForm } from "./demo-enquiry-form";
+import { QualifiedForm } from "@/components/forms/qualified-form";
 import {
   CommercialPrice,
-  ConceptDisclosure,
   ConceptProjectImage,
   ConsultantModule,
   FloorPlanViewer,
   HandoverStatus,
   LeadActions,
   PaymentPlanTimeline,
+  ProjectCollections,
+  ProjectConnectivity,
+  ProjectFigures,
   ProjectGallery,
   RelatedProjects,
+  SourceDisclosure,
   TrustSourcePanel,
 } from "./project-primitives";
 import { Container, Eyebrow, Section } from "@/components/ui/section";
@@ -35,17 +38,17 @@ export function CommercialProjectDetail({
             <span aria-hidden="true">/</span>
             <span>{project.name}</span>
           </nav>
-          <ConceptDisclosure />
-          <div className="mt-10 grid items-end gap-8 lg:grid-cols-12">
+          <div className="grid items-end gap-8 lg:grid-cols-12">
             <div className="lg:col-span-8">
               <Eyebrow>{project.projectType}</Eyebrow>
               <h1 className="display-1 mt-5 text-balance">{project.name}</h1>
+              <p className="lead mt-6 max-w-3xl text-muted-foreground">{project.headline}</p>
               <p className="body-text mt-5 text-muted-foreground">
                 {project.locationName} · {project.developerName}
               </p>
             </div>
             <div className="lg:col-span-3 lg:col-start-10">
-              <CommercialPrice amount={project.startingPrice} />
+              <CommercialPrice project={project} />
             </div>
           </div>
         </Container>
@@ -62,7 +65,14 @@ export function CommercialProjectDetail({
         </figcaption>
       </figure>
 
-      <Section className="pt-10">
+      <Section className="pt-12">
+        <Eyebrow>The community in four numbers</Eyebrow>
+        <div className="mt-6">
+          <ProjectFigures project={project} />
+        </div>
+      </Section>
+
+      <Section className="pt-0">
         <ProjectGallery project={project} />
       </Section>
 
@@ -70,6 +80,7 @@ export function CommercialProjectDetail({
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <HandoverStatus project={project} />
+
             <div className="mt-14">
               <Eyebrow>Project overview</Eyebrow>
               {project.overview.map((paragraph) => (
@@ -78,6 +89,16 @@ export function CommercialProjectDetail({
                 </p>
               ))}
             </div>
+
+            {project.collections.length > 0 ? (
+              <div className="mt-14">
+                <Eyebrow>The homes</Eyebrow>
+                <div className="mt-6">
+                  <ProjectCollections project={project} />
+                </div>
+              </div>
+            ) : null}
+
             <div className="mt-14">
               <Eyebrow>Key amenities</Eyebrow>
               <ul className="mt-6 grid gap-px border border-border bg-border sm:grid-cols-2">
@@ -88,12 +109,24 @@ export function CommercialProjectDetail({
                 ))}
               </ul>
             </div>
+
+            {project.connectivity.length > 0 ? (
+              <div className="mt-14">
+                <Eyebrow>Getting around</Eyebrow>
+                <ProjectConnectivity project={project} />
+                <p className="caption mt-4 text-muted-foreground">
+                  Distances and drive times are the developer's own approximations.
+                </p>
+              </div>
+            ) : null}
+
             <div className="mt-14 grid gap-8 sm:grid-cols-2">
               <PaymentPlanTimeline project={project} />
               <FloorPlanViewer project={project} />
             </div>
+
             <div className="mt-14">
-              <Eyebrow>Investment considerations</Eyebrow>
+              <Eyebrow>What to weigh before you commit</Eyebrow>
               {project.investmentConsiderations.map((consideration) => (
                 <p
                   key={consideration}
@@ -102,22 +135,23 @@ export function CommercialProjectDetail({
                   {consideration}
                 </p>
               ))}
-              <p className="body-text mt-5 text-muted-foreground">
-                Service-charge information · To be confirmed
-              </p>
-              <p className="body-text mt-2 text-muted-foreground">
-                Related market evidence · To be confirmed
-              </p>
+              {project.serviceChargeNote ? (
+                <p className="body-text mt-5 text-muted-foreground">
+                  Service charges · {project.serviceChargeNote}
+                </p>
+              ) : null}
             </div>
           </div>
+
           <aside className="flex flex-col gap-9 lg:col-span-3 lg:col-start-10">
+            <SourceDisclosure project={project} />
             <TrustSourcePanel project={project} />
-            <aside className="border border-border p-5" aria-label="Advertising compliance preview">
+            <aside className="border border-border p-5" aria-label="Advertising compliance">
               <Eyebrow>Advertising compliance</Eyebrow>
               <p className="caption mt-4 text-muted-foreground">
-                ORN, responsible broker BRN, DLD advertisement permit and authority-issued QR code
-                are unavailable in this concept preview. A real project cannot be published until
-                every required field passes validation.
+                A DLD advertisement permit number, responsible broker BRN and authority-issued QR
+                code are issued per release and are shown on the offer we send you. Nothing on this
+                page is an offer or a claim of availability.
               </p>
             </aside>
             <ConsultantModule project={project} />
@@ -127,25 +161,37 @@ export function CommercialProjectDetail({
       </Section>
 
       <Section className="bg-ink text-on-dark" id="actions">
-        <Eyebrow className="text-on-dark-muted">Enquiry actions · preview only</Eyebrow>
-        <h2 className="display-2 mt-5 max-w-3xl">A complete route to a useful conversation.</h2>
+        <Eyebrow className="text-on-dark-muted">Next step</Eyebrow>
+        <h2 className="display-2 mt-5 max-w-3xl">
+          Ask for the price list, the plans and the payment terms.
+        </h2>
         <p className="body-text mt-5 max-w-measure text-on-dark-muted">
-          These actions demonstrate intent. WhatsApp is disabled for fictional projects, and the
-          form below sends nothing.
+          You get the developer's current release documents in writing, with a plain explanation of
+          what they mean for you.
         </p>
         <div className="mt-8 [&_button]:border-on-dark/30 [&_button]:text-on-dark">
-          <LeadActions />
+          <LeadActions projectName={project.name} />
         </div>
       </Section>
 
       <Section id="enquire" className="bg-secondary">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <Eyebrow>No-write demonstration</Eyebrow>
-            <h2 className="display-2 mt-5">The form behaves. The pipeline stays untouched.</h2>
+            <Eyebrow>Register interest</Eyebrow>
+            <h2 className="display-2 mt-5">Tell us what you are after.</h2>
+            <p className="body-text mt-6 max-w-measure text-muted-foreground">
+              A consultant replies with the current release, the terms and an honest read on whether
+              it fits what you want.
+            </p>
           </div>
           <div className="lg:col-span-7 lg:col-start-6">
-            <DemoEnquiryForm projectName={project.name} />
+            <QualifiedForm
+              sourceType="contact_form"
+              sourceDetail={`off-plan-${project.slug}`}
+              defaultIntent="invest"
+              title={`Register interest in ${project.name}`}
+              submitLabel="Register interest"
+            />
           </div>
         </div>
       </Section>

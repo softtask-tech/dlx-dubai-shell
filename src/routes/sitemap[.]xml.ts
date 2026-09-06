@@ -5,6 +5,7 @@ import { SITE_PAGES, absoluteUrl } from "@/config/site";
 import { listPostSlugs } from "@/data/blog";
 import { listDeveloperSlugs, listProjectSlugs } from "@/data/catalogue";
 import { GUIDES } from "@/data/guides";
+import { OFF_PLAN_PROJECTS } from "@/data/off-plan";
 import { listAreasWithStats } from "@/data/market";
 import { listMarketCommunitiesServer } from "@/data/market-public.server";
 import { listPropertySlugs } from "@/data/properties";
@@ -62,6 +63,11 @@ export const Route = createFileRoute("/sitemap.xml")({
             path: page.path,
             changefreq: page.changeFrequency,
             priority: page.priority,
+          })),
+          ...OFF_PLAN_PROJECTS.map((project) => ({
+            path: `/off-plan/${project.slug}`,
+            changefreq: "weekly",
+            priority: 0.8,
           })),
           ...SERVICES.map((service) => ({
             path: `/services/${service.slug}`,

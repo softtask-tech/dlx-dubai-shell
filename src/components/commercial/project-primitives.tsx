@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
 import type { CommercialProject, CommercialProjectMedia } from "@/data/off-plan";
+import { brand } from "@/config/brand";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/section";
 
@@ -81,36 +82,55 @@ export function ProjectGallery({ project }: { project: CommercialProject }) {
       ))}
       <div className="flex min-h-56 items-end border border-border bg-secondary p-7">
         <div>
-          <Eyebrow>Brochure and full gallery</Eyebrow>
-          <p className="body-text mt-4 text-muted-foreground">To be confirmed</p>
+          <Eyebrow>Developer brochure and full gallery</Eyebrow>
+          <p className="body-text mt-4 text-muted-foreground">
+            The complete brochure, official renders and floor plans come straight from the
+            developer. Ask and we will send them.
+          </p>
+          <a href="#enquire" className="eyebrow link-underline mt-5 inline-block text-accent">
+            Request the brochure
+          </a>
         </div>
       </div>
     </div>
   );
 }
 
-export function ConceptDisclosure({ compact = false }: { compact?: boolean }) {
+/** States plainly where the facts come from and what is not yet confirmed. */
+export function SourceDisclosure({
+  project,
+  compact = false,
+}: {
+  project: CommercialProject;
+  compact?: boolean;
+}) {
   return (
     <div
       className={`border border-accent bg-accent-soft text-foreground ${compact ? "px-4 py-3" : "p-6"}`}
       role="note"
     >
-      <p className="eyebrow text-accent">Concept preview — not a real listing</p>
+      <p className="eyebrow text-accent">Facts from the developer's own brochure</p>
       {!compact ? (
         <p className="caption mt-3 max-w-2xl">
-          Fictional names, developer, location and illustrative AI-generated architecture. No price,
-          availability, permit, registration or commercial claim is being made.
+          Source: {project.sourceLabel}. Prices, payment terms and handover dates are set per
+          release and are confirmed to you in writing — we do not publish figures the developer has
+          not issued. Images on this page are illustrative impressions, not official renders.
         </p>
       ) : null}
     </div>
   );
 }
 
-export function CommercialPrice({ amount }: { amount: number | null }) {
+export function CommercialPrice({ project }: { project: CommercialProject }) {
   return (
     <div>
       <p className="eyebrow">Starting price</p>
-      <p className="display-3 mt-2">{amount === null ? "To be confirmed" : `AED ${amount}`}</p>
+      <p className="display-3 mt-2">
+        {project.startingPrice === null
+          ? "On the current release list"
+          : `AED ${project.startingPrice.toLocaleString("en-AE")}`}
+      </p>
+      <p className="caption mt-3 text-muted-foreground">{project.priceNote}</p>
     </div>
   );
 }
@@ -118,19 +138,64 @@ export function CommercialPrice({ amount }: { amount: number | null }) {
 export function ProjectLocation({ project }: { project: CommercialProject }) {
   return (
     <p className="caption text-muted-foreground">
-      {project.locationName} · {project.projectType}
+      {project.locationName} · {project.developerName}
     </p>
+  );
+}
+
+export function ProjectFigures({ project }: { project: CommercialProject }) {
+  if (project.figures.length === 0) return null;
+  return (
+    <div className="grid gap-px border border-border bg-border sm:grid-cols-2">
+      {project.figures.map((figure) => (
+        <div key={figure.label} className="bg-background p-6">
+          <p className="display-3 text-accent">{figure.value}</p>
+          <p className="eyebrow mt-3">{figure.label}</p>
+          <p className="body-text mt-2 text-muted-foreground">{figure.meaning}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export function ProjectCollections({ project }: { project: CommercialProject }) {
+  if (project.collections.length === 0) return null;
+  return (
+    <ul className="grid gap-px border border-border bg-border sm:grid-cols-2">
+      {project.collections.map((collection) => (
+        <li key={collection.name} className="bg-background p-6">
+          <h3 className="display-3">{collection.name}</h3>
+          <p className="eyebrow mt-3">{collection.homeType}</p>
+          <p className="caption mt-2 text-muted-foreground">{collection.bedrooms}</p>
+          <p className="body-text mt-4 text-muted-foreground">{collection.description}</p>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export function ProjectConnectivity({ project }: { project: CommercialProject }) {
+  if (project.connectivity.length === 0) return null;
+  return (
+    <dl className="mt-6 divide-y divide-border border-y border-border">
+      {project.connectivity.map((item) => (
+        <div key={item.place} className="flex items-baseline justify-between gap-5 py-3">
+          <dt className="body-text">{item.place}</dt>
+          <dd className="caption text-muted-foreground">{item.distance}</dd>
+        </div>
+      ))}
+    </dl>
   );
 }
 
 export function HandoverStatus({ project }: { project: CommercialProject }) {
   return (
     <dl className="grid grid-cols-2 gap-px border border-border bg-border sm:grid-cols-3">
-      <Fact label="Handover" value={project.handover ?? "To be confirmed"} />
-      <Fact label="Construction" value={project.constructionStatus} />
-      <Fact label="Bedrooms" value={project.bedrooms ?? "To be confirmed"} />
-      <Fact label="Unit sizes" value={project.unitSizeRangeSqFt ?? "To be confirmed"} />
-      <Fact label="Property types" value={project.propertyTypes.join(", ")} />
+      <Fact label="Handover" value={project.handover ?? "Confirmed per release"} />
+      <Fact label="Status" value={project.constructionStatus} />
+      <Fact label="Bedrooms" value={project.bedrooms ?? "Confirmed per release"} />
+      <Fact label="Unit sizes" value={project.unitSizeRangeSqFt ?? "Confirmed per release"} />
+      <Fact label="Home types" value={project.propertyTypes.join(", ")} />
       <Fact label="Developer" value={project.developerName} />
     </dl>
   );
@@ -160,9 +225,18 @@ export function PaymentPlanTimeline({ project }: { project: CommercialProject })
   return (
     <div className="border-y border-border py-7">
       <Eyebrow>Payment plan</Eyebrow>
-      <p className="body-text mt-4 text-muted-foreground">
-        {project.paymentPlan.length === 0 ? "To be confirmed" : "Payment stages available"}
-      </p>
+      {project.paymentPlan.length === 0 ? (
+        <p className="body-text mt-4 text-muted-foreground">{project.paymentPlanNote}</p>
+      ) : (
+        <dl className="mt-4 divide-y divide-border">
+          {project.paymentPlan.map((stage) => (
+            <div key={stage.stage} className="flex items-baseline justify-between gap-5 py-3">
+              <dt className="body-text">{stage.stage}</dt>
+              <dd className="display-3">{stage.share}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
     </div>
   );
 }
@@ -171,9 +245,18 @@ export function FloorPlanViewer({ project }: { project: CommercialProject }) {
   return (
     <div className="border-y border-border py-7">
       <Eyebrow>Floor plans</Eyebrow>
-      <p className="body-text mt-4 text-muted-foreground">
-        {project.floorPlans.length === 0 ? "To be confirmed" : "Floor plans available"}
-      </p>
+      {project.floorPlans.length === 0 ? (
+        <p className="body-text mt-4 text-muted-foreground">Available on request.</p>
+      ) : (
+        <ul className="mt-4 space-y-4">
+          {project.floorPlans.map((plan) => (
+            <li key={plan.label}>
+              <p className="body-text">{plan.label}</p>
+              <p className="caption mt-1 text-muted-foreground">{plan.note}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
@@ -181,33 +264,42 @@ export function FloorPlanViewer({ project }: { project: CommercialProject }) {
 export function ConsultantModule({ project }: { project: CommercialProject }) {
   return (
     <div className="border border-border p-7">
-      <Eyebrow>Assigned consultant</Eyebrow>
+      <Eyebrow>Your consultant</Eyebrow>
       <p className="body-text mt-4 text-muted-foreground">
-        {project.assignedConsultant ?? "To be confirmed"}
+        {project.assignedConsultant ??
+          "A named consultant handles this project from your first question to handover, not a call centre."}
       </p>
+      <a
+        href={`tel:${brand.contact.phoneE164}`}
+        className="eyebrow link-underline mt-5 inline-block text-foreground"
+      >
+        {brand.contact.phone}
+      </a>
     </div>
   );
 }
 
-export function LeadActions() {
-  const actions = [
-    "Request prices and availability",
-    "Get the brochure",
-    "Ask about the payment plan",
-    "Book a consultation",
-  ];
+export function LeadActions({ projectName }: { projectName: string }) {
+  const message = encodeURIComponent(`Hello DLX, I would like the details for ${projectName}.`);
   return (
     <div className="flex flex-wrap gap-3">
-      {actions.map((label, index) => (
-        <a key={label} href="#enquire" className="inline-flex">
-          <Button variant={index === 0 ? "accent" : "primary"} size="md">
-            {label}
-          </Button>
-        </a>
-      ))}
-      <Button disabled title="Disabled for a fictional project preview">
-        Continue on WhatsApp
-      </Button>
+      {["Request prices and availability", "Get the brochure", "Ask about the payment plan"].map(
+        (label, index) => (
+          <a key={label} href="#enquire" className="inline-flex">
+            <Button variant={index === 0 ? "accent" : "primary"} size="md">
+              {label}
+            </Button>
+          </a>
+        ),
+      )}
+      <a
+        href={`https://wa.me/${brand.contact.whatsapp}?text=${message}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex"
+      >
+        <Button>Continue on WhatsApp</Button>
+      </a>
       <a
         href="#ask=What%20should%20I%20compare%20when%20buying%20off-plan%3F"
         className="inline-flex"
@@ -222,10 +314,11 @@ export function TrustSourcePanel({ project }: { project: CommercialProject }) {
   return (
     <div className="border-l border-accent pl-6">
       <Eyebrow>Source and status</Eyebrow>
-      <p className="body-text mt-4">Illustrative commercial template using a local fixture.</p>
+      <p className="body-text mt-4">{project.sourceLabel}</p>
       <p className="caption mt-3 text-muted-foreground">
-        Updated {project.updatedAt}. Not connected to an official DLD record. Images are
-        AI-generated architectural concepts and do not represent an actual place.
+        Updated {project.updatedAt}. Figures on this page are quoted from the developer's published
+        material. No Dubai Land Department transaction record is attached to this project, and
+        images are illustrative impressions rather than official renders.
       </p>
     </div>
   );
@@ -244,7 +337,7 @@ export function RelatedProjects({
   if (related.length === 0) return null;
   return (
     <div>
-      <Eyebrow>Similar concept previews</Eyebrow>
+      <Eyebrow>Also in focus</Eyebrow>
       <div className="mt-5 flex flex-col gap-3">
         {related.map((candidate) => (
           <Link

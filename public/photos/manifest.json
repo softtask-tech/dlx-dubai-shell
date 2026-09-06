@@ -36,6 +36,78 @@
     "fallbackWidth": 1280
   },
   {
+    "slug": "off-plan-azizi-florence-park",
+    "width": 1920,
+    "height": 1280,
+    "ratio": 1.5,
+    "widths": [
+      640,
+      1280,
+      1920
+    ],
+    "fallbackWidth": 1280
+  },
+  {
+    "slug": "off-plan-azizi-florence-villa",
+    "width": 1920,
+    "height": 1280,
+    "ratio": 1.5,
+    "widths": [
+      640,
+      1280,
+      1920
+    ],
+    "fallbackWidth": 1280
+  },
+  {
+    "slug": "off-plan-azizi-florence",
+    "width": 1920,
+    "height": 1280,
+    "ratio": 1.5,
+    "widths": [
+      640,
+      1280,
+      1920
+    ],
+    "fallbackWidth": 1280
+  },
+  {
+    "slug": "off-plan-sobha-city-villa",
+    "width": 1920,
+    "height": 1280,
+    "ratio": 1.5,
+    "widths": [
+      640,
+      1280,
+      1920
+    ],
+    "fallbackWidth": 1280
+  },
+  {
+    "slug": "off-plan-sobha-city-waterfront",
+    "width": 1920,
+    "height": 1280,
+    "ratio": 1.5,
+    "widths": [
+      640,
+      1280,
+      1920
+    ],
+    "fallbackWidth": 1280
+  },
+  {
+    "slug": "off-plan-sobha-city",
+    "width": 1920,
+    "height": 1280,
+    "ratio": 1.5,
+    "widths": [
+      640,
+      1280,
+      1920
+    ],
+    "fallbackWidth": 1280
+  },
+  {
     "slug": "terrace-edge-haze",
     "width": 1920,
     "height": 1280,

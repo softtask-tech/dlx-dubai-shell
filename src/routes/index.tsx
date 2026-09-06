@@ -6,8 +6,7 @@ import { listPartnerDevelopers } from "@/data/catalogue";
 import { getMarketPriceIndex, getMarketSummary, listAreasWithStats } from "@/data/market";
 import { listAgents, listTestimonials } from "@/data/people";
 import { listProperties } from "@/data/properties";
-import { getDemoProjectAccessFn } from "@/data/demo-access.functions";
-import { DEMO_OFF_PLAN_PROJECTS } from "@/data/off-plan";
+import { OFF_PLAN_PROJECTS } from "@/data/off-plan";
 import { SERVICES } from "@/data/services";
 import { faqSchema, reviewSchemaFor, type FaqEntry } from "@/lib/schema";
 import { pageHead, withHeroPreload } from "@/lib/seo";
@@ -79,7 +78,6 @@ export const Route = createFileRoute("/")({
       marketIndex,
       areas,
       agents,
-      demoEnabled,
     ] = await Promise.all([
       listProperties({ limit: 5 }),
       listTestimonials(3),
@@ -88,7 +86,6 @@ export const Route = createFileRoute("/")({
       getMarketPriceIndex(),
       listAreasWithStats(),
       listAgents(),
-      getDemoProjectAccessFn(),
     ]);
     return {
       featured,
@@ -98,7 +95,7 @@ export const Route = createFileRoute("/")({
       marketIndex,
       areas,
       agents,
-      demoProjects: demoEnabled ? DEMO_OFF_PLAN_PROJECTS : [],
+      offPlanProjects: OFF_PLAN_PROJECTS,
     };
   },
   /* Review schema is built from the rows the loader actually returned, so a
@@ -125,7 +122,7 @@ export const Route = createFileRoute("/")({
  *   II   Statement    one enormous sentence, offset, on paper
  *   III  Evidence     inverted ink, three figures, the DLD stamp
  *   IV   Portfolio    a numbered register of practices and residences
- *   V    The two      the off-plan concepts, image to the edge
+ *   V    The two      the off-plan communities, image to the edge
  *   VI   Understand   the advisor and the snapshot, as sentences
  *   VII  Closing      inverted ink, the invitation
  */
@@ -138,7 +135,7 @@ function Index() {
     marketIndex,
     areas,
     agents,
-    demoProjects,
+    offPlanProjects,
   } = Route.useLoaderData();
 
   const services = HOME_SERVICES.map((slug) => SERVICES.find((s) => s.slug === slug)).filter(
@@ -304,8 +301,8 @@ function Index() {
         </div>
       </Chapter>
 
-      {/* V — The two off-plan concepts. */}
-      <FeaturedOffPlan projects={demoProjects} />
+      {/* V — The two off-plan communities in focus. */}
+      <FeaturedOffPlan projects={offPlanProjects} />
 
       {featured.length > 0 ? (
         <HorizontalGallery
