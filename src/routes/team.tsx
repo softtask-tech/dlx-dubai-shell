@@ -59,21 +59,13 @@ function TeamPage() {
             {agents.map((agent, index) => (
               <Reveal key={agent.id} delay={stagger(index % 3)}>
                 <article>
-                  <div className="aspect-[4/5] overflow-hidden bg-muted">
-                    {agent.photo_url ? (
-                      <img
-                        src={agent.photo_url}
-                        alt={agent.full_name}
-                        loading="lazy"
-                        decoding="async"
-                        className="h-full w-full object-cover"
-                      />
-                    ) : null}
-                  </div>
-
-                  <h2 className="display-3 mt-6">{agent.full_name}</h2>
+                  <Link to="/team/$slug" params={{ slug: agent.slug }} className="group block">
+                    <ConsultantPortrait agent={agent} />
+                    <h2 className="display-3 mt-6 group-hover:text-accent">{agent.full_name}</h2>
+                  </Link>
                   {agent.job_title ? <p className="caption mt-1">{agent.job_title}</p> : null}
                   {agent.brn ? <p className="caption mt-3">RERA BRN {agent.brn}</p> : null}
+
 
                   {agent.bio ? (
                     <p className="body-text mt-5 text-muted-foreground">{agent.bio}</p>
