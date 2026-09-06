@@ -40,3 +40,11 @@ export {
   Tile,
   TileLink,
 } from "./bento";
+export {
+  Chapter,
+  ChapterPlate,
+  FigureBand,
+  IndexRows,
+  type Figure,
+  type Row,
+} from "./chapter";
