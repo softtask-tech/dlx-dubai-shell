@@ -31,10 +31,20 @@ These are stock, and they are placeholders in the sense that matters: the
 moment DLX supplies its own licensed listing, developer and lifestyle
 photography, it drops into the same slugs and nothing about the layouts moves.
 
-## Phase 2B concept imagery
+## Off-plan project imagery
 
-The optimized `off-plan-harbour-canvas`, `off-plan-saffron-grove` and
-`off-plan-meridian-gate` hero and detail assets were generated with OpenAI's built-in image
-generation tool on 5 September 2026. They depict fictional, non-identifiable
-architecture for local/Lovable preview only. They contain no developer branding,
-copied project architecture, embedded claims or intended real-world location.
+The Azizi Florence and Sobha City images are the developers' own renders,
+extracted from the brochures supplied to DLX:
+
+| Slug | Source document |
+| --- | --- |
+| off-plan-azizi-florence | Azizi Developments — Azizi Florence brochure |
+| off-plan-azizi-florence-park | Azizi Developments — Azizi Florence brochure |
+| off-plan-azizi-florence-villa | Azizi Developments — Azizi Florence brochure |
+| off-plan-sobha-city | Sobha Realty — Sobha City Master Brochure |
+| off-plan-sobha-city-waterfront | Sobha Realty — Sobha City Master Brochure |
+| off-plan-sobha-city-villa | Sobha Realty — Sobha City Master Brochure |
+
+They are used under the marketing permission DLX holds as the representing
+broker, and every frame is credited to the developer on the page.
+

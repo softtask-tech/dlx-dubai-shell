@@ -99,7 +99,7 @@ const media = (src: string, alt: string, caption: string): CommercialProjectMedi
   src,
   alt,
   caption,
-  illustrative: true,
+  illustrative: false,
 });
 
 export const OFF_PLAN_PROJECTS: readonly CommercialProject[] = [
@@ -114,21 +114,22 @@ export const OFF_PLAN_PROJECTS: readonly CommercialProject[] = [
       "Sharjah's largest masterplanned community: 30 million sq ft, a 1.7 million sq ft central park, and homes from apartments to six-bedroom villas.",
     hero: media(
       "/photos/off-plan-azizi-florence",
-      "Illustrative impression of a Mediterranean-inspired residential community beside a wide green park",
-      "Illustrative impression prepared by DLX. Refer to the developer's brochure for official renders.",
+      "Aerial render of the Azizi Florence masterplan, its clusters set around a central green spine",
+      "Developer render. Source: Azizi Developments — Azizi Florence brochure.",
     ),
     gallery: [
       media(
         "/photos/off-plan-azizi-florence-park",
-        "Illustrative impression of a broad landscaped park with tree-lined walkways between low residential buildings",
-        "Illustrative impression of the central park. Not an official developer render.",
+        "Render of a landscaped park within Azizi Florence, with shaded walkways and seating",
+        "Developer render of the community parkland. Source: Azizi Developments.",
       ),
       media(
         "/photos/off-plan-azizi-florence-villa",
-        "Illustrative impression of a three-storey family villa with a courtyard and roof terrace",
-        "Illustrative impression of a standalone villa. Not an official developer render.",
+        "Render of a three-storey standalone villa at Azizi Florence seen from the street",
+        "Developer render of a standalone villa. Source: Azizi Developments.",
       ),
     ],
+
     startingPrice: null,
     priceNote:
       "The current release price list is issued by the developer and changes between releases. We send you the live list rather than publish a number that may already be out of date.",
@@ -244,21 +245,22 @@ export const OFF_PLAN_PROJECTS: readonly CommercialProject[] = [
       "Sobha Realty's first masterplanned community in Abu Dhabi: around 60% open and green space, a 2 km waterfront promenade and three home collections.",
     hero: media(
       "/photos/off-plan-sobha-city",
-      "Illustrative impression of a low-rise waterfront community with canals, promenades and dense tree planting",
-      "Illustrative impression prepared by DLX. Refer to the developer's brochure for official renders.",
+      "Aerial render of Sobha City, Abu Dhabi, with its marina, waterfront residences and green corridors",
+      "Developer render. Source: Sobha Realty — Sobha City master brochure.",
     ),
     gallery: [
       media(
         "/photos/off-plan-sobha-city-waterfront",
-        "Illustrative impression of a shaded waterfront promenade beside calm water",
-        "Illustrative impression of the promenade. Not an official developer render.",
+        "Render of the Sobha City waterfront, with terraced residences above a swimmable lagoon",
+        "Developer render of the waterfront. Source: Sobha Realty.",
       ),
       media(
         "/photos/off-plan-sobha-city-villa",
-        "Illustrative impression of a contemporary garden villa with deep terraces and mature planting",
-        "Illustrative impression of a garden villa. Not an official developer render.",
+        "Render of garden villas at Sobha City with landscaped play areas between them",
+        "Developer render of the villa collections. Source: Sobha Realty.",
       ),
     ],
+
     startingPrice: null,
     priceNote:
       "Pricing is released by Sobha Realty per collection and per release. We send you the live list rather than publish a figure that may already be superseded.",

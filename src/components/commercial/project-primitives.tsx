@@ -114,8 +114,9 @@ export function SourceDisclosure({
         <p className="caption mt-3 max-w-2xl">
           Source: {project.sourceLabel}. Prices, payment terms and handover dates are set per
           release and are confirmed to you in writing — we do not publish figures the developer has
-          not issued. Images on this page are illustrative impressions, not official renders.
+          not issued. Images on this page are the developer's own renders.
         </p>
+
       ) : null}
     </div>
   );
@@ -317,9 +318,10 @@ export function TrustSourcePanel({ project }: { project: CommercialProject }) {
       <p className="body-text mt-4">{project.sourceLabel}</p>
       <p className="caption mt-3 text-muted-foreground">
         Updated {project.updatedAt}. Figures on this page are quoted from the developer's published
-        material. No Dubai Land Department transaction record is attached to this project, and
-        images are illustrative impressions rather than official renders.
+        material, and the images are the developer's own renders. No Dubai Land Department
+        transaction record is attached to this project.
       </p>
+
     </div>
   );
 }
