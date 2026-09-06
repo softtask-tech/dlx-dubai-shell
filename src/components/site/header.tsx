@@ -33,13 +33,23 @@ export function Header() {
   }, [mobileOpen]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/95 text-foreground backdrop-blur-md">
-      <div className="mx-auto flex h-18 max-w-shell items-center justify-between px-5 md:px-10 lg:px-16">
-        <a href={pathIn(code, "/")} aria-label={t.nav.homeAria} className="focus-ring shrink-0">
-          <Wordmark form="monogram" tone="ink" className="h-9" />
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-border/80 bg-background/70 text-foreground backdrop-blur-xl">
+      <div className="mx-auto flex h-[4.5rem] max-w-shell items-center justify-between gap-4 px-5 md:px-10 lg:px-16">
+        <a
+          href={pathIn(code, "/")}
+          aria-label={t.nav.homeAria}
+          className="focus-ring flex shrink-0 items-center gap-3"
+        >
+          <Wordmark form="monogram" tone="on-dark" className="h-8" />
+          <span className="hidden text-eyebrow font-semibold tracking-monogram text-muted-foreground uppercase sm:block">
+            {"Dubai"}
+          </span>
         </a>
 
-        <nav aria-label="Primary navigation" className="hidden h-full items-center lg:flex">
+        <nav
+          aria-label="Primary navigation"
+          className="hidden h-11 items-center rounded-full border border-border bg-secondary/60 px-1.5 lg:flex"
+        >
           {NAVIGATION_GROUPS.map((group) => {
             const open = activeGroup === group.label;
             const panelId = `nav-${group.label.toLowerCase().replace(/\s/g, "-")}`;
@@ -50,41 +60,44 @@ export function Header() {
                 aria-expanded={open}
                 aria-controls={panelId}
                 onClick={() => setActiveGroup(open ? null : group.label)}
-                className="focus-ring eyebrow flex h-full min-h-11 items-center gap-1.5 px-4 text-foreground"
+                className={cn(
+                  "focus-ring eyebrow flex h-8 items-center gap-1.5 rounded-full px-4 transition-colors",
+                  open ? "bg-accent text-accent-foreground" : "text-foreground hover:text-accent",
+                )}
               >
                 {group.label}
                 <ChevronDown
                   aria-hidden
-                  className={cn("size-3.5 transition-transform", open && "rotate-180")}
+                  className={cn("size-3 transition-transform", open && "rotate-180")}
                 />
               </button>
             );
           })}
-          <a
-            href={pathIn(code, "/contact")}
-            className="focus-ring eyebrow ml-3 border-l border-border px-5 py-3 text-foreground"
-          >
-            Speak to DLX
-          </a>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <a
             href={pathIn(code, "/directory")}
             aria-label="Search published property data"
-            className="focus-ring grid size-11 place-items-center"
+            className="focus-ring grid size-11 place-items-center rounded-full text-muted-foreground transition-colors hover:text-accent"
           >
             <Search aria-hidden className="size-4" />
           </a>
           <a
             href="#ask"
             aria-label="Ask DLX AI"
-            className="focus-ring hidden size-11 place-items-center sm:grid"
+            className="focus-ring hidden size-11 place-items-center rounded-full text-muted-foreground transition-colors hover:text-accent sm:grid"
           >
             <Sparkles aria-hidden className="size-4" />
           </a>
           <CurrencyPicker variant="bare" className="hidden xl:flex" />
           <LanguageSwitcher className="hidden xl:block" />
+          <a
+            href={pathIn(code, "/contact")}
+            className="focus-ring eyebrow ms-2 hidden items-center rounded-full bg-primary px-5 py-3 text-primary-foreground transition-colors hover:bg-accent hover:text-accent-foreground lg:inline-flex"
+          >
+            Speak to DLX
+          </a>
           <button
             ref={mobileToggle}
             type="button"
@@ -92,7 +105,7 @@ export function Header() {
             aria-controls="mobile-navigation"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             onClick={() => setMobileOpen((value) => !value)}
-            className="focus-ring grid size-11 place-items-center lg:hidden"
+            className="focus-ring grid size-11 place-items-center rounded-full lg:hidden"
           >
             {mobileOpen ? (
               <X aria-hidden className="size-5" />
@@ -102,6 +115,7 @@ export function Header() {
           </button>
         </div>
       </div>
+
 
       {activeGroup ? (
         <div
