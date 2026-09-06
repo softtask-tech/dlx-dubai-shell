@@ -40,13 +40,14 @@ const FAMILIES = [
     file: "../../src/styles.fonts.css",
     families: [
       /* The workhorse: body copy, labels, tables, controls. */
-      { query: "Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..600", slug: "plus-jakarta-sans" },
-      /* The display face: every headline, figure and monogram. */
-      { query: "Syne:wght@400..800", slug: "syne" },
+      { query: "Work+Sans:ital,wght@0,300..700;1,300..600", slug: "work-sans" },
+      /* The display face: every headline. High-contrast editorial serif. */
+      { query: "Instrument+Serif:ital@0;1", slug: "instrument-serif" },
 
     ],
     subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
   },
+
   {
     /* Russian pages only. Instrument Sans is Latin-only, so Cyrillic body
      * copy needs a face of its own; Golos Text is a Cyrillic-native
