@@ -69,11 +69,13 @@ test("no price, payment plan or handover date is invented", () => {
     assert.equal(project.advertisingCompliance.authorityIssuedQrAsset, null);
     assert.equal(project.advertisingCompliance.validationStatus, "pending");
     assert.equal(project.officialDldRecord, null);
-    /* Imagery is an illustrative impression and says so. */
+    /* Imagery comes from the developer's brochure and is credited as such. */
     for (const item of [project.hero, ...project.gallery]) {
-      assert.equal(item.illustrative, true);
-      assert.match(item.caption, /illustrative/i);
+      assert.equal(item.illustrative, false);
+      assert.match(item.caption, /developer render/i);
+      assert.match(item.caption, /Source:/);
     }
+
   }
 });
 
