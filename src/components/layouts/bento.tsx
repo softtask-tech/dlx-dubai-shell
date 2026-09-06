@@ -192,7 +192,7 @@ export function MediaTile({
   photo?: PhotoSlug;
   src?: string | null;
   alt?: string;
-  to?: never;
+  to?: ComponentProps<typeof Link>["to"];
   params?: Record<string, string>;
   ratio?: string;
   className?: string;
@@ -231,7 +231,7 @@ export function MediaTile({
     className,
   );
 
-  if (to) {
+  if (to !== undefined) {
     return (
       <Link to={to} params={params as never} className={cn(shared, "tile-interactive focus-ring")}>
         {inner}
