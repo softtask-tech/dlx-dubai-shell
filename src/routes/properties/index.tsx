@@ -6,7 +6,7 @@ import { listProperties, type PropertyFilters } from "@/data/properties";
 import type { Area } from "@/data/types";
 import { pageHead, withHeroPreload } from "@/lib/seo";
 import { useTrackedView } from "@/lib/use-tracked-view";
-import { FullBleed } from "@/components/layouts";
+import { Photo } from "@/components/site/photo";
 import { ListingGrid } from "@/components/site/listing-grid";
 import { TrustStrip } from "@/components/site/trust-strip";
 import { Section, Eyebrow } from "@/components/ui/section";
@@ -51,7 +51,7 @@ export const Route = createFileRoute("/properties/")({
   },
   head: () =>
     withHeroPreload(
-      "harbour-golden-hour",
+      "tower-facade-raking-light",
       pageHead({ path: "/properties", breadcrumbs: [{ name: "Properties", path: "/properties" }] }),
     ),
   component: PropertiesIndex,
