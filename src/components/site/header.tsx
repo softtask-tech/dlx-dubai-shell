@@ -33,19 +33,19 @@ export function Header() {
   }, [mobileOpen]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-border/80 bg-background/70 text-foreground backdrop-blur-xl">
-      <div className="mx-auto flex h-[4.5rem] max-w-shell items-center justify-between gap-4 px-5 md:px-10 lg:px-16">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/88 text-foreground backdrop-blur-md">
+      <div className="mx-auto flex h-16 max-w-shell items-center justify-between gap-6 px-5 md:px-10 lg:px-14">
         <a
           href={pathIn(code, "/")}
           aria-label={t.nav.homeAria}
           className="focus-ring flex shrink-0 items-center gap-3"
         >
-          <Wordmark form="monogram" tone="on-dark" className="h-8" />
+          <Wordmark form="monogram" tone="ink" className="h-7" />
         </a>
 
         <nav
           aria-label="Primary navigation"
-          className="hidden h-11 items-center rounded-full border border-border bg-secondary/60 px-1.5 lg:flex"
+          className="hidden h-full items-stretch gap-8 lg:flex"
         >
           {NAVIGATION_GROUPS.map((group) => {
             const open = activeGroup === group.label;
@@ -58,14 +58,21 @@ export function Header() {
                 aria-controls={panelId}
                 onClick={() => setActiveGroup(open ? null : group.label)}
                 className={cn(
-                  "focus-ring eyebrow flex h-8 items-center gap-1.5 rounded-full px-4 transition-colors",
-                  open ? "bg-accent text-accent-foreground" : "text-foreground hover:text-accent",
+                  "focus-ring eyebrow relative flex items-center gap-1.5 transition-colors",
+                  open ? "text-accent" : "text-foreground hover:text-accent",
                 )}
               >
                 {group.label}
                 <ChevronDown
                   aria-hidden
                   className={cn("size-3 transition-transform", open && "rotate-180")}
+                />
+                <span
+                  aria-hidden
+                  className={cn(
+                    "absolute inset-x-0 -bottom-px h-px origin-left bg-accent transition-transform duration-300",
+                    open ? "scale-x-100" : "scale-x-0",
+                  )}
                 />
               </button>
             );
@@ -76,14 +83,14 @@ export function Header() {
           <a
             href={pathIn(code, "/directory")}
             aria-label="Search published property data"
-            className="focus-ring grid size-11 place-items-center rounded-full text-muted-foreground transition-colors hover:text-accent"
+            className="focus-ring grid size-11 place-items-center text-muted-foreground transition-colors hover:text-accent"
           >
             <Search aria-hidden className="size-4" />
           </a>
           <a
             href="#ask"
             aria-label="Ask DLX AI"
-            className="focus-ring hidden size-11 place-items-center rounded-full text-muted-foreground transition-colors hover:text-accent sm:grid"
+            className="focus-ring hidden size-11 place-items-center text-muted-foreground transition-colors hover:text-accent sm:grid"
           >
             <Sparkles aria-hidden className="size-4" />
           </a>
@@ -91,7 +98,7 @@ export function Header() {
           <LanguageSwitcher className="hidden xl:block" />
           <a
             href={pathIn(code, "/contact")}
-            className="focus-ring eyebrow ms-2 hidden items-center rounded-full bg-primary px-5 py-3 text-primary-foreground transition-colors hover:bg-accent hover:text-accent-foreground lg:inline-flex"
+            className="focus-ring eyebrow ms-3 hidden items-center border border-foreground px-5 py-2.5 text-foreground transition-colors hover:bg-foreground hover:text-background lg:inline-flex"
           >
             Speak to DLX
           </a>
@@ -102,7 +109,7 @@ export function Header() {
             aria-controls="mobile-navigation"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             onClick={() => setMobileOpen((value) => !value)}
-            className="focus-ring grid size-11 place-items-center rounded-full lg:hidden"
+            className="focus-ring grid size-11 place-items-center lg:hidden"
           >
             {mobileOpen ? (
               <X aria-hidden className="size-5" />
@@ -113,44 +120,43 @@ export function Header() {
         </div>
       </div>
 
-
+      {/* The mega-menu is a full-width stone sheet, not a floating card. */}
       {activeGroup ? (
         <div
           id={`nav-${activeGroup.toLowerCase().replace(/\s/g, "-")}`}
-          className="absolute inset-x-0 top-full hidden border-b border-border bg-background/95 backdrop-blur-xl lg:block"
+          className="absolute inset-x-0 top-full hidden border-b border-border bg-secondary lg:block"
         >
-          <div className="mx-auto grid max-w-shell grid-cols-12 gap-6 px-16 py-8">
+          <div className="mx-auto grid max-w-shell grid-cols-12 gap-10 px-14 py-12">
             <div className="col-span-3">
               <p className="eyebrow text-accent">{activeGroup}</p>
-              <p className="body-text mt-3 text-muted-foreground">
-                Focused routes with useful published content.
-              </p>
+              <p className="display-3 mt-4">Where to look next.</p>
+              <p className="caption mt-3">Focused routes with useful published content.</p>
             </div>
-            <div className="col-span-9 grid grid-cols-3 gap-3">
+            <div className="col-span-9 grid grid-cols-3 gap-x-10 gap-y-0">
               {NAVIGATION_GROUPS.find((group) => group.label === activeGroup)?.items.map((item) => (
                 <a
                   key={item.href}
                   href={pathIn(code, item.href)}
-                  className="focus-ring tile tile-interactive !p-4"
+                  className="focus-ring group block border-t border-border py-4 transition-colors hover:border-foreground"
                 >
-                  <span className="font-display font-semibold tracking-display">{item.label}</span>
+                  <span className="display-3 block transition-colors group-hover:text-accent">
+                    {item.label}
+                  </span>
                   {item.description ? (
-                    <span className="caption mt-1 block text-muted-foreground">
-                      {item.description}
-                    </span>
+                    <span className="caption mt-1 block">{item.description}</span>
                   ) : null}
                 </a>
               ))}
             </div>
           </div>
         </div>
-
       ) : null}
+
 
       {mobileOpen ? (
         <div
           id="mobile-navigation"
-          className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-border bg-background lg:hidden"
+          className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-border bg-background lg:hidden"
         >
           <nav aria-label="Mobile navigation" className="px-5 py-7">
             {NAVIGATION_GROUPS.map((group) => (

@@ -141,7 +141,61 @@ export const PHOTOS = {
     widths: [640, 1280, 1920, 2560],
     fallbackWidth: 1280,
   },
+
+  /* --- Marble & Ink commission ---------------------------------------------
+   * The redesign's own photography: water level rather than aerial, raking
+   * light rather than sunset, material detail rather than skyline. Cool,
+   * quiet frames that sit on a stone page without fighting it. */
+  "marina-dusk-water-level": {
+    slug: "marina-dusk-water-level",
+    alt: "Dubai Marina at dusk from water level, the towers reflected in still dark water",
+    ratio: 1.5,
+    tone: "dark",
+    widths: [640, 1280, 1920],
+    fallbackWidth: 1280,
+  },
+  "tower-facade-raking-light": {
+    slug: "tower-facade-raking-light",
+    alt: "A single Dubai residential tower facade in raking late-afternoon light, balconies casting diagonal shadows",
+    ratio: 0.6667,
+    tone: "mixed",
+    widths: [640, 1280],
+    fallbackWidth: 1280,
+  },
+  "interchange-overhead-blue-hour": {
+    slug: "interchange-overhead-blue-hour",
+    alt: "A Dubai highway interchange from directly overhead at blue hour, its curves reading as a drawing",
+    ratio: 1.5,
+    tone: "dark",
+    widths: [640, 1280, 1920],
+    fallbackWidth: 1280,
+  },
+  "terrace-edge-haze": {
+    slug: "terrace-edge-haze",
+    alt: "The edge of a penthouse terrace with a bronze balustrade, the Dubai skyline pale in haze beyond",
+    ratio: 1.5,
+    tone: "light",
+    widths: [640, 1280, 1920],
+    fallbackWidth: 1280,
+  },
+  "marble-brass-detail": {
+    slug: "marble-brass-detail",
+    alt: "Pale grey marble meeting a thin brushed brass inlay, photographed close",
+    ratio: 1.5,
+    tone: "light",
+    widths: [640, 1280, 1920],
+    fallbackWidth: 1280,
+  },
+  "villa-courtyard-morning": {
+    slug: "villa-courtyard-morning",
+    alt: "A limestone villa courtyard in early morning light, an olive tree beside a still reflecting pool",
+    ratio: 1.5,
+    tone: "light",
+    widths: [640, 1280, 1920],
+    fallbackWidth: 1280,
+  },
 } as const satisfies Record<string, Photo>;
+
 
 export type PhotoSlug = keyof typeof PHOTOS;
 

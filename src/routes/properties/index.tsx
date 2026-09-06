@@ -6,7 +6,7 @@ import { listProperties, type PropertyFilters } from "@/data/properties";
 import type { Area } from "@/data/types";
 import { pageHead, withHeroPreload } from "@/lib/seo";
 import { useTrackedView } from "@/lib/use-tracked-view";
-import { FullBleed } from "@/components/layouts";
+import { Photo } from "@/components/site/photo";
 import { ListingGrid } from "@/components/site/listing-grid";
 import { TrustStrip } from "@/components/site/trust-strip";
 import { Section, Eyebrow } from "@/components/ui/section";
@@ -51,7 +51,7 @@ export const Route = createFileRoute("/properties/")({
   },
   head: () =>
     withHeroPreload(
-      "harbour-golden-hour",
+      "tower-facade-raking-light",
       pageHead({ path: "/properties", breadcrumbs: [{ name: "Properties", path: "/properties" }] }),
     ),
   component: PropertiesIndex,
@@ -106,15 +106,22 @@ function PropertiesIndex() {
        * A band rather than a full screen: this is an index, and the listings
        * should be reachable in one scroll.
        */}
-      <FullBleed photo="harbour-golden-hour" height="band" priority>
-        <div className="max-w-3xl">
-          <h1 className="display-1 text-balance">The portfolio.</h1>
-          <p className="lead mt-6 max-w-xl text-on-dark-muted">
+      <section className="border-b border-border pt-16">
+        <div className="mx-auto grid w-full max-w-shell items-end gap-10 px-6 pt-16 pb-12 md:px-10 lg:grid-cols-12 lg:px-16">
+          <div className="lg:col-span-7">
+            <p className="eyebrow text-accent">Representation</p>
+            <h1 className="display-1 mt-6 text-balance">The portfolio.</h1>
+          </div>
+          <p className="lead max-w-md text-muted-foreground lg:col-span-5">
             A curated selection across Dubai's prime districts. Some of what we represent is never
             advertised, so if you do not see it here, ask.
           </p>
         </div>
-      </FullBleed>
+        <div className="relative aspect-21/9 w-full overflow-hidden">
+          <Photo slug="tower-facade-raking-light" sizes="100vw" priority />
+        </div>
+      </section>
+
 
       <FilterBar search={search} areas={areas} />
 

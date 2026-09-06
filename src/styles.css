@@ -46,6 +46,11 @@
 
   /* Named palette entries, so the brand colours can be referenced directly
    * (bg-ink, text-brass) as well as through their semantic roles. */
+  --color-stone: var(--stone);
+  --color-stone-panel: var(--stone-panel);
+  --color-stone-deep: var(--stone-deep);
+  --color-steel: var(--steel);
+  --color-steel-soft: var(--steel-soft);
   --color-ink: var(--ink);
   --color-ink-panel: var(--ink-panel);
   --color-ink-raised: var(--ink-raised);
@@ -115,135 +120,151 @@
   --radius: 10px;
 
   /* --- The palette ------------------------------------------------------
-   * Near-black canvas, ivory type, one brass accent, grey for quiet detail.
+   *
+   * Marble & Ink. A cool off-white stone canvas, pure black type, one muted
+   * steel-blue accent for anything interactive, and brass held back for the
+   * figures that come from the official record. Ink is not the ground; it is
+   * an event, used twice a page at most.
    */
-  --ink: #0b0b0c; /* the canvas */
-  --ink-panel: #121214; /* a tile on the canvas */
-  --ink-raised: #17171a; /* a tile that is hovered or emphasised */
-  --paper: #f7f5f1; /* ivory, used for inverted sections and type */
-  --paper-cool: #ebe7e0;
-  --brass: #b08d4c;
-  --brass-soft: #d9bd85; /* brass lightened for small text on the canvas */
-  --slate: #8a8a8a;
-  --on-dark: #f7f5f1;
-  --on-dark-muted: #a5a29c;
+  --stone: #f2f2f0; /* the canvas */
+  --stone-panel: #e6e6e3; /* a panel on the canvas */
+  --stone-deep: #d9d9d6; /* a panel that is hovered, or a quiet band */
+  --ink: #0a0a0a; /* type, and the inverted ground */
+  --ink-panel: #141416; /* a tile inside an inverted band */
+  --ink-raised: #1c1c1f;
+  --steel: #3e5c6b; /* the accent: links, actions, active state */
+  --steel-deep: #2c4351;
+  --steel-soft: #9db8c4; /* the accent, lightened for ink grounds */
+  --brass: #b08d4c; /* reserved: official figures and their hairlines */
+  --brass-soft: #d9bd85;
+  --slate: #6f6f6b;
+  --brass-ink: #8a6b2f; /* brass darkened for small type on stone */
 
-  --slate-readable: #6b6862; /* for small text on ivory sections */
-  --text: #f7f5f1;
+  /* Legacy aliases, so existing markup keeps resolving. */
+  --paper: var(--stone);
+  --paper-cool: var(--stone-panel);
+  --on-dark: #f4f4f2;
+  --on-dark-muted: #a2a2a0;
+  --slate-readable: #5c5c58;
+  --text: var(--ink);
 
-  --background: var(--ink);
-  --foreground: var(--on-dark);
+  --background: var(--stone);
+  --foreground: var(--ink);
 
-  --card: var(--ink-panel);
-  --card-foreground: var(--on-dark);
-  --popover: var(--ink-raised);
-  --popover-foreground: var(--on-dark);
+  --card: #fbfbfa;
+  --card-foreground: var(--ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--ink);
 
-  /* A filled button is ivory on the canvas: the brightest thing on screen. */
-  --primary: var(--paper);
-  --primary-foreground: var(--ink);
+  /* A filled button is ink on stone: the darkest thing on screen. */
+  --primary: var(--ink);
+  --primary-foreground: var(--stone);
 
-  --secondary: var(--ink-panel);
-  --secondary-foreground: var(--on-dark);
+  --secondary: var(--stone-panel);
+  --secondary-foreground: var(--ink);
 
-  --muted: var(--ink-panel);
-  --muted-foreground: var(--on-dark-muted);
+  --muted: var(--stone-panel);
+  --muted-foreground: #5c5c58;
 
-  /* Brass is the single accent. On the canvas it measures 6.0:1 (soft) and is
-   * used for small marks, figures, hairlines and hover states. */
-  --accent: var(--brass);
-  --accent-foreground: #100d07;
-  --accent-soft: var(--ink-raised);
+  --accent: var(--steel);
+  --accent-foreground: #f4f6f7;
+  --accent-soft: #dfe7eb;
 
-  --destructive: #e0817d;
-  --destructive-foreground: #14100f;
+  --destructive: #9b2c2c;
+  --destructive-foreground: #ffffff;
 
-  --border: #262629;
-  --border-strong: #35353a;
-  --input: #4c4c52;
-  --ring: var(--brass-soft);
-  --status-positive: #6fc39a;
-  --status-warning: #d6a75a;
-  --status-neutral: #9a978f;
-  --chart-1: #b08d4c;
-  --chart-2: #d9bd85;
-  --chart-3: #7f8a99;
-  --chart-4: #f7f5f1;
+  --border: #d7d7d3;
+  --border-strong: #bcbcb7;
+  --input: #8b8b86;
+  --ring: var(--steel);
+  --status-positive: #2f6f52;
+  --status-warning: #8a6b2f;
+  --status-neutral: #6f6f6b;
+  --chart-1: #3e5c6b;
+  --chart-2: #9db8c4;
+  --chart-3: #b08d4c;
+  --chart-4: #0a0a0a;
 
-  /* Tile surface treatment, referenced by the bento utilities. */
-  --tile-sheen: linear-gradient(
-    150deg,
-    color-mix(in srgb, var(--paper) 5%, transparent) 0%,
-    transparent 42%
-  );
-  --shadow-tile: 0 1px 0 0 color-mix(in srgb, var(--paper) 6%, transparent) inset;
-  --shadow-lifted: 0 30px 80px -40px rgb(0 0 0 / 0.9);
+  /* Panels are flat on stone: a hairline and a change of value, no sheen. */
+  --tile-sheen: none;
+  --shadow-tile: none;
+  --shadow-lifted: 0 30px 70px -45px rgb(10 10 10 / 0.45);
 }
 
 /*
- * The dark surface is now the default, so data-surface="dark" is simply an
- * explicit restatement of the root palette. Kept because existing markup
- * declares it, and because it re-grounds a section nested inside a light one.
+ * The inversion. An ink band inside the stone site — the market read and the
+ * closing invitation, and nothing else on a given page.
  */
-[data-surface="dark"] {
+[data-surface="dark"],
+[data-surface="ink"] {
   --background: var(--ink);
   --foreground: var(--on-dark);
   --card: var(--ink-panel);
   --card-foreground: var(--on-dark);
   --popover: var(--ink-raised);
   --popover-foreground: var(--on-dark);
-  --primary: var(--paper);
+  --primary: var(--on-dark);
   --primary-foreground: var(--ink);
   --secondary: var(--ink-panel);
   --secondary-foreground: var(--on-dark);
   --muted: var(--ink-panel);
   --muted-foreground: var(--on-dark-muted);
-  --accent: var(--brass);
-  --accent-foreground: #100d07;
+  --accent: var(--steel-soft);
+  --accent-foreground: #0a0f12;
   --accent-soft: var(--ink-raised);
   --destructive: #e0817d;
   --destructive-foreground: #14100f;
-  --border: #262629;
-  --border-strong: #35353a;
+  --border: #26262a;
+  --border-strong: #3a3a40;
   --input: #4c4c52;
-  --ring: var(--brass-soft);
+  --brass-ink: var(--brass-soft);
+  --ring: var(--steel-soft);
+  --chart-1: #9db8c4;
+  --chart-2: #3e5c6b;
+  --chart-3: #d9bd85;
+  --chart-4: #f4f4f2;
+  --tile-sheen: linear-gradient(
+    150deg,
+    color-mix(in srgb, #ffffff 5%, transparent) 0%,
+    transparent 42%
+  );
+  --shadow-tile: 0 1px 0 0 color-mix(in srgb, #ffffff 6%, transparent) inset;
 
   background-color: var(--ink);
   color: var(--on-dark);
 }
 
 /*
- * The inverted sections: ivory paper on the dark site. Used sparingly — a
- * report body, a long-form guide, a print-like page — for the relief of a
- * different ground.
+ * A stone band declared explicitly, for a section nested inside an inversion.
  */
-[data-surface="light"] {
-  --background: var(--paper);
-  --foreground: #14130f;
-  --card: #ffffff;
-  --card-foreground: #14130f;
+[data-surface="light"],
+[data-surface="stone"] {
+  --background: var(--stone);
+  --foreground: var(--ink);
+  --card: #fbfbfa;
+  --card-foreground: var(--ink);
   --popover: #ffffff;
-  --popover-foreground: #14130f;
+  --popover-foreground: var(--ink);
   --primary: var(--ink);
-  --primary-foreground: var(--paper);
-  --secondary: var(--paper-cool);
-  --secondary-foreground: #14130f;
-  --muted: var(--paper-cool);
-  --muted-foreground: var(--slate-readable);
-  --accent: #8a6b2f; /* brass darkened to 4.9:1 on ivory */
-  --accent-foreground: var(--paper);
-  --accent-soft: var(--paper-cool);
+  --primary-foreground: var(--stone);
+  --secondary: var(--stone-panel);
+  --secondary-foreground: var(--ink);
+  --muted: var(--stone-panel);
+  --muted-foreground: #5c5c58;
+  --accent: var(--steel);
+  --accent-foreground: #f4f6f7;
+  --accent-soft: #dfe7eb;
   --destructive: #9b2c2c;
   --destructive-foreground: #ffffff;
-  --border: #dcd7cd;
-  --border-strong: #c6c0b4;
-  --input: #8b857a;
-  --ring: #8a6b2f;
-  --shadow-tile: 0 1px 0 0 color-mix(in srgb, #000 4%, transparent) inset;
+  --border: #d7d7d3;
+  --border-strong: #bcbcb7;
+  --input: #8b8b86;
+  --ring: var(--steel);
   --tile-sheen: none;
+  --shadow-tile: none;
 
-  background-color: var(--paper);
-  color: #14130f;
+  background-color: var(--stone);
+  color: var(--ink);
 }
 
 /*
@@ -251,9 +272,12 @@
  * masthead over a full-bleed hero, for instance.
  */
 [data-surface="dark"][data-surface-ground="none"],
+[data-surface="ink"][data-surface-ground="none"],
+[data-surface="stone"][data-surface-ground="none"],
 [data-surface="light"][data-surface-ground="none"] {
   background-color: transparent;
 }
+
 
 
 @layer base {
@@ -929,7 +953,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   border: 1px solid var(--border);
   background-color: var(--card);
   background-image: var(--tile-sheen);
@@ -942,16 +966,14 @@ body {
   }
 }
 
-/* A tile that is a link or a button: it lifts, its hairline warms to brass. */
+/* A tile that is a link or a button: the ground deepens, the hairline firms. */
 @utility tile-interactive {
   transition:
     border-color var(--duration-quick) var(--ease-editorial),
-    background-color var(--duration-quick) var(--ease-editorial),
-    transform var(--duration-quick) var(--ease-editorial);
+    background-color var(--duration-quick) var(--ease-editorial);
   &:hover {
-    border-color: color-mix(in srgb, var(--brass) 55%, transparent);
-    background-color: var(--ink-raised);
-    transform: translateY(-3px);
+    border-color: var(--border-strong);
+    background-color: var(--secondary);
   }
 }
 
@@ -959,10 +981,10 @@ body {
 @utility tile-media {
   padding: 0;
   justify-content: flex-end;
-  background-color: var(--ink-raised);
+  background-color: var(--stone-deep);
 }
 
-/* The brass keyline used to mark a lead tile or an active state. */
+/* The brass keyline. Reserved for a figure that comes from the official record. */
 @utility tile-accent {
   border-color: color-mix(in srgb, var(--brass) 45%, transparent);
   &::before {
@@ -981,7 +1003,6 @@ body {
   }
 }
 
-/* A big number: tabular, tight, display face. Used in every stat tile. */
 @utility figure-xl {
   font-family: var(--font-display);
   font-size: clamp(2.25rem, 1.4rem + 3.2vw, 3.75rem);
@@ -1018,22 +1039,27 @@ body {
 
 @utility chip-accent {
   border-color: color-mix(in srgb, var(--brass) 50%, transparent);
-  color: var(--brass-soft);
+  color: var(--brass-ink);
 }
 
 /* The soft brass glow behind a hero or a lead tile. Purely atmospheric. */
+/* Atmospheric glow behind a lead tile. Only meaningful on an ink ground; on
+ * stone it is deliberately nothing at all. */
 @utility brass-glow {
   position: relative;
-  &::after {
-    content: "";
-    position: absolute;
-    inset: -20%;
-    z-index: -1;
-    pointer-events: none;
-    background: radial-gradient(
-      60% 50% at 50% 40%,
-      color-mix(in srgb, var(--brass) 18%, transparent),
-      transparent 70%
-    );
-  }
 }
+
+[data-surface="dark"] .brass-glow::after,
+[data-surface="ink"] .brass-glow::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    60% 50% at 50% 40%,
+    color-mix(in srgb, var(--brass) 16%, transparent),
+    transparent 70%
+  );
+}
+
