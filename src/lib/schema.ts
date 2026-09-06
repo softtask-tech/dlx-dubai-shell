@@ -101,7 +101,130 @@ export function breadcrumbSchema(
   };
 }
 
+export type PersonInput = {
+  slug: string;
+  name: string;
+  jobTitle?: string | null;
+  description?: string | null;
+  image?: string | null;
+  email?: string | null;
+  telephone?: string | null;
+  /** RERA Broker Registration Number, omitted when we do not hold one. */
+  brn?: string | null;
+  languages?: readonly string[];
+  specialities?: readonly string[];
+  sameAs?: readonly string[];
+};
+
+/**
+ * A consultant, tied back to the brokerage.
+ *
+ * Only facts the profile page itself shows: no licence number is asserted for
+ * someone whose BRN we do not hold, and no photograph is claimed before one
+ * exists. `worksFor` points at the organisation node so an answer engine
+ * resolves the person and the firm as one graph rather than two strangers.
+ */
+export function personSchema(input: PersonInput): JsonLd {
+  const url = absoluteUrl(`/team/${input.slug}`);
+  const node: JsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${url}#person`,
+    name: input.name,
+    url,
+    worksFor: { "@id": SCHEMA_IDS.organization },
+    /* The person is an agent of the brokerage, which is what a reader is
+     * actually asking when they look one of them up. */
+    memberOf: { "@id": SCHEMA_IDS.organization },
+  };
+
+  if (input.jobTitle) node["jobTitle"] = input.jobTitle;
+  if (input.description) node["description"] = input.description;
+  if (input.image) node["image"] = absoluteUrl(input.image);
+  if (input.email) node["email"] = input.email;
+  if (input.telephone) node["telephone"] = input.telephone;
+  if (input.languages?.length) node["knowsLanguage"] = [...input.languages];
+  if (input.specialities?.length) node["knowsAbout"] = [...input.specialities];
+  if (input.sameAs?.length) node["sameAs"] = [...input.sameAs];
+  if (input.brn) {
+    node["identifier"] = {
+      "@type": "PropertyValue",
+      name: "RERA BRN",
+      value: input.brn,
+    };
+    node["hasCredential"] = {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "RERA Broker Registration Number",
+      identifier: input.brn,
+      recognizedBy: { "@type": "Organization", name: "Dubai Land Department" },
+    };
+  }
+
+  return node;
+}
+
+/** The team page: an ordered list of the people it shows. */
+export function teamListSchema(people: readonly { slug: string; name: string }[]): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `${site.name} consultants`,
+    itemListElement: people.map((person, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: absoluteUrl(`/team/${person.slug}`),
+      name: person.name,
+    })),
+  };
+}
+
+export type ProjectInput = {
+  name: string;
+  path: string;
+  description: string;
+  image: string;
+  developerName: string;
+  locationName: string;
+  /** "Under construction", "Handover 2027" — whatever the page states. */
+  constructionStatus?: string | null;
+  numberOfRooms?: string | null;
+};
+
+/**
+ * An off-plan development.
+ *
+ * `ApartmentComplex` rather than a listing with an offer: we publish no price
+ * and no availability for these projects, and an `Offer` node without a price
+ * is exactly the empty claim the schema rules here forbid.
+ */
+export function projectSchema(input: ProjectInput): JsonLd {
+  const node: JsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ApartmentComplex",
+    name: input.name,
+    url: absoluteUrl(input.path),
+    description: input.description,
+    image: absoluteUrl(input.image),
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: input.locationName,
+      addressCountry: site.address.country,
+    },
+    brand: { "@type": "Organization", name: input.developerName },
+    /* Who is marketing it, which is the fact we can stand behind. */
+    provider: { "@id": SCHEMA_IDS.organization },
+  };
+  if (input.constructionStatus) node["additionalProperty"] = {
+    "@type": "PropertyValue",
+    name: "Construction status",
+    value: input.constructionStatus,
+  };
+  if (input.numberOfRooms) node["numberOfRooms"] = input.numberOfRooms;
+  return node;
+}
+
 export type FaqEntry = { question: string; answer: string };
+
 
 /**
  * FAQ schema. Only call this for questions that are also rendered on the page,
