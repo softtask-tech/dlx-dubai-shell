@@ -51,6 +51,10 @@ export const leadSubmissionSchema = z
     sourceDetail: trimmed,
     propertyId: z.string().uuid().optional(),
     guideId: z.string().uuid().optional(),
+    /* Set when the visitor wrote to one named consultant from their profile.
+     * Routing honours it instead of taking the next name in the queue. */
+    requestedAgentSlug: z.string().max(120).optional(),
+
 
     /* Attribution, captured by the form from the URL and document. */
     utmSource: trimmed,
@@ -259,7 +263,13 @@ export async function submitLead(input: LeadSubmission): Promise<LeadSubmissionR
    * Speed to reply is the number that decides whether paid traffic converts.
    */
   const { routeLead } = await import("./routing.server");
-  await routeLead({ leadId: data.id, temperature, score });
+  await routeLead({
+    leadId: data.id,
+    temperature,
+    score,
+    requestedAgentSlug: input.requestedAgentSlug ?? null,
+  });
+
 
   await dispatchLeadEmails(data.id).catch((emailError: unknown) => {
     console.error("[leads] email dispatch failed", emailError);

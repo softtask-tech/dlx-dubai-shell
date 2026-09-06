@@ -79,6 +79,20 @@ async function nextAgent(
   return chosen ? { id: chosen.id, name: chosen.full_name } : null;
 }
 
+/** The consultant a visitor asked for, if they are still taking work. */
+async function agentBySlug(slug: string): Promise<{ id: string; name: string } | null> {
+  const admin = await adminDb();
+  const { data, error } = await admin
+    .from("agents")
+    .select("id, full_name")
+    .eq("slug", slug)
+    .eq("is_active", true)
+    .maybeSingle();
+
+  if (error || !data) return null;
+  return { id: data.id, name: data.full_name };
+}
+
 /**
  * Routes a lead, or deliberately does not.
  *
@@ -89,8 +103,36 @@ export async function routeLead(input: {
   leadId: string;
   temperature: LeadTemperature;
   score: number;
+  /** Set when the enquiry named a consultant on their own profile page. */
+  requestedAgentSlug?: string | null;
 }): Promise<RoutingResult> {
   const supabase = (await adminDb()) as unknown as SupabaseClient<PaidMediaDatabase>;
+
+  /*
+   * Someone who wrote to a named person gets that person, whatever the score
+   * says. The queue exists to distribute strangers fairly; overriding an
+   * explicit choice with it is the one thing that would make the site's "you
+   * get a named consultant" promise untrue.
+   */
+  if (input.requestedAgentSlug) {
+    const requested = await agentBySlug(input.requestedAgentSlug);
+    if (requested) {
+      const reason = `Requested ${requested.name} by name (${input.temperature}, ${input.score})`;
+      const { error } = await supabase
+        .from("leads")
+        .update({
+          assigned_agent_id: requested.id,
+          routed_at: new Date().toISOString(),
+          routing_reason: reason,
+        } as never)
+        .eq("id", input.leadId);
+
+      if (!error) return { assignedAgentId: requested.id, reason, routed: true };
+      console.error("[routing] could not assign the requested consultant", error);
+    }
+  }
+
+
 
   if (input.temperature === "cold") {
     const reason = `Held for nurture, scored ${input.score}`;
