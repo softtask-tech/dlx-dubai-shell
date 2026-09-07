@@ -1,55 +1,87 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 
 import { SERVICES } from "@/data/services";
+import { SERVICE_GROUPS, SERVICE_PHOTOS } from "@/data/service-photos";
 import { pageHead, withHeroPreload } from "@/lib/seo";
-import { stagger } from "@/lib/motion";
-import { Reveal } from "@/components/site/reveal";
 import { TrustStrip } from "@/components/site/trust-strip";
 import { PageHero } from "@/components/site/page-hero";
-import { Section, Eyebrow } from "@/components/ui/section";
+import { SectionOpener } from "@/components/site/section-opener";
+import { ServicesList, type ServiceRow } from "@/components/home/services-list";
+import { Section } from "@/components/ui/section";
 
 export const Route = createFileRoute("/services/")({
   head: () =>
     withHeroPreload(
       "business-bay-dusk",
-      pageHead({ path: "/services", breadcrumbs: [{ name: "Services", path: "/services" }] }),
+      pageHead({
+        path: "/services",
+        breadcrumbs: [{ name: "Services", path: "/services" }],
+      }),
     ),
   component: ServicesIndex,
 });
 
+/**
+ * The nine practices, in three groups.
+ *
+ * This was nine identical rows: name, tagline, the word "View". Nine of
+ * anything set the same way is a list, and a list makes the reader do the
+ * sorting. It also had no photography at all, on a site that is otherwise led
+ * by it, so the page read as an index rather than as a set of things a firm
+ * does.
+ *
+ * The nine are really three different relationships: moving a property,
+ * holding one, and arriving in the country. Someone who has just taken a job
+ * in Dubai and someone restructuring a portfolio are not scanning the same
+ * three items, and the grouping puts each of them in front of their own set
+ * without making them read the other six.
+ *
+ * The rows themselves are the same component the homepage uses, which is the
+ * flex layout that fixed the orphaned-whitespace problem. One implementation,
+ * so the two pages cannot drift.
+ */
 function ServicesIndex() {
+  const rowsFor = (slugs: readonly string[]): ServiceRow[] =>
+    slugs.flatMap((slug) => {
+      const service = SERVICES.find((entry) => entry.slug === slug);
+      const photo = SERVICE_PHOTOS[slug];
+      if (!service || !photo) return [];
+      return [{ slug, name: service.name, line: service.tagline, photo }];
+    });
+
   return (
     <>
       <PageHero
         photo="business-bay-dusk"
+        eyebrow="What we do"
         title="Nine ways we represent you."
         lead="Each one is run by a named consultant who stays with you from the first call to the last signature."
       />
 
-      <Section>
-        <div className="hairline" />
-        {SERVICES.map((service, index) => (
-          <Reveal key={service.slug} delay={stagger(index)}>
-            <Link
-              to="/services/$slug"
-              params={{ slug: service.slug }}
-              className="group grid items-baseline gap-4 border-b border-border py-10 transition-colors hover:border-accent md:grid-cols-12"
-            >
-              {/* No `01 / 02 / 03` column. The reader can count, and a number
-                  beside every row is the shape of a table of contents. */}
-              <span className="display-3 transition-transform duration-slow ease-editorial group-hover:translate-x-3 md:col-span-6">
-                {service.name}
-              </span>
-              <span className="body-text text-muted-foreground md:col-span-5">
-                {service.tagline}
-              </span>
-              <span className="eyebrow transition-colors group-hover:text-accent md:col-span-1 md:text-right">
-                View
-              </span>
-            </Link>
-          </Reveal>
-        ))}
-      </Section>
+      {SERVICE_GROUPS.map((group, index) => (
+        <Section
+          key={group.id}
+          id={group.id}
+          {...(index % 2 === 1 ? { "data-surface": "cream" } : {})}
+        >
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-4">
+              <SectionOpener
+                eyebrow={group.eyebrow}
+                title={group.title}
+                lead={group.lead}
+                align="split"
+              />
+            </div>
+            <div className="lg:col-span-7 lg:col-start-6">
+              <ServicesList
+                services={rowsFor(group.slugs)}
+                hrefFor={(slug) => `/services/${slug}`}
+              />
+            </div>
+          </div>
+        </Section>
+      ))}
 
       <TrustStrip />
     </>

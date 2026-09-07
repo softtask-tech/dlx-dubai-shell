@@ -8,6 +8,9 @@ import { QualifiedForm } from "@/components/forms/qualified-form";
 import { Reveal } from "@/components/site/reveal";
 import { TrustStrip } from "@/components/site/trust-strip";
 import { Section, Eyebrow } from "@/components/ui/section";
+import { SectionOpener } from "@/components/site/section-opener";
+import { PageHero } from "@/components/site/page-hero";
+import { SERVICE_PHOTOS } from "@/data/service-photos";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
@@ -43,47 +46,49 @@ function ServicePage() {
 
   return (
     <>
-      <Section className="pt-44 pb-20 lg:pt-56">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <Reveal>
-              <Eyebrow>Services</Eyebrow>
-              <h1 className="display-1 mt-8">{service.title}</h1>
-              <p className="lead mt-10 max-w-measure text-muted-foreground">{service.tagline}</p>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-4 lg:col-start-9">
-            <Reveal delay={0.12}>
-              <Eyebrow>Who it's for</Eyebrow>
-              <p className="body-text mt-5 text-muted-foreground">{service.audience}</p>
-              <div className="mt-10 h-px w-16 bg-accent" />
-            </Reveal>
-          </div>
-        </div>
-      </Section>
+      {/* A photograph, like every other page. This opened on 176px of empty
+          space and then a headline, which on a photography-led site reads as
+          a page that has not been finished. */}
+      <PageHero
+        photo={SERVICE_PHOTOS[service.slug] ?? "business-bay-dusk"}
+        eyebrow="Services"
+        title={service.title}
+        lead={service.tagline}
+      />
 
-      {/* The practice, in prose */}
-      <Section className="pt-0 pb-24">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="flex flex-col gap-8 lg:col-span-8 lg:col-start-3">
+      {/* The practice, with who it is for held beside it rather than stranded
+          in the corner of the opening. */}
+      <Section>
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7">
             {service.body.map((paragraph, index) => (
               <Reveal key={paragraph.slice(0, 24)} delay={stagger(index)}>
-                <p className="lead">{paragraph}</p>
+                <p className="lead mt-0 mb-7 last:mb-0">{paragraph}</p>
               </Reveal>
             ))}
           </div>
+          <aside className="lg:col-span-4 lg:col-start-9">
+            <Reveal delay={0.12}>
+              <div className="border-t border-border pt-6 lg:sticky lg:top-32">
+                <Eyebrow className="text-gold-ink">Who it is for</Eyebrow>
+                <p className="body-text mt-4 text-muted-foreground">{service.audience}</p>
+              </div>
+            </Reveal>
+          </aside>
         </div>
       </Section>
 
       {/* What you actually get */}
-      <Section className="bg-secondary">
+      <Section data-surface="cream">
         <div className="grid gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-3">
-            <Reveal>
-              <Eyebrow>What you get</Eyebrow>
-            </Reveal>
+          <div className="lg:col-span-4">
+            <SectionOpener
+              eyebrow="What you get"
+              title="What this actually includes."
+              align="split"
+            />
           </div>
-          <div className="lg:col-span-8 lg:col-start-5">
+          <div className="lg:col-span-7 lg:col-start-6">
             <ol>
               {service.deliverables.map((item, index) => (
                 <Reveal
@@ -127,7 +132,7 @@ function ServicePage() {
       </Section>
 
       {/* Answer-shaped content, matching the FAQ schema exactly */}
-      <Section className="bg-secondary">
+      <Section data-surface="cream">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-3">
             <Reveal>
