@@ -251,7 +251,21 @@ function RootComponent() {
             {/* One bar at a time. The advisor waits until the visitor has answered
                 the cookie question, so the foot of the page never carries two. */}
             <ConsentBar onDecided={() => setConsentDecided(true)} />
-            {advisorAvailability.chat && consentDecided && !isCampaignPage ? (
+            {/*
+             * The advisor no longer waits on the cookie answer.
+             *
+             * It used to, so that the foot of the page never carried two bars
+             * at once. That reasoning belonged to the old full-width rail; the
+             * widget is a pill in a corner now and can sit beside the consent
+             * bar without crowding it. The gate also had a visible bug: the
+             * first paint rendered the widget, the effect then read an
+             * undecided consent state and unmounted it, so a new visitor
+             * watched it appear and vanish a few seconds later.
+             *
+             * Nothing here needs consent in any case. The conversation token
+             * lives in sessionStorage and is not tracking.
+             */}
+            {advisorAvailability.chat && !isCampaignPage ? (
               <Suspense fallback={null}>
                 <AdvisorDock />
               </Suspense>
