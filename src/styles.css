@@ -1016,6 +1016,22 @@ body {
   }
 }
 
+/*
+ * The advisor's waveform. Ambient only: it marks the phone line, it is not a
+ * picture of anything listening. The component omits the animation entirely
+ * under reduced motion rather than relying on the global duration override,
+ * because a looping decoration should not run at all.
+ */
+@keyframes noor-wave {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
 [data-page-turn] {
   animation: page-turn var(--duration-base) var(--ease-editorial) both;
 }
@@ -1184,6 +1200,13 @@ body {
  *               on near-white, so the ground has to come from the panel.
  *
  * When in doubt use glass-dark: it is legible over both.
+ *
+ * ONE TRAP. Never put `data-surface` on the same element as one of these. That
+ * attribute paints its background from unlayered CSS, and unlayered CSS beats
+ * a Tailwind layer however specific the utility is, so the panel silently
+ * comes out solid green or fully transparent and the glass never renders. Put
+ * the surface on an ancestor, or reach for the on-dark colour utilities
+ * directly, which resolve from global tokens and need no surface at all.
  */
 @utility glass {
   background: rgba(255, 255, 255, 0.1);
@@ -1330,6 +1353,48 @@ body:has(main [data-dark-opening]) [data-glass-bar][data-masthead][data-at-top] 
  */
 @utility photo-grade {
   filter: saturate(0.86) contrast(1.04) brightness(0.98) sepia(0.06);
+}
+
+/* --- The market glance chart ----------------------------------------------
+ *
+ * The line writes itself on rather than fading in. The dash length is a fixed
+ * overestimate of the path: the viewBox is 480 wide, so no plausible series
+ * traces more than about 900 units, and any surplus simply sits off the end of
+ * the stroke where it cannot be seen. Measuring the real length would mean
+ * reading `getTotalLength()` in an effect, which is a layout read and a second
+ * render for something no reader can tell apart.
+ *
+ * Both use `animation` with `both`, not `transition`, so they run on mount:
+ * the component swaps the path nodes when the series toggles, and a fresh node
+ * has no previous value to transition from. Under reduced motion the global
+ * override collapses the duration and the fill mode leaves each at its final
+ * state, so the chart is simply drawn.
+ */
+.glance-line {
+  stroke-dasharray: 900;
+  animation: glance-draw var(--duration-cinematic) var(--ease-editorial) both;
+}
+
+@keyframes glance-draw {
+  from {
+    stroke-dashoffset: 900;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.glance-area {
+  animation: glance-fill var(--duration-base) var(--ease-editorial) 0.35s both;
+}
+
+@keyframes glance-fill {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* --- The drawn rule -------------------------------------------------------

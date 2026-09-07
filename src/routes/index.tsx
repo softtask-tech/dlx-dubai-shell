@@ -1,37 +1,25 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { type CSSProperties } from "react";
 
 import { site } from "@/config/site";
-import { listPartnerDevelopers } from "@/data/catalogue";
-import { getMarketPriceIndex, getMarketSummary, listAreasWithStats } from "@/data/market";
-import { listAgents, listTestimonials } from "@/data/people";
-import { listProperties } from "@/data/properties";
+import { advisor } from "@/config/advisor";
+import { listTestimonials, listAgents } from "@/data/people";
+import { advisorAvailabilityFn } from "@/data/advisor.functions";
 import { OFF_PLAN_PROJECTS } from "@/data/off-plan";
 import { SERVICES } from "@/data/services";
+import { seriesFor } from "@/data/market-public";
+import { getMarketMetadataFn, getMarketOverviewFn } from "@/data/market-public.functions";
 import { faqSchema, reviewSchemaFor, type FaqEntry } from "@/lib/schema";
 import { pageHead, withHeroPreload } from "@/lib/seo";
-import { formatPrice } from "@/lib/format";
-import { areaPhoto, type PhotoSlug } from "@/lib/photos";
-import {
-  Chapter,
-  FigureBand,
-  IndexRows,
-  HorizontalGallery,
-  Manifesto,
-  MosaicGrid,
-} from "@/components/layouts";
-import { MaskReveal, Parallax } from "@/components/motion";
-import { InvestmentSnapshot } from "@/components/market/investment-snapshot";
-import { MarketSequence } from "@/components/market/market-sequence";
-import { AdvisorMoment } from "@/components/site/advisor-moment";
-import { Faq } from "@/components/site/faq";
+import type { PhotoSlug } from "@/lib/photos";
 import { Photo } from "@/components/site/photo";
-import { ProofBand } from "@/components/site/proof-band";
+import { Reveal } from "@/components/site/reveal";
+import { Emphasise } from "@/components/site/emphasis";
 import { Container, Eyebrow, Section } from "@/components/ui/section";
-import { Button } from "@/components/ui/button";
-import { FeaturedOffPlan } from "@/components/commercial/featured-off-plan";
-import { DiscoveryPanel } from "@/components/home/discovery-panel";
-import { ContextualConversion } from "@/components/conversion/contextual-conversion";
+import { NoorPanel } from "@/components/home/noor-panel";
+import { MarketGlance } from "@/components/home/market-glance";
+import { ServicesList, type ServiceRow } from "@/components/home/services-list";
+import { OffPlanFocus } from "@/components/home/off-plan-focus";
+import { TeamCards } from "@/components/home/team-cards";
 
 /**
  * Questions a first-time visitor actually asks, answered from what this site
@@ -41,21 +29,27 @@ import { ContextualConversion } from "@/components/conversion/contextual-convers
 const FAQ_ENTRIES: readonly FaqEntry[] = [
   {
     question: "Is DLX Properties a licensed Dubai brokerage?",
-    answer: `Yes. ${site.name} is a Dubai real-estate brokerage based in ${site.address.street}, ${site.address.locality}. Applicable regulatory identifiers belong with the relevant advertisement or compliance disclosure, not promotional copy.`,
+    answer: `Yes. ${site.name} is a Dubai real-estate brokerage based in ${site.address.street}, ${site.address.locality}, registered with RERA under ORN ${site.reraOrn}.`,
   },
   {
     question: "What does DLX actually do for a client?",
     answer:
-      "Three things: acquisition, disposal and portfolio strategy. We represent a small number of clients at a time, sourcing and negotiating on a purchase, running a discreet sale, or advising owners on what to hold, sell or restructure.",
+      "Five practices, run by one team: buying, selling, investment advisory, the Golden Visa property route and relocation. We take a small number of mandates at a time, and one consultant stays with you from the first conversation to the last.",
   },
   {
     question: "Do I need to be in Dubai to buy?",
     answer:
       "No. Much of our client base buys from abroad, and we are set up to represent buyers remotely, viewings, due diligence and negotiation handled on your behalf. Where a step legally requires you in person or through a power of attorney, we will tell you before you commit to anything.",
   },
+  {
+    question: "Where do the figures on this site come from?",
+    answer:
+      "Dubai Land Department open data, the registry every sale and every tenancy contract in Dubai is recorded in. Every figure states the period it covers and the export it was built from. DLX Properties is independent of the Dubai Land Department and is not endorsed by it.",
+  },
 ] as const;
 
-const SERVICE_PHOTOS: Partial<Record<string, PhotoSlug>> = {
+/** A photograph per practice. Chosen per service, never one picture reused. */
+const SERVICE_PHOTOS: Record<string, PhotoSlug> = {
   buy: "interchange-overhead-blue-hour",
   sell: "tower-facade-raking-light",
   "investment-advisory": "marble-brass-detail",
@@ -66,35 +60,62 @@ const SERVICE_PHOTOS: Partial<Record<string, PhotoSlug>> = {
 /** The five the homepage leads with. The services index carries all nine. */
 const HOME_SERVICES = ["buy", "sell", "investment-advisory", "golden-visa", "relocation"] as const;
 
+/** One line per practice, written for this page rather than reused from the detail page. */
+const SERVICE_LINES: Record<string, string> = {
+  buy: "Represented on your side of the table, not the seller's.",
+  sell: "A quiet, well-run sale, no open-house theatre.",
+  "investment-advisory": "Held for the long view, not the next commission.",
+  "golden-visa": "The property route, handled properly, start to finish.",
+  relocation: "A move, not just a move-in.",
+};
+
+/**
+ * The homepage line for each mandate.
+ *
+ * Kept here rather than in `off-plan.ts` because it is homepage copy: it says
+ * why the project is on this page, where the project's own `headline` says
+ * what the project is. The data layer stays the factbook.
+ */
+const OFF_PLAN_LINES: Record<string, string> = {
+  "azizi-florence":
+    "A 30-million sq ft masterplan, priced against the same discipline we apply at home.",
+  "sobha-city-abu-dhabi":
+    "Sobha's first Abu Dhabi masterplan, waterfront, and evidence-checked before we'd represent it.",
+};
+
+const HERO_PHOTO: PhotoSlug = "downtown-aerial-night-trails";
+
 export const Route = createFileRoute("/")({
   loader: async () => {
-    /* Everything on the home page below the fold is real data, so an empty
-     * database simply renders fewer sections rather than placeholder furniture. */
-    const [
-      featured,
-      testimonials,
-      partners,
-      marketSummary,
-      marketIndex,
-      areas,
-      agents,
-    ] = await Promise.all([
-      listProperties({ limit: 5 }),
+    const [testimonials, agents, availability, metadata, quarterly] = await Promise.all([
       listTestimonials(3),
-      listPartnerDevelopers(),
-      getMarketSummary(),
-      getMarketPriceIndex(),
-      listAreasWithStats(),
       listAgents(),
+      /* Asked for here rather than read off the root's loader: it is two env
+       * checks, and a page that reaches across routes for its data breaks the
+       * moment either route's shape changes. */
+      advisorAvailabilityFn(),
+      getMarketMetadataFn(),
+      getMarketOverviewFn({
+        data: {
+          metrics: [
+            "registered_sale_count",
+            "registered_rental_contract_count",
+            "median_registered_annual_rent_aed",
+          ],
+          grain: "quarter",
+          from: "2019-01-01",
+          to: "2026-12-31",
+          limit: 900,
+        },
+      }),
     ]);
+
     return {
-      featured,
       testimonials,
-      partners,
-      marketSummary,
-      marketIndex,
-      areas,
       agents,
+      availability,
+      metadata,
+      quarterly,
       offPlanProjects: OFF_PLAN_PROJECTS,
     };
   },
@@ -102,7 +123,7 @@ export const Route = createFileRoute("/")({
    * page with no verified reviews emits no Review nodes at all. */
   head: ({ loaderData }) =>
     withHeroPreload(
-      "marina-dusk-water-level",
+      HERO_PHOTO,
       pageHead({
         path: "/",
         schema: [faqSchema(FAQ_ENTRIES), ...reviewSchemaFor(loaderData?.testimonials ?? [])],
@@ -112,300 +133,272 @@ export const Route = createFileRoute("/")({
 });
 
 /**
- * The homepage, as seven chapters.
+ * The homepage.
  *
- * Paper and cream, ink type, one gold hairline reserved for the figures
- * that come from the official record. The green inversion is used exactly twice,
- * on the evidence band and the closing invitation, so the inversion reads as an event.
+ * Seven sections, and the order is an argument rather than a layout: what we
+ * are, what we believe, what we can prove, what we do, what we are selling,
+ * how to ask, and who answers.
  *
- *   I    Opening      one photograph, the name, the licence line
- *   II   Statement    one enormous sentence, offset, on paper
- *   III  Evidence     inverted ink, three figures, the DLD stamp
- *   IV   Portfolio    a numbered register of practices and residences
- *   V    The two      the off-plan communities, image to the edge
- *   VI   Understand   the advisor and the snapshot, as sentences
- *   VII  Closing      inverted ink, the invitation
+ * Two things it deliberately does not do. It does not open on a property
+ * search, because two live mandates cannot fill one and the first thing a
+ * search box teaches a visitor is that the shelves are empty. And it does not
+ * reproduce the Market Intelligence page: one condensed, interactive glance,
+ * then a link to the page that carries the rest.
  */
 function Index() {
-  const {
-    featured,
-    testimonials,
-    partners,
-    marketSummary,
-    marketIndex,
-    areas,
-    agents,
-    offPlanProjects,
-  } = Route.useLoaderData();
+  const { agents, availability, metadata, quarterly, offPlanProjects } = Route.useLoaderData();
 
-  const services = HOME_SERVICES.map((slug) => SERVICES.find((s) => s.slug === slug)).filter(
-    (service): service is (typeof SERVICES)[number] => Boolean(service),
+  const services: ServiceRow[] = HOME_SERVICES.flatMap((slug) => {
+    const service = SERVICES.find((entry) => entry.slug === slug);
+    const photo = SERVICE_PHOTOS[slug];
+    if (!service || !photo) return [];
+    return [{ slug, name: service.name, line: SERVICE_LINES[slug] ?? service.tagline, photo }];
+  });
+
+  /* Every registered sale in the published window, summed from the same rows
+   * the chart below draws. A hard-coded figure would be stale the moment a new
+   * export lands, and this page's whole claim is that it does not guess. */
+  const salesOnRecord = seriesFor(quarterly, "registered_sale_count").reduce(
+    (total, row) => total + row.metric_value,
+    0,
   );
 
-  const communities = areas.filter((area) => area.stats).slice(0, 6);
-  const quote = testimonials.find((entry) => entry.source_url) ?? testimonials[0] ?? null;
+  const proof = [
+    "RERA-registered brokerage",
+    salesOnRecord > 0
+      ? `${Math.round(salesOnRecord).toLocaleString("en-AE")} registered sales on record`
+      : null,
+    "Five languages, day or night",
+  ].filter((entry): entry is string => entry !== null);
 
-  const figures = [
-    {
-      label: "Communities covered",
-      value: marketSummary.areasCovered.toLocaleString("en-AE"),
-      meaning: "Each one with its own recorded price and yield history.",
-    },
-    {
-      label: "Recorded transactions",
-      value: marketSummary.transactionCount.toLocaleString("en-AE"),
-      meaning: "The sample behind every median published on this site.",
-    },
-    ...(marketSummary.medianPricePerSqft
-      ? [
-          {
-            label: "Median AED per sq ft",
-            value: Math.round(marketSummary.medianPricePerSqft).toLocaleString("en-AE"),
-            meaning: "A sanity check on any asking price you are shown.",
-          },
-        ]
-      : []),
-  ];
+  const team = agents.slice(0, 4).map((agent) => ({
+    slug: agent.slug,
+    name: agent.full_name,
+    role: agent.job_title,
+    brn: agent.brn,
+  }));
 
   return (
     <>
-      {/* I. Opening. The photograph is a picture, not a background; the type
-          sits beneath it on paper, the way a plate sits in a monograph. */}
-      <section className="pt-16">
-        <div className="relative overflow-hidden">
-          <Parallax speed={0.35} className="absolute inset-x-0 -top-[6%] h-[112%]">
-            <Photo
-              slug="marina-dusk-water-level"
-              sizes="100vw"
-              priority
-              className="h-full w-full object-cover"
-            />
-          </Parallax>
-          <div className="relative h-[58svh] min-h-[22rem] w-full lg:h-[68svh]" />
-        </div>
+      {/* I. The opening. A photograph, one sentence, and the advisor. */}
+      <section
+        /* Tells the masthead it may sit inside the frame, and reclaims the
+           height `main` reserves for it. See components/site/header. */
+        data-dark-opening=""
+        data-surface="dark"
+        className="relative -mt-16 flex min-h-hero items-center overflow-hidden md:-mt-20"
+      >
+        <Photo
+          slug={HERO_PHOTO}
+          sizes="100vw"
+          priority
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        {/* Weighted to the left, where the type is, and heavier on a phone
+            where the text sits over the middle of the frame. */}
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-b from-green/85 via-green/70 to-green/85 lg:bg-gradient-to-r lg:from-green/90 lg:via-green/55 lg:to-green/15"
+        />
 
-        <Container className="py-section">
-          <div className="grid gap-12 lg:grid-cols-12">
-            <div className="lg:col-span-8">
-              <p
-                className="eyebrow"
-                data-hero-reveal="fade"
-                style={{ "--hero-delay": "0ms" } as CSSProperties}
-              >
-                Private brokerage · Dubai
-              </p>
-              <h1 className="mt-8">
-                <span
-                  className="display-1 block"
-                  data-hero-reveal
-                  style={{ "--hero-delay": "80ms" } as CSSProperties}
-                >
-                  Bought on
-                </span>
-                <span
-                  className="display-1 block ps-[8vw]"
-                  data-hero-reveal
-                  style={{ "--hero-delay": "200ms" } as CSSProperties}
-                >
-                  evidence.
-                </span>
+        <Container className="relative py-28 md:py-32">
+          <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+            <div>
+              <Eyebrow className="text-gold">Private Brokerage · Dubai</Eyebrow>
+              <h1 className="display-1 mt-6 max-w-[12ch] text-balance">
+                <Emphasise text="Ask first. *Then* decide." />
               </h1>
-            </div>
-            <div className="flex flex-col justify-end lg:col-span-4">
-              <p
-                className="lead max-w-sm text-muted-foreground"
-                data-hero-reveal="fade"
-                style={{ "--hero-delay": "340ms" } as CSSProperties}
-              >
-                We price from Dubai Land Department records, represent a small number of clients,
-                and say what the numbers say.
+              <p className="lead mt-7 max-w-[42ch] text-on-dark-muted">
+                {advisor.name}, our AI advisor, checks every answer against the Dubai Land
+                Department record before it reaches you. When it doesn't know, it says so, and
+                hands you to someone who does.
               </p>
-              <div
-                data-hero-reveal="fade"
-                style={{ "--hero-delay": "440ms" } as CSSProperties}
-              >
-                <Link to="/properties" search={{}} className="mt-10 inline-block">
-                  <Button>View the portfolio</Button>
-                </Link>
-              </div>
-              <p className="caption mt-10 flex items-center gap-3 border-t border-border pt-5">
-                <span aria-hidden className="h-px w-8 bg-brass" />
-                {marketSummary.attribution.label}
-              </p>
+
+              {/* Stacked hairlines on a phone, one row from the small
+                  breakpoint up. Three uppercase labels across a 360px screen
+                  is three columns of two-line fragments. */}
+              <ul className="mt-10 grid border-t border-white/15 sm:grid-flow-col sm:auto-cols-fr sm:gap-8 sm:border-t-0">
+                {proof.map((entry) => (
+                  <li
+                    key={entry}
+                    className="eyebrow border-b border-white/15 py-3 text-on-dark-muted sm:border-t sm:border-b-0 sm:pb-0"
+                  >
+                    {entry}
+                  </li>
+                ))}
+              </ul>
             </div>
+
+            <Reveal delay={0.15}>
+              <NoorPanel availability={availability} />
+            </Reveal>
           </div>
         </Container>
       </section>
 
-      <DiscoveryPanel />
-
-      {/* II. Statement. Type alone, offset, no photograph competing with it. */}
-      <Chapter index="I" label="Position" surface="deep">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <h2 className="display-2 text-balance lg:col-span-8 lg:col-start-3">
-            Most agencies show you what they are holding. We start from what you are trying to do.
-          </h2>
-          <div className="lg:col-span-6 lg:col-start-7">
-            <p className="body-text text-muted-foreground">
-              DLX is deliberately small. We take a limited number of mandates at a time because the
-              alternative, a pipeline of a hundred half-served buyers, is how most brokerages work
-              and why most buyers feel unrepresented.
+      {/* II. The position. Type alone, no photograph competing with it. */}
+      <Section data-surface="light">
+        <Reveal>
+          <Eyebrow>Position</Eyebrow>
+        </Reveal>
+        <div className="mt-8 grid gap-10 lg:grid-cols-[1.3fr_0.9fr] lg:items-end lg:gap-16">
+          <Reveal>
+            <h2 className="display-2 text-balance">
+              Most agencies sell you inventory. We sell you a straight answer.
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="body-text max-w-[38ch] text-muted-foreground">
+              DLX takes a small number of mandates at a time. One consultant, start to finish,
+              pricing from the record, flagging the service-charge problem before you find it the
+              hard way.
             </p>
-            <p className="body-text mt-5 text-muted-foreground">
-              One consultant stays with you from the first call to handover. They price from
-              recorded transactions, they tell you when a building has a service-charge problem, and
-              they say so when the answer is that you should not buy.
+            <p className="body-text mt-4 max-w-[38ch] text-muted-foreground">
+              And saying no, plainly, when no is the right answer.
             </p>
-            <Link to="/about" className="eyebrow link-underline mt-8 inline-block text-accent">
-              How we work
-            </Link>
-          </div>
-        </div>
-      </Chapter>
-
-      {/* III. Evidence. The first of the two ink inversions. */}
-      <Chapter index="II" label="The record" surface="ink">
-        <h2 className="display-2 mb-16 max-w-3xl text-balance">
-          What the official data says this month.
-        </h2>
-        <FigureBand
-          figures={figures}
-          source={marketSummary.attribution.label}
-          action={
-            <Link to="/market-intelligence" className="eyebrow link-underline">
-              Open market intelligence
-            </Link>
-          }
-        />
-      </Chapter>
-
-      {/* The signature interactive, and the pinned market read. */}
-      <InvestmentSnapshot areas={areas} />
-      <MarketSequence summary={marketSummary} index={marketIndex} areas={areas} />
-
-      {/* IV. Portfolio. A register, set in type. */}
-      <Chapter index="III" label="What we do">
-        <h2 className="display-2 mb-14 max-w-3xl text-balance">Five practices, one team.</h2>
-        <IndexRows
-          rows={services.map((service) => ({
-            id: service.slug,
-            to: `/services/${service.slug}`,
-            title: service.name,
-            detail: service.tagline,
-          }))}
-        />
-        <div className="mt-10">
-          <Link to="/services" className="eyebrow link-underline text-accent">
-            All nine practices
-          </Link>
-        </div>
-      </Chapter>
-
-      {/* V. The two off-plan communities in focus. */}
-      <FeaturedOffPlan projects={offPlanProjects} />
-
-      {featured.length > 0 ? (
-        <HorizontalGallery
-          aria-label="Selected residences"
-          className="border-t border-border bg-secondary"
-          heading={
-            <h2 className="display-2 text-balance">Selected residences, represented privately.</h2>
-          }
-        >
-          {featured.map((property) => (
             <Link
-              key={property.id}
-              to="/properties/$slug"
-              params={{ slug: property.slug }}
-              className="group w-[78vw] shrink-0 snap-start sm:w-[52vw] lg:w-[34vw]"
+              to="/about"
+              className="focus-ring eyebrow mt-7 inline-flex items-center gap-2 border-b border-green-mid pb-1 text-green-mid"
             >
-              <MaskReveal className="aspect-3/4 w-full">
-                {property.hero_image_url ? (
-                  <img
-                    src={property.hero_image_url}
-                    alt={property.title}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-cover transition-transform duration-slow ease-editorial group-hover:scale-[1.03]"
-                  />
-                ) : (
-                  <Photo slug="tower-facade-raking-light" sizes="(min-width: 1024px) 34vw, 78vw" />
-                )}
-              </MaskReveal>
-              <div className="mt-5">
-                {property.area ? <p className="eyebrow">{property.area.name}</p> : null}
-                <p className="display-3 mt-2 transition-colors group-hover:text-accent">
-                  {property.title}
-                </p>
-                <p className="caption mt-1.5">{formatPrice(property.price, property.currency)}</p>
-              </div>
+              How we work
+              <span aria-hidden className="rtl:-scale-x-100">
+                →
+              </span>
             </Link>
-          ))}
-        </HorizontalGallery>
-      ) : null}
+          </Reveal>
+        </div>
+      </Section>
 
-      {/* VI. Understand. Communities, then the advisor as a sentence. */}
-      {communities.length > 0 ? (
-        <MosaicGrid
-          heading={
-            <>
-              <Eyebrow>Where we transact</Eyebrow>
-              <h2 className="display-2 mt-5 text-balance">
-                Six communities, and what the record says about each.
-              </h2>
-            </>
-          }
-          cells={communities.map((area) => ({
-            id: area.id,
-            photo: areaPhoto(area.slug),
-            href: `/areas/${area.slug}`,
-            children: (
-              <>
-                <p className="display-3">{area.name}</p>
-                <p className="caption mt-2 text-on-dark-muted">
-                  {area.stats?.median_price_per_sqft
-                    ? `AED ${Math.round(area.stats.median_price_per_sqft).toLocaleString("en-AE")} /sq ft`
-                    : null}
-                  {area.stats?.gross_yield_pct
-                    ? ` · ${area.stats.gross_yield_pct.toFixed(1)}% gross`
-                    : null}
-                </p>
-              </>
-            ),
-          }))}
-          action={
-            <Link to="/areas" className="eyebrow link-underline text-accent">
-              Every community we cover
-            </Link>
-          }
+      {/* III. The record, condensed to one interactive moment. */}
+      <Section data-surface="dark">
+        <Reveal>
+          <Eyebrow className="text-gold">The record, at a glance</Eyebrow>
+          <h2 className="display-2 mt-5 text-balance">We don't guess. We check.</h2>
+        </Reveal>
+        <MarketGlance
+          rows={quarterly}
+          sourceExportDate={metadata.sourceExportDate}
+          marketHref="/market-intelligence"
         />
-      ) : null}
+      </Section>
 
-      <AdvisorMoment />
+      {/* IV. The practices. */}
+      <Section data-surface="light">
+        <Reveal>
+          <Eyebrow>What we do</Eyebrow>
+          <h2 className="display-2 mt-5 text-balance">Five practices, one team, no hand-offs.</h2>
+        </Reveal>
+        <Reveal>
+          <ServicesList services={services} hrefFor={(slug) => `/services/${slug}`} />
+        </Reveal>
+      </Section>
 
-      <ProofBand agents={agents} partners={partners} testimonial={quote} />
+      {/* V. The two mandates. */}
+      <Section data-surface="cream">
+        <Reveal>
+          <Eyebrow>In focus · off-plan</Eyebrow>
+          <h2 className="display-2 mt-5 max-w-[22ch] text-balance">
+            Two mandates outside Dubai, held to the same standard.
+          </h2>
+        </Reveal>
+        <Reveal>
+          <OffPlanFocus
+            projects={offPlanProjects}
+            lineFor={(slug) => OFF_PLAN_LINES[slug]}
+          />
+        </Reveal>
+        <Reveal>
+          <p className="body-text mt-10 max-w-[52ch] text-muted-foreground">
+            We take on mandates deliberately, not by volume. More will join this list only when
+            they clear the same bar.
+          </p>
+        </Reveal>
+      </Section>
 
-      {/* VII. Closing. The second and last ink inversion. */}
-      <Manifesto
-        footnote={
-          <>
-            {site.name}. {site.address.street}, {site.address.locality}.
-          </>
-        }
-      >
-        We would rather lose the transaction than be the reason someone bought the wrong thing.
-      </Manifesto>
+      {/* VI. The advisor, at length. The second and last cinematic frame. */}
+      <section data-surface="dark" className="relative overflow-hidden">
+        <Photo
+          slug="downtown-skyline-night"
+          sizes="100vw"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div aria-hidden className="absolute inset-0 bg-green/88" />
+        <Container className="relative py-section">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
+            <Reveal>
+              <Eyebrow className="text-gold">
+                {advisor.name}, {advisor.role}
+              </Eyebrow>
+              <h2 className="display-2 mt-5 text-balance">
+                An advisor that will tell you when it doesn't know.
+              </h2>
+              <p className="body-text mt-6 max-w-[44ch] text-on-dark-muted">
+                Talk or type, in five languages, at any hour. On visas, tax, and anything that
+                turns on your circumstances, {advisor.name} stops and hands you to someone named,
+                not a script.
+              </p>
+              <a
+                href={`tel:${site.contact.phoneE164}`}
+                dir="ltr"
+                className="focus-ring eyebrow mt-8 inline-flex min-h-12 items-center gap-2 border border-white/25 px-5 text-on-dark transition-colors hover:border-gold hover:text-gold"
+              >
+                Or call {site.contact.phone}
+              </a>
+            </Reveal>
 
-      <ContextualConversion
-        source="homepage-closing"
-        intent="consultation"
-        title="A private conversation, grounded in your objective."
-      />
+            {/* The guardrails, read from the config the product actually runs
+                on, rather than a drawing of a chat window with invented
+                answers in it. If the behaviour changes, this changes with it. */}
+            <Reveal delay={0.1}>
+              <div className="glass p-7 sm:p-9">
+                <p className="eyebrow text-gold">What it will and will not do</p>
+                <ul className="mt-6">
+                  {advisor.limits.map((limit) => (
+                    <li
+                      key={limit}
+                      className="body-text border-b border-white/12 py-4 text-on-dark last:border-b-0 last:pb-0"
+                    >
+                      {limit}
+                    </li>
+                  ))}
+                </ul>
+                <p className="caption mt-6 text-on-dark-muted">{advisor.disclosure}</p>
+              </div>
+            </Reveal>
+          </div>
+        </Container>
+      </section>
 
-      <Section className="pt-0">
-        <Faq eyebrow={null} entries={FAQ_ENTRIES} />
+      {/* VII. Who answers. */}
+      <Section data-surface="light">
+        <Reveal>
+          <Eyebrow>Independent representation</Eyebrow>
+          <h2 className="display-2 mt-5 text-balance">The people who will answer.</h2>
+        </Reveal>
+        <Reveal>
+          <TeamCards members={team} />
+        </Reveal>
+      </Section>
+
+      {/* The questions, answered where the schema can see them too. */}
+      <Section data-surface="cream">
+        <Reveal>
+          <Eyebrow>Before you ask</Eyebrow>
+          <h2 className="display-2 mt-5 text-balance">The questions we get first.</h2>
+        </Reveal>
+        <dl className="mt-10 border-t border-border">
+          {FAQ_ENTRIES.map((entry) => (
+            <Reveal key={entry.question}>
+              <div className="border-b border-border py-7">
+                <dt className="display-3">{entry.question}</dt>
+                <dd className="body-text mt-3 max-w-[62ch] text-muted-foreground">
+                  {entry.answer}
+                </dd>
+              </div>
+            </Reveal>
+          ))}
+        </dl>
       </Section>
     </>
   );
 }
-
