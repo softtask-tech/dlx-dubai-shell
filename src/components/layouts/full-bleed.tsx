@@ -39,9 +39,21 @@ export function FullBleed({
   return (
     <section
       data-surface="dark"
+      /*
+       * Only the opening frame tells the masthead it may go transparent, and
+       * `priority` is already exactly that claim: it is set on the one
+       * photograph above the fold and nowhere else. A cinematic band further
+       * down the page must not claim it, or the bar would lose its background
+       * halfway through a scroll.
+       */
+      data-dark-opening={priority ? "" : undefined}
       aria-label={ariaLabel}
       className={cn(
         "relative flex overflow-hidden",
+        /* `main` reserves the masthead's height so a page that opens on paper
+         * is not hidden underneath it. The opening frame gives that space back,
+         * sliding up under the transparent bar it sits behind. */
+        priority && "-mt-16 md:-mt-20",
         height === "screen" ? "min-h-[100svh] pb-16 lg:pb-24" : "min-h-[68svh] py-section",
         align === "end" ? "items-end" : "items-center",
         className,
@@ -60,7 +72,7 @@ export function FullBleed({
         aria-hidden="true"
         className={cn(
           "absolute inset-0",
-          align === "end" ? "bg-gradient-to-t from-ink/95 via-ink/45 to-ink/15" : "bg-ink/65",
+          align === "end" ? "bg-gradient-to-t from-green/95 via-green/45 to-green/15" : "bg-green/65",
         )}
       />
 

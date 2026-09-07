@@ -383,6 +383,15 @@
   html {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    /* The masthead is fixed, so an anchor jump would otherwise land its
+     * heading underneath the bar. Matches the reserved height in __root. */
+    scroll-padding-top: 4rem;
+  }
+
+  @media (min-width: 48rem) {
+    html {
+      scroll-padding-top: 5rem;
+    }
   }
 
   body {
@@ -1190,6 +1199,52 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
+
+/* --- The fixed bars -------------------------------------------------------
+ *
+ * The masthead and the phone contact bar are the same material: a dark glass
+ * the page slides under, at either end of the screen.
+ *
+ * Written here rather than as a utility because of the cascade. Both bars need
+ * `data-surface="dark"` for their on-dark tokens, and that block paints a green
+ * ground; a Tailwind utility lives in the utilities layer, and unlayered CSS
+ * beats a layer no matter how specific the utility is, so a `glass` class on
+ * these elements would silently lose to the surface it depends on. Matching the
+ * attribute at a higher specificity, unlayered, is what actually wins.
+ *
+ * The bar declares its own edge with `border-t` or `border-b`, because which
+ * edge it has depends on which end of the screen it is pinned to.
+ */
+[data-surface][data-glass-bar] {
+  background: rgba(9, 14, 10, 0.62);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  transition:
+    background-color var(--duration-base) var(--ease-editorial),
+    border-color var(--duration-base) var(--ease-editorial),
+    backdrop-filter var(--duration-base) var(--ease-editorial);
+}
+
+/*
+ * The masthead drops to transparent in exactly one situation, and both halves
+ * of the condition are expressed here rather than in JavaScript.
+ *
+ * Whether the page opens on a photograph is a fact about the DOM, so `:has()`
+ * answers it during the first style pass. Deciding it in an effect instead
+ * would paint the glass bar for a frame and then take it away, which is a
+ * flash on every hero page. Whether the reader has moved is genuinely dynamic,
+ * so the component sets `data-at-top` and this reads it.
+ *
+ * A browser without `:has()` never matches and keeps the glass, which is why
+ * the default is the safe state rather than the pretty one.
+ */
+body:has(main [data-dark-opening]) [data-glass-bar][data-masthead][data-at-top] {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: transparent;
+}
+
 /*
  * The fallback that keeps the site readable on hardware that cannot blur.
  *
@@ -1207,6 +1262,10 @@ body {
   .glass-dark {
     background: rgba(9, 14, 10, 0.86);
   }
+
+  [data-surface][data-glass-bar] {
+    background: rgba(9, 14, 10, 0.94);
+  }
 }
 
 /*
@@ -1216,11 +1275,22 @@ body {
  */
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
   .glass,
-  .glass-dark {
+  .glass-dark,
+  [data-surface][data-glass-bar] {
     background: var(--green);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-color: rgba(255, 255, 255, 0.32);
+  }
+
+  /* Including the masthead in its transparent state. A reader who has asked
+   * for more contrast wants a bar with a ground under it, not a clear one,
+   * and this has to restate the full selector to outrank it. */
+  body:has(main [data-dark-opening]) [data-glass-bar][data-masthead][data-at-top] {
+    background: var(--green);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom-color: rgba(255, 255, 255, 0.32);
   }
 }
 

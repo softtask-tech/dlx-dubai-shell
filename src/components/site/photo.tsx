@@ -33,6 +33,8 @@ type PhotoProps = {
   priority?: boolean;
   /** Applied to the `<img>`, so callers control fit and framing. */
   className?: string;
+  /** The house grade, on by default. Off only where colour must stay true. */
+  grade?: boolean;
   /** Applied to the `<picture>`. */
   wrapperClassName?: string;
 };
@@ -43,6 +45,7 @@ export function Photo({
   alt,
   priority = false,
   className,
+  grade = true,
   wrapperClassName,
 }: PhotoProps) {
   const photo = PHOTOS[slug];
@@ -67,7 +70,7 @@ export function Photo({
         loading={priority ? "eager" : "lazy"}
         decoding={priority ? "sync" : "async"}
         fetchPriority={priority ? "high" : "auto"}
-        className={cn("h-full w-full object-cover", className)}
+        className={cn("h-full w-full object-cover", grade && "photo-grade", className)}
       />
     </picture>
   );
