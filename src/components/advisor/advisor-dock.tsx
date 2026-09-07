@@ -320,8 +320,9 @@ function AdvisorPanel({
             </a>
           </div>
         </footer>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
