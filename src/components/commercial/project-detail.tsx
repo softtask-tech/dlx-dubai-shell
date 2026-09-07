@@ -20,6 +20,7 @@ import {
   TrustSourcePanel,
 } from "./project-primitives";
 import { Container, Eyebrow, Section } from "@/components/ui/section";
+import { MaskReveal, Parallax, Reveal } from "@/components/motion";
 import { cityContextFor } from "@/data/off-plan-city-context";
 
 export function CommercialProjectDetail({
@@ -33,7 +34,7 @@ export function CommercialProjectDetail({
 
   return (
     <>
-      <section className="bg-secondary pb-12 pt-20 md:pb-16 md:pt-12">
+      <section data-surface="cream" className="pb-12 pt-14 md:pb-16 md:pt-20">
         <Container>
           <nav aria-label="Breadcrumb" className="caption mb-8 flex gap-2 text-muted-foreground">
             <Link to="/off-plan" className="link-underline">
@@ -44,26 +45,41 @@ export function CommercialProjectDetail({
           </nav>
           <div className="grid items-end gap-8 lg:grid-cols-12">
             <div className="lg:col-span-8">
-              <Eyebrow>{project.projectType}</Eyebrow>
-              <h1 className="display-1 mt-5 text-balance">{project.name}</h1>
-              <p className="lead mt-6 max-w-3xl text-muted-foreground">{project.headline}</p>
-              <p className="body-text mt-5 text-muted-foreground">
-                {project.locationName} · {project.developerName}
-              </p>
+              <Reveal>
+                <Eyebrow>{project.projectType}</Eyebrow>
+                <h1 className="display-1 mt-5 text-balance">{project.name}</h1>
+              </Reveal>
+              <Reveal delay={0.08}>
+                <p className="lead mt-6 max-w-3xl text-muted-foreground">{project.headline}</p>
+                <p className="eyebrow mt-6 flex items-center gap-2.5 text-foreground">
+                  <span aria-hidden className="inline-block size-1 shrink-0 bg-gold-ink" />
+                  {project.locationName} · {project.developerName}
+                </p>
+              </Reveal>
             </div>
             <div className="lg:col-span-3 lg:col-start-10">
-              <CommercialPrice project={project} />
+              <Reveal delay={0.12}>
+                <CommercialPrice project={project} />
+              </Reveal>
             </div>
           </div>
         </Container>
       </section>
 
-      <figure className="bg-muted">
-        <ConceptProjectImage
-          project={project}
-          priority
-          className="h-[48svh] min-h-96 w-full object-cover md:h-[72svh]"
-        />
+      {/* The opening frame. Uncovered on scroll and drifting slower than the
+          page, so arriving at the project feels like arriving somewhere. */}
+      <figure className="m-0 bg-muted">
+        <MaskReveal>
+          <div className="relative h-[48svh] min-h-96 overflow-hidden md:h-[72svh]">
+            <Parallax speed={0.88} className="absolute inset-x-0 -top-[8%] h-[116%]">
+              <ConceptProjectImage
+                project={project}
+                priority
+                className="h-full w-full object-cover"
+              />
+            </Parallax>
+          </div>
+        </MaskReveal>
         <figcaption className="caption mx-auto max-w-shell px-6 py-3 text-muted-foreground md:px-10 lg:px-16">
           {project.hero.caption}
         </figcaption>
