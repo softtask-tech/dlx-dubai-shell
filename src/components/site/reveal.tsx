@@ -57,7 +57,12 @@ export function Reveal({ children, delay = 0, className, style, ...props }: Reve
         setState("shown");
         observer.disconnect();
       },
-      { rootMargin: "0px 0px -10% 0px" },
+      /* Positive bottom margin, so the root extends *below* the viewport and a
+       * block begins revealing while it is still off screen. The old negative
+       * margin did the opposite: it held the reveal back until the element was
+       * already well inside the view, which is what produced blank screens on
+       * a fast scroll. */
+      { rootMargin: "0px 0px 25% 0px" },
     );
     observer.observe(el);
     return () => observer.disconnect();

@@ -194,79 +194,97 @@ function Index() {
        * I. The opening.
        *
        * Ink on paper over a pale photograph, not white on a dark one. The
-       * scrim runs from solid paper at the leading edge to clear at the far
-       * one, so the type sits on the page and the picture opens out beside it.
+       * scrim holds solid paper under the type and then falls away fast, so
+       * the picture is actually present on the right instead of being washed
+       * to a grey smudge across the whole frame.
        *
-       * No figure here. A large number in a hero reads as a claim about the
-       * company that owns the page, and "818,497 registered sales" is a fact
-       * about Dubai, not about DLX. It belongs in the market section, where it
-       * is labelled and sourced. What goes here is who DLX is.
+       * The proof row sits outside the text column, across the full width.
+       * Inside a 36rem column three tracked uppercase labels cannot fit on one
+       * line, so they wrapped and read as broken; out here they fit, and they
+       * close the bottom of the frame that was otherwise dead space.
+       *
+       * No market figure in the hero. A large number here reads as a claim
+       * about the company that owns the page, and "776,225 registered sales"
+       * is a fact about Dubai. It belongs in the market section, labelled and
+       * sourced. This is about DLX.
        */}
       <section className="relative -mt-16 flex min-h-hero items-center overflow-hidden md:-mt-20">
-        <Parallax speed={0.86} className="absolute inset-x-0 -top-[8%] h-[116%]">
-          <Photo
-            slug={HERO_PHOTO}
-            sizes="100vw"
-            priority
-            className="h-full w-full object-cover"
-          />
+        <Parallax speed={0.86} className="absolute inset-x-0 -top-[10%] h-[120%]">
+          <Photo slug={HERO_PHOTO} sizes="100vw" priority className="h-full w-full object-cover" />
         </Parallax>
 
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-paper via-paper/92 to-paper/55 lg:bg-gradient-to-r lg:from-paper lg:via-paper/80 lg:to-transparent"
+          className="absolute inset-0 bg-[linear-gradient(180deg,var(--paper)_0%,rgba(255,255,255,0.86)_45%,rgba(255,255,255,0.62)_100%)] lg:bg-[linear-gradient(95deg,var(--paper)_0%,var(--paper)_34%,rgba(255,255,255,0.72)_56%,rgba(255,255,255,0.18)_100%)]"
         />
 
-        <Container className="relative py-28 md:py-32">
-          <div className="grid items-center gap-14 lg:grid-cols-[1fr_26rem] lg:gap-20 xl:grid-cols-[1fr_30rem]">
-            <div className="max-w-[36rem]">
+        <Container className="relative py-24 md:py-28">
+          <div className="grid items-center gap-14 lg:grid-cols-[1fr_25rem] lg:gap-16 xl:grid-cols-[1fr_28rem]">
+            <div className="max-w-[34rem]">
               <Reveal>
                 <Eyebrow className="mb-6">Private Brokerage · Dubai</Eyebrow>
               </Reveal>
-              {/* Plain Reveal, not the line-by-line RevealText: that one
-                  splits the element with SplitType, and this headline carries
-                  an <em> inside it that a text splitter would take apart. */}
+              {/* Plain Reveal, not the line-by-line RevealText: that one splits
+                  the element with SplitType, and this headline carries an <em>
+                  inside it that a text splitter would take apart. */}
               <Reveal delay={0.05}>
                 <h1 className="display-1 text-balance">
                   <Emphasise text="Ask first. *Then* decide." />
                 </h1>
               </Reveal>
               <Reveal delay={0.1}>
-                <p className="lead mt-8 max-w-[34rem] text-muted-foreground">
-                  A Dubai brokerage that answers before it sells. {advisor.name}, our AI advisor,
-                  checks every answer against the Dubai Land Department record, and hands you to a
-                  named consultant the moment a question turns on your circumstances.
+                <p className="lead mt-8 text-muted-foreground">
+                  DLX is a Dubai brokerage built on the public record. Every figure we quote comes
+                  from the Dubai Land Department, every mandate is checked before we agree to
+                  represent it, and one consultant stays with you from the first question to the
+                  last signature.
                 </p>
               </Reveal>
-
-              {/*
-               * Facts about the firm, not figures about the market. Each one is
-               * checkable, which is the point. Stacked hairlines on a phone:
-               * three tracked uppercase labels across 360px is three columns of
-               * broken fragments, which is what this row used to be.
-               */}
-              <Reveal delay={0.2}>
-                <ul className="mt-12 flex flex-col border-t border-border sm:flex-row sm:flex-wrap sm:gap-x-10">
-                  {[
-                    `RERA ORN ${site.reraOrn}`,
-                    "Dubai · Abu Dhabi · Sharjah",
-                    "Five languages, day or night",
-                  ].map((entry) => (
-                    <li
-                      key={entry}
-                      className="eyebrow border-b border-border py-3.5 text-muted-foreground sm:border-b-0"
-                    >
-                      {entry}
-                    </li>
-                  ))}
-                </ul>
+              <Reveal delay={0.15}>
+                <div className="mt-9 flex flex-wrap items-center gap-4">
+                  <Link
+                    to="/contact"
+                    className="focus-ring eyebrow inline-flex min-h-12 items-center bg-green px-7 text-on-dark transition-colors hover:bg-green-mid"
+                  >
+                    Speak to a consultant
+                  </Link>
+                  <Link
+                    to="/market-intelligence"
+                    className="focus-ring eyebrow inline-flex min-h-12 items-center gap-2 border-b border-green-mid pb-1 text-green-mid"
+                  >
+                    See the record
+                    <span aria-hidden className="rtl:-scale-x-100">
+                      →
+                    </span>
+                  </Link>
+                </div>
               </Reveal>
             </div>
 
-            <Reveal delay={0.25}>
+            <Reveal delay={0.2}>
               <NoorPanel availability={availability} />
             </Reveal>
           </div>
+
+          {/* Facts about the firm, each one checkable. Full width, so they sit
+              on one line where there is room for one line. */}
+          <Reveal delay={0.25}>
+            <ul className="mt-16 flex flex-col border-t border-border/70 sm:flex-row sm:flex-wrap sm:gap-x-12 md:mt-20">
+              {[
+                `RERA ORN ${site.reraOrn}`,
+                "Dubai · Abu Dhabi · Sharjah",
+                "Five languages, day or night",
+                "One consultant, start to finish",
+              ].map((entry) => (
+                <li
+                  key={entry}
+                  className="eyebrow border-b border-border/70 py-3.5 text-muted-foreground sm:border-b-0"
+                >
+                  {entry}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </Container>
       </section>
 
@@ -414,20 +432,26 @@ function Index() {
         </Reveal>
       </Section>
 
-      {/* The questions, answered where the schema can see them too. */}
+      {/*
+       * The questions, answered where the schema can see them too.
+       *
+       * Two columns rather than one full-width run of prose. A question set at
+       * 1536px is a wall: the eye has no left edge to return to and every
+       * answer reads as an essay. Holding the question on one side and the
+       * answer on a measure beside it is what makes it scannable, which is how
+       * anyone actually reads a FAQ.
+       */}
       <Section data-surface="cream">
         <Reveal>
           <Eyebrow>Before you ask</Eyebrow>
           <h2 className="display-2 mt-5 text-balance">The questions we get first.</h2>
         </Reveal>
-        <dl className="mt-10 border-t border-border">
+        <dl className="mt-12 max-w-5xl border-t border-border">
           {FAQ_ENTRIES.map((entry) => (
             <Reveal key={entry.question}>
-              <div className="border-b border-border py-7">
-                <dt className="display-3">{entry.question}</dt>
-                <dd className="body-text mt-3 max-w-[62ch] text-muted-foreground">
-                  {entry.answer}
-                </dd>
+              <div className="grid gap-3 border-b border-border py-7 md:grid-cols-12 md:gap-10">
+                <dt className="display-3 md:col-span-5">{entry.question}</dt>
+                <dd className="body-text text-muted-foreground md:col-span-7">{entry.answer}</dd>
               </div>
             </Reveal>
           ))}
