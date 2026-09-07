@@ -52,7 +52,9 @@ export function NoorPanel({ availability }: { availability: AdvisorAvailability 
   };
 
   return (
-    <div className="glass-paper diagonal-panel p-7 shadow-[0_24px_60px_rgba(0,0,0,0.10)] sm:p-8">
+    <div className="glass-paper diagonal-panel shadow-[0_24px_60px_rgba(0,0,0,0.12)]">
+      <span aria-hidden className="block h-1 bg-gradient-to-r from-gold to-green-mid" />
+      <div className="p-7 sm:p-8">
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <span
@@ -104,6 +106,7 @@ export function NoorPanel({ availability }: { availability: AdvisorAvailability 
       ) : (
         <VoiceMode voiceConfigured={availability.voice} />
       )}
+      </div>
     </div>
   );
 }
@@ -147,13 +150,21 @@ function ChatInvitation({
 
   return (
     <div className="mt-7">
-      <ul className="grid gap-2">
+      {/*
+       * Hairline rows, not bordered boxes.
+       *
+       * Three outlined rectangles stacked in a card read as a form with three
+       * disabled inputs, which is the opposite of an invitation: a box asks to
+       * be filled in, a line asks to be followed. The rule is the separator
+       * and the arrow is the affordance.
+       */}
+      <ul className="border-t border-border">
         {OPENERS.map((question) => (
-          <li key={question}>
+          <li key={question} className="border-b border-border">
             <button
               type="button"
               onClick={() => onAsk(question)}
-              className="focus-ring group flex w-full items-center justify-between gap-3 border border-border bg-paper px-4 py-3 text-start text-sm text-foreground transition-colors hover:border-gold-ink hover:bg-cream"
+              className="focus-ring group flex w-full items-center justify-between gap-4 py-3.5 text-start text-sm text-foreground transition-[padding,color] duration-quick ease-editorial hover:ps-2 hover:text-gold-ink"
             >
               {question}
               <ArrowRight
@@ -165,7 +176,7 @@ function ChatInvitation({
         ))}
       </ul>
 
-      <form onSubmit={onSubmit} className="mt-4 flex items-center gap-3 border-t border-border pt-4">
+      <form onSubmit={onSubmit} className="mt-5 flex items-center gap-3">
         <label htmlFor="noor-hero-input" className="sr-only">
           Ask {advisor.name} about Dubai property
         </label>

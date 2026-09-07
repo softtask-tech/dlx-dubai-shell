@@ -126,17 +126,17 @@ export function HomePage({
        * is a fact about Dubai. It belongs in the market section, labelled and
        * sourced. This is about DLX.
        */}
-      <section className="relative -mt-16 flex min-h-hero items-center overflow-hidden md:-mt-20">
+      <section className="relative -mt-16 flex min-h-[88svh] items-center overflow-hidden md:-mt-20">
         <Parallax speed={0.86} className="absolute inset-x-0 -top-[10%] h-[120%]">
           <Photo slug={HERO_PHOTO} sizes="100vw" priority className="h-full w-full object-cover" />
         </Parallax>
 
         <div
           aria-hidden
-          className="absolute inset-0 bg-[linear-gradient(180deg,var(--paper)_0%,rgba(255,255,255,0.86)_45%,rgba(255,255,255,0.62)_100%)] lg:bg-[linear-gradient(95deg,var(--paper)_0%,var(--paper)_34%,rgba(255,255,255,0.72)_56%,rgba(255,255,255,0.18)_100%)]"
+          className="absolute inset-0 bg-[linear-gradient(180deg,var(--paper)_0%,rgba(255,255,255,0.9)_38%,rgba(255,255,255,0.55)_100%)] lg:bg-[linear-gradient(95deg,var(--paper)_0%,var(--paper)_29%,rgba(255,255,255,0.55)_52%,rgba(255,255,255,0)_80%)]"
         />
 
-        <Container className="relative py-24 md:py-28">
+        <Container className="relative py-24 md:py-24">
           <div className="grid items-center gap-14 lg:grid-cols-[1fr_25rem] lg:gap-16 xl:grid-cols-[1fr_28rem]">
             <div className="max-w-[34rem]">
               <Reveal>
@@ -187,7 +187,7 @@ export function HomePage({
           {/* Facts about the firm, each one checkable. Full width, so they sit
               on one line where there is room for one line. */}
           <Reveal delay={0.25}>
-            <ul className="mt-16 flex flex-col border-t border-border/70 sm:flex-row sm:flex-wrap sm:gap-x-12 md:mt-20">
+            <ul className="mt-14 flex flex-col border-t border-border sm:flex-row sm:flex-wrap sm:gap-x-12">
               {[
                 `RERA ORN ${site.reraOrn}`,
                 "Dubai · Abu Dhabi · Sharjah",
@@ -196,8 +196,9 @@ export function HomePage({
               ].map((entry) => (
                 <li
                   key={entry}
-                  className="eyebrow border-b border-border/70 py-3.5 text-muted-foreground sm:border-b-0"
+                  className="eyebrow flex items-center gap-2.5 border-b border-border py-3.5 text-foreground sm:border-b-0"
                 >
+                  <span aria-hidden className="inline-block size-1 shrink-0 bg-gold-ink" />
                   {entry}
                 </li>
               ))}
