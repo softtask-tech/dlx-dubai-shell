@@ -12,11 +12,15 @@ import {
   type MarketRow,
 } from "@/data/market-public";
 import { getMarketMetadataFn, getMarketOverviewFn } from "@/data/market-public.functions";
+import { rentGapSeries, shareSeries } from "@/data/market-insights";
 import { datasetSchema, faqSchema, type FaqEntry } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
 import { QualifiedForm } from "@/components/forms/qualified-form";
 import { RegisteredSeries } from "@/components/market/registered-series";
+import { MarketBrief } from "@/components/market/market-brief";
+import { CompositionSeries } from "@/components/market/composition-series";
+import { RentGap } from "@/components/market/rent-gap";
 import { Stat } from "@/components/market/stat";
 import { Reveal } from "@/components/site/reveal";
 import { PageHero } from "@/components/site/page-hero";
@@ -131,6 +135,13 @@ function MarketIntelligencePage() {
   const periodLabel = period ? formatPeriod("quarter", period.period_start) : null;
   const published = metadata.rowCount > 0;
 
+  /* The two derived readings the page leads with. Both come back empty where
+   * the registry has not published both sides of the comparison, and the
+   * sections that use them simply do not render. */
+  const offPlanShare = shareSeries(quarterly, "registered_sale_count", "off_plan", "existing");
+  const homeTypeShare = shareSeries(quarterly, "registered_sale_count", "apartment", "villa");
+  const rentGap = rentGapSeries(quarterly);
+
   const compositionTotal = (latestNew?.metric_value ?? 0) + (latestRenewed?.metric_value ?? 0);
   const newShare = compositionTotal
     ? Math.round(((latestNew?.metric_value ?? 0) / compositionTotal) * 100)
@@ -208,6 +219,105 @@ function MarketIntelligencePage() {
               {sourceLine(metadata.sourceExportDate)}
             </p>
           </Section>
+
+          {/*
+           * The reading, before the series.
+           *
+           * A page of charts asks the reader to do the analysis, and most will
+           * not. Every sentence here is assembled from published rows, so a
+           * comparison the registry cannot support is simply absent rather
+           * than filled in.
+           */}
+          <Section data-surface="light">
+            <Reveal>
+              <Eyebrow>The read</Eyebrow>
+              <h2 className="display-2 mt-5 max-w-[20ch] text-balance">
+                What the quarter actually says.
+              </h2>
+            </Reveal>
+            <Reveal>
+              <MarketBrief rows={quarterly} periodLabel={periodLabel} />
+            </Reveal>
+          </Section>
+
+          {offPlanShare.length > 1 ? (
+            <Section data-surface="cream">
+              <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+                <div className="lg:col-span-4">
+                  <Reveal>
+                    <Eyebrow>Composition</Eyebrow>
+                    <h2 className="display-2 mt-5 text-balance">
+                      Are you buying from a developer, or from an owner?
+                    </h2>
+                    <p className="body-text mt-6 text-muted-foreground">
+                      Two very different purchases sit inside one word. Off-plan is bought from a
+                      developer on a payment plan against a handover date. Existing property is
+                      bought from an owner and can be occupied, or let, the week it transfers.
+                      Which of the two dominates decides how you should be negotiating.
+                    </p>
+                  </Reveal>
+                </div>
+                <div className="lg:col-span-8">
+                  <Reveal delay={0.1}>
+                    <CompositionSeries
+                      points={offPlanShare}
+                      grain="quarter"
+                      aLabel="Off-plan"
+                      bLabel="Existing property"
+                      caption="The share of registered sale transactions that were off-plan, quarter by quarter. Both counts come from the same registry and the same period, so the share is a fact about the mix rather than a comparison across sources."
+                    />
+                  </Reveal>
+                </div>
+              </div>
+
+              {homeTypeShare.length > 1 ? (
+                <Reveal>
+                  <div className="mt-16 border-t border-border pt-12">
+                    <Eyebrow>Apartments against villas</Eyebrow>
+                    <h3 className="display-3 mt-4 max-w-[30ch]">
+                      Which kind of home is actually changing hands.
+                    </h3>
+                    <div className="mt-8">
+                      <CompositionSeries
+                        points={homeTypeShare}
+                        grain="quarter"
+                        aLabel="Apartments"
+                        bLabel="Villas and townhouses"
+                        height={180}
+                        caption="Villa demand and apartment demand move on different cycles in Dubai, and a headline transaction count hides which one is carrying the quarter."
+                      />
+                    </div>
+                  </div>
+                </Reveal>
+              ) : null}
+            </Section>
+          ) : null}
+
+          {rentGap.length > 1 ? (
+            <Section data-surface="light">
+              <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+                <div className="lg:col-span-4">
+                  <Reveal>
+                    <Eyebrow>Rental pressure</Eyebrow>
+                    <h2 className="display-2 mt-5 text-balance">
+                      What a new tenant pays, against what a renewing one pays.
+                    </h2>
+                    <p className="body-text mt-6 text-muted-foreground">
+                      Both medians are published separately and almost nobody puts them side by
+                      side. The distance between them is the clearest read on rental pressure
+                      there is, and it is the figure that decides whether a tenanted apartment is
+                      already earning what it should.
+                    </p>
+                  </Reveal>
+                </div>
+                <div className="lg:col-span-8">
+                  <Reveal delay={0.1}>
+                    <RentGap points={rentGap} grain="quarter" />
+                  </Reveal>
+                </div>
+              </div>
+            </Section>
+          ) : null}
 
           <Section className="bg-secondary">
             <Reveal>
