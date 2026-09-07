@@ -11,7 +11,9 @@ import { Reveal } from "@/components/site/reveal";
 import { TestimonialsBlock } from "@/components/site/testimonials-block";
 import { TrustStrip } from "@/components/site/trust-strip";
 import { PageHero } from "@/components/site/page-hero";
-import { Section, Eyebrow } from "@/components/ui/section";
+import { Section } from "@/components/ui/section";
+import { SectionOpener } from "@/components/site/section-opener";
+import { ConsultantPortrait } from "@/components/site/consultant-portrait";
 
 const PRINCIPLES = [
   {
@@ -81,20 +83,27 @@ function AboutPage() {
         lead="A private Dubai brokerage built on restraint, discretion and relationships measured in decades."
       />
 
-      <Section className="pb-24">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-8 lg:col-start-3">
+      {/* The thesis, given the weight of a thesis. It was two paragraphs of
+          lead text in a centre column, which is how you set an introduction
+          and not how you set an argument. */}
+      <Section>
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7">
             <Reveal>
-              <p className="lead">
-                Dubai has no shortage of estate agents. What it has less of is representation, a
-                firm whose interest in a transaction is the same as yours, and which will tell you
-                to walk away when walking away is right.
+              <p className="display-2 text-balance">
+                Dubai has no shortage of estate agents. What it has less of is representation.
               </p>
             </Reveal>
+          </div>
+          <div className="lg:col-span-4 lg:col-start-9">
             <Reveal delay={0.1}>
-              <p className="lead mt-8">
+              <p className="body-text text-muted-foreground">
+                A firm whose interest in a transaction is the same as yours, and which will tell
+                you to walk away when walking away is right.
+              </p>
+              <p className="body-text mt-5 text-muted-foreground">
                 DLX was built for the client who has done this before, and for the one who has not
-                and would rather not learn the hard way. We work across Dubai's prime
+                and would rather not learn the hard way. We work across Dubai&rsquo;s prime
                 districts, advise quietly, negotiate precisely, and hold a long view of value.
               </p>
             </Reveal>
@@ -103,25 +112,32 @@ function AboutPage() {
       </Section>
 
       {/* How we work */}
-      <Section className="bg-secondary">
-        <div className="grid gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-3">
-            <Reveal>
-              <Eyebrow>How we work</Eyebrow>
-            </Reveal>
+      <Section data-surface="cream">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <SectionOpener
+              eyebrow="How we work"
+              title="Four commitments, and what each one costs us."
+              align="split"
+            />
           </div>
-          <div className="lg:col-span-8 lg:col-start-5">
+          <div className="lg:col-span-7 lg:col-start-6">
             {PRINCIPLES.map((principle, index) => (
               <Reveal
                 key={principle.title}
                 delay={stagger(index)}
-                className="border-t border-border/60 py-8 first:border-0 first:pt-0"
+                className="border-t border-border py-8 first:border-0 first:pt-0"
               >
-                <div>
-                  <h2 className="display-3">{principle.title}</h2>
-                  <p className="body-text mt-4 max-w-measure text-muted-foreground">
-                    {principle.body}
-                  </p>
+                <div className="flex gap-6">
+                  <span aria-hidden className="eyebrow mt-1.5 shrink-0 text-gold-ink">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h2 className="display-3">{principle.title}</h2>
+                    <p className="body-text mt-4 max-w-measure text-muted-foreground">
+                      {principle.body}
+                    </p>
+                  </div>
                 </div>
               </Reveal>
             ))}
@@ -133,16 +149,48 @@ function AboutPage() {
 
       {agents.length > 0 ? (
         <Section>
-          <Reveal>
-            <Eyebrow>The team</Eyebrow>
-            <h2 className="display-2 mt-6">
-              {agents.length} consultant{agents.length === 1 ? "" : "s"}, each accountable for their
-              own clients.
-            </h2>
-            <Link to="/team" className="eyebrow link-underline mt-10 inline-block text-accent">
-              Meet the team
-            </Link>
-          </Reveal>
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <SectionOpener
+                eyebrow="The team"
+                title={`${agents.length} consultants, each accountable for their own clients.`}
+                align="split"
+              >
+                <Link
+                  to="/team"
+                  className="focus-ring eyebrow mt-8 inline-flex min-h-12 items-center bg-green px-7 text-on-dark transition-colors hover:bg-green-mid"
+                >
+                  Meet the team
+                </Link>
+              </SectionOpener>
+            </div>
+            {/* Faces rather than a number. The count was the least interesting
+                true thing available about a four-person firm. */}
+            <ul className="grid grid-cols-2 gap-5 sm:grid-cols-4 lg:col-span-6 lg:col-start-7">
+              {agents.slice(0, 4).map((agent) => (
+                <li key={agent.id}>
+                  <Link
+                    to="/team/$slug"
+                    params={{ slug: agent.slug }}
+                    className="focus-ring group block"
+                  >
+                    <div className="overflow-hidden">
+                      <ConsultantPortrait
+                        agent={agent}
+                        className="transition-transform duration-cinematic ease-editorial group-hover:scale-[1.04] motion-reduce:transition-none"
+                      />
+                    </div>
+                    <p className="caption mt-3 transition-colors group-hover:text-gold-ink">
+                      {agent.full_name}
+                    </p>
+                    {agent.job_title ? (
+                      <p className="caption text-muted-foreground">{agent.job_title}</p>
+                    ) : null}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </Section>
       ) : null}
 
@@ -152,10 +200,7 @@ function AboutPage() {
       <Section>
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-3">
-            <Reveal>
-              <Eyebrow>Questions</Eyebrow>
-              <h2 className="display-3 mt-6">Asked and answered</h2>
-            </Reveal>
+            <SectionOpener eyebrow="Questions" title="Asked and answered." align="split" />
           </div>
           <div className="lg:col-span-8 lg:col-start-5">
             {FAQS.map((faq) => (
