@@ -114,9 +114,9 @@ export const Route = createFileRoute("/")({
 /**
  * The homepage, as seven chapters.
  *
- * Bone & Ink: paper canvas, ink type, one gold hairline reserved for figures
- * that come from the official record. The ink inversion is used exactly twice —
- * the evidence band and the closing invitation — so black reads as an event.
+ * Paper and cream, ink type, one gold hairline reserved for the figures
+ * that come from the official record. The green inversion is used exactly twice,
+ * on the evidence band and the closing invitation, so the inversion reads as an event.
  *
  *   I    Opening      one photograph, the name, the licence line
  *   II   Statement    one enormous sentence, offset, on paper
@@ -169,7 +169,7 @@ function Index() {
 
   return (
     <>
-      {/* I — Opening. The photograph is a picture, not a background; the type
+      {/* I. Opening. The photograph is a picture, not a background; the type
           sits beneath it on paper, the way a plate sits in a monograph. */}
       <section className="pt-16">
         <div className="relative overflow-hidden">
@@ -239,7 +239,7 @@ function Index() {
 
       <DiscoveryPanel />
 
-      {/* II — Statement. Type alone, offset, no photograph competing with it. */}
+      {/* II. Statement. Type alone, offset, no photograph competing with it. */}
       <Chapter index="I" label="Position" surface="deep">
         <div className="grid gap-12 lg:grid-cols-12">
           <h2 className="display-2 text-balance lg:col-span-8 lg:col-start-3">
@@ -263,7 +263,7 @@ function Index() {
         </div>
       </Chapter>
 
-      {/* III — Evidence. The first of the two ink inversions. */}
+      {/* III. Evidence. The first of the two ink inversions. */}
       <Chapter index="II" label="The record" surface="ink">
         <h2 className="display-2 mb-16 max-w-3xl text-balance">
           What the official data says this month.
@@ -283,7 +283,7 @@ function Index() {
       <InvestmentSnapshot areas={areas} />
       <MarketSequence summary={marketSummary} index={marketIndex} areas={areas} />
 
-      {/* IV — Portfolio. A register, set in type. */}
+      {/* IV. Portfolio. A register, set in type. */}
       <Chapter index="III" label="What we do">
         <h2 className="display-2 mb-14 max-w-3xl text-balance">Five practices, one team.</h2>
         <IndexRows
@@ -301,7 +301,7 @@ function Index() {
         </div>
       </Chapter>
 
-      {/* V — The two off-plan communities in focus. */}
+      {/* V. The two off-plan communities in focus. */}
       <FeaturedOffPlan projects={offPlanProjects} />
 
       {featured.length > 0 ? (
@@ -344,7 +344,7 @@ function Index() {
         </HorizontalGallery>
       ) : null}
 
-      {/* VI — Understand. Communities, then the advisor as a sentence. */}
+      {/* VI. Understand. Communities, then the advisor as a sentence. */}
       {communities.length > 0 ? (
         <MosaicGrid
           heading={
@@ -385,7 +385,7 @@ function Index() {
 
       <ProofBand agents={agents} partners={partners} testimonial={quote} />
 
-      {/* VII — Closing. The second and last ink inversion. */}
+      {/* VII. Closing. The second and last ink inversion. */}
       <Manifesto
         footnote={
           <>

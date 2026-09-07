@@ -2,9 +2,10 @@
  * The two off-plan projects DLX is currently focused on.
  *
  * Every fact here is taken from the developer's own published brochure or
- * factbook. Where a brochure does not state a figure — price, payment plan,
- * handover — the field stays null and the page says so. Nothing is estimated,
- * inferred or filled in for the sake of a complete-looking page.
+ * factbook. Where a brochure does not state a figure, whether price,
+ * payment plan or handover, the field stays null and the page says so.
+ * Nothing is estimated, inferred or filled in for the sake of a complete-
+ * looking page.
  */
 import florenceBrochure from "../assets/azizi-florence-brochure.pdf.asset.json" with { type: "json" };
 import sobhaBrochure from "../assets/sobha-city-brochure.pdf.asset.json" with { type: "json" };
@@ -117,7 +118,7 @@ export const OFF_PLAN_PROJECTS: readonly CommercialProject[] = [
     hero: media(
       "/photos/off-plan-azizi-florence",
       "Aerial render of the Azizi Florence masterplan, its clusters set around a central green spine",
-      "Developer render. Source: Azizi Developments — Azizi Florence brochure.",
+      "Developer render. Source: Azizi Developments, Azizi Florence brochure.",
     ),
     gallery: [
       media(
@@ -225,14 +226,14 @@ export const OFF_PLAN_PROJECTS: readonly CommercialProject[] = [
     investmentConsiderations: [
       "This is a Sharjah masterplan, not Dubai. Ownership rules, service costs and rental demand differ from Dubai freehold, and it does not by itself qualify you for a Dubai property Golden Visa. Ask us to walk you through the difference before you decide.",
       "Delivery is phased across six clusters. Which cluster and which release you buy in decides when you get your keys and what the surroundings look like on the day you move in.",
-      "Community-scale amenities — a private mall, parks, clubhouses — are funded through service charges over the life of the community. Ask for the projected charge before comparing yields with a smaller scheme.",
+      "Community-scale amenities (a private mall, parks, clubhouses) are funded through service charges over the life of the community. Ask for the projected charge before comparing yields with a smaller scheme.",
     ],
     serviceChargeNote:
       "Not published by the developer at this stage. We will request the projected figure in writing for you.",
     officialDldRecord: null,
     similarProjectSlugs: ["sobha-city-abu-dhabi"],
     assignedConsultant: null,
-    sourceLabel: "Azizi Developments — Azizi Florence brochure",
+    sourceLabel: "Azizi Developments, Azizi Florence brochure",
     updatedAt: "2026-09-06",
     advertisingCompliance: pendingCompliance,
   },
@@ -248,7 +249,7 @@ export const OFF_PLAN_PROJECTS: readonly CommercialProject[] = [
     hero: media(
       "/photos/off-plan-sobha-city",
       "Aerial render of Sobha City, Abu Dhabi, with its marina, waterfront residences and green corridors",
-      "Developer render. Source: Sobha Realty — Sobha City master brochure.",
+      "Developer render. Source: Sobha Realty, Sobha City master brochure.",
     ),
     gallery: [
       media(
@@ -342,34 +343,34 @@ export const OFF_PLAN_PROJECTS: readonly CommercialProject[] = [
     overview: [
       "Sobha City is Sobha Realty's first masterplanned community in Abu Dhabi, conceived at city scale. The plan is structured by water and landscape: canals, green corridors and a 2 km waterfront promenade, with roughly 60% of the site kept as open and green space.",
       "Homes come in three collections. The Orchard is estate villas of 4, 5 and 6 bedrooms; The Terraces is 3 and 4-bedroom garden villas, each with a majlis; River Cove Residences is the apartment address closer to the water.",
-      "Sobha builds with a backward-integrated model — it controls design and construction in-house — which is the reason its delivery record is usually the first thing buyers ask about. It is a fair question to put to us, with evidence, before you commit.",
+      "Sobha builds with a backward-integrated model (it controls design and construction in-house), which is the reason its delivery record is usually the first thing buyers ask about. It is a fair question to put to us, with evidence, before you commit.",
     ],
     floorPlans: [
       {
-        label: "The Orchard — estate villas, 4 / 5 / 6 bedrooms",
+        label: "The Orchard: estate villas, 4 / 5 / 6 bedrooms",
         note: "Type drawings are in the developer brochure; we send them on request.",
       },
       {
-        label: "The Terraces — garden villas, 3 / 4 bedrooms + majlis",
+        label: "The Terraces: garden villas, 3 / 4 bedrooms + majlis",
         note: "Type drawings are in the developer brochure; we send them on request.",
       },
       {
-        label: "River Cove Residences — apartments",
+        label: "River Cove Residences: apartments",
         note: "Released per phase. Ask us for the plans of the current release.",
       },
     ],
     brochureUrl: sobhaBrochure.url,
     investmentConsiderations: [
-      "This is Abu Dhabi, not Dubai. Investment zones, transfer costs and rental demand behave differently, and our Dubai Land Department market data does not cover it — so treat any Dubai comparison as indicative only.",
+      "This is Abu Dhabi, not Dubai. Investment zones, transfer costs and rental demand behave differently, and our Dubai Land Department market data does not cover it, so treat any Dubai comparison as indicative only.",
       "A first community in a new emirate for the developer means the delivery sequence and the surrounding infrastructure timetable matter. Ask which phase you are buying into.",
-      "Amenity density on this scale — golf, promenade, wellness loop — is carried by service charges. Ask for the projected figure before you compare returns with a smaller scheme.",
+      "Amenity density on this scale (golf, promenade, wellness loop) is carried by service charges. Ask for the projected figure before you compare returns with a smaller scheme.",
     ],
     serviceChargeNote:
       "Not published by the developer at this stage. We will request the projected figure in writing for you.",
     officialDldRecord: null,
     similarProjectSlugs: ["azizi-florence"],
     assignedConsultant: null,
-    sourceLabel: "Sobha Realty — Sobha City master brochure and collection brochures",
+    sourceLabel: "Sobha Realty, Sobha City master brochure and collection brochures",
     updatedAt: "2026-09-06",
     advertisingCompliance: pendingCompliance,
   },

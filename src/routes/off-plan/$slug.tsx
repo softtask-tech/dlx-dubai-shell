@@ -16,7 +16,7 @@ export const Route = createFileRoute("/off-plan/$slug")({
     if (!project) return {};
     return pageHead({
       path: `/off-plan/${project.slug}`,
-      title: `${project.name} — ${project.locationName}`,
+      title: `${project.name}, ${project.locationName}`,
       description: project.headline,
       tagline: `${project.developerName} · ${project.projectType}`,
       image: `${project.hero.src}-1280.jpg`,

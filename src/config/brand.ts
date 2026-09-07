@@ -36,8 +36,8 @@ export const brand = {
   geo: { latitude: 24.9857, longitude: 55.1713 },
   /** Office hours, in schema.org openingHours order. */
   openingHours: [
-    { days: "Mon–Thu, Sat", hours: "9:00 – 17:00" },
-    { days: "Friday", hours: "14:00 – 20:00" },
+    { days: "Mon-Thu, Sat", hours: "9:00 to 17:00" },
+    { days: "Friday", hours: "14:00 to 20:00" },
     { days: "Sunday", hours: "Closed" },
   ],
   contact: {

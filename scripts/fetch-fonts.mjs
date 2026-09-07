@@ -40,9 +40,13 @@ const FAMILIES = [
     file: "../../src/styles.fonts.css",
     families: [
       /* The workhorse: body copy, labels, tables, controls. */
-      { query: "Work+Sans:ital,wght@0,300..700;1,300..600", slug: "work-sans" },
-      /* The display face: every headline. High-contrast editorial serif. */
-      { query: "Instrument+Serif:ital@0;1", slug: "instrument-serif" },
+      { query: "Plus+Jakarta+Sans:ital,wght@0,300..700;1,300..600", slug: "plus-jakarta-sans" },
+      /* The display face: every headline, and nothing else. Fraunces is
+       * variable on an optical-size axis, so a headline set at 68px is drawn
+       * with a different, higher-contrast cut than the same face at 20px.
+       * Browsers apply that automatically via font-optical-sizing, which is
+       * why no weight or axis is pinned here. */
+      { query: "Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500", slug: "fraunces" },
 
     ],
     subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],

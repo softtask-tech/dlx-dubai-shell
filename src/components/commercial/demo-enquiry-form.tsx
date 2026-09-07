@@ -17,7 +17,7 @@ export function DemoEnquiryForm({ projectName }: { projectName: string }) {
     return (
       <div className="border border-accent bg-accent-soft p-8" role="status" aria-live="polite">
         <Eyebrow>Concept preview</Eyebrow>
-        <h3 className="display-3 mt-5">Preview only — no enquiry was submitted.</h3>
+        <h3 className="display-3 mt-5">Preview only. No enquiry was submitted.</h3>
         <p className="body-text mt-4 max-w-measure text-muted-foreground">
           This demonstrates the finished confirmation experience. No lead, CRM event, email,
           consultant assignment, analytics conversion or advertising event was created.

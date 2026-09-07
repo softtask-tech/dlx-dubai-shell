@@ -26,7 +26,7 @@ export function directoryDetailHead({
 
   return pageHead({
     path: recordPath ?? parentPath,
-    title: `${title} — DLD open data record`,
+    title: `${title}: DLD open data record`,
     description,
     tagline: "Recorded in DLD open data.",
     image,

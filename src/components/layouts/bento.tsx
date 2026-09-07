@@ -21,7 +21,7 @@ import { cn } from "@/lib/utils";
  * object rather than a table cell.
  *
  * Spans are 12-column at lg, 6 at md, 2 at base, and are passed as Tailwind
- * classes by the caller — a `size` prop would turn the library back into a
+ * classes by the caller: a `size` prop would turn the library back into a
  * template, which is the mistake documented in ./index.tsx.
  */
 
@@ -147,7 +147,7 @@ export function TileLink({
 /**
  * A figure tile: one number, one plain-English line under it.
  *
- * The number is never alone — the brief's rule is that a figure always carries
+ * The number is never alone: the rule is that a figure always carries
  * a sentence saying what it means for the reader.
  */
 export function StatTile({

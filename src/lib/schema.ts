@@ -185,7 +185,7 @@ export type ProjectInput = {
   image: string;
   developerName: string;
   locationName: string;
-  /** "Under construction", "Handover 2027" — whatever the page states. */
+  /** "Under construction", "Handover 2027": whatever the page states. */
   constructionStatus?: string | null;
   numberOfRooms?: string | null;
 };
