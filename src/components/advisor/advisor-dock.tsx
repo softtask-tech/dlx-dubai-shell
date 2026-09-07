@@ -75,48 +75,66 @@ export function AdvisorDock() {
   );
 }
 
-/** The resting state: a name, a role, and an invitation. */
+/**
+ * The resting state: a floating widget, not a bar.
+ *
+ * This used to be a full-width strip pinned across the bottom of every page,
+ * the width of the content column. At that size it was not an invitation, it
+ * was a second footer: it took a band of the screen permanently, it competed
+ * with the page it was sitting on, and on a phone it stacked with the contact
+ * bar into a wall of chrome.
+ *
+ * A widget should occupy the corner and nothing else. So it is a pill: the
+ * mark, the name, the role, and a presence dot. It says who is waiting and
+ * gets out of the way.
+ *
+ * Bottom left on purpose. The bottom right is where every support chat on the
+ * internet lives, and this is not one; the left is also clear of the "back to
+ * top" and cookie affordances that cluster on the right.
+ *
+ * On a phone it lifts above the contact bar rather than sitting on top of it,
+ * which is what the offset is doing. `start`/`end` throughout, so it moves to
+ * the other corner on the Arabic pages instead of covering the text.
+ */
 function AdvisorRail({ onOpen, onDismiss }: { onOpen: () => void; onDismiss: () => void }) {
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center px-4 pb-4 md:justify-start md:px-8 md:pb-6">
-      <div className="pointer-events-auto flex w-full max-w-shell items-center justify-between gap-4 border border-border bg-background px-5 py-4 md:px-7">
-        <button
-          type="button"
-          onClick={() => {
-            track("advisor_open", { contentName: "rail" });
-            onOpen();
-          }}
-          className="group flex flex-1 items-start gap-4 text-start"
-          aria-label={`Ask ${advisor.name}, the ${advisor.role}`}
+    <div className="fixed bottom-[calc(3.75rem+env(safe-area-inset-bottom))] start-4 z-40 flex items-center gap-2 md:bottom-6 md:start-6">
+      <button
+        type="button"
+        onClick={() => {
+          track("advisor_open", { contentName: "rail" });
+          onOpen();
+        }}
+        aria-label={`Ask ${advisor.name}, the ${advisor.role}`}
+        className="focus-ring group flex items-center gap-3 border border-border bg-paper py-2 pe-5 ps-2 text-start shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-[border-color,box-shadow,transform] duration-quick ease-editorial hover:-translate-y-0.5 hover:border-gold hover:shadow-[0_16px_40px_rgba(0,0,0,0.16)]"
+      >
+        <span
+          aria-hidden
+          className="relative grid size-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-gold to-green-mid font-display text-lg text-white"
         >
-          <span className="pt-1.5">
+          N
+          <span className="absolute -end-0.5 -top-0.5">
             <Presence />
           </span>
-          <span className="min-w-0">
-            <span className="block font-display text-lg leading-none">
-              {advisor.name}
-              <span className="caption ms-3 text-muted-foreground">{advisor.role}</span>
-            </span>
-            <span className="caption mt-1.5 block truncate text-muted-foreground transition-colors group-hover:text-accent">
-              Ask about buying, returns, the Golden Visa or relocating
-            </span>
+        </span>
+        <span className="hidden min-w-0 sm:block">
+          <span className="block font-display text-base leading-none">Ask {advisor.name}</span>
+          <span className="caption mt-1 block text-muted-foreground transition-colors group-hover:text-gold-ink">
+            {advisor.role}
           </span>
-        </button>
+        </span>
+      </button>
 
-        <div className="flex shrink-0 items-center gap-2">
-          <Button variant="quiet" size="none" onClick={onOpen} className="hidden sm:inline-flex">
-            Ask
-          </Button>
-          <button
-            type="button"
-            onClick={onDismiss}
-            aria-label="Hide the advisor"
-            className="eyebrow px-2 text-muted-foreground transition-colors hover:text-foreground"
-          >
-            ✕
-          </button>
-        </div>
-      </div>
+      <button
+        type="button"
+        onClick={onDismiss}
+        aria-label="Hide the advisor"
+        className="focus-ring grid size-8 place-items-center border border-border bg-paper text-muted-foreground shadow-[0_6px_18px_rgba(0,0,0,0.10)] transition-colors hover:text-foreground"
+      >
+        <span aria-hidden className="text-xs">
+          ✕
+        </span>
+      </button>
     </div>
   );
 }
@@ -198,9 +216,9 @@ function AdvisorPanel({
       role="dialog"
       aria-modal="false"
       aria-label={`${advisor.name}, ${advisor.role}`}
-      className="fixed inset-x-0 bottom-0 z-50 flex justify-center px-0 md:inset-x-auto md:start-8 md:bottom-6 md:px-0"
+      className="fixed inset-x-0 bottom-0 z-50 flex justify-center px-0 md:inset-x-auto md:bottom-6 md:start-6 md:px-0"
     >
-      <div className="flex h-[85svh] w-full flex-col border border-border bg-background shadow-[0_-1px_60px_rgba(0,0,0,0.08)] md:h-[78svh] md:max-h-[46rem] md:w-[27rem]">
+      <div className="flex h-[85svh] w-full flex-col border border-border bg-background shadow-[0_24px_70px_rgba(0,0,0,0.20)] md:h-[74svh] md:max-h-[44rem] md:w-[26rem]">
         <header className="flex items-start justify-between gap-4 border-b border-border px-6 py-5">
           <div className="flex items-center gap-3">
             <Presence />
