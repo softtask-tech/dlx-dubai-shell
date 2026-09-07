@@ -188,8 +188,9 @@ export const en = {
   },
 
   footer: {
-    closing: "Talk to someone who will answer.",
-    closingCta: "Contact DLX",
+    /* The asterisks mark the one italic word. See components/site/emphasis. */
+    closing: "Tell us what you're trying to do. We'll tell you if it's a good *idea*.",
+    closingCta: "Speak to a consultant",
     tagline: brand.tagline,
     exploreHeading: "Explore",
     contactHeading: "Contact",

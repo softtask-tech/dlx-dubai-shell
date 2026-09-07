@@ -234,7 +234,12 @@ function RootComponent() {
               /* Keyed on the path so the animation restarts on each navigation. */
               key={navigated ? pathname : "initial"}
               data-page-turn={navigated ? "true" : undefined}
-              className="min-h-screen"
+              /* The masthead is fixed, so its height is reserved here rather
+               * than page by page. An opening full-bleed frame gives the space
+               * back with a matching negative margin, which is what lets a
+               * photograph run under a transparent bar while a page that opens
+               * on paper still starts below it. */
+              className="min-h-screen pt-16 md:pt-20"
             >
               {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
               <Outlet />
