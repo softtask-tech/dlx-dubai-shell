@@ -34,17 +34,63 @@ export function MaskReveal({ children, delay = 0, className }: MaskRevealProps) 
     const el = ref.current;
     if (!el || reduced || typeof IntersectionObserver === "undefined") return;
 
+    /*
+     * The same three safeguards <Reveal> carries, and for the same reason.
+     *
+     * This one is worse when it fails: a pending mask is `clip-path: inset(0
+     * 0 100% 0)`, which is not a faint element, it is a photograph that is
+     * entirely gone. It still had the original negative root margin, so it
+     * held the reveal until the frame was well inside the viewport and a
+     * single flick could outrun it, which is exactly what left blank frames
+     * on the off-plan page.
+     */
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setState("shown");
+      return;
+    }
+
+    let raf = 0;
+    let done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      setState("shown");
+      window.clearTimeout(deadline);
+      window.removeEventListener("scroll", backstop);
+      observer.disconnect();
+    };
+    const backstop = () => {
+      if (done) return;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const box = el.getBoundingClientRect();
+        if (box.top < window.innerHeight && box.bottom > 0) finish();
+      });
+    };
+    window.addEventListener("scroll", backstop, { passive: true });
+
+    /* Whatever else happens, the photograph is on screen within a second and
+     * a half. The uncovering is the part that is allowed to fail. */
+    const deadline = window.setTimeout(finish, 1500);
+
     setState("pending");
     const observer = new IntersectionObserver(
       (entries) => {
         if (!entries.some((entry) => entry.isIntersecting)) return;
-        setState("shown");
-        observer.disconnect();
+        finish();
       },
-      { rootMargin: "0px 0px -10% 0px" },
+      /* A full viewport of lead-in, so the frame is uncovered before it is
+       * reached rather than while it is being looked at. */
+      { rootMargin: "0px 0px 100% 0px" },
     );
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(deadline);
+      window.removeEventListener("scroll", backstop);
+      cancelAnimationFrame(raf);
+    };
   }, [reduced]);
 
   return (

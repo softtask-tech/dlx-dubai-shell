@@ -83,7 +83,12 @@ export function RevealText({
           });
           observer?.disconnect();
         },
-        { rootMargin: "0px 0px -12% 0px" },
+        /* Positive, like the other two. A negative bottom margin holds the
+         * reveal until the block is well inside the view, which is what let a
+         * single flick outrun the observer elsewhere and leave lines parked
+         * off-screen at opacity 0. Unused at the moment, corrected so it is
+         * not a trap for whoever reaches for it next. */
+        { rootMargin: "0px 0px 100% 0px" },
       );
       observer.observe(ref.current);
     });
