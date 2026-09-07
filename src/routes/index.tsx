@@ -15,6 +15,7 @@ import { Parallax } from "@/components/motion";
 import { Photo } from "@/components/site/photo";
 import { Reveal } from "@/components/site/reveal";
 import { Emphasise } from "@/components/site/emphasis";
+import { SectionOpener } from "@/components/site/section-opener";
 import { Container, Eyebrow, Section } from "@/components/ui/section";
 import { NoorPanel } from "@/components/home/noor-panel";
 import { MarketGlance } from "@/components/home/market-glance";
@@ -323,10 +324,11 @@ function Index() {
 
       {/* III. The record, condensed to one interactive moment. */}
       <Section data-surface="dark">
-        <Reveal>
-          <Eyebrow className="text-gold">The record, at a glance</Eyebrow>
-          <h2 className="display-2 mt-5 text-balance">We don't guess. We check.</h2>
-        </Reveal>
+        <SectionOpener
+          eyebrow="The record, at a glance"
+          title="We don't guess. We check."
+          lead="Three figures from the Dubai Land Department register, and the series behind them. The full analysis, with the off-plan split and rental pressure, is one click away."
+        />
         <MarketGlance
           rows={quarterly}
           sourceExportDate={metadata.sourceExportDate}
@@ -336,10 +338,10 @@ function Index() {
 
       {/* IV. The practices. */}
       <Section data-surface="light">
-        <Reveal>
-          <Eyebrow>What we do</Eyebrow>
-          <h2 className="display-2 mt-5 text-balance">Five practices, one team, no hand-offs.</h2>
-        </Reveal>
+        <SectionOpener
+          eyebrow="What we do"
+          title="Five practices, one team, no hand-offs."
+        />
         <Reveal>
           <ServicesList services={services} hrefFor={(slug) => `/services/${slug}`} />
         </Reveal>
@@ -347,12 +349,10 @@ function Index() {
 
       {/* V. The two mandates. */}
       <Section data-surface="cream">
-        <Reveal>
-          <Eyebrow>In focus · off-plan</Eyebrow>
-          <h2 className="display-2 mt-5 max-w-[22ch] text-balance">
-            Two mandates outside Dubai, held to the same standard.
-          </h2>
-        </Reveal>
+        <SectionOpener
+          eyebrow="In focus · off-plan"
+          title="Two mandates outside Dubai, held to the same standard."
+        />
         <Reveal>
           <OffPlanFocus
             projects={offPlanProjects}
@@ -423,10 +423,10 @@ function Index() {
 
       {/* VII. Who answers. */}
       <Section data-surface="light">
-        <Reveal>
-          <Eyebrow>Independent representation</Eyebrow>
-          <h2 className="display-2 mt-5 text-balance">The people who will answer.</h2>
-        </Reveal>
+        <SectionOpener
+          eyebrow="Independent representation"
+          title="The people who will answer."
+        />
         <Reveal>
           <TeamCards members={team} />
         </Reveal>
@@ -442,10 +442,7 @@ function Index() {
        * anyone actually reads a FAQ.
        */}
       <Section data-surface="cream">
-        <Reveal>
-          <Eyebrow>Before you ask</Eyebrow>
-          <h2 className="display-2 mt-5 text-balance">The questions we get first.</h2>
-        </Reveal>
+        <SectionOpener eyebrow="Before you ask" title="The questions we get first." />
         <dl className="mt-12 max-w-5xl border-t border-border">
           {FAQ_ENTRIES.map((entry) => (
             <Reveal key={entry.question}>
