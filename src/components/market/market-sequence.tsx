@@ -140,7 +140,7 @@ export function MarketSequence({
   );
 
   return (
-    <div data-surface="dark" className="bg-ink">
+    <div data-surface="dark">
       <PinnedSequence
         aria-label="Dubai market, read from the record"
         stages={[verdict, evidence, invitation]}

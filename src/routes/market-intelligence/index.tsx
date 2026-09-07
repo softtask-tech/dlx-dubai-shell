@@ -19,7 +19,7 @@ import { QualifiedForm } from "@/components/forms/qualified-form";
 import { RegisteredSeries } from "@/components/market/registered-series";
 import { Stat } from "@/components/market/stat";
 import { Reveal } from "@/components/site/reveal";
-import { FullBleed } from "@/components/layouts";
+import { PageHero } from "@/components/site/page-hero";
 import { Section, Container, Eyebrow } from "@/components/ui/section";
 
 const FAQS: readonly FaqEntry[] = [
@@ -138,21 +138,19 @@ function MarketIntelligencePage() {
 
   return (
     <>
-      <FullBleed photo="downtown-interchange-day" height="band" priority>
-        <div className="max-w-3xl">
-          <h1 className="display-1 text-balance">Dubai, in registered activity.</h1>
-          <p className="lead mt-6 max-w-2xl text-on-dark-muted">
-            Not asking prices and not agency sentiment. How many sales and tenancies were actually
-            registered with the Dubai Land Department, and what the middle registered rent was.
+      <PageHero
+        photo="downtown-interchange-day"
+        eyebrow="Market intelligence"
+        title="Dubai, in registered activity."
+        lead="Not asking prices and not agency sentiment. How many sales and tenancies were actually registered with the Dubai Land Department, and what the middle registered rent was."
+      >
+        {metadata.sourceExportDate ? (
+          <p className="caption mt-8 text-muted-foreground">
+            Source export: {formatExportDate(metadata.sourceExportDate)} · Source: Dubai Land
+            Department
           </p>
-          {metadata.sourceExportDate ? (
-            <p className="caption mt-8 text-on-dark-muted">
-              Source export: {formatExportDate(metadata.sourceExportDate)} · Source: Dubai Land
-              Department
-            </p>
-          ) : null}
-        </div>
-      </FullBleed>
+        ) : null}
+      </PageHero>
 
       {!published ? (
         <Section className="pt-0">
@@ -170,8 +168,8 @@ function MarketIntelligencePage() {
         </Section>
       ) : (
         <>
-          <Section data-surface="dark" className="bg-ink">
-            <Eyebrow className="text-on-dark-muted">
+          <Section data-surface="dark">
+            <Eyebrow className="text-gold">
               Latest complete period{periodLabel ? ` · ${periodLabel}` : ""}
             </Eyebrow>
             <div className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">

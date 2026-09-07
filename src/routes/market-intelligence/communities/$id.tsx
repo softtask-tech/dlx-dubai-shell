@@ -167,7 +167,7 @@ function CommunityMarketPage() {
         </Section>
       ) : (
         <>
-          <Section data-surface="dark" className="bg-ink">
+          <Section data-surface="dark">
             <Eyebrow className="text-on-dark-muted">
               Latest complete period
               {period ? ` · ${formatPeriod("quarter", period.period_start)}` : ""}

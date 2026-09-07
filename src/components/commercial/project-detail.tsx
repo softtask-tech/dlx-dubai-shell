@@ -20,6 +20,7 @@ import {
   TrustSourcePanel,
 } from "./project-primitives";
 import { Container, Eyebrow, Section } from "@/components/ui/section";
+import { cityContextFor } from "@/data/off-plan-city-context";
 
 export function CommercialProjectDetail({
   project,
@@ -28,6 +29,8 @@ export function CommercialProjectDetail({
   project: CommercialProject;
   allProjects: readonly CommercialProject[];
 }) {
+  const cityContext = cityContextFor(project.slug);
+
   return (
     <>
       <section className="bg-secondary pb-12 pt-20 md:pb-16 md:pt-12">
@@ -166,8 +169,38 @@ export function CommercialProjectDetail({
         </div>
       </Section>
 
-      <Section className="bg-ink text-on-dark" id="actions">
-        <Eyebrow className="text-on-dark-muted">Next step</Eyebrow>
+      {/*
+       * Where this actually is, and what that changes.
+       *
+       * The homepage stays Dubai-voiced and gives these projects a location
+       * tag and nothing more. This is the page where someone has chosen to
+       * read about the emirate, so it is the page that explains it: what
+       * drives demand there, which authority sets the rules, and what this
+       * site therefore cannot tell them.
+       */}
+      {cityContext ? (
+        <Section data-surface="cream" id="location">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <Eyebrow>{cityContext.eyebrow}</Eyebrow>
+              <h2 className="display-2 mt-5 text-balance">{cityContext.heading}</h2>
+            </div>
+            <div className="lg:col-span-7">
+              {cityContext.paragraphs.map((paragraph) => (
+                <p key={paragraph} className="body-text mt-0 mb-6 max-w-measure last:mb-0">
+                  {paragraph}
+                </p>
+              ))}
+              <p className="caption mt-8 border-t border-border pt-5 text-muted-foreground">
+                {cityContext.dataNote}
+              </p>
+            </div>
+          </div>
+        </Section>
+      ) : null}
+
+      <Section data-surface="dark" id="actions">
+        <Eyebrow className="text-gold">Next step</Eyebrow>
         <h2 className="display-2 mt-5 max-w-3xl">
           Ask for the price list, the plans and the payment terms.
         </h2>
