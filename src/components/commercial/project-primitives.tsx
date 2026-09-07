@@ -64,6 +64,14 @@ export function ConceptMediaImage({
   );
 }
 
+/**
+ * The developer's renders.
+ *
+ * The tile that used to close this grid offered the brochure, and the page
+ * renders the actual brochure form immediately underneath it, so a reader met
+ * the same request twice in a row: once as a link and once as a form. The form
+ * stayed.
+ */
 export function ProjectGallery({ project }: { project: CommercialProject }) {
   if (project.gallery.length === 0) return null;
   return (
@@ -80,18 +88,6 @@ export function ProjectGallery({ project }: { project: CommercialProject }) {
           <figcaption className="caption mt-3 text-muted-foreground">{item.caption}</figcaption>
         </figure>
       ))}
-      <div className="flex min-h-56 items-end border border-border bg-secondary p-7">
-        <div>
-          <Eyebrow>Developer brochure and full gallery</Eyebrow>
-          <p className="body-text mt-4 text-muted-foreground">
-            The complete brochure, official renders and floor plans come straight from the
-            developer. Ask and we will send them.
-          </p>
-          <a href="#enquire" className="eyebrow link-underline mt-5 inline-block text-accent">
-            Request the brochure
-          </a>
-        </div>
-      </div>
     </div>
   );
 }
@@ -144,31 +140,48 @@ export function ProjectLocation({ project }: { project: CommercialProject }) {
   );
 }
 
+/**
+ * The four numbers that describe the scheme.
+ *
+ * These were four cells in a bordered grid, which is how you print a
+ * specification and not how you make a case. They are the first thing anyone
+ * takes away from the page, so they are set as figures: the number large in
+ * the display face, the label under it, the meaning under that, separated by
+ * a rule rather than boxed in.
+ */
 export function ProjectFigures({ project }: { project: CommercialProject }) {
   if (project.figures.length === 0) return null;
   return (
-    <div className="grid gap-px border border-border bg-border sm:grid-cols-2">
+    <dl className="grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
       {project.figures.map((figure) => (
-        <div key={figure.label} className="bg-background p-6">
-          <p className="display-3 text-accent">{figure.value}</p>
-          <p className="eyebrow mt-3">{figure.label}</p>
-          <p className="body-text mt-2 text-muted-foreground">{figure.meaning}</p>
+        <div key={figure.label} className="border-t border-border pt-6">
+          <dt className="eyebrow text-gold-ink">{figure.label}</dt>
+          <dd>
+            <p className="font-display mt-4 text-4xl leading-none tabular-nums">{figure.value}</p>
+            <p className="body-text mt-4 text-muted-foreground">{figure.meaning}</p>
+          </dd>
         </div>
       ))}
-    </div>
+    </dl>
   );
 }
 
 export function ProjectCollections({ project }: { project: CommercialProject }) {
   if (project.collections.length === 0) return null;
   return (
-    <ul className="grid gap-px border border-border bg-border sm:grid-cols-2">
+    <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {project.collections.map((collection) => (
-        <li key={collection.name} className="bg-background p-6">
-          <h3 className="display-3">{collection.name}</h3>
-          <p className="eyebrow mt-3">{collection.homeType}</p>
-          <p className="caption mt-2 text-muted-foreground">{collection.bedrooms}</p>
-          <p className="body-text mt-4 text-muted-foreground">{collection.description}</p>
+        <li
+          key={collection.name}
+          className="group border border-border bg-paper transition-[transform,box-shadow,border-color] duration-quick ease-editorial hover:-translate-y-1 hover:border-gold hover:shadow-[0_18px_40px_rgba(0,0,0,0.08)]"
+        >
+          <span aria-hidden className="block h-1 bg-gradient-to-r from-green-mid to-gold" />
+          <div className="p-6 lg:p-7">
+            <h3 className="display-3">{collection.name}</h3>
+            <p className="eyebrow mt-3 text-gold-ink">{collection.homeType}</p>
+            <p className="caption mt-2 text-muted-foreground">{collection.bedrooms}</p>
+            <p className="body-text mt-5 text-muted-foreground">{collection.description}</p>
+          </div>
         </li>
       ))}
     </ul>
@@ -178,7 +191,7 @@ export function ProjectCollections({ project }: { project: CommercialProject }) 
 export function ProjectConnectivity({ project }: { project: CommercialProject }) {
   if (project.connectivity.length === 0) return null;
   return (
-    <dl className="mt-6 divide-y divide-border border-y border-border">
+    <dl className="divide-y divide-border border-y border-border">
       {project.connectivity.map((item) => (
         <div key={item.place} className="flex items-baseline justify-between gap-5 py-3">
           <dt className="body-text">{item.place}</dt>

@@ -69,6 +69,7 @@ export function Reveal({ children, delay = 0, className, style, ...props }: Reve
       /* Detach immediately. One page carries dozens of these, and dozens of
        * live scroll listeners each reading a bounding box is exactly the kind
        * of thing that makes a site feel slow. */
+      window.clearTimeout(deadline);
       window.removeEventListener("scroll", backstop);
       observer.disconnect();
     };
@@ -81,6 +82,23 @@ export function Reveal({ children, delay = 0, className, style, ...props }: Reve
       });
     };
     window.addEventListener("scroll", backstop, { passive: true });
+
+    /*
+     * And a deadline.
+     *
+     * Two attempts at tuning the observer both left blocks parked at opacity
+     * 0 on a live page, including elements sitting at the top of the viewport
+     * at scroll position zero, where every margin and every visibility check
+     * says they should already be shown. At that point the honest conclusion
+     * is that no amount of observer tuning can be trusted to be the only
+     * thing standing between a reader and a blank page.
+     *
+     * So: whatever else happens, content is visible within a second and a
+     * half of mount. If the observer beats the timer the reveal plays as
+     * intended; if it does not, the reader gets the page. The animation is
+     * the part that is allowed to fail.
+     */
+    const deadline = window.setTimeout(finish, 1500);
 
     setState("pending");
     const observer = new IntersectionObserver(
@@ -108,6 +126,7 @@ export function Reveal({ children, delay = 0, className, style, ...props }: Reve
     observer.observe(el);
     return () => {
       observer.disconnect();
+      window.clearTimeout(deadline);
       window.removeEventListener("scroll", backstop);
       cancelAnimationFrame(raf);
     };
