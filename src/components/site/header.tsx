@@ -3,18 +3,21 @@ import { ChevronDown, Menu, Search, Sparkles, X } from "lucide-react";
 import { useRouterState } from "@tanstack/react-router";
 
 import { NAVIGATION_GROUPS } from "@/config/navigation";
+import { advisor } from "@/config/advisor";
 import { useLocale } from "@/i18n";
 import { CurrencyPicker } from "@/components/tools/money";
 import { LanguageSwitcher } from "@/i18n/language-switcher";
 import { useLenis } from "@/components/motion/lenis-provider";
 import { cn } from "@/lib/utils";
 import { Wordmark } from "./wordmark";
+import { SiteSearch } from "./site-search";
 
 export function Header() {
   const { code, pathIn, t } = useLocale();
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeGroup, setActiveGroup] = useState<string | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
   const mobileToggle = useRef<HTMLButtonElement>(null);
   const lenis = useLenis();
 
@@ -106,20 +109,29 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-1">
-          <a
-            href={pathIn(code, "/directory")}
-            aria-label="Search published property data"
+          <button
+            type="button"
+            onClick={() => setSearchOpen(true)}
+            aria-label="Search this site"
+            aria-haspopup="dialog"
             className="focus-ring grid size-11 place-items-center text-muted-foreground transition-colors hover:text-gold-ink"
           >
             <Search aria-hidden className="size-4" />
-          </a>
-          <a
-            href="#ask"
-            aria-label="Ask DLX AI"
+          </button>
+          {/* Opens the advisor widget through the deep link it already
+              listens for. Reassigning the same hash fires no hashchange, so
+              the reset is what makes a second click work. */}
+          <button
+            type="button"
+            onClick={() => {
+              if (window.location.hash === "#ask") window.location.hash = "";
+              window.location.hash = "#ask";
+            }}
+            aria-label={`Ask ${advisor.name}, the DLX AI advisor`}
             className="focus-ring hidden size-11 place-items-center text-muted-foreground transition-colors hover:text-gold-ink sm:grid"
           >
             <Sparkles aria-hidden className="size-4" />
-          </a>
+          </button>
           <CurrencyPicker variant="bare" className="hidden xl:flex" />
           <LanguageSwitcher className="hidden xl:block" />
           {/* The one filled thing in the bar. Gold on dark is the only place
@@ -239,6 +251,7 @@ export function Header() {
           </nav>
         </div>
       ) : null}
+      <SiteSearch open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }

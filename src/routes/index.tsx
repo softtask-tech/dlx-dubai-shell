@@ -6,7 +6,6 @@ import { listTestimonials, listAgents } from "@/data/people";
 import { advisorAvailabilityFn } from "@/data/advisor.functions";
 import { OFF_PLAN_PROJECTS } from "@/data/off-plan";
 import { SERVICES } from "@/data/services";
-import { seriesFor } from "@/data/market-public";
 import { getMarketMetadataFn, getMarketOverviewFn } from "@/data/market-public.functions";
 import { faqSchema, reviewSchemaFor, type FaqEntry } from "@/lib/schema";
 import { pageHead, withHeroPreload } from "@/lib/seo";
@@ -114,9 +113,14 @@ export const Route = createFileRoute("/")({
             "median_registered_annual_rent_aed",
           ],
           grain: "quarter",
-          from: "2019-01-01",
+          /* The glance shows the latest figures and a short series, not the
+           * whole record. Asking for every quarter since 2019 was costing the
+           * homepage its time to first byte for rows it then threw away; the
+           * full history lives on Market Intelligence, which is the page that
+           * actually draws it. */
+          from: "2022-01-01",
           to: "2026-12-31",
-          limit: 900,
+          limit: 200,
         },
       }),
     ]);
@@ -165,22 +169,6 @@ function Index() {
     if (!service || !photo) return [];
     return [{ slug, name: service.name, line: SERVICE_LINES[slug] ?? service.tagline, photo }];
   });
-
-  /* Every registered sale in the published window, summed from the same rows
-   * the chart below draws. A hard-coded figure would be stale the moment a new
-   * export lands, and this page's whole claim is that it does not guess. */
-  const salesOnRecord = seriesFor(quarterly, "registered_sale_count").reduce(
-    (total, row) => total + row.metric_value,
-    0,
-  );
-
-  const proof = [
-    "RERA-registered brokerage",
-    salesOnRecord > 0
-      ? `${Math.round(salesOnRecord).toLocaleString("en-AE")} registered sales on record`
-      : null,
-    "Five languages, day or night",
-  ].filter((entry): entry is string => entry !== null);
 
   const team = agents.slice(0, 4).map((agent) => ({
     slug: agent.slug,

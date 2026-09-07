@@ -27,7 +27,6 @@ import { Eyebrow } from "@/components/ui/section";
  */
 export function AdvisorDock() {
   const [open, setOpen] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
   const [opening, setOpening] = useState<string | null>(null);
   const pagePath = useRouterState({ select: (state) => state.location.pathname });
 
@@ -43,7 +42,6 @@ export function AdvisorDock() {
       if (!hash.startsWith("#ask")) return;
       const question = hash.startsWith("#ask=") ? decodeURIComponent(hash.slice(5)) : null;
       setOpening(question);
-      setDismissed(false);
       setOpen(true);
       track("advisor_open", { contentName: "deep-link" });
     };
@@ -58,9 +56,7 @@ export function AdvisorDock() {
 
   return (
     <>
-      {!open && !dismissed ? (
-        <AdvisorRail onOpen={() => setOpen(true)} onDismiss={() => setDismissed(true)} />
-      ) : null}
+      {!open ? <AdvisorRail onOpen={() => setOpen(true)} /> : null}
       {open ? (
         <AdvisorPanel
           pagePath={pagePath}
@@ -88,17 +84,17 @@ export function AdvisorDock() {
  * mark, the name, the role, and a presence dot. It says who is waiting and
  * gets out of the way.
  *
- * Bottom left on purpose. The bottom right is where every support chat on the
- * internet lives, and this is not one; the left is also clear of the "back to
- * top" and cookie affordances that cluster on the right.
+ * Bottom right, and permanent. It carried a dismiss control before, which is
+ * the convention for something a reader wants gone; this is the one feature on
+ * the site that a first-time visitor most needs to find, so it stays.
  *
  * On a phone it lifts above the contact bar rather than sitting on top of it,
  * which is what the offset is doing. `start`/`end` throughout, so it moves to
  * the other corner on the Arabic pages instead of covering the text.
  */
-function AdvisorRail({ onOpen, onDismiss }: { onOpen: () => void; onDismiss: () => void }) {
+function AdvisorRail({ onOpen }: { onOpen: () => void }) {
   return (
-    <div className="fixed bottom-[calc(3.75rem+env(safe-area-inset-bottom))] start-4 z-40 flex items-center gap-2 md:bottom-6 md:start-6">
+    <div className="fixed end-4 bottom-[calc(3.75rem+env(safe-area-inset-bottom))] z-40 flex items-center gap-2 md:end-6 md:bottom-6">
       <button
         type="button"
         onClick={() => {
@@ -125,16 +121,6 @@ function AdvisorRail({ onOpen, onDismiss }: { onOpen: () => void; onDismiss: () 
         </span>
       </button>
 
-      <button
-        type="button"
-        onClick={onDismiss}
-        aria-label="Hide the advisor"
-        className="focus-ring grid size-8 place-items-center border border-border bg-paper text-muted-foreground shadow-[0_6px_18px_rgba(0,0,0,0.10)] transition-colors hover:text-foreground"
-      >
-        <span aria-hidden className="text-xs">
-          ✕
-        </span>
-      </button>
     </div>
   );
 }
@@ -216,7 +202,7 @@ function AdvisorPanel({
       role="dialog"
       aria-modal="false"
       aria-label={`${advisor.name}, ${advisor.role}`}
-      className="fixed inset-x-0 bottom-0 z-50 flex justify-center px-0 md:inset-x-auto md:bottom-6 md:start-6 md:px-0"
+      className="fixed inset-x-0 bottom-0 z-50 flex justify-center px-0 md:inset-x-auto md:end-6 md:bottom-6 md:px-0"
     >
       <div className="flex h-[85svh] w-full flex-col border border-border bg-background shadow-[0_24px_70px_rgba(0,0,0,0.20)] md:h-[74svh] md:max-h-[44rem] md:w-[26rem]">
         <header className="flex items-start justify-between gap-4 border-b border-border px-6 py-5">

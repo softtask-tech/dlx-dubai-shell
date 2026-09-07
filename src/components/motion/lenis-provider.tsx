@@ -27,6 +27,15 @@ import { useReducedMotion } from "motion/react";
  * `useLenis()` rather than listening to the window, so there is one scroll
  * source on the page and no `window.addEventListener("scroll")` anywhere.
  */
+/**
+ * Whether the scroll is smoothed at all.
+ *
+ * A constant rather than a prop or an env var: this is a house decision about
+ * how the site feels, not a per-deployment setting, and it should be reviewed
+ * in a diff rather than toggled invisibly.
+ */
+const SMOOTH_SCROLL_ENABLED = false;
+
 const LenisContext = createContext<Lenis | null>(null);
 
 /** Layout effects do not run on the server; fall back so SSR stays silent. */
@@ -48,6 +57,22 @@ export function LenisProvider({ children }: { children: ReactNode }) {
   const firstPath = useRef(pathname);
 
   useEffect(() => {
+    /*
+     * Smooth scroll is off.
+     *
+     * It was the invisible half of the premium feel and it turned out to be
+     * the visible half of "the site lags". A hijacked wheel puts an easing
+     * curve between a reader's hand and the page: every flick lands about a
+     * second after it is made, and on a long editorial page that reads as the
+     * site being slow rather than as the site being calm. The pages are also
+     * full of reveals now, and a reveal that fires against a scroll position
+     * still animating toward its target is what produced the blank screens.
+     *
+     * The provider stays, and `useLenis()` simply returns null, which every
+     * consumer already handles because it was always null under reduced
+     * motion. Turning it back on is deleting this early return.
+     */
+    if (SMOOTH_SCROLL_ENABLED === false) return;
     if (reduced) return;
 
     const instance = new Lenis({
