@@ -1,16 +1,19 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
+import { ArrowRight, Mail, MessageCircle, Phone } from "lucide-react";
 
+import type { Agent } from "@/data/types";
 import { listAgents } from "@/data/people";
 import { pageHead, withHeroPreload } from "@/lib/seo";
 import { teamListSchema } from "@/lib/schema";
-import { stagger } from "@/lib/motion";
 import { trackContactHref } from "@/components/site/contact-link";
 import { ConsultantPortrait } from "@/components/site/consultant-portrait";
-import { Reveal } from "@/components/site/reveal";
+import { MaskReveal, Reveal } from "@/components/motion";
 import { TrustStrip } from "@/components/site/trust-strip";
 import { PageHero } from "@/components/site/page-hero";
+import { SectionOpener } from "@/components/site/section-opener";
 import { Section, Eyebrow } from "@/components/ui/section";
 import { Tag } from "@/components/ui/tag";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/team")({
   loader: async () => ({ agents: await listAgents() }),
@@ -32,7 +35,25 @@ export const Route = createFileRoute("/team")({
   component: TeamPage,
 });
 
-
+/**
+ * The people, one at a time.
+ *
+ * This was a three-column grid of text blocks with a small portrait above
+ * each. A grid is what you use when the reader's job is to scan and pick, and
+ * that is the wrong job here: nobody arrives at a four-person team page to
+ * filter it. They arrive to find out whether these are people they would trust
+ * with a large sum of money, and a directory cell cannot answer that.
+ *
+ * So each consultant takes a full row, portrait at a size you can actually
+ * read a face in, and their own sentence set as a quote rather than as body
+ * copy. Every bio here is written in the first person, which the old layout
+ * flattened into grey paragraph text; setting it in the display face is the
+ * single cheapest thing on this site that makes it feel like it was made by
+ * people. The sides alternate so the page has a rhythm rather than a repeat.
+ *
+ * The portrait frame is the same one `ConsultantPortrait` draws its initials
+ * into, so the photographs drop in when they arrive and nothing moves.
+ */
 function TeamPage() {
   const { agents } = Route.useLoaderData();
 
@@ -44,8 +65,8 @@ function TeamPage() {
         lead="A small team on purpose. You get a named consultant who stays with you from the first call to the last signature, not a rota, and not a call centre."
       />
 
-      <Section>
-        {agents.length === 0 ? (
+      {agents.length === 0 ? (
+        <Section>
           <div className="border border-border p-12 text-center">
             <Eyebrow>Coming shortly</Eyebrow>
             <h2 className="display-3 mt-6">Consultant profiles are being prepared.</h2>
@@ -54,75 +75,137 @@ function TeamPage() {
               queue.
             </p>
           </div>
-        ) : (
-          <div className="grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+        </Section>
+      ) : (
+        <Section>
+          <SectionOpener
+            eyebrow="Who you will be dealing with"
+            title="Four people, and the one who answers is the one who stays."
+          />
+          <div className="mt-16 flex flex-col gap-20 md:gap-28">
             {agents.map((agent, index) => (
-              <Reveal key={agent.id} delay={stagger(index % 3)}>
-                <article>
-                  <Link to="/team/$slug" params={{ slug: agent.slug }} className="group block">
-                    <ConsultantPortrait agent={agent} />
-                    <h2 className="display-3 mt-6 group-hover:text-accent">{agent.full_name}</h2>
-                  </Link>
-                  {agent.job_title ? <p className="caption mt-1">{agent.job_title}</p> : null}
-                  {agent.brn ? <p className="caption mt-3">RERA BRN {agent.brn}</p> : null}
-
-
-                  {agent.bio ? (
-                    <p className="body-text mt-5 text-muted-foreground">{agent.bio}</p>
-                  ) : null}
-
-                  {agent.specialities.length > 0 ? (
-                    <div className="mt-6 flex flex-wrap gap-2">
-                      {agent.specialities.map((speciality) => (
-                        <Tag key={speciality} variant="soft">
-                          {speciality}
-                        </Tag>
-                      ))}
-                    </div>
-                  ) : null}
-
-                  {agent.languages.length > 0 ? (
-                    <p className="caption mt-5">Speaks {agent.languages.join(", ")}</p>
-                  ) : null}
-
-                  <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
-                    {agent.email ? (
-                      <a
-                        href={`mailto:${agent.email}`}
-                        className="eyebrow link-underline text-foreground"
-                      >
-                        Email
-                      </a>
-                    ) : null}
-                    {agent.phone ? (
-                      <a
-                        href={`tel:${agent.phone}`}
-                        onClick={() => trackContactHref(`tel:${agent.phone}`, `team-${agent.slug}`)}
-                        className="eyebrow link-underline text-foreground"
-                      >
-                        Call
-                      </a>
-                    ) : null}
-                    {agent.whatsapp ? (
-                      <a
-                        href={`https://wa.me/${agent.whatsapp.replace(/[^\d]/g, "")}`}
-                        onClick={() => trackContactHref("wa.me", `team-${agent.slug}`)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="eyebrow link-underline text-foreground"
-                      >
-                        WhatsApp
-                      </a>
-                    ) : null}
-                  </div>
-                </article>
-              </Reveal>
+              <ConsultantRow key={agent.id} agent={agent} flipped={index % 2 === 1} />
             ))}
           </div>
-        )}
-      </Section>
+        </Section>
+      )}
 
       <TrustStrip />
     </>
+  );
+}
+
+function ConsultantRow({ agent, flipped }: { agent: Agent; flipped: boolean }) {
+  const contacts = [
+    agent.email
+      ? { href: `mailto:${agent.email}`, label: "Email", Icon: Mail, track: `mailto:${agent.email}` }
+      : null,
+    agent.phone
+      ? { href: `tel:${agent.phone}`, label: "Call", Icon: Phone, track: `tel:${agent.phone}` }
+      : null,
+    agent.whatsapp
+      ? {
+          href: `https://wa.me/${agent.whatsapp.replace(/[^\d]/g, "")}`,
+          label: "WhatsApp",
+          Icon: MessageCircle,
+          track: "wa.me",
+        }
+      : null,
+  ].filter((entry): entry is NonNullable<typeof entry> => entry !== null);
+
+  return (
+    <article className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
+      <MaskReveal className={cn("lg:col-span-5", flipped && "lg:order-2 lg:col-start-8")}>
+        <Link
+          to="/team/$slug"
+          params={{ slug: agent.slug }}
+          tabIndex={-1}
+          aria-hidden="true"
+          className="focus-ring group block overflow-hidden"
+        >
+          <ConsultantPortrait
+            agent={agent}
+            className="transition-transform duration-cinematic ease-editorial group-hover:scale-[1.03] motion-reduce:transition-none"
+          />
+        </Link>
+      </MaskReveal>
+
+      <div className={cn("lg:col-span-6", flipped && "lg:order-1 lg:col-start-1")}>
+        <Reveal>
+          {agent.job_title ? <Eyebrow>{agent.job_title}</Eyebrow> : null}
+          <h2 className="display-2 mt-4">
+            <Link
+              to="/team/$slug"
+              params={{ slug: agent.slug }}
+              className="focus-ring transition-colors hover:text-gold-ink"
+            >
+              {agent.full_name}
+            </Link>
+          </h2>
+          {agent.brn ? (
+            <p className="eyebrow mt-4 inline-block bg-cream px-2.5 py-1 text-gold-ink">
+              RERA BRN {agent.brn}
+            </p>
+          ) : null}
+        </Reveal>
+
+        {/* Their own words, set as words rather than as a paragraph of grey. */}
+        {agent.bio ? (
+          <Reveal delay={0.08}>
+            <blockquote className="mt-8 border-s-2 border-gold-ink ps-6">
+              <p className="font-display text-xl leading-snug text-balance sm:text-2xl">
+                {agent.bio}
+              </p>
+            </blockquote>
+          </Reveal>
+        ) : null}
+
+        <Reveal delay={0.12}>
+          {agent.specialities.length > 0 ? (
+            <div className="mt-8 flex flex-wrap gap-2">
+              {agent.specialities.map((speciality) => (
+                <Tag key={speciality} variant="soft">
+                  {speciality}
+                </Tag>
+              ))}
+            </div>
+          ) : null}
+
+          {agent.languages.length > 0 ? (
+            <p className="caption mt-6 text-muted-foreground">
+              Speaks {agent.languages.join(", ")}
+            </p>
+          ) : null}
+
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            {contacts.map(({ href, label, Icon, track }) => (
+              <a
+                key={label}
+                href={href}
+                {...(label === "WhatsApp"
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                onClick={() => trackContactHref(track, `team-${agent.slug}`)}
+                className="focus-ring eyebrow inline-flex min-h-11 items-center gap-2 border border-border px-4 text-foreground transition-colors hover:border-gold-ink hover:text-gold-ink"
+              >
+                <Icon aria-hidden className="size-3.5" />
+                {label}
+              </a>
+            ))}
+            <Link
+              to="/team/$slug"
+              params={{ slug: agent.slug }}
+              className="focus-ring eyebrow group inline-flex min-h-11 items-center gap-2 text-gold-ink"
+            >
+              Full profile
+              <ArrowRight
+                aria-hidden
+                className="size-3.5 transition-transform duration-quick ease-editorial group-hover:translate-x-1 rtl:-scale-x-100"
+              />
+            </Link>
+          </div>
+        </Reveal>
+      </div>
+    </article>
   );
 }
