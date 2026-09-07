@@ -50,22 +50,67 @@ export function Reveal({ children, delay = 0, className, style, ...props }: Reve
       return;
     }
 
+    /*
+     * The backstop.
+     *
+     * An IntersectionObserver can be outrun: a long flick, a jump to an
+     * anchor, or a restored scroll position can all put a block on screen
+     * without a callback landing in time, and the failure mode is a reader
+     * looking at a blank page. This shows anything that is visible whatever
+     * the observer thinks, and it stops as soon as the block is shown, so it
+     * costs one bounding-box read per scroll frame for at most a few frames.
+     */
+    let raf = 0;
+    let done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      setState("shown");
+      /* Detach immediately. One page carries dozens of these, and dozens of
+       * live scroll listeners each reading a bounding box is exactly the kind
+       * of thing that makes a site feel slow. */
+      window.removeEventListener("scroll", backstop);
+      observer.disconnect();
+    };
+    const backstop = () => {
+      if (done) return;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const box = el.getBoundingClientRect();
+        if (box.top < window.innerHeight && box.bottom > 0) finish();
+      });
+    };
+    window.addEventListener("scroll", backstop, { passive: true });
+
     setState("pending");
     const observer = new IntersectionObserver(
       (entries) => {
         if (!entries.some((entry) => entry.isIntersecting)) return;
-        setState("shown");
-        observer.disconnect();
+        finish();
       },
-      /* Positive bottom margin, so the root extends *below* the viewport and a
-       * block begins revealing while it is still off screen. The old negative
-       * margin did the opposite: it held the reveal back until the element was
-       * already well inside the view, which is what produced blank screens on
-       * a fast scroll. */
-      { rootMargin: "0px 0px 25% 0px" },
+      /*
+       * A whole viewport of margin below, and that is not generous, it is the
+       * minimum that works.
+       *
+       * The root extends 100% of the viewport height past the fold, so a block
+       * starts revealing a full screen before it is reached and has finished
+       * its 420ms by the time it arrives. Earlier versions used a negative
+       * margin (hold until well inside the view) and then 25%, and both left
+       * whole sections sitting at opacity 0 while they were on screen,
+       * because a single wheel gesture moves further than either margin.
+       *
+       * The trade is that a reveal now often completes before it is seen,
+       * which is the correct trade: the animation is decoration and the
+       * content is not.
+       */
+      { rootMargin: "0px 0px 100% 0px" },
     );
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", backstop);
+      cancelAnimationFrame(raf);
+    };
   }, [reduced]);
 
   return (

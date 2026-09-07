@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouterState } from "@tanstack/react-router";
+import { Phone, X } from "lucide-react";
 import { useReducedMotion } from "motion/react";
 
 import { advisor } from "@/config/advisor";
@@ -11,6 +12,7 @@ import { cn } from "@/lib/utils";
 import { useAdvisor, type PanelTurn } from "./use-advisor";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/section";
+import { trackContactHref } from "@/components/site/contact-link";
 
 /**
  * The advisor, docked.
@@ -198,32 +200,68 @@ function AdvisorPanel({
   }
 
   return (
-    <div
-      role="dialog"
-      aria-modal="false"
-      aria-label={`${advisor.name}, ${advisor.role}`}
-      className="fixed inset-x-0 bottom-0 z-50 flex justify-center px-0 md:inset-x-auto md:end-6 md:bottom-6 md:px-0"
-    >
-      <div className="flex h-[85svh] w-full flex-col border border-border bg-background shadow-[0_24px_70px_rgba(0,0,0,0.20)] md:h-[74svh] md:max-h-[44rem] md:w-[26rem]">
-        <header className="flex items-start justify-between gap-4 border-b border-border px-6 py-5">
-          <div className="flex items-center gap-3">
+    <>
+      {/*
+       * A scrim on the phone, and only on the phone.
+       *
+       * Scrolling inside the widget used to carry through to the page behind
+       * it once the transcript hit its end, so the site slid around under a
+       * panel the reader thought they were inside. `overscroll-contain` on the
+       * transcript stops the chaining; this stops everything else, and it also
+       * puts the panel on a ground of its own instead of floating over live
+       * content on a small screen.
+       */}
+      <div
+        aria-hidden
+        onClick={onClose}
+        className="fixed inset-0 z-40 bg-ink/45 md:hidden"
+      />
+
+      <div
+        role="dialog"
+        aria-modal="false"
+        aria-label={`${advisor.name}, ${advisor.role}`}
+        className="fixed inset-x-0 bottom-0 z-50 flex justify-center px-0 md:inset-x-auto md:end-6 md:bottom-6 md:px-0"
+      >
+        <div className="flex h-[88dvh] w-full flex-col overscroll-contain border border-border bg-background shadow-[0_24px_70px_rgba(0,0,0,0.20)] md:h-[74svh] md:max-h-[44rem] md:w-[26rem]">
+        <header className="flex items-start justify-between gap-3 border-b border-border px-5 py-4 sm:px-6 sm:py-5">
+          <div className="flex min-w-0 items-center gap-3">
             <Presence />
-            <div>
-              <p className="font-display text-xl leading-none">{advisor.name}</p>
-              <p className="caption mt-1.5 text-muted-foreground">{advisor.role}</p>
+            <div className="min-w-0">
+              <p className="font-display truncate text-lg leading-none sm:text-xl">
+                {advisor.name}
+              </p>
+              <p className="caption mt-1.5 truncate text-muted-foreground">{advisor.role}</p>
             </div>
           </div>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close the advisor"
-            className="eyebrow text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Close
-          </button>
+          <div className="flex shrink-0 items-center gap-1">
+            {/* The other way to reach a person, one tap away, because the
+                moment an answer is not enough is the moment they want a
+                human and not a form. */}
+            <a
+              href={`tel:${brand.contact.phoneE164}`}
+              dir="ltr"
+              onClick={() => trackContactHref(`tel:${brand.contact.phoneE164}`, "advisor-widget")}
+              aria-label={`Call DLX on ${brand.contact.phone}`}
+              className="focus-ring grid size-10 place-items-center text-muted-foreground transition-colors hover:text-gold-ink"
+            >
+              <Phone aria-hidden className="size-4" />
+            </a>
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Close the advisor"
+              className="focus-ring grid size-10 place-items-center text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <X aria-hidden className="size-4" />
+            </button>
+          </div>
         </header>
 
-        <div ref={scrollRef} className="flex-1 overflow-y-auto overscroll-contain px-6 py-6">
+        <div
+          ref={scrollRef}
+          className="flex-1 overflow-y-auto overscroll-contain px-5 py-6 sm:px-6"
+        >
           {turns.length === 0 ? <Opening onPick={(prompt) => void send(prompt)} /> : null}
 
           <div className="space-y-7">
