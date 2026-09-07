@@ -13,7 +13,7 @@ import { newEventId, track } from "@/lib/tracking";
  *
  * Progressive disclosure, applied to a document: the page already tells you
  * what the community is, the brochure is the layer for someone who wants the
- * whole thing. Nothing is invented here — the file is the developer's, and the
+ * whole thing. Nothing is invented here: the file is the developer's, and the
  * download appears immediately after the details are saved, so the exchange is
  * honest rather than a form that promises an email that never arrives.
  */

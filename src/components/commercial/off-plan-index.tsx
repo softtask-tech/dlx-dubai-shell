@@ -17,7 +17,7 @@ export function OffPlanIndex({ projects }: { projects: readonly CommercialProjec
               </h1>
             </div>
             <p className="body-text max-w-measure text-muted-foreground lg:col-span-3 lg:col-start-10">
-              Price, payment timing, supply, service costs, delivery and recorded evidence—kept
+              Price, payment timing, supply, service costs, delivery and recorded evidence, kept
               separate from sales narrative.
             </p>
           </div>

@@ -7,7 +7,7 @@
  * it is the request that decides when the headline paints. The files live in
  * `public/fonts` and are fetched by `scripts/fetch-fonts.mjs`.
  *
- * The Latin faces (Plus Jakarta Sans and Syne) are compiled into the site
+ * The Latin faces (Plus Jakarta Sans and Fraunces) are compiled into the site
  * stylesheet, so they cost no extra request on any page. What this module adds
  * is two things:
  *
@@ -34,9 +34,9 @@ import type { LocaleCode } from "@/config/locales";
  */
 const PRELOAD = [
   /* The workhorse, plus the display serif: every page opens with a heading set
-   * in Instrument Serif, so it is on the critical path like the body sans. */
-  "/fonts/work-sans-latin-300-700-normal.woff2",
-  "/fonts/instrument-serif-latin-400-normal.woff2",
+   * in Fraunces, so it is on the critical path like the body sans. */
+  "/fonts/plus-jakarta-sans-latin-300-700-normal.woff2",
+  "/fonts/fraunces-latin-300-500-normal.woff2",
 ] as const;
 
 

@@ -21,7 +21,7 @@
  * because they quote the rule in order to state it.
  */
 import { readdir, readFile } from "node:fs/promises";
-import { join, relative } from "node:path";
+import { join, relative, sep } from "node:path";
 
 const ROOTS = ["src", "scripts", "supabase"];
 const EXTENSIONS = new Set([".ts", ".tsx", ".js", ".mjs", ".css", ".sql", ".json"]);
@@ -41,6 +41,29 @@ const BANNED = [
   },
   { char: String.fromCharCode(0x2013), name: "en-dash", instead: "a hyphen, for ranges" },
 ];
+
+/*
+ * The three files the rule does not reach, and why.
+ *
+ * This list stays short and stays argued. An exemption that is not one of
+ * these two kinds is a copy fix someone has not done yet.
+ *
+ *   1. Russian. In Russian the dash is not a stylistic flourish, it is the
+ *      copula: "DLX <dash> brokerage" is how the language writes "DLX is a
+ *      brokerage", because Russian has no present-tense "to be". Deleting it
+ *      does not tidy the sentence, it breaks the grammar. The ban exists to
+ *      stop English prose reading as machine-written, and it has no purchase
+ *      on a language where the glyph is mandatory punctuation.
+ *
+ *   2. The two MCP route files, which carry a generator banner containing a
+ *      dash. They are rewritten by the Vite plugin on every build, so a fix
+ *      here survives until the next `vite dev` and no longer.
+ */
+const EXEMPT = new Set([
+  "src/i18n/ru.ts",
+  "src/routes/mcp.ts",
+  "src/routes/[.well-known]/oauth-protected-resource.ts",
+]);
 
 async function* walk(dir) {
   let entries;
@@ -64,6 +87,7 @@ export async function findBannedGlyphs() {
   const hits = [];
   for (const root of ROOTS) {
     for await (const path of walk(root)) {
+      if (EXEMPT.has(relative(process.cwd(), path).split(sep).join("/"))) continue;
       const text = await readFile(path, "utf8");
       if (!BANNED.some(({ char }) => text.includes(char))) continue;
 

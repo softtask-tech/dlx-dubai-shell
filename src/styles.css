@@ -4,14 +4,16 @@
 @import "./styles.fonts.css";
 
 /*
- * DLX Properties — "Bone & Ink".
+ * DLX Properties: paper, cream, and a deep green anchor.
  *
- * Warm off-white paper, pure black type, one gold reserved for figures that
- * come from the official record. No cards, no rounded tiles, no shadows, no
- * gradients: hairlines and space do the separating. Ink is not a mood — it is
- * an inversion used at most twice on a page, declared with data-surface="ink".
+ * White paper, a warm cream alternate band, deep green carrying the weight,
+ * and one gold held to a whisper: hairlines, small marks, and the figures
+ * that come from the official record. No cards, no rounded tiles, no
+ * shadows, no gradient washes: hairlines and space do the separating. The
+ * green is not a mood, it is an inversion used at most twice on a page,
+ * declared with data-surface="dark".
  *
- * Display type is Instrument Serif; everything else is Work Sans.
+ * Display type is Fraunces; everything else is Plus Jakarta Sans.
  */
 
 @theme inline {
@@ -66,34 +68,48 @@
   --color-slate: var(--slate);
   --color-on-dark: var(--on-dark);
   --color-on-dark-muted: var(--on-dark-muted);
+  /* The bands and the anchor, addressable directly: bg-cream, bg-green,
+   * border-line, text-gold-deep. */
+  --color-cream: var(--cream);
+  --color-green: var(--green);
+  --color-green-mid: var(--green-mid);
+  --color-gold-deep: var(--gold-deep);
+  --color-line: var(--line);
+  --color-text: var(--text);
 
   /* --- Typography -------------------------------------------------------
    *
-   * Instrument Serif carries the voice: high-contrast, narrow, editorial —
-   * a monograph cover rather than a newspaper. Work Sans does everything
-   * else: body, labels, figures, tables.
+   * Fraunces carries the voice: a variable serif on an optical-size axis, so
+   * a headline at 72px is drawn with a different, higher-contrast cut than
+   * the same face at 20px. Browsers apply that on their own through
+   * font-optical-sizing, which is why nothing pins the axis here. It is for
+   * headlines and the occasional pull quote only, never body, labels or
+   * buttons. Plus Jakarta Sans does everything else.
    *
    * Both self-hosted; see scripts/fetch-fonts.mjs. */
-  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-accent: var(--font-display);
 
-  /* Fluid type scale. The serif is narrow, so display sizes run larger than
-   * they would with a grotesk, and line height runs tighter. */
-  --text-display-1: clamp(3rem, 1.1rem + 7.4vw, 8rem);
-  --text-display-1--line-height: 0.92;
-  --text-display-2: clamp(2.25rem, 1.2rem + 4.2vw, 4.75rem);
-  --text-display-2--line-height: 0.98;
-  --text-display-3: clamp(1.35rem, 1.15rem + 1vw, 2rem);
-  --text-display-3--line-height: 1.15;
-  --text-accent: clamp(2.25rem, 1.2rem + 4.4vw, 5rem);
-  --text-accent--line-height: 1.02;
-  --text-lead: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
-  --text-lead--line-height: 1.7;
-  --text-body: 0.9375rem;
-  --text-body--line-height: 1.8;
-  --text-caption: 0.8125rem;
-  --text-caption--line-height: 1.65;
+  /* Fluid type scale, floored for a 360px phone rather than a desktop scale
+   * shrunk down. Fraunces is wider and softer than the face it replaces, so
+   * display sizes come down and the leading opens up. */
+  --text-display-1: clamp(2.125rem, 1.35rem + 3.9vw, 4.5rem);
+  --text-display-1--line-height: 1.02;
+  --text-display-2: clamp(1.75rem, 1.15rem + 2.6vw, 2.75rem);
+  --text-display-2--line-height: 1.08;
+  --text-display-3: clamp(1.25rem, 1.1rem + 0.8vw, 1.6rem);
+  --text-display-3--line-height: 1.2;
+  --text-accent: clamp(1.875rem, 1.2rem + 3.2vw, 3.5rem);
+  --text-accent--line-height: 1.06;
+  --text-lead: clamp(1rem, 0.96rem + 0.25vw, 1.125rem);
+  --text-lead--line-height: 1.66;
+  /* A 16px floor. Body copy does not go below this on any screen, which is
+   * why the scale starts here rather than at the 15px it used to. */
+  --text-body: 1rem;
+  --text-body--line-height: 1.65;
+  --text-caption: 0.875rem;
+  --text-caption--line-height: 1.6;
   --text-eyebrow: 0.6875rem;
   --text-eyebrow--line-height: 1.4;
 
@@ -126,72 +142,90 @@
 
   /* --- The palette ------------------------------------------------------
    *
-   * Bone & Ink. Warm off-white paper, pure black type, one gold held back
-   * for the figures that come from the Dubai Land Department record.
+   * White paper, a warm cream for the alternate band, deep green as the
+   * anchor, and one gold held to a whisper: hairlines, small marks, and the
+   * figures that come from the official record. Gold is never a large fill
+   * and never a background wash. Light bands stay crisp white or cream,
+   * never a green-tinted grey.
    */
-  --paper: #f6f3ee; /* the canvas */
-  --paper-deep: #ece7de; /* a panel on the canvas */
-  --paper-shade: #e0d9cc; /* a hovered panel, or a quiet band */
-  --ink: #0a0a0a; /* type, and the inverted ground */
-  --ink-panel: #121211;
-  --ink-raised: #1b1a18;
-  --gold: #b08d4c; /* hairlines and large official figures */
-  --gold-soft: #d9bd85; /* the same, on an ink ground */
-  --gold-ink: #8a6b2f; /* gold darkened enough for small type on paper */
-  --slate: #7a756d;
+  --paper: #ffffff; /* the canvas */
+  --cream: #f7f3ec; /* the warm-light alternate band */
+  --paper-deep: #f7f3ec; /* alias: a panel on the canvas is the cream */
+  --paper-shade: #efe9dd; /* a hovered panel inside a cream band */
+
+  --ink: #12140f; /* the darkest type. Not pure black */
+  --ink-panel: #0d1b15; /* alias: the panel inside an inversion is the green */
+  --ink-raised: #1f4536;
+
+  --green: #0d1b15; /* the anchor: dark sections, hero scrim, footer */
+  --green-mid: #1f4536; /* hover states, secondary marks, chart lines */
+
+  --gold: #b8996b; /* the whisper. 6.6:1 on green, so it carries small type there */
+  --gold-soft: #cbb088; /* the same, lifted, for emphasis on green */
+  --gold-deep: #8c7245; /* decorative gold on paper. Large type only */
+
+  /* Gold darkened until small type passes AA on both grounds: 5.7:1 on paper
+   * and 5.1:1 on cream. The specified #8c7245 measures 4.12:1 on cream, which
+   * is under AA, so every eyebrow and small label resolves to this instead.
+   * The lighter tone above stays available for rules and large figures. */
+  --gold-ink: #7d6339;
+
+  --slate: #6e6f66; /* secondary type on paper, 5.1:1 */
+  --line: #e7e2d6; /* hairline on a light ground */
+  --line-dark: rgba(255, 255, 255, 0.14); /* hairline on green */
+  --on-dark: #edeee8;
+  --on-dark-muted: #9faa9e;
+  --text: #1b1c18; /* running body ink, 17.1:1 on paper */
 
   /* Legacy aliases, so existing markup keeps resolving. */
   --stone: var(--paper);
   --stone-panel: var(--paper-deep);
   --stone-deep: var(--paper-shade);
   --steel: var(--gold-ink);
-  --steel-deep: #6d541f;
+  --steel-deep: #6a5330;
   --steel-soft: var(--gold-soft);
   --brass: var(--gold);
   --brass-soft: var(--gold-soft);
   --brass-ink: var(--gold-ink);
   --paper-cool: var(--paper-deep);
-  --on-dark: #f6f3ee;
-  --on-dark-muted: #a09a90;
-  --slate-readable: #635e56;
-  --text: var(--ink);
+  --slate-readable: #5f6058;
 
   --background: var(--paper);
-  --foreground: var(--ink);
+  --foreground: var(--text);
 
   --card: var(--paper);
-  --card-foreground: var(--ink);
-  --popover: #fbf9f5;
-  --popover-foreground: var(--ink);
+  --card-foreground: var(--text);
+  --popover: #ffffff;
+  --popover-foreground: var(--text);
 
-  /* A filled button is ink on paper: the darkest thing on screen. */
-  --primary: var(--ink);
-  --primary-foreground: var(--paper);
+  /* A filled button is green on paper: the anchor colour, not pure black. */
+  --primary: var(--green);
+  --primary-foreground: var(--on-dark);
 
-  --secondary: var(--paper-deep);
+  --secondary: var(--cream);
   --secondary-foreground: var(--ink);
 
-  --muted: var(--paper-deep);
-  --muted-foreground: #635e56;
+  --muted: var(--cream);
+  --muted-foreground: #6e6f66;
 
   --accent: var(--gold-ink);
-  --accent-foreground: #fbf9f5;
-  --accent-soft: #ece2cd;
+  --accent-foreground: #ffffff;
+  --accent-soft: #f0e8d9;
 
   --destructive: #8f2b25;
-  --destructive-foreground: #fbf9f5;
+  --destructive-foreground: #ffffff;
 
-  --border: #d7d0c3;
-  --border-strong: #b8b0a1;
+  --border: var(--line);
+  --border-strong: #cdc5b3;
   --input: #8b857b;
   --ring: var(--gold-ink);
-  --status-positive: #2f6f52;
+  --status-positive: #1f4536;
   --status-warning: var(--gold-ink);
   --status-neutral: var(--slate);
-  --chart-1: #0a0a0a;
-  --chart-2: #b08d4c;
-  --chart-3: #7a756d;
-  --chart-4: #d7d0c3;
+  --chart-1: #1f4536;
+  --chart-2: #b8996b;
+  --chart-3: #6e6f66;
+  --chart-4: #d9d2c2;
 
   /* Nothing is raised off the paper. */
   --tile-sheen: none;
@@ -200,42 +234,53 @@
 }
 
 /*
- * The inversion. An ink chapter inside the paper site — the evidence band and
- * the closing invitation, and nothing else on a given page.
+ * The inversion. A green chapter inside the paper site, carrying the luxury
+ * weight and paired with real photography. Used at most twice on a page: the
+ * evidence band and the closing invitation, and nothing else.
+ *
+ * "ink" and "dark" are the same surface. The name "ink" predates the green
+ * and is kept so existing markup keeps resolving.
  */
 [data-surface="dark"],
 [data-surface="ink"] {
-  --background: var(--ink);
+  --background: var(--green);
   --foreground: var(--on-dark);
-  --card: var(--ink);
+  --card: var(--green);
   --card-foreground: var(--on-dark);
-  --popover: var(--ink-raised);
+  --popover: var(--green-mid);
   --popover-foreground: var(--on-dark);
-  --primary: var(--on-dark);
-  --primary-foreground: var(--ink);
-  --secondary: var(--ink-panel);
+  --primary: var(--gold);
+  --primary-foreground: #12140f;
+  --secondary: var(--green-mid);
   --secondary-foreground: var(--on-dark);
-  --muted: var(--ink-panel);
+  --muted: var(--green-mid);
   --muted-foreground: var(--on-dark-muted);
-  --accent: var(--gold-soft);
-  --accent-foreground: #0a0a0a;
-  --accent-soft: var(--ink-raised);
+
+  /* On green the untreated gold already clears AA at 6.6:1, so the darkened
+   * paper variant is not wanted here: it would go muddy against the ground. */
+  --accent: var(--gold);
+  --accent-foreground: #0d1b15;
+  --accent-soft: var(--green-mid);
+  --brass-ink: var(--gold);
+  --gold-ink: var(--gold);
+  --gold-deep: var(--gold-soft);
+  --slate: var(--on-dark-muted);
+  --slate-readable: var(--on-dark-muted);
+
   --destructive: #e0817d;
-  --destructive-foreground: #14100f;
-  --border: #2a2825;
-  --border-strong: #423f3a;
-  --input: #524e48;
-  --brass-ink: var(--gold-soft);
-  --gold-ink: var(--gold-soft);
-  --ring: var(--gold-soft);
-  --chart-1: #f6f3ee;
-  --chart-2: #d9bd85;
-  --chart-3: #a09a90;
-  --chart-4: #423f3a;
+  --destructive-foreground: #12140f;
+  --border: var(--line-dark);
+  --border-strong: rgba(255, 255, 255, 0.28);
+  --input: rgba(255, 255, 255, 0.34);
+  --ring: var(--gold);
+  --chart-1: #edeee8;
+  --chart-2: #b8996b;
+  --chart-3: #9faa9e;
+  --chart-4: rgba(255, 255, 255, 0.28);
   --tile-sheen: none;
   --shadow-tile: none;
 
-  background-color: var(--ink);
+  background-color: var(--green);
   color: var(--on-dark);
 }
 
@@ -246,39 +291,75 @@
 [data-surface="stone"],
 [data-surface="paper"] {
   --background: var(--paper);
-  --foreground: var(--ink);
+  --foreground: var(--text);
   --card: var(--paper);
-  --card-foreground: var(--ink);
-  --popover: #fbf9f5;
-  --popover-foreground: var(--ink);
-  --primary: var(--ink);
-  --primary-foreground: var(--paper);
-  --secondary: var(--paper-deep);
+  --card-foreground: var(--text);
+  --popover: #ffffff;
+  --popover-foreground: var(--text);
+  --primary: var(--green);
+  --primary-foreground: var(--on-dark);
+  --secondary: var(--cream);
   --secondary-foreground: var(--ink);
-  --muted: var(--paper-deep);
-  --muted-foreground: #635e56;
+  --muted: var(--cream);
+  --muted-foreground: #6e6f66;
   --accent: var(--gold-ink);
-  --accent-foreground: #fbf9f5;
-  --accent-soft: #ece2cd;
+  --accent-foreground: #ffffff;
+  --accent-soft: #f0e8d9;
+  --gold-ink: #7d6339;
+  --gold-deep: #8c7245;
+  --slate: #6e6f66;
+  --slate-readable: #5f6058;
   --destructive: #8f2b25;
-  --destructive-foreground: #fbf9f5;
-  --border: #d7d0c3;
-  --border-strong: #b8b0a1;
+  --destructive-foreground: #ffffff;
+  --border: var(--line);
+  --border-strong: #cdc5b3;
   --input: #8b857b;
   --ring: var(--gold-ink);
   --tile-sheen: none;
   --shadow-tile: none;
 
   background-color: var(--paper);
-  color: var(--ink);
+  color: var(--text);
 }
 
 /*
- * Chrome that borrows a palette without painting the ground under it — the
+ * The warm alternate band. Same ink and the same hairlines as paper, on the
+ * cream ground, so a run of white sections has somewhere to breathe without
+ * reaching for the inversion a third time.
+ */
+[data-surface="cream"] {
+  --background: var(--cream);
+  --foreground: var(--text);
+  --card: var(--cream);
+  --card-foreground: var(--text);
+  --popover: #ffffff;
+  --popover-foreground: var(--text);
+  --primary: var(--green);
+  --primary-foreground: var(--on-dark);
+  --secondary: var(--paper);
+  --secondary-foreground: var(--ink);
+  --muted: var(--paper-shade);
+  --muted-foreground: #6e6f66;
+  --accent: var(--gold-ink);
+  --accent-foreground: #ffffff;
+  --accent-soft: #f0e8d9;
+  --gold-ink: #7d6339;
+  --slate: #6e6f66;
+  --border: #ddd6c6;
+  --border-strong: #c8c0ad;
+  --ring: var(--gold-ink);
+
+  background-color: var(--cream);
+  color: var(--text);
+}
+
+/*
+ * Chrome that borrows a palette without painting the ground under it: the
  * masthead over a full-bleed opening frame, for instance.
  */
 [data-surface="dark"][data-surface-ground="none"],
 [data-surface="ink"][data-surface-ground="none"],
+[data-surface="cream"][data-surface-ground="none"],
 [data-surface="stone"][data-surface-ground="none"],
 [data-surface="paper"][data-surface-ground="none"],
 [data-surface="light"][data-surface-ground="none"] {
@@ -308,20 +389,24 @@
     background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-sans);
-    /* 400, not 300. Instrument Sans has no 300, and body copy asked to render
-     * at a weight a face does not carry gets synthesised into something
-     * slightly wrong at every size. */
+    /* 400, not 300. Body copy asked to render at a weight the face does not
+     * carry gets synthesised into something slightly wrong at every size.
+     * Plus Jakarta Sans does carry 300, but it is too light for running text
+     * at 16px and is reserved for large numerals. */
     font-weight: 400;
     letter-spacing: 0;
   }
 
-  /* Headings are Instrument Serif, which ships one weight only. */
+  /* Headings are Fraunces. 340 rather than 400: the face is variable across
+   * 300 to 500, and the lighter cut is what keeps a large headline elegant
+   * instead of heavy. font-optical-sizing is left at its default of auto, so
+   * the browser picks the display cut at display sizes. */
   h1,
   h2,
   h3,
   h4 {
     font-family: var(--font-display);
-    font-weight: 400;
+    font-weight: 340;
     letter-spacing: var(--tracking-display);
   }
 
@@ -584,7 +669,7 @@ body {
   font-family: var(--font-display);
   font-size: var(--text-display-1);
   line-height: var(--text-display-1--line-height);
-  font-weight: 400;
+  font-weight: 340;
   letter-spacing: var(--tracking-display);
 }
 
@@ -592,7 +677,7 @@ body {
   font-family: var(--font-display);
   font-size: var(--text-display-2);
   line-height: var(--text-display-2--line-height);
-  font-weight: 400;
+  font-weight: 340;
   letter-spacing: var(--tracking-display);
 }
 
@@ -600,7 +685,7 @@ body {
   font-family: var(--font-display);
   font-size: var(--text-display-3);
   line-height: var(--text-display-3--line-height);
-  font-weight: 400;
+  font-weight: 340;
   letter-spacing: -0.012em;
 }
 
@@ -617,7 +702,7 @@ body {
   font-family: var(--font-display);
   font-size: var(--text-accent);
   line-height: var(--text-accent--line-height);
-  font-weight: 400;
+  font-weight: 340;
   letter-spacing: var(--tracking-accent);
 }
 
@@ -1072,3 +1157,164 @@ body {
   );
 }
 
+
+/* --- Glass ----------------------------------------------------------------
+ *
+ * The one material in the system, and the reason it works is that it is rare:
+ * the hero advisor panel, the condensed market card, the off-plan info strips,
+ * the advisor chat mock, and the masthead once it leaves the hero. Five
+ * places. Applied to a sixth it stops reading as a material and starts reading
+ * as a theme.
+ *
+ * Two variants, and picking the wrong one is how text becomes unreadable:
+ *
+ *   glass       over dark or moody photography (a night skyline, the advisor
+ *               frame). Light tint, so it lifts off a dark ground.
+ *   glass-dark  over bright or daytime photography (blue sky, a daylight
+ *               marina). The light tint over a bright photo leaves white text
+ *               on near-white, so the ground has to come from the panel.
+ *
+ * When in doubt use glass-dark: it is legible over both.
+ */
+@utility glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+@utility glass-dark {
+  background: rgba(9, 14, 10, 0.55);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/*
+ * The fallback that keeps the site readable on hardware that cannot blur.
+ *
+ * Without this, a browser with no backdrop-filter renders `glass` as 10% white
+ * over a photograph, which is to say white text on a photograph, which is to
+ * say nothing at all. Every panel therefore has a solid ground to fall back
+ * to. This is not a rare path: it is older Android WebViews, Firefox with the
+ * feature disabled, and any device where the compositor has given up.
+ */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background: rgba(13, 27, 21, 0.82);
+  }
+
+  .glass-dark {
+    background: rgba(9, 14, 10, 0.86);
+  }
+}
+
+/*
+ * Readers who have asked their system to cut transparency, and readers who
+ * have asked for more contrast, get the panel solid. Both are explicit
+ * requests, and a decorative blur is not worth overriding either.
+ */
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .glass,
+  .glass-dark {
+    background: var(--green);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-color: rgba(255, 255, 255, 0.32);
+  }
+}
+
+/* --- The diagonal ---------------------------------------------------------
+ *
+ * The logo is a serif D with a forward slash cut through an X. That cut is the
+ * shape language, and it is spent on exactly one element: the advisor panel in
+ * the hero. Repeated across cards it would stop being a signature and become a
+ * pattern, which is the opposite of what a signature is for.
+ *
+ * It comes off below 768px. A three percent skew on a 1200px panel is a 36px
+ * wedge and reads as deliberate; on a 360px phone it is 11px and reads as a
+ * rendering fault, while eating the padding the text needs.
+ */
+@utility diagonal-panel {
+  clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);
+}
+
+@media (max-width: 767px) {
+  .diagonal-panel {
+    clip-path: none;
+  }
+}
+
+/* --- The grade ------------------------------------------------------------
+ *
+ * One grade across every photograph on the site.
+ *
+ * The library is sourced frame by frame rather than shot on one brief, so
+ * left alone it reads as a mood board: this one cool, that one saturated,
+ * the next one contrastier than both. A single grade is what makes nineteen
+ * separate photographs read as one commissioned shoot, and it is the cheapest
+ * expensive-looking thing in the whole system.
+ *
+ * Held deliberately light. Enough to pull the set toward the warm cream and
+ * take the edge off the saturated ones; not enough to look like a filter.
+ */
+@utility photo-grade {
+  filter: saturate(0.86) contrast(1.04) brightness(0.98) sepia(0.06);
+}
+
+/* --- The drawn rule -------------------------------------------------------
+ *
+ * A hairline that draws itself in from the leading edge as its section
+ * arrives, rather than being there from the start. Paired with a headline it
+ * reads as typesetting. Set --rule-delay to stagger it behind the words.
+ *
+ * Logical properties throughout, so it draws from the right on the Arabic
+ * pages instead of running backwards into the margin.
+ */
+@utility rule-draw {
+  position: relative;
+  border: 0;
+  block-size: 1px;
+  inline-size: 100%;
+  background: transparent;
+  overflow: hidden;
+}
+
+.rule-draw::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  inline-size: 100%;
+  background: var(--border);
+  transform: scaleX(0);
+  transform-origin: inline-start;
+  transition: transform var(--duration-slow) var(--ease-editorial);
+  transition-delay: var(--rule-delay, 0s);
+}
+
+.rule-draw[data-reveal="shown"]::before,
+[data-reveal="shown"] .rule-draw::before {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rule-draw::before {
+    transform: scaleX(1);
+    transition: none;
+  }
+}
+
+/* --- Viewport height ------------------------------------------------------
+ *
+ * svh, not vh. On a phone, vh is measured against the viewport with the
+ * browser chrome retracted, so a 94vh hero is taller than the screen on first
+ * paint and the proof row sits under the address bar until the reader
+ * scrolls. svh measures the small viewport, which is the one they are
+ * actually looking at. The vh line above it is the fallback and has to come
+ * first.
+ */
+@utility min-h-hero {
+  min-height: 94vh;
+  min-height: 94svh;
+}

@@ -19,7 +19,7 @@ export const en = {
   /** Page metadata for the localised pages. Titles stay unique per language. */
   meta: {
     "/": {
-      title: "DLX Properties — Dubai property, decided on evidence",
+      title: "DLX Properties: Dubai property, decided on evidence",
       description:
         "Official Dubai Land Department records, live off-plan launches and a consultant team that answers. Search 200,000+ registered developers, projects and communities.",
       tagline: "Dubai property, decided on evidence.",
@@ -117,7 +117,7 @@ export const en = {
       {
         question: "What does DLX actually do for a client?",
         answer:
-          "Four things: off-plan launches, acquisition, disposal and portfolio strategy — each backed by the registered transaction record for the community you are buying into.",
+          "Four things: off-plan launches, acquisition, disposal and portfolio strategy, each backed by the registered transaction record for the community you are buying into.",
       },
       {
         question: "Do I need to be in Dubai to buy?",
@@ -130,7 +130,7 @@ export const en = {
   about: {
     eyebrow: "About",
     title: "Evidence first, then advice.",
-    lead: "Most brokerages sell you a feeling. We start with the official record — every registered developer, project and community in Dubai — and then put a named consultant beside it.",
+    lead: "Most brokerages sell you a feeling. We start with the official record (every registered developer, project and community in Dubai) and then put a named consultant beside it.",
     licenceEyebrow: "Licence",
     licenceBody: `${brand.name} is a Dubai real-estate brokerage with its office at ${brand.address.street}, ${brand.address.locality}. Applicable regulatory identifiers are shown with the relevant advertisement or legal disclosure.`,
     principlesEyebrow: "How we work",

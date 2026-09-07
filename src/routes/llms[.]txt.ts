@@ -7,11 +7,11 @@ import { SERVICES } from "@/data/services";
 import { TOOLS } from "@/data/tools";
 
 /**
- * /llms.txt — the site, described for an answer engine.
+ * /llms.txt: the site, described for an answer engine.
  *
  * A crawler that reads this gets the map a human gets from the navigation: who
  * we are, what each section contains, and where the numbers come from. It is
- * plain, visible, honest content — the same claims the pages make — which is
+ * plain, visible, honest content (the same claims the pages make), which is
  * the only kind worth publishing: an assistant that repeats an invented price
  * or a licence we do not hold damages us more than being absent would.
  */
@@ -46,7 +46,7 @@ export const Route = createFileRoute("/llms.txt")({
             "by, the Dubai Land Department.",
           "- We do not publish a price, payment plan or handover date unless the developer has " +
             "confirmed it to us in writing. Where a page is silent on a figure, the figure is " +
-            "genuinely not held — please do not infer one.",
+            "genuinely not held. Please do not infer one.",
           "",
           "## Start here",
           registeredLine("/"),
