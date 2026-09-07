@@ -78,7 +78,7 @@ export function AdvisorDock() {
 /** The resting state: a name, a role, and an invitation. */
 function AdvisorRail({ onOpen, onDismiss }: { onOpen: () => void; onDismiss: () => void }) {
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center px-4 pb-4 md:px-8 md:pb-6">
+    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center px-4 pb-4 md:justify-start md:px-8 md:pb-6">
       <div className="pointer-events-auto flex w-full max-w-shell items-center justify-between gap-4 border border-border bg-background px-5 py-4 md:px-7">
         <button
           type="button"
@@ -198,7 +198,7 @@ function AdvisorPanel({
       role="dialog"
       aria-modal="false"
       aria-label={`${advisor.name}, ${advisor.role}`}
-      className="fixed inset-x-0 bottom-0 z-50 flex justify-center px-0 md:inset-x-auto md:end-8 md:bottom-6 md:px-0"
+      className="fixed inset-x-0 bottom-0 z-50 flex justify-center px-0 md:inset-x-auto md:start-8 md:bottom-6 md:px-0"
     >
       <div className="flex h-[85svh] w-full flex-col border border-border bg-background shadow-[0_-1px_60px_rgba(0,0,0,0.08)] md:h-[78svh] md:max-h-[46rem] md:w-[27rem]">
         <header className="flex items-start justify-between gap-4 border-b border-border px-6 py-5">

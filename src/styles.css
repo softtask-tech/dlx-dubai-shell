@@ -476,15 +476,24 @@
  * no hidden content in it. `pending` is set before the first paint; `shown`
  * lands when the block scrolls into view.
  */
+/*
+ * Fast, and started early.
+ *
+ * These ran for 1200ms and only began once the element was 10% inside the
+ * viewport, which on a quick scroll (and Lenis makes every scroll quick) meant
+ * whole sections were still at opacity 0 when they were already on screen. The
+ * site showed blank white screens. A reveal that has not finished before the
+ * reader arrives is not an entrance, it is a missing page.
+ */
 [data-reveal] {
   transition:
-    opacity var(--duration-slow) var(--ease-editorial),
-    transform var(--duration-slow) var(--ease-editorial);
+    opacity var(--duration-quick) var(--ease-editorial),
+    transform var(--duration-quick) var(--ease-editorial);
 }
 
 [data-reveal="pending"] {
   opacity: 0;
-  transform: translateY(1.5rem);
+  transform: translateY(0.75rem);
 }
 
 [data-reveal="shown"] {
@@ -1201,6 +1210,18 @@ body {
  *
  * When in doubt use glass-dark: it is legible over both.
  *
+ * EVERY ONE OF THESE IS LEGIBLE WITH NO BLUR AT ALL, and that is not caution,
+ * it is a bug that shipped. The production minifier collapsed the two
+ * backdrop-filter declarations and kept only the -webkit- one, so the built
+ * stylesheet had no blur in it. The @supports fallback did not catch it
+ * either: the browser does support backdrop-filter, so the fallback correctly
+ * decided it was not needed, while the property it was guarding had been
+ * stripped on the way out. A masthead at 78% white with nothing behind it is
+ * how page text ends up showing through the navigation.
+ *
+ * So the tints below carry the contrast on their own and the blur is an
+ * enhancement. If it disappears again, nothing becomes unreadable.
+ *
  * ONE TRAP. Never put `data-surface` on the same element as one of these. That
  * attribute paints its background from unlayered CSS, and unlayered CSS beats
  * a Tailwind layer however specific the utility is, so the panel silently
@@ -1209,7 +1230,7 @@ body {
  * directly, which resolve from global tokens and need no surface at all.
  */
 @utility glass {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, 0.22);
@@ -1221,14 +1242,14 @@ body {
  * is white first and a dark panel on a bright page is a hole in it.
  */
 @utility glass-paper {
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(18px) saturate(120%);
   -webkit-backdrop-filter: blur(18px) saturate(120%);
   border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
 @utility glass-dark {
-  background: rgba(9, 14, 10, 0.55);
+  background: rgba(9, 14, 10, 0.78);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -1251,7 +1272,7 @@ body {
  * utility can never outrank.
  */
 [data-surface][data-glass-bar] {
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(16px) saturate(120%);
   -webkit-backdrop-filter: blur(16px) saturate(120%);
 }

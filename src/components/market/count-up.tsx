@@ -96,22 +96,27 @@ export function CountUp({
    * The animation is for the eye only.
    *
    * A span whose text changes sixty times a second is, to a screen reader, a
-   * number being read aloud sixty times. `aria-hidden` on the moving text and
-   * the final value in a visually hidden sibling means the listener hears the
-   * figure once, correctly, and never hears it count.
+   * number being read aloud sixty times, so the moving text is hidden from the
+   * accessibility tree and the figure is announced once, from `aria-label`.
+   *
+   * ONE number in the DOM, not two. This used to render the counting value and
+   * the final value as siblings, and anything reading the page as text saw
+   * both: "4,895 36,857" on every statistic. A screen reader was fine, but a
+   * search crawler and an answer engine were not, and this site is built to be
+   * read by those. `aria-label` carries the accessible figure instead of a
+   * second copy of it, so the text of the page is the figure, once.
    */
   return (
     /* Tabular figures, so the digits do not change width as the number counts.
        Proportional numerals make a counting figure jitter, and the jitter is a
        real layout shift: it put Market Intelligence at 0.035 CLS, which is
        under budget but is a number moving for no reason. */
-    <span ref={ref} className="tabular-nums">
+    <span ref={ref} role="text" aria-label={final} className="tabular-nums">
       <span aria-hidden="true">
         {prefix}
         {format(display ?? value)}
         {suffix}
       </span>
-      <span className="sr-only">{final}</span>
     </span>
   );
 }

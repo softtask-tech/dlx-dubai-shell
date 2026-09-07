@@ -5,7 +5,6 @@ import { useReducedMotion } from "motion/react";
 import { advisor } from "@/config/advisor";
 import { site } from "@/config/site";
 import type { AdvisorAvailability } from "@/data/advisor.functions";
-import { useAdvisor } from "@/components/advisor/use-advisor";
 import { cn } from "@/lib/utils";
 
 /**
@@ -14,38 +13,46 @@ import { cn } from "@/lib/utils";
  * The search bar is the default move for a brokerage homepage and it is the
  * wrong one here: DLX has two live mandates, so a search box promises an
  * inventory that does not exist and the first thing a visitor does is find it
- * empty. What DLX actually has that competitors do not is an advisor that
- * checks itself against the official record, so that is what the hero offers.
+ * empty. What DLX has that competitors do not is an advisor that checks itself
+ * against the official record, so that is what the hero offers.
  *
- * Everything in it is real. The chips send genuine questions to
- * `/api/advisor/chat` and the answer streams back from the same endpoint and
- * the same guardrails the dock uses; the citations shown are the ones the
- * server actually attached. Nothing is canned. A panel of invented answers
- * would be both a lie about a product that exists and the most recognisable
- * tell in the genre, and the site's whole argument is that its figures can be
- * checked.
+ * THIS PANEL DOES NOT ANSWER. It used to: a question streamed its reply into
+ * the card, the card grew by a few hundred pixels, and the hero reflowed under
+ * the reader while they were still on the headline. A hero has to be a fixed
+ * shape. So the panel is the invitation and the floating advisor is the
+ * conversation: a question here opens the dock in the corner with that question
+ * already in it, and the answer arrives somewhere that is allowed to grow.
  *
- * Where no model key is configured the panel does not pretend: the chips
- * become links to a human, and the input is not rendered at all.
+ * `#ask=` is the deep link the dock already listens for, the same one the area
+ * pages use. No second chat implementation and no duplicate session.
  */
 export function NoorPanel({ availability }: { availability: AdvisorAvailability }) {
   const [mode, setMode] = useState<"chat" | "voice">("chat");
   const [draft, setDraft] = useState("");
-  const { turns, sending, notice, send } = useAdvisor("/");
 
-  const lastAsked = [...turns].reverse().find((turn) => turn.role === "user") ?? null;
-  const answer = [...turns].reverse().find((turn) => turn.role === "advisor") ?? null;
+  /**
+   * Hands a question to the floating advisor.
+   *
+   * The reset is not superstition: assigning the hash it already holds fires no
+   * `hashchange`, so asking the same question twice would silently do nothing
+   * the second time.
+   */
+  const ask = (question: string) => {
+    const target = `#ask=${encodeURIComponent(question)}`;
+    if (window.location.hash === target) window.location.hash = "";
+    window.location.hash = target;
+  };
 
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
     const question = draft.trim();
     if (!question) return;
     setDraft("");
-    void send(question);
+    ask(question);
   };
 
   return (
-    <div className="glass-paper diagonal-panel p-7 shadow-[0_24px_60px_rgba(0,0,0,0.10)] sm:p-8 lg:p-9">
+    <div className="glass-paper diagonal-panel p-7 shadow-[0_24px_60px_rgba(0,0,0,0.10)] sm:p-8">
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <span
@@ -75,7 +82,9 @@ export function NoorPanel({ availability }: { availability: AdvisorAvailability 
               onClick={() => setMode(option)}
               className={cn(
                 "focus-ring rounded-full px-4 py-1.5 text-xs font-semibold capitalize transition-colors",
-                mode === option ? "bg-green text-on-dark" : "text-muted-foreground hover:text-foreground",
+                mode === option
+                  ? "bg-green text-on-dark"
+                  : "text-muted-foreground hover:text-foreground",
               )}
             >
               {option}
@@ -85,16 +94,12 @@ export function NoorPanel({ availability }: { availability: AdvisorAvailability 
       </div>
 
       {mode === "chat" ? (
-        <ChatMode
+        <ChatInvitation
           availability={availability}
-          asked={lastAsked?.content ?? null}
-          answer={answer}
-          sending={sending}
-          notice={notice}
           draft={draft}
           setDraft={setDraft}
           onSubmit={onSubmit}
-          onAsk={(question) => void send(question)}
+          onAsk={ask}
         />
       ) : (
         <VoiceMode voiceConfigured={availability.voice} />
@@ -103,40 +108,32 @@ export function NoorPanel({ availability }: { availability: AdvisorAvailability 
   );
 }
 
-/** The three questions offered. Real ones, in the words a buyer would use. */
+/** Three real questions, in the words a buyer would use. */
 const OPENERS = [
   "What is Business Bay yielding right now?",
   "Do I qualify for a Golden Visa?",
   "Buying from abroad, where do I start?",
 ] as const;
 
-function ChatMode({
+function ChatInvitation({
   availability,
-  asked,
-  answer,
-  sending,
-  notice,
   draft,
   setDraft,
   onSubmit,
   onAsk,
 }: {
   availability: AdvisorAvailability;
-  asked: string | null;
-  answer: ReturnType<typeof useAdvisor>["turns"][number] | null;
-  sending: boolean;
-  notice: string | null;
   draft: string;
   setDraft: (value: string) => void;
   onSubmit: (event: FormEvent) => void;
   onAsk: (question: string) => void;
 }) {
-  /* No key configured: offer a person instead of a broken control. */
+  /* No key configured: offer a person instead of a control that fails. */
   if (!availability.chat) {
     return (
       <div className="mt-7">
         <p className="body-text text-muted-foreground">
-          Noor is offline on this deployment. A consultant answers the same questions.
+          {advisor.name} is offline on this deployment. A consultant answers the same questions.
         </p>
         <a
           href="/contact"
@@ -150,56 +147,19 @@ function ChatMode({
 
   return (
     <div className="mt-7">
-      {asked ? (
-        <p className="caption text-muted-foreground">
-          <span className="sr-only">You asked: </span>
-          {asked}
-        </p>
-      ) : null}
-
-      {/* The answer, as it streams. `aria-live` so a screen reader hears it
-          arrive rather than having to go looking for it. */}
-      <div aria-live="polite" aria-atomic="false">
-        {answer ? (
-          <div className="mt-3 border-s-2 border-gold-ink bg-cream p-4">
-            <p className="body-text text-foreground">
-              {answer.content}
-              {answer.streaming ? (
-                <span aria-hidden className="ms-0.5 inline-block animate-pulse">
-                  |
-                </span>
-              ) : null}
-            </p>
-            {answer.citations && answer.citations.length > 0 ? (
-              <ul className="mt-3 border-t border-border pt-2">
-                {answer.citations.map((citation) => (
-                  <li key={`${citation.url}-${citation.label}`}>
-                    <a href={citation.url} className="caption text-gold-ink hover:underline">
-                      {citation.label}
-                      {citation.updatedAt ? ` · ${citation.updatedAt.slice(0, 7)}` : null}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-          </div>
-        ) : null}
-      </div>
-
-      {notice ? <p className="caption mt-3 text-muted-foreground">{notice}</p> : null}
-
-      {/* The openers stay available after an answer, so a second question is
-          one tap rather than a typing job on a phone. */}
-      <ul className="mt-4 grid gap-2">
+      <ul className="grid gap-2">
         {OPENERS.map((question) => (
           <li key={question}>
             <button
               type="button"
-              disabled={sending}
               onClick={() => onAsk(question)}
-              className="focus-ring w-full border border-border bg-paper px-4 py-3 text-start text-sm text-foreground transition-colors hover:border-gold-ink hover:bg-cream disabled:opacity-50"
+              className="focus-ring group flex w-full items-center justify-between gap-3 border border-border bg-paper px-4 py-3 text-start text-sm text-foreground transition-colors hover:border-gold-ink hover:bg-cream"
             >
               {question}
+              <ArrowRight
+                aria-hidden
+                className="size-4 shrink-0 -translate-x-1 text-gold-ink opacity-0 transition-all duration-quick ease-editorial group-hover:translate-x-0 group-hover:opacity-100 rtl:-scale-x-100"
+              />
             </button>
           </li>
         ))}
@@ -220,13 +180,15 @@ function ChatMode({
         />
         <button
           type="submit"
-          disabled={sending || draft.trim().length === 0}
-          aria-label="Send question"
+          disabled={draft.trim().length === 0}
+          aria-label={`Ask ${advisor.name}`}
           className="focus-ring grid size-11 shrink-0 place-items-center rounded-full bg-green text-on-dark transition-opacity disabled:opacity-40"
         >
           <ArrowRight aria-hidden className="size-4 rtl:-scale-x-100" />
         </button>
       </form>
+
+      <p className="caption mt-3 text-muted-foreground">Answers open in the advisor, bottom left.</p>
     </div>
   );
 }
@@ -234,15 +196,10 @@ function ChatMode({
 /**
  * Voice, described as what it actually is.
  *
- * The specification asked for a microphone button wired to the voice flow.
- * There is no such flow to wire it to: `/api/advisor/voice` is a telephony
- * webhook, authenticated by a shared secret and unreachable from a browser,
- * and the only browser-side voice feature is reading an answer aloud. A mic
- * button here would be a control that does nothing, which is exactly the
- * invented-interface problem the rest of this panel avoids.
- *
- * So voice is presented as the real thing it is: a phone line, answered by the
- * same advisor with the same guardrails.
+ * There is no microphone button because there is no browser microphone flow to
+ * wire one to: `/api/advisor/voice` is a telephony webhook, authenticated by a
+ * shared secret and unreachable from a page. A mic here would be a control
+ * connected to nothing. It is a phone line, so it is presented as one.
  */
 function VoiceMode({ voiceConfigured }: { voiceConfigured: boolean }) {
   const reduced = useReducedMotion();
@@ -256,8 +213,6 @@ function VoiceMode({ voiceConfigured }: { voiceConfigured: boolean }) {
             className="w-1 rounded-full bg-gold-ink"
             style={{
               height,
-              /* Ambient, and only where motion is welcome. It marks the phone
-                 line, it is not a picture of Noor listening. */
               animation: reduced ? undefined : `noor-wave 1.2s ease-in-out ${index * 0.1}s infinite`,
             }}
           />
@@ -278,7 +233,7 @@ function VoiceMode({ voiceConfigured }: { voiceConfigured: boolean }) {
       {voiceConfigured ? (
         <p className="caption mt-5 flex items-center gap-2 text-muted-foreground">
           <Mic aria-hidden className="size-3.5" />
-          Answers can be read aloud in the full advisor.
+          Answers can be read aloud in the advisor.
         </p>
       ) : null}
     </div>
