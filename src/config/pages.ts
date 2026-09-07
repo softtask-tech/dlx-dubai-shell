@@ -55,7 +55,7 @@ export const SITE_PAGES: readonly SitePage[] = [
     label: "Home",
     title: "DLX Properties: Dubai real estate, handled with intention",
     description:
-      "A private Dubai brokerage advising on prime residential acquisitions, off-market sales and long-term portfolio strategy.",
+      "A private Dubai brokerage advising on prime residential acquisitions, off-market sales and long-term portfolio strategy, with off-plan mandates in Abu Dhabi and Sharjah.",
     tagline: "Dubai real estate, handled with intention.",
     fullTitle: true,
     priority: 1.0,
@@ -77,7 +77,7 @@ export const SITE_PAGES: readonly SitePage[] = [
     inPrimaryNav: false,
     title: "Off-plan Property in Dubai",
     description:
-      "A considered route into Dubai off-plan property, separating verified availability, payment terms, delivery and market evidence from sales narrative.",
+      "A considered route into off-plan property in Dubai, Abu Dhabi and Sharjah, separating verified availability, payment terms, delivery and market evidence from sales narrative.",
     tagline: "Off-plan decisions built from terms, timing and evidence.",
     priority: 0.8,
     changeFrequency: "weekly",

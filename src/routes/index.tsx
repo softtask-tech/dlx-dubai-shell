@@ -11,6 +11,7 @@ import { getMarketMetadataFn, getMarketOverviewFn } from "@/data/market-public.f
 import { faqSchema, reviewSchemaFor, type FaqEntry } from "@/lib/schema";
 import { pageHead, withHeroPreload } from "@/lib/seo";
 import type { PhotoSlug } from "@/lib/photos";
+import { Parallax } from "@/components/motion";
 import { Photo } from "@/components/site/photo";
 import { Reveal } from "@/components/site/reveal";
 import { Emphasise } from "@/components/site/emphasis";
@@ -34,7 +35,7 @@ const FAQ_ENTRIES: readonly FaqEntry[] = [
   {
     question: "What does DLX actually do for a client?",
     answer:
-      "Five practices, run by one team: buying, selling, investment advisory, the Golden Visa property route and relocation. We take a small number of mandates at a time, and one consultant stays with you from the first conversation to the last.",
+      "Five practices, run by one team: buying, selling, investment advisory, the Golden Visa property route and relocation. One consultant stays with you from the first conversation to the last, with no hand-offs between desks.",
   },
   {
     question: "Do I need to be in Dubai to buy?",
@@ -83,7 +84,16 @@ const OFF_PLAN_LINES: Record<string, string> = {
     "Sobha's first Abu Dhabi masterplan, waterfront, and evidence-checked before we'd represent it.",
 };
 
-const HERO_PHOTO: PhotoSlug = "downtown-aerial-night-trails";
+/*
+ * A daylight frame, deliberately.
+ *
+ * The page opened on a night skyline with white type across it, and the type
+ * lost: a lit city is a field of small bright highlights, which is the worst
+ * possible ground for a paragraph. Pale haze is the opposite. It carries ink
+ * type at full contrast, it makes the site read white first, and the building
+ * everyone recognises is still in it.
+ */
+const HERO_PHOTO: PhotoSlug = "skyline-across-water-haze";
 
 export const Route = createFileRoute("/")({
   loader: async () => {
@@ -180,56 +190,80 @@ function Index() {
 
   return (
     <>
-      {/* I. The opening. A photograph, one sentence, and the advisor. */}
-      <section
-        /* Tells the masthead it may sit inside the frame, and reclaims the
-           height `main` reserves for it. See components/site/header. */
-        data-dark-opening=""
-        data-surface="dark"
-        className="relative -mt-16 flex min-h-hero items-center overflow-hidden md:-mt-20"
-      >
-        <Photo
-          slug={HERO_PHOTO}
-          sizes="100vw"
-          priority
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        {/* Weighted to the left, where the type is, and heavier on a phone
-            where the text sits over the middle of the frame. */}
+      {/*
+       * I. The opening.
+       *
+       * Ink on paper over a pale photograph, not white on a dark one. The
+       * scrim runs from solid paper at the leading edge to clear at the far
+       * one, so the type sits on the page and the picture opens out beside it.
+       *
+       * No figure here. A large number in a hero reads as a claim about the
+       * company that owns the page, and "818,497 registered sales" is a fact
+       * about Dubai, not about DLX. It belongs in the market section, where it
+       * is labelled and sourced. What goes here is who DLX is.
+       */}
+      <section className="relative -mt-16 flex min-h-hero items-center overflow-hidden md:-mt-20">
+        <Parallax speed={0.86} className="absolute inset-x-0 -top-[8%] h-[116%]">
+          <Photo
+            slug={HERO_PHOTO}
+            sizes="100vw"
+            priority
+            className="h-full w-full object-cover"
+          />
+        </Parallax>
+
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-green/85 via-green/70 to-green/85 lg:bg-gradient-to-r lg:from-green/90 lg:via-green/55 lg:to-green/15"
+          className="absolute inset-0 bg-gradient-to-b from-paper via-paper/92 to-paper/55 lg:bg-gradient-to-r lg:from-paper lg:via-paper/80 lg:to-transparent"
         />
 
         <Container className="relative py-28 md:py-32">
-          <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-            <div>
-              <Eyebrow className="text-gold">Private Brokerage · Dubai</Eyebrow>
-              <h1 className="display-1 mt-6 max-w-[12ch] text-balance">
-                <Emphasise text="Ask first. *Then* decide." />
-              </h1>
-              <p className="lead mt-7 max-w-[42ch] text-on-dark-muted">
-                {advisor.name}, our AI advisor, checks every answer against the Dubai Land
-                Department record before it reaches you. When it doesn't know, it says so, and
-                hands you to someone who does.
-              </p>
+          <div className="grid items-center gap-14 lg:grid-cols-[1fr_26rem] lg:gap-20 xl:grid-cols-[1fr_30rem]">
+            <div className="max-w-[36rem]">
+              <Reveal>
+                <Eyebrow className="mb-6">Private Brokerage · Dubai</Eyebrow>
+              </Reveal>
+              {/* Plain Reveal, not the line-by-line RevealText: that one
+                  splits the element with SplitType, and this headline carries
+                  an <em> inside it that a text splitter would take apart. */}
+              <Reveal delay={0.05}>
+                <h1 className="display-1 text-balance">
+                  <Emphasise text="Ask first. *Then* decide." />
+                </h1>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <p className="lead mt-8 max-w-[34rem] text-muted-foreground">
+                  A Dubai brokerage that answers before it sells. {advisor.name}, our AI advisor,
+                  checks every answer against the Dubai Land Department record, and hands you to a
+                  named consultant the moment a question turns on your circumstances.
+                </p>
+              </Reveal>
 
-              {/* Stacked hairlines on a phone, one row from the small
-                  breakpoint up. Three uppercase labels across a 360px screen
-                  is three columns of two-line fragments. */}
-              <ul className="mt-10 grid border-t border-white/15 sm:grid-flow-col sm:auto-cols-fr sm:gap-8 sm:border-t-0">
-                {proof.map((entry) => (
-                  <li
-                    key={entry}
-                    className="eyebrow border-b border-white/15 py-3 text-on-dark-muted sm:border-t sm:border-b-0 sm:pb-0"
-                  >
-                    {entry}
-                  </li>
-                ))}
-              </ul>
+              {/*
+               * Facts about the firm, not figures about the market. Each one is
+               * checkable, which is the point. Stacked hairlines on a phone:
+               * three tracked uppercase labels across 360px is three columns of
+               * broken fragments, which is what this row used to be.
+               */}
+              <Reveal delay={0.2}>
+                <ul className="mt-12 flex flex-col border-t border-border sm:flex-row sm:flex-wrap sm:gap-x-10">
+                  {[
+                    `RERA ORN ${site.reraOrn}`,
+                    "Dubai · Abu Dhabi · Sharjah",
+                    "Five languages, day or night",
+                  ].map((entry) => (
+                    <li
+                      key={entry}
+                      className="eyebrow border-b border-border py-3.5 text-muted-foreground sm:border-b-0"
+                    >
+                      {entry}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
             </div>
 
-            <Reveal delay={0.15}>
+            <Reveal delay={0.25}>
               <NoorPanel availability={availability} />
             </Reveal>
           </div>
@@ -249,12 +283,12 @@ function Index() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="body-text max-w-[38ch] text-muted-foreground">
-              DLX takes a small number of mandates at a time. One consultant, start to finish,
-              pricing from the record, flagging the service-charge problem before you find it the
-              hard way.
+              One consultant, start to finish. No hand-offs, no junior desk, no queue. We price
+              from the registered record and flag the service-charge problem before you find it
+              the hard way.
             </p>
             <p className="body-text mt-4 max-w-[38ch] text-muted-foreground">
-              And saying no, plainly, when no is the right answer.
+              And we say no, plainly, when no is the right answer.
             </p>
             <Link
               to="/about"
@@ -309,8 +343,8 @@ function Index() {
         </Reveal>
         <Reveal>
           <p className="body-text mt-10 max-w-[52ch] text-muted-foreground">
-            We take on mandates deliberately, not by volume. More will join this list only when
-            they clear the same bar.
+            Every project we represent has to clear the same evidence check before it reaches
+            this page. These two have.
           </p>
         </Reveal>
       </Section>

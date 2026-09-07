@@ -26,6 +26,7 @@ import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
 import { ConsentBar } from "@/components/site/consent-bar";
 import { MobileContactBar } from "@/components/site/mobile-contact-bar";
+import { ScrollProgress } from "@/components/site/scroll-progress";
 import { advisorAvailabilityFn } from "@/data/advisor.functions";
 import { hasDecided, initTracking, trackPageView } from "@/lib/tracking";
 import { LenisProvider } from "@/components/motion/lenis-provider";
@@ -228,6 +229,7 @@ function RootComponent() {
         <CurrencyProvider>
           <LenisProvider>
             <SkipLink />
+            {isCampaignPage ? null : <ScrollProgress />}
             {isCampaignPage ? null : <Header />}
             <main
               id="main"

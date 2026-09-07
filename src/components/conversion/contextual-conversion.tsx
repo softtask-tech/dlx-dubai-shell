@@ -16,7 +16,7 @@ export function ContextualConversion({
   return (
     <section
       data-surface="dark"
-      className="bg-ink py-section-sm"
+      className="py-section-sm"
       aria-labelledby="conversion-title"
     >
       <Container className="grid gap-8 md:grid-cols-12 md:items-end">

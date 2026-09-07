@@ -35,7 +35,7 @@ export function AdvisorMoment() {
             sizes="(min-width: 1024px) 42vw, 100vw"
             className="absolute inset-0 h-full w-full object-cover"
           />
-          <div aria-hidden="true" className="absolute inset-0 bg-ink/35" />
+          <div aria-hidden="true" className="absolute inset-0 bg-green/35" />
         </div>
 
         <div className="lg:col-span-7">

@@ -16,8 +16,11 @@ export const brand = {
   /** Bare domain, shown on social cards and used as the default canonical origin. */
   domain: "dlxproperties.com",
   tagline: "Dubai property, decided on evidence.",
+  /* Reaches Abu Dhabi and Sharjah because two live mandates are there, so the
+   * projects surface in UAE-wide search. The on-page voice stays Dubai-first:
+   * this is the description a crawler reads, not a repositioning. */
   description:
-    "A Dubai brokerage pairing official Dubai Land Department records with hands-on advice on off-plan launches, prime residential acquisitions and long-term portfolio strategy.",
+    "A Dubai brokerage pairing official Dubai Land Department records with hands-on advice on off-plan launches, prime residential acquisitions and long-term portfolio strategy, across Dubai, Abu Dhabi and Sharjah.",
   /** Internal corporate compliance fact. Render only in an applicable compliance block. */
   reraOrn: "40905",
   /** DED trade licence number. Compliance blocks only. */

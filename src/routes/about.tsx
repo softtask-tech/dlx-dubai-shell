@@ -94,9 +94,8 @@ function AboutPage() {
             <Reveal delay={0.1}>
               <p className="lead mt-8">
                 DLX was built for the client who has done this before, and for the one who has not
-                and would rather not learn the hard way. We take a small number of clients across
-                Dubai's prime districts, advise quietly, negotiate precisely, and hold a long view
-                of value.
+                and would rather not learn the hard way. We work across Dubai's prime
+                districts, advise quietly, negotiate precisely, and hold a long view of value.
               </p>
             </Reveal>
           </div>
