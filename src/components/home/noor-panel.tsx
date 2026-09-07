@@ -45,12 +45,12 @@ export function NoorPanel({ availability }: { availability: AdvisorAvailability 
   };
 
   return (
-    <div className="glass diagonal-panel p-7 sm:p-8 lg:p-9">
+    <div className="glass-paper diagonal-panel p-7 shadow-[0_24px_60px_rgba(0,0,0,0.10)] sm:p-8 lg:p-9">
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <span
             aria-hidden
-            className="grid size-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-gold to-green-mid font-display text-lg text-ink"
+            className="grid size-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-gold to-green-mid font-display text-lg text-white"
           >
             N
           </span>
@@ -58,14 +58,14 @@ export function NoorPanel({ availability }: { availability: AdvisorAvailability 
             <span className="font-display block text-base leading-tight">{advisor.name}</span>
             {/* The role never leaves the name's side. A human name on a machine
                 is a lie waiting to be believed. */}
-            <span className="eyebrow block text-gold">{advisor.role}</span>
+            <span className="eyebrow block text-gold-ink">{advisor.role}</span>
           </span>
         </div>
 
         <div
           role="group"
           aria-label="Advisor mode"
-          className="flex shrink-0 rounded-full bg-white/10 p-1"
+          className="flex shrink-0 rounded-full bg-cream p-1"
         >
           {(["chat", "voice"] as const).map((option) => (
             <button
@@ -75,7 +75,7 @@ export function NoorPanel({ availability }: { availability: AdvisorAvailability 
               onClick={() => setMode(option)}
               className={cn(
                 "focus-ring rounded-full px-4 py-1.5 text-xs font-semibold capitalize transition-colors",
-                mode === option ? "bg-gold text-ink" : "text-on-dark-muted hover:text-on-dark",
+                mode === option ? "bg-green text-on-dark" : "text-muted-foreground hover:text-foreground",
               )}
             >
               {option}
@@ -135,12 +135,12 @@ function ChatMode({
   if (!availability.chat) {
     return (
       <div className="mt-7">
-        <p className="body-text text-on-dark-muted">
+        <p className="body-text text-muted-foreground">
           Noor is offline on this deployment. A consultant answers the same questions.
         </p>
         <a
           href="/contact"
-          className="focus-ring eyebrow mt-6 inline-flex min-h-12 items-center bg-gold px-6 text-ink"
+          className="focus-ring eyebrow mt-6 inline-flex min-h-12 items-center bg-green px-6 text-on-dark"
         >
           Speak to a consultant
         </a>
@@ -151,7 +151,7 @@ function ChatMode({
   return (
     <div className="mt-7">
       {asked ? (
-        <p className="caption text-on-dark-muted">
+        <p className="caption text-muted-foreground">
           <span className="sr-only">You asked: </span>
           {asked}
         </p>
@@ -161,8 +161,8 @@ function ChatMode({
           arrive rather than having to go looking for it. */}
       <div aria-live="polite" aria-atomic="false">
         {answer ? (
-          <div className="mt-3 border-s-2 border-gold bg-gold/12 p-4">
-            <p className="body-text text-on-dark">
+          <div className="mt-3 border-s-2 border-gold-ink bg-cream p-4">
+            <p className="body-text text-foreground">
               {answer.content}
               {answer.streaming ? (
                 <span aria-hidden className="ms-0.5 inline-block animate-pulse">
@@ -171,10 +171,10 @@ function ChatMode({
               ) : null}
             </p>
             {answer.citations && answer.citations.length > 0 ? (
-              <ul className="mt-3 border-t border-white/15 pt-2">
+              <ul className="mt-3 border-t border-border pt-2">
                 {answer.citations.map((citation) => (
                   <li key={`${citation.url}-${citation.label}`}>
-                    <a href={citation.url} className="caption text-gold hover:underline">
+                    <a href={citation.url} className="caption text-gold-ink hover:underline">
                       {citation.label}
                       {citation.updatedAt ? ` · ${citation.updatedAt.slice(0, 7)}` : null}
                     </a>
@@ -186,7 +186,7 @@ function ChatMode({
         ) : null}
       </div>
 
-      {notice ? <p className="caption mt-3 text-on-dark-muted">{notice}</p> : null}
+      {notice ? <p className="caption mt-3 text-muted-foreground">{notice}</p> : null}
 
       {/* The openers stay available after an answer, so a second question is
           one tap rather than a typing job on a phone. */}
@@ -197,7 +197,7 @@ function ChatMode({
               type="button"
               disabled={sending}
               onClick={() => onAsk(question)}
-              className="focus-ring w-full border border-white/22 bg-white/5 px-4 py-3 text-start text-sm text-on-dark transition-colors hover:border-gold hover:bg-gold/12 disabled:opacity-50"
+              className="focus-ring w-full border border-border bg-paper px-4 py-3 text-start text-sm text-foreground transition-colors hover:border-gold-ink hover:bg-cream disabled:opacity-50"
             >
               {question}
             </button>
@@ -205,7 +205,7 @@ function ChatMode({
         ))}
       </ul>
 
-      <form onSubmit={onSubmit} className="mt-4 flex items-center gap-3 border-t border-white/16 pt-4">
+      <form onSubmit={onSubmit} className="mt-4 flex items-center gap-3 border-t border-border pt-4">
         <label htmlFor="noor-hero-input" className="sr-only">
           Ask {advisor.name} about Dubai property
         </label>
@@ -216,13 +216,13 @@ function ChatMode({
           maxLength={advisor.limitsPerSession.messageChars}
           placeholder="Ask about Dubai property"
           autoComplete="off"
-          className="min-w-0 flex-1 bg-transparent text-sm text-on-dark placeholder:text-on-dark-muted focus:outline-none"
+          className="min-w-0 flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
         />
         <button
           type="submit"
           disabled={sending || draft.trim().length === 0}
           aria-label="Send question"
-          className="focus-ring grid size-11 shrink-0 place-items-center rounded-full bg-gold text-ink transition-opacity disabled:opacity-40"
+          className="focus-ring grid size-11 shrink-0 place-items-center rounded-full bg-green text-on-dark transition-opacity disabled:opacity-40"
         >
           <ArrowRight aria-hidden className="size-4 rtl:-scale-x-100" />
         </button>
@@ -253,7 +253,7 @@ function VoiceMode({ voiceConfigured }: { voiceConfigured: boolean }) {
         {[14, 28, 40, 22, 34, 16].map((height, index) => (
           <span
             key={height}
-            className="w-1 rounded-full bg-gold"
+            className="w-1 rounded-full bg-gold-ink"
             style={{
               height,
               /* Ambient, and only where motion is welcome. It marks the phone
@@ -264,19 +264,19 @@ function VoiceMode({ voiceConfigured }: { voiceConfigured: boolean }) {
         ))}
       </span>
 
-      <p className="body-text mt-6 text-on-dark">{advisor.name} answers on the phone too.</p>
+      <p className="body-text mt-6 text-foreground">{advisor.name} answers on the phone too.</p>
 
       <a
         href={`tel:${site.contact.phoneE164}`}
         dir="ltr"
-        className="focus-ring eyebrow mt-5 inline-flex min-h-12 items-center gap-2 bg-gold px-6 text-ink"
+        className="focus-ring eyebrow mt-5 inline-flex min-h-12 items-center gap-2 bg-green px-6 text-on-dark"
       >
         <Phone aria-hidden className="size-4" />
         {site.contact.phone}
       </a>
 
       {voiceConfigured ? (
-        <p className="caption mt-5 flex items-center gap-2 text-on-dark-muted">
+        <p className="caption mt-5 flex items-center gap-2 text-muted-foreground">
           <Mic aria-hidden className="size-3.5" />
           Answers can be read aloud in the full advisor.
         </p>
