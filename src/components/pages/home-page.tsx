@@ -10,6 +10,7 @@ import { SERVICES } from "@/data/services";
 import { SERVICE_PHOTOS } from "@/data/service-photos";
 import type { PhotoSlug } from "@/lib/photos";
 import { Parallax } from "@/components/motion";
+import { stagger } from "@/lib/motion";
 import { Photo } from "@/components/site/photo";
 import { Reveal } from "@/components/site/reveal";
 import { Emphasise } from "@/components/site/emphasis";
@@ -224,41 +225,73 @@ export function HomePage({
         </Container>
       </section>
 
-      {/* II. The position. Type alone, no photograph competing with it. */}
+      {/*
+       * II. The position, composed rather than written out.
+       *
+       * This was the site's single most repeated shape and it was the second
+       * thing on the page: headline left, grey paragraph right, bottom
+       * aligned. The same composition appears in eighty-two twelve-column
+       * grids across the site, which is most of why it read as a template.
+       *
+       * What was in the paragraph is not a paragraph. It is a claim followed
+       * by three separate promises and a closing line, run together into prose
+       * because prose is what a paragraph is for. Set as what it actually is —
+       * statement, then the three things that back it, then the line that
+       * costs us something — it becomes an argument a reader can scan, and it
+       * stops looking like every other section on the site.
+       *
+       * Not cards: no borders, no fills, no equal tiles. A gold rule, a short
+       * line in ink and a sentence under it. The rule is the only ornament and
+       * it is doing the job a bullet would do badly.
+       */}
       <Section data-surface="light">
-        {/*
-         * No eyebrow. "Position" was a filing label above a sentence that
-         * already states the position, and the playbook's rule is right: an
-         * eyebrow over every section is the blog tell. Kept only where it says
-         * something the headline does not.
-         */}
-        <div className="mt-8 grid gap-10 lg:grid-cols-[1.3fr_0.9fr] lg:items-end lg:gap-16">
-          <Reveal>
-            <h2 className="display-2 text-balance">
-              Most agencies sell you inventory. We sell you a straight answer.
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="body-text max-w-[38ch] text-muted-foreground">
-              One person, start to finish. No hand-offs, no junior desk, no queue. We price from
-              what has actually sold, and we tell you about the yearly service charge before you
-              sign, not after. It is the cost that quietly eats the rent, and almost nobody puts
-              it in front of you.
-            </p>
-            <p className="body-text mt-4 max-w-[38ch] text-muted-foreground">
+        <Reveal>
+          <h2 className="display-1 max-w-[18ch] text-balance">
+            Most agencies sell you inventory. We sell you a straight answer.
+          </h2>
+        </Reveal>
+
+        <div className="mt-16 grid gap-x-12 gap-y-10 md:mt-20 md:grid-cols-3">
+          {[
+            {
+              lead: "One person, start to finish",
+              body: "The person who takes your first call is the person who negotiates and the person who is there at handover. No hand-offs, no junior desk, no queue.",
+            },
+            {
+              lead: "Priced from what actually sold",
+              body: "Not an asking price and not a feeling about the market. The registered record of what changed hands, with the number of sales behind it.",
+            },
+            {
+              lead: "The service charge, before you sign",
+              body: "The yearly cost that quietly eats the rent. Almost nobody puts it in front of you, and it is the difference between a good buy and a bad one.",
+            },
+          ].map((point, index) => (
+            <Reveal key={point.lead} delay={stagger(index)}>
+              <span aria-hidden className="block h-px w-10 bg-gold-ink" />
+              <h3 className="display-3 mt-6 text-balance">{point.lead}</h3>
+              <p className="body-text mt-4 text-muted-foreground">{point.body}</p>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* The closer sits on its own rule, because it is the only line here
+            that costs us money and it should not be read as a fourth feature. */}
+        <Reveal delay={0.2}>
+          <div className="mt-16 flex flex-wrap items-baseline justify-between gap-x-10 gap-y-6 border-t border-border pt-8 md:mt-20">
+            <p className="display-3 max-w-[26ch] text-balance">
               And we say no, plainly, when no is the right answer.
             </p>
             <Link
               to="/about"
-              className="focus-ring eyebrow mt-7 inline-flex items-center gap-2 border-b border-green-mid pb-1 text-green-mid"
+              className="focus-ring eyebrow inline-flex items-center gap-2 border-b border-green-mid pb-1 text-green-mid transition-colors hover:text-gold-ink"
             >
               How we work
               <span aria-hidden className="rtl:-scale-x-100">
                 →
               </span>
             </Link>
-          </Reveal>
-        </div>
+          </div>
+        </Reveal>
       </Section>
 
       {/* III. The record, condensed to one interactive moment. */}
@@ -266,7 +299,7 @@ export function HomePage({
         <SectionOpener
           eyebrow="The record, at a glance"
           title="We don't guess. We check."
-          lead="Every sale and every tenancy in Dubai is recorded by the government. Here are three figures from it. If you want the rest, it is one click away: what each community costs, what it earns, and where off-plan is priced above what you could walk through today."
+          lead="Every sale and every tenancy in Dubai is recorded by the government. These three come straight from it."
         />
         <MarketGlance
           rows={quarterly}
@@ -293,9 +326,25 @@ export function HomePage({
 
       {/* IV. The practices. */}
       <Section data-surface="light">
-        <SectionOpener
-          title="What we can actually help you with."
-        />
+        <Reveal>
+          <div className="flex flex-wrap items-baseline justify-between gap-x-10 gap-y-4">
+            <h2 className="display-2 max-w-[20ch] text-balance">
+              What we can actually help you with.
+            </h2>
+            {/* Derived, both of them. A typed count on a page that renders the
+                list from data is a contradiction waiting for someone to add a
+                tenth practice. */}
+            <Link
+              to="/services"
+              className="focus-ring eyebrow inline-flex items-center gap-2 border-b border-green-mid pb-1 text-green-mid transition-colors hover:text-gold-ink"
+            >
+              {services.length} of {SERVICES.length}, see all
+              <span aria-hidden className="rtl:-scale-x-100">
+                →
+              </span>
+            </Link>
+          </div>
+        </Reveal>
         <Reveal>
           <ServicesList services={services} hrefFor={(slug) => `/services/${slug}`} />
         </Reveal>
@@ -305,18 +354,13 @@ export function HomePage({
       <Section data-surface="cream">
         <SectionOpener
           title="Two projects we represent, in Sharjah and Abu Dhabi."
+          lead="Every project has to clear the same evidence check before it reaches this page. Two have. A short list is the point, not an apology for one."
         />
         <Reveal>
           <OffPlanFocus
             projects={offPlanProjects}
             lineFor={(slug) => OFF_PLAN_LINES[slug]}
           />
-        </Reveal>
-        <Reveal>
-          <p className="body-text mt-10 max-w-[52ch] text-muted-foreground">
-            Every project we represent has to clear the same evidence check before it reaches
-            this page. These two have.
-          </p>
         </Reveal>
       </Section>
 
@@ -378,6 +422,7 @@ export function HomePage({
       <Section data-surface="light">
         <SectionOpener
           title="The people who will answer."
+          lead="Not a contact form and not a rota. One of these people takes your first call and is still on it at handover."
         />
         <Reveal>
           <TeamCards members={team} />
