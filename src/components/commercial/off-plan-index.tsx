@@ -156,17 +156,20 @@ function ProjectRow({ project, flipped }: { project: CommercialProject; flipped:
  * printed as a dash on both sides.
  */
 function CompareProjects({ projects }: { projects: readonly CommercialProject[] }) {
-  const rows: { label: string; value: (project: CommercialProject) => string | null }[] = [
-    { label: "Emirate", value: (p) => p.locationName },
-    { label: "Developer", value: (p) => p.developerName },
-    { label: "Type", value: (p) => p.projectType },
-    { label: "Homes", value: (p) => p.propertyTypes.join(" · ") || null },
-    { label: "Bedrooms", value: (p) => p.bedrooms },
-    { label: "Sizes", value: (p) => p.unitSizeRangeSqFt },
-    { label: "Handover", value: (p) => p.handover },
-    { label: "Construction", value: (p) => p.constructionStatus },
-    { label: "Price", value: (p) => p.priceNote },
-  ].filter((row) => projects.some((project) => row.value(project)));
+  type CompareRow = { label: string; value: (project: CommercialProject) => string | null };
+  const rows: CompareRow[] = (
+    [
+      { label: "Emirate", value: (p: CommercialProject) => p.locationName },
+      { label: "Developer", value: (p: CommercialProject) => p.developerName },
+      { label: "Type", value: (p: CommercialProject) => p.projectType },
+      { label: "Homes", value: (p: CommercialProject) => p.propertyTypes.join(" · ") || null },
+      { label: "Bedrooms", value: (p: CommercialProject) => p.bedrooms },
+      { label: "Sizes", value: (p: CommercialProject) => p.unitSizeRangeSqFt },
+      { label: "Handover", value: (p: CommercialProject) => p.handover },
+      { label: "Construction", value: (p: CommercialProject) => p.constructionStatus },
+      { label: "Price", value: (p: CommercialProject) => p.priceNote },
+    ] satisfies CompareRow[]
+  ).filter((row) => projects.some((project) => row.value(project)));
 
   return (
     <Section data-surface="dark">
