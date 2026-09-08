@@ -9,11 +9,24 @@
  */
 import { createServerFn } from "@tanstack/react-start";
 
-export type AdvisorAvailability = { chat: boolean; voice: boolean };
+export type AdvisorAvailability = {
+  chat: boolean;
+  /** Text to speech: an answer can be read aloud. */
+  voice: boolean;
+  /**
+   * The Fish Audio agent, if one has been provisioned and published.
+   *
+   * Sent to the browser deliberately: it is a public agent id, the same one
+   * the embed puts in the DOM, and the widget cannot be offered without it.
+   * The API key stays on the server and is never part of this.
+   */
+  agentId: string | null;
+};
 
 export const advisorAvailabilityFn = createServerFn({ method: "GET" }).handler(
   async (): Promise<AdvisorAvailability> => ({
     chat: Boolean(process.env["LOVABLE_API_KEY"]),
     voice: Boolean(process.env["FISH_AUDIO_API_KEY"] ?? process.env["FISH_API"]),
+    agentId: process.env["FISH_AGENT_ID"] ?? null,
   }),
 );

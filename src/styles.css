@@ -1036,6 +1036,30 @@ body {
  * under reduced motion rather than relying on the global duration override,
  * because a looping decoration should not run at all.
  */
+/*
+ * The voice call's rings, travelling outward.
+ *
+ * Three elements share this with staggered delays, which is what makes the
+ * pulse read as leaving the centre rather than throbbing in place. It carries
+ * the call's status, so it is deliberately slow: a fast pulse reads as an
+ * alarm, and the one thing a caller waiting in silence must not be told is
+ * that something is wrong.
+ */
+@keyframes noor-ring {
+  0% {
+    transform: scale(0.82);
+    opacity: 0.85;
+  }
+  70% {
+    transform: scale(1.06);
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(1.06);
+    opacity: 0;
+  }
+}
+
 @keyframes noor-wave {
   0%,
   100% {
