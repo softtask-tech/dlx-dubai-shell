@@ -80,7 +80,7 @@ function AboutPage() {
       <PageHero
         photo="burj-khalifa-dusk-silhouette"
         title="About DLX."
-        lead="A private Dubai brokerage built on restraint, discretion and relationships measured in decades."
+        lead="A private Dubai brokerage that represents one side of a deal, prices from the public record, and will tell you to walk away when walking away is right."
       />
 
       {/* The thesis, given the weight of a thesis. It was two paragraphs of
@@ -128,10 +128,24 @@ function AboutPage() {
                 delay={stagger(index)}
                 className="border-t border-border py-8 first:border-0 first:pt-0"
               >
+                {/*
+                 * No 01 / 02 / 03.
+                 *
+                 * These four are independent commitments, not steps: nothing
+                 * about "one client at a time" comes before "discretion as
+                 * standard", and numbering them said otherwise. A counter is
+                 * information when the order carries meaning and decoration
+                 * when it does not, and decoration that asserts something
+                 * false is worse than no decoration.
+                 *
+                 * A rule and a mark instead, which says "another one of these"
+                 * without claiming a position in a list.
+                 */}
                 <div className="flex gap-6">
-                  <span aria-hidden className="eyebrow mt-1.5 shrink-0 text-gold-ink">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+                  <span
+                    aria-hidden
+                    className="mt-3 h-px w-6 shrink-0 bg-gold-ink sm:w-10"
+                  />
                   <div>
                     <h2 className="display-3">{principle.title}</h2>
                     <p className="body-text mt-4 max-w-measure text-muted-foreground">

@@ -89,7 +89,16 @@ function ServicePage() {
             />
           </div>
           <div className="lg:col-span-7 lg:col-start-6">
-            <ol>
+            {/*
+             * A list of what you get, not a sequence of steps.
+             *
+             * This was an <ol> with 01 / 02 / 03 down the side, which made two
+             * claims that are not true: that these arrive in this order, and
+             * that a screen reader should announce "item 3 of 7" as a
+             * position. Neither is information. The rule marks a new entry
+             * without asserting where it sits.
+             */}
+            <ul>
               {service.deliverables.map((item, index) => (
                 <Reveal
                   key={item}
@@ -97,12 +106,12 @@ function ServicePage() {
                   className="border-b border-border/60 py-6 last:border-0"
                 >
                   <li className="flex items-baseline gap-8">
-                    <span className="eyebrow shrink-0">{String(index + 1).padStart(2, "0")}</span>
+                    <span aria-hidden className="mt-3 h-px w-6 shrink-0 bg-gold-ink sm:w-10" />
                     <span className="body-text">{item}</span>
                   </li>
                 </Reveal>
               ))}
-            </ol>
+            </ul>
           </div>
         </div>
       </Section>

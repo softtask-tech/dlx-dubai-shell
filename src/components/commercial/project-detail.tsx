@@ -229,18 +229,22 @@ export function CommercialProjectDetail({
           eyebrow="What to weigh before you commit"
           title="The parts a brochure leaves out."
         />
-        <ol className="mt-12 grid gap-x-12 gap-y-8 md:grid-cols-2">
+        {/*
+         * Numbered inside a two-column grid, which was the worst version of
+         * the mistake: things to weigh have no order, and 01 / 02 / 03 laid
+         * across two columns does not even tell you which way to read them.
+         * The top rule already separates the entries, so the counter was
+         * carrying nothing.
+         */}
+        <ul className="mt-12 grid gap-x-12 gap-y-8 md:grid-cols-2">
           {project.investmentConsiderations.map((consideration, index) => (
             <Reveal key={consideration} delay={index * 0.05}>
-              <li className="border-t border-border pt-6">
-                <span aria-hidden className="eyebrow text-gold-ink">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <p className="body-text mt-3 text-muted-foreground">{consideration}</p>
+              <li className="border-t-2 border-gold pt-6">
+                <p className="body-text text-muted-foreground">{consideration}</p>
               </li>
             </Reveal>
           ))}
-        </ol>
+        </ul>
       </Section>
 
       <Section id="gallery" data-surface="cream" className="scroll-mt-32">

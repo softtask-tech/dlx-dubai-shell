@@ -14,6 +14,7 @@ import { Photo } from "@/components/site/photo";
 import { Reveal } from "@/components/site/reveal";
 import { Emphasise } from "@/components/site/emphasis";
 import { SectionOpener } from "@/components/site/section-opener";
+import { StatementBand } from "@/components/site/statement-band";
 import { Container, Eyebrow, Section } from "@/components/ui/section";
 import { NoorPanel } from "@/components/home/noor-panel";
 import { MarketGlance } from "@/components/home/market-glance";
@@ -271,6 +272,22 @@ export function HomePage({
         />
       </Section>
 
+      {/*
+       * The beat.
+       *
+       * Sections III to VIII all opened the same way and all carried the same
+       * weight, which is the whole reason this page read as a template. This
+       * is the light passage between two heavy ones: one sentence, nothing
+       * under it to explain itself, and a footnote that exists only so the
+       * sentence can be checked.
+       */}
+      <StatementBand
+        data-surface="cream"
+        footnote="Every figure on this site carries the number of registered records behind it. Where a community or a quarter has too few to publish without describing individual transactions, we leave it out and say so."
+      >
+        We would rather lose the deal than guess the number.
+      </StatementBand>
+
       {/* IV. The practices. */}
       <Section data-surface="light">
         <SectionOpener
@@ -377,8 +394,19 @@ export function HomePage({
        * anyone actually reads a FAQ.
        */}
       <Section data-surface="cream">
-        <SectionOpener eyebrow="Before you ask" title="The questions we get first." />
-        <dl className="mt-12 max-w-5xl border-t border-border">
+        {/*
+         * Opens on an eyebrow alone.
+         *
+         * "The questions we get first" is a headline that describes the
+         * content instead of being it — the reader learns nothing from it that
+         * the questions underneath do not tell them immediately. Every
+         * question below is already a heading, so a heading above them is the
+         * template announcing itself for the sixth time on one page.
+         */}
+        <Reveal>
+          <Eyebrow>Before you ask</Eyebrow>
+        </Reveal>
+        <dl className="mt-10 max-w-5xl border-t border-border">
           {HOME_FAQ.map((entry) => (
             <Reveal key={entry.question}>
               <div className="grid gap-3 border-b border-border py-7 md:grid-cols-12 md:gap-10">
