@@ -36,7 +36,7 @@ export function AdvisorDock({ agentId }: { agentId?: string | null }) {
    * reading a thread, and it only exists at all once an agent has been
    * provisioned: an offer to talk that cannot connect is worse than no offer.
    */
-  const [mode, setMode] = useState<"chat" | "voice">("chat");
+  
   const [opening, setOpening] = useState<string | null>(null);
   const pagePath = useRouterState({ select: (state) => state.location.pathname });
 
