@@ -30,8 +30,9 @@ const FAQS: readonly FaqEntry[] = [
   {
     question: "Where do these numbers come from?",
     answer:
-      "Dubai Land Department open data, the registry every sale and every tenancy contract in Dubai is recorded in. We publish counts of registered activity and the median registered annual rent, each with the number of records behind it and the period it covers. DLX Properties is independent of the Dubai Land Department and is not endorsed by it.",
+      "Dubai Land Department open data, the registry every sale and every tenancy contract in Dubai is recorded in. We publish counts of registered activity, registered prices and rents and the yield they imply, each with the number of records behind it and the period it covers. DLX Properties is independent of the Dubai Land Department and is not endorsed by it.",
   },
+
   {
     question: "Do you publish prices as well as activity?",
     answer:
@@ -63,9 +64,19 @@ const HEADLINE_METRICS = [
   "median_registered_annual_rent_aed",
 ] as const;
 
+/* Published from the same export as the counts, and allowed at Dubai level for
+ * the quarter grain only. Kept in a separate request so a scope the registry
+ * later withdraws empties one section rather than the whole page. */
+const PRICE_METRICS = [
+  "median_price_per_sqft",
+  "median_sale_price",
+  "median_rent_per_sqft",
+  "gross_rental_yield_pct",
+] as const;
+
 export const Route = createFileRoute("/market-intelligence/")({
   loader: async () => {
-    const [metadata, quarterly, monthly] = await Promise.all([
+    const [metadata, quarterly, monthly, prices] = await Promise.all([
       getMarketMetadataFn(),
       getMarketOverviewFn({
         data: {
@@ -85,9 +96,19 @@ export const Route = createFileRoute("/market-intelligence/")({
           limit: 900,
         },
       }),
+      getMarketOverviewFn({
+        data: {
+          metrics: [...PRICE_METRICS],
+          grain: "quarter",
+          from: "2019-01-01",
+          to: "2026-12-31",
+          limit: 900,
+        },
+      }),
     ]);
-    return { metadata, quarterly, monthly };
+    return { metadata, quarterly, monthly, prices };
   },
+
   head: ({ loaderData }) => {
     const exported = loaderData?.metadata.sourceExportDate ?? null;
     return pageHead({
