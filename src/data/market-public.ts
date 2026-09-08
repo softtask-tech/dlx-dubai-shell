@@ -107,7 +107,18 @@ export const METRIC_MEANINGS: Record<MarketMetric, string> = {
     "The middle registered annual rent for the period: half were agreed below it and half above.",
   median_registered_annual_rent_change:
     "How the middle registered annual rent moved against the period before it, in percent.",
+  median_price_per_sqft:
+    "The middle registered sale price per square foot: half the registered sales were below it and half above.",
+  median_sale_price:
+    "The middle registered sale price for the period, whole property rather than per square foot.",
+  median_rent_per_sqft:
+    "The middle registered annual rent per square foot, which is how rent and purchase price are compared like for like.",
+  median_service_charge_sqft:
+    "The middle annual service charge per square foot: the running cost of owning, before any return.",
+  gross_rental_yield_pct:
+    "Registered rent as a percentage of registered price, before service charges and other costs.",
 };
+
 
 export const SEGMENT_LABELS: Record<string, string> = {
   all: "All",
