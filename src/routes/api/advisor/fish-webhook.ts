@@ -106,8 +106,10 @@ async function signatureValid(header: string, raw: string, secret: string): Prom
  * folded into the summary, which is the line a consultant reads before calling
  * back and the right place for "they asked about Marina and JVC".
  */
-const INTENTS = new Set(["buy", "sell", "rent", "invest", "relocate", "advice"]);
-const TIMELINES = new Set(["immediately", "within_3_months", "within_12_months", "researching"]);
+const INTENTS = ["buy", "sell", "rent", "invest", "relocate", "advice"] as const;
+type Intent = (typeof INTENTS)[number];
+const TIMELINES = ["immediately", "within_3_months", "within_12_months", "researching"] as const;
+type Timeline = (typeof TIMELINES)[number];
 
 function contactFrom(fields: readonly z.infer<typeof fieldSchema>[], summary?: string | null) {
   const read = (name: string) => {
@@ -132,8 +134,8 @@ function contactFrom(fields: readonly z.infer<typeof fieldSchema>[], summary?: s
   return {
     ...(read("caller_name") ? { name: read("caller_name") } : {}),
     ...(read("callback_number") ? { phone: read("callback_number") } : {}),
-    ...(intent && INTENTS.has(intent) ? { intent } : {}),
-    ...(timeline && TIMELINES.has(timeline) ? { timeline } : {}),
+    ...(intent && (INTENTS as readonly string[]).includes(intent) ? { intent: intent as Intent } : {}),
+    ...(timeline && (TIMELINES as readonly string[]).includes(timeline) ? { timeline: timeline as Timeline } : {}),
     ...(budget !== undefined && Number.isFinite(budget) ? { budgetMinAed: budget } : {}),
     ...(note ? { summary: note.slice(0, 4000) } : {}),
   };
