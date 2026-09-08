@@ -22,6 +22,7 @@ import {
   LEAGUE_COLUMNS,
   buildLeague,
 } from "@/components/market/community-league";
+import { YieldPriceMap } from "@/components/market/yield-price-map";
 import { rentGapSeries, shareSeries } from "@/data/market-insights";
 import { datasetSchema, faqSchema, type FaqEntry } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
@@ -472,6 +473,35 @@ function MarketIntelligencePage() {
               <MarketBrief rows={quarterly} periodLabel={periodLabel} />
             </Reveal>
           </Section>
+
+          {/*
+           * Does paying more get you less?
+           *
+           * Deliberately shaped unlike every other section on this page. There
+           * is no opener with a headline on the left and a grey paragraph on
+           * the right, because the chart arrives with its own finding written
+           * across the top and a second headline above that one would be the
+           * template repeating itself. An eyebrow to say where you are, then
+           * the finding, then the evidence.
+           *
+           * It sits above the league table on purpose: the finding first, the
+           * 39 rows that support it second.
+           */}
+          {leaguePeriod && leagueRows.length > 0 ? (
+            <Section data-surface="cream">
+              <Reveal>
+                <Eyebrow>Price against yield</Eyebrow>
+              </Reveal>
+              <Reveal delay={0.06}>
+                <div className="mt-8">
+                  <YieldPriceMap
+                    rows={leagueRows}
+                    periodLabel={formatPeriod("quarter", leaguePeriod)}
+                  />
+                </div>
+              </Reveal>
+            </Section>
+          ) : null}
 
           {/*
            * Where to look, ranked.
