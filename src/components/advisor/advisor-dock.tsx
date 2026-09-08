@@ -70,6 +70,7 @@ export function AdvisorDock({ agentId }: { agentId?: string | null }) {
       {open ? (
         <AdvisorPanel
           pagePath={pagePath}
+          agentId={agentId ?? null}
           {...(opening ? { initialQuestion: opening } : {})}
           onClose={() => {
             setOpen(false);
@@ -156,13 +157,16 @@ function Presence() {
 
 function AdvisorPanel({
   pagePath,
+  agentId,
   initialQuestion,
   onClose,
 }: {
   pagePath: string;
+  agentId?: string | null;
   initialQuestion?: string;
   onClose: () => void;
 }) {
+  const [mode, setMode] = useState<"chat" | "voice">("chat");
   const { turns, sending, notice, turnsLeft, leadCaptured, send } = useAdvisor(pagePath);
   const [draft, setDraft] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
