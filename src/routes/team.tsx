@@ -54,6 +54,29 @@ export const Route = createFileRoute("/team")({
  * The portrait frame is the same one `ConsultantPortrait` draws its initials
  * into, so the photographs drop in when they arrive and nothing moves.
  */
+/**
+ * Small counts read better as words in a headline, and worse as words once
+ * they stop being small. Ten is where the line falls: "Twelve people" is
+ * fine in prose and heavy in display type.
+ */
+const COUNT_WORDS = [
+  "Zero",
+  "One",
+  "Two",
+  "Three",
+  "Four",
+  "Five",
+  "Six",
+  "Seven",
+  "Eight",
+  "Nine",
+  "Ten",
+] as const;
+
+function countWord(count: number): string {
+  return COUNT_WORDS[count] ?? String(count);
+}
+
 function TeamPage() {
   const { agents } = Route.useLoaderData();
 
@@ -78,9 +101,23 @@ function TeamPage() {
         </Section>
       ) : (
         <Section>
+          {/*
+           * The count is derived, not typed.
+           *
+           * This headline said "Four people" while the rows beneath it were
+           * rendered from whatever `listAgents()` returned. Hire a fifth and
+           * the page contradicts itself in the same screenful — which is the
+           * worst kind of wrong, because the reader can see the evidence
+           * against it without scrolling. The About page already derives the
+           * same figure; this one had it typed in.
+           */}
           <SectionOpener
             eyebrow="Who you will be dealing with"
-            title="Four people, and the one who answers is the one who stays."
+            title={
+              agents.length === 1
+                ? "One person, and they stay with you from first call to last signature."
+                : `${countWord(agents.length)} people, and the one who answers is the one who stays.`
+            }
           />
           <div className="mt-16 flex flex-col gap-20 md:gap-28">
             {agents.map((agent, index) => (
