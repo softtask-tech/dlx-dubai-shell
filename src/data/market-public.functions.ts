@@ -142,3 +142,15 @@ export const getOffPlanSplitPeriodFn = createServerFn({ method: "GET" })
     const { getOffPlanSplitPeriod } = await import("./market-public.server");
     return getOffPlanSplitPeriod(data);
   });
+
+/**
+ * The communities the calculators work from, built from published aggregates.
+ *
+ * A server function rather than a direct import, because a route loader can run
+ * in the browser on client-side navigation and the module behind this reaches
+ * Supabase through the market RPCs.
+ */
+export const listDldAreasWithStatsFn = createServerFn({ method: "GET" }).handler(async () => {
+  const { listDldAreasWithStats } = await import("./market-areas-dld.server");
+  return listDldAreasWithStats();
+});
