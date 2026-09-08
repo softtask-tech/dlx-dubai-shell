@@ -127,7 +127,7 @@ Deno.serve(async (request: Request) => {
       routingReason: data.routing_reason ?? null,
     };
 
-    const apiKey = Deno.env.get("RESEND_API_KEY");
+    const apiKey = (Deno.env.get("RESEND_API_KEY") ?? Deno.env.get("RESEND_API"));
     const from = Deno.env.get("LEAD_FROM_EMAIL") ?? `${BRAND.name} <hello@${BRAND.domain}>`;
     const adminRecipients = (Deno.env.get("LEAD_ADMIN_EMAIL") ?? "")
       .split(",")
