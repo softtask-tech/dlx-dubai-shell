@@ -429,7 +429,7 @@ function MarketIntelligencePage() {
               <SectionOpener
                 eyebrow="Community league"
                 title="What it costs to own, community by community."
-                lead="Price, rent, gross yield and the service charge that comes off it, on the same row for the first time. Select any column to reorder."
+                lead="Price, rent, gross yield, the service charge that comes off it, and what is left. Select any column to reorder."
               />
               <Reveal>
                 <div className="mt-12">
@@ -437,7 +437,7 @@ function MarketIntelligencePage() {
                     rows={leagueRows}
                     columns={LEAGUE_COLUMNS}
                     periodLabel={formatPeriod("quarter", leaguePeriod)}
-                    initialSort="gross_rental_yield_pct"
+                    initialSort="yield_after_charge_pct"
                   />
                 </div>
               </Reveal>

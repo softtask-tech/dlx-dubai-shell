@@ -70,6 +70,30 @@ export function buildLeague(
       if (found) found.values[metric] = row.metric_value;
     }
   }
+  /*
+   * Yield after the service charge, derived from two published figures.
+   *
+   * This is the number the table exists for and the one nobody publishes.
+   * Ranked on gross, Business Bay shows 5.8% and Al Hebiah Third 6.5%, and
+   * the gap looks small. Business Bay carries a 27 AED service charge against
+   * Al Hebiah Third's 8, so once the charge comes off, one keeps most of its
+   * yield and the other does not. A gross yield table without this column
+   * quietly recommends the wrong community.
+   *
+   * Still not net. Management, maintenance and the weeks a home sits empty
+   * come off after this, and the column is labelled so nobody reads it as a
+   * take-home figure.
+   */
+  for (const row of index.values()) {
+    const rent = row.values["median_rent_per_sqft"];
+    const price = row.values["median_price_per_sqft"];
+    const charge = row.values["median_service_charge_sqft"];
+    row.values["yield_after_charge_pct"] =
+      rent != null && price != null && charge != null && price > 0
+        ? Number((((rent - charge) / price) * 100).toFixed(2))
+        : null;
+  }
+
   return [...index.values()];
 }
 
@@ -196,11 +220,16 @@ export function CommunityLeague({
       </div>
 
       <figcaption className="body-text mt-6 max-w-measure text-muted-foreground">
-        Every community with enough registered activity to publish is here, in {periodLabel}, not a
-        shortlist. Yield is gross: the service charge in the last column comes off it before
-        anything reaches an owner, and so do management, maintenance and the weeks a home sits
-        empty. A blank is a figure the registry did not publish for that community and period, not
-        a zero.
+        Every community with enough registered activity to publish is here, in {periodLabel}, not
+        a shortlist. A blank is a figure the registry did not publish for that community and
+        period, not a zero.{" "}
+        <strong className="font-normal text-foreground">
+          The last column is gross yield with the service charge taken off, and it is the one worth
+          sorting by.
+        </strong>{" "}
+        Ranked on gross alone, a community with a 27 AED charge can outrank one with an 8 AED
+        charge and still leave an owner worse off. It is still not a take-home figure: management,
+        maintenance and the weeks a home sits empty come off after this.
       </figcaption>
     </figure>
   );
@@ -235,5 +264,12 @@ export const LEAGUE_COLUMNS: readonly LeagueColumn[] = [
     short: "Charge",
     higherIs: "worse",
     format: (value) => `AED ${value.toFixed(0)}`,
+  },
+  {
+    key: "yield_after_charge_pct",
+    label: "After charge",
+    short: "Net*",
+    higherIs: "better",
+    format: (value) => `${value.toFixed(2)}%`,
   },
 ] as const;
