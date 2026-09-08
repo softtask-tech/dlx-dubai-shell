@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { site } from "@/config/site";
 import { SERVICES } from "@/data/services";
 import { SERVICE_GROUPS, SERVICE_PHOTOS } from "@/data/service-photos";
 import { pageHead, withHeroPreload } from "@/lib/seo";
+import { itemListSchema } from "@/lib/schema";
 import { TrustStrip } from "@/components/site/trust-strip";
 import { PageHero } from "@/components/site/page-hero";
 import { SectionOpener } from "@/components/site/section-opener";
@@ -16,6 +18,18 @@ export const Route = createFileRoute("/services/")({
       pageHead({
         path: "/services",
         breadcrumbs: [{ name: "Services", path: "/services" }],
+        /* An answer engine asked what this firm does should not have to infer
+         * it from prose when the page knows the list exactly. */
+        schema: [
+          itemListSchema({
+            name: `${site.name} services`,
+            items: SERVICES.map((service) => ({
+              name: service.name,
+              path: `/services/${service.slug}`,
+              description: service.tagline,
+            })),
+          }),
+        ],
       }),
     ),
   component: ServicesIndex,

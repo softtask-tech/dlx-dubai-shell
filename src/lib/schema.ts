@@ -178,6 +178,38 @@ export function teamListSchema(people: readonly { slug: string; name: string }[]
   };
 }
 
+/**
+ * A collection page, as the list it actually is.
+ *
+ * The index pages were emitting no structured data at all: a crawler reading
+ * /services or /off-plan got a breadcrumb and nothing describing what the page
+ * lists. An answer engine asked "what services does DLX offer" then has to
+ * infer the answer from prose, when the page knows it exactly.
+ *
+ * Deliberately an ItemList of names and URLs rather than a set of full nodes
+ * per entry. The detail page for each item already publishes its own richer
+ * schema, and repeating a partial copy here would mean two descriptions of the
+ * same thing that drift apart.
+ */
+export function itemListSchema(input: {
+  name: string;
+  items: readonly { name: string; path: string; description?: string }[];
+}): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: input.name,
+    numberOfItems: input.items.length,
+    itemListElement: input.items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: absoluteUrl(item.path),
+      name: item.name,
+      ...(item.description ? { description: item.description } : {}),
+    })),
+  };
+}
+
 export type ProjectInput = {
   name: string;
   path: string;
