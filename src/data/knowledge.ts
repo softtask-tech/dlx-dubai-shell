@@ -21,13 +21,21 @@
  * When the rows are DLD records the entry says so and the advisor may cite the
  * Dubai Land Department; when they are sample rows it says *that*, and the
  * advisor must not. No entry lets the advisor cite a source the data does not
- * have.
+ * have. Sample rows are now dropped outright rather than carried with a
+ * disclaimer, because the published aggregates give us the real figure and a
+ * disclaimer is only as good as the model's willingness to repeat it.
+ *
+ * **The registry figures come from the same functions the site calls.**
+ * `buildDldKnowledge()` reads the bounded public RPCs, so the advisor cannot
+ * quote a number the pages would refuse to publish, and feeding it new data
+ * means publishing that data rather than maintaining a second pipeline.
  *
  * **Nothing here is generated prose.** Every answer is copy a human wrote and
  * a reader can see on the site. If the advisor quotes an entry, the visitor can
  * follow `url` and find the same words.
  */
 import { attributionFor, listAreasWithStats } from "./market";
+import { buildDldKnowledge } from "./knowledge-dld.server";
 import { listProperties } from "./properties";
 import {
   BLOG_CATEGORY_LABELS,
@@ -206,14 +214,30 @@ export async function buildKnowledgeIndex(): Promise<KnowledgeIndex> {
     listProperties({ limit: 120 }).catch(() => [] as PropertyWithRelations[]),
   ]);
 
+  /*
+   * Area figures only where they are genuinely DLD records.
+   *
+   * `areas.stats` predates the published aggregate pipeline and its provenance
+   * column marks some rows "sample". Those rows were tolerable when they were
+   * the only market figures we had, and are not now: the site publishes real
+   * registered figures out of `dld_market_aggregates`, and an advisor holding
+   * both will sooner or later answer a question about a community with the
+   * illustrative one. Entries whose provenance is not `dld_open_data` are
+   * dropped rather than shipped with a disclaimer, because a disclaimer is
+   * something the model may or may not repeat.
+   */
   const market = areas
     .filter((area): area is AreaWithStats & { stats: AreaStats } => area.stats !== null)
+    .filter((area) => area.stats.provenance === "dld_open_data")
     .map(marketEntry);
+
+  /* The published registry figures, the same ones the market pages read. */
+  const dld = await buildDldKnowledge();
 
   const journal = posts.map(postEntry);
   const portfolio = listings.map(listingEntry);
 
-  const entries = [...staticKnowledge(), ...market, ...journal, ...portfolio];
+  const entries = [...staticKnowledge(), ...dld, ...market, ...journal, ...portfolio];
 
   const counts: Record<KnowledgeKind, number> = {
     guide: 0,
