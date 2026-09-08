@@ -20,6 +20,7 @@ import {
   TrustSourcePanel,
 } from "./project-primitives";
 import { Container, Eyebrow, Section } from "@/components/ui/section";
+import { StatementBand } from "@/components/site/statement-band";
 import { SectionOpener } from "@/components/site/section-opener";
 import { ProjectNav, type ProjectSection } from "./project-nav";
 import { MaskReveal, Parallax, Reveal } from "@/components/motion";
@@ -107,7 +108,7 @@ export function CommercialProjectDetail({
       <Section id="figures" className="scroll-mt-32">
         <SectionOpener
           eyebrow="The community in four numbers"
-          title="What the scheme actually is."
+          title="Before anything else, the size of it."
         />
         <div className="mt-12">
           <ProjectFigures project={project} />
@@ -153,7 +154,7 @@ export function CommercialProjectDetail({
 
       {project.collections.length > 0 ? (
         <Section id="homes" className="scroll-mt-32">
-          <SectionOpener eyebrow="The homes" title="What you would actually be buying." />
+          <SectionOpener eyebrow="The homes" title="What you would own." />
           <div className="mt-12">
             <ProjectCollections project={project} />
           </div>
@@ -209,7 +210,7 @@ export function CommercialProjectDetail({
             <div className="lg:col-span-4">
               <SectionOpener
                 eyebrow="Getting around"
-                title="What is actually near it."
+                title="What is near it."
                 align="split"
                 lead="Distances and drive times are the developer's own approximations, not measured by us."
               />
@@ -224,6 +225,26 @@ export function CommercialProjectDetail({
       {/* The considerations sat in a narrow column with two thirds of the page
           empty beside them. They are the most important reading here, so they
           get the width and a number to hold them. */}
+      {/*
+       * The hinge.
+       *
+       * This page quietly changes hands here and never said so. Everything
+       * above it — the overview, the homes, the amenities, the renders — is
+       * the developer's account of their own scheme, which is not a criticism
+       * of it but is a fact about it. Everything below is ours, and the
+       * section that follows exists precisely to say the things their material
+       * will not.
+       *
+       * A reader who does not know where that line falls reads our caveats
+       * with the same weight as their adjectives. So the band states it, and
+       * it doubles as the page's only break in a run of nine sections that
+       * otherwise open identically.
+       */}
+      <StatementBand data-surface="dark">
+        Everything above this line is the developer&rsquo;s account of it. Everything below is
+        ours.
+      </StatementBand>
+
       <Section id="weigh" className="scroll-mt-32">
         <SectionOpener
           eyebrow="What to weigh before you commit"
@@ -248,8 +269,13 @@ export function CommercialProjectDetail({
       </Section>
 
       <Section id="gallery" data-surface="cream" className="scroll-mt-32">
-        <SectionOpener eyebrow="Gallery" title="The developer's own renders." />
-        <div className="mt-12">
+        {/* Images are their own headline. What matters here is the provenance
+            line, which is why it is the eyebrow rather than decoration under a
+            display heading nobody needed. */}
+        <Reveal>
+          <Eyebrow>Gallery &middot; the developer&rsquo;s own renders</Eyebrow>
+        </Reveal>
+        <div className="mt-10">
           <ProjectGallery project={project} />
         </div>
         {project.brochureUrl ? (
