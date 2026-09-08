@@ -255,6 +255,87 @@ function MarketIntelligencePage() {
           </Section>
 
           {/*
+           * Prices, and what they earn.
+           *
+           * Published at Dubai level for whole quarters only, so the section
+           * disappears entirely rather than half-renders where the registry has
+           * not released a figure.
+           */}
+          {latestPpsf || latestSalePrice || latestRentPsf || latestYield ? (
+            <Section data-surface="light">
+              <Reveal>
+                <Eyebrow>
+                  Prices and yield{pricePeriodLabel ? ` · ${pricePeriodLabel}` : ""}
+                </Eyebrow>
+                <h2 className="display-2 mt-5 max-w-[22ch] text-balance">
+                  What Dubai actually sold for, and what it earns.
+                </h2>
+                <p className="body-text mt-6 max-w-measure text-muted-foreground">
+                  The middle registered figures for the last complete quarter. A median is the
+                  middle of what was registered, so one tower of penthouses cannot pull it upward
+                  the way an average would.
+                </p>
+              </Reveal>
+              <div className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+                <Reveal delay={stagger(0)}>
+                  <Stat
+                    label="Median registered sale price"
+                    value={latestSalePrice?.metric_value ?? null}
+                    prefix="AED "
+                    meaning={METRIC_MEANINGS.median_sale_price}
+                  />
+                </Reveal>
+                <Reveal delay={stagger(1)}>
+                  <Stat
+                    label="Median price per sq ft"
+                    value={latestPpsf?.metric_value ?? null}
+                    prefix="AED "
+                    meaning={METRIC_MEANINGS.median_price_per_sqft}
+                  />
+                </Reveal>
+                <Reveal delay={stagger(2)}>
+                  <Stat
+                    label="Median rent per sq ft"
+                    value={latestRentPsf?.metric_value ?? null}
+                    prefix="AED "
+                    meaning={METRIC_MEANINGS.median_rent_per_sqft}
+                  />
+                </Reveal>
+                <Reveal delay={stagger(3)}>
+                  <Stat
+                    label="Gross rental yield"
+                    value={latestYield?.metric_value ?? null}
+                    decimals={1}
+                    suffix="%"
+                    meaning={METRIC_MEANINGS.gross_rental_yield_pct}
+                  />
+                </Reveal>
+              </div>
+              <div className="mt-16 grid gap-16 lg:grid-cols-2">
+                <Reveal>
+                  <RegisteredSeries
+                    rows={ppsfQuarters}
+                    metric="median_price_per_sqft"
+                    grain="quarter"
+                  />
+                </Reveal>
+                <Reveal delay={0.1}>
+                  <RegisteredSeries
+                    rows={yieldQuarters}
+                    metric="gross_rental_yield_pct"
+                    grain="quarter"
+                  />
+                </Reveal>
+              </div>
+              <p className="caption mt-12 max-w-measure text-muted-foreground">
+                {sourceLine(metadata.sourceExportDate)}
+              </p>
+            </Section>
+          ) : null}
+
+
+
+          {/*
            * The reading, before the series.
            *
            * A page of charts asks the reader to do the analysis, and most will
