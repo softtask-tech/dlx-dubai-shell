@@ -137,7 +137,10 @@ function ToolPage() {
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-3">
             <Reveal>
-              <Eyebrow>Questions</Eyebrow>
+              {/* The eyebrow carries the heading level: every question below
+                  is already a heading, so a display heading above them would
+                  be a heading about headings. */}
+              <h2 className="eyebrow">Questions</h2>
               <h2 className="display-3 mt-6">Asked and answered</h2>
             </Reveal>
           </div>

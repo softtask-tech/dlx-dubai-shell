@@ -2,7 +2,7 @@ import { createFileRoute, Link, Outlet, useNavigate } from "@tanstack/react-rout
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 
 import { checkAdminFn } from "@/data/admin.functions";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, supabaseConfigured } from "@/integrations/supabase/client";
 import { pageHead } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { Container, Eyebrow } from "@/components/ui/section";
@@ -61,6 +61,19 @@ function AdminShell() {
   const [state, setState] = useState<"checking" | "signed-out" | "denied" | "ready">("checking");
   const [session, setSession] = useState<AdminSession | null>(null);
 
+  /*
+   * Whether sign-in can work at all, asked before anything reaches for it.
+   *
+   * The browser Supabase client throws when its build-time variables are
+   * missing, and `onAuthStateChange` below is called synchronously inside an
+   * effect, so that throw went uncaught and the error boundary replaced the
+   * whole admin area with "something went wrong". A configuration gap looked
+   * exactly like a broken build, which is the least useful thing it could
+   * have looked like: nobody reading it could tell there was nothing to fix
+   * in the code.
+   */
+  const configured = supabaseConfigured();
+
   const check = useCallback(async () => {
     const { data } = await supabase.auth.getSession();
     const accessToken = data.session?.access_token;
@@ -83,12 +96,43 @@ function AdminShell() {
   }, []);
 
   useEffect(() => {
+    if (!configured) return;
     void check();
     const { data } = supabase.auth.onAuthStateChange(() => {
       void check();
     });
     return () => data.subscription.unsubscribe();
-  }, [check]);
+  }, [check, configured]);
+
+  /*
+   * Says what is missing, rather than dying.
+   *
+   * This is an internal page, so the specifics are safe to state and are the
+   * only useful thing to state: whoever opens this is the person who can fix
+   * it. No key or URL is printed, only the names of the two variables.
+   */
+  if (!configured) {
+    return (
+      <div className="flex min-h-screen items-center justify-center px-6">
+        <div className="max-w-measure">
+          <Eyebrow>Not configured</Eyebrow>
+          <h1 className="display-3 mt-6">Admin sign-in is not switched on yet.</h1>
+          <p className="body-text mt-6 text-muted-foreground">
+            The browser build has no Supabase credentials, so there is nothing for a password to
+            be checked against. The server has its own and the public site is unaffected: this is
+            the admin area only.
+          </p>
+          <p className="body-text mt-5 text-muted-foreground">
+            Set <code className="text-foreground">VITE_SUPABASE_URL</code> and{" "}
+            <code className="text-foreground">VITE_SUPABASE_PUBLISHABLE_KEY</code> in Lovable, then
+            redeploy. Use the publishable key, never the service role key: anything named
+            <code className="text-foreground"> VITE_</code> is compiled into what every visitor
+            downloads.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   if (state === "checking") {
     return (

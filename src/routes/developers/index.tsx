@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { listDevelopers, listProjects } from "@/data/catalogue";
+import { loadDirectoryList } from "@/data/directory-route";
 import { formatHandover } from "@/lib/format";
 import { Price } from "@/components/tools/money";
 import { pageHead, withHeroPreload } from "@/lib/seo";
@@ -13,11 +14,22 @@ import { Tag } from "@/components/ui/tag";
 
 export const Route = createFileRoute("/developers/")({
   loader: async () => {
-    const [developers, projects] = await Promise.all([
-      listDevelopers(),
-      listProjects({ limit: 9 }),
+    /*
+     * The registry alongside the curated table.
+     *
+     * `developers` has never been populated, so this page told every visitor
+     * that developer profiles were "on their way" while the Dubai Land
+     * Department's own developer register sat in the same database, already
+     * powering /directory/developers. Whatever we eventually write about a
+     * developer, the official record of who is registered is a better answer
+     * than an apology, and it is one nobody else on the page can dispute.
+     */
+    const [developers, projects, registry] = await Promise.all([
+      listDevelopers().catch(() => []),
+      listProjects({ limit: 9 }).catch(() => []),
+      loadDirectoryList({ q: "", page: 1 }, "developer").catch(() => null),
     ]);
-    return { developers, projects };
+    return { developers, projects, registry };
   },
   head: ({ loaderData }) =>
     withHeroPreload(
@@ -41,7 +53,8 @@ export const Route = createFileRoute("/developers/")({
 });
 
 function DevelopersIndex() {
-  const { developers, projects } = Route.useLoaderData();
+  const { developers, projects, registry } = Route.useLoaderData();
+  const registered = registry?.records ?? [];
 
   return (
     <>
@@ -125,19 +138,63 @@ function DevelopersIndex() {
         </Section>
       ) : null}
 
-      {developers.length === 0 && projects.length === 0 ? (
-        <Section className="pt-0">
-          <div className="border border-border p-12 text-center">
-            <Eyebrow>Being prepared</Eyebrow>
-            <h2 className="display-3 mt-6">Developer profiles are on their way.</h2>
-            <p className="body-text mx-auto mt-6 max-w-measure text-muted-foreground">
-              In the meantime, if you are weighing up a specific project or developer, ask us
-              directly. We will tell you what we actually think.
+      {/*
+       * The official register, which is the answer while our own profiles are
+       * being written.
+       *
+       * This page used to tell every visitor that developer profiles were "on
+       * their way", while the Dubai Land Department's own developer register
+       * sat in the same database already powering the directory. Whatever we
+       * eventually write about a developer, the official record of who is
+       * registered is a better answer than an apology, and it is the one thing
+       * on the page nobody can dispute.
+       */}
+      {registered.length > 0 ? (
+        <Section data-surface="cream" className={developers.length > 0 ? "" : "pt-0"}>
+          <Reveal>
+            <h2 className="display-2 max-w-[22ch] text-balance">
+              Every developer on the Dubai register.
+            </h2>
+            <p className="body-text mt-6 max-w-measure text-muted-foreground">
+              Straight from Dubai Land Department open data, so you can check that whoever is
+              selling you a plan is registered to. Our own view on how each one delivers is being
+              written; the record is here now.
             </p>
-            <Link to="/contact" className="eyebrow link-underline mt-10 inline-block text-accent">
-              Ask about a project
+          </Reveal>
+
+          <ul className="mt-12 list-none border-t border-border p-0">
+            {registered.slice(0, 12).map((record, index) => (
+              <Reveal key={record.source_key ?? record.name_en} delay={stagger(index)}>
+                <li className="border-b border-border">
+                  <Link
+                    to="/directory/developers"
+                    search={{ q: record.name_en ?? "", page: 1 }}
+                    className="focus-ring group grid items-baseline gap-x-6 gap-y-2 py-6 transition-[padding-inline-start] duration-quick ease-editorial hover:ps-3 md:grid-cols-12"
+                  >
+                    <span className="display-3 md:col-span-7">{record.name_en ?? "Unnamed"}</span>
+                    <span className="caption text-muted-foreground md:col-span-4">
+                      Registered developer
+                    </span>
+                    <span className="eyebrow text-gold-ink transition-colors md:col-span-1 md:text-end">
+                      Record
+                    </span>
+                  </Link>
+                </li>
+              </Reveal>
+            ))}
+          </ul>
+
+          <Reveal>
+            <Link
+              to="/directory/developers"
+              className="focus-ring eyebrow mt-10 inline-flex items-center gap-2 border-b border-green-mid pb-1 text-green-mid transition-colors hover:text-gold-ink"
+            >
+              Search the full register
+              <span aria-hidden className="rtl:-scale-x-100">
+                &rarr;
+              </span>
             </Link>
-          </div>
+          </Reveal>
         </Section>
       ) : null}
     </>

@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { listAreasWithStats } from "@/data/market";
+import { listDldAreasWithStatsFn } from "@/data/market-public.functions";
 import { attributionFor } from "@/data/market";
 import { pageHead, withHeroPreload } from "@/lib/seo";
 import { itemListSchema } from "@/lib/schema";
@@ -13,7 +14,27 @@ import { areaPhoto } from "@/lib/photos";
 import { Section, Eyebrow } from "@/components/ui/section";
 
 export const Route = createFileRoute("/areas/")({
-  loader: async () => ({ areas: await listAreasWithStats() }),
+  loader: async () => {
+    /*
+     * The registry, because the curated table is empty.
+     *
+     * `areas` and `area_market_stats` have never been populated, so this page
+     * said "community data is loading" to every visitor while 153 communities
+     * with real prices and yields sat in `dld_market_aggregates`, feeding the
+     * market pages two clicks away. The page was apologising for data the site
+     * already had.
+     *
+     * So it lists what the registry publishes and links each one to its own
+     * community page, which exists and works. The curated table is still read
+     * for the guide content, and any community it covers keeps its photograph;
+     * the rest are listed without one rather than not listed at all.
+     */
+    const [published, curated] = await Promise.all([
+      listDldAreasWithStatsFn(),
+      listAreasWithStats().catch(() => []),
+    ]);
+    return { published, curated };
+  },
   head: ({ loaderData }) =>
     withHeroPreload(
       "palm-jumeirah-aerial-day",
@@ -25,10 +46,9 @@ export const Route = createFileRoute("/areas/")({
         schema: [
           itemListSchema({
             name: "Dubai communities covered by DLX Properties",
-            items: (loaderData?.areas ?? []).map((area) => ({
+            items: (loaderData?.published ?? []).map((area) => ({
               name: area.name,
-              path: `/areas/${area.slug}`,
-              ...(area.summary ? { description: area.summary } : {}),
+              path: `/market-intelligence/communities/${area.id}`,
             })),
           }),
         ],
@@ -48,31 +68,22 @@ export const Route = createFileRoute("/areas/")({
 });
 
 function AreasIndex() {
-  const { areas } = Route.useLoaderData();
+  const { published, curated } = Route.useLoaderData();
 
   /*
-   * Real records only. Sample rows are not listed.
+   * Every community the registry publishes, with the curated photograph where
+   * we happen to have one.
    *
-   * `areas.stats` can carry rows its own provenance column marks `sample`, and
-   * this page presents whatever it lists as "what each community has actually
-   * transacted at". That sentence and an illustrative figure cannot share a
-   * page. Same rule the advisor's knowledge index uses.
-   *
-   * WHY THESE FIGURES DO NOT COME FROM THE PUBLISHED AGGREGATES, which is
-   * where the rest of the site now reads. The two describe different entity
-   * spaces: this page lists communities by the name a buyer uses (Dubai
-   * Marina, Downtown Dubai) and the registry publishes administrative ones
-   * (Marsa Dubai, Burj Khalifa). Of a dozen common Dubai community names, two
-   * match the registry's spelling. Joining them on name was tried and reverted
-   * — a join that misses five times in six is worse than no join, because the
-   * misses are invisible.
-   *
-   * Reconciling them is a data task, not a code one: `areas.dld_area_name`
-   * exists for exactly this and needs filling in by hand, one community at a
-   * time. Until it is, this page cites the area figures and the market pages
-   * cite the registry, and both say which they are.
+   * Sorted by how much actually changed hands, so the communities a reader has
+   * heard of and the communities that are actually trading are near the top,
+   * rather than whichever the database returned first.
    */
-  const covered = areas.filter((area) => area.stats?.provenance === "dld_open_data");
+  const bySlug = new Map(curated.map((area) => [area.name.trim().toLowerCase(), area.slug]));
+  const covered = [...published].sort((a, b) => {
+    const left = a.stats?.transaction_count ?? 0;
+    const right = b.stats?.transaction_count ?? 0;
+    return right - left;
+  });
 
   const attribution = attributionFor(
     covered[0]?.stats?.provenance ?? null,
@@ -92,11 +103,14 @@ function AreasIndex() {
       <Section>
         {covered.length === 0 ? (
           <div className="border border-border p-12 text-center">
-            <Eyebrow>Being prepared</Eyebrow>
-            <h2 className="display-3 mt-6">Community data is loading.</h2>
+            {/* Only reachable if the registry itself returns nothing, which
+                means an export problem rather than a page waiting to be
+                filled. Says that, instead of implying the site is unfinished. */}
+            <Eyebrow>Temporarily unavailable</Eyebrow>
+            <h2 className="display-3 mt-6">The community figures are not responding.</h2>
             <p className="body-text mx-auto mt-6 max-w-measure text-muted-foreground">
-              Once the Dubai Land Department snapshot is in, each community here shows its recorded
-              prices, yields and volumes.
+              This is ours to fix, not something you need to wait for. The full market analysis is
+              still available, and a consultant can answer for any community directly.
             </p>
           </div>
         ) : (
@@ -109,23 +123,30 @@ function AreasIndex() {
                 className="border-b border-border transition-colors hover:border-accent"
               >
                 <Link
-                  to="/areas/$slug"
-                  params={{ slug: area.slug }}
+                  to="/market-intelligence/communities/$id"
+                  params={{ id: area.id }}
                   className="group grid items-center gap-x-6 gap-y-3 py-8 md:grid-cols-12"
                 >
                   {/* The communities page had no photograph anywhere below the
                       opening, which on the one page that is about places is
                       the wrong thing to leave out. Small, because the row is a
                       comparison and the numbers are the point. */}
+                  {/* A photograph only where the curated table actually
+                      covers this community. A stock frame stood in for a place
+                      it was not of would be worse than the space. */}
                   <span className="hidden overflow-hidden md:col-span-2 md:block">
-                    <span className="block aspect-4/3 w-full overflow-hidden">
-                      <Photo
-                        slug={areaPhoto(area.slug)}
-                        sizes="(min-width: 768px) 15vw, 0px"
-                        alt=""
-                        className="transition-transform duration-slow ease-editorial group-hover:scale-[1.04]"
-                      />
-                    </span>
+                    {bySlug.has(area.name.trim().toLowerCase()) ? (
+                      <span className="block aspect-4/3 w-full overflow-hidden">
+                        <Photo
+                          slug={areaPhoto(bySlug.get(area.name.trim().toLowerCase()) ?? "")}
+                          sizes="(min-width: 768px) 15vw, 0px"
+                          alt=""
+                          className="transition-transform duration-slow ease-editorial group-hover:scale-[1.04]"
+                        />
+                      </span>
+                    ) : (
+                      <span aria-hidden className="block h-px w-10 bg-gold-ink" />
+                    )}
                   </span>
                   <span className="display-3 transition-transform duration-slow ease-editorial group-hover:translate-x-2 md:col-span-3">
                     {area.name}

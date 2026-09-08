@@ -427,8 +427,7 @@ function CommunityMarketPage() {
           {hasContext ? (
             <Section data-surface="light">
               <Reveal>
-                <Eyebrow>What it costs to own here</Eyebrow>
-                <h2 className="display-2 mt-5 max-w-3xl text-balance">
+                <h2 className="display-2 max-w-3xl text-balance">
                   {nameEn} against every other community in Dubai.
                 </h2>
                 <p className="body-text mt-6 max-w-measure text-muted-foreground">
