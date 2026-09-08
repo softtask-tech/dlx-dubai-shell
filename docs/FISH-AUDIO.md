@@ -318,68 +318,82 @@ Work down this list; it is ordered by how often each one is the answer.
 
 ---
 
-## 9. Voice Agents — the plan (not built)
+## 9. Voice Agents — turning it on
 
-A separate Fish Audio product from everything above. The agent holds the
-conversation itself: prompt, knowledge, tools, and structured extraction of
-what the caller said.
+Built. Three commands and two secrets, and nothing reaches a caller until you
+publish.
 
-**Decided:** web only for now — the widget/SDK on the site, no phone number.
-The `tel:` link stays as it is and reaches a person.
+### What runs where
 
-**Built from the API, not the console**, except the voice. The knowledge base
-has to be rebuilt on every DLD export, and maintaining 56 communities of
-changing figures by hand in a console is the second-pipeline problem this
-codebase has already been bitten by twice. The prompt has to come from
-`ADVISOR_POLICY` or the phone advisor and the chat advisor drift apart, which
-CLAUDE.md forbids. Choosing the voice is a taste decision made by ear, and
-publishing is a deliberate human act: live traffic runs the latest *published*
-version, so nothing reaches a caller until someone presses publish.
+| Piece | Where it lives |
+| --- | --- |
+| Provisioning | `scripts/fish-agent.mjs` |
+| Prompt and knowledge | built from `/advisor-knowledge.json`, the same index the chat advisor uses |
+| Lead capture | `POST /api/advisor/fish-webhook` |
+| The call surface | `src/components/advisor/voice-call.tsx`, inside our own dock |
 
-### What the API gives us
+### Secrets to add
 
-| Thing | Endpoint | Limits that shape the design |
+| Variable | When | What it is |
 | --- | --- | --- |
-| The agent | `/v1/agent/agents`, config at `/v1/agent/agents/{id}/config` | Draft autosaves; publish snapshots an immutable numbered version |
-| Knowledge | `/v1/agent/knowledge-sources` (multipart) | **`.md` and `.txt` only**, 1 MB a file, 100 sources an agent |
-| Extraction | `analysis.data_fields` on the agent config | Up to **20 fields**: name, type (boolean/text/number/enum), description, enum_options |
-| Delivery | `webhooks.post_call[]`, up to 5 | HMAC-SHA256 in `X-Fish-Webhook-Signature`, at-least-once |
+| `FISH_WEBHOOK_SECRET` | before the first run | Any long random string. Signs the post-call webhook; without it the route refuses every request. |
+| `FISH_AGENT_ID` | after the first run | Printed by the script. Set it so later runs update the agent instead of creating another, and so the talk button appears. |
+| `FISH_VOICE_ID` | optional | Pins the voice. Unset, the script picks one and prints it. |
 
-### On keywords
+### Running it
 
-There is no keyword, vocabulary or pronunciation boosting in Fish Audio's
-documentation, so a list of fifty keywords has nothing to attach to.
+```bash
+export FISH_API=...            # the key already in Lovable
+export FISH_WEBHOOK_SECRET=... # the one you just added
 
-What actually decides whether the agent finds the right passage: a corpus over
-**8 KB is searched on every turn, using the caller's latest sentence as the
-query**, while anything under 8 KB is inlined whole. So retrieval is matched
-against our documents' own wording, and the lever is writing the questions a
-buyer actually asks *into* the documents. `knowledge-dld.server.ts` already
-does this — every community entry carries the five phrasings people use
-("what does property cost in X", "what is the service charge in X"). That is
-the keyword list, except it matches whole questions rather than bare words.
+node scripts/fish-agent.mjs --voices    # see the candidate voices
+node scripts/fish-agent.mjs             # build the draft, change nothing live
+node scripts/fish-agent.mjs --publish   # make it the version callers hear
+```
 
-It also settles how to shape the upload: one document per community, so a
-question about one place retrieves that place rather than a slab containing
-all of them.
+Re-run it after every DLD export. Sources are matched by title and updated in
+place, so it never duplicates.
 
-### To build
+### The voice, and the emotion
 
-1. Generate the knowledge documents from the real sources — the DLD figures
-   per community, the two projects, the services, the guides and the fee
-   schedule. Reuse `buildDldKnowledge()`, render `.md`.
-2. A sync that creates, updates and prunes sources against
-   `/v1/agent/knowledge-sources`, then attaches them by `knowledge_source_ids`.
-   Re-run after every export.
-3. Agent config from code: system prompt out of `ADVISOR_POLICY`, the
-   `analysis.data_fields` mirroring the lead fields the forms already capture
-   (intent, budget, timeline, name, contact), and the post-call webhook.
-4. A receiver route that verifies the signature over `{t}.{raw body}`, rejects
-   anything older than five minutes, deduplicates on
-   (`event`, `session.id`, `analysis.finished_at`), and writes a lead through
-   the path `/api/advisor/call-lead` already uses.
-5. The widget on the site, replacing the current "answers can be read aloud"
-   affordance with an actual conversation.
+The script ranks English voices that Fish's own catalogue tags female, by
+usage, and prints its choice. A voice id is not hard-coded because a
+32-character id pasted into a file is unverifiable until it runs and then fails
+at the worst possible moment.
 
-Transcripts are deliberately absent from webhook payloads; they are fetched
-from the sessions API when the lead needs one attached.
+Emotion is a **separate setting from the voice**: `voice.expressive`, which the
+script sets to `true`. It lets the voice add its own emphasis, natural pauses
+and contractions, and those cues are never spoken and never reach a transcript.
+Speed is set to 0.95, slightly under natural, because this advisor reads
+numbers aloud and a misheard figure is the one failure that costs somebody
+money.
+
+### Keywords
+
+There is no keyword or vocabulary boosting in Fish Audio. What decides
+retrieval is that a corpus over 8 KB is searched on every turn **using the
+caller's own sentence as the query**. So the wording inside our documents is
+the matching surface, and the script uploads one document per entry, each
+opening with the questions people actually ask. That is the keyword list,
+except it matches whole questions instead of bare words, and it is generated
+rather than maintained.
+
+### What a finished call writes
+
+Fish extracts the fields the script configures (`analysis.data_fields`) and
+posts them. The webhook verifies HMAC-SHA256 over `{timestamp}.{raw body}` in
+constant time, rejects anything older than five minutes, ignores `call.ended`
+because only `call.analyzed` carries the fields, and writes a lead through the
+same `captureLead` path the forms use. Intent and timeline use the site's own
+vocabularies, so they map straight through; anything outside them is dropped
+rather than coerced into a value a consultant would act on.
+
+Transcripts are deliberately absent from Fish's payloads. Fetch one from the
+sessions API against the session id on the lead when a consultant needs it.
+
+### One thing to check on deploy
+
+The call surface loads `https://unpkg.com/@fishaudio/agent-widget-embed` on
+demand. If a Content-Security-Policy is ever added to this site, that host
+needs to be on the script allowlist or the talk button will open a panel that
+says the voice line will not start.

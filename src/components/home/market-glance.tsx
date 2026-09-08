@@ -50,17 +50,15 @@ export function MarketGlance({
 
   const sales = seriesFor(rows, "registered_sale_count");
   const rentals = seriesFor(rows, "registered_rental_contract_count");
-  const rent = seriesFor(rows, "median_registered_annual_rent_aed");
 
   const latestSale = latestRow(sales);
   const latestRental = latestRow(rentals);
-  const latestRent = latestRow(rent);
 
   /* Nothing published yet means no section at all, rather than a card of
    * dashes explaining that there is nothing to say. */
-  if (!latestSale && !latestRental && !latestRent) return null;
+  if (!latestSale && !latestRental) return null;
 
-  const period = latestSale ?? latestRental ?? latestRent;
+  const period = latestSale ?? latestRental;
   const periodLabel = period ? formatPeriod("quarter", period.period_start) : null;
   const points = active === "registered_sale_count" ? sales : rentals;
 
@@ -77,12 +75,16 @@ export function MarketGlance({
       label: "Registered rental contracts",
       note: "Same period",
     },
-    {
-      row: latestRent,
-      metric: "median_registered_annual_rent_aed" as const,
-      label: "Median registered annual rent",
-      note: "Half were agreed below it, half above",
-    },
+    /*
+     * The median registered rent is not shown here.
+     *
+     * It is a citywide middle figure across every tenancy in Dubai, studios in
+     * Deira included, so it lands low and reads as though it were what a home
+     * here earns. On a page whose job is to get someone to pick up the phone,
+     * a low number with no context attached does the opposite. It is still
+     * published in full on the market pages, where the record counts, the
+     * period and the community breakdown sit beside it and it means something.
+     */
   ].filter((figure) => figure.row !== null);
 
   return (
@@ -91,11 +93,9 @@ export function MarketGlance({
         {figures.map((figure) => (
           <div key={figure.metric}>
             <p className="font-display text-3xl leading-none tabular-nums sm:text-4xl">
-              {figure.metric === "median_registered_annual_rent_aed" ? (
-                <CountUp value={figure.row!.metric_value} prefix="AED " />
-              ) : (
-                <CountUp value={figure.row!.metric_value} />
-              )}
+              {/* Both figures left here are counts, so no currency prefix.
+                  The AED branch went with the median rent. */}
+              <CountUp value={figure.row!.metric_value} />
             </p>
             <p className="caption mt-2 text-on-dark">{figure.label}</p>
             <p className="caption text-on-dark-muted">{figure.note}</p>

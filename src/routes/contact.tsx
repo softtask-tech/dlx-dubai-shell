@@ -10,6 +10,7 @@ import { Reveal } from "@/components/site/reveal";
 import { TestimonialsBlock } from "@/components/site/testimonials-block";
 import { TrustStrip } from "@/components/site/trust-strip";
 import { PageHero } from "@/components/site/page-hero";
+import { cn } from "@/lib/utils";
 import { Section, Eyebrow } from "@/components/ui/section";
 import { SectionOpener } from "@/components/site/section-opener";
 
@@ -81,19 +82,30 @@ function ContactPage() {
     <>
       <PageHero
         photo="dubai-marina-from-water"
-        title="Begin a quiet conversation."
-        lead="Whether you are acquiring, exiting or simply observing the market, we are available for a discreet, no-obligation discussion."
+        title="Tell us what you are trying to do."
+        lead="One consultant reads it and comes back with something useful: what is actually available, what it should cost you, and what we would do in your position. No obligation, and no brochure."
       />
 
-      {/* Every route in, laid out plainly */}
+      {/*
+       * Four ways in, weighted by the one that works.
+       *
+       * These were four equal tiles, which says the four are equally good.
+       * They are not: a call gets an answer in a minute and a form gets one
+       * when somebody next opens it, and the whole page exists to start a
+       * conversation. So the phone number is twice the width and set on the
+       * green, the two quick written routes sit beside it, and the office
+       * address runs underneath as a line rather than pretending to be a
+       * fourth call to action. Nobody clicks an address.
+       */}
       <Section className="pb-20">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <ContactRoute
+            primary
             label="Call"
             value={site.contact.phone}
             href={`tel:${site.contact.phoneE164}`}
           >
-            Business hours, Gulf Standard Time.
+            Business hours, Gulf Standard Time. Usually answered inside a minute.
           </ContactRoute>
           <ContactRoute
             label="Email"
@@ -110,7 +122,11 @@ function ContactPage() {
           >
             Often the fastest way to reach us.
           </ContactRoute>
-          <ContactRoute label="Office" value={`${site.address.street}, ${site.address.locality}`}>
+          <ContactRoute
+            wide
+            label="Office"
+            value={`${site.address.street}, ${site.address.locality}`}
+          >
             Visits by appointment.
           </ContactRoute>
         </div>
@@ -222,30 +238,50 @@ function ContactRoute({
   value,
   href,
   external,
+  primary,
+  wide,
   children,
 }: {
   label: string;
   value: string;
   href?: string;
   external?: boolean;
+  /** The one route the page is actually for. Set on the green, double width. */
+  primary?: boolean;
+  /** Runs the full width as a line rather than sitting as a fourth tile. */
+  wide?: boolean;
   children: React.ReactNode;
 }) {
+  const span = primary ? "sm:col-span-2" : wide ? "sm:col-span-2 lg:col-span-4" : "";
+  const skin = primary
+    ? "border-green bg-green text-on-dark hover:border-gold"
+    : "border-border bg-paper hover:border-gold";
+
   const body = (
     <>
-      <Eyebrow>{label}</Eyebrow>
-      <p className="display-3 mt-4">{value}</p>
-      <p className="caption mt-3">{children}</p>
+      <Eyebrow className={primary ? "text-gold" : undefined}>{label}</Eyebrow>
+      <p className={cn("mt-4", primary ? "display-2" : "display-3")} dir={primary ? "ltr" : undefined}>
+        {value}
+      </p>
+      <p className={cn("caption mt-3", primary && "text-on-dark-muted")}>{children}</p>
     </>
   );
 
-  if (!href) return <div className="border border-border bg-paper p-7">{body}</div>;
+  if (!href) {
+    return <div className={cn("border p-7", span, skin)}>{body}</div>;
+  }
 
   return (
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       onClick={() => trackContactHref(href, "contact-page")}
-      className="focus-ring group block border border-border bg-paper p-7 transition-[border-color,transform,box-shadow] duration-quick ease-editorial hover:-translate-y-1 hover:border-gold hover:shadow-[0_14px_34px_rgba(0,0,0,0.07)]"
+      className={cn(
+        "focus-ring group block border p-7 transition-[border-color,transform,box-shadow] duration-quick ease-editorial",
+        "hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(0,0,0,0.07)]",
+        span,
+        skin,
+      )}
     >
       {body}
     </a>

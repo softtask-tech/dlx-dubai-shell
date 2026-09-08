@@ -267,7 +267,7 @@ function RootComponent() {
              */}
             {advisorAvailability.chat && !isCampaignPage ? (
               <Suspense fallback={null}>
-                <AdvisorDock />
+                <AdvisorDock agentId={advisorAvailability.agentId} />
               </Suspense>
             ) : null}
           </LenisProvider>

@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouterState } from "@tanstack/react-router";
-import { Phone, X } from "lucide-react";
+import { AudioLines, Phone, X } from "lucide-react";
 import { useReducedMotion } from "motion/react";
 
 import { advisor } from "@/config/advisor";
+import { VoiceCall } from "@/components/advisor/voice-call";
 import { brand } from "@/config/brand";
 import { isRtl } from "@/config/advisor";
 import { guessLanguage } from "@/data/advisor";
@@ -27,8 +28,15 @@ import { trackContactHref } from "@/components/site/contact-link";
  * The rail never covers content: it is `sticky`-feeling but fixed and short,
  * and the footer carries bottom padding to match.
  */
-export function AdvisorDock() {
+export function AdvisorDock({ agentId }: { agentId?: string | null }) {
   const [open, setOpen] = useState(false);
+  /*
+   * Typing or talking, never both at once in the same panel. The voice view
+   * takes the whole body, because a call is not something you do while
+   * reading a thread, and it only exists at all once an agent has been
+   * provisioned: an offer to talk that cannot connect is worse than no offer.
+   */
+  const [mode, setMode] = useState<"chat" | "voice">("chat");
   const [opening, setOpening] = useState<string | null>(null);
   const pagePath = useRouterState({ select: (state) => state.location.pathname });
 
@@ -247,6 +255,18 @@ function AdvisorPanel({
             >
               <Phone aria-hidden className="size-4" />
             </a>
+            {/* Only rendered once an agent is provisioned and published. An
+                offer to talk that cannot connect is worse than no offer. */}
+            {agentId && mode === "chat" ? (
+              <button
+                type="button"
+                onClick={() => setMode("voice")}
+                aria-label={`Talk to ${advisor.name}`}
+                className="focus-ring grid size-10 place-items-center text-muted-foreground transition-colors hover:text-gold-ink"
+              >
+                <AudioLines aria-hidden className="size-4" />
+              </button>
+            ) : null}
             <button
               type="button"
               onClick={onClose}
@@ -258,6 +278,10 @@ function AdvisorPanel({
           </div>
         </header>
 
+        {agentId && mode === "voice" ? (
+          <VoiceCall agentId={agentId} onClose={() => setMode("chat")} />
+        ) : (
+          <>
         <div
           ref={scrollRef}
           className="flex-1 overflow-y-auto overscroll-contain px-5 py-6 sm:px-6"
@@ -277,7 +301,20 @@ function AdvisorPanel({
           ) : null}
         </div>
 
-        <footer className="border-t border-border px-6 py-5">
+        {/*
+         * The composer, and nothing else it does not need.
+         *
+         * This footer carried the textarea, the AI disclosure and a "Prefer to
+         * talk? Call +971..." line, the last of which wrapped to two lines on
+         * a 26rem panel. Roughly a third of the panel's height was permanent
+         * furniture on a phone, taken from the only part anyone came for.
+         *
+         * The call line is gone because the header has had a phone button in
+         * it the whole time, one tap away, so this was the same offer twice.
+         * The disclosure stays: it is one short line and a reader is entitled
+         * to know at any moment that they are not talking to a person.
+         */}
+        <footer className="border-t border-border px-5 py-4 sm:px-6">
           <div className="flex items-end gap-3">
             <textarea
               ref={inputRef}
@@ -307,19 +344,10 @@ function AdvisorPanel({
             </Button>
           </div>
 
-          <div className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-            <p className="caption text-muted-foreground">{advisor.disclosure}</p>
-            {/* The offer to talk sits next to the machine that is talking to
-                you, which is the moment someone decides they would rather not
-                type. */}
-            <a
-              href={`tel:${brand.contact.phoneE164}`}
-              className="caption text-accent transition-colors hover:text-foreground"
-            >
-              Prefer to talk? Call {brand.contact.phone}
-            </a>
-          </div>
+          <p className="caption mt-3 text-muted-foreground">{advisor.disclosure}</p>
         </footer>
+          </>
+        )}
         </div>
       </div>
     </>
