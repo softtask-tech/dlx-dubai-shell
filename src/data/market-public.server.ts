@@ -223,6 +223,63 @@ export async function searchMarketEntities(input: {
  * handful of published quarters is a thin page, and thin pages are worse than
  * absent ones.
  */
+/**
+ * Communities ranked on one metric, for one period.
+ *
+ * The published functions could say how Dubai is doing, how one community is
+ * doing, and how a hand-picked twenty compare. None of them could answer the
+ * question a buyer actually arrives with, which is where they should be
+ * looking, because nothing could put the communities in order.
+ */
+export async function getCommunityLeaderboard(input: {
+  metric: MarketMetric;
+  grain: MarketGrain;
+  period: string;
+  direction?: "asc" | "desc";
+  limit?: number;
+}): Promise<MarketRow[]> {
+  try {
+    const { data, error } = await marketDb.rpc("get_dld_community_leaderboard", {
+      requested_metric: input.metric,
+      requested_grain: input.grain,
+      requested_period: input.period,
+      sort_direction: input.direction ?? "desc",
+      result_limit: input.limit ?? 60,
+    });
+    if (error) throw error;
+    return normalise(data);
+  } catch (error) {
+    console.error("[data:dld-market] leaderboard unavailable", error);
+    return [];
+  }
+}
+
+/**
+ * The newest period that actually carries rows for a metric.
+ *
+ * Asked rather than assumed, because the price series and the count series do
+ * not always land in the same quarter, and a page that guesses "this quarter"
+ * renders an empty table the week before an export.
+ */
+export async function getLatestPeriod(input: {
+  entityType: MarketEntityType;
+  metric: MarketMetric;
+  grain: MarketGrain;
+}): Promise<string | null> {
+  try {
+    const { data, error } = await marketDb.rpc("get_dld_latest_period", {
+      requested_entity_type: input.entityType,
+      requested_metric: input.metric,
+      requested_grain: input.grain,
+    });
+    if (error) throw error;
+    return (data as unknown as string | null) ?? null;
+  } catch (error) {
+    console.error("[data:dld-market] latest period unavailable", error);
+    return null;
+  }
+}
+
 export async function listMarketCommunitiesServer(): Promise<
   { entityId: string; nameEn: string }[]
 > {
