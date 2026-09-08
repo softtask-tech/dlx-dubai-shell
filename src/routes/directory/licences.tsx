@@ -1,14 +1,25 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { DirectoryPage } from "@/components/directory/directory-page";
-import { directorySearchSchema, loadDirectoryList } from "@/data/directory-route";
+import {
+  directoryDatasetSchema,
+  directorySearchSchema,
+  loadDirectoryList,
+} from "@/data/directory-route";
 import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/directory/licences")({
   validateSearch: directorySearchSchema,
   loaderDeps: ({ search }) => search,
   loader: ({ deps }) => loadDirectoryList(deps, "licence"),
-  head: () =>
+  head: ({ loaderData }) =>
     pageHead({
       path: "/directory/licences",
+      schema: directoryDatasetSchema({
+        name: "Dubai real estate licences register",
+        description:
+          "Real estate licences and their status as recorded in Dubai Land Department open data.",
+        path: "/directory/licences",
+        exportDate: loaderData?.records[0]?.source_export_date,
+      }),
       breadcrumbs: [
         { name: "DLD directory", path: "/directory" },
         { name: "Licences", path: "/directory/licences" },

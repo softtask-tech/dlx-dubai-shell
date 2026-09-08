@@ -1,14 +1,25 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { DirectoryPage } from "@/components/directory/directory-page";
-import { directorySearchSchema, loadDirectoryList } from "@/data/directory-route";
+import {
+  directoryDatasetSchema,
+  directorySearchSchema,
+  loadDirectoryList,
+} from "@/data/directory-route";
 import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/directory/escrow-agents")({
   validateSearch: directorySearchSchema,
   loaderDeps: ({ search }) => search,
   loader: ({ deps }) => loadDirectoryList(deps, "escrow_agent"),
-  head: () =>
+  head: ({ loaderData }) =>
     pageHead({
       path: "/directory/escrow-agents",
+      schema: directoryDatasetSchema({
+        name: "Dubai approved escrow agents register",
+        description:
+          "Escrow agents approved to hold off-plan buyer funds, as recorded in Dubai Land Department open data.",
+        path: "/directory/escrow-agents",
+        exportDate: loaderData?.records[0]?.source_export_date,
+      }),
       breadcrumbs: [
         { name: "DLD directory", path: "/directory" },
         { name: "Escrow agents", path: "/directory/escrow-agents" },
