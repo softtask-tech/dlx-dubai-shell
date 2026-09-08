@@ -77,11 +77,9 @@ export function RentGap({
         preserveAspectRatio="none"
       >
         <title id={`${id}-t`}>
-          Median registered annual rent on new tenancies against renewals,{" "}
-          {formatPeriod(grain, first.periodStart)} to {formatPeriod(grain, last.periodStart)}. In the
-          latest period a new tenancy registered {fmt(last.fresh)} against {fmt(last.renewed)} on a
-          renewal, a difference of {last.gapPct.toFixed(1)}%. The figures follow in the table.
+          {`Median registered annual rent on new tenancies against renewals, ${formatPeriod(grain, first.periodStart)} to ${formatPeriod(grain, last.periodStart)}. In the latest period a new tenancy registered ${fmt(last.fresh)} against ${fmt(last.renewed)} on a renewal, a difference of ${last.gapPct.toFixed(1)}%. The figures follow in the table.`}
         </title>
+
         <defs>
           <linearGradient id={`${id}-band`} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="var(--gold)" stopOpacity="0.34" />

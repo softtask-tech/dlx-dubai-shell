@@ -61,11 +61,9 @@ export function CompositionSeries({
         preserveAspectRatio="none"
       >
         <title id={`${id}-t`}>
-          Share of registered activity that was {aLabel}, {formatPeriod(grain, first.periodStart)} to{" "}
-          {formatPeriod(grain, last.periodStart)}, moving between{" "}
-          {Math.min(...points.map((p) => p.aShare)).toFixed(0)}% and{" "}
-          {Math.max(...points.map((p) => p.aShare)).toFixed(0)}%. The figures follow in the table.
+          {`Share of registered activity that was ${aLabel}, ${formatPeriod(grain, first.periodStart)} to ${formatPeriod(grain, last.periodStart)}, moving between ${Math.min(...points.map((p) => p.aShare)).toFixed(0)}% and ${Math.max(...points.map((p) => p.aShare)).toFixed(0)}%. The figures follow in the table.`}
         </title>
+
         <defs>
           <linearGradient id={`${id}-f`} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="var(--green-mid)" stopOpacity="0.35" />

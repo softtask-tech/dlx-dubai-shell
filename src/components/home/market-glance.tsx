@@ -196,9 +196,9 @@ function GlanceChart({
         preserveAspectRatio="none"
       >
         <title id={`${id}-title`}>
-          {METRIC_LABELS[metric]} by quarter, {formatPeriod("quarter", first.period_start)} to{" "}
-          {formatPeriod("quarter", last.period_start)}. The same figures are in the table below.
+          {`${METRIC_LABELS[metric]} by quarter, ${formatPeriod("quarter", first.period_start)} to ${formatPeriod("quarter", last.period_start)}. The same figures are in the table below.`}
         </title>
+
         <defs>
           <linearGradient id={`${id}-fill`} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="var(--gold)" stopOpacity="0.4" />
