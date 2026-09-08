@@ -114,3 +114,43 @@ export const getLatestPeriodFn = createServerFn({ method: "GET" })
     const { getLatestPeriod } = await import("./market-public.server");
     return getLatestPeriod(data);
   });
+
+export const getOffPlanSplitFn = createServerFn({ method: "GET" })
+  .validator((input: unknown) =>
+    z
+      .object({
+        metric,
+        grain,
+        period: isoDate,
+        minObservations: z.number().int().min(1).max(1000).default(30),
+        limit: z.number().int().positive().max(200).default(80),
+      })
+      .parse(input),
+  )
+  .handler(async ({ data }) => {
+    const { getOffPlanSplit } = await import("./market-public.server");
+    return getOffPlanSplit(data);
+  });
+
+export const getOffPlanSplitPeriodFn = createServerFn({ method: "GET" })
+  .validator((input: unknown) =>
+    z
+      .object({ metric, grain, minObservations: z.number().int().min(1).max(1000).default(30) })
+      .parse(input),
+  )
+  .handler(async ({ data }) => {
+    const { getOffPlanSplitPeriod } = await import("./market-public.server");
+    return getOffPlanSplitPeriod(data);
+  });
+
+/**
+ * The communities the calculators work from, built from published aggregates.
+ *
+ * A server function rather than a direct import, because a route loader can run
+ * in the browser on client-side navigation and the module behind this reaches
+ * Supabase through the market RPCs.
+ */
+export const listDldAreasWithStatsFn = createServerFn({ method: "GET" }).handler(async () => {
+  const { listDldAreasWithStats } = await import("./market-areas-dld.server");
+  return listDldAreasWithStats();
+});

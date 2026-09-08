@@ -3,6 +3,7 @@ import { z } from "zod";
 import { directoryKeyFromSlug } from "./directory-contract";
 import { getDirectoryRecordFn, searchDirectoryFn } from "./directory.functions";
 import { DIRECTORY_RECORD_TYPES, type DirectoryRecordType } from "./directory-types";
+import { datasetSchema } from "@/lib/schema";
 
 export const directorySearchSchema = z.object({
   q: z.string().max(160).catch("").default(""),
@@ -71,4 +72,41 @@ export async function loadRecordedActivity(
     rows: rows.filter((row) => row.segment_code === "all"),
     sourceExportDate: metadata.sourceExportDate,
   };
+}
+
+/**
+ * Dataset schema for a directory page.
+ *
+ * These pages republish a public register, which is the single most
+ * schema-worthy thing on the site and had none of it. An answer engine asked
+ * "is this broker registered in Dubai" has no way to know this page can answer
+ * that unless the page says so in a form it reads.
+ *
+ * It describes the register, not the current page of results. A search view is
+ * a query over the same dataset however it is filtered or paged, and emitting a
+ * different Dataset per query would claim a dataset per query exists.
+ *
+ * Returns an empty list when no export date is known, because `dateModified` is
+ * the one field here that must not be guessed: a stale register presented as
+ * current is worse than one that declines to say.
+ */
+export function directoryDatasetSchema(input: {
+  name: string;
+  description: string;
+  path: string;
+  exportDate: string | null | undefined;
+}) {
+  if (!input.exportDate) return [];
+  return [
+    datasetSchema({
+      name: input.name,
+      description: input.description,
+      path: input.path,
+      /* Always official: every row here is a Dubai Land Department record and
+       * nothing on these pages is derived or estimated. */
+      isOfficial: true,
+      dateModified: input.exportDate,
+      spatialCoverage: "Dubai, United Arab Emirates",
+    }),
+  ];
 }

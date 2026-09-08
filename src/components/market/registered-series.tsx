@@ -8,6 +8,7 @@ import {
   formatMetricValue,
   formatPeriod,
   isChangeMetric,
+  isLevelMetric,
   type MarketGrain,
   type MarketMetric,
   type MarketRow,
@@ -24,9 +25,12 @@ import { cn } from "@/lib/utils";
  * Three things it will not do. It will not draw a period with no published
  * value, because an interpolated point is an invented figure. It will not start
  * a count axis anywhere but zero, because a cropped baseline exaggerates a
- * movement that is not there. And it never appears without the table beneath
- * it: the table is the accessible reading of exactly the same numbers, keyboard
- * reachable and readable by a screen reader, not a fallback for one.
+ * movement that is not there — a price is a level rather than a count, so it is
+ * drawn over its own range and the range is printed beside it, since a cropped
+ * axis is only dishonest when it is undisclosed. And it never appears without
+ * the table beneath it: the table is the accessible reading of exactly the same
+ * numbers, keyboard reachable and readable by a screen reader, not a fallback
+ * for one.
  */
 export function RegisteredSeries({
   rows,
@@ -60,8 +64,22 @@ export function RegisteredSeries({
 
   const values = points.map((point) => point.metric_value);
   const change = isChangeMetric(metric);
-  const max = Math.max(...values, change ? 0 : 1);
-  const min = change ? Math.min(...values, 0) : 0;
+  /*
+   * A count is drawn from zero; a level is drawn over its own range.
+   *
+   * Nine hundred sales is genuinely three times three hundred, so cropping a
+   * count axis overstates a movement. A price per square foot has no such
+   * reference — pinned to zero, a series running 1,459 to 1,749 and back draws
+   * as a flat line in the top fifth of the frame and the whole story vanishes.
+   * The range is printed beside the chart whenever it is cropped, because an
+   * undisclosed cropped axis is the oldest trick in the book.
+   */
+  const level = isLevelMetric(metric);
+  const low = Math.min(...values);
+  const high = Math.max(...values);
+  const pad = level ? (high - low || high || 1) * 0.12 : 0;
+  const max = level ? high + pad : Math.max(...values, change ? 0 : 1);
+  const min = level ? Math.max(0, low - pad) : change ? Math.min(...values, 0) : 0;
   const span = max - min || 1;
   const width = 1000;
   const inner = height - 28;
@@ -76,6 +94,8 @@ export function RegisteredSeries({
     .map((coordinate, index) => `${index === 0 ? "M" : "L"}${coordinate.x} ${coordinate.y}`)
     .join(" ");
 
+  /* The baseline rule the chart draws: zero for a count, the axis floor for a
+   * level, and the real zero line for a change series that crosses it. */
   const zeroY = change ? inner - ((0 - min) / span) * inner : inner;
   const observations = points.reduce((total, point) => total + point.observation_count, 0);
   const first = points[0]!;
@@ -92,6 +112,14 @@ export function RegisteredSeries({
           {formatPeriod(grain, first.period_start)} to {formatPeriod(grain, last.period_start)} ·{" "}
           {observations.toLocaleString("en-AE")} registered records ·{" "}
           {CONFIDENCE_LABELS[last.confidence]}
+          {level ? (
+            <>
+              {" · "}
+              <span className="tabular-nums">
+                Scale {formatMetricValue(metric, min)} to {formatMetricValue(metric, max)}
+              </span>
+            </>
+          ) : null}
         </p>
       </figcaption>
 

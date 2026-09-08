@@ -1,14 +1,25 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { DirectoryPage } from "@/components/directory/directory-page";
-import { directorySearchSchema, loadDirectoryList } from "@/data/directory-route";
+import {
+  directoryDatasetSchema,
+  directorySearchSchema,
+  loadDirectoryList,
+} from "@/data/directory-route";
 import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/directory/brokers/")({
   validateSearch: directorySearchSchema,
   loaderDeps: ({ search }) => search,
   loader: ({ deps }) => loadDirectoryList(deps, "broker"),
-  head: () =>
+  head: ({ loaderData }) =>
     pageHead({
       path: "/directory/brokers",
+      schema: directoryDatasetSchema({
+        name: "Dubai real estate brokers register",
+        description:
+          "Broker names and registration numbers as recorded in Dubai Land Department open data, with matched office affiliations.",
+        path: "/directory/brokers",
+        exportDate: loaderData?.records[0]?.source_export_date,
+      }),
       breadcrumbs: [
         { name: "DLD directory", path: "/directory" },
         { name: "Brokers", path: "/directory/brokers" },

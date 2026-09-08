@@ -4,6 +4,7 @@ import { listDevelopers, listProjects } from "@/data/catalogue";
 import { formatHandover } from "@/lib/format";
 import { Price } from "@/components/tools/money";
 import { pageHead, withHeroPreload } from "@/lib/seo";
+import { itemListSchema } from "@/lib/schema";
 import { stagger } from "@/lib/motion";
 import { Reveal } from "@/components/site/reveal";
 import { PageHero } from "@/components/site/page-hero";
@@ -18,10 +19,23 @@ export const Route = createFileRoute("/developers/")({
     ]);
     return { developers, projects };
   },
-  head: () =>
+  head: ({ loaderData }) =>
     withHeroPreload(
       "burj-al-arab-cloud",
-      pageHead({ path: "/developers", breadcrumbs: [{ name: "Developers", path: "/developers" }] }),
+      pageHead({
+        path: "/developers",
+        breadcrumbs: [{ name: "Developers", path: "/developers" }],
+        schema: [
+          itemListSchema({
+            name: "Dubai developers covered by DLX Properties",
+            items: (loaderData?.developers ?? []).map((developer) => ({
+              name: developer.name,
+              path: `/developers/${developer.slug}`,
+              ...(developer.summary ? { description: developer.summary } : {}),
+            })),
+          }),
+        ],
+      }),
     ),
   component: DevelopersIndex,
 });

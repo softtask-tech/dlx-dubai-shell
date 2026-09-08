@@ -1,6 +1,7 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 
-import { listAreasWithStats } from "@/data/market";
+import { listDldAreasWithStatsFn } from "@/data/market-public.functions";
+import type { AreaWithStats } from "@/data/market-types";
 import { toolBySlug, toolOgPath, TOOLS } from "@/data/tools";
 import { faqSchema } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
@@ -26,7 +27,15 @@ export const Route = createFileRoute("/tools/$slug")({
     if (!tool) throw notFound();
 
     /* Only the market-driven tools pay for the query. */
-    const areas = tool.usesMarketData ? await listAreasWithStats() : [];
+    /*
+     * The same figures the market pages publish, not `areas.stats`.
+     *
+     * Those are two different sets of numbers, and the tools were reading the
+     * other one: "best areas for rental income" could rank a community on a
+     * yield that disagreed with the yield on that community's own page, and a
+     * visitor who checked would be right to stop trusting both.
+     */
+    const areas = tool.usesMarketData ? await listDldAreasWithStatsFn() : [];
     return { tool, areas };
   },
   head: ({ loaderData }) => {
@@ -184,7 +193,7 @@ function Calculator({
   areas,
 }: {
   slug: string;
-  areas: Awaited<ReturnType<typeof listAreasWithStats>>;
+  areas: readonly AreaWithStats[];
 }) {
   switch (slug) {
     case "rental-yield":

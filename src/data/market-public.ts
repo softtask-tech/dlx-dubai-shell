@@ -141,6 +141,32 @@ export function isChangeMetric(metric: MarketMetric): boolean {
   return metric.endsWith("_change") || metric === "gross_rental_yield_pct";
 }
 
+/**
+ * Metrics that are a level rather than a count.
+ *
+ * A count belongs on a zero baseline: nine hundred sales really is three times
+ * three hundred, and cropping that axis exaggerates a movement. A price does
+ * not. Zero is not a meaningful reference for a price per square foot, and
+ * forcing it draws every price series as a flat line near the top of the frame
+ * with the whole movement squeezed into a few pixels — which is how the market
+ * turning from 1,459 to 1,749 and back down again could be plotted and still
+ * be invisible.
+ *
+ * A cropped axis has to be disclosed, so anything listed here prints the range
+ * it was drawn over. Cropped and labelled is honest; cropped and silent is not.
+ */
+const LEVEL_METRICS = new Set<MarketMetric>([
+  "median_price_per_sqft",
+  "median_sale_price",
+  "median_rent_per_sqft",
+  "median_service_charge_sqft",
+  "median_registered_annual_rent_aed",
+]);
+
+export function isLevelMetric(metric: MarketMetric): boolean {
+  return LEVEL_METRICS.has(metric);
+}
+
 const AMOUNT_METRICS = new Set<MarketMetric>([
   "median_registered_annual_rent_aed",
   "median_sale_price",
@@ -248,3 +274,19 @@ export const UNAVAILABLE_METADATA: MarketMetadata = {
 /** The honest empty state, used wherever a period has too few records. */
 export const TOO_FEW_RECORDS =
   "Not published for this period: too few registered records to report without identifying individual transactions.";
+
+/**
+ * Off-plan against ready property in one community, for one period.
+ *
+ * Shared rather than declared in the server module, because the chart that
+ * draws it is a client component and should not name a file that imports
+ * Supabase, even in a type-only position.
+ */
+export type OffPlanSplitRow = {
+  entityId: string;
+  nameEn: string;
+  offPlanValue: number;
+  offPlanCount: number;
+  existingValue: number;
+  existingCount: number;
+};

@@ -147,7 +147,11 @@ export function LocalisedServices() {
               href={`/services/${service.slug}`}
               className="group grid items-baseline gap-4 border-b border-border py-10 transition-colors hover:border-accent md:grid-cols-12"
             >
-              <span className="eyebrow md:col-span-1">{String(index + 1).padStart(2, "0")}</span>
+              {/* The services are a set, not a running order. */}
+              <span
+                aria-hidden
+                className="hidden h-px w-6 self-center bg-gold-ink md:col-span-1 md:block"
+              />
               <span
                 lang="en"
                 dir="ltr"

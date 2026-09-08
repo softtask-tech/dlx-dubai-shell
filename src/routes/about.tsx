@@ -10,6 +10,7 @@ import { DeveloperStrip } from "@/components/site/developer-strip";
 import { Reveal } from "@/components/site/reveal";
 import { TestimonialsBlock } from "@/components/site/testimonials-block";
 import { TrustStrip } from "@/components/site/trust-strip";
+import { PortalProof } from "@/components/site/portal-proof";
 import { PageHero } from "@/components/site/page-hero";
 import { Section } from "@/components/ui/section";
 import { SectionOpener } from "@/components/site/section-opener";
@@ -80,7 +81,7 @@ function AboutPage() {
       <PageHero
         photo="burj-khalifa-dusk-silhouette"
         title="About DLX."
-        lead="A private Dubai brokerage built on restraint, discretion and relationships measured in decades."
+        lead="A private Dubai brokerage that represents one side of a deal, prices from the public record, and will tell you to walk away when walking away is right."
       />
 
       {/* The thesis, given the weight of a thesis. It was two paragraphs of
@@ -128,10 +129,24 @@ function AboutPage() {
                 delay={stagger(index)}
                 className="border-t border-border py-8 first:border-0 first:pt-0"
               >
+                {/*
+                 * No 01 / 02 / 03.
+                 *
+                 * These four are independent commitments, not steps: nothing
+                 * about "one client at a time" comes before "discretion as
+                 * standard", and numbering them said otherwise. A counter is
+                 * information when the order carries meaning and decoration
+                 * when it does not, and decoration that asserts something
+                 * false is worse than no decoration.
+                 *
+                 * A rule and a mark instead, which says "another one of these"
+                 * without claiming a position in a list.
+                 */}
                 <div className="flex gap-6">
-                  <span aria-hidden className="eyebrow mt-1.5 shrink-0 text-gold-ink">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+                  <span
+                    aria-hidden
+                    className="mt-3 h-px w-6 shrink-0 bg-gold-ink sm:w-10"
+                  />
                   <div>
                     <h2 className="display-3">{principle.title}</h2>
                     <p className="body-text mt-4 max-w-measure text-muted-foreground">
@@ -194,13 +209,32 @@ function AboutPage() {
         </Section>
       ) : null}
 
+      {/*
+       * The one block on this page DLX is not the author of.
+       *
+       * It sits here because everything above is us describing ourselves, and
+       * the testimonials below render nothing until real, linkable reviews
+       * exist. Without this the page asks to be believed and offers no way to
+       * check.
+       */}
+      <PortalProof />
+
       <DeveloperStrip developers={partners} />
       <TestimonialsBlock testimonials={testimonials} />
 
       <Section>
+        {/*
+         * The third split opener in a row on this page, and the least earned:
+         * every question below is already a heading, so "Asked and answered"
+         * was a heading about headings. The eyebrow carries the heading level
+         * instead, which keeps the outline intact and gives the page a lighter
+         * section between two heavier ones.
+         */}
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-3">
-            <SectionOpener eyebrow="Questions" title="Asked and answered." align="split" />
+            <Reveal>
+              <h2 className="eyebrow">Questions</h2>
+            </Reveal>
           </div>
           <div className="lg:col-span-8 lg:col-start-5">
             {FAQS.map((faq) => (

@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { listAreasWithStats } from "@/data/market";
 import { attributionFor } from "@/data/market";
 import { pageHead, withHeroPreload } from "@/lib/seo";
+import { itemListSchema } from "@/lib/schema";
 import { stagger } from "@/lib/motion";
 import { FreshnessStamp } from "@/components/market/freshness-stamp";
 import { Reveal } from "@/components/site/reveal";
@@ -13,10 +14,24 @@ import { Section, Eyebrow } from "@/components/ui/section";
 
 export const Route = createFileRoute("/areas/")({
   loader: async () => ({ areas: await listAreasWithStats() }),
-  head: () =>
+  head: ({ loaderData }) =>
     withHeroPreload(
       "palm-jumeirah-aerial-day",
       pageHead({
+        /* The list itself, as data. An index page that names twenty
+         * communities and tells a crawler nothing about them is the easiest
+         * schema on the site to add and the one most likely to be asked for:
+         * "which communities does DLX cover" is an answer-engine question. */
+        schema: [
+          itemListSchema({
+            name: "Dubai communities covered by DLX Properties",
+            items: (loaderData?.areas ?? []).map((area) => ({
+              name: area.name,
+              path: `/areas/${area.slug}`,
+              ...(area.summary ? { description: area.summary } : {}),
+            })),
+          }),
+        ],
         path: "/areas",
         title: "Dubai Communities",
         description:
@@ -34,7 +49,31 @@ export const Route = createFileRoute("/areas/")({
 
 function AreasIndex() {
   const { areas } = Route.useLoaderData();
-  const covered = areas.filter((area) => area.stats !== null);
+
+  /*
+   * Real records only. Sample rows are not listed.
+   *
+   * `areas.stats` can carry rows its own provenance column marks `sample`, and
+   * this page presents whatever it lists as "what each community has actually
+   * transacted at". That sentence and an illustrative figure cannot share a
+   * page. Same rule the advisor's knowledge index uses.
+   *
+   * WHY THESE FIGURES DO NOT COME FROM THE PUBLISHED AGGREGATES, which is
+   * where the rest of the site now reads. The two describe different entity
+   * spaces: this page lists communities by the name a buyer uses (Dubai
+   * Marina, Downtown Dubai) and the registry publishes administrative ones
+   * (Marsa Dubai, Burj Khalifa). Of a dozen common Dubai community names, two
+   * match the registry's spelling. Joining them on name was tried and reverted
+   * — a join that misses five times in six is worse than no join, because the
+   * misses are invisible.
+   *
+   * Reconciling them is a data task, not a code one: `areas.dld_area_name`
+   * exists for exactly this and needs filling in by hand, one community at a
+   * time. Until it is, this page cites the area figures and the market pages
+   * cite the registry, and both say which they are.
+   */
+  const covered = areas.filter((area) => area.stats?.provenance === "dld_open_data");
+
   const attribution = attributionFor(
     covered[0]?.stats?.provenance ?? null,
     covered[0]?.stats?.last_updated ?? null,

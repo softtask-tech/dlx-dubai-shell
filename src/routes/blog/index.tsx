@@ -10,6 +10,8 @@ import {
 import type { ContentCategory } from "@/data/types";
 import { formatMonth } from "@/lib/format";
 import { pageHead, withHeroPreload } from "@/lib/seo";
+import { itemListSchema } from "@/lib/schema";
+import { site } from "@/config/site";
 import { stagger } from "@/lib/motion";
 import { Reveal } from "@/components/site/reveal";
 import { TrustStrip } from "@/components/site/trust-strip";
@@ -57,10 +59,27 @@ export const Route = createFileRoute("/blog/")({
   },
   /* Filtered views are the same posts in a different order, so the canonical
    * stays on /blog, which is what passing the bare path here does. */
-  head: () =>
+  head: ({ loaderData }) =>
     withHeroPreload(
       "palm-jumeirah-dusk-aerial",
-      pageHead({ path: "/blog", breadcrumbs: [{ name: "Journal", path: "/blog" }] }),
+      pageHead({
+        path: "/blog",
+        breadcrumbs: [{ name: "Journal", path: "/blog" }],
+        /* The posts on this view. Filtered views are the same posts in a
+         * different order and the canonical already points at the bare path,
+         * so the list describes what is on the page rather than claiming to be
+         * the whole journal. */
+        schema: [
+          itemListSchema({
+            name: `${site.name} journal`,
+            items: (loaderData?.posts ?? []).map((post) => ({
+              name: post.title,
+              path: `/blog/${post.slug}`,
+              ...(post.excerpt ? { description: post.excerpt } : {}),
+            })),
+          }),
+        ],
+      }),
     ),
   component: BlogIndex,
 });
@@ -124,12 +143,20 @@ function BlogIndex() {
       ) : null}
 
       {lead ? (
-        <Section className="pt-0">
+        {/*
+         * The featured piece, on its own ground.
+         *
+         * It was one more block of white separated from the list by a
+         * hairline, which meant the lead article looked exactly like the
+         * eleven below it. The surface change is what makes it read as
+         * featured, and it costs no extra type or decoration to say so.
+         */}
+        <Section data-surface="cream">
           <Reveal>
             <Link
               to="/blog/$slug"
               params={{ slug: lead.slug }}
-              className="group block border-t border-border pt-12"
+              className="group block"
             >
               <div className="grid gap-10 lg:grid-cols-12">
                 <div className="lg:col-span-7">
@@ -146,7 +173,7 @@ function BlogIndex() {
                     {lead.title}
                   </h2>
                   {lead.excerpt ? (
-                    <p className="lead mt-8 max-w-measure text-muted-foreground">{lead.excerpt}</p>
+                    <p className="lead mt-8 max-w-measure text-foreground">{lead.excerpt}</p>
                   ) : null}
                   {lead.author ? (
                     <p className="caption mt-8">
@@ -176,7 +203,7 @@ function BlogIndex() {
       ) : null}
 
       {rest.length > 0 ? (
-        <Section className="pt-0">
+        <Section>
           <div className="hairline" />
           {rest.map((post, index) => (
             <Reveal key={post.slug} delay={stagger(index)}>

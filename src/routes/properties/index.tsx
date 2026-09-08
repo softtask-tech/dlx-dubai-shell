@@ -5,6 +5,8 @@ import { listAreas } from "@/data/catalogue";
 import { listProperties, type PropertyFilters } from "@/data/properties";
 import type { Area } from "@/data/types";
 import { pageHead, withHeroPreload } from "@/lib/seo";
+import { itemListSchema } from "@/lib/schema";
+import { site } from "@/config/site";
 import { useTrackedView } from "@/lib/use-tracked-view";
 import { Photo } from "@/components/site/photo";
 import { ListingGrid } from "@/components/site/listing-grid";
@@ -49,10 +51,32 @@ export const Route = createFileRoute("/properties/")({
     const [properties, areas] = await Promise.all([listProperties(filters), listAreas()]);
     return { properties, areas };
   },
-  head: () =>
+  head: ({ loaderData }) =>
     withHeroPreload(
       "tower-facade-raking-light",
-      pageHead({ path: "/properties", breadcrumbs: [{ name: "Properties", path: "/properties" }] }),
+      pageHead({
+        path: "/properties",
+        breadcrumbs: [{ name: "Properties", path: "/properties" }],
+        /*
+         * ItemList here, RealEstateListing on the detail pages.
+         *
+         * That division is deliberate: a listing node carries a price and an
+         * availability, and repeating twenty of them on an index is both the
+         * heavier document and the weaker claim, since the index cannot say
+         * anything about a property the detail page does not say better. The
+         * list points at them.
+         */
+        schema: [
+          itemListSchema({
+            name: `${site.name} portfolio`,
+            items: (loaderData?.properties ?? []).map((property) => ({
+              name: property.title,
+              path: `/properties/${property.slug}`,
+              ...(property.area?.name ? { description: `In ${property.area.name}, Dubai.` } : {}),
+            })),
+          }),
+        ],
+      }),
     ),
   component: PropertiesIndex,
 });

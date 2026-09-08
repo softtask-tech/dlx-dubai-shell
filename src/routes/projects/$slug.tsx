@@ -4,6 +4,7 @@ import { getProject } from "@/data/catalogue";
 import { formatHandover, humanise } from "@/lib/format";
 import { Price } from "@/components/tools/money";
 import { pageHead } from "@/lib/seo";
+import { projectSchema } from "@/lib/schema";
 import { stagger } from "@/lib/motion";
 import { QualifiedForm } from "@/components/forms/qualified-form";
 import { Gallery } from "@/components/site/gallery";
@@ -33,6 +34,32 @@ export const Route = createFileRoute("/projects/$slug")({
       breadcrumbs: [
         { name: "Developers", path: "/developers" },
         { name: project.name, path: `/projects/${project.slug}` },
+      ],
+      /*
+       * ApartmentComplex, not a listing with an offer.
+       *
+       * projectSchema already existed for the off-plan pages and was never
+       * called here, so the catalogue's project pages described themselves to
+       * a crawler with a title and nothing else. It states no price even where
+       * one is on the page, because a starting price is not the price of any
+       * particular home and an Offer node carrying it would be an empty claim.
+       */
+      schema: [
+        projectSchema({
+          name: project.name,
+          path: `/projects/${project.slug}`,
+          description:
+            project.summary ??
+            `${project.name} in ${where} by ${project.developer?.name ?? "its developer"}.`,
+          image: project.hero_image_url ?? "/og/developers.png",
+          developerName: project.developer?.name ?? "Undisclosed developer",
+          locationName: where,
+          constructionStatus: project.status ?? null,
+          numberOfRooms:
+            project.bedrooms_min != null && project.bedrooms_max != null
+              ? `${project.bedrooms_min}-${project.bedrooms_max}`
+              : null,
+        }),
       ],
     });
   },
