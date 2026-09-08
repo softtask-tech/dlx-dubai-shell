@@ -51,7 +51,13 @@ export const MARKET_METRICS = [
   "registered_renewed_rental_contract_count_change",
   "median_registered_annual_rent_aed",
   "median_registered_annual_rent_change",
+  "median_price_per_sqft",
+  "median_sale_price",
+  "median_rent_per_sqft",
+  "median_service_charge_sqft",
+  "gross_rental_yield_pct",
 ] as const;
+
 
 export type MarketMetric = (typeof MARKET_METRICS)[number];
 
