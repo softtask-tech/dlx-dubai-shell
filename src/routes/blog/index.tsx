@@ -10,6 +10,8 @@ import {
 import type { ContentCategory } from "@/data/types";
 import { formatMonth } from "@/lib/format";
 import { pageHead, withHeroPreload } from "@/lib/seo";
+import { itemListSchema } from "@/lib/schema";
+import { site } from "@/config/site";
 import { stagger } from "@/lib/motion";
 import { Reveal } from "@/components/site/reveal";
 import { TrustStrip } from "@/components/site/trust-strip";
@@ -57,10 +59,27 @@ export const Route = createFileRoute("/blog/")({
   },
   /* Filtered views are the same posts in a different order, so the canonical
    * stays on /blog, which is what passing the bare path here does. */
-  head: () =>
+  head: ({ loaderData }) =>
     withHeroPreload(
       "palm-jumeirah-dusk-aerial",
-      pageHead({ path: "/blog", breadcrumbs: [{ name: "Journal", path: "/blog" }] }),
+      pageHead({
+        path: "/blog",
+        breadcrumbs: [{ name: "Journal", path: "/blog" }],
+        /* The posts on this view. Filtered views are the same posts in a
+         * different order and the canonical already points at the bare path,
+         * so the list describes what is on the page rather than claiming to be
+         * the whole journal. */
+        schema: [
+          itemListSchema({
+            name: `${site.name} journal`,
+            items: (loaderData?.posts ?? []).map((post) => ({
+              name: post.title,
+              path: `/blog/${post.slug}`,
+              ...(post.excerpt ? { description: post.excerpt } : {}),
+            })),
+          }),
+        ],
+      }),
     ),
   component: BlogIndex,
 });

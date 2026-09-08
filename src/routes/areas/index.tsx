@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { listAreasWithStats } from "@/data/market";
 import { attributionFor } from "@/data/market";
 import { pageHead, withHeroPreload } from "@/lib/seo";
+import { itemListSchema } from "@/lib/schema";
 import { stagger } from "@/lib/motion";
 import { FreshnessStamp } from "@/components/market/freshness-stamp";
 import { Reveal } from "@/components/site/reveal";
@@ -13,10 +14,24 @@ import { Section, Eyebrow } from "@/components/ui/section";
 
 export const Route = createFileRoute("/areas/")({
   loader: async () => ({ areas: await listAreasWithStats() }),
-  head: () =>
+  head: ({ loaderData }) =>
     withHeroPreload(
       "palm-jumeirah-aerial-day",
       pageHead({
+        /* The list itself, as data. An index page that names twenty
+         * communities and tells a crawler nothing about them is the easiest
+         * schema on the site to add and the one most likely to be asked for:
+         * "which communities does DLX cover" is an answer-engine question. */
+        schema: [
+          itemListSchema({
+            name: "Dubai communities covered by DLX Properties",
+            items: (loaderData?.areas ?? []).map((area) => ({
+              name: area.name,
+              path: `/areas/${area.slug}`,
+              ...(area.summary ? { description: area.summary } : {}),
+            })),
+          }),
+        ],
         path: "/areas",
         title: "Dubai Communities",
         description:
