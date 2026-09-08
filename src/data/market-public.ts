@@ -138,19 +138,36 @@ export const CONFIDENCE_LABELS: Record<MarketConfidence, string> = {
 
 /** Percent-style metrics are rendered differently from counts and amounts. */
 export function isChangeMetric(metric: MarketMetric): boolean {
-  return metric.endsWith("_change");
+  return metric.endsWith("_change") || metric === "gross_rental_yield_pct";
 }
 
+const AMOUNT_METRICS = new Set<MarketMetric>([
+  "median_registered_annual_rent_aed",
+  "median_sale_price",
+]);
+
+/** Amounts with fils-level precision: a price per square foot is not a round number. */
+const PRECISE_AMOUNT_METRICS = new Set<MarketMetric>([
+  "median_price_per_sqft",
+  "median_rent_per_sqft",
+  "median_service_charge_sqft",
+]);
+
 export function isAmountMetric(metric: MarketMetric): boolean {
-  return metric === "median_registered_annual_rent_aed";
+  return AMOUNT_METRICS.has(metric) || PRECISE_AMOUNT_METRICS.has(metric);
 }
 
 /** Formats a published value with the unit that belongs to its metric. */
 export function formatMetricValue(metric: MarketMetric, value: number): string {
+  if (metric === "gross_rental_yield_pct") return `${value.toFixed(1)}%`;
   if (isChangeMetric(metric)) return `${value >= 0 ? "+" : ""}${value.toFixed(1)}%`;
+  if (PRECISE_AMOUNT_METRICS.has(metric)) {
+    return `AED ${value.toLocaleString("en-AE", { maximumFractionDigits: 0 })} / sq ft`;
+  }
   if (isAmountMetric(metric)) return `AED ${Math.round(value).toLocaleString("en-AE")}`;
   return Math.round(value).toLocaleString("en-AE");
 }
+
 
 /** "Q2 2026", "June 2026", "2025": the period a figure actually covers. */
 export function formatPeriod(grain: MarketGrain, periodStart: string): string {
