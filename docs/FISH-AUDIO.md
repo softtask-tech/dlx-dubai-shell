@@ -1,5 +1,17 @@
 # Fish Audio — the advisor's voice
 
+> **Scope of this document, and what it does not yet cover.**
+>
+> Everything below describes the **text-to-speech** integration, which is
+> built and working: our own advisor decides what to say and Fish Audio reads
+> it aloud.
+>
+> Fish Audio also sells a **Voice Agents** platform, which is a different
+> product and is **not built**. There the agent itself holds the prompt, a
+> knowledge base, its own LLM and post-call analysis, and it runs the
+> conversation rather than just voicing ours. That is the one worth having,
+> and section 9 is the plan for it.
+
 Everything about how Noor speaks: what to set, how to change the voice, how our
 own market data reaches the answer that gets spoken, and how a phone call turns
 into a lead in Supabase.
@@ -303,3 +315,71 @@ Work down this list; it is ordered by how often each one is the answer.
 - [Manage voices](https://docs.fish.audio/features/manage-voices)
 - [API introduction](https://docs.fish.audio/api-reference/introduction)
 - [Free S2.1 Pro developer tier](https://fish.audio/blog/s2-1-pro-free-api/)
+
+---
+
+## 9. Voice Agents — the plan (not built)
+
+A separate Fish Audio product from everything above. The agent holds the
+conversation itself: prompt, knowledge, tools, and structured extraction of
+what the caller said.
+
+**Decided:** web only for now — the widget/SDK on the site, no phone number.
+The `tel:` link stays as it is and reaches a person.
+
+**Built from the API, not the console**, except the voice. The knowledge base
+has to be rebuilt on every DLD export, and maintaining 56 communities of
+changing figures by hand in a console is the second-pipeline problem this
+codebase has already been bitten by twice. The prompt has to come from
+`ADVISOR_POLICY` or the phone advisor and the chat advisor drift apart, which
+CLAUDE.md forbids. Choosing the voice is a taste decision made by ear, and
+publishing is a deliberate human act: live traffic runs the latest *published*
+version, so nothing reaches a caller until someone presses publish.
+
+### What the API gives us
+
+| Thing | Endpoint | Limits that shape the design |
+| --- | --- | --- |
+| The agent | `/v1/agent/agents`, config at `/v1/agent/agents/{id}/config` | Draft autosaves; publish snapshots an immutable numbered version |
+| Knowledge | `/v1/agent/knowledge-sources` (multipart) | **`.md` and `.txt` only**, 1 MB a file, 100 sources an agent |
+| Extraction | `analysis.data_fields` on the agent config | Up to **20 fields**: name, type (boolean/text/number/enum), description, enum_options |
+| Delivery | `webhooks.post_call[]`, up to 5 | HMAC-SHA256 in `X-Fish-Webhook-Signature`, at-least-once |
+
+### On keywords
+
+There is no keyword, vocabulary or pronunciation boosting in Fish Audio's
+documentation, so a list of fifty keywords has nothing to attach to.
+
+What actually decides whether the agent finds the right passage: a corpus over
+**8 KB is searched on every turn, using the caller's latest sentence as the
+query**, while anything under 8 KB is inlined whole. So retrieval is matched
+against our documents' own wording, and the lever is writing the questions a
+buyer actually asks *into* the documents. `knowledge-dld.server.ts` already
+does this — every community entry carries the five phrasings people use
+("what does property cost in X", "what is the service charge in X"). That is
+the keyword list, except it matches whole questions rather than bare words.
+
+It also settles how to shape the upload: one document per community, so a
+question about one place retrieves that place rather than a slab containing
+all of them.
+
+### To build
+
+1. Generate the knowledge documents from the real sources — the DLD figures
+   per community, the two projects, the services, the guides and the fee
+   schedule. Reuse `buildDldKnowledge()`, render `.md`.
+2. A sync that creates, updates and prunes sources against
+   `/v1/agent/knowledge-sources`, then attaches them by `knowledge_source_ids`.
+   Re-run after every export.
+3. Agent config from code: system prompt out of `ADVISOR_POLICY`, the
+   `analysis.data_fields` mirroring the lead fields the forms already capture
+   (intent, budget, timeline, name, contact), and the post-call webhook.
+4. A receiver route that verifies the signature over `{t}.{raw body}`, rejects
+   anything older than five minutes, deduplicates on
+   (`event`, `session.id`, `analysis.finished_at`), and writes a lead through
+   the path `/api/advisor/call-lead` already uses.
+5. The widget on the site, replacing the current "answers can be read aloud"
+   affordance with an actual conversation.
+
+Transcripts are deliberately absent from webhook payloads; they are fetched
+from the sessions API when the lead needs one attached.
