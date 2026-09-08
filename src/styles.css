@@ -175,7 +175,7 @@
    * The lighter tone above stays available for rules and large figures. */
   --gold-ink: #7d6339;
 
-  --slate: #6e6f66; /* secondary type on paper, 5.1:1 */
+  --slate: #57584f; /* secondary type on paper, 7.2:1 on white, 6.5:1 on cream */
   --line: #e7e2d6; /* hairline on a light ground */
   --line-dark: rgba(255, 255, 255, 0.14); /* hairline on green */
   --on-dark: #edeee8;
@@ -211,7 +211,7 @@
   --secondary-foreground: var(--ink);
 
   --muted: var(--cream);
-  --muted-foreground: #6e6f66;
+  --muted-foreground: #57584f;
 
   --accent: var(--gold-ink);
   --accent-foreground: #ffffff;
@@ -229,7 +229,7 @@
   --status-neutral: var(--slate);
   --chart-1: #1f4536;
   --chart-2: #b8996b;
-  --chart-3: #6e6f66;
+  --chart-3: #57584f;
   --chart-4: #d9d2c2;
 
   /* Nothing is raised off the paper. */
@@ -306,13 +306,13 @@
   --secondary: var(--cream);
   --secondary-foreground: var(--ink);
   --muted: var(--cream);
-  --muted-foreground: #6e6f66;
+  --muted-foreground: #57584f;
   --accent: var(--gold-ink);
   --accent-foreground: #ffffff;
   --accent-soft: #f0e8d9;
   --gold-ink: #7d6339;
   --gold-deep: #8c7245;
-  --slate: #6e6f66;
+  --slate: #57584f;
   --slate-readable: #5f6058;
   --destructive: #8f2b25;
   --destructive-foreground: #ffffff;
@@ -344,12 +344,12 @@
   --secondary: var(--paper);
   --secondary-foreground: var(--ink);
   --muted: var(--paper-shade);
-  --muted-foreground: #6e6f66;
+  --muted-foreground: #57584f;
   --accent: var(--gold-ink);
   --accent-foreground: #ffffff;
   --accent-soft: #f0e8d9;
   --gold-ink: #7d6339;
-  --slate: #6e6f66;
+  --slate: #57584f;
   --border: #ddd6c6;
   --border-strong: #c8c0ad;
   --ring: var(--gold-ink);

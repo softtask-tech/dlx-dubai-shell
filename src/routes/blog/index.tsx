@@ -143,12 +143,20 @@ function BlogIndex() {
       ) : null}
 
       {lead ? (
-        <Section className="pt-0">
+        {/*
+         * The featured piece, on its own ground.
+         *
+         * It was one more block of white separated from the list by a
+         * hairline, which meant the lead article looked exactly like the
+         * eleven below it. The surface change is what makes it read as
+         * featured, and it costs no extra type or decoration to say so.
+         */}
+        <Section data-surface="cream">
           <Reveal>
             <Link
               to="/blog/$slug"
               params={{ slug: lead.slug }}
-              className="group block border-t border-border pt-12"
+              className="group block"
             >
               <div className="grid gap-10 lg:grid-cols-12">
                 <div className="lg:col-span-7">
@@ -165,7 +173,7 @@ function BlogIndex() {
                     {lead.title}
                   </h2>
                   {lead.excerpt ? (
-                    <p className="lead mt-8 max-w-measure text-muted-foreground">{lead.excerpt}</p>
+                    <p className="lead mt-8 max-w-measure text-foreground">{lead.excerpt}</p>
                   ) : null}
                   {lead.author ? (
                     <p className="caption mt-8">
@@ -195,7 +203,7 @@ function BlogIndex() {
       ) : null}
 
       {rest.length > 0 ? (
-        <Section className="pt-0">
+        <Section>
           <div className="hairline" />
           {rest.map((post, index) => (
             <Reveal key={post.slug} delay={stagger(index)}>

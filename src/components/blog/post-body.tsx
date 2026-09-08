@@ -53,11 +53,15 @@ export function PostBody({ body }: { body: string }) {
                 {block.items.map((item) => (
                   <li
                     key={item}
-                    className="body-text flex gap-5 border-b border-border py-4 text-muted-foreground"
+                    className="body-text flex gap-5 border-b border-border py-4 text-foreground"
                   >
-                    <span aria-hidden="true" className="text-accent">
-                      ,
-                    </span>
+                    {/* A rule, not a character. This rendered a literal
+                        comma down the left of every list, which reads as a
+                        typo rather than a bullet. */}
+                    <span
+                      aria-hidden="true"
+                      className="mt-3 h-px w-4 shrink-0 bg-gold-ink"
+                    />
                     <span>{inline(item)}</span>
                   </li>
                 ))}
@@ -65,7 +69,16 @@ export function PostBody({ body }: { body: string }) {
             );
           default:
             return (
-              <p key={key} className="body-text mt-6 max-w-measure text-muted-foreground">
+              /*
+               * Ink, not the muted grey.
+               *
+               * An article's paragraphs are the thing the reader came for, and
+               * they were painted in the token meant for captions and
+               * metadata. Grey-on-white for a thousand words is the "looks
+               * like a blog" complaint in one line of CSS: it reads as
+               * secondary, so the whole page reads as filler.
+               */
+              <p key={key} className="body-text mt-6 max-w-measure text-foreground">
                 {inline(block.text)}
               </p>
             );

@@ -86,60 +86,78 @@ function PostPage() {
 
   return (
     <article>
-      <Section className="pt-14 pb-16 md:pt-20">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-8">
-            <Reveal>
-              <div className="flex flex-wrap items-center gap-3">
-                <Tag variant="soft">{BLOG_CATEGORY_LABELS[post.category]}</Tag>
-                <Tag variant="bare">
-                  <time dateTime={published}>{formatMonth(published)}</time>
-                </Tag>
-                <Tag variant="bare">{readingMinutesFor(post)} min</Tag>
-              </div>
-              <h1 className="display-1 mt-8">{post.title}</h1>
-              {post.excerpt ? (
-                <p className="lead mt-8 max-w-measure text-muted-foreground">{post.excerpt}</p>
-              ) : null}
-            </Reveal>
-          </div>
+      {/*
+       * A masthead, not a blog header.
+       *
+       * This opened as white-on-white: a headline in an eight-column block
+       * with an author card floating beside it, which is the shape every blog
+       * on the internet has. Nothing anchored the top of the page, so an
+       * article read as a document someone had pasted in.
+       *
+       * A cream plate fixes it structurally rather than decoratively. The
+       * head of the piece now sits on its own ground, the body sits on paper
+       * beneath it, and the change of surface is what tells a reader the
+       * article has started. The byline is a line of type under the headline
+       * where a magazine puts it, not a card competing with it.
+       */}
+      <Section data-surface="cream" className="pt-14 pb-14 md:pt-20 md:pb-16">
+        <div className="max-w-4xl">
+          <Reveal>
+            <Tag variant="soft">{BLOG_CATEGORY_LABELS[post.category]}</Tag>
+            <h1 className="display-1 mt-7 text-balance">{post.title}</h1>
+          </Reveal>
 
-          {post.author ? (
-            <div className="lg:col-span-3 lg:col-start-10">
-              <Reveal delay={0.12}>
-                <div className="border-t border-border pt-6">
-                  <Eyebrow>Written by</Eyebrow>
-                  <Link
-                    to="/team"
-                    className="mt-5 flex items-center gap-4 transition-colors hover:text-accent"
-                  >
-                    {post.author.photo_url ? (
-                      <img
-                        src={post.author.photo_url}
-                        alt=""
-                        loading="lazy"
-                        decoding="async"
-                        className="h-12 w-12 shrink-0 object-cover"
-                      />
-                    ) : null}
-                    <span>
-                      <span className="block text-sm">{post.author.full_name}</span>
-                      {post.author.job_title ? (
-                        <span className="caption block text-muted-foreground">
-                          {post.author.job_title}
-                        </span>
-                      ) : null}
-                    </span>
-                  </Link>
-                </div>
-              </Reveal>
-            </div>
+          {post.excerpt ? (
+            <Reveal delay={0.08}>
+              {/* The standfirst carries the piece, so it is set in ink at lead
+                  size rather than in the grey used for captions. */}
+              <p className="lead mt-8 max-w-measure text-foreground">{post.excerpt}</p>
+            </Reveal>
           ) : null}
+
+          <Reveal delay={0.14}>
+            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-border pt-6">
+              {post.author ? (
+                <Link
+                  to="/team"
+                  className="focus-ring group flex items-center gap-4 transition-colors hover:text-gold-ink"
+                >
+                  {post.author.photo_url ? (
+                    <img
+                      src={post.author.photo_url}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      className="size-11 shrink-0 object-cover"
+                    />
+                  ) : null}
+                  <span>
+                    <span className="caption block text-foreground">
+                      {post.author.full_name}
+                    </span>
+                    {post.author.job_title ? (
+                      <span className="caption block text-muted-foreground">
+                        {post.author.job_title}
+                      </span>
+                    ) : null}
+                  </span>
+                </Link>
+              ) : null}
+
+              <p className="caption ms-auto text-muted-foreground">
+                <time dateTime={published}>{formatMonth(published)}</time>, {readingMinutesFor(post)}{" "}
+                minutes
+              </p>
+            </div>
+          </Reveal>
         </div>
       </Section>
 
+      {/* Full bleed, so the plate separates the cream masthead from the white
+          the article is set on. Inside the container it read as a third block
+          of white with a picture in it. */}
       {post.hero_image_url ? (
-        <Section flush className="pb-16">
+        <Section flush bleed>
           <Reveal>
             <div className="aspect-[16/7] w-full overflow-hidden bg-secondary">
               <img
@@ -153,7 +171,7 @@ function PostPage() {
         </Section>
       ) : null}
 
-      <Section className="pt-0">
+      <Section className="pt-16 md:pt-20">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-8 lg:col-start-3">
             <Reveal>{post.body ? <PostBody body={post.body} /> : null}</Reveal>
