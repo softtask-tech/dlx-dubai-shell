@@ -21,7 +21,7 @@ WHAT IT PRODUCES
     median_sale_price              AED, the middle registered sale
     median_rent_per_sqft           AED per square foot per year
     median_service_charge_sqft     AED per square foot per year, per community
-    gross_rental_yield_pct         median annual rent over median sale price
+    gross_rental_yield_pct         rent per sqft over ready-property price per sqft
 
 FOUR RULES, and they are the same four the existing aggregates follow.
 
@@ -40,6 +40,15 @@ FOUR RULES, and they are the same four the existing aggregates follow.
      community and quarter. It is never carried across periods to fill a gap,
      because a rent from one quarter over a price from another is a number
      about nothing.
+
+     It is also computed per square foot, against ready property only, and
+     both of those are corrections rather than preferences. Dividing a median
+     annual rent by a median sale price produced yields above 20% for several
+     communities, which is not a Dubai yield, it is an artefact: off-plan is
+     the majority of sales volume and cannot be let, so the price median was
+     describing a different set of homes from the rent median. Per square
+     foot removes the size mismatch and restricting to ready property removes
+     the rest.
 
 The output is a CSV shaped exactly like `dld_market_aggregates`, ready to load.
 """
@@ -67,6 +76,19 @@ MIN_OBSERVATIONS = 30
 # years are not comparable with the current registry.
 FIRST_YEAR = 2019
 
+# And nothing after the export. Tenancies are registered with a future start
+# date, so the raw files contain quarters that have not happened: the first
+# build published a 2027 quarter off 99 contracts, which is not a market, it
+# is a handful of leases signed early. A period is only published once it has
+# actually begun.
+LAST_PERIOD_START = None  # set in main() from the export date
+
+# Plausibility bands. These are not tuning, they are tripwires: a figure
+# outside them means the input was misread, and it is better to publish
+# nothing for that group than a number that discredits every figure beside it.
+RENT_PSF_BAND = (10.0, 1_000.0)      # AED per sqft per year
+PRICE_PSF_BAND = (100.0, 20_000.0)   # AED per sqft
+
 METHODOLOGY_VERSION = "dlx-aggregates-2"
 
 Key = tuple  # (entity_type, entity_id, name_en, grain, period_start, metric, seg_type, seg_code)
@@ -83,7 +105,10 @@ def quarter_start(iso: str) -> str | None:
         return None
     if year < FIRST_YEAR or not 1 <= month <= 12:
         return None
-    return f"{year}-{3 * ((month - 1) // 3) + 1:02d}-01"
+    period = f"{year}-{3 * ((month - 1) // 3) + 1:02d}-01"
+    if LAST_PERIOD_START and period > LAST_PERIOD_START:
+        return None
+    return period
 
 
 def quarter_end(period_start: str) -> str:
@@ -130,6 +155,8 @@ def collect_sales(root: str, buckets: dict[Key, list[float]]) -> int:
             if per_sqm <= 0 or worth <= 0:
                 continue
             per_sqft = per_sqm / SQFT_PER_SQM
+            if not PRICE_PSF_BAND[0] <= per_sqft <= PRICE_PSF_BAND[1]:
+                continue
 
             area_id = (row.get("area_id") or "").strip()
             area = (row.get("area_name_en") or "").strip()
@@ -167,14 +194,25 @@ def collect_rents(root: str, buckets: dict[Key, list[float]]) -> int:
                 continue
             try:
                 annual = float(row.get("annual_amount") or 0)
-                area_sqft = float(row.get("actual_area") or 0)
+                area_sqm = float(row.get("actual_area") or 0)
             except ValueError:
                 continue
-            # A contract with no area cannot give a rate, and absurd areas are
-            # data errors rather than very large homes.
-            if annual <= 0 or not 100 <= area_sqft <= 100_000:
+            # `actual_area` is square METRES, which is worth stating because
+            # reading it as square feet is silently plausible and wrong by a
+            # factor of 10.76. Checked against the file: the median residential
+            # contract is 75, and 75 square feet is not a home while 75 square
+            # metres is a typical Dubai one-bedroom. Read as metres it gives
+            # about 82 AED per square foot per year, which is the market.
+            #
+            # The bounds are in metres for the same reason. An earlier version
+            # filtered on 100 to 100,000 believing they were feet, which threw
+            # away every home under 100 square metres, roughly three quarters
+            # of the market, and biased the median rent upward with it.
+            if annual <= 0 or not 10 <= area_sqm <= 5_000:
                 continue
-            per_sqft = annual / area_sqft
+            per_sqft = annual / (area_sqm * SQFT_PER_SQM)
+            if not RENT_PSF_BAND[0] <= per_sqft <= RENT_PSF_BAND[1]:
+                continue
 
             area_id = (row.get("area_id") or "").strip()
             area = (row.get("area_name_en") or "").strip()
@@ -250,9 +288,12 @@ def derive_yield(buckets: dict[Key, list[float]], rows: list[dict]) -> int:
     medians: dict[tuple, tuple[float, int]] = {}
     for key, values in buckets.items():
         entity_type, entity_id, name, grain, period, metric, seg_type, seg_code = key
-        if seg_code != "all" or metric not in ("_rent_annual", "median_sale_price"):
-            continue
-        if len(values) < MIN_OBSERVATIONS:
+        # Rent per sqft on all lettable stock, against price per sqft on ready
+        # property: the only pairing where both sides describe the same homes.
+        wanted = (metric == "median_rent_per_sqft" and seg_code == "all") or (
+            metric == "median_price_per_sqft" and seg_code == "existing"
+        )
+        if not wanted or len(values) < MIN_OBSERVATIONS:
             continue
         medians[(entity_type, entity_id, name, period, metric)] = (
             statistics.median(values),
@@ -261,19 +302,24 @@ def derive_yield(buckets: dict[Key, list[float]], rows: list[dict]) -> int:
 
     written = 0
     for (entity_type, entity_id, name, period, metric), (rent, rent_n) in medians.items():
-        if metric != "_rent_annual":
+        if metric != "median_rent_per_sqft":
             continue
-        sale = medians.get((entity_type, entity_id, name, period, "median_sale_price"))
+        sale = medians.get((entity_type, entity_id, name, period, "median_price_per_sqft"))
         if not sale:
             continue
         price, price_n = sale
         if price <= 0:
             continue
+        value = round(rent / price * 100, 2)
+        # A gross yield outside this band is a data artefact rather than a
+        # market, and publishing it would discredit every figure beside it.
+        if not 1.0 <= value <= 15.0:
+            continue
         rows.append(
             aggregate_row(
                 entity_type, entity_id, name, "quarter", period,
                 "gross_rental_yield_pct", "all", "all",
-                round(rent / price * 100, 2),
+                value,
                 min(rent_n, price_n),
             )
         )
@@ -323,6 +369,10 @@ def main() -> int:
         return 2
     root = sys.argv[1]
     only = sys.argv[2] if len(sys.argv) > 2 else "all"
+
+    global LAST_PERIOD_START
+    today = date.today()
+    LAST_PERIOD_START = f"{today.year}-{3 * ((today.month - 1) // 3) + 1:02d}-01"
 
     buckets: dict[Key, list[float]] = defaultdict(list)
 
