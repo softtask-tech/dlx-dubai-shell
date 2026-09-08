@@ -30,13 +30,15 @@ const FAQS: readonly FaqEntry[] = [
   {
     question: "Where do these numbers come from?",
     answer:
-      "Dubai Land Department open data, the registry every sale and every tenancy contract in Dubai is recorded in. We publish counts of registered activity and the median registered annual rent, each with the number of records behind it and the period it covers. DLX Properties is independent of the Dubai Land Department and is not endorsed by it.",
+      "Dubai Land Department open data, the registry every sale and every tenancy contract in Dubai is recorded in. We publish counts of registered activity, registered prices and rents and the yield they imply, each with the number of records behind it and the period it covers. DLX Properties is independent of the Dubai Land Department and is not endorsed by it.",
   },
+
   {
-    question: "Why do you show activity rather than prices?",
+    question: "Do you publish prices as well as activity?",
     answer:
-      "Because activity is what the open registry lets us report honestly at this level. A count of registered sale transactions is a fact about the period. We do not publish sale prices, price per square foot, yields or an index here, and we would rather leave a figure out than invent one.",
+      "Yes. Alongside counts of registered activity we publish the middle registered sale price, the middle registered price per square foot, the middle registered rent per square foot and the gross rental yield those two imply, each with the number of records behind it. Every one is derived from what was registered with the Dubai Land Department, never from asking prices, and where a period has too few records we leave it out rather than estimate it.",
   },
+
   {
     question: "What does the median registered annual rent mean?",
     answer:
@@ -62,9 +64,19 @@ const HEADLINE_METRICS = [
   "median_registered_annual_rent_aed",
 ] as const;
 
+/* Published from the same export as the counts, and allowed at Dubai level for
+ * the quarter grain only. Kept in a separate request so a scope the registry
+ * later withdraws empties one section rather than the whole page. */
+const PRICE_METRICS = [
+  "median_price_per_sqft",
+  "median_sale_price",
+  "median_rent_per_sqft",
+  "gross_rental_yield_pct",
+] as const;
+
 export const Route = createFileRoute("/market-intelligence/")({
   loader: async () => {
-    const [metadata, quarterly, monthly] = await Promise.all([
+    const [metadata, quarterly, monthly, prices] = await Promise.all([
       getMarketMetadataFn(),
       getMarketOverviewFn({
         data: {
@@ -84,23 +96,34 @@ export const Route = createFileRoute("/market-intelligence/")({
           limit: 900,
         },
       }),
+      getMarketOverviewFn({
+        data: {
+          metrics: [...PRICE_METRICS],
+          grain: "quarter",
+          from: "2019-01-01",
+          to: "2026-12-31",
+          limit: 900,
+        },
+      }),
     ]);
-    return { metadata, quarterly, monthly };
+    return { metadata, quarterly, monthly, prices };
   },
+
   head: ({ loaderData }) => {
     const exported = loaderData?.metadata.sourceExportDate ?? null;
     return pageHead({
       path: "/market-intelligence",
       title: "Dubai Market Intelligence",
       description:
-        "Registered sale transactions, registered rental contracts and the median registered annual rent for Dubai, built from Dubai Land Department open data with the record count behind every figure.",
+        "Registered sale prices, price and rent per square foot, gross rental yield and registered transaction volumes for Dubai, built from Dubai Land Department open data with the record count behind every figure.",
       breadcrumbs: [{ name: "Market Intelligence", path: "/market-intelligence" }],
       schema: [
         faqSchema(FAQS),
         datasetSchema({
-          name: "Dubai registered property activity and registered rents",
+          name: "Dubai registered property prices, rents and activity",
           description:
-            "Counts of registered sale transactions and registered tenancy contracts, the new and renewed composition of registered tenancies, and the median registered annual rent for Dubai and its communities, derived from Dubai Land Department open data.",
+            "Median registered sale price and price per square foot, median registered rent per square foot and gross rental yield, alongside counts of registered sale transactions and tenancy contracts for Dubai and its communities, derived from Dubai Land Department open data.",
+
           path: "/market-intelligence",
           isOfficial: true,
           dateModified: exported ?? new Date().toISOString().slice(0, 10),
@@ -113,7 +136,7 @@ export const Route = createFileRoute("/market-intelligence/")({
 });
 
 function MarketIntelligencePage() {
-  const { metadata, quarterly, monthly } = Route.useLoaderData();
+  const { metadata, quarterly, monthly, prices } = Route.useLoaderData();
 
   const saleQuarters = seriesFor(quarterly, "registered_sale_count");
   const rentalQuarters = seriesFor(quarterly, "registered_rental_contract_count");
@@ -125,15 +148,26 @@ function MarketIntelligencePage() {
     "renewed",
   );
 
+  const ppsfQuarters = seriesFor(prices, "median_price_per_sqft");
+  const salePriceQuarters = seriesFor(prices, "median_sale_price");
+  const rentPsfQuarters = seriesFor(prices, "median_rent_per_sqft");
+  const yieldQuarters = seriesFor(prices, "gross_rental_yield_pct");
+
   const latestSale = latestRow(saleQuarters);
   const latestRental = latestRow(rentalQuarters);
   const latestRent = latestRow(rentQuarters);
   const latestNew = latestRow(newQuarters);
   const latestRenewed = latestRow(renewedQuarters);
+  const latestPpsf = latestRow(ppsfQuarters);
+  const latestSalePrice = latestRow(salePriceQuarters);
+  const latestRentPsf = latestRow(rentPsfQuarters);
+  const latestYield = latestRow(yieldQuarters);
 
   const period = latestSale ?? latestRental ?? latestRent;
   const periodLabel = period ? formatPeriod("quarter", period.period_start) : null;
+  const pricePeriodLabel = latestPpsf ? formatPeriod("quarter", latestPpsf.period_start) : null;
   const published = metadata.rowCount > 0;
+
 
   /* The two derived readings the page leads with. Both come back empty where
    * the registry has not published both sides of the comparison, and the
@@ -219,6 +253,87 @@ function MarketIntelligencePage() {
               {sourceLine(metadata.sourceExportDate)}
             </p>
           </Section>
+
+          {/*
+           * Prices, and what they earn.
+           *
+           * Published at Dubai level for whole quarters only, so the section
+           * disappears entirely rather than half-renders where the registry has
+           * not released a figure.
+           */}
+          {latestPpsf || latestSalePrice || latestRentPsf || latestYield ? (
+            <Section data-surface="light">
+              <Reveal>
+                <Eyebrow>
+                  Prices and yield{pricePeriodLabel ? ` · ${pricePeriodLabel}` : ""}
+                </Eyebrow>
+                <h2 className="display-2 mt-5 max-w-[22ch] text-balance">
+                  What Dubai actually sold for, and what it earns.
+                </h2>
+                <p className="body-text mt-6 max-w-measure text-muted-foreground">
+                  The middle registered figures for the last complete quarter. A median is the
+                  middle of what was registered, so one tower of penthouses cannot pull it upward
+                  the way an average would.
+                </p>
+              </Reveal>
+              <div className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+                <Reveal delay={stagger(0)}>
+                  <Stat
+                    label="Median registered sale price"
+                    value={latestSalePrice?.metric_value ?? null}
+                    prefix="AED "
+                    meaning={METRIC_MEANINGS.median_sale_price}
+                  />
+                </Reveal>
+                <Reveal delay={stagger(1)}>
+                  <Stat
+                    label="Median price per sq ft"
+                    value={latestPpsf?.metric_value ?? null}
+                    prefix="AED "
+                    meaning={METRIC_MEANINGS.median_price_per_sqft}
+                  />
+                </Reveal>
+                <Reveal delay={stagger(2)}>
+                  <Stat
+                    label="Median rent per sq ft"
+                    value={latestRentPsf?.metric_value ?? null}
+                    prefix="AED "
+                    meaning={METRIC_MEANINGS.median_rent_per_sqft}
+                  />
+                </Reveal>
+                <Reveal delay={stagger(3)}>
+                  <Stat
+                    label="Gross rental yield"
+                    value={latestYield?.metric_value ?? null}
+                    decimals={1}
+                    suffix="%"
+                    meaning={METRIC_MEANINGS.gross_rental_yield_pct}
+                  />
+                </Reveal>
+              </div>
+              <div className="mt-16 grid gap-16 lg:grid-cols-2">
+                <Reveal>
+                  <RegisteredSeries
+                    rows={ppsfQuarters}
+                    metric="median_price_per_sqft"
+                    grain="quarter"
+                  />
+                </Reveal>
+                <Reveal delay={0.1}>
+                  <RegisteredSeries
+                    rows={yieldQuarters}
+                    metric="gross_rental_yield_pct"
+                    grain="quarter"
+                  />
+                </Reveal>
+              </div>
+              <p className="caption mt-12 max-w-measure text-muted-foreground">
+                {sourceLine(metadata.sourceExportDate)}
+              </p>
+            </Section>
+          ) : null}
+
+
 
           {/*
            * The reading, before the series.

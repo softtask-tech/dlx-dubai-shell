@@ -51,7 +51,13 @@ export const MARKET_METRICS = [
   "registered_renewed_rental_contract_count_change",
   "median_registered_annual_rent_aed",
   "median_registered_annual_rent_change",
+  "median_price_per_sqft",
+  "median_sale_price",
+  "median_rent_per_sqft",
+  "median_service_charge_sqft",
+  "gross_rental_yield_pct",
 ] as const;
+
 
 export type MarketMetric = (typeof MARKET_METRICS)[number];
 
@@ -71,7 +77,13 @@ export const METRIC_LABELS: Record<MarketMetric, string> = {
   registered_renewed_rental_contract_count_change: "Change in renewed registered rental contracts",
   median_registered_annual_rent_aed: "Median registered annual rent",
   median_registered_annual_rent_change: "Change in median registered annual rent",
+  median_price_per_sqft: "Median registered price per square foot",
+  median_sale_price: "Median registered sale price",
+  median_rent_per_sqft: "Median registered rent per square foot",
+  median_service_charge_sqft: "Median service charge per square foot",
+  gross_rental_yield_pct: "Gross rental yield",
 };
+
 
 /** What a reader should take from each figure, in plain language. */
 export const METRIC_MEANINGS: Record<MarketMetric, string> = {
@@ -95,7 +107,18 @@ export const METRIC_MEANINGS: Record<MarketMetric, string> = {
     "The middle registered annual rent for the period: half were agreed below it and half above.",
   median_registered_annual_rent_change:
     "How the middle registered annual rent moved against the period before it, in percent.",
+  median_price_per_sqft:
+    "The middle registered sale price per square foot: half the registered sales were below it and half above.",
+  median_sale_price:
+    "The middle registered sale price for the period, whole property rather than per square foot.",
+  median_rent_per_sqft:
+    "The middle registered annual rent per square foot, which is how rent and purchase price are compared like for like.",
+  median_service_charge_sqft:
+    "The middle annual service charge per square foot: the running cost of owning, before any return.",
+  gross_rental_yield_pct:
+    "Registered rent as a percentage of registered price, before service charges and other costs.",
 };
+
 
 export const SEGMENT_LABELS: Record<string, string> = {
   all: "All",
@@ -115,19 +138,36 @@ export const CONFIDENCE_LABELS: Record<MarketConfidence, string> = {
 
 /** Percent-style metrics are rendered differently from counts and amounts. */
 export function isChangeMetric(metric: MarketMetric): boolean {
-  return metric.endsWith("_change");
+  return metric.endsWith("_change") || metric === "gross_rental_yield_pct";
 }
 
+const AMOUNT_METRICS = new Set<MarketMetric>([
+  "median_registered_annual_rent_aed",
+  "median_sale_price",
+]);
+
+/** Amounts with fils-level precision: a price per square foot is not a round number. */
+const PRECISE_AMOUNT_METRICS = new Set<MarketMetric>([
+  "median_price_per_sqft",
+  "median_rent_per_sqft",
+  "median_service_charge_sqft",
+]);
+
 export function isAmountMetric(metric: MarketMetric): boolean {
-  return metric === "median_registered_annual_rent_aed";
+  return AMOUNT_METRICS.has(metric) || PRECISE_AMOUNT_METRICS.has(metric);
 }
 
 /** Formats a published value with the unit that belongs to its metric. */
 export function formatMetricValue(metric: MarketMetric, value: number): string {
+  if (metric === "gross_rental_yield_pct") return `${value.toFixed(1)}%`;
   if (isChangeMetric(metric)) return `${value >= 0 ? "+" : ""}${value.toFixed(1)}%`;
+  if (PRECISE_AMOUNT_METRICS.has(metric)) {
+    return `AED ${value.toLocaleString("en-AE", { maximumFractionDigits: 0 })} / sq ft`;
+  }
   if (isAmountMetric(metric)) return `AED ${Math.round(value).toLocaleString("en-AE")}`;
   return Math.round(value).toLocaleString("en-AE");
 }
+
 
 /** "Q2 2026", "June 2026", "2025": the period a figure actually covers. */
 export function formatPeriod(grain: MarketGrain, periodStart: string): string {

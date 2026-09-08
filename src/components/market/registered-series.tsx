@@ -104,9 +104,9 @@ export function RegisteredSeries({
         preserveAspectRatio="none"
       >
         <title id={`${tableId}-alt`}>
-          {heading}, {formatPeriod(grain, first.period_start)} to{" "}
-          {formatPeriod(grain, last.period_start)}. Full figures follow in the table below.
+          {`${heading}, ${formatPeriod(grain, first.period_start)} to ${formatPeriod(grain, last.period_start)}. Full figures follow in the table below.`}
         </title>
+
         <line
           x1="0"
           x2={width}
@@ -132,10 +132,9 @@ export function RegisteredSeries({
             fill="var(--accent)"
           >
             <title>
-              {formatPeriod(grain, coordinate.point.period_start)}:{" "}
-              {formatMetricValue(metric, coordinate.point.metric_value)} from{" "}
-              {coordinate.point.observation_count.toLocaleString("en-AE")} registered records
+              {`${formatPeriod(grain, coordinate.point.period_start)}: ${formatMetricValue(metric, coordinate.point.metric_value)} from ${coordinate.point.observation_count.toLocaleString("en-AE")} registered records`}
             </title>
+
           </circle>
         ))}
       </svg>
