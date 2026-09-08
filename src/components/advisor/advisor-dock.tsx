@@ -36,7 +36,7 @@ export function AdvisorDock({ agentId }: { agentId?: string | null }) {
    * reading a thread, and it only exists at all once an agent has been
    * provisioned: an offer to talk that cannot connect is worse than no offer.
    */
-  const [mode, setMode] = useState<"chat" | "voice">("chat");
+  
   const [opening, setOpening] = useState<string | null>(null);
   const pagePath = useRouterState({ select: (state) => state.location.pathname });
 
@@ -70,6 +70,7 @@ export function AdvisorDock({ agentId }: { agentId?: string | null }) {
       {open ? (
         <AdvisorPanel
           pagePath={pagePath}
+          agentId={agentId ?? null}
           {...(opening ? { initialQuestion: opening } : {})}
           onClose={() => {
             setOpen(false);
@@ -156,13 +157,16 @@ function Presence() {
 
 function AdvisorPanel({
   pagePath,
+  agentId,
   initialQuestion,
   onClose,
 }: {
   pagePath: string;
+  agentId?: string | null;
   initialQuestion?: string;
   onClose: () => void;
 }) {
+  const [mode, setMode] = useState<"chat" | "voice">("chat");
   const { turns, sending, notice, turnsLeft, leadCaptured, send } = useAdvisor(pagePath);
   const [draft, setDraft] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
