@@ -66,8 +66,14 @@ export const Route = createFileRoute("/data/market.json")({
   server: {
     handlers: {
       GET: async () => {
-        const { getMarketMetadata, getMarketOverview, getCommunityLeaderboard, getLatestPeriod } =
-          await import("@/data/market-public.server");
+        const {
+          getMarketMetadata,
+          getMarketOverview,
+          getCommunityLeaderboard,
+          getLatestPeriod,
+          getOffPlanSplit,
+          getOffPlanSplitPeriod,
+        } = await import("@/data/market-public.server");
 
         const metadata = await getMarketMetadata();
 
@@ -128,6 +134,28 @@ export const Route = createFileRoute("/data/market.json")({
           url: absoluteUrl(`/market-intelligence/communities/${row.entity_id}`),
         }));
 
+        /*
+         * Off-plan against ready property, in the same community.
+         *
+         * The one figure here an answer engine cannot get anywhere else, and
+         * the one most likely to be asked for: "is off-plan more expensive in
+         * Dubai Marina". It ships with the caveat attached to the field rather
+         * than buried in prose, because a model quoting the number without the
+         * caveat is the failure mode that matters.
+         */
+        const splitPeriod = await getOffPlanSplitPeriod({
+          metric: "median_price_per_sqft",
+          grain: "quarter",
+        });
+        const split = splitPeriod
+          ? await getOffPlanSplit({
+              metric: "median_price_per_sqft",
+              grain: "quarter",
+              period: splitPeriod,
+              limit: 80,
+            })
+          : [];
+
         const body = {
           publisher: site.name,
           source: "Dubai Land Department open data",
@@ -151,6 +179,24 @@ export const Route = createFileRoute("/data/market.json")({
             rankedBy: "median price per square foot",
             count: communities.length,
             rows: communities,
+          },
+          offPlanAgainstReady: {
+            period: splitPeriod,
+            unit: "AED per square foot",
+            caveat:
+              "Compares different homes. Off-plan is new construction; the ready property beside it can be any age and specification, so part of any gap is what new build costs anywhere. It states what buyers paid, not whether they overpaid.",
+            threshold:
+              "Both sides cleared 30 registered sales in the community and period independently.",
+            count: split.length,
+            rows: split.map((row) => ({
+              community: row.nameEn,
+              id: row.entityId,
+              offPlanPerSqftAed: row.offPlanValue,
+              offPlanRegisteredSales: row.offPlanCount,
+              readyPerSqftAed: row.existingValue,
+              readyRegisteredSales: row.existingCount,
+              gapPct: Number(((row.offPlanValue / row.existingValue - 1) * 100).toFixed(1)),
+            })),
           },
         };
 

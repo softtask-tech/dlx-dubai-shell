@@ -248,3 +248,19 @@ export const UNAVAILABLE_METADATA: MarketMetadata = {
 /** The honest empty state, used wherever a period has too few records. */
 export const TOO_FEW_RECORDS =
   "Not published for this period: too few registered records to report without identifying individual transactions.";
+
+/**
+ * Off-plan against ready property in one community, for one period.
+ *
+ * Shared rather than declared in the server module, because the chart that
+ * draws it is a client component and should not name a file that imports
+ * Supabase, even in a type-only position.
+ */
+export type OffPlanSplitRow = {
+  entityId: string;
+  nameEn: string;
+  offPlanValue: number;
+  offPlanCount: number;
+  existingValue: number;
+  existingCount: number;
+};

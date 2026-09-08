@@ -1,7 +1,7 @@
 /**
  * Server-side reads of the published DLD market aggregates.
  *
- * Only the five bounded public functions are called. The underlying tables and
+ * Only the bounded public functions are called. The underlying tables and
  * the internal projection view are not readable by the site's key, so there is
  * no path here that could return more than a published, suppressed aggregate.
  * Every call degrades to an empty result rather than throwing, because a market
@@ -18,6 +18,7 @@ import {
   type MarketMetadata,
   type MarketMetric,
   type MarketRow,
+  type OffPlanSplitRow,
 } from "./market-public";
 
 type MarketDatabase = {
@@ -81,6 +82,32 @@ type MarketDatabase = {
           requested_entity_type: string;
           requested_metric: string;
           requested_grain: string;
+        };
+        Returns: string | null;
+      };
+      get_dld_offplan_split: {
+        Args: {
+          requested_metric: string;
+          requested_grain: string;
+          requested_period: string;
+          min_observations?: number;
+          result_limit?: number;
+        };
+        Returns: {
+          entity_id: string;
+          name_en: string;
+          name_ar: string;
+          off_plan_value: number;
+          off_plan_count: number;
+          existing_value: number;
+          existing_count: number;
+        }[];
+      };
+      get_dld_offplan_split_period: {
+        Args: {
+          requested_metric: string;
+          requested_grain: string;
+          min_observations?: number;
         };
         Returns: string | null;
       };
@@ -327,5 +354,78 @@ export async function listMarketCommunitiesServer(): Promise<
   } catch (error) {
     console.error("[data:dld-market] community index unavailable", error);
     return [];
+  }
+}
+
+/**
+ * Off-plan against ready property, per community, for one period.
+ *
+ * Reads the sale_registration split that has been in the aggregate table since
+ * it was built and that no published function could reach, because every one
+ * of them pins segment_code = 'all'.
+ *
+ * The database function does the join and enforces the observation floor on
+ * both sides independently, so a community with four hundred off-plan sales
+ * and three resales never reaches this code with a ratio attached to it.
+ */
+export async function getOffPlanSplit(input: {
+  metric: MarketMetric;
+  grain: MarketGrain;
+  period: string;
+  minObservations?: number;
+  limit?: number;
+}): Promise<OffPlanSplitRow[]> {
+  try {
+    const { data, error } = await marketDb.rpc("get_dld_offplan_split", {
+      requested_metric: input.metric,
+      requested_grain: input.grain,
+      requested_period: input.period,
+      min_observations: input.minObservations ?? 30,
+      result_limit: input.limit ?? 80,
+    });
+    if (error) throw error;
+    const raw = (data ?? []) as unknown as Record<string, unknown>[];
+    return raw.flatMap((row) => {
+      const offPlanValue = Number(row["off_plan_value"]);
+      const existingValue = Number(row["existing_value"]);
+      /* A row that arrives without both sides is dropped rather than rendered
+       * as a zero, which would draw as a 100% discount. */
+      if (!Number.isFinite(offPlanValue) || !Number.isFinite(existingValue) || existingValue <= 0) {
+        return [];
+      }
+      return [
+        {
+          entityId: String(row["entity_id"] ?? ""),
+          nameEn: String(row["name_en"] ?? ""),
+          offPlanValue,
+          offPlanCount: Number(row["off_plan_count"] ?? 0),
+          existingValue,
+          existingCount: Number(row["existing_count"] ?? 0),
+        },
+      ];
+    });
+  } catch (error) {
+    console.error("[data:dld-market] off-plan split unavailable", error);
+    return [];
+  }
+}
+
+/** The newest period the split is publishable on both sides. */
+export async function getOffPlanSplitPeriod(input: {
+  metric: MarketMetric;
+  grain: MarketGrain;
+  minObservations?: number;
+}): Promise<string | null> {
+  try {
+    const { data, error } = await marketDb.rpc("get_dld_offplan_split_period", {
+      requested_metric: input.metric,
+      requested_grain: input.grain,
+      min_observations: input.minObservations ?? 30,
+    });
+    if (error) throw error;
+    return (data as unknown as string | null) ?? null;
+  } catch (error) {
+    console.error("[data:dld-market] off-plan split period unavailable", error);
+    return null;
   }
 }

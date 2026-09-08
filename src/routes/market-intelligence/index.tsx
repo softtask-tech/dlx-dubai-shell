@@ -10,10 +10,13 @@ import {
   seriesFor,
   sourceLine,
   type MarketRow,
+  type OffPlanSplitRow,
 } from "@/data/market-public";
 import {
   getCommunityLeaderboardFn,
   getLatestPeriodFn,
+  getOffPlanSplitFn,
+  getOffPlanSplitPeriodFn,
   getMarketMetadataFn,
   getMarketOverviewFn,
 } from "@/data/market-public.functions";
@@ -23,6 +26,7 @@ import {
   buildLeague,
 } from "@/components/market/community-league";
 import { YieldPriceMap } from "@/components/market/yield-price-map";
+import { OffPlanGap } from "@/components/market/offplan-gap";
 import { rentGapSeries, shareSeries } from "@/data/market-insights";
 import { datasetSchema, faqSchema, type FaqEntry } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
@@ -95,73 +99,111 @@ const PRICE_METRICS = [
 
 export const Route = createFileRoute("/market-intelligence/")({
   loader: async () => {
-    /* Which quarter to rank on is asked, not assumed: the price series and the
-     * count series do not always land together, and guessing "this quarter"
-     * renders an empty table in the week before an export. */
-    const leaguePeriod = await getLatestPeriodFn({
-      data: { entityType: "community", metric: "median_price_per_sqft", grain: "quarter" },
-    });
-
-    const league = leaguePeriod
-      ? Object.fromEntries(
-          await Promise.all(
-            LEAGUE_METRICS.map(async (metric) => [
-              metric,
-              await getCommunityLeaderboardFn({
-                data: { metric, grain: "quarter", period: leaguePeriod, limit: 120 },
-              }),
-            ]),
-          ),
-        )
-      : {};
-
-    /* The service charge is a yearly budget, not a quarterly market, so it is
-     * fetched on its own grain and joined in by community. */
-    const chargePeriod = await getLatestPeriodFn({
-      data: { entityType: "community", metric: "median_service_charge_sqft", grain: "year" },
-    });
-    const charges = chargePeriod
-      ? await getCommunityLeaderboardFn({
+    /*
+     * Two round trips deep, not seven.
+     *
+     * Three of these reads depend on a period lookup, and written the obvious
+     * way — look up a period, fetch with it, repeat — the page waited on seven
+     * requests in a row before it could render a byte. This page has been slow
+     * once already for exactly that kind of reason.
+     *
+     * So every lookup that depends on nothing goes in the first wave, and
+     * everything that needed a period from it goes in the second. Which period
+     * to use is still asked rather than assumed: the price series, the yearly
+     * service charge and the off-plan split do not land in the same quarter,
+     * and guessing renders an empty section the week before an export.
+     */
+    const [leaguePeriod, chargePeriod, offPlanSplitPeriod, metadata, quarterly, monthly, prices] =
+      await Promise.all([
+        getLatestPeriodFn({
+          data: { entityType: "community", metric: "median_price_per_sqft", grain: "quarter" },
+        }),
+        getLatestPeriodFn({
+          data: { entityType: "community", metric: "median_service_charge_sqft", grain: "year" },
+        }),
+        getOffPlanSplitPeriodFn({
+          data: { metric: "median_price_per_sqft", grain: "quarter", minObservations: 30 },
+        }),
+        getMarketMetadataFn(),
+        getMarketOverviewFn({
           data: {
-            metric: "median_service_charge_sqft",
-            grain: "year",
-            period: chargePeriod,
-            limit: 200,
+            metrics: [...HEADLINE_METRICS],
+            grain: "quarter",
+            from: "2019-01-01",
+            to: "2026-12-31",
+            limit: 900,
           },
-        })
-      : [];
+        }),
+        getMarketOverviewFn({
+          data: {
+            metrics: ["registered_sale_count", "registered_rental_contract_count"],
+            grain: "month",
+            from: "2021-01-01",
+            to: "2026-12-31",
+            limit: 900,
+          },
+        }),
+        getMarketOverviewFn({
+          data: {
+            metrics: [...PRICE_METRICS],
+            grain: "quarter",
+            from: "2019-01-01",
+            to: "2026-12-31",
+            limit: 900,
+          },
+        }),
+      ]);
 
-    const [metadata, quarterly, monthly, prices] = await Promise.all([
-      getMarketMetadataFn(),
-      getMarketOverviewFn({
-        data: {
-          metrics: [...HEADLINE_METRICS],
-          grain: "quarter",
-          from: "2019-01-01",
-          to: "2026-12-31",
-          limit: 900,
-        },
-      }),
-      getMarketOverviewFn({
-        data: {
-          metrics: ["registered_sale_count", "registered_rental_contract_count"],
-          grain: "month",
-          from: "2021-01-01",
-          to: "2026-12-31",
-          limit: 900,
-        },
-      }),
-      getMarketOverviewFn({
-        data: {
-          metrics: [...PRICE_METRICS],
-          grain: "quarter",
-          from: "2019-01-01",
-          to: "2026-12-31",
-          limit: 900,
-        },
-      }),
+    const [leagueEntries, charges, offPlanSplit] = await Promise.all([
+      leaguePeriod
+        ? Promise.all(
+            LEAGUE_METRICS.map(async (metric) => {
+              const rows = await getCommunityLeaderboardFn({
+                data: { metric, grain: "quarter", period: leaguePeriod, limit: 120 },
+              });
+              return [metric, rows] as const;
+            }),
+          )
+        : Promise.resolve([] as (readonly [string, MarketRow[]])[]),
+      /* The service charge is a yearly budget rather than a quarterly market,
+       * so it comes back on its own grain and is joined in by community. */
+      chargePeriod
+        ? getCommunityLeaderboardFn({
+            data: {
+              metric: "median_service_charge_sqft",
+              grain: "year",
+              period: chargePeriod,
+              limit: 200,
+            },
+          })
+        : Promise.resolve([] as MarketRow[]),
+      offPlanSplitPeriod
+        ? getOffPlanSplitFn({
+            data: {
+              metric: "median_price_per_sqft",
+              grain: "quarter",
+              period: offPlanSplitPeriod,
+              minObservations: 30,
+              limit: 80,
+            },
+          })
+        : Promise.resolve([] as OffPlanSplitRow[]),
     ]);
-    return { metadata, quarterly, monthly, prices, league, charges, leaguePeriod, chargePeriod };
+
+    const league = Object.fromEntries(leagueEntries);
+
+    return {
+      metadata,
+      quarterly,
+      monthly,
+      prices,
+      league,
+      charges,
+      leaguePeriod,
+      chargePeriod,
+      offPlanSplit,
+      offPlanSplitPeriod,
+    };
   },
 
   head: ({ loaderData }) => {
@@ -191,8 +233,17 @@ export const Route = createFileRoute("/market-intelligence/")({
 });
 
 function MarketIntelligencePage() {
-  const { metadata, quarterly, monthly, prices, league, charges, leaguePeriod } =
-    Route.useLoaderData();
+  const {
+    metadata,
+    quarterly,
+    monthly,
+    prices,
+    league,
+    charges,
+    leaguePeriod,
+    offPlanSplit,
+    offPlanSplitPeriod,
+  } = Route.useLoaderData();
 
   const saleQuarters = seriesFor(quarterly, "registered_sale_count");
   const rentalQuarters = seriesFor(quarterly, "registered_rental_contract_count");
@@ -581,6 +632,37 @@ function MarketIntelligencePage() {
                   </div>
                 </Reveal>
               ) : null}
+            </Section>
+          ) : null}
+
+          {/*
+           * What off-plan costs against what you could walk through.
+           *
+           * Sits directly after the composition block on purpose. That one
+           * says how much of the market is off-plan; this one says what the
+           * off-plan buyers paid for it, in the same communities, and the two
+           * questions belong together.
+           *
+           * The caveat is on the page rather than only in the code: this
+           * compares new construction against stock of any age, so some of
+           * every gap is what new costs anywhere. Publishing the figure with
+           * the caveat is worth far more than not publishing it.
+           */}
+          {offPlanSplitPeriod && offPlanSplit.length >= 5 ? (
+            <Section data-surface="light">
+              <SectionOpener
+                eyebrow="Off-plan against ready"
+                title="The same community, two prices."
+                lead="Every price on this page until now blends off-plan and resale into one figure, which is the number least useful to somebody choosing between them. These are the two, apart, wherever the register publishes both."
+              />
+              <Reveal>
+                <div className="mt-12">
+                  <OffPlanGap
+                    rows={offPlanSplit}
+                    periodLabel={formatPeriod("quarter", offPlanSplitPeriod)}
+                  />
+                </div>
+              </Reveal>
             </Section>
           ) : null}
 
