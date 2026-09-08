@@ -63,6 +63,7 @@ import { Route as ToolsIndexRouteImport } from './routes/tools/index'
 import { Route as ToolsSlugRouteImport } from './routes/tools/$slug'
 import { Route as ApiAdvisorCallLeadRouteImport } from './routes/api/advisor/call-lead'
 import { Route as ApiAdvisorChatRouteImport } from './routes/api/advisor/chat'
+import { Route as ApiAdvisorFishWebhookRouteImport } from './routes/api/advisor/fish-webhook'
 import { Route as ApiAdvisorSpeakRouteImport } from './routes/api/advisor/speak'
 import { Route as ApiAdvisorVoiceRouteImport } from './routes/api/advisor/voice'
 import { Route as ApiLeadsGoogleRouteImport } from './routes/api/leads/google'
@@ -350,6 +351,11 @@ const ApiAdvisorChatRoute = ApiAdvisorChatRouteImport.update({
   path: '/api/advisor/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdvisorFishWebhookRoute = ApiAdvisorFishWebhookRouteImport.update({
+  id: '/api/advisor/fish-webhook',
+  path: '/api/advisor/fish-webhook',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAdvisorSpeakRoute = ApiAdvisorSpeakRouteImport.update({
   id: '/api/advisor/speak',
   path: '/api/advisor/speak',
@@ -479,6 +485,7 @@ export interface FileRoutesByFullPath {
   '/tools/': typeof ToolsIndexRoute
   '/api/advisor/call-lead': typeof ApiAdvisorCallLeadRoute
   '/api/advisor/chat': typeof ApiAdvisorChatRoute
+  '/api/advisor/fish-webhook': typeof ApiAdvisorFishWebhookRoute
   '/api/advisor/speak': typeof ApiAdvisorSpeakRoute
   '/api/advisor/voice': typeof ApiAdvisorVoiceRoute
   '/api/leads/google': typeof ApiLeadsGoogleRoute
@@ -547,6 +554,7 @@ export interface FileRoutesByTo {
   '/tools': typeof ToolsIndexRoute
   '/api/advisor/call-lead': typeof ApiAdvisorCallLeadRoute
   '/api/advisor/chat': typeof ApiAdvisorChatRoute
+  '/api/advisor/fish-webhook': typeof ApiAdvisorFishWebhookRoute
   '/api/advisor/speak': typeof ApiAdvisorSpeakRoute
   '/api/advisor/voice': typeof ApiAdvisorVoiceRoute
   '/api/leads/google': typeof ApiLeadsGoogleRoute
@@ -618,6 +626,7 @@ export interface FileRoutesById {
   '/tools/': typeof ToolsIndexRoute
   '/api/advisor/call-lead': typeof ApiAdvisorCallLeadRoute
   '/api/advisor/chat': typeof ApiAdvisorChatRoute
+  '/api/advisor/fish-webhook': typeof ApiAdvisorFishWebhookRoute
   '/api/advisor/speak': typeof ApiAdvisorSpeakRoute
   '/api/advisor/voice': typeof ApiAdvisorVoiceRoute
   '/api/leads/google': typeof ApiLeadsGoogleRoute
@@ -690,6 +699,7 @@ export interface FileRouteTypes {
     | '/tools/'
     | '/api/advisor/call-lead'
     | '/api/advisor/chat'
+    | '/api/advisor/fish-webhook'
     | '/api/advisor/speak'
     | '/api/advisor/voice'
     | '/api/leads/google'
@@ -758,6 +768,7 @@ export interface FileRouteTypes {
     | '/tools'
     | '/api/advisor/call-lead'
     | '/api/advisor/chat'
+    | '/api/advisor/fish-webhook'
     | '/api/advisor/speak'
     | '/api/advisor/voice'
     | '/api/leads/google'
@@ -828,6 +839,7 @@ export interface FileRouteTypes {
     | '/tools/'
     | '/api/advisor/call-lead'
     | '/api/advisor/chat'
+    | '/api/advisor/fish-webhook'
     | '/api/advisor/speak'
     | '/api/advisor/voice'
     | '/api/leads/google'
@@ -888,6 +900,7 @@ export interface RootRouteChildren {
   ToolsIndexRoute: typeof ToolsIndexRoute
   ApiAdvisorCallLeadRoute: typeof ApiAdvisorCallLeadRoute
   ApiAdvisorChatRoute: typeof ApiAdvisorChatRoute
+  ApiAdvisorFishWebhookRoute: typeof ApiAdvisorFishWebhookRoute
   ApiAdvisorSpeakRoute: typeof ApiAdvisorSpeakRoute
   ApiAdvisorVoiceRoute: typeof ApiAdvisorVoiceRoute
   ApiLeadsGoogleRoute: typeof ApiLeadsGoogleRoute
@@ -1284,6 +1297,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAdvisorChatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/advisor/fish-webhook': {
+      id: '/api/advisor/fish-webhook'
+      path: '/api/advisor/fish-webhook'
+      fullPath: '/api/advisor/fish-webhook'
+      preLoaderRoute: typeof ApiAdvisorFishWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/advisor/speak': {
       id: '/api/advisor/speak'
       path: '/api/advisor/speak'
@@ -1480,6 +1500,7 @@ const rootRouteChildren: RootRouteChildren = {
   ToolsIndexRoute: ToolsIndexRoute,
   ApiAdvisorCallLeadRoute: ApiAdvisorCallLeadRoute,
   ApiAdvisorChatRoute: ApiAdvisorChatRoute,
+  ApiAdvisorFishWebhookRoute: ApiAdvisorFishWebhookRoute,
   ApiAdvisorSpeakRoute: ApiAdvisorSpeakRoute,
   ApiAdvisorVoiceRoute: ApiAdvisorVoiceRoute,
   ApiLeadsGoogleRoute: ApiLeadsGoogleRoute,
