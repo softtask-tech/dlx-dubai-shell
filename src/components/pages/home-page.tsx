@@ -42,9 +42,9 @@ const SERVICE_LINES: Record<string, string> = {
  */
 const OFF_PLAN_LINES: Record<string, string> = {
   "azizi-florence":
-    "A 30-million sq ft masterplan, priced against the same discipline we apply at home.",
+    "A 30-million square foot community going up in Sharjah, half an hour from Dubai on the Sheikh Mohammed Bin Zayed corridor.",
   "sobha-city-abu-dhabi":
-    "Sobha's first Abu Dhabi masterplan, waterfront, and evidence-checked before we'd represent it.",
+    "Sobha's first community in Abu Dhabi, on the water. A different emirate means a different rulebook, and we walk you through it.",
 };
 
 /*
@@ -139,15 +139,30 @@ export function HomePage({
                   inside it that a text splitter would take apart. */}
               <Reveal delay={0.05}>
                 <h1 className="display-1 text-balance">
-                  <Emphasise text="Ask first. *Then* decide." />
+                  <Emphasise text="Buying in Dubai, *without the guesswork*." />
                 </h1>
               </Reveal>
               <Reveal delay={0.1}>
+                {/*
+                 * Written about the reader, not about us.
+                 *
+                 * The old lead said DLX is built on the public record, checks
+                 * its mandates and assigns one consultant. All true, all about
+                 * the firm, and none of it tells a person landing here what
+                 * they get. It also opened on "the public record" and "the
+                 * Dubai Land Department", which is the vocabulary of the
+                 * people who already know — the ones who need it least.
+                 *
+                 * So: who this is for, what they get, in the words they would
+                 * use themselves. The register is still the whole point and it
+                 * is still named, just called what it is. The harder figures
+                 * are two clicks in, where somebody has asked for them.
+                 */}
                 <p className="lead mt-8 text-muted-foreground">
-                  DLX is a Dubai brokerage built on the public record. Every figure we quote comes
-                  from the Dubai Land Department, every mandate is checked before we agree to
-                  represent it, and one consultant stays with you from the first question to the
-                  last signature.
+                  Whether you are investing, moving your family over, or buying your first place
+                  here — we start by showing you what homes like it actually sold for, taken
+                  straight from Dubai&rsquo;s government property register. Then one person stays
+                  with you the whole way through.
                 </p>
               </Reveal>
               <Reveal delay={0.15}>
@@ -162,7 +177,7 @@ export function HomePage({
                     to="/market-intelligence"
                     className="focus-ring eyebrow inline-flex min-h-12 items-center gap-2 border-b border-green-mid pb-1 text-green-mid"
                   >
-                    See the record
+                    See what homes sold for
                     <span aria-hidden className="rtl:-scale-x-100">
                       →
                     </span>
@@ -181,9 +196,18 @@ export function HomePage({
           <Reveal delay={0.25}>
             <ul className="mt-14 flex flex-col border-t border-border sm:flex-row sm:flex-wrap sm:gap-x-12">
               {[
+                /*
+                 * Every line here has to be checkable, and two of them were
+                 * not. "Dubai · Abu Dhabi · Sharjah" is contradicted by our own
+                 * brand config, which records one locality and six Dubai
+                 * communities; "Five languages, day or night" claimed staffed
+                 * round-the-clock cover in five languages, which nothing in
+                 * this repo supports. A strip of trust facts is the worst
+                 * possible place to keep an unverified claim.
+                 */
                 `RERA ORN ${site.reraOrn}`,
-                "Dubai · Abu Dhabi · Sharjah",
-                "Five languages, day or night",
+                "Licensed brokerage in Dubai",
+                "Prices from the government register",
                 "One consultant, start to finish",
               ].map((entry) => (
                 <li
@@ -212,9 +236,10 @@ export function HomePage({
           </Reveal>
           <Reveal delay={0.1}>
             <p className="body-text max-w-[38ch] text-muted-foreground">
-              One consultant, start to finish. No hand-offs, no junior desk, no queue. We price
-              from the registered record and flag the service-charge problem before you find it
-              the hard way.
+              One person, start to finish. No hand-offs, no junior desk, no queue. We price from
+              what has actually sold, and we tell you about the yearly service charge before you
+              sign, not after — it is the cost that quietly eats the rent, and almost nobody puts
+              it in front of you.
             </p>
             <p className="body-text mt-4 max-w-[38ch] text-muted-foreground">
               And we say no, plainly, when no is the right answer.
@@ -237,7 +262,7 @@ export function HomePage({
         <SectionOpener
           eyebrow="The record, at a glance"
           title="We don't guess. We check."
-          lead="Three figures from the Dubai Land Department register, and the series behind them. The full analysis, with the off-plan split and rental pressure, is one click away."
+          lead="Every sale and every tenancy in Dubai is recorded by the government. Here are three figures from it. If you want the rest — what each community costs, what it earns, and where off-plan is priced above what you could walk through today — it is one click away."
         />
         <MarketGlance
           rows={quarterly}
@@ -250,7 +275,7 @@ export function HomePage({
       <Section data-surface="light">
         <SectionOpener
           eyebrow="What we do"
-          title="One team, start to finish, no hand-offs."
+          title="What we can actually help you with."
         />
         <Reveal>
           <ServicesList services={services} hrefFor={(slug) => `/services/${slug}`} />
@@ -261,7 +286,7 @@ export function HomePage({
       <Section data-surface="cream">
         <SectionOpener
           eyebrow="In focus · off-plan"
-          title="Two mandates outside Dubai, held to the same standard."
+          title="Two projects we represent, in Sharjah and Abu Dhabi."
         />
         <Reveal>
           <OffPlanFocus
