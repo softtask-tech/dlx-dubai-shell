@@ -49,7 +49,31 @@ export const Route = createFileRoute("/areas/")({
 
 function AreasIndex() {
   const { areas } = Route.useLoaderData();
-  const covered = areas.filter((area) => area.stats !== null);
+
+  /*
+   * Real records only. Sample rows are not listed.
+   *
+   * `areas.stats` can carry rows its own provenance column marks `sample`, and
+   * this page presents whatever it lists as "what each community has actually
+   * transacted at". That sentence and an illustrative figure cannot share a
+   * page. Same rule the advisor's knowledge index uses.
+   *
+   * WHY THESE FIGURES DO NOT COME FROM THE PUBLISHED AGGREGATES, which is
+   * where the rest of the site now reads. The two describe different entity
+   * spaces: this page lists communities by the name a buyer uses (Dubai
+   * Marina, Downtown Dubai) and the registry publishes administrative ones
+   * (Marsa Dubai, Burj Khalifa). Of a dozen common Dubai community names, two
+   * match the registry's spelling. Joining them on name was tried and reverted
+   * — a join that misses five times in six is worse than no join, because the
+   * misses are invisible.
+   *
+   * Reconciling them is a data task, not a code one: `areas.dld_area_name`
+   * exists for exactly this and needs filling in by hand, one community at a
+   * time. Until it is, this page cites the area figures and the market pages
+   * cite the registry, and both say which they are.
+   */
+  const covered = areas.filter((area) => area.stats?.provenance === "dld_open_data");
+
   const attribution = attributionFor(
     covered[0]?.stats?.provenance ?? null,
     covered[0]?.stats?.last_updated ?? null,
