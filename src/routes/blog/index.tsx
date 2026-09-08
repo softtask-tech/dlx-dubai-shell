@@ -143,14 +143,10 @@ function BlogIndex() {
       ) : null}
 
       {lead ? (
-        {/*
-         * The featured piece, on its own ground.
-         *
-         * It was one more block of white separated from the list by a
-         * hairline, which meant the lead article looked exactly like the
-         * eleven below it. The surface change is what makes it read as
-         * featured, and it costs no extra type or decoration to say so.
-         */}
+        /*
+         * The featured piece, on its own ground: the surface change is what
+         * makes it read as featured, with no extra type or decoration.
+         */
         <Section data-surface="cream">
           <Reveal>
             <Link
