@@ -73,7 +73,7 @@ export function Footer() {
                     <li key={item.href}>
                       <a
                         href={pathIn(code, item.href)}
-                        className="focus-ring text-sm text-on-dark-muted transition-colors hover:text-on-dark"
+                        className="focus-ring inline-flex min-h-9 items-center text-sm text-on-dark-muted transition-colors hover:text-on-dark"
                       >
                         {item.label}
                       </a>

@@ -83,7 +83,7 @@ export function NoorPanel({ availability }: { availability: AdvisorAvailability 
               aria-pressed={mode === option}
               onClick={() => setMode(option)}
               className={cn(
-                "focus-ring rounded-full px-4 py-1.5 text-xs font-semibold capitalize transition-colors",
+                "focus-ring min-h-10 rounded-full px-4 py-2 text-xs font-semibold capitalize transition-colors",
                 mode === option
                   ? "bg-green text-on-dark"
                   : "text-muted-foreground hover:text-foreground",
@@ -187,7 +187,7 @@ function ChatInvitation({
           maxLength={advisor.limitsPerSession.messageChars}
           placeholder="Ask about Dubai property"
           autoComplete="off"
-          className="min-w-0 flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+          className="min-h-11 min-w-0 flex-1 bg-transparent py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
         />
         <button
           type="submit"
