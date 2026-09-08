@@ -33,9 +33,10 @@ import { CompositionSeries } from "@/components/market/composition-series";
 import { RentGap } from "@/components/market/rent-gap";
 import { Stat } from "@/components/market/stat";
 import { Reveal } from "@/components/site/reveal";
-import { PageHero } from "@/components/site/page-hero";
+import { ReportMasthead } from "@/components/market/report-masthead";
 import { Section, Container, Eyebrow } from "@/components/ui/section";
 import { SectionOpener } from "@/components/site/section-opener";
+import { site } from "@/config/site";
 
 const FAQS: readonly FaqEntry[] = [
   {
@@ -237,6 +238,56 @@ function MarketIntelligencePage() {
   const homeTypeShare = shareSeries(quarterly, "registered_sale_count", "apartment", "villa");
   const rentGap = rentGapSeries(quarterly);
 
+  /*
+   * The four the page leads with, and the order is the order a buyer asks
+   * them in: what does it cost, what is one square foot, what does it earn,
+   * how busy is the market. Anything the registry has not published for the
+   * latest period is left out rather than shown as a dash.
+   */
+  const figureFor = (
+    row: MarketRow | null,
+    label: string,
+    format: (value: number) => string,
+    note: string,
+  ) =>
+    row
+      ? [
+          {
+            label,
+            value: format(row.metric_value),
+            note,
+            basis: `${row.observation_count.toLocaleString("en-AE")} records · ${formatPeriod("quarter", row.period_start)}`,
+          },
+        ]
+      : [];
+
+  const mastheadFigures = [
+    ...figureFor(
+      latestPpsf,
+      "Median price per sqft",
+      (value) => `AED ${Math.round(value).toLocaleString("en-AE")}`,
+      "The middle registered sale, by area rather than by unit, so a studio and a villa compare.",
+    ),
+    ...figureFor(
+      latestSalePrice,
+      "Median registered sale",
+      (value) => `AED ${Math.round(value).toLocaleString("en-AE")}`,
+      "Half of registered sales were agreed below this figure and half above.",
+    ),
+    ...figureFor(
+      latestYield,
+      "Gross rental yield",
+      (value) => `${value.toFixed(2)}%`,
+      "Rent per square foot over ready-property price. Before the service charge.",
+    ),
+    ...figureFor(
+      latestSale,
+      "Registered sales",
+      (value) => Math.round(value).toLocaleString("en-AE"),
+      "How busy the quarter was. It measures activity, not price.",
+    ),
+  ];
+
   const compositionTotal = (latestNew?.metric_value ?? 0) + (latestRenewed?.metric_value ?? 0);
   const newShare = compositionTotal
     ? Math.round(((latestNew?.metric_value ?? 0) / compositionTotal) * 100)
@@ -244,19 +295,25 @@ function MarketIntelligencePage() {
 
   return (
     <>
-      <PageHero
-        photo="downtown-interchange-day"
+      {/*
+       * Figures above the fold, and no photograph.
+       *
+       * This page opened on a decorative skyline, so a reader arriving from a
+       * search for "Dubai price per square foot" had to scroll past a picture
+       * to reach the number they came for. There is no image of Dubai that
+       * adds anything to a median price.
+       */}
+      <ReportMasthead
         eyebrow="Market intelligence"
-        title="Dubai, in registered activity."
-        lead="Not asking prices and not agency sentiment. How many sales and tenancies were actually registered with the Dubai Land Department, and what the middle registered rent was."
-      >
-        {metadata.sourceExportDate ? (
-          <p className="caption mt-8 text-muted-foreground">
-            Source export: {formatExportDate(metadata.sourceExportDate)} · Source: Dubai Land
-            Department
-          </p>
-        ) : null}
-      </PageHero>
+        title="Dubai, in registered figures."
+        lead="Not asking prices and not agency sentiment. What actually changed hands, what it went for, and what it earns, taken from the register every sale and tenancy in Dubai is recorded in."
+        figures={mastheadFigures}
+        source={
+          metadata.sourceExportDate
+            ? `Source: Dubai Land Department open data, export ${formatExportDate(metadata.sourceExportDate)}. ${site.name} is independent of the Dubai Land Department and is not endorsed by it.`
+            : `Source: Dubai Land Department open data. ${site.name} is independent of the Dubai Land Department and is not endorsed by it.`
+        }
+      />
 
       {!published ? (
         <Section className="pt-0">
