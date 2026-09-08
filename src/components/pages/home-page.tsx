@@ -57,7 +57,17 @@ const OFF_PLAN_LINES: Record<string, string> = {
  * type at full contrast, it makes the site read white first, and the building
  * everyone recognises is still in it.
  */
-export const HERO_PHOTO: PhotoSlug = "skyline-across-water-haze";
+/*
+ * A tall, bright, sharp frame, because it is now shown at full strength.
+ *
+ * The previous one was "skyline across water, haze", and its own alt text
+ * described the Burj Khalifa as faint. Under a white veil that did not matter
+ * because nobody could see it. Beside the type at full strength it does: a
+ * hazy 3:2 landscape cropped into a tall plate is soft and badly framed.
+ * This one is 9:16, daylight, and sharp enough to carry the half of the page
+ * it now occupies.
+ */
+export const HERO_PHOTO: PhotoSlug = "downtown-interchange-day";
 
 /**
  * The homepage.
@@ -174,9 +184,8 @@ export function HomePage({
                  */}
                 <p className="lead mt-8 text-muted-foreground">
                   Whether you are investing, moving your family over, or buying your first place
-                  here, we start by showing you what homes like it actually sold for, taken
-                  straight from Dubai&rsquo;s government property register. Then one person stays
-                  with you the whole way through.
+                  here, you get one consultant who knows what is worth seeing, what is worth
+                  paying, and when to tell you to walk away. From the first call to the keys.
                 </p>
               </Reveal>
               <Reveal delay={0.15}>
@@ -236,10 +245,18 @@ export function HomePage({
                  * round-the-clock cover in five languages, which nothing in
                  * this repo supports. A strip of trust facts is the worst
                  * possible place to keep an unverified claim.
+                 *
+                 * A third was worse than unverified, it was wrong about what
+                 * we do. "Prices from the government register" reads as though
+                 * DLX sells at some official price. Developers set prices. The
+                 * register is what we publish as analysis, not what we sell
+                 * against, and putting it in a strip of selling points mixed
+                 * the two. The badges that replaced it are awarded by the
+                 * portals and can be checked on our profiles there.
                  */
                 `RERA ORN ${site.reraOrn}`,
                 "Licensed brokerage in Dubai",
-                "Prices from the government register",
+                "SuperAgent on Bayut, TruBroker on Property Finder",
                 "One consultant, start to finish",
               ].map((entry) => (
                 <li
@@ -288,8 +305,19 @@ export function HomePage({
               body: "The person who takes your first call is the person who negotiates and the person who is there at handover. No hand-offs, no junior desk, no queue.",
             },
             {
-              lead: "Priced from what actually sold",
-              body: "Not an asking price and not a feeling about the market. The registered record of what changed hands, with the number of sales behind it.",
+              /*
+               * Says who sets the price, because we do not.
+               *
+               * The first version of this read "priced from what actually
+               * sold", which is how a valuer describes their method and how a
+               * buyer hears "DLX decides the price". Developers set prices.
+               * What we sell is the second opinion on one, and that is the
+               * stronger offer anyway: nobody lies awake worrying they were
+               * quoted an unofficial price, they lie awake wondering if they
+               * overpaid.
+               */
+              lead: "You will know if you are overpaying",
+              body: "The developer sets the price. Before you commit we show you what comparable homes in that building and community actually changed hands for, and tell you whether it stands up.",
             },
             {
               lead: "The service charge, before you sign",
@@ -329,7 +357,7 @@ export function HomePage({
         <SectionOpener
           eyebrow="The record, at a glance"
           title="We don't guess. We check."
-          lead="Every sale and every tenancy in Dubai is recorded by the government. These three come straight from it."
+          lead="We track every sale and tenancy registered in Dubai. Not to price your home, developers and owners do that, but so nobody can sell you a story about the market."
         />
         <MarketGlance
           rows={quarterly}

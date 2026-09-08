@@ -309,7 +309,7 @@ export const en = {
       {
         label: "Evidence",
         value: "Dubai Land Department data",
-        detail: "We price from recorded transactions, and we cite them.",
+        detail: "We publish the market record, so you can check what we tell you.",
       },
       {
         label: "Languages",

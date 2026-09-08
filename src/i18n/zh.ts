@@ -295,7 +295,7 @@ export const zh: Dictionary = {
       {
         label: "依据",
         value: "迪拜土地局数据",
-        detail: "定价依据已登记的成交记录，并注明出处。",
+        detail: "我们公开市场记录，让您可以核实我们所说的。",
       },
       {
         label: "语言",
