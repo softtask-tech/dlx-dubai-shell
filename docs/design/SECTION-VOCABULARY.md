@@ -36,10 +36,17 @@ normally offers.
 search for the number: making them scroll past a photograph and a paragraph to
 reach it is a tax on the person who wanted the page most.
 
-**Quiet** — an eyebrow alone, then the content. Right when the content is
-already made of headings, so a heading above them is a heading about headings.
-The homepage FAQ opens this way: every question is its own title, and "The
-questions we get first" told the reader nothing the questions did not.
+**Quiet** — an eyebrow-sized heading, then the content. Right when the content
+is already made of headings, so a heading above them is a heading about
+headings. The homepage FAQ opens this way: every question is its own title, and
+"The questions we get first" told the reader nothing the questions did not.
+
+**Quiet does not mean headless.** The first version of this dropped the `<h2>`
+along with the display type, which made three sections light to the eye and
+invisible to anyone navigating by heading — a worse fault than the repetition it
+was fixing. Set the eyebrow *as* the heading (`<h2 className="eyebrow">`) rather
+than putting an `Eyebrow` span where a heading used to be. Every section keeps
+its place in the outline; only its weight changes.
 
 **Cinematic** — full-bleed photograph with type over it. At most twice per page,
 and it must be the subject, not decoration.
