@@ -61,7 +61,10 @@ export function RecordedActivity({
               </thead>
               <tbody>
                 {years.map((row) => (
-                  <tr key={row.aggregate_key} className="border-b border-border/60">
+                  <tr
+                  key={`${row.metric_code}-${row.segment_code}-${row.period_start}`}
+                  className="border-b border-border/60"
+                >
                     <th scope="row" className="caption py-3 pr-6 text-left font-normal">
                       {formatPeriod("year", row.period_start)}
                     </th>

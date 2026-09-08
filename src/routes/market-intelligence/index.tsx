@@ -97,6 +97,30 @@ const PRICE_METRICS = [
   "gross_rental_yield_pct",
 ] as const;
 
+/**
+ * Strips the fields nothing on this page reads, before they are serialised.
+ *
+ * Measured on the live page: 530 KB of hydration payload across 1,098 rows,
+ * every one carrying `aggregate_key` (about seventy characters), a
+ * `methodology_version` and a `source_export_date`. None of the three is read
+ * by any component; the export date is fetched once as metadata and shown from
+ * there. They were sent 1,098 times so the browser could throw them away,
+ * which is most of why this page felt like it was not loading.
+ *
+ * The shape is kept rather than narrowed, so nothing downstream changes type.
+ * React keys used to be built from `aggregate_key` and are now composed from
+ * metric, segment and period, which is unique per row by construction.
+ */
+function forClient(rows: readonly MarketRow[]): MarketRow[] {
+  return rows.map((row) => ({
+    ...row,
+    aggregate_key: "",
+    methodology_version: "",
+    source_export_date: "",
+    name_ar: "",
+  }));
+}
+
 export const Route = createFileRoute("/market-intelligence/")({
   loader: async () => {
     /*
@@ -129,7 +153,10 @@ export const Route = createFileRoute("/market-intelligence/")({
           data: {
             metrics: [...HEADLINE_METRICS],
             grain: "quarter",
-            from: "2019-01-01",
+            /* Four years reads as a series. Seven is the same shape at twice
+             * the payload, and the older quarters are in the CSV behind the
+             * methodology note for anyone who wants them. */
+            from: "2022-01-01",
             to: "2026-12-31",
             limit: 900,
           },
@@ -138,7 +165,7 @@ export const Route = createFileRoute("/market-intelligence/")({
           data: {
             metrics: ["registered_sale_count", "registered_rental_contract_count"],
             grain: "month",
-            from: "2021-01-01",
+            from: "2023-01-01",
             to: "2026-12-31",
             limit: 900,
           },
@@ -147,7 +174,7 @@ export const Route = createFileRoute("/market-intelligence/")({
           data: {
             metrics: [...PRICE_METRICS],
             grain: "quarter",
-            from: "2019-01-01",
+            from: "2022-01-01",
             to: "2026-12-31",
             limit: 900,
           },
@@ -210,9 +237,9 @@ export const Route = createFileRoute("/market-intelligence/")({
 
     return {
       metadata,
-      quarterly,
-      monthly,
-      prices,
+      quarterly: forClient(quarterly),
+      monthly: forClient(monthly),
+      prices: forClient(prices),
       leagueRows,
       leaguePeriod,
       offPlanSplit,

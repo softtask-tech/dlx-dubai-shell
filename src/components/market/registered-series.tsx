@@ -153,7 +153,7 @@ export function RegisteredSeries({
         />
         {coordinates.map((coordinate) => (
           <circle
-            key={coordinate.point.aggregate_key}
+            key={`${coordinate.point.metric_code}-${coordinate.point.segment_code}-${coordinate.point.period_start}`}
             cx={coordinate.x}
             cy={coordinate.y}
             r="3"
@@ -192,7 +192,10 @@ export function RegisteredSeries({
             </thead>
             <tbody>
               {points.map((point) => (
-                <tr key={point.aggregate_key} className="border-b border-border/60">
+                <tr
+                  key={`${point.metric_code}-${point.segment_code}-${point.period_start}`}
+                  className="border-b border-border/60"
+                >
                   <th scope="row" className="caption py-3 pr-6 text-left font-normal">
                     {formatPeriod(grain, point.period_start)}
                   </th>
