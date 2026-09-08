@@ -12,17 +12,15 @@ I checked the live setup before planning. Most of the list is already done — o
 
 ## What is missing
 
-There is **no login account at all** on the project yet — the accounts table is empty. So the admin dashboard cannot be signed into, and the role-granting SQL you supplied matches zero rows today.
+The only account on the project is **admin@dlxproperties.com** (already created and confirmed), and it has no admin role yet — so it can sign in but the dashboard shows nothing. Note there is no `info@dlxproperties.com` account, so the SQL you pasted would match zero rows; I'll grant the role to the account that actually exists.
 
 ## The one step to take
 
-1. Create the admin account for `info@dlxproperties.com`, confirmed immediately so it does not wait on a verification email.
-2. Grant it the `admin` role with exactly the statement you provided (safe to re-run).
-3. Confirm the role row exists, then you sign in at `/admin/login` and see the leads list.
+1. Grant the `admin` role to `admin@dlxproperties.com` — the same statement you supplied, with the email changed to the account that exists, and still safe to re-run.
+2. Confirm the role row is there.
+3. You sign in at `/admin/login` and land on the leads list.
 
-## What I need from you
-
-A password for `info@dlxproperties.com`. Send it in a normal message and I'll use it once to create the account, or say "generate one" and I'll create a strong password and show it to you so you can change it after first sign-in.
+Lead notifications will still go to `info@dlxproperties.com`; that is a separate setting and already correct.
 
 ## Optional check afterwards
 
@@ -31,4 +29,4 @@ Submit the form on `/contact` with your own address to confirm the notification 
 ## Technical notes
 
 - No application code, no new migration, no new secrets.
-- Account creation uses the Auth Admin API with `email_confirm: true`; the role insert is your exact SQL against `public.user_roles`.
+- `insert into public.user_roles (user_id, role) select id, 'admin' from auth.users where email = 'admin@dlxproperties.com' on conflict (user_id, role) do nothing;`
