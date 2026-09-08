@@ -132,10 +132,9 @@ export function RegisteredSeries({
             fill="var(--accent)"
           >
             <title>
-              {formatPeriod(grain, coordinate.point.period_start)}:{" "}
-              {formatMetricValue(metric, coordinate.point.metric_value)} from{" "}
-              {coordinate.point.observation_count.toLocaleString("en-AE")} registered records
+              {`${formatPeriod(grain, coordinate.point.period_start)}: ${formatMetricValue(metric, coordinate.point.metric_value)} from ${coordinate.point.observation_count.toLocaleString("en-AE")} registered records`}
             </title>
+
           </circle>
         ))}
       </svg>
