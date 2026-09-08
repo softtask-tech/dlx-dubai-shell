@@ -88,3 +88,29 @@ export const searchMarketEntitiesFn = createServerFn({ method: "GET" })
     const { searchMarketEntities } = await import("./market-public.server");
     return searchMarketEntities(data);
   });
+
+export const getCommunityLeaderboardFn = createServerFn({ method: "GET" })
+  .validator((input: unknown) =>
+    z
+      .object({
+        metric,
+        grain,
+        period: isoDate,
+        direction: z.enum(["asc", "desc"]).default("desc"),
+        limit: z.number().int().positive().max(200).default(60),
+      })
+      .parse(input),
+  )
+  .handler(async ({ data }) => {
+    const { getCommunityLeaderboard } = await import("./market-public.server");
+    return getCommunityLeaderboard(data);
+  });
+
+export const getLatestPeriodFn = createServerFn({ method: "GET" })
+  .validator((input: unknown) =>
+    z.object({ entityType, metric, grain }).parse(input),
+  )
+  .handler(async ({ data }) => {
+    const { getLatestPeriod } = await import("./market-public.server");
+    return getLatestPeriod(data);
+  });

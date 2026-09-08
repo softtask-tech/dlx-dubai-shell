@@ -11,7 +11,17 @@ import {
   sourceLine,
   type MarketRow,
 } from "@/data/market-public";
-import { getMarketMetadataFn, getMarketOverviewFn } from "@/data/market-public.functions";
+import {
+  getCommunityLeaderboardFn,
+  getLatestPeriodFn,
+  getMarketMetadataFn,
+  getMarketOverviewFn,
+} from "@/data/market-public.functions";
+import {
+  CommunityLeague,
+  LEAGUE_COLUMNS,
+  buildLeague,
+} from "@/components/market/community-league";
 import { rentGapSeries, shareSeries } from "@/data/market-insights";
 import { datasetSchema, faqSchema, type FaqEntry } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
@@ -25,6 +35,7 @@ import { Stat } from "@/components/market/stat";
 import { Reveal } from "@/components/site/reveal";
 import { PageHero } from "@/components/site/page-hero";
 import { Section, Container, Eyebrow } from "@/components/ui/section";
+import { SectionOpener } from "@/components/site/section-opener";
 
 const FAQS: readonly FaqEntry[] = [
   {
@@ -67,6 +78,12 @@ const HEADLINE_METRICS = [
 /* Published from the same export as the counts, and allowed at Dubai level for
  * the quarter grain only. Kept in a separate request so a scope the registry
  * later withdraws empties one section rather than the whole page. */
+const LEAGUE_METRICS = [
+  "median_price_per_sqft",
+  "median_rent_per_sqft",
+  "gross_rental_yield_pct",
+] as const;
+
 const PRICE_METRICS = [
   "median_price_per_sqft",
   "median_sale_price",
@@ -76,6 +93,42 @@ const PRICE_METRICS = [
 
 export const Route = createFileRoute("/market-intelligence/")({
   loader: async () => {
+    /* Which quarter to rank on is asked, not assumed: the price series and the
+     * count series do not always land together, and guessing "this quarter"
+     * renders an empty table in the week before an export. */
+    const leaguePeriod = await getLatestPeriodFn({
+      data: { entityType: "community", metric: "median_price_per_sqft", grain: "quarter" },
+    });
+
+    const league = leaguePeriod
+      ? Object.fromEntries(
+          await Promise.all(
+            LEAGUE_METRICS.map(async (metric) => [
+              metric,
+              await getCommunityLeaderboardFn({
+                data: { metric, grain: "quarter", period: leaguePeriod, limit: 120 },
+              }),
+            ]),
+          ),
+        )
+      : {};
+
+    /* The service charge is a yearly budget, not a quarterly market, so it is
+     * fetched on its own grain and joined in by community. */
+    const chargePeriod = await getLatestPeriodFn({
+      data: { entityType: "community", metric: "median_service_charge_sqft", grain: "year" },
+    });
+    const charges = chargePeriod
+      ? await getCommunityLeaderboardFn({
+          data: {
+            metric: "median_service_charge_sqft",
+            grain: "year",
+            period: chargePeriod,
+            limit: 200,
+          },
+        })
+      : [];
+
     const [metadata, quarterly, monthly, prices] = await Promise.all([
       getMarketMetadataFn(),
       getMarketOverviewFn({
@@ -106,7 +159,7 @@ export const Route = createFileRoute("/market-intelligence/")({
         },
       }),
     ]);
-    return { metadata, quarterly, monthly, prices };
+    return { metadata, quarterly, monthly, prices, league, charges, leaguePeriod, chargePeriod };
   },
 
   head: ({ loaderData }) => {
@@ -136,7 +189,8 @@ export const Route = createFileRoute("/market-intelligence/")({
 });
 
 function MarketIntelligencePage() {
-  const { metadata, quarterly, monthly, prices } = Route.useLoaderData();
+  const { metadata, quarterly, monthly, prices, league, charges, leaguePeriod } =
+    Route.useLoaderData();
 
   const saleQuarters = seriesFor(quarterly, "registered_sale_count");
   const rentalQuarters = seriesFor(quarterly, "registered_rental_contract_count");
@@ -167,6 +221,13 @@ function MarketIntelligencePage() {
   const periodLabel = period ? formatPeriod("quarter", period.period_start) : null;
   const pricePeriodLabel = latestPpsf ? formatPeriod("quarter", latestPpsf.period_start) : null;
   const published = metadata.rowCount > 0;
+
+  /* The service charge arrives on a yearly grain, so it is joined in by
+   * community rather than fetched with the quarterly three. */
+  const leagueRows = buildLeague(
+    { ...league, median_service_charge_sqft: charges },
+    "median_price_per_sqft",
+  );
 
 
   /* The two derived readings the page leads with. Both come back empty where
@@ -354,6 +415,34 @@ function MarketIntelligencePage() {
               <MarketBrief rows={quarterly} periodLabel={periodLabel} />
             </Reveal>
           </Section>
+
+          {/*
+           * Where to look, ranked.
+           *
+           * Everything above describes Dubai as one thing. This is the only
+           * block on the page that answers the question a buyer actually
+           * arrives with, and it is the reason the price and service charge
+           * metrics were worth building.
+           */}
+          {leaguePeriod && leagueRows.length > 0 ? (
+            <Section id="communities" data-surface="light" className="scroll-mt-32">
+              <SectionOpener
+                eyebrow="Community league"
+                title="What it costs to own, community by community."
+                lead="Price, rent, gross yield and the service charge that comes off it, on the same row for the first time. Select any column to reorder."
+              />
+              <Reveal>
+                <div className="mt-12">
+                  <CommunityLeague
+                    rows={leagueRows}
+                    columns={LEAGUE_COLUMNS}
+                    periodLabel={formatPeriod("quarter", leaguePeriod)}
+                    initialSort="gross_rental_yield_pct"
+                  />
+                </div>
+              </Reveal>
+            </Section>
+          ) : null}
 
           {offPlanShare.length > 1 ? (
             <Section data-surface="cream">
