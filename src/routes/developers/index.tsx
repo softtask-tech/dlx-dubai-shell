@@ -164,14 +164,16 @@ function DevelopersIndex() {
 
           <ul className="mt-12 list-none border-t border-border p-0">
             {registered.slice(0, 12).map((record, index) => (
-              <Reveal key={record.source_key ?? record.name_en} delay={stagger(index)}>
+              <Reveal key={record.source_key ?? record.display_name_en} delay={stagger(index)}>
                 <li className="border-b border-border">
                   <Link
                     to="/directory/developers"
-                    search={{ q: record.name_en ?? "", page: 1 }}
+                    search={{ q: record.display_name_en ?? "", page: 1 }}
                     className="focus-ring group grid items-baseline gap-x-6 gap-y-2 py-6 transition-[padding-inline-start] duration-quick ease-editorial hover:ps-3 md:grid-cols-12"
                   >
-                    <span className="display-3 md:col-span-7">{record.name_en ?? "Unnamed"}</span>
+                    <span className="display-3 md:col-span-7">
+                      {record.display_name_en ?? "Unnamed"}
+                    </span>
                     <span className="caption text-muted-foreground md:col-span-4">
                       Registered developer
                     </span>
