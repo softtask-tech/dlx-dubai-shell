@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 
 import { formatMonth } from "@/lib/format";
 import { Eyebrow } from "@/components/ui/section";
@@ -151,6 +151,23 @@ export function NumberField({
 }) {
   const id = label.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
+  /*
+   * What the field shows while it is being edited, which is not always a
+   * number.
+   *
+   * The bug this fixes: the input was driven straight off the numeric value,
+   * and clearing it ran `Number("")`, which is 0, and 0 is finite. So emptying
+   * the box wrote 0 back into state, the box re-rendered as "0", and that last
+   * zero could not be deleted. Delete it, get it back, forever.
+   *
+   * Holding the raw text separately lets the field be genuinely empty while
+   * the calculation below carries on with 0. `null` means "show the canonical
+   * value"; a string means the person is mid-edit and their keystrokes win.
+   * Blur hands control back, so a half-typed "1." tidies itself up.
+   */
+  const [draft, setDraft] = useState<string | null>(null);
+  const shown = draft ?? (Number.isFinite(value) ? String(value) : "");
+
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor={id} className="eyebrow">
@@ -161,15 +178,27 @@ export function NumberField({
         id={id}
         type="number"
         inputMode="decimal"
-        value={Number.isFinite(value) ? value : ""}
+        value={shown}
         step={step}
         min={min}
         {...(max !== undefined ? { max } : {})}
+        /*
+         * Selects on focus, which is the other half of the same complaint.
+         * Every one of these arrives prefilled, and a prefilled number reads
+         * as a result rather than as something you are allowed to change.
+         * Selecting it means the first key you press replaces the whole
+         * figure, so typing works the way anyone would expect, and nobody has
+         * to backspace through six digits to find out the field was theirs.
+         */
+        onFocus={(event) => event.currentTarget.select()}
         onChange={(event) => {
-          const next = Number(event.target.value);
-          onChange(Number.isFinite(next) ? next : 0);
+          const raw = event.target.value;
+          setDraft(raw);
+          const next = Number(raw);
+          onChange(raw.trim() === "" || !Number.isFinite(next) ? 0 : next);
         }}
-        className="w-full border-0 border-b border-input bg-transparent pb-3 pt-1 font-sans text-2xl text-foreground outline-none transition-colors duration-quick ease-editorial focus:border-accent"
+        onBlur={() => setDraft(null)}
+        className="w-full border border-input bg-paper px-4 py-3 font-sans text-2xl text-foreground outline-none transition-colors duration-quick ease-editorial hover:border-gold/60 focus:border-accent"
       />
       {hint ? <p className="caption">{hint}</p> : null}
     </div>
