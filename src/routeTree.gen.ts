@@ -75,6 +75,7 @@ import { Route as DirectoryOfficesIdRouteImport } from './routes/directory/offic
 import { Route as DirectoryProjectsIndexRouteImport } from './routes/directory/projects/index'
 import { Route as DirectoryProjectsSlugRouteImport } from './routes/directory/projects/$slug'
 import { Route as MarketIntelligenceCommunitiesIdRouteImport } from './routes/market-intelligence/communities/$id'
+import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -410,6 +411,12 @@ const MarketIntelligenceCommunitiesIdRoute =
     path: '/market-intelligence/communities/$id',
     getParentRoute: () => rootRouteImport,
   } as any)
+const LovableEmailTransactionalPreviewRoute =
+  LovableEmailTransactionalPreviewRouteImport.update({
+    id: '/lovable/email/transactional/preview',
+    path: '/lovable/email/transactional/preview',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -478,6 +485,7 @@ export interface FileRoutesByFullPath {
   '/directory/developers/': typeof DirectoryDevelopersIndexRoute
   '/directory/offices/': typeof DirectoryOfficesIndexRoute
   '/directory/projects/': typeof DirectoryProjectsIndexRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -544,6 +552,7 @@ export interface FileRoutesByTo {
   '/directory/developers': typeof DirectoryDevelopersIndexRoute
   '/directory/offices': typeof DirectoryOfficesIndexRoute
   '/directory/projects': typeof DirectoryProjectsIndexRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -613,6 +622,7 @@ export interface FileRoutesById {
   '/directory/developers/': typeof DirectoryDevelopersIndexRoute
   '/directory/offices/': typeof DirectoryOfficesIndexRoute
   '/directory/projects/': typeof DirectoryProjectsIndexRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -683,6 +693,7 @@ export interface FileRouteTypes {
     | '/directory/developers/'
     | '/directory/offices/'
     | '/directory/projects/'
+    | '/lovable/email/transactional/preview'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -749,6 +760,7 @@ export interface FileRouteTypes {
     | '/directory/developers'
     | '/directory/offices'
     | '/directory/projects'
+    | '/lovable/email/transactional/preview'
   id:
     | '__root__'
     | '/'
@@ -817,6 +829,7 @@ export interface FileRouteTypes {
     | '/directory/developers/'
     | '/directory/offices/'
     | '/directory/projects/'
+    | '/lovable/email/transactional/preview'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -875,6 +888,7 @@ export interface RootRouteChildren {
   DirectoryDevelopersIndexRoute: typeof DirectoryDevelopersIndexRoute
   DirectoryOfficesIndexRoute: typeof DirectoryOfficesIndexRoute
   DirectoryProjectsIndexRoute: typeof DirectoryProjectsIndexRoute
+  LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1341,6 +1355,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketIntelligenceCommunitiesIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lovable/email/transactional/preview': {
+      id: '/lovable/email/transactional/preview'
+      path: '/lovable/email/transactional/preview'
+      fullPath: '/lovable/email/transactional/preview'
+      preLoaderRoute: typeof LovableEmailTransactionalPreviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -1451,6 +1472,7 @@ const rootRouteChildren: RootRouteChildren = {
   DirectoryDevelopersIndexRoute: DirectoryDevelopersIndexRoute,
   DirectoryOfficesIndexRoute: DirectoryOfficesIndexRoute,
   DirectoryProjectsIndexRoute: DirectoryProjectsIndexRoute,
+  LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
