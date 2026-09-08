@@ -56,6 +56,27 @@ function createSupabaseClient() {
   });
 }
 
+/**
+ * Whether the browser has what it needs, without throwing to find out.
+ *
+ * The client is a lazy proxy that constructs on first property access and
+ * throws when the variables are missing, so a page that reaches for
+ * `supabase.auth` during render dies and the error boundary replaces it with
+ * "something went wrong". That is the correct behaviour for a bug and the
+ * wrong behaviour for a configuration gap: it tells the person looking at it
+ * nothing, and it looks identical to a broken build.
+ *
+ * This asks the same question and answers false instead of throwing, so a page
+ * can say what is actually missing.
+ */
+export function supabaseConfigured(): boolean {
+  return Boolean(
+    (import.meta.env['VITE_SUPABASE_URL'] || process.env['SUPABASE_URL']) &&
+      (import.meta.env['VITE_SUPABASE_PUBLISHABLE_KEY'] ||
+        process.env['SUPABASE_PUBLISHABLE_KEY']),
+  );
+}
+
 let _supabase: ReturnType<typeof createSupabaseClient> | undefined;
 
 // Import the supabase client like this:
