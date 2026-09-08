@@ -3445,6 +3445,48 @@ export type Database = {
         }
         Returns: boolean
       }
+      get_dld_community_leaderboard: {
+        Args: {
+          requested_grain: string
+          requested_metric: string
+          requested_period: string
+          result_limit?: number
+          sort_direction?: string
+        }
+        Returns: {
+          aggregate_key: string | null
+          confidence: string | null
+          entity_id: string | null
+          entity_type: string | null
+          methodology_version: string | null
+          metric_code: string | null
+          metric_value: number | null
+          name_ar: string | null
+          name_en: string | null
+          observation_count: number | null
+          period_end: string | null
+          period_grain: string | null
+          period_start: string | null
+          quality_flags: Json | null
+          segment_code: string | null
+          segment_type: string | null
+          source_export_date: string | null
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "dld_market_public"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
+      get_dld_latest_period: {
+        Args: {
+          requested_entity_type: string
+          requested_grain: string
+          requested_metric: string
+        }
+        Returns: string
+      }
       get_dld_market_entity_series: {
         Args: {
           from_date: string
