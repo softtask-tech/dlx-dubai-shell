@@ -117,7 +117,7 @@ export const en = {
       {
         question: "What does DLX actually do for a client?",
         answer:
-          "Four things: off-plan launches, acquisition, disposal and portfolio strategy, each backed by the registered transaction record for the community you are buying into.",
+          "Nine practices in three groups: moving a property (buying, selling, renting), holding one (investment advisory, property management, landlord and leasing), and arriving here (the Golden Visa property route, relocation, business setup). Each one is backed by the registered transaction record for the community you are buying into.",
       },
       {
         question: "Do I need to be in Dubai to buy?",
@@ -156,7 +156,7 @@ export const en = {
   services: {
     eyebrow: "Services",
     title: "What we do, and how we charge for it.",
-    lead: "Five practices, one team. Each one is a mandate we take on properly or not at all.",
+    lead: "Nine practices, one team. Each one is a mandate we take on properly or not at all.",
     detailLink: "Read the detail",
     ctaTitle: "Not sure which of these you need?",
     ctaBody:
