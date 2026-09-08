@@ -59,7 +59,7 @@ function ToolPage() {
 
   return (
     <>
-      <Section className="pt-44 pb-12 lg:pt-56">
+      <Section className="pt-14 pb-12 md:pt-20">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <Reveal>

@@ -72,7 +72,7 @@ function LandingPage() {
         </Container>
       </header>
 
-      <Section className="pt-24 pb-16 lg:pt-32">
+      <Section className="pt-14 pb-16 md:pt-20">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <Reveal>

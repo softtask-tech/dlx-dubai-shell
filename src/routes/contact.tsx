@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 
 import { site, SITE_URL } from "@/config/site";
 import { listAgents, listTestimonials } from "@/data/people";
@@ -11,6 +11,7 @@ import { TestimonialsBlock } from "@/components/site/testimonials-block";
 import { TrustStrip } from "@/components/site/trust-strip";
 import { PageHero } from "@/components/site/page-hero";
 import { Section, Eyebrow } from "@/components/ui/section";
+import { SectionOpener } from "@/components/site/section-opener";
 
 const FAQS: readonly FaqEntry[] = [
   {
@@ -86,7 +87,7 @@ function ContactPage() {
 
       {/* Every route in, laid out plainly */}
       <Section className="pb-20">
-        <div className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <ContactRoute
             label="Call"
             value={site.contact.phone}
@@ -116,14 +117,22 @@ function ContactPage() {
       </Section>
 
       {/* The form */}
-      <Section className="bg-secondary">
+      <Section data-surface="cream">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <Reveal>
-              <h2 className="display-2">Tell us what you need.</h2>
-              <p className="body-text mt-8 max-w-measure text-muted-foreground">
-                Three short steps. Only a way to reach you is required, everything else helps us
-                come back to you with something useful rather than a brochure.
+            <SectionOpener
+              eyebrow="Send it over"
+              title="Tell us what you need."
+              align="split"
+              lead="Three short steps. Only a way to reach you is required; everything else helps us come back with something useful rather than a brochure."
+            />
+            <Reveal delay={0.2}>
+              <p className="caption mt-8 text-muted-foreground">
+                It reaches a named consultant, not a queue.{" "}
+                <Link to="/team" className="link-underline text-gold-ink">
+                  See who answers
+                </Link>
+                .
               </p>
             </Reveal>
           </div>
@@ -141,9 +150,13 @@ function ContactPage() {
           <div className="lg:col-span-3">
             <Reveal>
               <Eyebrow>The office</Eyebrow>
-              <h2 className="display-3 mt-6">{site.address.street}</h2>
+              <h2 className="display-3 mt-5">{site.address.street}</h2>
               <p className="body-text mt-5 text-muted-foreground">
                 {site.address.locality}, {site.address.countryName}
+              </p>
+              <p className="eyebrow mt-6 flex items-center gap-2.5 text-foreground">
+                <span aria-hidden className="inline-block size-1 shrink-0 bg-gold-ink" />
+                Visits by appointment
               </p>
               <p className="caption mt-6">
                 Corporate registration details are available in the legal disclosure and on
@@ -168,7 +181,7 @@ function ContactPage() {
       </Section>
 
       {/* Answer-shaped content, matching the FAQ schema */}
-      <Section className="bg-secondary">
+      <Section data-surface="cream">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-3">
             <Reveal>
@@ -225,14 +238,14 @@ function ContactRoute({
     </>
   );
 
-  if (!href) return <div className="bg-background p-8">{body}</div>;
+  if (!href) return <div className="border border-border bg-paper p-7">{body}</div>;
 
   return (
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       onClick={() => trackContactHref(href, "contact-page")}
-      className="bg-background p-8 transition-colors duration-base ease-editorial hover:bg-secondary"
+      className="focus-ring group block border border-border bg-paper p-7 transition-[border-color,transform,box-shadow] duration-quick ease-editorial hover:-translate-y-1 hover:border-gold hover:shadow-[0_14px_34px_rgba(0,0,0,0.07)]"
     >
       {body}
     </a>

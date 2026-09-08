@@ -82,7 +82,7 @@ export const Route = createFileRoute("/unsubscribe")({
 
 function UnsubscribePage() {
   return (
-    <Section className="flex min-h-screen items-center pt-44 lg:pt-56">
+    <Section className="flex min-h-screen items-center pt-14 md:pt-20">
       <div className="max-w-measure">
         <Eyebrow>Done</Eyebrow>
         <h1 className="display-1 mt-8">No further emails.</h1>

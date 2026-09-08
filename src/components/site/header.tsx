@@ -70,7 +70,7 @@ export function Header() {
         <a
           href={pathIn(code, "/")}
           aria-label={t.nav.homeAria}
-          className="focus-ring flex shrink-0 items-center gap-3"
+          className="focus-ring -my-2 flex min-h-11 shrink-0 items-center gap-3 py-2"
         >
           <Wordmark form="monogram" tone="ink" className="h-6 md:h-7" />
         </a>
@@ -180,7 +180,7 @@ export function Header() {
                 <a
                   key={item.href}
                   href={pathIn(code, item.href)}
-                  className="focus-ring group block border-t border-border py-4 transition-colors hover:border-gold-ink"
+                  className="focus-ring group block min-h-14 border-t border-border py-4 transition-colors hover:border-gold-ink"
                 >
                   <span className="display-3 block transition-colors group-hover:text-gold-ink">
                     {item.label}

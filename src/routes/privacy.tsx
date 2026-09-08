@@ -71,7 +71,7 @@ const SECTIONS: ReadonlyArray<{ heading: string; body: string[]; points?: string
 function PrivacyPage() {
   return (
     <>
-      <Section className="pt-44 pb-16 lg:pt-56">
+      <Section className="pt-14 pb-16 md:pt-20">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <Reveal>

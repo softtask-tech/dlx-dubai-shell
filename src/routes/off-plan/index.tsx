@@ -3,6 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { OffPlanIndex } from "@/components/commercial/off-plan-index";
 import { OFF_PLAN_PROJECTS } from "@/data/off-plan";
 import { pageHead } from "@/lib/seo";
+import { itemListSchema } from "@/lib/schema";
+import { site } from "@/config/site";
 
 export const Route = createFileRoute("/off-plan/")({
   loader: () => ({ projects: OFF_PLAN_PROJECTS }),
@@ -15,6 +17,16 @@ export const Route = createFileRoute("/off-plan/")({
       tagline: "Off-plan decisions built from terms, timing and evidence.",
       image: "/og/off-plan.png",
       breadcrumbs: [{ name: "Off-plan", path: "/off-plan" }],
+      schema: [
+        itemListSchema({
+          name: `${site.name} off-plan mandates`,
+          items: OFF_PLAN_PROJECTS.map((project) => ({
+            name: project.name,
+            path: `/off-plan/${project.slug}`,
+            description: project.headline,
+          })),
+        }),
+      ],
     }),
   component: OffPlanRoute,
 });

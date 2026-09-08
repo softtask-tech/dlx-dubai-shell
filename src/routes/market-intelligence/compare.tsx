@@ -146,7 +146,7 @@ function ComparePage() {
 
   return (
     <>
-      <Section className="pt-40">
+      <Section className="pt-14 md:pt-20">
         <Reveal>
           <nav aria-label="Breadcrumb" className="mb-10">
             <Link to="/market-intelligence" className="eyebrow link-underline">

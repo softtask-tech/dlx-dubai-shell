@@ -7,6 +7,7 @@ import { HOME_FAQ } from "@/data/home-faq";
 import { site } from "@/config/site";
 import { advisor } from "@/config/advisor";
 import { SERVICES } from "@/data/services";
+import { SERVICE_PHOTOS } from "@/data/service-photos";
 import type { PhotoSlug } from "@/lib/photos";
 import { Parallax } from "@/components/motion";
 import { Photo } from "@/components/site/photo";
@@ -19,15 +20,6 @@ import { MarketGlance } from "@/components/home/market-glance";
 import { ServicesList, type ServiceRow } from "@/components/home/services-list";
 import { OffPlanFocus } from "@/components/home/off-plan-focus";
 import { TeamCards } from "@/components/home/team-cards";
-
-/** A photograph per practice. Chosen per service, never one picture reused. */
-const SERVICE_PHOTOS: Record<string, PhotoSlug> = {
-  buy: "interchange-overhead-blue-hour",
-  sell: "tower-facade-raking-light",
-  "investment-advisory": "marble-brass-detail",
-  "golden-visa": "burj-khalifa-dusk-silhouette",
-  relocation: "villa-courtyard-morning",
-};
 
 /** The five the homepage leads with. The services index carries all nine. */
 const HOME_SERVICES = ["buy", "sell", "investment-advisory", "golden-visa", "relocation"] as const;
