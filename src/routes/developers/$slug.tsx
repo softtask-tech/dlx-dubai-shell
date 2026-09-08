@@ -4,6 +4,7 @@ import { getDeveloper, listProjects } from "@/data/catalogue";
 import { formatHandover } from "@/lib/format";
 import { Price } from "@/components/tools/money";
 import { pageHead } from "@/lib/seo";
+import { itemListSchema } from "@/lib/schema";
 import { stagger } from "@/lib/motion";
 import { QualifiedForm } from "@/components/forms/qualified-form";
 import { Reveal } from "@/components/site/reveal";
@@ -33,6 +34,22 @@ export const Route = createFileRoute("/developers/$slug")({
       breadcrumbs: [
         { name: "Developers", path: "/developers" },
         { name: developer.name, path: `/developers/${developer.slug}` },
+      ],
+      /*
+       * Their projects, listed. Not an Organization node for the developer:
+       * that would have us asserting a third party's founding, address and
+       * identity from a summary field, and we have no source for any of it.
+       * What we can state is which of their projects we cover, and where.
+       */
+      schema: [
+        itemListSchema({
+          name: `${developer.name} projects`,
+          items: (loaderData?.projects ?? []).map((project) => ({
+            name: project.name,
+            path: `/projects/${project.slug}`,
+            ...(project.summary ? { description: project.summary } : {}),
+          })),
+        }),
       ],
     });
   },
