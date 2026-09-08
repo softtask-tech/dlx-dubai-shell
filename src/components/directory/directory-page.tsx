@@ -335,7 +335,7 @@ function DirectoryIntro({
   children?: ReactNode;
 }) {
   return (
-    <section className="border-b border-border bg-secondary pt-32 pb-12 md:pt-40 md:pb-16">
+    <section data-surface="cream" className="border-b border-border pt-14 pb-12 md:pt-20 md:pb-16">
       <Container>
         <nav aria-label="Breadcrumb" className="eyebrow text-muted-foreground">
           <a href="/" className="link-underline">

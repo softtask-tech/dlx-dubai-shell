@@ -129,7 +129,7 @@ function ReportShell({
 }) {
   return (
     <div className="report">
-      <Section className="pt-32 pb-16">
+      <Section className="pt-14 pb-16 md:pt-20">
         <div className="flex flex-wrap items-start justify-between gap-8">
           <div className="max-w-3xl">
             <Eyebrow>{eyebrow}</Eyebrow>

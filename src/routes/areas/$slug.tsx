@@ -114,7 +114,7 @@ function AreaPage() {
           </div>
         </div>
       ) : (
-        <Section className="pt-44 pb-12 lg:pt-56">
+        <Section className="pt-14 pb-12 md:pt-20">
           <Eyebrow>Community</Eyebrow>
           <h1 className="display-1 mt-8">{area.name}</h1>
           {area.summary ? (
