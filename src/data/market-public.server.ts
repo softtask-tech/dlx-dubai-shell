@@ -94,9 +94,9 @@ type MarketDatabase = {
           result_limit?: number;
         };
         Returns: {
-          entity_id: string;
-          name_en: string;
-          name_ar: string;
+          community_id: string;
+          community_name_en: string;
+          community_name_ar: string;
           off_plan_value: number;
           off_plan_count: number;
           existing_value: number;
@@ -395,8 +395,8 @@ export async function getOffPlanSplit(input: {
       }
       return [
         {
-          entityId: String(row["entity_id"] ?? ""),
-          nameEn: String(row["name_en"] ?? ""),
+          entityId: String(row["community_id"] ?? ""),
+          nameEn: String(row["community_name_en"] ?? ""),
           offPlanValue,
           offPlanCount: Number(row["off_plan_count"] ?? 0),
           existingValue,

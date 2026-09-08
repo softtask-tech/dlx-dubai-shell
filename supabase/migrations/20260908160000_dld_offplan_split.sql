@@ -29,10 +29,15 @@ create or replace function public.get_dld_offplan_split(
   min_observations integer default 30,
   result_limit integer default 80
 )
+-- Output names deliberately do not repeat the view's own column names.
+-- These become OUT parameters and sit in the same namespace as the columns of
+-- dld_market_public inside the body; every reference below is qualified so it
+-- would resolve either way, but a migration that fails here fails silently
+-- into two empty charts, and the rename costs nothing.
 returns table (
-  entity_id text,
-  name_en text,
-  name_ar text,
+  community_id text,
+  community_name_en text,
+  community_name_ar text,
   off_plan_value numeric,
   off_plan_count integer,
   existing_value numeric,
