@@ -15,6 +15,8 @@ import { formatMonth } from "@/lib/format";
 import { articleSchema, faqSchema } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
 import { stagger } from "@/lib/motion";
+import { Phone } from "lucide-react";
+import { site } from "@/config/site";
 import { QualifiedForm } from "@/components/forms/qualified-form";
 import { VerificationNote } from "@/components/guides/verification-note";
 import { Faq } from "@/components/site/faq";
@@ -293,6 +295,34 @@ function GuidePage() {
                 property, the building and your circumstances, which is a conversation, not an
                 article.
               </p>
+            </Reveal>
+
+            {/*
+             * Two routes, not one.
+             *
+             * Somebody finishing a guide has just spent five minutes on a
+             * question that mattered enough to read about, which is the
+             * highest-intent moment on the page, and the only way to act on it
+             * was a form. A form is answered when someone next opens it. The
+             * phone is answered in a minute, and for half the questions in
+             * these guides that is the difference between a lead and a tab
+             * that gets closed.
+             */}
+            <Reveal delay={0.06}>
+              <div className="mt-10 border-t border-border pt-8">
+                <a
+                  href={`tel:${site.contact.phoneE164}`}
+                  dir="ltr"
+                  className="focus-ring eyebrow inline-flex min-h-12 items-center gap-3 bg-green px-6 text-on-dark transition-colors hover:bg-green-mid"
+                >
+                  <Phone aria-hidden className="size-4" />
+                  Call {site.contact.phone}
+                </a>
+                <p className="caption mt-4 text-muted-foreground">
+                  Business hours, Gulf Standard Time. Or write below and a consultant replies
+                  personally, usually the same day.
+                </p>
+              </div>
             </Reveal>
           </div>
           <div className="lg:col-span-7 lg:col-start-6">
