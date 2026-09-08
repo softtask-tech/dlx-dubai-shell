@@ -10,6 +10,7 @@ import { DeveloperStrip } from "@/components/site/developer-strip";
 import { Reveal } from "@/components/site/reveal";
 import { TestimonialsBlock } from "@/components/site/testimonials-block";
 import { TrustStrip } from "@/components/site/trust-strip";
+import { PortalProof } from "@/components/site/portal-proof";
 import { PageHero } from "@/components/site/page-hero";
 import { Section } from "@/components/ui/section";
 import { SectionOpener } from "@/components/site/section-opener";
@@ -207,6 +208,16 @@ function AboutPage() {
           </div>
         </Section>
       ) : null}
+
+      {/*
+       * The one block on this page DLX is not the author of.
+       *
+       * It sits here because everything above is us describing ourselves, and
+       * the testimonials below render nothing until real, linkable reviews
+       * exist. Without this the page asks to be believed and offers no way to
+       * check.
+       */}
+      <PortalProof />
 
       <DeveloperStrip developers={partners} />
       <TestimonialsBlock testimonials={testimonials} />

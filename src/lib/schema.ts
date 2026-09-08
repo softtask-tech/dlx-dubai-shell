@@ -54,7 +54,10 @@ export function organizationSchema(): JsonLd {
     },
     areaServed: site.areasServed.map((name) => ({ "@type": "Place", name })),
     knowsLanguage: ["en", "ar"],
-    sameAs: site.socials.map((s) => s.href),
+    /* Social accounts and portal profiles both. sameAs is "other places this
+     * same organisation is", and a Bayut or Property Finder profile is exactly
+     * that, with the added weight of a third party having verified it. */
+    sameAs: [...site.socials.map((s) => s.href), ...site.portals.map((p) => p.href)],
   };
 }
 

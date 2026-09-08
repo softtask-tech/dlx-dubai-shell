@@ -52,10 +52,57 @@ export const brand = {
     whatsapp: "971545996911",
   },
 
+  /*
+   * The real accounts.
+   *
+   * All three of the previous entries were wrong: the Instagram handle was
+   * missing its trailing underscore, the LinkedIn slug was not the company's,
+   * and a YouTube channel was listed that does not appear anywhere in what the
+   * firm actually runs. These feed `sameAs` in the organisation schema, so a
+   * wrong one tells Google that an account we do not control is us.
+   *
+   * The Instagram link is stored without the `?stkn=` share token it was
+   * copied with. That token identifies the share, not the profile, and it does
+   * not belong in a permanent link or in structured data.
+   */
   socials: [
-    { label: "Instagram", href: "https://www.instagram.com/dlxproperties" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/company/dlxproperties" },
-    { label: "YouTube", href: "https://www.youtube.com/@dlxproperties" },
+    { label: "Instagram", href: "https://www.instagram.com/dlxproperties_" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/dlx-properties-llc/" },
+    { label: "Facebook", href: "https://www.facebook.com/share/1CSVr3Rttf/" },
+  ],
+
+  /*
+   * Where the firm is listed, and what each listing verifies.
+   *
+   * Separate from `socials` because these do a different job. A social account
+   * is a channel; a portal profile is a third party stating that this
+   * brokerage is registered with them, and in two cases awarding a badge
+   * against its own criteria.
+   *
+   * `badge` is only ever set where the portal actually shows one, and every
+   * entry carries the profile URL, because this site's rule for trust marks is
+   * that a reader can go and check it. A badge we render without a link is a
+   * graphic; a badge with the profile behind it is evidence.
+   */
+  portals: [
+    {
+      label: "Bayut",
+      href: "https://www.bayut.com/companies/d-l-x-properties-104096/",
+      badge: "SuperAgent",
+      note: "Bayut's own performance badge, awarded on response time and listing quality.",
+    },
+    {
+      label: "Property Finder",
+      href: "https://www.propertyfinder.ae/en/broker/d-l-x-properties-8615",
+      badge: "TruBroker",
+      note: "Property Finder's verification, awarded on listing accuracy and client ratings.",
+    },
+    {
+      label: "Dubizzle",
+      href: "https://uae.dubizzle.com/property-agencies/d-l-x-properties-9019/",
+      badge: null,
+      note: "Our registered agency profile on the UAE's largest classifieds platform.",
+    },
   ],
   /** Areas the brokerage actively represents, used for schema `areaServed`. */
   areasServed: [
