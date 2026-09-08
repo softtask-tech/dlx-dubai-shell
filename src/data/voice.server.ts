@@ -8,7 +8,7 @@
  *
  * Configuration rather than hard-coding, because the voice is a brand decision
  * the client will want to change without a deploy:
- *   FISH_AUDIO_API_KEY, https://fish.audio account
+ *   FISH_AUDIO_API_KEY (or FISH_API), https://fish.audio account
  *   FISH_AUDIO_VOICE_ID, the reference model; falls back to the API default
  *   FISH_AUDIO_API_URL, override for a region or a self-hosted endpoint
  *
@@ -25,8 +25,13 @@ export type Speech = {
   contentType: string;
 };
 
+/** The key, under either name it is stored as. */
+export function fishAudioKey(): string | undefined {
+  return process.env["FISH_AUDIO_API_KEY"] ?? process.env["FISH_API"];
+}
+
 export function voiceConfigured(): boolean {
-  return Boolean(process.env["FISH_AUDIO_API_KEY"]);
+  return Boolean(fishAudioKey());
 }
 
 /**
@@ -41,7 +46,7 @@ export async function synthesize(
   text: string,
   options: { signal?: AbortSignal } = {},
 ): Promise<Speech | null> {
-  const key = process.env["FISH_AUDIO_API_KEY"];
+  const key = fishAudioKey();
   if (!key) return null;
 
   const trimmed = text.trim().slice(0, 1200);
