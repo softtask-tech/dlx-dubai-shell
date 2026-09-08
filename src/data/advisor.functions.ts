@@ -14,6 +14,6 @@ export type AdvisorAvailability = { chat: boolean; voice: boolean };
 export const advisorAvailabilityFn = createServerFn({ method: "GET" }).handler(
   async (): Promise<AdvisorAvailability> => ({
     chat: Boolean(process.env["LOVABLE_API_KEY"]),
-    voice: Boolean(process.env["FISH_AUDIO_API_KEY"]),
+    voice: Boolean(process.env["FISH_AUDIO_API_KEY"] ?? process.env["FISH_API"]),
   }),
 );
