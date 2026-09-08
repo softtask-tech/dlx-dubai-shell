@@ -136,7 +136,7 @@ export const Route = createFileRoute("/market-intelligence/")({
 });
 
 function MarketIntelligencePage() {
-  const { metadata, quarterly, monthly } = Route.useLoaderData();
+  const { metadata, quarterly, monthly, prices } = Route.useLoaderData();
 
   const saleQuarters = seriesFor(quarterly, "registered_sale_count");
   const rentalQuarters = seriesFor(quarterly, "registered_rental_contract_count");
@@ -148,15 +148,26 @@ function MarketIntelligencePage() {
     "renewed",
   );
 
+  const ppsfQuarters = seriesFor(prices, "median_price_per_sqft");
+  const salePriceQuarters = seriesFor(prices, "median_sale_price");
+  const rentPsfQuarters = seriesFor(prices, "median_rent_per_sqft");
+  const yieldQuarters = seriesFor(prices, "gross_rental_yield_pct");
+
   const latestSale = latestRow(saleQuarters);
   const latestRental = latestRow(rentalQuarters);
   const latestRent = latestRow(rentQuarters);
   const latestNew = latestRow(newQuarters);
   const latestRenewed = latestRow(renewedQuarters);
+  const latestPpsf = latestRow(ppsfQuarters);
+  const latestSalePrice = latestRow(salePriceQuarters);
+  const latestRentPsf = latestRow(rentPsfQuarters);
+  const latestYield = latestRow(yieldQuarters);
 
   const period = latestSale ?? latestRental ?? latestRent;
   const periodLabel = period ? formatPeriod("quarter", period.period_start) : null;
+  const pricePeriodLabel = latestPpsf ? formatPeriod("quarter", latestPpsf.period_start) : null;
   const published = metadata.rowCount > 0;
+
 
   /* The two derived readings the page leads with. Both come back empty where
    * the registry has not published both sides of the comparison, and the
