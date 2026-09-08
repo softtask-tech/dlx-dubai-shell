@@ -153,7 +153,23 @@ export function HomePage({
        */}
       <section className="relative -mt-16 overflow-hidden md:-mt-20">
         <div className="grid lg:min-h-[88svh] lg:grid-cols-[1.05fr_0.95fr]">
-          <Container className="flex items-center py-20 md:py-24">
+          {/*
+           * The left edge, aligned to the rest of the page.
+           *
+           * The hero grid is full bleed so the photograph can reach the right
+           * edge, but a Container inside a full-bleed cell measures its gutter
+           * from the viewport, while every section below measures from the
+           * centred shell. Above 1536px that put the headline about 190px
+           * further left than everything under it, which is the "content is
+           * very left, give it some space" complaint: the hero was not aligned
+           * to the page, it was aligned to the window.
+           *
+           * So the inline-start padding is the shell's own gutter, computed:
+           * half the overflow past the shell, plus the normal 4rem. Below the
+           * shell width the max() falls back to that 4rem and it matches
+           * lg:px-16 exactly, which is what the rest of the page uses.
+           */}
+          <div className="flex items-center px-6 py-20 md:px-10 md:py-24 lg:pe-14 lg:ps-[max(4rem,calc((100vw-96rem)/2+4rem))]">
             <div className="max-w-[34rem]">
               <Reveal>
                 <Eyebrow className="mb-6">Private Brokerage · Dubai</Eyebrow>
@@ -208,7 +224,7 @@ export function HomePage({
                 </div>
               </Reveal>
             </div>
-          </Container>
+          </div>
 
           {/*
            * The photograph, at full strength.
