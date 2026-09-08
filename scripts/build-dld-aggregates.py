@@ -231,6 +231,34 @@ def collect_rents(root: str, buckets: dict[Key, list[float]]) -> int:
     return used
 
 
+def load_project_areas(root: str) -> dict[str, tuple[str, str]]:
+    """
+    project_id -> (area_id, area_name), the bridge between two ID spaces.
+
+    The service charge file identifies a community by `master_community_id`,
+    which is a different numbering from the `area_id` on a transaction, and the
+    names do not match either: the charges file says "Dubai Marina" and
+    "Jumeirah Village Circle" where the registry says "Marsa Dubai" and "Al
+    Barsha South Fourth". Joining the two on id gives nothing and joining on
+    name gives two communities out of sixteen, which is how the first build
+    published a service charge column that read "not published" on every row.
+
+    The projects file carries both a project_id and an area_id, and the charges
+    file carries a project_id, so it is the join. About 72% of residential
+    charge rows match a project this way, reaching 49 communities; the rest are
+    dropped rather than guessed at.
+    """
+    mapping: dict[str, tuple[str, str]] = {}
+    for path in files_in(root, "Real Estate Projects"):
+        for row in read_csv_rows(path):
+            project = (row.get("project_id") or "").strip()
+            area_id = (row.get("area_id") or "").strip()
+            area_name = (row.get("area_name_en") or "").strip()
+            if project and area_id and area_name:
+                mapping[project] = (area_id, area_name)
+    return mapping
+
+
 def collect_service_charges(root: str, buckets: dict[Key, list[float]]) -> int:
     """
     Community service charge, in AED per square foot per year.
@@ -241,7 +269,13 @@ def collect_service_charges(root: str, buckets: dict[Key, list[float]]) -> int:
     order that gives the number an owner would recognise; taking a median of
     the category rows would report the middle line of a service charge budget,
     which is not a figure anyone is ever billed.
+
+    Keyed by the registry's own area, via the projects file, so the figure can
+    sit on the same row as the price and the yield for that community. That
+    join is the whole point: a service charge nobody can line up against a
+    price is a number without a use.
     """
+    project_areas = load_project_areas(root)
     per_building: dict[tuple, float] = defaultdict(float)
     names: dict[str, str] = {}
     for path in files_in(root, "Owners Association Service Charges"):
@@ -252,10 +286,13 @@ def collect_service_charges(root: str, buckets: dict[Key, list[float]]) -> int:
             year = (row.get("budget_year") or "").strip()
             if not year.isdigit() or int(year) < FIRST_YEAR:
                 continue
-            community_id = (row.get("master_community_id") or "").strip()
-            community = (row.get("master_community_name_en") or "").strip()
+            project = (row.get("project_id") or "").strip()
+            resolved = project_areas.get(project)
+            if not resolved:
+                continue
+            community_id, community = resolved
             group = (row.get("property_group_id") or "").strip()
-            if not community_id or not community or not group:
+            if not group:
                 continue
             try:
                 cost = float(row.get("service_cost") or 0)
