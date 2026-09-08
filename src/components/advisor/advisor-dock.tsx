@@ -277,7 +277,20 @@ function AdvisorPanel({
           ) : null}
         </div>
 
-        <footer className="border-t border-border px-6 py-5">
+        {/*
+         * The composer, and nothing else it does not need.
+         *
+         * This footer carried the textarea, the AI disclosure and a "Prefer to
+         * talk? Call +971..." line, the last of which wrapped to two lines on
+         * a 26rem panel. Roughly a third of the panel's height was permanent
+         * furniture on a phone, taken from the only part anyone came for.
+         *
+         * The call line is gone because the header has had a phone button in
+         * it the whole time, one tap away, so this was the same offer twice.
+         * The disclosure stays: it is one short line and a reader is entitled
+         * to know at any moment that they are not talking to a person.
+         */}
+        <footer className="border-t border-border px-5 py-4 sm:px-6">
           <div className="flex items-end gap-3">
             <textarea
               ref={inputRef}
@@ -307,18 +320,7 @@ function AdvisorPanel({
             </Button>
           </div>
 
-          <div className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-            <p className="caption text-muted-foreground">{advisor.disclosure}</p>
-            {/* The offer to talk sits next to the machine that is talking to
-                you, which is the moment someone decides they would rather not
-                type. */}
-            <a
-              href={`tel:${brand.contact.phoneE164}`}
-              className="caption text-accent transition-colors hover:text-foreground"
-            >
-              Prefer to talk? Call {brand.contact.phone}
-            </a>
-          </div>
+          <p className="caption mt-3 text-muted-foreground">{advisor.disclosure}</p>
         </footer>
         </div>
       </div>
