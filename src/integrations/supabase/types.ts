@@ -3566,6 +3566,32 @@ export type Database = {
           isSetofReturn: true
         }
       }
+      get_dld_offplan_split: {
+        Args: {
+          min_observations?: number
+          requested_grain: string
+          requested_metric: string
+          requested_period: string
+          result_limit?: number
+        }
+        Returns: {
+          community_id: string
+          community_name_ar: string
+          community_name_en: string
+          existing_count: number
+          existing_value: number
+          off_plan_count: number
+          off_plan_value: number
+        }[]
+      }
+      get_dld_offplan_split_period: {
+        Args: {
+          min_observations?: number
+          requested_grain: string
+          requested_metric: string
+        }
+        Returns: string
+      }
       has_role: {
         Args: {
           check_role: Database["public"]["Enums"]["app_role"]
