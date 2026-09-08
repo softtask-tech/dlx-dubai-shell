@@ -212,9 +212,18 @@ function AboutPage() {
       <TestimonialsBlock testimonials={testimonials} />
 
       <Section>
+        {/*
+         * The third split opener in a row on this page, and the least earned:
+         * every question below is already a heading, so "Asked and answered"
+         * was a heading about headings. The eyebrow carries the heading level
+         * instead, which keeps the outline intact and gives the page a lighter
+         * section between two heavier ones.
+         */}
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-3">
-            <SectionOpener eyebrow="Questions" title="Asked and answered." align="split" />
+            <Reveal>
+              <h2 className="eyebrow">Questions</h2>
+            </Reveal>
           </div>
           <div className="lg:col-span-8 lg:col-start-5">
             {FAQS.map((faq) => (

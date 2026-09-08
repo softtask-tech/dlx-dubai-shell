@@ -404,7 +404,11 @@ export function HomePage({
          * template announcing itself for the sixth time on one page.
          */}
         <Reveal>
-          <Eyebrow>Before you ask</Eyebrow>
+          {/* The eyebrow *is* the heading, rather than sitting above one.
+              Dropping the h2 entirely would have made the section quiet to the
+              eye and invisible to anyone navigating by heading, which is a
+              worse trade than the one it was fixing. */}
+          <h2 className="eyebrow">Before you ask</h2>
         </Reveal>
         <dl className="mt-10 max-w-5xl border-t border-border">
           {HOME_FAQ.map((entry) => (

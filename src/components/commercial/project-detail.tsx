@@ -273,7 +273,7 @@ export function CommercialProjectDetail({
             line, which is why it is the eyebrow rather than decoration under a
             display heading nobody needed. */}
         <Reveal>
-          <Eyebrow>Gallery &middot; the developer&rsquo;s own renders</Eyebrow>
+          <h2 className="eyebrow">Gallery &middot; the developer&rsquo;s own renders</h2>
         </Reveal>
         <div className="mt-10">
           <ProjectGallery project={project} />
