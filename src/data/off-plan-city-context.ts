@@ -30,17 +30,17 @@ export type CityContext = {
 
 export const CITY_CONTEXT: Record<string, CityContext> = {
   "azizi-florence": {
-    eyebrow: "Sharjah, not Dubai",
+    eyebrow: "Sharjah",
     heading: "A commuter corridor, priced as one.",
     paragraphs: [
-      "Sharjah is its own emirate. It borders Dubai, and the site sits on Sheikh Mohammed Bin Zayed Road, the corridor that carries the northern emirates into the city. That road is most of the investment case: a large share of demand here is people who work in Dubai and are priced out of living in it, so what this community is worth is tied to how long that journey takes and what the equivalent address in Dubai costs.",
+      "Sharjah is its own emirate, and it borders Dubai. The site sits on Sheikh Mohammed Bin Zayed Road, the corridor that carries the northern emirates into the city. That road is most of the investment case: a large share of demand here is people who work in Dubai and are priced out of living in it, so what this community is worth is tied to how long that journey takes and what the equivalent address in Dubai costs.",
       "It also means the rules are Sharjah's. What a buyer may own, and on what terms, is set by the Sharjah authorities rather than by the Dubai Land Department, and the structure available to you depends on your nationality. We will tell you exactly what you would hold, in writing, before you commit to anything. If a consultant cannot put it in writing, do not sign it.",
     ],
     dataNote:
       "The registered market data published on this site covers Dubai. It does not cover Sharjah, so we publish no price, yield or transaction figures for this community, and any comparison with a Dubai community should be treated as indicative only.",
   },
   "sobha-city-abu-dhabi": {
-    eyebrow: "Abu Dhabi, not Dubai",
+    eyebrow: "Abu Dhabi",
     heading: "A different emirate, a different rulebook.",
     paragraphs: [
       "Abu Dhabi is a separate market with its own regulator, its own designated investment zones, and its own transfer costs. Demand behaves differently from Dubai's: it is steadier, more owner-occupier, less driven by short-term investor flow, which tends to mean slower movement in both directions rather than the swings Dubai is known for.",

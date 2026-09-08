@@ -16,7 +16,7 @@ export const HOME_FAQ: readonly FaqItem[] = [
   {
     question: "What does DLX actually do for a client?",
     answer:
-      "Five practices, run by one team: buying, selling, investment advisory, the Golden Visa property route and relocation. One consultant stays with you from the first conversation to the last, with no hand-offs between desks.",
+      "Nine practices run by one team, in three groups: moving a property, holding one, and arriving in the country. One consultant stays with you from the first conversation to the last, with no hand-offs between desks.",
   },
   {
     question: "Do I need to be in Dubai to buy?",

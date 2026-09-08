@@ -250,7 +250,7 @@ export function HomePage({
       <Section data-surface="light">
         <SectionOpener
           eyebrow="What we do"
-          title="Five practices, one team, no hand-offs."
+          title="One team, start to finish, no hand-offs."
         />
         <Reveal>
           <ServicesList services={services} hrefFor={(slug) => `/services/${slug}`} />
