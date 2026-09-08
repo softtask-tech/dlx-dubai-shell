@@ -37,6 +37,7 @@ import { Route as AreasIndexRouteImport } from './routes/areas/index'
 import { Route as AreasSlugRouteImport } from './routes/areas/$slug'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
+import { Route as DataMarketDotjsonRouteImport } from './routes/data/market[.]json'
 import { Route as DevelopersIndexRouteImport } from './routes/developers/index'
 import { Route as DevelopersSlugRouteImport } from './routes/developers/$slug'
 import { Route as DirectoryIndexRouteImport } from './routes/directory/index'
@@ -216,6 +217,11 @@ const BlogIndexRoute = BlogIndexRouteImport.update({
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/blog/$slug',
   path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DataMarketDotjsonRoute = DataMarketDotjsonRouteImport.update({
+  id: '/data/market.json',
+  path: '/data/market.json',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DevelopersIndexRoute = DevelopersIndexRouteImport.update({
@@ -443,6 +449,7 @@ export interface FileRoutesByFullPath {
   '/admin/roas': typeof AdminRoasRoute
   '/areas/$slug': typeof AreasSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/data/market.json': typeof DataMarketDotjsonRoute
   '/developers/$slug': typeof DevelopersSlugRoute
   '/directory/escrow-agents': typeof DirectoryEscrowAgentsRoute
   '/directory/licences': typeof DirectoryLicencesRoute
@@ -510,6 +517,7 @@ export interface FileRoutesByTo {
   '/admin/roas': typeof AdminRoasRoute
   '/areas/$slug': typeof AreasSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/data/market.json': typeof DataMarketDotjsonRoute
   '/developers/$slug': typeof DevelopersSlugRoute
   '/directory/escrow-agents': typeof DirectoryEscrowAgentsRoute
   '/directory/licences': typeof DirectoryLicencesRoute
@@ -580,6 +588,7 @@ export interface FileRoutesById {
   '/admin/roas': typeof AdminRoasRoute
   '/areas/$slug': typeof AreasSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/data/market.json': typeof DataMarketDotjsonRoute
   '/developers/$slug': typeof DevelopersSlugRoute
   '/directory/escrow-agents': typeof DirectoryEscrowAgentsRoute
   '/directory/licences': typeof DirectoryLicencesRoute
@@ -651,6 +660,7 @@ export interface FileRouteTypes {
     | '/admin/roas'
     | '/areas/$slug'
     | '/blog/$slug'
+    | '/data/market.json'
     | '/developers/$slug'
     | '/directory/escrow-agents'
     | '/directory/licences'
@@ -718,6 +728,7 @@ export interface FileRouteTypes {
     | '/admin/roas'
     | '/areas/$slug'
     | '/blog/$slug'
+    | '/data/market.json'
     | '/developers/$slug'
     | '/directory/escrow-agents'
     | '/directory/licences'
@@ -787,6 +798,7 @@ export interface FileRouteTypes {
     | '/admin/roas'
     | '/areas/$slug'
     | '/blog/$slug'
+    | '/data/market.json'
     | '/developers/$slug'
     | '/directory/escrow-agents'
     | '/directory/licences'
@@ -849,6 +861,7 @@ export interface RootRouteChildren {
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   AreasSlugRoute: typeof AreasSlugRoute
   BlogSlugRoute: typeof BlogSlugRoute
+  DataMarketDotjsonRoute: typeof DataMarketDotjsonRoute
   DevelopersSlugRoute: typeof DevelopersSlugRoute
   DirectoryEscrowAgentsRoute: typeof DirectoryEscrowAgentsRoute
   DirectoryLicencesRoute: typeof DirectoryLicencesRoute
@@ -1087,6 +1100,13 @@ declare module '@tanstack/react-router' {
       path: '/blog/$slug'
       fullPath: '/blog/$slug'
       preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/data/market.json': {
+      id: '/data/market.json'
+      path: '/data/market.json'
+      fullPath: '/data/market.json'
+      preLoaderRoute: typeof DataMarketDotjsonRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/developers/': {
@@ -1433,6 +1453,7 @@ const rootRouteChildren: RootRouteChildren = {
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
   AreasSlugRoute: AreasSlugRoute,
   BlogSlugRoute: BlogSlugRoute,
+  DataMarketDotjsonRoute: DataMarketDotjsonRoute,
   DevelopersSlugRoute: DevelopersSlugRoute,
   DirectoryEscrowAgentsRoute: DirectoryEscrowAgentsRoute,
   DirectoryLicencesRoute: DirectoryLicencesRoute,
