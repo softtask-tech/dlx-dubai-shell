@@ -161,7 +161,7 @@ export function HomePage({
                  */}
                 <p className="lead mt-8 text-muted-foreground">
                   Whether you are investing, moving your family over, or buying your first place
-                  here — we start by showing you what homes like it actually sold for, taken
+                  here, we start by showing you what homes like it actually sold for, taken
                   straight from Dubai&rsquo;s government property register. Then one person stays
                   with you the whole way through.
                 </p>
@@ -239,7 +239,7 @@ export function HomePage({
             <p className="body-text max-w-[38ch] text-muted-foreground">
               One person, start to finish. No hand-offs, no junior desk, no queue. We price from
               what has actually sold, and we tell you about the yearly service charge before you
-              sign, not after — it is the cost that quietly eats the rent, and almost nobody puts
+              sign, not after. It is the cost that quietly eats the rent, and almost nobody puts
               it in front of you.
             </p>
             <p className="body-text mt-4 max-w-[38ch] text-muted-foreground">
@@ -263,7 +263,7 @@ export function HomePage({
         <SectionOpener
           eyebrow="The record, at a glance"
           title="We don't guess. We check."
-          lead="Every sale and every tenancy in Dubai is recorded by the government. Here are three figures from it. If you want the rest — what each community costs, what it earns, and where off-plan is priced above what you could walk through today — it is one click away."
+          lead="Every sale and every tenancy in Dubai is recorded by the government. Here are three figures from it. If you want the rest, it is one click away: what each community costs, what it earns, and where off-plan is priced above what you could walk through today."
         />
         <MarketGlance
           rows={quarterly}

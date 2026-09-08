@@ -372,8 +372,8 @@ export function YieldPriceMap({
         more, earn less.{" "}
         {priceCaps ? (
           <>
-            Read it up and down and the rule only half holds. Price sets a ceiling — nothing in the
-            dearest third of Dubai pays above {dearest.high.toFixed(2)}% — but it does not set a
+            Read it up and down and the rule only half holds. Price sets a ceiling: nothing in
+            the dearest third of Dubai pays above {dearest.high.toFixed(2)}%. It does not set a
             floor.{" "}
           </>
         ) : (

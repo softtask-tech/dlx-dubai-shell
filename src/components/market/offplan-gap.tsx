@@ -119,7 +119,7 @@ export function OffPlanGap({
                     />
                   </div>
                   <p className="caption mt-1 text-muted-foreground tabular-nums">
-                    {aed(item.existingValue)} ready · {aed(item.offPlanValue)} off-plan ·{" "}
+                    {aed(item.existingValue)} ready, {aed(item.offPlanValue)} off-plan ·{" "}
                     {item.existingCount.toLocaleString("en-AE")} and{" "}
                     {item.offPlanCount.toLocaleString("en-AE")} registered sales
                   </p>
