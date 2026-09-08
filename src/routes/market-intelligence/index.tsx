@@ -115,14 +115,15 @@ export const Route = createFileRoute("/market-intelligence/")({
       path: "/market-intelligence",
       title: "Dubai Market Intelligence",
       description:
-        "Registered sale transactions, registered rental contracts and the median registered annual rent for Dubai, built from Dubai Land Department open data with the record count behind every figure.",
+        "Registered sale prices, price and rent per square foot, gross rental yield and registered transaction volumes for Dubai, built from Dubai Land Department open data with the record count behind every figure.",
       breadcrumbs: [{ name: "Market Intelligence", path: "/market-intelligence" }],
       schema: [
         faqSchema(FAQS),
         datasetSchema({
-          name: "Dubai registered property activity and registered rents",
+          name: "Dubai registered property prices, rents and activity",
           description:
-            "Counts of registered sale transactions and registered tenancy contracts, the new and renewed composition of registered tenancies, and the median registered annual rent for Dubai and its communities, derived from Dubai Land Department open data.",
+            "Median registered sale price and price per square foot, median registered rent per square foot and gross rental yield, alongside counts of registered sale transactions and tenancy contracts for Dubai and its communities, derived from Dubai Land Department open data.",
+
           path: "/market-intelligence",
           isOfficial: true,
           dateModified: exported ?? new Date().toISOString().slice(0, 10),
