@@ -17,7 +17,6 @@ import { Emphasise } from "@/components/site/emphasis";
 import { SectionOpener } from "@/components/site/section-opener";
 import { StatementBand } from "@/components/site/statement-band";
 import { Container, Eyebrow, Section } from "@/components/ui/section";
-import { NoorPanel } from "@/components/home/noor-panel";
 import { MarketGlance } from "@/components/home/market-glance";
 import { ServicesList, type ServiceRow } from "@/components/home/services-list";
 import { OffPlanFocus } from "@/components/home/off-plan-focus";
@@ -120,18 +119,31 @@ export function HomePage({
        * is a fact about Dubai. It belongs in the market section, labelled and
        * sourced. This is about DLX.
        */}
-      <section className="relative -mt-16 flex min-h-[88svh] items-center overflow-hidden md:-mt-20">
-        <Parallax speed={0.86} className="absolute inset-x-0 -top-[10%] h-[120%]">
-          <Photo slug={HERO_PHOTO} sizes="100vw" priority className="h-full w-full object-cover" />
-        </Parallax>
-
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-[linear-gradient(180deg,var(--paper)_0%,rgba(255,255,255,0.9)_38%,rgba(255,255,255,0.55)_100%)] lg:bg-[linear-gradient(95deg,var(--paper)_0%,var(--paper)_29%,rgba(255,255,255,0.55)_52%,rgba(255,255,255,0)_80%)]"
-        />
-
-        <Container className="relative py-24 md:py-24">
-          <div className="grid items-center gap-14 lg:grid-cols-[1fr_25rem] lg:gap-16 xl:grid-cols-[1fr_28rem]">
+      {/*
+       * The hero: type on paper, photograph as a plate. No veil.
+       *
+       * What was here laid a white gradient over a full-bleed skyline:
+       * fully opaque to 29%, still 55% white at the midpoint, clear only past
+       * 80% — and that clear strip was underneath the advisor panel. The
+       * photograph was invisible. The page paid full weight to load it and got
+       * a washed-out white ground as the site's first impression, which is
+       * exactly the "white on white" and "full bleed is bad" complaint.
+       *
+       * An image is either seen or it is not there. So the type sits on clean
+       * paper and the photograph sits beside it at full strength, edge to
+       * edge, with nothing over it. Nothing is legible-on-top-of-something;
+       * each half does one job. That is how a monograph opens a spread, and it
+       * costs no contrast to read.
+       *
+       * The advisor panel is gone from here. It was the third advisor surface
+       * on one page, after the permanent dock and the section further down,
+       * and it was sitting on the only part of the photograph you could see.
+       * Restraint signals confidence; three prompts for the same thing signals
+       * the opposite.
+       */}
+      <section className="relative -mt-16 overflow-hidden md:-mt-20">
+        <div className="grid lg:min-h-[88svh] lg:grid-cols-[1.05fr_0.95fr]">
+          <Container className="flex items-center py-20 md:py-24">
             <div className="max-w-[34rem]">
               <Reveal>
                 <Eyebrow className="mb-6">Private Brokerage · Dubai</Eyebrow>
@@ -187,16 +199,34 @@ export function HomePage({
                 </div>
               </Reveal>
             </div>
+          </Container>
 
-            <Reveal delay={0.2}>
-              <NoorPanel availability={availability} />
-            </Reveal>
+          {/*
+           * The photograph, at full strength.
+           *
+           * Ordered second so a phone reads the sentence before the picture,
+           * and given a real height there rather than being left to collapse.
+           * The parallax stays: it is motivated here, because the plate has an
+           * edge to move against instead of drifting under a white wash.
+           */}
+          <div className="relative min-h-[42svh] overflow-hidden lg:min-h-full">
+            <Parallax speed={0.9} className="absolute inset-x-0 -top-[6%] h-[112%]">
+              <Photo
+                slug={HERO_PHOTO}
+                sizes="(min-width: 1024px) 48vw, 100vw"
+                priority
+                className="h-full w-full object-cover"
+              />
+            </Parallax>
           </div>
+        </div>
 
-          {/* Facts about the firm, each one checkable. Full width, so they sit
-              on one line where there is room for one line. */}
+        {/* Facts about the firm, each one checkable, on the paper below both
+            halves so the strip reads as the page's foundation rather than as
+            a caption to the photograph. */}
+        <Container>
           <Reveal delay={0.25}>
-            <ul className="mt-14 flex flex-col border-t border-border sm:flex-row sm:flex-wrap sm:gap-x-12">
+            <ul className="flex flex-col border-t border-border pb-2 sm:flex-row sm:flex-wrap sm:gap-x-12">
               {[
                 /*
                  * Every line here has to be checkable, and two of them were
