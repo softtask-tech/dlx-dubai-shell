@@ -249,7 +249,10 @@ function GlanceChart({
             </thead>
             <tbody>
               {[...points].reverse().map((point) => (
-                <tr key={point.aggregate_key} className="border-b border-white/8">
+                <tr
+                  key={`${point.metric_code}-${point.segment_code}-${point.period_start}`}
+                  className="border-b border-white/8"
+                >
                   <th scope="row" className="caption py-2 pe-4 text-start font-normal">
                     {formatPeriod("quarter", point.period_start)}
                   </th>

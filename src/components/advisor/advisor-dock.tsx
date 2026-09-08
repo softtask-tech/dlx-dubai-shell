@@ -4,10 +4,11 @@ import { AudioLines, Phone, X } from "lucide-react";
 import { useReducedMotion } from "motion/react";
 
 import { advisor } from "@/config/advisor";
+import { followUpSuggestions, openingSuggestions } from "@/data/advisor-suggestions";
 import { VoiceCall } from "@/components/advisor/voice-call";
 import { brand } from "@/config/brand";
 import { isRtl } from "@/config/advisor";
-import { guessLanguage } from "@/data/advisor";
+import { guessLanguage, type AdvisorTurn } from "@/data/advisor";
 import { track } from "@/lib/tracking";
 import { cn } from "@/lib/utils";
 import { useAdvisor, type PanelTurn } from "./use-advisor";
@@ -235,7 +236,29 @@ function AdvisorPanel({
         aria-label={`${advisor.name}, ${advisor.role}`}
         className="fixed inset-x-0 bottom-0 z-50 flex justify-center px-0 md:inset-x-auto md:end-6 md:bottom-6 md:px-0"
       >
-        <div className="flex h-[88dvh] w-full flex-col overscroll-contain border border-border bg-background shadow-[0_24px_70px_rgba(0,0,0,0.20)] md:h-[74svh] md:max-h-[44rem] md:w-[26rem]">
+        {/*
+         * A sheet on a phone, a panel on a desktop.
+         *
+         * Two things were wrong on a phone. It ran to the very bottom edge, so
+         * on any handset with a home indicator the last line of the composer
+         * sat under it; `pb-[env(safe-area-inset-bottom)]` gives that back.
+         * And it arrived as a slab with no grip: nothing said it was a sheet
+         * you could dismiss, so the only way out was hunting for the close
+         * button. The bar at the top is that affordance, and tapping it closes.
+         *
+         * Square corners on purpose. The design system sets radius to zero
+         * because a monograph has no rounded corners, and a sheet is not a
+         * good enough reason to break that.
+         */}
+        <div className="flex h-[88dvh] max-h-[calc(100dvh-2rem)] w-full flex-col overscroll-contain border border-border bg-background pb-[env(safe-area-inset-bottom)] shadow-[0_24px_70px_rgba(0,0,0,0.20)] md:h-[74svh] md:max-h-[44rem] md:w-[26rem] md:pb-0">
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close the advisor"
+          className="focus-ring grid shrink-0 place-items-center py-3 md:hidden"
+        >
+          <span aria-hidden className="block h-1 w-10 bg-border" />
+        </button>
         <header className="flex items-start justify-between gap-3 border-b border-border px-5 py-4 sm:px-6 sm:py-5">
           <div className="flex min-w-0 items-center gap-3">
             <Presence />
@@ -290,13 +313,22 @@ function AdvisorPanel({
           ref={scrollRef}
           className="flex-1 overflow-y-auto overscroll-contain px-5 py-6 sm:px-6"
         >
-          {turns.length === 0 ? <Opening onPick={(prompt) => void send(prompt)} /> : null}
+          {turns.length === 0 ? (
+            <Opening onPick={(prompt) => void send(prompt)} pagePath={pagePath} />
+          ) : null}
 
           <div className="space-y-7">
             {turns.map((turn, index) => (
               <Turn key={`${turn.at}-${index}`} turn={turn} />
             ))}
           </div>
+
+          {/*
+           * What to ask next, read from the answer just given. Only while the
+           * advisor is idle, because offering the next question underneath a
+           * half-written one is noise.
+           */}
+          {turns.length > 0 && !sending ? <FollowUps turns={turns} onPick={(p) => void send(p)} /> : null}
 
           {notice ? (
             <p className="caption mt-7 border-s-2 border-accent ps-5 text-muted-foreground">
@@ -359,13 +391,19 @@ function AdvisorPanel({
 }
 
 /** The empty state: what the advisor is for, and four ways in. */
-function Opening({ onPick }: { onPick: (prompt: string) => void }) {
+function Opening({
+  onPick,
+  pagePath,
+}: {
+  onPick: (prompt: string) => void;
+  pagePath: string;
+}) {
   return (
     <div className="mb-8">
       <p className="body-text text-foreground">{advisor.greeting}</p>
 
       <ul className="mt-6 border-t border-border">
-        {advisor.prompts.map((prompt) => (
+        {openingSuggestions(pagePath).map((prompt) => (
           <li key={prompt} className="border-b border-border">
             <button
               type="button"
@@ -382,9 +420,9 @@ function Opening({ onPick }: { onPick: (prompt: string) => void }) {
       <ul className="mt-3 space-y-1.5">
         {advisor.limits.map((limit) => (
           <li key={limit} className="caption flex gap-3 text-muted-foreground">
-            <span aria-hidden="true" className="text-accent">
-              ,
-            </span>
+            {/* A rule, not a comma. Same collateral from the em-dash purge as
+                the blog list markers carried. */}
+            <span aria-hidden="true" className="mt-2 h-px w-3 shrink-0 bg-gold-ink" />
             <span>{limit}</span>
           </li>
         ))}
@@ -509,5 +547,41 @@ function ListenButton({ text }: { text: string }) {
     >
       {state === "loading" ? "Loading…" : state === "playing" ? "Stop" : "Listen"}
     </button>
+  );
+}
+
+/**
+ * Three things worth asking next, offered rather than waited for.
+ *
+ * Set as quiet chips under the thread rather than as a list, because they sit
+ * between an answer and the composer and should read as an aside a person
+ * might take, not as a menu blocking the way to the box.
+ */
+function FollowUps({
+  turns,
+  onPick,
+}: {
+  turns: readonly AdvisorTurn[];
+  onPick: (prompt: string) => void;
+}) {
+  const prompts = followUpSuggestions(turns);
+  if (prompts.length === 0) return null;
+
+  return (
+    <div className="mt-7 border-t border-border pt-5">
+      <p className="eyebrow text-muted-foreground">You could ask</p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {prompts.map((prompt) => (
+          <button
+            key={prompt}
+            type="button"
+            onClick={() => onPick(prompt)}
+            className="focus-ring border border-border px-3 py-2 text-start text-sm text-muted-foreground transition-colors hover:border-gold hover:text-foreground"
+          >
+            {prompt}
+          </button>
+        ))}
+      </div>
+    </div>
   );
 }
