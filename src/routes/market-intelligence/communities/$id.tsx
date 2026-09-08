@@ -36,6 +36,15 @@ import { Section, Container, Eyebrow } from "@/components/ui/section";
 /* The metrics a community is placed against the rest of Dubai on. Each one
  * is fetched for every community at once, which gives this page its own
  * figure, its rank and the field to draw it in, from one call. */
+/* The four the page places against the rest of Dubai. The service charge
+ * is on a yearly grain so it is fetched separately and joined in. */
+const CONTEXT_FIGURE_METRICS = [
+  "median_price_per_sqft",
+  "median_rent_per_sqft",
+  "gross_rental_yield_pct",
+  "median_service_charge_sqft",
+] as const;
+
 const CONTEXT_METRICS = [
   "median_price_per_sqft",
   "median_rent_per_sqft",
@@ -142,10 +151,44 @@ export const Route = createFileRoute("/market-intelligence/communities/$id")({
     ].find((row) => row.name_en);
     if (!named && metadata.rowCount > 0) throw notFound();
 
+    /*
+     * Reduced here, not in the component, because a loader's return is
+     * serialised into the HTML for hydration.
+     *
+     * Those four leaderboards are up to 800 MarketRows at roughly 400 bytes
+     * each. The page draws four numbers and four strips of numbers out of
+     * them. Sending the rows would put a third of a megabyte in the document
+     * of every one of these 56 pages so the browser could throw almost all of
+     * it away.
+     *
+     * `field` is the whole distribution, which the strip needs and which is
+     * the reason a reader can see this community's position at all — it is
+     * just numbers, so it costs almost nothing to carry.
+     */
+    const context = Object.fromEntries(
+      CONTEXT_FIGURE_METRICS.map((metric) => {
+        const rows = fields[metric] ?? [];
+        const dubaiRows = dubai.filter(
+          (row) => row.metric_code === metric && row.segment_code === "all",
+        );
+        let latestDubai: MarketRow | null = null;
+        for (const row of dubaiRows) {
+          if (!latestDubai || row.period_start > latestDubai.period_start) latestDubai = row;
+        }
+        return [
+          metric,
+          {
+            value: rows.find((row) => row.entity_id === params.id)?.metric_value ?? null,
+            field: rows.map((row) => row.metric_value).filter((value) => Number.isFinite(value)),
+            dubai: latestDubai?.metric_value ?? null,
+          },
+        ];
+      }),
+    ) as Record<string, { value: number | null; field: number[]; dubai: number | null }>;
+
     return {
       metadata,
-      fields,
-      dubai,
+      context,
       pricePeriod,
       priceQuarters,
       id: params.id,
@@ -219,33 +262,22 @@ function CommunityMarketPage() {
     rentQuarters,
     saleYears,
     rentalYears,
-    fields,
-    dubai,
+    context,
     pricePeriod,
     priceQuarters,
-    id,
   } = Route.useLoaderData();
 
   /*
-   * This community's figure, and the field it sits in.
-   *
-   * Both come out of the same leaderboard rows, so there is no risk of the
-   * headline figure and the strip it is drawn on coming from different periods.
+   * The figure, the field it sits in, and Dubai — all computed in the loader,
+   * so the headline number and the strip it is drawn on can never come from
+   * different periods, and the document does not carry the rows they came
+   * from.
    */
-  const fieldOf = (metric: string) =>
-    (fields[metric] ?? []).map((row) => row.metric_value).filter((value) => Number.isFinite(value));
-  const mineOf = (metric: string) =>
-    (fields[metric] ?? []).find((row) => row.entity_id === id)?.metric_value ?? null;
-  const dubaiOf = (metric: string) => {
-    const rows = dubai.filter((row) => row.metric_code === metric && row.segment_code === "all");
-    let held: MarketRow | null = null;
-    for (const row of rows) if (!held || row.period_start > held.period_start) held = row;
-    return held?.metric_value ?? null;
-  };
+  const at = (metric: string) => context[metric] ?? { value: null, field: [], dubai: null };
 
-  const price = mineOf("median_price_per_sqft");
-  const rent = mineOf("median_rent_per_sqft");
-  const charge = mineOf("median_service_charge_sqft");
+  const price = at("median_price_per_sqft").value;
+  const rent = at("median_rent_per_sqft").value;
+  const charge = at("median_service_charge_sqft").value;
   /* The same derivation the league table uses, and it is only shown when all
    * three parts are published for this community. */
   const afterCharge =
@@ -259,8 +291,8 @@ function CommunityMarketPage() {
     {
       label: "Median price per square foot",
       value: price,
-      dubai: dubaiOf("median_price_per_sqft"),
-      field: fieldOf("median_price_per_sqft"),
+      dubai: at("median_price_per_sqft").dubai,
+      field: at("median_price_per_sqft").field,
       format: aed,
       higherIs: "neither",
       meaning: "The middle registered sale here, measured by area so a studio and a villa compare.",
@@ -268,17 +300,17 @@ function CommunityMarketPage() {
     {
       label: "Median rent per square foot",
       value: rent,
-      dubai: dubaiOf("median_rent_per_sqft"),
-      field: fieldOf("median_rent_per_sqft"),
+      dubai: at("median_rent_per_sqft").dubai,
+      field: at("median_rent_per_sqft").field,
       format: (value) => `${aed(value)} a year`,
       higherIs: "neither",
       meaning: "What a square foot let for here, from registered tenancy contracts.",
     },
     {
       label: "Gross rental yield",
-      value: mineOf("gross_rental_yield_pct"),
-      dubai: dubaiOf("gross_rental_yield_pct"),
-      field: fieldOf("gross_rental_yield_pct"),
+      value: at("gross_rental_yield_pct").value,
+      dubai: at("gross_rental_yield_pct").dubai,
+      field: at("gross_rental_yield_pct").field,
       format: (value) => `${value.toFixed(2)}%`,
       higherIs: "better",
       meaning: "Rent per square foot over ready-property price. Before the service charge.",
@@ -286,8 +318,10 @@ function CommunityMarketPage() {
     {
       label: "Service charge",
       value: charge,
+      /* No Dubai-wide service charge is published, so there is no line to
+       * draw against — only the field of other communities. */
       dubai: null,
-      field: fieldOf("median_service_charge_sqft"),
+      field: at("median_service_charge_sqft").field,
       format: (value) => `${aed(value)} a square foot`,
       higherIs: "worse",
       meaning: "The yearly charge an owner pays. It comes straight off the yield above.",

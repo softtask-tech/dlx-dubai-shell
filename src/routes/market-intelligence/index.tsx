@@ -190,17 +190,31 @@ export const Route = createFileRoute("/market-intelligence/")({
         : Promise.resolve([] as OffPlanSplitRow[]),
     ]);
 
-    const league = Object.fromEntries(leagueEntries);
+    /*
+     * Joined here rather than in the component, which is a page-weight fix.
+     *
+     * Whatever a loader returns is serialised into the HTML so the client can
+     * hydrate without re-fetching. These four leaderboards are roughly 560
+     * MarketRows at about 400 bytes each — a couple of hundred kilobytes of
+     * document — and the table built from them is 58 rows carrying four
+     * numbers apiece. The page was shipping the raw ingredients and cooking
+     * them in the browser.
+     *
+     * buildLeague is pure, so running it here costs nothing and the reader
+     * downloads the answer instead of the working.
+     */
+    const leagueRows = buildLeague(
+      { ...Object.fromEntries(leagueEntries), median_service_charge_sqft: charges },
+      "median_price_per_sqft",
+    );
 
     return {
       metadata,
       quarterly,
       monthly,
       prices,
-      league,
-      charges,
+      leagueRows,
       leaguePeriod,
-      chargePeriod,
       offPlanSplit,
       offPlanSplitPeriod,
     };
@@ -238,8 +252,7 @@ function MarketIntelligencePage() {
     quarterly,
     monthly,
     prices,
-    league,
-    charges,
+    leagueRows,
     leaguePeriod,
     offPlanSplit,
     offPlanSplitPeriod,
@@ -275,12 +288,7 @@ function MarketIntelligencePage() {
   const pricePeriodLabel = latestPpsf ? formatPeriod("quarter", latestPpsf.period_start) : null;
   const published = metadata.rowCount > 0;
 
-  /* The service charge arrives on a yearly grain, so it is joined in by
-   * community rather than fetched with the quarterly three. */
-  const leagueRows = buildLeague(
-    { ...league, median_service_charge_sqft: charges },
-    "median_price_per_sqft",
-  );
+
 
 
   /* The two derived readings the page leads with. Both come back empty where
