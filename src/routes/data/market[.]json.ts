@@ -62,7 +62,7 @@ function toFigure(row: MarketRow): Figure {
   };
 }
 
-export const Route = createFileRoute("/data/market[.]json")({
+export const Route = createFileRoute("/data/market.json")({
   server: {
     handlers: {
       GET: async () => {

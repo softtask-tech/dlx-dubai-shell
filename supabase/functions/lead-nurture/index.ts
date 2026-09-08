@@ -120,7 +120,7 @@ Deno.serve(async (request) => {
 
   const siteUrl = (Deno.env.get("SITE_URL") ?? "https://dlxproperties.com").replace(/\/$/, "");
   const nurtureSecret = Deno.env.get("NURTURE_SECRET") ?? secret;
-  const apiKey = Deno.env.get("RESEND_API_KEY");
+  const apiKey = (Deno.env.get("RESEND_API_KEY") ?? Deno.env.get("RESEND_API"));
   const from = Deno.env.get("LEAD_FROM_EMAIL") ?? "DLX Properties <hello@dlxproperties.com>";
 
   /*

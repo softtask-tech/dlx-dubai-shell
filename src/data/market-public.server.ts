@@ -66,6 +66,24 @@ type MarketDatabase = {
         };
         Returns: MarketSearchRow[];
       };
+      get_dld_community_leaderboard: {
+        Args: {
+          requested_metric: string;
+          requested_grain: string;
+          requested_period: string;
+          sort_direction?: string;
+          result_limit?: number;
+        };
+        Returns: MarketRow[];
+      };
+      get_dld_latest_period: {
+        Args: {
+          requested_entity_type: string;
+          requested_metric: string;
+          requested_grain: string;
+        };
+        Returns: string | null;
+      };
       get_dld_market_metadata: {
         Args: Record<string, never>;
         Returns: {
@@ -75,6 +93,7 @@ type MarketDatabase = {
           row_count: number;
         }[];
       };
+
     };
     Enums: Record<string, never>;
     CompositeTypes: Record<string, never>;
