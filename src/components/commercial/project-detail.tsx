@@ -166,7 +166,6 @@ export function CommercialProjectDetail({
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <SectionOpener
-                eyebrow="Key amenities"
                 title="What is being built around the homes."
                 align="split"
                 lead="Amenity density is not free. It is carried by the service charge for the life of the community, which is why the note below matters more than the list."
@@ -209,7 +208,6 @@ export function CommercialProjectDetail({
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <SectionOpener
-                eyebrow="Getting around"
                 title="What is near it."
                 align="split"
                 lead="Distances and drive times are the developer's own approximations, not measured by us."
@@ -247,7 +245,6 @@ export function CommercialProjectDetail({
 
       <Section id="weigh" className="scroll-mt-32">
         <SectionOpener
-          eyebrow="What to weigh before you commit"
           title="The parts a brochure leaves out."
         />
         {/*

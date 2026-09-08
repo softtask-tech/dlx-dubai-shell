@@ -41,7 +41,6 @@ export function OffPlanIndex({ projects }: { projects: readonly CommercialProjec
         <>
           <Section aria-label="Off-plan projects in focus">
             <SectionOpener
-              eyebrow="In focus"
               title="Two masterplanned communities, set out with the developer's own figures."
               lead="Every number below is quoted from the developer's published material. Prices, payment terms and handover dates are issued per release and confirmed to you in writing."
             />
@@ -60,7 +59,6 @@ export function OffPlanIndex({ projects }: { projects: readonly CommercialProjec
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <SectionOpener
-              eyebrow="Private inventory"
               title="Some opportunities are shared privately."
               lead="Tell us what you are looking for and we will show you what fits. This page does not claim that a property or allocation exists: a consultant checks the market against your brief before suggesting anything."
             />
@@ -174,7 +172,6 @@ function CompareProjects({ projects }: { projects: readonly CommercialProject[] 
   return (
     <Section data-surface="dark">
       <SectionOpener
-        eyebrow="Side by side"
         title="The same questions, asked of both."
         lead="Two mandates is few enough to compare properly. Anything a developer has not published is left blank here rather than filled in."
       />

@@ -573,7 +573,6 @@ function MarketIntelligencePage() {
           {leaguePeriod && leagueRows.length > 0 ? (
             <Section id="communities" data-surface="light" className="scroll-mt-32">
               <SectionOpener
-                eyebrow="Community league"
                 title="What it costs to own, community by community."
                 lead="Price, rent, gross yield, the service charge that comes off it, and what is left. Select any column to reorder."
               />

@@ -226,9 +226,12 @@ export function HomePage({
 
       {/* II. The position. Type alone, no photograph competing with it. */}
       <Section data-surface="light">
-        <Reveal>
-          <Eyebrow>Position</Eyebrow>
-        </Reveal>
+        {/*
+         * No eyebrow. "Position" was a filing label above a sentence that
+         * already states the position, and the playbook's rule is right: an
+         * eyebrow over every section is the blog tell. Kept only where it says
+         * something the headline does not.
+         */}
         <div className="mt-8 grid gap-10 lg:grid-cols-[1.3fr_0.9fr] lg:items-end lg:gap-16">
           <Reveal>
             <h2 className="display-2 text-balance">
@@ -291,7 +294,6 @@ export function HomePage({
       {/* IV. The practices. */}
       <Section data-surface="light">
         <SectionOpener
-          eyebrow="What we do"
           title="What we can actually help you with."
         />
         <Reveal>
@@ -302,7 +304,6 @@ export function HomePage({
       {/* V. The two mandates. */}
       <Section data-surface="cream">
         <SectionOpener
-          eyebrow="In focus · off-plan"
           title="Two projects we represent, in Sharjah and Abu Dhabi."
         />
         <Reveal>
@@ -376,7 +377,6 @@ export function HomePage({
       {/* VII. Who answers. */}
       <Section data-surface="light">
         <SectionOpener
-          eyebrow="Independent representation"
           title="The people who will answer."
         />
         <Reveal>
