@@ -33,10 +33,11 @@ const FAQS: readonly FaqEntry[] = [
       "Dubai Land Department open data, the registry every sale and every tenancy contract in Dubai is recorded in. We publish counts of registered activity and the median registered annual rent, each with the number of records behind it and the period it covers. DLX Properties is independent of the Dubai Land Department and is not endorsed by it.",
   },
   {
-    question: "Why do you show activity rather than prices?",
+    question: "Do you publish prices as well as activity?",
     answer:
-      "Because activity is what the open registry lets us report honestly at this level. A count of registered sale transactions is a fact about the period. We do not publish sale prices, price per square foot, yields or an index here, and we would rather leave a figure out than invent one.",
+      "Yes. Alongside counts of registered activity we publish the middle registered sale price, the middle registered price per square foot, the middle registered rent per square foot and the gross rental yield those two imply, each with the number of records behind it. Every one is derived from what was registered with the Dubai Land Department, never from asking prices, and where a period has too few records we leave it out rather than estimate it.",
   },
+
   {
     question: "What does the median registered annual rent mean?",
     answer:
