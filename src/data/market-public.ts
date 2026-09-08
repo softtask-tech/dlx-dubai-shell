@@ -77,7 +77,13 @@ export const METRIC_LABELS: Record<MarketMetric, string> = {
   registered_renewed_rental_contract_count_change: "Change in renewed registered rental contracts",
   median_registered_annual_rent_aed: "Median registered annual rent",
   median_registered_annual_rent_change: "Change in median registered annual rent",
+  median_price_per_sqft: "Median registered price per square foot",
+  median_sale_price: "Median registered sale price",
+  median_rent_per_sqft: "Median registered rent per square foot",
+  median_service_charge_sqft: "Median service charge per square foot",
+  gross_rental_yield_pct: "Gross rental yield",
 };
+
 
 /** What a reader should take from each figure, in plain language. */
 export const METRIC_MEANINGS: Record<MarketMetric, string> = {
