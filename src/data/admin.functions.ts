@@ -26,27 +26,81 @@ const leadStatuses = [
   "unqualified",
 ] as const;
 
+const leadSourceTypes = [
+  "contact_form",
+  "valuation_form",
+  "listing_enquiry",
+  "guide_download",
+  "calculator",
+  "market_report",
+  "ai_chat",
+  "voice_call",
+  "whatsapp",
+  "referral",
+  "other",
+] as const;
+
+const leadIntents = ["buy", "sell", "rent", "invest", "relocate", "advice"] as const;
+
+const leadTimelines = [
+  "immediately",
+  "within_3_months",
+  "within_12_months",
+  "researching",
+] as const;
+
 export type LeadWithAgent = Lead & { assigned_agent: Pick<Agent, "id" | "full_name"> | null };
+
+const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
+
+/**
+ * Every way the desk can narrow the inbox.
+ *
+ * Shared by the list and the export deliberately: an export that quietly
+ * ignored a filter would hand someone a spreadsheet that disagreed with the
+ * screen they were looking at.
+ */
+const leadFilters = {
+  status: z.enum(leadStatuses).optional(),
+  temperature: z.enum(["hot", "warm", "cold"]).optional(),
+  search: z.string().optional(),
+  createdFrom: isoDate.optional(),
+  createdTo: isoDate.optional(),
+  sourceType: z.enum(leadSourceTypes).optional(),
+  utmSource: z.string().optional(),
+  utmCampaign: z.string().optional(),
+  intent: z.enum(leadIntents).optional(),
+  timeline: z.enum(leadTimelines).optional(),
+  budgetMin: z.number().nonnegative().optional(),
+  budgetMax: z.number().nonnegative().optional(),
+  assignedAgentId: z.union([z.literal("unassigned"), z.string().uuid()]).optional(),
+  notified: z.boolean().optional(),
+} as const;
+
+type LeadFilterInput = {
+  [K in keyof typeof leadFilters]?: z.infer<(typeof leadFilters)[K]>;
+};
+
+/** Copies only the filters that were actually set. */
+function toServerFilters(data: LeadFilterInput): Record<string, unknown> {
+  const filters: Record<string, unknown> = {};
+  for (const key of Object.keys(leadFilters) as (keyof typeof leadFilters)[]) {
+    const value = data[key];
+    if (value !== undefined && value !== "") filters[key] = value;
+  }
+  return filters;
+}
 
 /** The inbox. */
 export const listLeadsFn = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) =>
-    withToken
-      .extend({
-        status: z.enum(leadStatuses).optional(),
-        temperature: z.enum(["hot", "warm", "cold"]).optional(),
-        search: z.string().optional(),
-      })
-      .parse(data),
+    withToken.extend(leadFilters).parse(data),
   )
   .handler(async ({ data }): Promise<{ leads: LeadWithAgent[]; agents: Agent[] }> => {
     const { requireAdmin, listLeads, listAllAgents } = await import("./admin.server");
     await requireAdmin(data.accessToken);
 
-    const filters: Parameters<typeof listLeads>[0] = {};
-    if (data.status) filters.status = data.status;
-    if (data.temperature) filters.temperature = data.temperature;
-    if (data.search) filters.search = data.search;
+    const filters = toServerFilters(data) as Parameters<typeof listLeads>[0];
 
     const [leads, agents] = await Promise.all([listLeads(filters), listAllAgents()]);
     return { leads, agents };
@@ -112,22 +166,16 @@ export const addLeadNoteFn = createServerFn({ method: "POST" })
 /** CSV of the current filter, built server-side so the export matches the view. */
 export const exportLeadsFn = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) =>
-    withToken
-      .extend({
-        status: z.enum(leadStatuses).optional(),
-        temperature: z.enum(["hot", "warm", "cold"]).optional(),
-        search: z.string().optional(),
-      })
-      .parse(data),
+    withToken.extend(leadFilters).parse(data),
   )
   .handler(async ({ data }): Promise<{ csv: string; filename: string }> => {
     const { requireAdmin, listLeads, leadsToCsv } = await import("./admin.server");
     await requireAdmin(data.accessToken);
 
-    const filters: Parameters<typeof listLeads>[0] = { limit: 5000 };
-    if (data.status) filters.status = data.status;
-    if (data.temperature) filters.temperature = data.temperature;
-    if (data.search) filters.search = data.search;
+    const filters = {
+      ...toServerFilters(data),
+      limit: 5000,
+    } as Parameters<typeof listLeads>[0];
 
     const leads = await listLeads(filters);
     const stamp = new Date().toISOString().slice(0, 10);
