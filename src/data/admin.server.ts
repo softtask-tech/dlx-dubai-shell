@@ -14,7 +14,16 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 
 import { adminDb } from "./database.server";
 import type { AdvisorConversationRow, AdvisorDatabase } from "./advisor-types";
-import type { Agent, Lead, LeadNote, LeadStatus, Testimonial } from "./types";
+import type {
+  Agent,
+  Lead,
+  LeadIntent,
+  LeadNote,
+  LeadSourceType,
+  LeadStatus,
+  LeadTimeline,
+  Testimonial,
+} from "./types";
 
 export type AdminIdentity = { userId: string; email: string | null };
 
@@ -47,6 +56,20 @@ export type LeadListFilters = {
   status?: LeadStatus;
   temperature?: "hot" | "warm" | "cold";
   search?: string;
+  /** Inclusive calendar dates, YYYY-MM-DD, read against `created_at`. */
+  createdFrom?: string;
+  createdTo?: string;
+  sourceType?: LeadSourceType;
+  utmSource?: string;
+  utmCampaign?: string;
+  intent?: LeadIntent;
+  timeline?: LeadTimeline;
+  budgetMin?: number;
+  budgetMax?: number;
+  /** A consultant's id, or "unassigned" for the ones nobody owns. */
+  assignedAgentId?: string;
+  /** true = notification email sent, false = still undelivered. */
+  notified?: boolean;
   limit?: number;
 };
 
@@ -71,6 +94,32 @@ export async function listLeads(filters: LeadListFilters = {}): Promise<LeadWith
     const term = `%${filters.search}%`;
     query = query.or(`full_name.ilike.${term},email.ilike.${term},phone.ilike.${term}`);
   }
+
+  /* Dates are read the way the desk means them: a Dubai calendar day, whole,
+   * both ends included. Comparing against UTC midnight would quietly move four
+   * hours of every day into the wrong bucket. */
+  if (filters.createdFrom) query = query.gte("created_at", `${filters.createdFrom}T00:00:00+04:00`);
+  if (filters.createdTo) query = query.lte("created_at", `${filters.createdTo}T23:59:59.999+04:00`);
+
+  if (filters.sourceType) query = query.eq("source_type", filters.sourceType);
+  if (filters.utmSource) query = query.ilike("utm_source", `%${filters.utmSource}%`);
+  if (filters.utmCampaign) query = query.ilike("utm_campaign", `%${filters.utmCampaign}%`);
+  if (filters.intent) query = query.eq("intent", filters.intent);
+  if (filters.timeline) query = query.eq("timeline", filters.timeline);
+
+  /* A band overlaps a lead's own band; a lead that gave no budget is not
+   * claimed by either end, because guessing one would misreport the pipeline. */
+  if (filters.budgetMin !== undefined) query = query.gte("budget_max", filters.budgetMin);
+  if (filters.budgetMax !== undefined) query = query.lte("budget_min", filters.budgetMax);
+
+  if (filters.assignedAgentId === "unassigned") {
+    query = query.is("assigned_agent_id", null);
+  } else if (filters.assignedAgentId) {
+    query = query.eq("assigned_agent_id", filters.assignedAgentId);
+  }
+
+  if (filters.notified === true) query = query.not("admin_notified_at", "is", null);
+  if (filters.notified === false) query = query.is("admin_notified_at", null);
 
   const { data, error } = await query.returns<LeadWithAgent[]>();
   if (error) throw new Error(error.message);
@@ -204,7 +253,14 @@ const CSV_COLUMNS: ReadonlyArray<[header: string, get: (lead: LeadWithAgent) => 
   ["UTM source", (lead) => lead.utm_source],
   ["UTM medium", (lead) => lead.utm_medium],
   ["UTM campaign", (lead) => lead.utm_campaign],
+  ["UTM term", (lead) => lead.utm_term],
+  ["UTM content", (lead) => lead.utm_content],
   ["Assigned to", (lead) => lead.assigned_agent?.full_name ?? null],
+  ["Admin notified", (lead) => lead.admin_notified_at],
+  ["Client confirmed", (lead) => lead.client_confirmed_at],
+  ["Preferred language", (lead) => lead.preferred_language],
+  ["Preferred contact", (lead) => lead.preferred_contact],
+  ["Marketing consent", (lead) => lead.marketing_consent],
   ["Message", (lead) => lead.message],
 ];
 

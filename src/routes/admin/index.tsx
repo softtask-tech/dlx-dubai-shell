@@ -12,7 +12,14 @@ import type { Agent, LeadStatus } from "@/data/types";
 import { formatPrice, humanise } from "@/lib/format";
 import { pageHead } from "@/lib/seo";
 import { LeadDetail } from "@/components/admin/lead-detail";
-import { Select, TextInput } from "@/components/forms/fields";
+import {
+  EMPTY_FILTERS,
+  LEAD_STATUSES,
+  LeadFilterBar,
+  toFilterPayload,
+  type LeadFilterState,
+} from "@/components/admin/lead-filters";
+import { Select } from "@/components/forms/fields";
 import { Button } from "@/components/ui/button";
 import { Container, Eyebrow } from "@/components/ui/section";
 import { Tag } from "@/components/ui/tag";
@@ -30,25 +37,12 @@ export const Route = createFileRoute("/admin/")({
   component: LeadsInbox,
 });
 
-const STATUSES: readonly LeadStatus[] = [
-  "new",
-  "contacted",
-  "qualified",
-  "viewing_booked",
-  "negotiating",
-  "won",
-  "lost",
-  "unqualified",
-];
-
 function LeadsInbox() {
   const session = useAdminSession();
   const [leads, setLeads] = useState<LeadWithAgent[]>([]);
   const [agents, setAgents] = useState<Agent[]>([]);
   const [selected, setSelected] = useState<string | null>(null);
-  const [status, setStatus] = useState<LeadStatus | "">("");
-  const [temperature, setTemperature] = useState<"hot" | "warm" | "cold" | "">("");
-  const [search, setSearch] = useState("");
+  const [filters, setFilters] = useState<LeadFilterState>(EMPTY_FILTERS);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -57,12 +51,7 @@ function LeadsInbox() {
     setError(null);
     try {
       const result = await listLeadsFn({
-        data: {
-          accessToken: session.accessToken,
-          ...(status ? { status } : {}),
-          ...(temperature ? { temperature } : {}),
-          ...(search ? { search } : {}),
-        },
+        data: { accessToken: session.accessToken, ...toFilterPayload(filters) },
       });
       setLeads(result.leads);
       setAgents(result.agents);
@@ -72,13 +61,13 @@ function LeadsInbox() {
     } finally {
       setLoading(false);
     }
-  }, [session.accessToken, status, temperature, search]);
+  }, [session.accessToken, filters]);
 
   /* Debounced so typing in the search box does not fire a request per keystroke. */
   useEffect(() => {
-    const timer = setTimeout(() => void load(), search ? 300 : 0);
+    const timer = setTimeout(() => void load(), filters.search ? 300 : 0);
     return () => clearTimeout(timer);
-  }, [load, search]);
+  }, [load, filters.search]);
 
   async function handleStatusChange(id: string, nextStatus: LeadStatus) {
     /* Optimistic: the desk should feel instant, and a failure re-loads truth. */
@@ -95,12 +84,7 @@ function LeadsInbox() {
 
   async function handleExport() {
     const result = await exportLeadsFn({
-      data: {
-        accessToken: session.accessToken,
-        ...(status ? { status } : {}),
-        ...(temperature ? { temperature } : {}),
-        ...(search ? { search } : {}),
-      },
+      data: { accessToken: session.accessToken, ...toFilterPayload(filters) },
     });
 
     const blob = new Blob([result.csv], { type: "text/csv;charset=utf-8" });
@@ -135,45 +119,12 @@ function LeadsInbox() {
         </div>
       </div>
 
-      {/* Filters */}
-      <div className="mt-10 flex flex-wrap items-end gap-8 border-y border-border py-6">
-        <label className="flex flex-col gap-2">
-          <span className="eyebrow">Status</span>
-          <Select
-            value={status}
-            onChange={(event) => setStatus(event.target.value as LeadStatus | "")}
-          >
-            <option value="">All</option>
-            {STATUSES.map((value) => (
-              <option key={value} value={value}>
-                {humanise(value)}
-              </option>
-            ))}
-          </Select>
-        </label>
-
-        <label className="flex flex-col gap-2">
-          <span className="eyebrow">Temperature</span>
-          <Select
-            value={temperature}
-            onChange={(event) => setTemperature(event.target.value as typeof temperature)}
-          >
-            <option value="">All</option>
-            <option value="hot">Hot</option>
-            <option value="warm">Warm</option>
-            <option value="cold">Cold</option>
-          </Select>
-        </label>
-
-        <label className="flex flex-1 flex-col gap-2">
-          <span className="eyebrow">Search</span>
-          <TextInput
-            placeholder="Name, email or phone"
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-          />
-        </label>
-      </div>
+      <LeadFilterBar
+        filters={filters}
+        agents={agents}
+        onChange={setFilters}
+        onReset={() => setFilters(EMPTY_FILTERS)}
+      />
 
       {error ? (
         <p role="alert" className="caption mt-8 text-destructive">
@@ -240,7 +191,7 @@ function LeadsInbox() {
                       }
                       className="pb-1"
                     >
-                      {STATUSES.map((value) => (
+                      {LEAD_STATUSES.map((value) => (
                         <option key={value} value={value}>
                           {humanise(value)}
                         </option>
