@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 
-import { useAdminSession } from "./route";
+import { useAdminSession } from "@/components/admin/session";
 import { deleteContentFn, listContentFn, saveContentFn } from "@/data/admin.functions";
 import {
   CONTENT_SCHEMA,

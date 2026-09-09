@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 
-import { useAdminSession } from "./route";
+import { useAdminSession } from "@/components/admin/session";
 import { campaignPerformanceFn, importSpendFn } from "@/data/admin.functions";
 import type { RoasSummary } from "@/data/roas.server";
 import { AUDIENCES } from "@/data/audiences";

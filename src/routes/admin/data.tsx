@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 
-import { useAdminSession } from "./route";
+import { useAdminSession } from "@/components/admin/session";
 import { marketDataStatusFn, recomputeStatsFn, triggerSyncFn } from "@/data/admin.functions";
 import type { MarketDataStatus } from "@/data/market-admin.server";
 import { humanise } from "@/lib/format";
