@@ -16,6 +16,24 @@ import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/tanstack/vite";
 const serverEnv = loadEnv(process.env['NODE_ENV'] ?? "development", process.cwd(), "");
 Object.assign(process.env, serverEnv);
 
+/*
+ * The browser build needs the backend address and the publishable key, and a
+ * deploy that only received the server-side names used to compile them out
+ * entirely — the admin sign-in then rendered "not configured" on a perfectly
+ * healthy site. Mirror the server names onto the VITE_ names when they are
+ * absent, and fall back to the address derived from the project id.
+ *
+ * Only public values are mirrored: the publishable key is the same key every
+ * visitor already downloads. The service role key is never touched.
+ */
+const projectId = process.env['VITE_SUPABASE_PROJECT_ID'] ?? process.env['SUPABASE_PROJECT_ID'];
+process.env['VITE_SUPABASE_URL'] ??=
+  process.env['SUPABASE_URL'] ?? (projectId ? `https://${projectId}.supabase.co` : undefined);
+process.env['VITE_SUPABASE_PUBLISHABLE_KEY'] ??=
+  process.env['SUPABASE_PUBLISHABLE_KEY'] ?? process.env['VITE_SUPABASE_ANON_KEY'];
+if (projectId) process.env['VITE_SUPABASE_PROJECT_ID'] ??= projectId;
+
+
 export default defineConfig({
   vite: {
     plugins: [mcpPlugin()],
