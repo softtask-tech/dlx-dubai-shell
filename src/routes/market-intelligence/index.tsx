@@ -222,9 +222,14 @@ export const Route = createFileRoute("/market-intelligence/")({
       leaguePeriod
         ? Promise.all(
             LEAGUE_METRICS.map(async (metric) => {
-              const rows = await getCommunityLeaderboardFn({
-                data: { metric, grain: "quarter", period: leaguePeriod, limit: 120 },
-              });
+              const rows = await tolerant(
+                () =>
+                  getCommunityLeaderboardFn({
+                    data: { metric, grain: "quarter", period: leaguePeriod, limit: 120 },
+                  }),
+                [] as MarketRow[],
+                `leaderboard ${metric}`,
+              );
               return [metric, rows] as const;
             }),
           )
@@ -232,27 +237,38 @@ export const Route = createFileRoute("/market-intelligence/")({
       /* The service charge is a yearly budget rather than a quarterly market,
        * so it comes back on its own grain and is joined in by community. */
       chargePeriod
-        ? getCommunityLeaderboardFn({
-            data: {
-              metric: "median_service_charge_sqft",
-              grain: "year",
-              period: chargePeriod,
-              limit: 200,
-            },
-          })
+        ? tolerant(
+            () =>
+              getCommunityLeaderboardFn({
+                data: {
+                  metric: "median_service_charge_sqft",
+                  grain: "year",
+                  period: chargePeriod,
+                  limit: 200,
+                },
+              }),
+            [] as MarketRow[],
+            "service charge leaderboard",
+          )
         : Promise.resolve([] as MarketRow[]),
       offPlanSplitPeriod
-        ? getOffPlanSplitFn({
-            data: {
-              metric: "median_price_per_sqft",
-              grain: "quarter",
-              period: offPlanSplitPeriod,
-              minObservations: 30,
-              limit: 80,
-            },
-          })
+        ? tolerant(
+            () =>
+              getOffPlanSplitFn({
+                data: {
+                  metric: "median_price_per_sqft",
+                  grain: "quarter",
+                  period: offPlanSplitPeriod,
+                  minObservations: 30,
+                  limit: 80,
+                },
+              }),
+            [] as OffPlanSplitRow[],
+            "off-plan split",
+          )
         : Promise.resolve([] as OffPlanSplitRow[]),
     ]);
+
 
     /*
      * Joined here rather than in the component, which is a page-weight fix.
