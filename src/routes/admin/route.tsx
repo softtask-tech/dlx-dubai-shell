@@ -1,7 +1,8 @@
 import { createFileRoute, Link, Outlet, useNavigate } from "@tanstack/react-router";
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { checkAdminFn } from "@/data/admin.functions";
+import { AdminSessionProvider, type AdminSession } from "@/components/admin/session";
 import { supabase, supabaseConfigured } from "@/integrations/supabase/client";
 import { pageHead } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
@@ -29,25 +30,6 @@ export const Route = createFileRoute("/admin")({
     }),
   component: AdminShell,
 });
-
-export type AdminSession = { accessToken: string; email: string | null };
-
-/**
- * The verified session, shared with the child routes.
- *
- * Only ever populated after the server has confirmed both the token and the
- * admin role, so a child route can call an admin function without re-checking.
- */
-const AdminSessionContext = createContext<AdminSession | null>(null);
-
-/** Reads the verified admin session. Only valid inside the admin shell. */
-export function useAdminSession(): AdminSession {
-  const session = useContext(AdminSessionContext);
-  if (!session) {
-    throw new Error("useAdminSession() was called outside the admin shell.");
-  }
-  return session;
-}
 
 const NAV = [
   { to: "/admin", label: "Leads", exact: true },
@@ -216,9 +198,9 @@ function AdminShell() {
       </header>
 
       <main>
-        <AdminSessionContext.Provider value={session}>
+        <AdminSessionProvider value={session}>
           <Outlet />
-        </AdminSessionContext.Provider>
+        </AdminSessionProvider>
       </main>
     </div>
   );
