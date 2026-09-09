@@ -30,6 +30,8 @@ import { OffPlanGap } from "@/components/market/offplan-gap";
 import { rentGapSeries, shareSeries } from "@/data/market-insights";
 import { datasetSchema, faqSchema, type FaqEntry } from "@/lib/schema";
 import { pageHead } from "@/lib/seo";
+import { retrying, tolerant } from "@/lib/resilient";
+
 import { stagger } from "@/lib/motion";
 import { QualifiedForm } from "@/components/forms/qualified-form";
 import { RegisteredSeries } from "@/components/market/registered-series";
