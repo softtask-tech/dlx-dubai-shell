@@ -12,7 +12,14 @@ import type { Agent, LeadStatus } from "@/data/types";
 import { formatPrice, humanise } from "@/lib/format";
 import { pageHead } from "@/lib/seo";
 import { LeadDetail } from "@/components/admin/lead-detail";
-import { Select, TextInput } from "@/components/forms/fields";
+import {
+  EMPTY_FILTERS,
+  LEAD_STATUSES,
+  LeadFilterBar,
+  toFilterPayload,
+  type LeadFilterState,
+} from "@/components/admin/lead-filters";
+import { Select } from "@/components/forms/fields";
 import { Button } from "@/components/ui/button";
 import { Container, Eyebrow } from "@/components/ui/section";
 import { Tag } from "@/components/ui/tag";
