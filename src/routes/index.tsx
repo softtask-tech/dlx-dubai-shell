@@ -19,7 +19,12 @@ export const Route = createFileRoute("/")({
       /* Asked for here rather than read off the root's loader: it is two env
        * checks, and a page that reaches across routes for its data breaks the
        * moment either route's shape changes. */
-      tolerant(() => advisorAvailabilityFn(), { chat: false, voice: false }, "advisor availability"),
+      tolerant(
+        () => advisorAvailabilityFn(),
+        { chat: false, voice: false, agentId: null },
+        "advisor availability",
+      ),
+
       retrying(() => getMarketMetadataFn(), "market metadata"),
       tolerant(
         () =>
