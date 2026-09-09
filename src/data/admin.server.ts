@@ -47,6 +47,20 @@ export type LeadListFilters = {
   status?: LeadStatus;
   temperature?: "hot" | "warm" | "cold";
   search?: string;
+  /** Inclusive calendar dates, YYYY-MM-DD, read against `created_at`. */
+  createdFrom?: string;
+  createdTo?: string;
+  sourceType?: string;
+  utmSource?: string;
+  utmCampaign?: string;
+  intent?: string;
+  timeline?: string;
+  budgetMin?: number;
+  budgetMax?: number;
+  /** A consultant's id, or "unassigned" for the ones nobody owns. */
+  assignedAgentId?: string;
+  /** true = notification email sent, false = still undelivered. */
+  notified?: boolean;
   limit?: number;
 };
 
