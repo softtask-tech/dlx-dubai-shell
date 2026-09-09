@@ -58,9 +58,36 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
+  const [retrying, setRetrying] = useState(true);
   useEffect(() => {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
+
+  /*
+   * One silent retry before anyone is told anything.
+   *
+   * Most of these are a dropped request rather than a broken page — a cold
+   * worker, or a navigation that raced a deploy — and the visitor's own fix
+   * was to refresh. Doing that for them turns the failure into a pause.
+   */
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      void router.invalidate().finally(() => {
+        reset();
+        setRetrying(false);
+      });
+    }, 400);
+    return () => clearTimeout(timer);
+  }, [router, reset]);
+
+  if (retrying) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <p className="eyebrow text-muted-foreground">Loading…</p>
+      </div>
+    );
+  }
+
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-6">
