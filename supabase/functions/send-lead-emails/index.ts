@@ -129,10 +129,13 @@ Deno.serve(async (request: Request) => {
 
     const apiKey = (Deno.env.get("RESEND_API_KEY") ?? Deno.env.get("RESEND_API"));
     const from = Deno.env.get("LEAD_FROM_EMAIL") ?? `${BRAND.name} <hello@${BRAND.domain}>`;
-    const adminRecipients = (Deno.env.get("LEAD_ADMIN_EMAIL") ?? "")
+    /* A missing setting must never mean a silent lead: the brokerage inbox is
+     * the built-in destination when nothing else is configured. */
+    const adminRecipients = (Deno.env.get("LEAD_ADMIN_EMAIL") ?? "info@dlxproperties.com")
       .split(",")
       .map((address) => address.trim())
       .filter(Boolean);
+
 
     /* The consultant who was assigned gets it directly. Deduplicated, because
      * on a small team they are often also on the admin list, and two copies of
