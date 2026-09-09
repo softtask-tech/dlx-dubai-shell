@@ -253,7 +253,14 @@ const CSV_COLUMNS: ReadonlyArray<[header: string, get: (lead: LeadWithAgent) => 
   ["UTM source", (lead) => lead.utm_source],
   ["UTM medium", (lead) => lead.utm_medium],
   ["UTM campaign", (lead) => lead.utm_campaign],
+  ["UTM term", (lead) => lead.utm_term],
+  ["UTM content", (lead) => lead.utm_content],
   ["Assigned to", (lead) => lead.assigned_agent?.full_name ?? null],
+  ["Admin notified", (lead) => lead.admin_notified_at],
+  ["Client confirmed", (lead) => lead.client_confirmed_at],
+  ["Preferred language", (lead) => lead.preferred_language],
+  ["Preferred contact", (lead) => lead.preferred_contact],
+  ["Marketing consent", (lead) => lead.marketing_consent],
   ["Message", (lead) => lead.message],
 ];
 
