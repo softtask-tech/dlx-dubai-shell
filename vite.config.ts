@@ -26,7 +26,15 @@ Object.assign(process.env, serverEnv);
  * Only public values are mirrored: the publishable key is the same key every
  * visitor already downloads. The service role key is never touched.
  */
-const projectId = process.env['VITE_SUPABASE_PROJECT_ID'] ?? process.env['SUPABASE_PROJECT_ID'];
+const projectId =
+  process.env['VITE_SUPABASE_PROJECT_ID'] ??
+  process.env['SUPABASE_PROJECT_ID'] ??
+  "mfzcsjydwchikmgsqaex";
+
+/* The last resort, and safe to write down: the publishable key is the one every
+ * visitor already downloads, and it is useless without the row-level rules the
+ * database enforces. The service role key is never touched. */
+const PUBLISHABLE_KEY_FALLBACK = "sb_publishable_sbe1Q819W-Hc5fgTrHAMiA_yTdFh2O8";
 
 /* Assigning `undefined` to process.env stores the string "undefined", which is
  * worse than absent: it looks configured and then fails as an invalid URL. */
@@ -42,13 +50,16 @@ function mirrorEnv(name: string, value: string | undefined): void {
 
 mirrorEnv(
   "VITE_SUPABASE_URL",
-  process.env['SUPABASE_URL'] ?? (projectId ? `https://${projectId}.supabase.co` : undefined),
+  process.env['SUPABASE_URL'] ?? `https://${projectId}.supabase.co`,
 );
 mirrorEnv(
   "VITE_SUPABASE_PUBLISHABLE_KEY",
-  process.env['SUPABASE_PUBLISHABLE_KEY'] ?? process.env['VITE_SUPABASE_ANON_KEY'],
+  process.env['SUPABASE_PUBLISHABLE_KEY'] ??
+    process.env['VITE_SUPABASE_ANON_KEY'] ??
+    PUBLISHABLE_KEY_FALLBACK,
 );
 mirrorEnv("VITE_SUPABASE_PROJECT_ID", projectId);
+
 
 
 
