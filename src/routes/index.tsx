@@ -7,6 +7,8 @@ import { OFF_PLAN_PROJECTS } from "@/data/off-plan";
 import { HOME_FAQ } from "@/data/home-faq";
 import { faqSchema, reviewSchemaFor } from "@/lib/schema";
 import { pageHead, withHeroPreload } from "@/lib/seo";
+import { retrying, tolerant } from "@/lib/resilient";
+
 import { HomePage, HERO_PHOTO } from "@/components/pages/home-page";
 
 export const Route = createFileRoute("/")({
