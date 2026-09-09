@@ -86,6 +86,32 @@ export async function listLeads(filters: LeadListFilters = {}): Promise<LeadWith
     query = query.or(`full_name.ilike.${term},email.ilike.${term},phone.ilike.${term}`);
   }
 
+  /* Dates are read the way the desk means them: a Dubai calendar day, whole,
+   * both ends included. Comparing against UTC midnight would quietly move four
+   * hours of every day into the wrong bucket. */
+  if (filters.createdFrom) query = query.gte("created_at", `${filters.createdFrom}T00:00:00+04:00`);
+  if (filters.createdTo) query = query.lte("created_at", `${filters.createdTo}T23:59:59.999+04:00`);
+
+  if (filters.sourceType) query = query.eq("source_type", filters.sourceType);
+  if (filters.utmSource) query = query.ilike("utm_source", `%${filters.utmSource}%`);
+  if (filters.utmCampaign) query = query.ilike("utm_campaign", `%${filters.utmCampaign}%`);
+  if (filters.intent) query = query.eq("intent", filters.intent);
+  if (filters.timeline) query = query.eq("timeline", filters.timeline);
+
+  /* A band overlaps a lead's own band; a lead that gave no budget is not
+   * claimed by either end, because guessing one would misreport the pipeline. */
+  if (filters.budgetMin !== undefined) query = query.gte("budget_max", filters.budgetMin);
+  if (filters.budgetMax !== undefined) query = query.lte("budget_min", filters.budgetMax);
+
+  if (filters.assignedAgentId === "unassigned") {
+    query = query.is("assigned_agent_id", null);
+  } else if (filters.assignedAgentId) {
+    query = query.eq("assigned_agent_id", filters.assignedAgentId);
+  }
+
+  if (filters.notified === true) query = query.not("admin_notified_at", "is", null);
+  if (filters.notified === false) query = query.is("admin_notified_at", null);
+
   const { data, error } = await query.returns<LeadWithAgent[]>();
   if (error) throw new Error(error.message);
   return data ?? [];
