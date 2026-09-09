@@ -12,32 +12,38 @@ import { HomePage, HERO_PHOTO } from "@/components/pages/home-page";
 export const Route = createFileRoute("/")({
   loader: async () => {
     const [testimonials, agents, availability, metadata, quarterly] = await Promise.all([
-      listTestimonials(3),
-      listAgents(),
+      tolerant(() => listTestimonials(3), [], "home testimonials"),
+      tolerant(() => listAgents(), [], "home agents"),
       /* Asked for here rather than read off the root's loader: it is two env
        * checks, and a page that reaches across routes for its data breaks the
        * moment either route's shape changes. */
-      advisorAvailabilityFn(),
-      getMarketMetadataFn(),
-      getMarketOverviewFn({
-        data: {
-          metrics: [
-            "registered_sale_count",
-            "registered_rental_contract_count",
-            "median_registered_annual_rent_aed",
-          ],
-          grain: "quarter",
-          /* The glance shows the latest figures and a short series, not the
-           * whole record. Asking for every quarter since 2019 was costing the
-           * homepage its time to first byte for rows it then threw away; the
-           * full history lives on Market Intelligence, which is the page that
-           * actually draws it. */
-          from: "2022-01-01",
-          to: "2026-12-31",
-          limit: 200,
-        },
-      }),
+      tolerant(() => advisorAvailabilityFn(), { chat: false, voice: false }, "advisor availability"),
+      retrying(() => getMarketMetadataFn(), "market metadata"),
+      tolerant(
+        () =>
+          getMarketOverviewFn({
+            data: {
+              metrics: [
+                "registered_sale_count",
+                "registered_rental_contract_count",
+                "median_registered_annual_rent_aed",
+              ],
+              grain: "quarter",
+              /* The glance shows the latest figures and a short series, not the
+               * whole record. Asking for every quarter since 2019 was costing the
+               * homepage its time to first byte for rows it then threw away; the
+               * full history lives on Market Intelligence, which is the page that
+               * actually draws it. */
+              from: "2022-01-01",
+              to: "2026-12-31",
+              limit: 200,
+            },
+          }),
+        [],
+        "home market overview",
+      ),
     ]);
+
 
     return {
       testimonials,
