@@ -14,7 +14,16 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 
 import { adminDb } from "./database.server";
 import type { AdvisorConversationRow, AdvisorDatabase } from "./advisor-types";
-import type { Agent, Lead, LeadNote, LeadStatus, Testimonial } from "./types";
+import type {
+  Agent,
+  Lead,
+  LeadIntent,
+  LeadNote,
+  LeadSourceType,
+  LeadStatus,
+  LeadTimeline,
+  Testimonial,
+} from "./types";
 
 export type AdminIdentity = { userId: string; email: string | null };
 
@@ -50,11 +59,11 @@ export type LeadListFilters = {
   /** Inclusive calendar dates, YYYY-MM-DD, read against `created_at`. */
   createdFrom?: string;
   createdTo?: string;
-  sourceType?: string;
+  sourceType?: LeadSourceType;
   utmSource?: string;
   utmCampaign?: string;
-  intent?: string;
-  timeline?: string;
+  intent?: LeadIntent;
+  timeline?: LeadTimeline;
   budgetMin?: number;
   budgetMax?: number;
   /** A consultant's id, or "unassigned" for the ones nobody owns. */
