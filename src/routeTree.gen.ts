@@ -31,8 +31,8 @@ import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } fr
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminContentRouteImport } from './routes/admin/content'
 import { Route as AdminDataRouteImport } from './routes/admin/data'
-import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as AdminRoasRouteImport } from './routes/admin/roas'
+import { Route as AdminLoginRouteImport } from './routes/admin_.login'
 import { Route as AreasIndexRouteImport } from './routes/areas/index'
 import { Route as AreasSlugRouteImport } from './routes/areas/$slug'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
@@ -190,15 +190,15 @@ const AdminDataRoute = AdminDataRouteImport.update({
   path: '/data',
   getParentRoute: () => AdminRouteRoute,
 } as any)
-const AdminLoginRoute = AdminLoginRouteImport.update({
-  id: '/login',
-  path: '/login',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
 const AdminRoasRoute = AdminRoasRouteImport.update({
   id: '/roas',
   path: '/roas',
   getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin_/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AreasIndexRoute = AreasIndexRouteImport.update({
   id: '/areas/',
@@ -451,8 +451,8 @@ export interface FileRoutesByFullPath {
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
-  '/admin/login': typeof AdminLoginRoute
   '/admin/roas': typeof AdminRoasRoute
+  '/admin/login': typeof AdminLoginRoute
   '/areas/$slug': typeof AreasSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/data/market.json': typeof DataMarketDotjsonRoute
@@ -520,8 +520,8 @@ export interface FileRoutesByTo {
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
-  '/admin/login': typeof AdminLoginRoute
   '/admin/roas': typeof AdminRoasRoute
+  '/admin/login': typeof AdminLoginRoute
   '/areas/$slug': typeof AreasSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/data/market.json': typeof DataMarketDotjsonRoute
@@ -592,8 +592,8 @@ export interface FileRoutesById {
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/data': typeof AdminDataRoute
-  '/admin/login': typeof AdminLoginRoute
   '/admin/roas': typeof AdminRoasRoute
+  '/admin_/login': typeof AdminLoginRoute
   '/areas/$slug': typeof AreasSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/data/market.json': typeof DataMarketDotjsonRoute
@@ -665,8 +665,8 @@ export interface FileRouteTypes {
     | '/.well-known/oauth-protected-resource'
     | '/admin/content'
     | '/admin/data'
-    | '/admin/login'
     | '/admin/roas'
+    | '/admin/login'
     | '/areas/$slug'
     | '/blog/$slug'
     | '/data/market.json'
@@ -734,8 +734,8 @@ export interface FileRouteTypes {
     | '/.well-known/oauth-protected-resource'
     | '/admin/content'
     | '/admin/data'
-    | '/admin/login'
     | '/admin/roas'
+    | '/admin/login'
     | '/areas/$slug'
     | '/blog/$slug'
     | '/data/market.json'
@@ -805,8 +805,8 @@ export interface FileRouteTypes {
     | '/.well-known/oauth-protected-resource'
     | '/admin/content'
     | '/admin/data'
-    | '/admin/login'
     | '/admin/roas'
+    | '/admin_/login'
     | '/areas/$slug'
     | '/blog/$slug'
     | '/data/market.json'
@@ -871,6 +871,7 @@ export interface RootRouteChildren {
   TeamRoute: typeof TeamRouteWithChildren
   UnsubscribeRoute: typeof UnsubscribeRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  AdminLoginRoute: typeof AdminLoginRoute
   AreasSlugRoute: typeof AreasSlugRoute
   BlogSlugRoute: typeof BlogSlugRoute
   DataMarketDotjsonRoute: typeof DataMarketDotjsonRoute
@@ -1073,19 +1074,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDataRouteImport
       parentRoute: typeof AdminRouteRoute
     }
-    '/admin/login': {
-      id: '/admin/login'
-      path: '/login'
-      fullPath: '/admin/login'
-      preLoaderRoute: typeof AdminLoginRouteImport
-      parentRoute: typeof AdminRouteRoute
-    }
     '/admin/roas': {
       id: '/admin/roas'
       path: '/roas'
       fullPath: '/admin/roas'
       preLoaderRoute: typeof AdminRoasRouteImport
       parentRoute: typeof AdminRouteRoute
+    }
+    '/admin_/login': {
+      id: '/admin_/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/areas/': {
       id: '/areas/'
@@ -1428,7 +1429,6 @@ const LangRouteRouteWithChildren = LangRouteRoute._addFileChildren(
 interface AdminRouteRouteChildren {
   AdminContentRoute: typeof AdminContentRoute
   AdminDataRoute: typeof AdminDataRoute
-  AdminLoginRoute: typeof AdminLoginRoute
   AdminRoasRoute: typeof AdminRoasRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
@@ -1436,7 +1436,6 @@ interface AdminRouteRouteChildren {
 const AdminRouteRouteChildren: AdminRouteRouteChildren = {
   AdminContentRoute: AdminContentRoute,
   AdminDataRoute: AdminDataRoute,
-  AdminLoginRoute: AdminLoginRoute,
   AdminRoasRoute: AdminRoasRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
@@ -1471,6 +1470,7 @@ const rootRouteChildren: RootRouteChildren = {
   UnsubscribeRoute: UnsubscribeRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
+  AdminLoginRoute: AdminLoginRoute,
   AreasSlugRoute: AreasSlugRoute,
   BlogSlugRoute: BlogSlugRoute,
   DataMarketDotjsonRoute: DataMarketDotjsonRoute,

@@ -14,7 +14,7 @@ import { Eyebrow } from "@/components/ui/section";
  * created by an administrator, and the admin role is granted in the database,
  * so nobody can register their way into the pipeline.
  */
-export const Route = createFileRoute("/admin/login")({
+export const Route = createFileRoute("/admin_/login")({
   head: () =>
     pageHead({
       path: "/admin/login",
