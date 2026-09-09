@@ -141,47 +141,82 @@ export const Route = createFileRoute("/market-intelligence/")({
      */
     const [leaguePeriod, chargePeriod, offPlanSplitPeriod, metadata, quarterly, monthly, prices] =
       await Promise.all([
-        getLatestPeriodFn({
-          data: { entityType: "community", metric: "median_price_per_sqft", grain: "quarter" },
-        }),
-        getLatestPeriodFn({
-          data: { entityType: "community", metric: "median_service_charge_sqft", grain: "year" },
-        }),
-        getOffPlanSplitPeriodFn({
-          data: { metric: "median_price_per_sqft", grain: "quarter", minObservations: 30 },
-        }),
-        getMarketMetadataFn(),
-        getMarketOverviewFn({
-          data: {
-            metrics: [...HEADLINE_METRICS],
-            grain: "quarter",
-            /* Four years reads as a series. Seven is the same shape at twice
-             * the payload, and the older quarters are in the CSV behind the
-             * methodology note for anyone who wants them. */
-            from: "2022-01-01",
-            to: "2026-12-31",
-            limit: 900,
-          },
-        }),
-        getMarketOverviewFn({
-          data: {
-            metrics: ["registered_sale_count", "registered_rental_contract_count"],
-            grain: "month",
-            from: "2023-01-01",
-            to: "2026-12-31",
-            limit: 900,
-          },
-        }),
-        getMarketOverviewFn({
-          data: {
-            metrics: [...PRICE_METRICS],
-            grain: "quarter",
-            from: "2022-01-01",
-            to: "2026-12-31",
-            limit: 900,
-          },
-        }),
+        tolerant(
+          () =>
+            getLatestPeriodFn({
+              data: { entityType: "community", metric: "median_price_per_sqft", grain: "quarter" },
+            }),
+          null,
+          "league period",
+        ),
+        tolerant(
+          () =>
+            getLatestPeriodFn({
+              data: {
+                entityType: "community",
+                metric: "median_service_charge_sqft",
+                grain: "year",
+              },
+            }),
+          null,
+          "service charge period",
+        ),
+        tolerant(
+          () =>
+            getOffPlanSplitPeriodFn({
+              data: { metric: "median_price_per_sqft", grain: "quarter", minObservations: 30 },
+            }),
+          null,
+          "off-plan split period",
+        ),
+        retrying(() => getMarketMetadataFn(), "market metadata"),
+        tolerant(
+          () =>
+            getMarketOverviewFn({
+              data: {
+                metrics: [...HEADLINE_METRICS],
+                grain: "quarter",
+                /* Four years reads as a series. Seven is the same shape at twice
+                 * the payload, and the older quarters are in the CSV behind the
+                 * methodology note for anyone who wants them. */
+                from: "2022-01-01",
+                to: "2026-12-31",
+                limit: 900,
+              },
+            }),
+          [],
+          "quarterly overview",
+        ),
+        tolerant(
+          () =>
+            getMarketOverviewFn({
+              data: {
+                metrics: ["registered_sale_count", "registered_rental_contract_count"],
+                grain: "month",
+                from: "2023-01-01",
+                to: "2026-12-31",
+                limit: 900,
+              },
+            }),
+          [],
+          "monthly overview",
+        ),
+        tolerant(
+          () =>
+            getMarketOverviewFn({
+              data: {
+                metrics: [...PRICE_METRICS],
+                grain: "quarter",
+                from: "2022-01-01",
+                to: "2026-12-31",
+                limit: 900,
+              },
+            }),
+          [],
+          "price overview",
+        ),
       ]);
+
 
     const [leagueEntries, charges, offPlanSplit] = await Promise.all([
       leaguePeriod
