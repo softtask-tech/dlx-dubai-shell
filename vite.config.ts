@@ -27,11 +27,29 @@ Object.assign(process.env, serverEnv);
  * visitor already downloads. The service role key is never touched.
  */
 const projectId = process.env['VITE_SUPABASE_PROJECT_ID'] ?? process.env['SUPABASE_PROJECT_ID'];
-process.env['VITE_SUPABASE_URL'] ??=
-  process.env['SUPABASE_URL'] ?? (projectId ? `https://${projectId}.supabase.co` : undefined);
-process.env['VITE_SUPABASE_PUBLISHABLE_KEY'] ??=
-  process.env['SUPABASE_PUBLISHABLE_KEY'] ?? process.env['VITE_SUPABASE_ANON_KEY'];
-if (projectId) process.env['VITE_SUPABASE_PROJECT_ID'] ??= projectId;
+
+/* Assigning `undefined` to process.env stores the string "undefined", which is
+ * worse than absent: it looks configured and then fails as an invalid URL. */
+function mirrorEnv(name: string, value: string | undefined): void {
+  const current = process.env[name];
+  if (current && current !== "undefined") return;
+  if (!value || value === "undefined") {
+    delete process.env[name];
+    return;
+  }
+  process.env[name] = value;
+}
+
+mirrorEnv(
+  "VITE_SUPABASE_URL",
+  process.env['SUPABASE_URL'] ?? (projectId ? `https://${projectId}.supabase.co` : undefined),
+);
+mirrorEnv(
+  "VITE_SUPABASE_PUBLISHABLE_KEY",
+  process.env['SUPABASE_PUBLISHABLE_KEY'] ?? process.env['VITE_SUPABASE_ANON_KEY'],
+);
+mirrorEnv("VITE_SUPABASE_PROJECT_ID", projectId);
+
 
 
 export default defineConfig({
