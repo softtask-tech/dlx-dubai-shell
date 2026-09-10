@@ -96,7 +96,16 @@ export const EVENTS: Record<TrackedEvent, EventMapping> = {
  */
 export const tags = {
   metaPixelId: import.meta.env["VITE_META_PIXEL_ID"] ?? "",
-  ga4MeasurementId: import.meta.env["VITE_GA4_MEASUREMENT_ID"] ?? "",
+  /**
+   * Google Analytics is available as a managed connector; the measurement ID
+   * is synced as VITE_LOVABLE_CONNECTOR_GOOGLE_ANALYTICS_API_KEY. The legacy
+   * VITE_GA4_MEASUREMENT_ID is kept as a fallback so existing deployments keep
+   * working.
+   */
+  ga4MeasurementId:
+    import.meta.env["VITE_LOVABLE_CONNECTOR_GOOGLE_ANALYTICS_API_KEY"] ??
+    import.meta.env["VITE_GA4_MEASUREMENT_ID"] ??
+    "",
   googleAdsId: import.meta.env["VITE_GOOGLE_ADS_ID"] ?? "",
   /**
    * Conversion labels as `LEAD:AbC-D_efGh,CALL:XyZ…`. One variable rather than
