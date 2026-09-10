@@ -20,6 +20,29 @@ export const SCHEMA_IDS = {
   website: `${SITE_URL}/#website`,
 } as const;
 
+/**
+ * The brokerage, as a reference that can also stand on its own.
+ *
+ * Everywhere this appears was previously a bare @id reference,
+ * pointing at the Organization node the root emits. Inside a single merged
+ * graph that resolves. Inside a standalone JSON-LD block with its own
+ * @context, which is how every block on this site is emitted, it does not:
+ * the consumer sees a node with an @id and no @type, and Search Console
+ * reports "invalid object type" for whichever field held it.
+ *
+ * Keeping the @id means a consumer that does merge the graph still sees one
+ * organisation rather than two. Adding the type, name, url and logo means one
+ * that does not can still validate the field. The logo matters for Article,
+ * where Google expects a publisher it can render.
+ */
+const organizationRef: JsonLd = {
+  "@type": "Organization",
+  "@id": SCHEMA_IDS.organization,
+  name: site.name,
+  url: SITE_URL,
+  logo: absoluteUrl("/icon-512.png"),
+};
+
 const postalAddress: JsonLd = {
   "@type": "PostalAddress",
   streetAddress: site.address.street,
@@ -71,7 +94,7 @@ export function websiteSchema(): JsonLd {
     name: site.name,
     description: site.description,
     inLanguage: site.language,
-    publisher: { "@id": SCHEMA_IDS.organization },
+    publisher: organizationRef,
   };
 }
 
@@ -135,10 +158,10 @@ export function personSchema(input: PersonInput): JsonLd {
     "@id": `${url}#person`,
     name: input.name,
     url,
-    worksFor: { "@id": SCHEMA_IDS.organization },
+    worksFor: organizationRef,
     /* The person is an agent of the brokerage, which is what a reader is
      * actually asking when they look one of them up. */
-    memberOf: { "@id": SCHEMA_IDS.organization },
+    memberOf: organizationRef,
   };
 
   if (input.jobTitle) node["jobTitle"] = input.jobTitle;
@@ -247,7 +270,7 @@ export function projectSchema(input: ProjectInput): JsonLd {
     },
     brand: { "@type": "Organization", name: input.developerName },
     /* Who is marketing it, which is the fact we can stand behind. */
-    provider: { "@id": SCHEMA_IDS.organization },
+    provider: organizationRef,
   };
   if (input.constructionStatus) node["additionalProperty"] = {
     "@type": "PropertyValue",
@@ -300,7 +323,7 @@ export function articleSchema(input: ArticleInput): JsonLd {
     dateModified: input.dateModified ?? input.datePublished,
     mainEntityOfPage: { "@type": "WebPage", "@id": absoluteUrl(input.path) },
     author: { "@type": "Organization", name: input.author ?? site.name },
-    publisher: { "@id": SCHEMA_IDS.organization },
+    publisher: organizationRef,
   };
 }
 
@@ -332,7 +355,7 @@ export function listingSchema(input: ListingInput): JsonLd {
     url: absoluteUrl(input.path),
     image: absoluteUrl(input.image),
     datePosted: new Date().toISOString().slice(0, 10),
-    provider: { "@id": SCHEMA_IDS.organization },
+    provider: organizationRef,
     address: { ...postalAddress, addressLocality: input.area },
   };
 
@@ -342,7 +365,7 @@ export function listingSchema(input: ListingInput): JsonLd {
       price: input.price.amount,
       priceCurrency: input.price.currency,
       availability: "https://schema.org/InStock",
-      seller: { "@id": SCHEMA_IDS.organization },
+      seller: organizationRef,
     };
   }
 
@@ -382,7 +405,7 @@ export function reviewSchema(input: ReviewInput): JsonLd {
   return {
     "@context": "https://schema.org",
     "@type": "Review",
-    itemReviewed: { "@id": SCHEMA_IDS.organization },
+    itemReviewed: organizationRef,
     author: { "@type": "Person", name: input.author },
     reviewBody: input.body,
     datePublished: input.datePublished,
@@ -456,6 +479,9 @@ export type DatasetInput = {
  * illustrative the schema says so, so a model that ingests the page cannot
  * repeat a sample figure as an official one.
  */
+/** The licence the Dubai Pulse open data is published under. */
+const DLD_LICENCE = "https://www.dubaipulse.gov.ae/terms";
+
 export function datasetSchema(input: DatasetInput): JsonLd {
   const schema: JsonLd = {
     "@context": "https://schema.org",
@@ -467,10 +493,32 @@ export function datasetSchema(input: DatasetInput): JsonLd {
     url: absoluteUrl(input.path),
     inLanguage: site.language,
     dateModified: input.dateModified,
-    /* We publish the derived statistics; DLD publishes the underlying records. */
-    creator: { "@id": SCHEMA_IDS.organization },
-    publisher: { "@id": SCHEMA_IDS.organization },
+    /*
+     * Typed, not just referenced.
+     *
+     * These were bare @id references, pointing at the Organization node
+     * emitted from the root. Inside one page's graph that resolves; inside a
+     * standalone JSON-LD block with its own @context it does not, and Search
+     * Console reports "Invalid object type for field creator" because a node
+     * carrying only an @id has no type to validate. The @id stays, so
+     * consumers that do resolve the graph still see one organisation rather
+     * than two.
+     *
+     * We publish the derived statistics; DLD publishes the underlying records.
+     */
+    creator: organizationRef,
+    publisher: organizationRef,
     isAccessibleForFree: true,
+    /*
+     * Always stated, never conditional.
+     *
+     * `license` used to be set only when the rows were official, so any
+     * dataset built from illustrative rows published without one and Search
+     * Console reported it missing. A dataset with no licence is a dataset
+     * nobody can safely reuse, which defeats the point of publishing it for
+     * answer engines in the first place.
+     */
+    license: input.isOfficial ? DLD_LICENCE : absoluteUrl("/privacy"),
   };
 
   if (input.temporalCoverage) schema["temporalCoverage"] = input.temporalCoverage;
@@ -479,13 +527,32 @@ export function datasetSchema(input: DatasetInput): JsonLd {
   }
 
   if (input.isOfficial) {
+    /*
+     * The source, described as a dataset in its own right.
+     *
+     * This is where all three Search Console complaints came from. `isBasedOn`
+     * is itself typed `Dataset`, so Google validates it against the whole
+     * Dataset spec rather than treating it as a pointer, and it carried a name
+     * and a URL and nothing else. The missing `description` was reported as
+     * critical, which is what stops the page appearing as a rich result; the
+     * missing `license` came from the same object.
+     */
     schema["isBasedOn"] = {
       "@type": "Dataset",
       name: "Dubai Land Department open data",
+      description:
+        "The Dubai Land Department's open data publication of registered property " +
+        "transactions and tenancy contracts in Dubai, from which the figures in this " +
+        "dataset are derived.",
       url: "https://www.dubaipulse.gov.ae/organisation/dld",
-      creator: { "@type": "GovernmentOrganization", name: "Dubai Land Department" },
+      license: DLD_LICENCE,
+      isAccessibleForFree: true,
+      creator: {
+        "@type": "GovernmentOrganization",
+        name: "Dubai Land Department",
+        url: "https://dubailand.gov.ae",
+      },
     };
-    schema["license"] = "https://www.dubaipulse.gov.ae/terms";
   }
 
   return schema;
