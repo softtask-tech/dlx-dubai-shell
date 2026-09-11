@@ -279,7 +279,7 @@ export const en = {
   },
 
   consent: {
-    body: "We use cookies to measure which campaigns bring people here. Nothing loads until you choose.",
+    body: "We use cookies to measure which campaigns bring people here. Measurement stays off until you choose.",
     accept: "Accept",
     decline: "Decline",
     readPolicy: "Privacy policy",

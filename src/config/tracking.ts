@@ -105,7 +105,7 @@ export const tags = {
   ga4MeasurementId:
     import.meta.env["VITE_LOVABLE_CONNECTOR_GOOGLE_ANALYTICS_API_KEY"] ??
     import.meta.env["VITE_GA4_MEASUREMENT_ID"] ??
-    "",
+    "G-R3MYKWYPR1",
   googleAdsId: import.meta.env["VITE_GOOGLE_ADS_ID"] ?? "",
   /**
    * Conversion labels as `LEAD:AbC-D_efGh,CALL:XyZ…`. One variable rather than

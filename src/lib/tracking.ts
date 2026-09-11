@@ -4,11 +4,9 @@
  * Everything that reaches an ad platform from the browser goes through
  * `track()`. Three rules make that worth doing.
  *
- * NOTHING LOADS BEFORE CONSENT. The Meta and Google scripts are not in the
- * document until someone has said yes, so a visitor who declines is not merely
- * untracked. They never contacted those servers at all. A consent banner that
- * hides an already-loaded pixel is theatre, and several of this site's
- * audiences are covered by regimes that treat it as such.
+ * NOTHING IS MEASURED BEFORE CONSENT. Google loads globally with consent mode
+ * denied so its installation can be detected, but page views and events are
+ * not sent until someone accepts. Meta remains absent until acceptance.
  *
  * EVENTS ARE QUEUED, NOT DROPPED. Someone who converts and *then* accepts
  * should still be counted, so events fired before consent wait in memory and
@@ -88,6 +86,7 @@ export function hasDecided(): boolean {
  * and since nothing loads before acceptance there is normally nothing to undo.
  */
 export function setConsent(next: { analytics: boolean; marketing: boolean }): void {
+  const analyticsWasEnabled = consent.analytics;
   consent = { ...next, decidedAt: new Date().toISOString() };
 
   try {
@@ -109,6 +108,7 @@ export function setConsent(next: { analytics: boolean; marketing: boolean }): vo
   if (next.analytics || next.marketing) {
     loadTags();
     flush();
+    if (next.analytics && !analyticsWasEnabled) trackPageView(window.location.pathname);
   } else {
     queue.length = 0;
   }
@@ -168,24 +168,22 @@ function loadMetaPixel(): void {
 
 function loadGoogle(): void {
   window.dataLayer ??= [];
-  window.gtag = function gtag(...args: unknown[]) {
+  window.gtag ??= function gtag(...args: unknown[]) {
     window.dataLayer?.push(args);
   };
 
-  /* Consent mode is set before the tag loads, so the first hit already carries
-   * the visitor's answer rather than a default. */
-  window.gtag("consent", "default", {
+  /* The root document establishes the denied default before the tag loads.
+   * Apply the visitor's current choice without creating a second default. */
+  window.gtag("consent", "update", {
     analytics_storage: consent.analytics ? "granted" : "denied",
     ad_storage: consent.marketing ? "granted" : "denied",
     ad_user_data: consent.marketing ? "granted" : "denied",
     ad_personalization: consent.marketing ? "granted" : "denied",
   });
 
-  const primaryId = ga4Configured() ? tags.ga4MeasurementId : tags.googleAdsId;
-  injectScript(`https://www.googletagmanager.com/gtag/js?id=${primaryId}`);
-
-  window.gtag("js", new Date());
-  if (consent.analytics && ga4Configured()) window.gtag("config", tags.ga4MeasurementId);
+  if (consent.analytics && ga4Configured()) {
+    window.gtag("config", tags.ga4MeasurementId, { send_page_view: false });
+  }
   if (consent.marketing && adsConfigured()) window.gtag("config", tags.googleAdsId);
 }
 
