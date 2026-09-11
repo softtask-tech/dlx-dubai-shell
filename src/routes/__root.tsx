@@ -29,6 +29,7 @@ import { MobileContactBar } from "@/components/site/mobile-contact-bar";
 import { ScrollProgress } from "@/components/site/scroll-progress";
 import { advisorAvailabilityFn } from "@/data/advisor.functions";
 import { hasDecided, initTracking, trackPageView } from "@/lib/tracking";
+import { tags } from "@/config/tracking";
 import { LenisProvider } from "@/components/motion/lenis-provider";
 
 const AdvisorDock = lazy(() =>
@@ -184,6 +185,16 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang={locale.htmlLang} dir={locale.dir}>
       <head>
+        {tags.ga4MeasurementId ? (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${tags.ga4MeasurementId}`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});gtag('js',new Date());gtag('config','${tags.ga4MeasurementId}',{send_page_view:false});`,
+              }}
+            />
+          </>
+        ) : null}
         <HeadContent />
       </head>
       <body>

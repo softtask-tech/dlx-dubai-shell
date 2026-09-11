@@ -4,11 +4,9 @@
  * Everything that reaches an ad platform from the browser goes through
  * `track()`. Three rules make that worth doing.
  *
- * NOTHING LOADS BEFORE CONSENT. The Meta and Google scripts are not in the
- * document until someone has said yes, so a visitor who declines is not merely
- * untracked. They never contacted those servers at all. A consent banner that
- * hides an already-loaded pixel is theatre, and several of this site's
- * audiences are covered by regimes that treat it as such.
+ * NOTHING IS MEASURED BEFORE CONSENT. Google loads globally with consent mode
+ * denied so its installation can be detected, but page views and events are
+ * not sent until someone accepts. Meta remains absent until acceptance.
  *
  * EVENTS ARE QUEUED, NOT DROPPED. Someone who converts and *then* accepts
  * should still be counted, so events fired before consent wait in memory and
@@ -168,7 +166,7 @@ function loadMetaPixel(): void {
 
 function loadGoogle(): void {
   window.dataLayer ??= [];
-  window.gtag = function gtag(...args: unknown[]) {
+  window.gtag ??= function gtag(...args: unknown[]) {
     window.dataLayer?.push(args);
   };
 
@@ -181,11 +179,9 @@ function loadGoogle(): void {
     ad_personalization: consent.marketing ? "granted" : "denied",
   });
 
-  const primaryId = ga4Configured() ? tags.ga4MeasurementId : tags.googleAdsId;
-  injectScript(`https://www.googletagmanager.com/gtag/js?id=${primaryId}`);
-
-  window.gtag("js", new Date());
-  if (consent.analytics && ga4Configured()) window.gtag("config", tags.ga4MeasurementId);
+  if (consent.analytics && ga4Configured()) {
+    window.gtag("config", tags.ga4MeasurementId, { send_page_view: false });
+  }
   if (consent.marketing && adsConfigured()) window.gtag("config", tags.googleAdsId);
 }
 

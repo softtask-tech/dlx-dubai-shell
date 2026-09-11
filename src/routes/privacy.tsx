@@ -41,7 +41,7 @@ const SECTIONS: ReadonlyArray<{ heading: string; body: string[]; points?: string
     heading: "Cookies and advertising tags",
     body: [
       "We advertise, and advertising platforms want to know which of their clicks became enquiries. That measurement uses cookies, and it does not happen unless you accept it.",
-      "Until you accept, the Meta and Google scripts are not loaded at all, not loaded and disabled, but absent from the page. If you decline, they stay absent.",
+       "Google's tag loads with measurement denied so the installation can be verified, but it does not record page views or analytics events unless you accept. Meta remains absent until you accept.",
       "If you accept, we also send a copy of the conversion from our server, matched to the browser event so it is counted once rather than twice. Contact details in that copy are hashed before they are sent; we do not send your email address or phone number in the clear.",
     ],
   },
