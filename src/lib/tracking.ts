@@ -86,6 +86,7 @@ export function hasDecided(): boolean {
  * and since nothing loads before acceptance there is normally nothing to undo.
  */
 export function setConsent(next: { analytics: boolean; marketing: boolean }): void {
+  const analyticsWasEnabled = consent.analytics;
   consent = { ...next, decidedAt: new Date().toISOString() };
 
   try {
@@ -107,6 +108,7 @@ export function setConsent(next: { analytics: boolean; marketing: boolean }): vo
   if (next.analytics || next.marketing) {
     loadTags();
     flush();
+    if (next.analytics && !analyticsWasEnabled) trackPageView(window.location.pathname);
   } else {
     queue.length = 0;
   }
@@ -170,9 +172,9 @@ function loadGoogle(): void {
     window.dataLayer?.push(args);
   };
 
-  /* Consent mode is set before the tag loads, so the first hit already carries
-   * the visitor's answer rather than a default. */
-  window.gtag("consent", "default", {
+  /* The root document establishes the denied default before the tag loads.
+   * Apply the visitor's current choice without creating a second default. */
+  window.gtag("consent", "update", {
     analytics_storage: consent.analytics ? "granted" : "denied",
     ad_storage: consent.marketing ? "granted" : "denied",
     ad_user_data: consent.marketing ? "granted" : "denied",
