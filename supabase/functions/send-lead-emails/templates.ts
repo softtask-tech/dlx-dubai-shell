@@ -170,6 +170,58 @@ ${footer(brand)}`;
   };
 }
 
+/**
+ * "What you told us", read back to the visitor.
+ *
+ * Only the lines they actually gave appear: an empty row would read as a
+ * question they failed to answer rather than a record of what they said.
+ */
+function summarySection(lead: LeadEmailData): string {
+  const rows: Array<[string, string]> = [];
+  const add = (label: string, value: string | null) => {
+    if (value && value.trim().length > 0) rows.push([label, value]);
+  };
+
+  add("Looking to", lead.intent ? humanise(lead.intent) : null);
+  add("Timeline", lead.timeline ? humanise(lead.timeline) : null);
+  if (lead.budgetMin || lead.budgetMax) add("Budget", formatBudget(lead));
+  add(
+    "Property type",
+    lead.propertyTypes && lead.propertyTypes.length > 0
+      ? lead.propertyTypes.map(humanise).join(", ")
+      : null,
+  );
+  if (lead.bedroomsMin && lead.bedroomsMin > 0)
+    add("Bedrooms", `${lead.bedroomsMin}+`);
+  add(
+    "Areas",
+    lead.areaNames && lead.areaNames.length > 0 ? lead.areaNames.join(", ") : null,
+  );
+  add("Preferred contact", lead.preferredContact ? humanise(lead.preferredContact) : null);
+
+  if (rows.length === 0 && !lead.message) return "";
+
+  const rowsHtml = rows
+    .map(
+      ([label, value]) => `<tr>
+<td style="padding:9px 0;font-family:${SANS};font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${SLATE};width:160px;vertical-align:top;">${escapeHtml(label)}</td>
+<td style="padding:9px 0;font-family:${SANS};font-size:15px;color:${INK};">${escapeHtml(value)}</td>
+</tr>`,
+    )
+    .join("");
+
+  return `<tr><td style="padding:32px 40px 0 40px;">
+<p style="margin:0 0 8px 0;font-family:${SANS};font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${SLATE};">What you told us</p>
+${rows.length > 0 ? `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rowsHtml}</table>` : ""}
+${
+  lead.message
+    ? `<p style="margin:${rows.length > 0 ? "20px" : "0"} 0 8px 0;font-family:${SANS};font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${SLATE};">Your message</p>
+<p style="margin:0;padding:20px;background:${SOFT_SAND};font-family:${SANS};font-size:15px;line-height:1.7;color:${INK};">${escapeHtml(lead.message)}</p>`
+    : ""
+}
+</td></tr>`;
+}
+
 /** What the client receives: warm, brief, and honest about what happens next. */
 export function clientConfirmationEmail(lead: LeadEmailData, brand: BrandInfo) {
   const firstName = lead.fullName?.trim().split(/\s+/)[0];
