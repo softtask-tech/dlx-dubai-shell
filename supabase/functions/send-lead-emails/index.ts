@@ -30,9 +30,33 @@ const RESEND_ENDPOINT = "https://api.resend.com/emails";
 const BRAND: BrandInfo = {
   name: "DLX Properties",
   domain: Deno.env.get("SITE_DOMAIN") ?? "dlxproperties.com",
-  email: Deno.env.get("LEAD_ADMIN_EMAIL")?.split(",")[0]?.trim() ?? "hello@dlxproperties.com",
-  phone: Deno.env.get("BRAND_PHONE") ?? "+971 (0) 000 0000",
+  email: Deno.env.get("LEAD_ADMIN_EMAIL")?.split(",")[0]?.trim() ?? "info@dlxproperties.com",
+  /* Kept in step with src/config/brand.ts; the env var is only an override. */
+  phone: Deno.env.get("BRAND_PHONE") ?? "+971 54 599 6911",
+  address:
+    Deno.env.get("BRAND_ADDRESS") ??
+    "S210, Property Investment Office 4 S1, Dubai Investment Park First, Dubai, United Arab Emirates",
 };
+
+/**
+ * Turns the stored area ids into names, so the confirmation echoes back
+ * "Dubai Marina" rather than a row of identifiers. A failure here costs one
+ * line of an email, never the email.
+ */
+async function areaNames(
+  // deno-lint-ignore no-explicit-any
+  supabase: any,
+  ids: unknown,
+): Promise<string[] | null> {
+  if (!Array.isArray(ids) || ids.length === 0) return null;
+  const { data, error } = await supabase
+    .from("areas")
+    .select("name")
+    .in("id", ids.slice(0, 8));
+  if (error || !data) return null;
+  // deno-lint-ignore no-explicit-any
+  return (data as any[]).map((row) => row.name).filter(Boolean);
+}
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -125,6 +149,10 @@ Deno.serve(async (request: Request) => {
       createdAt: data.created_at,
       assignedAgentName: data.assigned_agent?.full_name ?? null,
       routingReason: data.routing_reason ?? null,
+      preferredContact: data.preferred_contact ?? null,
+      propertyTypes: data.property_types ?? null,
+      bedroomsMin: data.bedrooms_min ?? null,
+      areaNames: await areaNames(supabase, data.area_ids),
     };
 
     const apiKey = (Deno.env.get("RESEND_API_KEY") ?? Deno.env.get("RESEND_API"));
