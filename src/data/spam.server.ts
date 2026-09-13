@@ -237,3 +237,92 @@ export async function assessSubmission(input: SpamCheckInput): Promise<SpamVerdi
 
   return { score: Math.min(100, score), reasons, reject: score >= 60 };
 }
+
+/* ---------------------------------------------------------- rate limit --- */
+
+/**
+ * A stable, non-reversible fingerprint for one visitor.
+ *
+ * The raw address is never stored: a hash is enough to count submissions and
+ * useless to anyone who gets hold of the table.
+ */
+export async function hashIp(ipAddress: string | undefined | null): Promise<string | null> {
+  const value = ipAddress?.trim();
+  if (!value) return null;
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
+  return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0"))
+    .join("")
+    .slice(0, 40);
+}
+
+/**
+ * Balanced limits: enough headroom for someone enquiring about two listings in
+ * a row, tight enough that a script cannot fill the inbox.
+ */
+const RATE_LIMITS = [
+  { kind: "10min", windowMs: 10 * 60 * 1000, max: 3 },
+  { kind: "day", windowMs: 24 * 60 * 60 * 1000, max: 10 },
+] as const;
+
+export type RateLimitVerdict = { limited: boolean; reason: string | null };
+
+/**
+ * Counts this submission against the visitor's windows and says whether it is
+ * over the line. A failure to count never blocks: losing a real enquiry to a
+ * database hiccup is far worse than accepting one extra.
+ */
+export async function checkRateLimit(ipHash: string | null): Promise<RateLimitVerdict> {
+  if (!ipHash) return { limited: false, reason: null };
+
+  const supabase = (await adminDb()) as unknown as SupabaseClient<PaidMediaDatabase>;
+  const now = Date.now();
+
+  for (const limit of RATE_LIMITS) {
+    /* Fixed windows rather than a rolling count: one row per visitor per
+     * window, so the check is a single upsert instead of a scan. */
+    const windowStart = new Date(Math.floor(now / limit.windowMs) * limit.windowMs).toISOString();
+
+    const { data: existing, error: readError } = await supabase
+      .from("lead_rate_limits")
+      .select("id, attempt_count")
+      .eq("ip_hash", ipHash)
+      .eq("window_kind", limit.kind)
+      .eq("window_start", windowStart)
+      .maybeSingle();
+
+    if (readError) {
+      console.error("[spam] rate limit read failed", readError);
+      return { limited: false, reason: null };
+    }
+
+    const attempts = (existing?.attempt_count ?? 0) + 1;
+    const limited = attempts > limit.max;
+
+    if (existing) {
+      await supabase
+        .from("lead_rate_limits")
+        .update({
+          attempt_count: attempts,
+          blocked_count: (limited ? 1 : 0) + 0,
+        } as never)
+        .eq("id", existing.id);
+    } else {
+      await supabase.from("lead_rate_limits").insert({
+        ip_hash: ipHash,
+        window_kind: limit.kind,
+        window_start: windowStart,
+        attempt_count: attempts,
+        blocked_count: limited ? 1 : 0,
+      } as never);
+    }
+
+    if (limited) {
+      return {
+        limited: true,
+        reason: `Rate limit: more than ${limit.max} enquiries in one ${limit.kind} window`,
+      };
+    }
+  }
+
+  return { limited: false, reason: null };
+}
