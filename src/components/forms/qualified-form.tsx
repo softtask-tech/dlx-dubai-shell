@@ -351,13 +351,18 @@ export function QualifiedForm({
           <Turnstile onToken={setTurnstileToken} />
 
           {/* Honeypot, hidden from people and from screen readers. */}
+          {/* No label and a name no password manager recognises: Chrome happily
+              autofills a hidden field called "company", and every one of those
+              used to be read as a bot. */}
           <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
-            <label htmlFor="company">Company</label>
             <input
-              id="company"
-              name="company"
+              id="dlx-reference-code"
+              name="dlx-reference-code"
+              type="text"
               tabIndex={-1}
-              autoComplete="off"
+              autoComplete="new-password"
+              data-1p-ignore="true"
+              data-lpignore="true"
               value={company}
               onChange={(e) => setCompany(e.target.value)}
             />
