@@ -183,14 +183,7 @@ We have your enquiry. A consultant will read it personally and come back to you,
 In the meantime, there is nothing you need to do. If anything changes or you would rather speak sooner, reply to this email or call us directly.
 </p>
 </td></tr>
-${
-  lead.message
-    ? `<tr><td style="padding:28px 40px 0 40px;">
-<p style="margin:0 0 8px 0;font-family:${SANS};font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${SLATE};">What you told us</p>
-<p style="margin:0;padding:20px;background:${SOFT_SAND};font-family:${SANS};font-size:15px;line-height:1.7;color:${INK};">${escapeHtml(lead.message)}</p>
-</td></tr>`
-    : ""
-}
+${summarySection(lead)}
 <tr><td style="padding:32px 40px 40px 40px;">
 <p style="margin:0;font-family:${SANS};font-size:15px;line-height:1.8;color:${INK};">
 <a href="tel:${escapeHtml(brand.phone)}" style="color:${INK};">${escapeHtml(brand.phone)}</a><br />
