@@ -121,17 +121,20 @@ export type LeadSubmissionResult = {
 /**
  * Writes a lead and dispatches the two emails.
  *
+ * NOTHING IS SILENTLY DROPPED. A honeypot hit, a repeat and a rate-limited
+ * visitor are all still written, flagged `unqualified` with the reason on the
+ * row, because the alternative — showing success and storing nothing — is how a
+ * real enquiry disappears with nobody able to find out why.
+ *
  * Email failure never fails the submission: the enquiry is already saved, and
  * losing it because Resend had a bad minute would be the worse outcome. The
  * failure is logged and the lead's `admin_notified_at` stays null, which is
  * what the inbox surfaces.
  */
-export async function submitLead(input: LeadSubmission): Promise<LeadSubmissionResult> {
-  /* A filled honeypot is a bot. Answer as though it worked and write nothing. */
-  if (input.company && input.company.trim().length > 0) {
-    return { ok: true, leadId: "00000000-0000-0000-0000-000000000000", temperature: "cold" };
-  }
-
+export async function submitLead(
+  input: LeadSubmission,
+  meta: { ipAddress?: string | null } = {},
+): Promise<LeadSubmissionResult> {
   const supabaseAdmin = await adminDb();
 
   /*
@@ -139,7 +142,11 @@ export async function submitLead(input: LeadSubmission): Promise<LeadSubmissionR
    * flagged, not deleted, because a spam filter with no appeal quietly loses
    * real business, and someone has to be able to find the one it got wrong.
    */
-  const { assessSubmission, dedupeKeyFor, isDuplicate } = await import("./spam.server");
+  const { assessSubmission, dedupeKeyFor, isDuplicate, hashIp, checkRateLimit } = await import(
+    "./spam.server"
+  );
+
+  const ipHash = await hashIp(meta.ipAddress);
 
   const verdict = await assessSubmission({
     fullName: input.fullName,
@@ -150,6 +157,21 @@ export async function submitLead(input: LeadSubmission): Promise<LeadSubmissionR
     sourceType: input.sourceType,
   });
 
+  /* A filled honeypot is almost always a bot — or a browser autofilling an
+   * off-screen box. Flagged, never dropped, so the second case is findable. */
+  if (input.company && input.company.trim().length > 0) {
+    verdict.score = 100;
+    verdict.reasons.push("Hidden field was filled in");
+    verdict.reject = true;
+  }
+
+  const rate = await checkRateLimit(ipHash);
+  if (rate.limited && rate.reason) {
+    verdict.score = Math.max(verdict.score, 60);
+    verdict.reasons.push(rate.reason);
+    verdict.reject = true;
+  }
+
   const dedupeKey = await dedupeKeyFor({
     email: input.email,
     phone: input.phone,
@@ -157,12 +179,14 @@ export async function submitLead(input: LeadSubmission): Promise<LeadSubmissionR
   });
 
   /*
-   * A repeat within the window is answered as though it worked and written
-   * nowhere. Someone who pressed submit twice should see success, not an error
-   * telling them off, and the consultant should see one lead, not two.
+   * A repeat within the window is recorded as a duplicate rather than queued
+   * again. Someone who pressed submit twice should see success, not an error
+   * telling them off, and the consultant should see one lead to work, not two.
    */
-  if (dedupeKey && (await isDuplicate(dedupeKey))) {
-    return { ok: true, leadId: "00000000-0000-0000-0000-000000000000", temperature: "cold" };
+  const duplicate = Boolean(dedupeKey && (await isDuplicate(dedupeKey)));
+  if (duplicate) {
+    verdict.reasons.push("Repeat of an enquiry received in the last 6 hours");
+    verdict.reject = true;
   }
 
   const { score, temperature, reasons } = scoreLead({
