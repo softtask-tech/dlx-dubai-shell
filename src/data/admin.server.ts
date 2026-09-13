@@ -60,6 +60,8 @@ export type LeadListFilters = {
   createdFrom?: string;
   createdTo?: string;
   sourceType?: LeadSourceType;
+  /** The specific form, e.g. "contact-page" or "brochure-sobha-city". */
+  sourceDetail?: string;
   utmSource?: string;
   utmCampaign?: string;
   intent?: LeadIntent;
@@ -102,6 +104,7 @@ export async function listLeads(filters: LeadListFilters = {}): Promise<LeadWith
   if (filters.createdTo) query = query.lte("created_at", `${filters.createdTo}T23:59:59.999+04:00`);
 
   if (filters.sourceType) query = query.eq("source_type", filters.sourceType);
+  if (filters.sourceDetail) query = query.ilike("source_detail", `%${filters.sourceDetail}%`);
   if (filters.utmSource) query = query.ilike("utm_source", `%${filters.utmSource}%`);
   if (filters.utmCampaign) query = query.ilike("utm_campaign", `%${filters.utmCampaign}%`);
   if (filters.intent) query = query.eq("intent", filters.intent);
@@ -248,7 +251,7 @@ const CSV_COLUMNS: ReadonlyArray<[header: string, get: (lead: LeadWithAgent) => 
   ["Budget max", (lead) => lead.budget_max],
   ["Currency", (lead) => lead.budget_currency],
   ["Source", (lead) => lead.source_type],
-  ["Source detail", (lead) => lead.source_detail],
+  ["Form", (lead) => lead.source_detail ?? lead.source_type],
   ["Page", (lead) => lead.page_path],
   ["UTM source", (lead) => lead.utm_source],
   ["UTM medium", (lead) => lead.utm_medium],

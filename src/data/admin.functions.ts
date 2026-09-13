@@ -67,6 +67,7 @@ const leadFilters = {
   createdFrom: isoDate.optional(),
   createdTo: isoDate.optional(),
   sourceType: z.enum(leadSourceTypes).optional(),
+  sourceDetail: z.string().optional(),
   utmSource: z.string().optional(),
   utmCampaign: z.string().optional(),
   intent: z.enum(leadIntents).optional(),
