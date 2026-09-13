@@ -1995,6 +1995,39 @@ export type Database = {
           },
         ]
       }
+      lead_rate_limits: {
+        Row: {
+          attempt_count: number
+          blocked_count: number
+          created_at: string
+          id: string
+          ip_hash: string
+          updated_at: string
+          window_kind: string
+          window_start: string
+        }
+        Insert: {
+          attempt_count?: number
+          blocked_count?: number
+          created_at?: string
+          id?: string
+          ip_hash: string
+          updated_at?: string
+          window_kind: string
+          window_start: string
+        }
+        Update: {
+          attempt_count?: number
+          blocked_count?: number
+          created_at?: string
+          id?: string
+          ip_hash?: string
+          updated_at?: string
+          window_kind?: string
+          window_start?: string
+        }
+        Relationships: []
+      }
       leads: {
         Row: {
           admin_notified_at: string | null
@@ -2029,6 +2062,7 @@ export type Database = {
           id: string
           intent: Database["public"]["Enums"]["lead_intent"] | null
           internal_notes: string | null
+          ip_hash: string | null
           is_financing: boolean | null
           is_first_purchase: boolean | null
           landing_page_url: string | null
@@ -2101,6 +2135,7 @@ export type Database = {
           id?: string
           intent?: Database["public"]["Enums"]["lead_intent"] | null
           internal_notes?: string | null
+          ip_hash?: string | null
           is_financing?: boolean | null
           is_first_purchase?: boolean | null
           landing_page_url?: string | null
@@ -2173,6 +2208,7 @@ export type Database = {
           id?: string
           intent?: Database["public"]["Enums"]["lead_intent"] | null
           internal_notes?: string | null
+          ip_hash?: string | null
           is_financing?: boolean | null
           is_first_purchase?: boolean | null
           landing_page_url?: string | null
