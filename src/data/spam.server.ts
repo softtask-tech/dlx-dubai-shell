@@ -274,7 +274,9 @@ export type RateLimitVerdict = { limited: boolean; reason: string | null };
 export async function checkRateLimit(ipHash: string | null): Promise<RateLimitVerdict> {
   if (!ipHash) return { limited: false, reason: null };
 
-  const supabase = (await adminDb()) as unknown as SupabaseClient<PaidMediaDatabase>;
+  /* Untyped on purpose: the generated types do not carry this operational
+   * table, and it is only ever touched here. */
+  const supabase = (await adminDb()) as unknown as SupabaseClient;
   const now = Date.now();
 
   for (const limit of RATE_LIMITS) {
@@ -284,7 +286,7 @@ export async function checkRateLimit(ipHash: string | null): Promise<RateLimitVe
 
     const { data: existing, error: readError } = await supabase
       .from("lead_rate_limits")
-      .select("id, attempt_count")
+      .select("id, attempt_count, blocked_count")
       .eq("ip_hash", ipHash)
       .eq("window_kind", limit.kind)
       .eq("window_start", windowStart)
@@ -303,7 +305,7 @@ export async function checkRateLimit(ipHash: string | null): Promise<RateLimitVe
         .from("lead_rate_limits")
         .update({
           attempt_count: attempts,
-          blocked_count: (limited ? 1 : 0) + 0,
+          blocked_count: (existing.blocked_count ?? 0) + (limited ? 1 : 0),
         } as never)
         .eq("id", existing.id);
     } else {
