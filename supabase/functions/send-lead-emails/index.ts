@@ -129,6 +129,10 @@ Deno.serve(async (request: Request) => {
       createdAt: data.created_at,
       assignedAgentName: data.assigned_agent?.full_name ?? null,
       routingReason: data.routing_reason ?? null,
+      preferredContact: data.preferred_contact ?? null,
+      propertyTypes: data.property_types ?? null,
+      bedroomsMin: data.bedrooms_min ?? null,
+      areaNames: await areaNames(supabase, data.area_ids),
     };
 
     const apiKey = (Deno.env.get("RESEND_API_KEY") ?? Deno.env.get("RESEND_API"));
