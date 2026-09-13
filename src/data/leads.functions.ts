@@ -6,6 +6,7 @@
  * the server is behind a dynamic import.
  */
 import { createServerFn } from "@tanstack/react-start";
+import { getRequestHeader } from "@tanstack/react-start/server";
 
 import { leadSubmissionSchema, type LeadSubmissionResult } from "./leads.server";
 
@@ -18,5 +19,16 @@ export const submitLeadFn = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => leadSubmissionSchema.parse(data))
   .handler(async ({ data }): Promise<LeadSubmissionResult> => {
     const { submitLead } = await import("./leads.server");
-    return submitLead(data);
+
+    /* Read here rather than trusting the browser: the rate limit is worthless
+     * if the visitor can choose their own identity. The edge sets the first,
+     * the others are fallbacks for other hosts. */
+    const forwarded = getRequestHeader("x-forwarded-for");
+    const ipAddress =
+      getRequestHeader("cf-connecting-ip") ??
+      forwarded?.split(",")[0]?.trim() ??
+      getRequestHeader("x-real-ip") ??
+      null;
+
+    return submitLead(data, { ipAddress });
   });
