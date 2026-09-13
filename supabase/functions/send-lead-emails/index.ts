@@ -38,6 +38,26 @@ const BRAND: BrandInfo = {
     "S210, Property Investment Office 4 S1, Dubai Investment Park First, Dubai, United Arab Emirates",
 };
 
+/**
+ * Turns the stored area ids into names, so the confirmation echoes back
+ * "Dubai Marina" rather than a row of identifiers. A failure here costs one
+ * line of an email, never the email.
+ */
+async function areaNames(
+  // deno-lint-ignore no-explicit-any
+  supabase: any,
+  ids: unknown,
+): Promise<string[] | null> {
+  if (!Array.isArray(ids) || ids.length === 0) return null;
+  const { data, error } = await supabase
+    .from("areas")
+    .select("name")
+    .in("id", ids.slice(0, 8));
+  if (error || !data) return null;
+  // deno-lint-ignore no-explicit-any
+  return (data as any[]).map((row) => row.name).filter(Boolean);
+}
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
