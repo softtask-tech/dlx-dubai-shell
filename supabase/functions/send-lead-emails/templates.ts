@@ -39,6 +39,11 @@ export type LeadEmailData = {
   /** Who routing handed this to, so the notification names an owner. */
   assignedAgentName?: string | null;
   routingReason?: string | null;
+  /** Extra qualification the visitor gave, echoed back in the confirmation. */
+  preferredContact?: string | null;
+  propertyTypes?: string[] | null;
+  bedroomsMin?: number | null;
+  areaNames?: string[] | null;
 };
 
 export type BrandInfo = {
@@ -46,6 +51,8 @@ export type BrandInfo = {
   domain: string;
   email: string;
   phone: string;
+  /** Full street address, so the footer never carries a stale one. */
+  address?: string;
 };
 
 /** Escapes text before it goes anywhere near an HTML template. */
