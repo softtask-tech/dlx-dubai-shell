@@ -30,8 +30,12 @@ const RESEND_ENDPOINT = "https://api.resend.com/emails";
 const BRAND: BrandInfo = {
   name: "DLX Properties",
   domain: Deno.env.get("SITE_DOMAIN") ?? "dlxproperties.com",
-  email: Deno.env.get("LEAD_ADMIN_EMAIL")?.split(",")[0]?.trim() ?? "hello@dlxproperties.com",
-  phone: Deno.env.get("BRAND_PHONE") ?? "+971 (0) 000 0000",
+  email: Deno.env.get("LEAD_ADMIN_EMAIL")?.split(",")[0]?.trim() ?? "info@dlxproperties.com",
+  /* Kept in step with src/config/brand.ts; the env var is only an override. */
+  phone: Deno.env.get("BRAND_PHONE") ?? "+971 54 599 6911",
+  address:
+    Deno.env.get("BRAND_ADDRESS") ??
+    "S210, Property Investment Office 4 S1, Dubai Investment Park First, Dubai, United Arab Emirates",
 };
 
 const corsHeaders = {
