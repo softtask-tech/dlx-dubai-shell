@@ -143,7 +143,17 @@ function LeadsInbox() {
           <table className="w-full min-w-[64rem] border-collapse">
             <thead>
               <tr className="border-b border-border">
-                {["Received", "Name", "Intent", "Budget", "Source", "Score", "Status", ""].map(
+                {[
+                  "Received",
+                  "Name",
+                  "Intent",
+                  "Budget",
+                  "Source",
+                  "Form",
+                  "Score",
+                  "Status",
+                  "",
+                ].map(
                   (heading) => (
                     <th key={heading} className="eyebrow py-4 pr-6 text-left font-normal">
                       {heading}
@@ -180,6 +190,7 @@ function LeadsInbox() {
                     {lead.utm_source ? <br /> : null}
                     {lead.utm_source ? `via ${lead.utm_source}` : null}
                   </td>
+                  <td className="caption py-5 pr-6">{formLabel(lead)}</td>
                   <td className="py-5 pr-6">
                     <TemperatureTag temperature={lead.temperature} score={lead.score} />
                   </td>
@@ -225,6 +236,15 @@ function LeadsInbox() {
       ) : null}
     </Container>
   );
+}
+
+/** Which form on the site this enquiry came from, in words. */
+function formLabel(lead: LeadWithAgent): string {
+  const detail = lead.source_detail?.trim();
+  if (!detail) return humanise(lead.source_type);
+  return detail
+    .replace(/[-_]/g, " ")
+    .replace(/^\w/, (character) => character.toUpperCase());
 }
 
 function Stat({ label, value }: { label: string; value: number }) {

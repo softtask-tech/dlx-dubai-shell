@@ -17,6 +17,7 @@ export type LeadFilterState = {
   createdFrom: string;
   createdTo: string;
   sourceType: LeadSourceType | "";
+  sourceDetail: string;
   utmSource: string;
   utmCampaign: string;
   intent: LeadIntent | "";
@@ -34,6 +35,7 @@ export const EMPTY_FILTERS: LeadFilterState = {
   createdFrom: "",
   createdTo: "",
   sourceType: "",
+  sourceDetail: "",
   utmSource: "",
   utmCampaign: "",
   intent: "",
@@ -86,6 +88,7 @@ export type LeadFilterPayload = {
   createdFrom?: string;
   createdTo?: string;
   sourceType?: LeadSourceType;
+  sourceDetail?: string;
   utmSource?: string;
   utmCampaign?: string;
   intent?: LeadIntent;
@@ -104,6 +107,7 @@ export function toFilterPayload(filters: LeadFilterState): LeadFilterPayload {
   if (filters.createdFrom) payload.createdFrom = filters.createdFrom;
   if (filters.createdTo) payload.createdTo = filters.createdTo;
   if (filters.sourceType) payload.sourceType = filters.sourceType;
+  if (filters.sourceDetail.trim()) payload.sourceDetail = filters.sourceDetail.trim();
   if (filters.utmSource.trim()) payload.utmSource = filters.utmSource.trim();
   if (filters.utmCampaign.trim()) payload.utmCampaign = filters.utmCampaign.trim();
   if (filters.intent) payload.intent = filters.intent;
@@ -255,6 +259,14 @@ export function LeadFilterBar({
               </option>
             ))}
           </Select>
+        </Labelled>
+
+        <Labelled label="Form">
+          <TextInput
+            placeholder="contact-page, brochure…"
+            value={filters.sourceDetail}
+            onChange={(event) => set("sourceDetail", event.target.value)}
+          />
         </Labelled>
 
         <Labelled label="Ad source">
