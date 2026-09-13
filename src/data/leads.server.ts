@@ -245,6 +245,7 @@ export async function submitLead(
     first_landing_page_url: input.firstLandingPageUrl ?? null,
     first_seen_at: input.firstSeenAt ?? null,
     dedupe_key: dedupeKey,
+    ip_hash: ipHash,
     spam_score: verdict.score,
     spam_reasons: verdict.reasons,
     /* A rejected submission is parked as unqualified rather than queued for a
